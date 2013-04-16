@@ -218,6 +218,7 @@ public class MainForm extends javax.swing.JFrame {
         // Customize buttons
         btnNewApplication.setEnabled(SecurityBean.isInRole(RolesConstants.APPLICATION_CREATE_APPS));
         btnOpenMap.setEnabled(SecurityBean.isInRole(RolesConstants.GIS_VIEW_MAP));
+        btnOpenMap.setVisible(btnOpenMap.isEnabled()); 
         btnSearchApplications.setEnabled(SecurityBean.isInRole(RolesConstants.APPLICATION_VIEW_APPS));
         btnShowDashboard.setEnabled(SecurityBean.isInRole(RolesConstants.APPLICATION_VIEW_APPS));
         btnManageParties.setEnabled(SecurityBean.isInRole(RolesConstants.PARTY_SAVE));
@@ -225,6 +226,11 @@ public class MainForm extends javax.swing.JFrame {
         menuSearchApplication.setEnabled(btnSearchApplications.isEnabled());
         menuNewApplication.setEnabled(btnNewApplication.isEnabled());
         menuExportRights.setEnabled(SecurityBean.isInRole(RolesConstants.ADMINISTRATIVE_RIGHTS_EXPORT));
+        menuMap.setEnabled(btnOpenMap.isEnabled());
+        menuMap.setVisible(btnOpenMap.isVisible());
+        
+        // AM 17-04-13 Systematic Registration is not required in Tonga.
+        menuSystematic.setVisible(false);
 
         // Load dashboard
         openDashBoard();
