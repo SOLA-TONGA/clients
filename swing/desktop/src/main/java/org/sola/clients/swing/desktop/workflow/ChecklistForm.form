@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.5" maxVersion="1.8" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
+  <NonVisualComponents>
+    <Component class="org.sola.clients.beans.referencedata.LandUseTypeListBean" name="landUseTypeListBean1">
+    </Component>
+  </NonVisualComponents>
+  <Properties>
+    <Property name="headerPanel" type="org.sola.clients.swing.ui.HeaderPanel" editor="org.netbeans.modules.form.ComponentChooserEditor">
+      <ComponentRef name="headerPanel"/>
+    </Property>
+    <Property name="name" type="java.lang.String" value="Form" noResource="true"/>
+    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+      <Dimension value="[683, 450]"/>
+    </Property>
+  </Properties>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Component id="headerPanel" alignment="0" pref="683" max="32767" attributes="0"/>
+          <Group type="102" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="0" pref="434" max="32767" attributes="0"/>
+                      <Component id="leaseHoldLabel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="cbxChecklistGroup" min="-2" pref="141" max="-2" attributes="0"/>
+                  </Group>
+                  <Component id="checklistPanel" alignment="0" max="32767" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <Component id="headerPanel" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="leaseHoldLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="cbxChecklistGroup" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="checklistPanel" pref="377" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Component class="org.sola.clients.swing.ui.HeaderPanel" name="headerPanel">
+      <Properties>
+        <Property name="titleText" type="java.lang.String" value="Checklist"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="leaseHoldLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Land Leasehold:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="cbxChecklistGroup">
+      <BindingProperties>
+        <BindingProperty name="elements" source="landUseTypeListBean1" sourcePath="${landUseTypeList}" target="cbxChecklistGroup" targetPath="elements" updateStrategy="0" immediately="false">
+          <Property name="name" type="java.lang.String" value=""/>
+        </BindingProperty>
+        <BindingProperty name="selectedItem" source="Form" sourcePath="${property.landUseType}" target="cbxChecklistGroup" targetPath="selectedItem" updateStrategy="0" immediately="false"/>
+      </BindingProperties>
+    </Component>
+    <Container class="javax.swing.JScrollPane" name="checklistPanel">
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+      <SubComponents>
+        <Component class="org.sola.clients.swing.common.controls.JTableWithDefaultStyles" name="checklistTable">
+          <Properties>
+            <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+              <Table columnCount="3" rowCount="13">
+                <Column editable="false" title="Required Documentations" type="java.lang.String">
+                  <Data value="Contact Detail"/>
+                  <Data value="Identification"/>
+                  <Data value="Power of Attorney"/>
+                  <Data value="Valid Visa"/>
+                  <Data value="Business Registration"/>
+                  <Data value="Business License"/>
+                  <Data value="Foreign Investment"/>
+                  <Data value="Business Plan"/>
+                  <Data value="Proof of Funds"/>
+                  <Data value="Existing Lease"/>
+                  <Data value="Permit"/>
+                  <Data value="Environment Impact Assessment"/>
+                  <Data value="Terms and Conditions"/>
+                </Column>
+                <Column editable="false" title="Description" type="java.lang.String">
+                  <Data value="Telephone; Mobile; Residential Address; Mailing Address; Email;"/>
+                  <Data value="National Identification Card; Passport; Driving License"/>
+                  <Data value="If person other than the landowner"/>
+                  <Data value="Resident; Work; Business;"/>
+                  <Data value="Registered Business Name"/>
+                  <Data value="null"/>
+                  <Data value="null"/>
+                  <Data value="null"/>
+                  <Data value=""/>
+                  <Data value="null"/>
+                  <Data value="Permit to Hold, Reside or Occupy land"/>
+                  <Data value=""/>
+                  <Data value="Terms and Conditions of Lease or Supplementary agreements (if any)"/>
+                </Column>
+                <Column editable="true" title="Submitted" type="java.lang.Boolean"/>
+              </Table>
+            </Property>
+            <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+              <TableColumnModel selectionModel="0">
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
+              </TableColumnModel>
+            </Property>
+            <Property name="rowHeight" type="int" value="20"/>
+            <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+              <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
+            </Property>
+          </Properties>
+        </Component>
+      </SubComponents>
+    </Container>
+  </SubComponents>
+</Form>
