@@ -46,6 +46,16 @@ import org.sola.webservices.transferobjects.referencedata.RequestTypeTO;
  */
 public class RequestTypeBean extends AbstractCodeBean {
 
+    public static final String CODE_CHECKLIST = "checklist";
+    public static final String CODE_CABINET_SUBMISSION = "cabinetSubmission";
+    public static final String CODE_DRAFT_DEED = "draftDeed";
+    public static final String CODE_ITEM_NUMBER = "itemNumber";
+    public static final String CODE_MINISTER_BRIEFING = "ministerBriefing";
+    public static final String CODE_REGISTER_LEASE = "registerLease";
+    public static final String CODE_SIGN_DEED = "signDeed";
+    public static final String CODE_SITE_INSPECTION = "siteInspection";
+    public static final String CODE_SURVEY = "survey";
+    
     public static final String CODE_CADASTRE_PRINT = "cadastrePrint";
     public static final String CODE_CADASTRE_CHANGE = "cadastreChange";
     public static final String CODE_CADASTRE_REDEFINITION = "redefineCadastre";
