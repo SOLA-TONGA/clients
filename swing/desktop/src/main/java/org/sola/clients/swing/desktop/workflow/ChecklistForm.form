@@ -4,6 +4,10 @@
   <NonVisualComponents>
     <Component class="org.sola.clients.beans.referencedata.LandUseTypeListBean" name="landUseTypeListBean1">
     </Component>
+    <Component class="org.sola.clients.beans.referencedata.ChecklistGroupListBean" name="checklistGroupListBean1">
+    </Component>
+    <Component class="org.sola.clients.beans.referencedata.ChecklistItemListBean" name="checklistItemListBean1">
+    </Component>
   </NonVisualComponents>
   <Properties>
     <Property name="headerPanel" type="org.sola.clients.swing.ui.HeaderPanel" editor="org.netbeans.modules.form.ComponentChooserEditor">
@@ -74,7 +78,7 @@
     </Component>
     <Component class="javax.swing.JComboBox" name="cbxChecklistGroup">
       <BindingProperties>
-        <BindingProperty name="elements" source="landUseTypeListBean1" sourcePath="${landUseTypeList}" target="cbxChecklistGroup" targetPath="elements" updateStrategy="0" immediately="false">
+        <BindingProperty name="elements" source="checklistGroupListBean1" sourcePath="${checklistGroupList}" target="cbxChecklistGroup" targetPath="elements" updateStrategy="0" immediately="false">
           <Property name="name" type="java.lang.String" value=""/>
         </BindingProperty>
         <BindingProperty name="selectedItem" source="Form" sourcePath="${property.landUseType}" target="cbxChecklistGroup" targetPath="selectedItem" updateStrategy="0" immediately="false"/>
@@ -86,48 +90,8 @@
       <SubComponents>
         <Component class="org.sola.clients.swing.common.controls.JTableWithDefaultStyles" name="checklistTable">
           <Properties>
-            <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-              <Table columnCount="3" rowCount="13">
-                <Column editable="false" title="Required Documentations" type="java.lang.String">
-                  <Data value="Contact Detail"/>
-                  <Data value="Identification"/>
-                  <Data value="Power of Attorney"/>
-                  <Data value="Valid Visa"/>
-                  <Data value="Business Registration"/>
-                  <Data value="Business License"/>
-                  <Data value="Foreign Investment"/>
-                  <Data value="Business Plan"/>
-                  <Data value="Proof of Funds"/>
-                  <Data value="Existing Lease"/>
-                  <Data value="Permit"/>
-                  <Data value="Environment Impact Assessment"/>
-                  <Data value="Terms and Conditions"/>
-                </Column>
-                <Column editable="false" title="Description" type="java.lang.String">
-                  <Data value="Telephone; Mobile; Residential Address; Mailing Address; Email;"/>
-                  <Data value="National Identification Card; Passport; Driving License"/>
-                  <Data value="If person other than the landowner"/>
-                  <Data value="Resident; Work; Business;"/>
-                  <Data value="Registered Business Name"/>
-                  <Data value="null"/>
-                  <Data value="null"/>
-                  <Data value="null"/>
-                  <Data value=""/>
-                  <Data value="null"/>
-                  <Data value="Permit to Hold, Reside or Occupy land"/>
-                  <Data value=""/>
-                  <Data value="Terms and Conditions of Lease or Supplementary agreements (if any)"/>
-                </Column>
-                <Column editable="true" title="Submitted" type="java.lang.Boolean"/>
-              </Table>
-            </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
               <TableColumnModel selectionModel="0">
-                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                  <Title/>
-                  <Editor/>
-                  <Renderer/>
-                </Column>
                 <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                   <Title/>
                   <Editor/>
@@ -145,6 +109,17 @@
               <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
             </Property>
           </Properties>
+          <BindingProperties>
+            <BindingProperty name="elements" source="checklistItemListBean1" sourcePath="${checklistItemList}" target="checklistTable" targetPath="elements" updateStrategy="0" immediately="true">
+              <Property name="name" type="java.lang.String" value="a"/>
+              <Subbinding sourcePath="${translatedDisplayValue}">
+                <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="String.class"/>
+              </Subbinding>
+              <Subbinding sourcePath="${translatedDescription}">
+                <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="String.class"/>
+              </Subbinding>
+            </BindingProperty>
+          </BindingProperties>
         </Component>
       </SubComponents>
     </Container>

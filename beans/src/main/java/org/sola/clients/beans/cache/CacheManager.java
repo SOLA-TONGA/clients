@@ -192,6 +192,12 @@ public final class CacheManager {
      */
     public static final String LEASE_CONDITION_CODES_KEY = LeaseConditionBean.class.getName() + LIST_POSTFIX;
     
+    public static final String CHECKLIST_GROUP_CODES_KEY = ChecklistGroupBean.class.getName() + LIST_POSTFIX;
+    public static final String CHECKLIST_ITEM_CODES_KEY = ChecklistItemBean.class.getName() + LIST_POSTFIX;
+    
+    public static final String GET_CHECKLIST_GROUP = "getChecklistGroup";
+    public static final String GET_CHECKLIST_ITEM = "getChecklistItem";
+    
     private static final String GET_APPLICATION_STATUS_TYPES = "getApplicationStatusTypes";
     private static final String GET_SOURCE_TYPES = "getSourceTypes";
     private static final String GET_COMMUNICATION_TYPES = "getCommunicationTypes";
@@ -221,6 +227,17 @@ public final class CacheManager {
     private static final String GET_BA_UNIT_REL_TYPES = "getBaUnitRelTypes";
     private static final String GET_LAND_USE_TYPES = "getLandUseTypes";
     private static final String GET_LEASE_CONDITIONS = "getLeaseConditions";
+    
+    public static List<ChecklistGroupBean> getChecklistGroup() {
+        return getCachedBeanList(ChecklistGroupBean.class,
+                WSManager.getInstance().getReferenceDataService(),
+                GET_CHECKLIST_GROUP, CHECKLIST_GROUP_CODES_KEY);
+    }
+    public static List<ChecklistItemBean> getChecklistItem() {
+        return getCachedBeanList(ChecklistItemBean.class,
+                WSManager.getInstance().getReferenceDataService(),
+                GET_CHECKLIST_ITEM, CHECKLIST_ITEM_CODES_KEY);
+    }
             
     public static List<BrValidationTargetTypeBean> getBrValidationTargetTypes() {
         return getCachedBeanList(BrValidationTargetTypeBean.class,

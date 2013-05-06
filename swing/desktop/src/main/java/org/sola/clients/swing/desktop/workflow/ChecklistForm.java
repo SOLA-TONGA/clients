@@ -63,6 +63,8 @@ public class ChecklistForm extends ContentPanel {
         bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
         landUseTypeListBean1 = new org.sola.clients.beans.referencedata.LandUseTypeListBean();
+        checklistGroupListBean1 = new org.sola.clients.beans.referencedata.ChecklistGroupListBean();
+        checklistItemListBean1 = new org.sola.clients.beans.referencedata.ChecklistItemListBean();
         headerPanel = new org.sola.clients.swing.ui.HeaderPanel();
         leaseHoldLabel = new javax.swing.JLabel();
         cbxChecklistGroup = new javax.swing.JComboBox();
@@ -77,48 +79,24 @@ public class ChecklistForm extends ContentPanel {
 
         leaseHoldLabel.setText("Land Leasehold:");
 
-        org.jdesktop.beansbinding.ELProperty eLProperty = org.jdesktop.beansbinding.ELProperty.create("${landUseTypeList}");
-        org.jdesktop.swingbinding.JComboBoxBinding jComboBoxBinding = org.jdesktop.swingbinding.SwingBindings.createJComboBoxBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, landUseTypeListBean1, eLProperty, cbxChecklistGroup, "");
+        org.jdesktop.beansbinding.ELProperty eLProperty = org.jdesktop.beansbinding.ELProperty.create("${checklistGroupList}");
+        org.jdesktop.swingbinding.JComboBoxBinding jComboBoxBinding = org.jdesktop.swingbinding.SwingBindings.createJComboBoxBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, checklistGroupListBean1, eLProperty, cbxChecklistGroup, "");
         bindingGroup.addBinding(jComboBoxBinding);
         org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, this, org.jdesktop.beansbinding.ELProperty.create("${property.landUseType}"), cbxChecklistGroup, org.jdesktop.beansbinding.BeanProperty.create("selectedItem"));
         bindingGroup.addBinding(binding);
 
-        checklistTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {"Contact Detail", "Telephone; Mobile; Residential Address; Mailing Address; Email;", null},
-                {"Identification", "National Identification Card; Passport; Driving License", null},
-                {"Power of Attorney", "If person other than the landowner", null},
-                {"Valid Visa", "Resident; Work; Business;", null},
-                {"Business Registration", "Registered Business Name", null},
-                {"Business License", null, null},
-                {"Foreign Investment", null, null},
-                {"Business Plan", null, null},
-                {"Proof of Funds", "", null},
-                {"Existing Lease", null, null},
-                {"Permit", "Permit to Hold, Reside or Occupy land", null},
-                {"Environment Impact Assessment", "", null},
-                {"Terms and Conditions", "Terms and Conditions of Lease or Supplementary agreements (if any)", null}
-            },
-            new String [] {
-                "Required Documentations", "Description", "Submitted"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.Boolean.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, true
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
         checklistTable.setRowHeight(20);
+
+        eLProperty = org.jdesktop.beansbinding.ELProperty.create("${checklistItemList}");
+        org.jdesktop.swingbinding.JTableBinding jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, checklistItemListBean1, eLProperty, checklistTable, "a");
+        org.jdesktop.swingbinding.JTableBinding.ColumnBinding columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${translatedDisplayValue}"));
+        columnBinding.setColumnName("Translated Display Value");
+        columnBinding.setColumnClass(String.class);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${translatedDescription}"));
+        columnBinding.setColumnName("Translated Description");
+        columnBinding.setColumnClass(String.class);
+        bindingGroup.addBinding(jTableBinding);
+        jTableBinding.bind();
         checklistPanel.setViewportView(checklistTable);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -154,6 +132,8 @@ public class ChecklistForm extends ContentPanel {
     }// </editor-fold>//GEN-END:initComponents
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox cbxChecklistGroup;
+    private org.sola.clients.beans.referencedata.ChecklistGroupListBean checklistGroupListBean1;
+    private org.sola.clients.beans.referencedata.ChecklistItemListBean checklistItemListBean1;
     private javax.swing.JScrollPane checklistPanel;
     private org.sola.clients.swing.common.controls.JTableWithDefaultStyles checklistTable;
     private org.sola.clients.swing.ui.HeaderPanel headerPanel;
