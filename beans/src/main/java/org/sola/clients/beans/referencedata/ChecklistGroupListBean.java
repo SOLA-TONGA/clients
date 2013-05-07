@@ -16,7 +16,7 @@
 package org.sola.clients.beans.referencedata;
 
 import org.jdesktop.observablecollections.ObservableList;
-import org.sola.clients.beans.AbstractBindingBean;
+import org.sola.clients.beans.AbstractBindingListBean;
 import org.sola.clients.beans.cache.CacheManager;
 import org.sola.clients.beans.controls.SolaCodeList;
 
@@ -24,16 +24,12 @@ import org.sola.clients.beans.controls.SolaCodeList;
  *
  * @author Admin
  */
-public class ChecklistGroupListBean extends AbstractBindingBean{
+public class ChecklistGroupListBean extends AbstractBindingListBean{
 
-public static final String SELECTED_CHECKLIST_GROUP = "selectedChecklistGroup";
+    public static final String SELECTED_CHECKLIST_GROUP = "selectedChecklistGroup";
     private SolaCodeList<ChecklistGroupBean> checklistGroupList;
     private ChecklistGroupBean selectedChecklistGroup;
 
-    /**
-     * Initializes object's instance and populates {@link ObservableList}&lt;
-     * {@link LandUseTypeBean} &gt; with values from the cache.
-     */
     public ChecklistGroupListBean() {
         // Load from cache by default
         checklistGroupList = new SolaCodeList<ChecklistGroupBean>(CacheManager.GET_CHECKLIST_GROUP);
@@ -51,5 +47,10 @@ public static final String SELECTED_CHECKLIST_GROUP = "selectedChecklistGroup";
         this.selectedChecklistGroup = selectedChecklistGroup;
         propertySupport.firePropertyChange(SELECTED_CHECKLIST_GROUP,
                 null, selectedChecklistGroup);
+    }
+    
+    public final void loadList(boolean createDummy) {
+        loadCodeList(ChecklistGroupBean.class, checklistGroupList, 
+                CacheManager.getChecklistGroup(), createDummy);
     }
 }
