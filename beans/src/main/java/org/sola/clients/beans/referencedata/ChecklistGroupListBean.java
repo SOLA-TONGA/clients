@@ -45,6 +45,7 @@ public class ChecklistGroupListBean extends AbstractBindingListBean{
     public ChecklistGroupListBean() {
         // Load from cache by default
         checklistGroupList = new SolaCodeList<ChecklistGroupBean>(CacheManager.GET_CHECKLIST_GROUP);
+        loadList(true);
     }
 
     public ObservableList<ChecklistGroupBean> getChecklistGroupList() {
@@ -63,6 +64,6 @@ public class ChecklistGroupListBean extends AbstractBindingListBean{
     
     public final void loadList(boolean createDummy) {
         loadCodeList(ChecklistGroupBean.class, checklistGroupList, 
-                CacheManager.getChecklistGroup(), createDummy);
+                CacheManager.getChecklistGroups(), createDummy);
     }
 }

@@ -40,6 +40,7 @@ import org.sola.clients.beans.converters.TypeConverters;
 import org.sola.clients.beans.referencedata.*;
 import org.sola.clients.beans.security.RoleBean;
 import org.sola.clients.beans.system.LanguageBean;
+import org.sola.common.logging.LogUtility;
 import org.sola.common.messaging.ClientMessage;
 import org.sola.common.messaging.MessageUtility;
 import org.sola.services.boundary.wsclients.AbstractWSClient;
@@ -195,7 +196,7 @@ public final class CacheManager {
     public static final String CHECKLIST_GROUP_CODES_KEY = ChecklistGroupBean.class.getName() + LIST_POSTFIX;
     public static final String CHECKLIST_ITEM_CODES_KEY = ChecklistItemBean.class.getName() + LIST_POSTFIX;
     
-    public static final String GET_CHECKLIST_GROUP = "getChecklistGroup";
+    public static final String GET_CHECKLIST_GROUP = "getChecklistGroups";
     public static final String GET_CHECKLIST_ITEM = "getChecklistItem";
     
     private static final String GET_APPLICATION_STATUS_TYPES = "getApplicationStatusTypes";
@@ -228,15 +229,10 @@ public final class CacheManager {
     private static final String GET_LAND_USE_TYPES = "getLandUseTypes";
     private static final String GET_LEASE_CONDITIONS = "getLeaseConditions";
     
-    public static List<ChecklistGroupBean> getChecklistGroup() {
+    public static List<ChecklistGroupBean> getChecklistGroups() {
         return getCachedBeanList(ChecklistGroupBean.class,
                 WSManager.getInstance().getReferenceDataService(),
                 GET_CHECKLIST_GROUP, CHECKLIST_GROUP_CODES_KEY);
-    }
-    public static List<ChecklistItemBean> getChecklistItem() {
-        return getCachedBeanList(ChecklistItemBean.class,
-                WSManager.getInstance().getReferenceDataService(),
-                GET_CHECKLIST_ITEM, CHECKLIST_ITEM_CODES_KEY);
     }
             
     public static List<BrValidationTargetTypeBean> getBrValidationTargetTypes() {
@@ -479,17 +475,22 @@ public final class CacheManager {
                     TypeConverters.TransferObjectListToBeanList(toList, beanClass, (List) result);
                     cache.put(key, result);
                 } catch (IllegalAccessException ex) {
+                    LogUtility.log("IllegalAccessException: ", ex);
                     MessageUtility.displayMessage(ClientMessage.GENERAL_UNEXPECTED,
                             new Object[]{ex.getLocalizedMessage()});
                 } catch (IllegalArgumentException ex) {
+                    LogUtility.log("IllegalArgumentException: ", ex);
                     Logger.getLogger(CacheManager.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (InvocationTargetException ex) {
+                    LogUtility.log("InvocationTargetException: ",ex);
                     MessageUtility.displayMessage(ClientMessage.GENERAL_UNEXPECTED,
                             new Object[]{ex.getLocalizedMessage()});
                 } catch (NoSuchMethodException ex) {
+                    LogUtility.log("NoSuchMethodException: ", ex);
                     MessageUtility.displayMessage(ClientMessage.ERR_NO_SUCH_METHOD,
                             new Object[]{methodName, ex.getLocalizedMessage()});
                 } catch (SecurityException ex) {
+                    LogUtility.log("SecurityException: ", ex);
                     MessageUtility.displayMessage(ClientMessage.GENERAL_UNEXPECTED,
                             new Object[]{ex.getLocalizedMessage()});
                 }

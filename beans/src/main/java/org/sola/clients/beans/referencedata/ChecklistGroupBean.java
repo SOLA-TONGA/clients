@@ -27,6 +27,7 @@
  */
 package org.sola.clients.beans.referencedata;
 
+import java.util.List;
 import org.sola.clients.beans.AbstractCodeBean;
 
 /**
@@ -39,8 +40,17 @@ public class ChecklistGroupBean extends AbstractCodeBean{
     public static final String CODE_COMMERCIAL = "commercial";
     public static final String CODE_AGRICULTURAL = "agricultural";
     public static final String CODE_GOVERNMENT = "government";
+    public List<ChecklistItemBean> checklistItemList;
     
     public ChecklistGroupBean(){
         super();
     }
+        
+    /*public List<ChecklistItemBean> getChecklistItemList() {
+        return checklistItemList;
+    }
+
+    public void setSourceList(List<ChecklistItemBean> checklistItemList) {
+        this.checklistItemList = checklistItemList;
+    }*/
 }

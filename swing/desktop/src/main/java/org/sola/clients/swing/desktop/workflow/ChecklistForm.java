@@ -60,9 +60,9 @@ public class ChecklistForm extends ContentPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
         checklistGroupListBean = new org.sola.clients.beans.referencedata.ChecklistGroupListBean();
-        checklistItemBean = new org.sola.clients.beans.referencedata.ChecklistItemBean();
         headerPanel = new org.sola.clients.swing.ui.HeaderPanel();
         leaseHoldLabel = new javax.swing.JLabel();
         cbxChecklistGroup = new javax.swing.JComboBox();
@@ -77,15 +77,16 @@ public class ChecklistForm extends ContentPanel {
 
         leaseHoldLabel.setText("Land Leasehold:");
 
-        checklistTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+        org.jdesktop.beansbinding.ELProperty eLProperty = org.jdesktop.beansbinding.ELProperty.create("${checklistGroupList}");
+        org.jdesktop.swingbinding.JComboBoxBinding jComboBoxBinding = org.jdesktop.swingbinding.SwingBindings.createJComboBoxBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, checklistGroupListBean, eLProperty, cbxChecklistGroup, "a");
+        bindingGroup.addBinding(jComboBoxBinding);
 
-            },
-            new String [] {
-
-            }
-        ));
         checklistTable.setRowHeight(20);
+
+        eLProperty = org.jdesktop.beansbinding.ELProperty.create("${displayValue}");
+        org.jdesktop.swingbinding.JTableBinding jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, new org.sola.clients.beans.referencedata.ChecklistItemBean(), eLProperty, checklistTable, "");
+        bindingGroup.addBinding(jTableBinding);
+        jTableBinding.bind();
         checklistPanel.setViewportView(checklistTable);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -116,14 +117,16 @@ public class ChecklistForm extends ContentPanel {
                 .addComponent(checklistPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 377, Short.MAX_VALUE)
                 .addContainerGap())
         );
+
+        bindingGroup.bind();
     }// </editor-fold>//GEN-END:initComponents
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox cbxChecklistGroup;
     private org.sola.clients.beans.referencedata.ChecklistGroupListBean checklistGroupListBean;
-    private org.sola.clients.beans.referencedata.ChecklistItemBean checklistItemBean;
     private javax.swing.JScrollPane checklistPanel;
     private org.sola.clients.swing.common.controls.JTableWithDefaultStyles checklistTable;
     private org.sola.clients.swing.ui.HeaderPanel headerPanel;
     private javax.swing.JLabel leaseHoldLabel;
+    private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 }
