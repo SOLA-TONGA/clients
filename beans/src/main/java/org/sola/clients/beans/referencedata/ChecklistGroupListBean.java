@@ -55,7 +55,7 @@ public class ChecklistGroupListBean extends AbstractBindingListBean{
     public ChecklistGroupBean getSelectedChecklistGroup() {
         return selectedChecklistGroup;
     }
-
+    
     public void setSelectedChecklistGroup(ChecklistGroupBean selectedChecklistGroup) {
         this.selectedChecklistGroup = selectedChecklistGroup;
         propertySupport.firePropertyChange(SELECTED_CHECKLIST_GROUP,

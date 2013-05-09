@@ -4,6 +4,8 @@
   <NonVisualComponents>
     <Component class="org.sola.clients.beans.referencedata.ChecklistGroupListBean" name="checklistGroupListBean">
     </Component>
+    <Component class="org.sola.clients.beans.referencedata.ServiceChecklistItemListBean" name="serviceChecklistItemListBean">
+    </Component>
   </NonVisualComponents>
   <Properties>
     <Property name="headerPanel" type="org.sola.clients.swing.ui.HeaderPanel" editor="org.netbeans.modules.form.ComponentChooserEditor">
@@ -77,7 +79,11 @@
         <BindingProperty name="elements" source="checklistGroupListBean" sourcePath="${checklistGroupList}" target="cbxChecklistGroup" targetPath="elements" updateStrategy="0" immediately="false">
           <Property name="name" type="java.lang.String" value="a"/>
         </BindingProperty>
+        <BindingProperty name="selectedItem" source="checklistGroupListBean" sourcePath="${selectedChecklistGroup}" target="cbxChecklistGroup" targetPath="selectedItem" updateStrategy="0" immediately="false"/>
       </BindingProperties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbxChecklistGroupActionPerformed"/>
+      </Events>
     </Component>
     <Container class="javax.swing.JScrollPane" name="checklistPanel">
 
@@ -86,7 +92,18 @@
         <Component class="org.sola.clients.swing.common.controls.JTableWithDefaultStyles" name="checklistTable">
           <Properties>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
-              <TableColumnModel selectionModel="0"/>
+              <TableColumnModel selectionModel="0">
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
+              </TableColumnModel>
             </Property>
             <Property name="rowHeight" type="int" value="20"/>
             <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
@@ -94,8 +111,16 @@
             </Property>
           </Properties>
           <BindingProperties>
-            <BindingProperty name="elements" source="checklistItemBean" sourcePath="${displayValue}" target="checklistTable" targetPath="elements" updateStrategy="0" immediately="true">
+            <BindingProperty name="elements" source="serviceChecklistItemListBean" sourcePath="${serviceChecklistItemList}" target="checklistTable" targetPath="elements" updateStrategy="0" immediately="true">
               <Property name="name" type="java.lang.String" value=""/>
+              <Subbinding sourcePath="${serviceChecklistCode}">
+                <BindingParameter name="NAME" value="Service Checklist Code"/>
+                <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="String.class"/>
+              </Subbinding>
+              <Subbinding sourcePath="${serviceChecklistItemId}">
+                <BindingParameter name="NAME" value="Service Checklist Item Id"/>
+                <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="String.class"/>
+              </Subbinding>
             </BindingProperty>
           </BindingProperties>
         </Component>

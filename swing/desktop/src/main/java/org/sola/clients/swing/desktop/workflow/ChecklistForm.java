@@ -63,6 +63,7 @@ public class ChecklistForm extends ContentPanel {
         bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
         checklistGroupListBean = new org.sola.clients.beans.referencedata.ChecklistGroupListBean();
+        serviceChecklistItemListBean = new org.sola.clients.beans.referencedata.ServiceChecklistItemListBean();
         headerPanel = new org.sola.clients.swing.ui.HeaderPanel();
         leaseHoldLabel = new javax.swing.JLabel();
         cbxChecklistGroup = new javax.swing.JComboBox();
@@ -80,11 +81,25 @@ public class ChecklistForm extends ContentPanel {
         org.jdesktop.beansbinding.ELProperty eLProperty = org.jdesktop.beansbinding.ELProperty.create("${checklistGroupList}");
         org.jdesktop.swingbinding.JComboBoxBinding jComboBoxBinding = org.jdesktop.swingbinding.SwingBindings.createJComboBoxBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, checklistGroupListBean, eLProperty, cbxChecklistGroup, "a");
         bindingGroup.addBinding(jComboBoxBinding);
+        org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, checklistGroupListBean, org.jdesktop.beansbinding.ELProperty.create("${selectedChecklistGroup}"), cbxChecklistGroup, org.jdesktop.beansbinding.BeanProperty.create("selectedItem"));
+        bindingGroup.addBinding(binding);
+
+        cbxChecklistGroup.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxChecklistGroupActionPerformed(evt);
+            }
+        });
 
         checklistTable.setRowHeight(20);
 
-        eLProperty = org.jdesktop.beansbinding.ELProperty.create("${displayValue}");
-        org.jdesktop.swingbinding.JTableBinding jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, new org.sola.clients.beans.referencedata.ChecklistItemBean(), eLProperty, checklistTable, "");
+        eLProperty = org.jdesktop.beansbinding.ELProperty.create("${serviceChecklistItemList}");
+        org.jdesktop.swingbinding.JTableBinding jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, serviceChecklistItemListBean, eLProperty, checklistTable, "");
+        org.jdesktop.swingbinding.JTableBinding.ColumnBinding columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${serviceChecklistCode}"));
+        columnBinding.setColumnName("Service Checklist Code");
+        columnBinding.setColumnClass(String.class);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${serviceChecklistItemId}"));
+        columnBinding.setColumnName("Service Checklist Item Id");
+        columnBinding.setColumnClass(String.class);
         bindingGroup.addBinding(jTableBinding);
         jTableBinding.bind();
         checklistPanel.setViewportView(checklistTable);
@@ -120,6 +135,11 @@ public class ChecklistForm extends ContentPanel {
 
         bindingGroup.bind();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void cbxChecklistGroupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxChecklistGroupActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbxChecklistGroupActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox cbxChecklistGroup;
     private org.sola.clients.beans.referencedata.ChecklistGroupListBean checklistGroupListBean;
@@ -127,6 +147,7 @@ public class ChecklistForm extends ContentPanel {
     private org.sola.clients.swing.common.controls.JTableWithDefaultStyles checklistTable;
     private org.sola.clients.swing.ui.HeaderPanel headerPanel;
     private javax.swing.JLabel leaseHoldLabel;
+    private org.sola.clients.beans.referencedata.ServiceChecklistItemListBean serviceChecklistItemListBean;
     private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 }

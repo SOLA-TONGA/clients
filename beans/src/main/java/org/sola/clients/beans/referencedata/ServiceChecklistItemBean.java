@@ -27,28 +27,34 @@
  */
 package org.sola.clients.beans.referencedata;
 
-import org.jdesktop.observablecollections.ObservableList;
-import org.sola.clients.beans.AbstractCodeBean;
-import org.sola.clients.beans.controls.SolaCodeList;
+import org.sola.clients.beans.AbstractVersionedBean;
 
 /**
  *
  * @author Admin
  */
-public class ChecklistGroupBean extends AbstractCodeBean{
+public class ServiceChecklistItemBean extends AbstractVersionedBean{
     
-    public static final String CODE_RESIDENTIAL = "residential";
-    public static final String CODE_COMMERCIAL = "commercial";
-    public static final String CODE_AGRICULTURAL = "agricultural";
-    public static final String CODE_GOVERNMENT = "government";
-    public SolaCodeList<ChecklistItemBean> checklistItemList;
+    private String id;
+    private String code;
     
-    public ChecklistGroupBean(){
+    public ServiceChecklistItemBean(){
         super();
     }
     
-    public ObservableList<ChecklistItemBean> getChecklistItemList() {
-        return checklistItemList.getFilteredList();
-    }   
-        
+    public String getServiceChecklistItemId(){
+        return id;
+    }
+    
+    public void setServiceChecklistItemId(String id){
+        this.id = id;
+    }
+    
+    public String getServiceChecklistCode(){
+        return code;
+    }
+    
+    public void setServiceChecklistCode(String code){
+        this.code = code;
+    }
 }

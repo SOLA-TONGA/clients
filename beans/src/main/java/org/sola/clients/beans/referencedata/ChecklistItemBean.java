@@ -22,8 +22,8 @@ import org.sola.clients.beans.AbstractCodeBean;
  * @author Admin
  */
 public class ChecklistItemBean extends AbstractCodeBean{
-   
     public ChecklistItemBean(){
         super();
     }  
+
 }
