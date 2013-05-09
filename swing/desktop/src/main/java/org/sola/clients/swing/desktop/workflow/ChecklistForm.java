@@ -76,7 +76,6 @@ public class ChecklistForm extends ContentPanel {
         });
 
     }
-    private org.sola.clients.beans.referencedata.LandUseTypeListBean landUseTypeListBean;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -127,6 +126,9 @@ public class ChecklistForm extends ContentPanel {
         columnBinding.setColumnName("Checklist Item Display Value");
         columnBinding.setColumnClass(String.class);
         columnBinding.setEditable(false);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${checklistItemDescription}"));
+        columnBinding.setColumnName("Checklist Item Description");
+        columnBinding.setEditable(false);
         columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${result}"));
         columnBinding.setColumnName("Result");
         columnBinding.setColumnClass(Boolean.class);
@@ -138,11 +140,12 @@ public class ChecklistForm extends ContentPanel {
         checklistPanel.setViewportView(checklistTable);
         checklistTable.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         checklistTable.getColumnModel().getColumn(0).setHeaderValue(bundle.getString("ChecklistForm.checklistTable.columnModel.title0")); // NOI18N
-        checklistTable.getColumnModel().getColumn(1).setMinWidth(40);
-        checklistTable.getColumnModel().getColumn(1).setPreferredWidth(75);
-        checklistTable.getColumnModel().getColumn(1).setMaxWidth(100);
-        checklistTable.getColumnModel().getColumn(1).setHeaderValue(bundle.getString("ChecklistForm.checklistTable.columnModel.title1")); // NOI18N
-        checklistTable.getColumnModel().getColumn(2).setHeaderValue(bundle.getString("ChecklistForm.checklistTable.columnModel.title2")); // NOI18N
+        checklistTable.getColumnModel().getColumn(1).setHeaderValue(bundle.getString("ChecklistForm.checklistTable.columnModel.title3")); // NOI18N
+        checklistTable.getColumnModel().getColumn(2).setMinWidth(40);
+        checklistTable.getColumnModel().getColumn(2).setPreferredWidth(75);
+        checklistTable.getColumnModel().getColumn(2).setMaxWidth(100);
+        checklistTable.getColumnModel().getColumn(2).setHeaderValue(bundle.getString("ChecklistForm.checklistTable.columnModel.title1")); // NOI18N
+        checklistTable.getColumnModel().getColumn(3).setHeaderValue(bundle.getString("ChecklistForm.checklistTable.columnModel.title2")); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);

@@ -87,6 +87,7 @@ public class ServiceChecklistItemListBean extends AbstractBindingListBean{
                 bean.setChecklistItemCode(item.getCode()); 
                 bean.setServiceId(serviceId);
                 bean.setChecklistItemDisplayValue(item.getDisplayValue());
+                bean.setChecklistItemDescription(item.getDescription());
                 bean.setResult(false);
                 serviceChecklistItemList.add(bean);
             }

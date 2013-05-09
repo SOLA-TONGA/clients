@@ -38,6 +38,7 @@ public class ServiceChecklistItemBean extends AbstractVersionedBean{
     private String serviceId;
     private String checklistItemCode;
     private String checklistItemDisplayValue; 
+    private String checklistItemDescription;
     private String comment;
     private Boolean result; 
     
@@ -67,6 +68,14 @@ public class ServiceChecklistItemBean extends AbstractVersionedBean{
 
     public void setChecklistItemDisplayValue(String checklistItemDisplayValue) {
         this.checklistItemDisplayValue = checklistItemDisplayValue;
+    }
+    
+    public String getChecklistItemDescription(){
+        return checklistItemDescription;
+    }
+    
+    public void setChecklistItemDescription(String checklistItemDescription){
+        this.checklistItemDescription = checklistItemDescription;
     }
  
     public String getComment() {
