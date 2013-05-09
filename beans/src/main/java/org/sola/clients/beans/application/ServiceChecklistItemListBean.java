@@ -25,11 +25,13 @@
  * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  * *********************************************************************************************
  */
-package org.sola.clients.beans.referencedata;
+package org.sola.clients.beans.application;
 
 import org.jdesktop.observablecollections.ObservableList;
 import org.sola.clients.beans.AbstractBindingListBean;
 import org.sola.clients.beans.controls.SolaObservableList;
+import org.sola.clients.beans.referencedata.ChecklistGroupBean;
+import org.sola.clients.beans.referencedata.ChecklistItemBean;
 
 /**
  *
@@ -82,8 +84,10 @@ public class ServiceChecklistItemListBean extends AbstractBindingListBean{
             // to a ServiceChecklistItemBean, then add the bean to the list. e.g. 
             for (ChecklistItemBean item : checklistGroupBean.getChecklistItemList()){
                 ServiceChecklistItemBean bean = new ServiceChecklistItemBean();
-                bean.setServiceChecklistCode(item.getCode()); 
-                bean.setServiceChecklistItemId(serviceId);
+                bean.setChecklistItemCode(item.getCode()); 
+                bean.setServiceId(serviceId);
+                bean.setChecklistItemDisplayValue(item.getDisplayValue());
+                bean.setResult(false);
                 serviceChecklistItemList.add(bean);
             }
             

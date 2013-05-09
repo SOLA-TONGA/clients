@@ -25,7 +25,7 @@
  * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  * *********************************************************************************************
  */
-package org.sola.clients.beans.referencedata;
+package org.sola.clients.beans.application;
 
 import org.sola.clients.beans.AbstractVersionedBean;
 
@@ -35,26 +35,53 @@ import org.sola.clients.beans.AbstractVersionedBean;
  */
 public class ServiceChecklistItemBean extends AbstractVersionedBean{
     
-    private String id;
-    private String code;
+    private String serviceId;
+    private String checklistItemCode;
+    private String checklistItemDisplayValue; 
+    private String comment;
+    private Boolean result; 
     
     public ServiceChecklistItemBean(){
         super();
     }
-    
-    public String getServiceChecklistItemId(){
-        return id;
+
+    public String getServiceId() {
+        return serviceId;
     }
-    
-    public void setServiceChecklistItemId(String id){
-        this.id = id;
+
+    public void setServiceId(String serviceId) {
+        this.serviceId = serviceId;
     }
-    
-    public String getServiceChecklistCode(){
-        return code;
+
+    public String getChecklistItemCode() {
+        return checklistItemCode;
     }
-    
-    public void setServiceChecklistCode(String code){
-        this.code = code;
+
+    public void setChecklistItemCode(String checklistItemCode) {
+        this.checklistItemCode = checklistItemCode;
+    }
+
+    public String getChecklistItemDisplayValue() {
+        return checklistItemDisplayValue;
+    }
+
+    public void setChecklistItemDisplayValue(String checklistItemDisplayValue) {
+        this.checklistItemDisplayValue = checklistItemDisplayValue;
+    }
+ 
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
+
+    public Boolean getResult() {
+        return result;
+    }
+
+    public void setResult(Boolean result) {
+        this.result = result;
     }
 }

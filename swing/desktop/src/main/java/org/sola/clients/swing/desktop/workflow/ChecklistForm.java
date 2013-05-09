@@ -1,22 +1,39 @@
-/*
- * Copyright 2013 Food and Agriculture Organization of the United Nations (FAO).
+/**
+ * ******************************************************************************************
+ * Copyright (C) 2012 - Food and Agriculture Organization of the United Nations
+ * (FAO). All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ * 1. Redistributions of source code must retain the above copyright notice,this
+ * list of conditions and the following disclaimer. 2. Redistributions in binary
+ * form must reproduce the above copyright notice,this list of conditions and
+ * the following disclaimer in the documentation and/or other materials provided
+ * with the distribution. 3. Neither the name of FAO nor the names of its
+ * contributors may be used to endorse or promote products derived from this
+ * software without specific prior written permission.
  *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ * ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
+ * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,PROCUREMENT OF
+ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+ * CONTRACT,STRICT LIABILITY,OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING
+ * IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ * POSSIBILITY OF SUCH DAMAGE.
+ * *********************************************************************************************
  */
 package org.sola.clients.swing.desktop.workflow;
 
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import org.sola.clients.beans.application.ApplicationBean;
 import org.sola.clients.beans.application.ApplicationServiceBean;
+import org.sola.clients.beans.referencedata.ChecklistGroupListBean;
 import org.sola.clients.swing.ui.ContentPanel;
 
 /**
@@ -27,31 +44,40 @@ public class ChecklistForm extends ContentPanel {
 
     private ApplicationBean applicationBean;
     private ApplicationServiceBean applicationService;
-    
+
     /**
      * Creates new form ChecklistForm
      */
     public ChecklistForm() {
         initComponents();
     }
-    
-    public ChecklistForm(ApplicationBean applicationBean, ApplicationServiceBean applicationService){
+
+    public ChecklistForm(ApplicationBean applicationBean, ApplicationServiceBean applicationService) {
         this.applicationBean = applicationBean;
         this.applicationService = applicationService;
         initComponents();
         customizeForm();
     }
-    
+
     private void customizeForm() {
         if (applicationService != null && applicationBean != null) {
-             headerPanel.setTitleText(String.format("%s for Application: #%s",
-                    applicationService.getRequestType().getDisplayValue(), 
+            headerPanel.setTitleText(String.format("%s for Application: #%s",
+                    applicationService.getRequestType().getDisplayValue(),
                     applicationBean.getNr()));
         }
-    }    
-    
+
+        checklistGroupListBean.addPropertyChangeListener(new PropertyChangeListener() {
+            @Override
+            public void propertyChange(PropertyChangeEvent evt) {
+                if (evt.getPropertyName().equals(ChecklistGroupListBean.SELECTED_CHECKLIST_GROUP)) {
+                    serviceChecklistItemListBean.loadList(checklistGroupListBean.getSelectedChecklistGroup());
+                }
+            }
+        });
+
+    }
     private org.sola.clients.beans.referencedata.LandUseTypeListBean landUseTypeListBean;
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -63,7 +89,7 @@ public class ChecklistForm extends ContentPanel {
         bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
         checklistGroupListBean = new org.sola.clients.beans.referencedata.ChecklistGroupListBean();
-        serviceChecklistItemListBean = new org.sola.clients.beans.referencedata.ServiceChecklistItemListBean();
+        serviceChecklistItemListBean = new org.sola.clients.beans.application.ServiceChecklistItemListBean();
         headerPanel = new org.sola.clients.swing.ui.HeaderPanel();
         leaseHoldLabel = new javax.swing.JLabel();
         cbxChecklistGroup = new javax.swing.JComboBox();
@@ -74,9 +100,10 @@ public class ChecklistForm extends ContentPanel {
         setName("Form"); // NOI18N
         setPreferredSize(new java.awt.Dimension(683, 450));
 
-        headerPanel.setTitleText("Checklist");
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("org/sola/clients/swing/desktop/workflow/Bundle"); // NOI18N
+        headerPanel.setTitleText(bundle.getString("ChecklistForm.headerPanel.titleText")); // NOI18N
 
-        leaseHoldLabel.setText("Land Leasehold:");
+        leaseHoldLabel.setText(bundle.getString("ChecklistForm.leaseHoldLabel.text")); // NOI18N
 
         org.jdesktop.beansbinding.ELProperty eLProperty = org.jdesktop.beansbinding.ELProperty.create("${checklistGroupList}");
         org.jdesktop.swingbinding.JComboBoxBinding jComboBoxBinding = org.jdesktop.swingbinding.SwingBindings.createJComboBoxBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, checklistGroupListBean, eLProperty, cbxChecklistGroup, "a");
@@ -90,19 +117,32 @@ public class ChecklistForm extends ContentPanel {
             }
         });
 
+        checklistTable.setColumnSelectionAllowed(true);
         checklistTable.setRowHeight(20);
+        checklistTable.getTableHeader().setReorderingAllowed(false);
 
         eLProperty = org.jdesktop.beansbinding.ELProperty.create("${serviceChecklistItemList}");
-        org.jdesktop.swingbinding.JTableBinding jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, serviceChecklistItemListBean, eLProperty, checklistTable, "");
-        org.jdesktop.swingbinding.JTableBinding.ColumnBinding columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${serviceChecklistCode}"));
-        columnBinding.setColumnName("Service Checklist Code");
+        org.jdesktop.swingbinding.JTableBinding jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, serviceChecklistItemListBean, eLProperty, checklistTable);
+        org.jdesktop.swingbinding.JTableBinding.ColumnBinding columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${checklistItemDisplayValue}"));
+        columnBinding.setColumnName("Checklist Item Display Value");
         columnBinding.setColumnClass(String.class);
-        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${serviceChecklistItemId}"));
-        columnBinding.setColumnName("Service Checklist Item Id");
+        columnBinding.setEditable(false);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${result}"));
+        columnBinding.setColumnName("Result");
+        columnBinding.setColumnClass(Boolean.class);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${comment}"));
+        columnBinding.setColumnName("Comment");
         columnBinding.setColumnClass(String.class);
         bindingGroup.addBinding(jTableBinding);
         jTableBinding.bind();
         checklistPanel.setViewportView(checklistTable);
+        checklistTable.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        checklistTable.getColumnModel().getColumn(0).setHeaderValue(bundle.getString("ChecklistForm.checklistTable.columnModel.title0")); // NOI18N
+        checklistTable.getColumnModel().getColumn(1).setMinWidth(40);
+        checklistTable.getColumnModel().getColumn(1).setPreferredWidth(75);
+        checklistTable.getColumnModel().getColumn(1).setMaxWidth(100);
+        checklistTable.getColumnModel().getColumn(1).setHeaderValue(bundle.getString("ChecklistForm.checklistTable.columnModel.title1")); // NOI18N
+        checklistTable.getColumnModel().getColumn(2).setHeaderValue(bundle.getString("ChecklistForm.checklistTable.columnModel.title2")); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -139,7 +179,6 @@ public class ChecklistForm extends ContentPanel {
     private void cbxChecklistGroupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxChecklistGroupActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cbxChecklistGroupActionPerformed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox cbxChecklistGroup;
     private org.sola.clients.beans.referencedata.ChecklistGroupListBean checklistGroupListBean;
@@ -147,7 +186,7 @@ public class ChecklistForm extends ContentPanel {
     private org.sola.clients.swing.common.controls.JTableWithDefaultStyles checklistTable;
     private org.sola.clients.swing.ui.HeaderPanel headerPanel;
     private javax.swing.JLabel leaseHoldLabel;
-    private org.sola.clients.beans.referencedata.ServiceChecklistItemListBean serviceChecklistItemListBean;
+    private org.sola.clients.beans.application.ServiceChecklistItemListBean serviceChecklistItemListBean;
     private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 }

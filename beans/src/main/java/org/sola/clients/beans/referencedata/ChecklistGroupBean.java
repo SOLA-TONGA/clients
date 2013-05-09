@@ -45,10 +45,14 @@ public class ChecklistGroupBean extends AbstractCodeBean{
     
     public ChecklistGroupBean(){
         super();
+        checklistItemList = new SolaCodeList(); 
     }
     
     public ObservableList<ChecklistItemBean> getChecklistItemList() {
         return checklistItemList.getFilteredList();
-    }   
-        
+    }  
+
+    public void setChecklistItemList(SolaCodeList<ChecklistItemBean> checklistItemList) {
+        this.checklistItemList = checklistItemList;
+    }      
 }
