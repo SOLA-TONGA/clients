@@ -204,7 +204,7 @@ public class ChecklistForm extends ContentPanel {
     }//GEN-LAST:event_cbxChecklistGroupActionPerformed
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-        //saveChecklist(false);
+        serviceChecklistItemListBean.saveList();
     }//GEN-LAST:event_btnSaveActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
