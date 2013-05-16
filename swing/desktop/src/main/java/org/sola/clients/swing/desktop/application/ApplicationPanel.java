@@ -841,7 +841,7 @@ public class ApplicationPanel extends ContentPanel {
 
             @Override
             public void taskDone() {
-//                MessageUtility.displayMessage(ClientMessage.APPLICATION_SUCCESSFULLY_SAVED);
+                //MessageUtility.displayMessage(ClientMessage.APPLICATION_SUCCESSFULLY_SAVED);
                 customizeApplicationForm();
                 saveAppState();
 
@@ -921,6 +921,7 @@ public class ApplicationPanel extends ContentPanel {
         menuArchive = new javax.swing.JMenuItem();
         jFormattedTextField1 = new javax.swing.JFormattedTextField();
         landUseTypeListBean1 = new org.sola.clients.beans.referencedata.LandUseTypeListBean();
+        checklistGroupListBean1 = new org.sola.clients.beans.referencedata.ChecklistGroupListBean();
         pnlHeader = new org.sola.clients.swing.ui.HeaderPanel();
         jToolBar3 = new javax.swing.JToolBar();
         btnSave = new javax.swing.JButton();
@@ -3444,6 +3445,7 @@ public class ApplicationPanel extends ContentPanel {
     public javax.swing.JComboBox cbxCommunicationWay;
     private javax.swing.JComboBox cbxLandUse;
     private javax.swing.JCheckBox cbxPaid;
+    private org.sola.clients.beans.referencedata.ChecklistGroupListBean checklistGroupListBean1;
     private org.sola.clients.beans.referencedata.CommunicationTypeListBean communicationTypes;
     public javax.swing.JPanel contactPanel;
     public javax.swing.JPanel documentPanel;

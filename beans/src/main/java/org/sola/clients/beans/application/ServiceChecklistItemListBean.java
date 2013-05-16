@@ -27,11 +27,16 @@
  */
 package org.sola.clients.beans.application;
 
+import java.util.ArrayList;
+import java.util.List;
 import org.jdesktop.observablecollections.ObservableList;
 import org.sola.clients.beans.AbstractBindingListBean;
 import org.sola.clients.beans.controls.SolaObservableList;
+import org.sola.clients.beans.converters.TypeConverters;
 import org.sola.clients.beans.referencedata.ChecklistGroupBean;
 import org.sola.clients.beans.referencedata.ChecklistItemBean;
+import org.sola.services.boundary.wsclients.WSManager;
+import org.sola.webservices.transferobjects.casemanagement.ServiceChecklistItemTO;
 
 /**
  *
@@ -72,6 +77,17 @@ public class ServiceChecklistItemListBean extends AbstractBindingListBean{
         ServiceChecklistItemBean oldValue = this.selectedServiceChecklistItem; 
         this.selectedServiceChecklistItem = selectedItem;
         propertySupport.firePropertyChange(SELECTED_SERVICE_CHECKLIST_ITEM, oldValue, this.selectedServiceChecklistItem);
+    }
+    
+    public void saveList(){
+       List<ServiceChecklistItemTO> toList = new ArrayList<ServiceChecklistItemTO>();
+       // Translate list of beans to a list of TO's 
+       TypeConverters.BeanListToTransferObjectList(serviceChecklistItemList, toList, ServiceChecklistItemTO.class); 
+
+       // Translate the TO's with the saved data to Beans and replace the original bean list
+       TypeConverters.TransferObjectListToBeanList(
+              WSManager.getInstance().getCaseManagementService().saveServiceChecklistItem(toList),  
+              ServiceChecklistItemBean.class, serviceChecklistItemList);
     }
      
     public void loadList(ChecklistGroupBean checklistGroupBean){

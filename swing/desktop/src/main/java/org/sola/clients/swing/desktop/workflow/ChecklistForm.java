@@ -34,6 +34,8 @@ import java.beans.PropertyChangeListener;
 import org.sola.clients.beans.application.ApplicationBean;
 import org.sola.clients.beans.application.ApplicationServiceBean;
 import org.sola.clients.beans.referencedata.ChecklistGroupListBean;
+import org.sola.clients.swing.common.tasks.SolaTask;
+import org.sola.clients.swing.common.tasks.TaskManager;
 import org.sola.clients.swing.ui.ContentPanel;
 
 /**
@@ -44,6 +46,7 @@ public class ChecklistForm extends ContentPanel {
 
     private ApplicationBean applicationBean;
     private ApplicationServiceBean applicationService;
+    private String applicationId;
 
     /**
      * Creates new form ChecklistForm
@@ -76,7 +79,7 @@ public class ChecklistForm extends ContentPanel {
         });
 
     }
-
+  
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -94,6 +97,8 @@ public class ChecklistForm extends ContentPanel {
         cbxChecklistGroup = new javax.swing.JComboBox();
         checklistPanel = new javax.swing.JScrollPane();
         checklistTable = new org.sola.clients.swing.common.controls.JTableWithDefaultStyles();
+        checklistToolBar = new javax.swing.JToolBar();
+        btnSave = new org.sola.clients.swing.common.buttons.BtnSave();
 
         setHeaderPanel(headerPanel);
         setName("Form"); // NOI18N
@@ -147,33 +152,48 @@ public class ChecklistForm extends ContentPanel {
         checklistTable.getColumnModel().getColumn(2).setHeaderValue(bundle.getString("ChecklistForm.checklistTable.columnModel.title1")); // NOI18N
         checklistTable.getColumnModel().getColumn(3).setHeaderValue(bundle.getString("ChecklistForm.checklistTable.columnModel.title2")); // NOI18N
 
+        checklistToolBar.setFloatable(false);
+        checklistToolBar.setRollover(true);
+
+        btnSave.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        btnSave.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaveActionPerformed(evt);
+            }
+        });
+        checklistToolBar.add(btnSave);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(headerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 683, Short.MAX_VALUE)
+            .addComponent(headerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 434, Short.MAX_VALUE)
+                    .addComponent(checklistPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 678, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(leaseHoldLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cbxChecklistGroup, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(checklistPanel))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cbxChecklistGroup, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addComponent(checklistToolBar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(headerPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(leaseHoldLabel)
-                    .addComponent(cbxChecklistGroup, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(checklistToolBar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(checklistPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 377, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cbxChecklistGroup, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(leaseHoldLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(checklistPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 344, Short.MAX_VALUE)
+                .addGap(16, 16, 16))
         );
 
         bindingGroup.bind();
@@ -182,11 +202,18 @@ public class ChecklistForm extends ContentPanel {
     private void cbxChecklistGroupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxChecklistGroupActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cbxChecklistGroupActionPerformed
+
+    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
+        //saveChecklist(false);
+    }//GEN-LAST:event_btnSaveActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private org.sola.clients.swing.common.buttons.BtnSave btnSave;
     private javax.swing.JComboBox cbxChecklistGroup;
     private org.sola.clients.beans.referencedata.ChecklistGroupListBean checklistGroupListBean;
     private javax.swing.JScrollPane checklistPanel;
     private org.sola.clients.swing.common.controls.JTableWithDefaultStyles checklistTable;
+    private javax.swing.JToolBar checklistToolBar;
     private org.sola.clients.swing.ui.HeaderPanel headerPanel;
     private javax.swing.JLabel leaseHoldLabel;
     private org.sola.clients.beans.application.ServiceChecklistItemListBean serviceChecklistItemListBean;
