@@ -31,6 +31,7 @@ package org.sola.clients.beans.application;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ListIterator;
 import org.jdesktop.observablecollections.ObservableList;
 import org.sola.clients.beans.AbstractBindingListBean;
 import org.sola.clients.beans.controls.SolaList;
@@ -38,6 +39,7 @@ import org.sola.clients.beans.converters.TypeConverters;
 import org.sola.clients.beans.referencedata.ChecklistGroupBean;
 import org.sola.clients.beans.referencedata.ChecklistItemBean;
 import org.sola.services.boundary.wsclients.WSManager;
+import org.sola.webservices.transferobjects.EntityAction;
 import org.sola.webservices.transferobjects.casemanagement.ServiceChecklistItemTO;
 
 /**
@@ -51,7 +53,7 @@ public class ServiceChecklistItemListBean extends AbstractBindingListBean {
     private SolaList<ServiceChecklistItemBean> serviceChecklistItemList;
     private ServiceChecklistItemBean selectedServiceChecklistItem;
     private String serviceId;
-    
+
     public ServiceChecklistItemListBean() {
         super();
     }
@@ -85,31 +87,84 @@ public class ServiceChecklistItemListBean extends AbstractBindingListBean {
         List<ServiceChecklistItemTO> toList = new ArrayList<ServiceChecklistItemTO>();
         // Translate list of beans to a list of TO's 
         TypeConverters.BeanListToTransferObjectList((List) serviceChecklistItemList, toList, ServiceChecklistItemTO.class);
-
+        serviceChecklistItemList.clear();
         // Translate the TO's with the saved data to Beans and replace the original bean list
         TypeConverters.TransferObjectListToBeanList(
                 WSManager.getInstance().getCaseManagementService().saveServiceChecklistItem(toList),
                 ServiceChecklistItemBean.class, (List) serviceChecklistItemList);
     }
 
+    /**
+     * Adds any new checklist items from the selected Checklist Group to the
+     * list of service checklist items. Also removes any service checklist items
+     * that do not relate to an item in the selected Checklist Group. Items from
+     * the group that are already in the service checklist remain unchanged.
+     *
+     * @param checklistGroupBean The selected Checklist Group.
+     */
     public void loadList(ChecklistGroupBean checklistGroupBean) {
-        // Clear the contents of the service checklist List. Because serviceChecklistItemList 
-        // is an observable collection, it will fire a change event to inform the table control that
-        // the list contents have changed
-        serviceChecklistItemList.clear();
-        if (checklistGroupBean != null && checklistGroupBean.getChecklistItemList().size() > 0) {
-            // Loop through the list of ChecklistItemBeans on the GroupBean and copy the ChecklistItem data
-            // to a ServiceChecklistItemBean, then add the bean to the list. e.g. 
-            for (ChecklistItemBean item : checklistGroupBean.getChecklistItemList()) {
-                ServiceChecklistItemBean bean = new ServiceChecklistItemBean();
-                bean.setChecklistItemCode(item.getCode());
-                bean.setServiceId(serviceId);
-                bean.setChecklistItemDisplayValue(item.getDisplayValue());
-                bean.setChecklistItemDescription(item.getDescription());
-                bean.setResult(false);
-                serviceChecklistItemList.add(bean);
-            }
 
+        // Remove any service checklist items that are not in the selected Checklist Group. 
+        ListIterator<ServiceChecklistItemBean> it = serviceChecklistItemList.listIterator();
+        boolean found;
+        while (it.hasNext()) {
+            ServiceChecklistItemBean serviceItem = it.next();
+            found = false;
+            if (checklistGroupBean != null) {
+                for (ChecklistItemBean item : checklistGroupBean.getChecklistItemList()) {
+                    if (serviceItem.getChecklistItemCode().equalsIgnoreCase(item.getCode())) {
+                        // Service Checklist item is also an item in the Checklist Group. 
+                        // Do not delete this item from the list. 
+                        found = true;
+                        break;
+                    }
+                }
+            }
+            if (!found) {
+                // Use safeRemove to delete items from the list that have not yet
+                // been saved to the database. 
+                serviceChecklistItemList.safeRemove(serviceItem, EntityAction.DELETE);
+            }
         }
+
+        if (checklistGroupBean != null && checklistGroupBean.getChecklistItemList().size() > 0) {
+            // Add any checklist items in the Checklist Group that are not in the list 
+            // of Serivce Checklist items. 
+            for (ChecklistItemBean item : checklistGroupBean.getChecklistItemList()) {
+                found = false;
+                for (ServiceChecklistItemBean serviceItem : serviceChecklistItemList) {
+                    if (serviceItem.getChecklistItemCode().equalsIgnoreCase(item.getCode())) {
+                        found = true;
+                        break;
+                    }
+                }
+
+                if (!found) {
+                    // Add the new ServiceChecklistItem. 
+                    ServiceChecklistItemBean bean = new ServiceChecklistItemBean();
+                    bean.setChecklistItemCode(item.getCode());
+                    bean.setServiceId(serviceId);
+                    bean.setChecklistItemDisplayValue(item.getDisplayValue());
+                    bean.setChecklistItemDescription(item.getDescription());
+                    bean.setComplies(false);
+                    serviceChecklistItemList.addAsNew(bean);
+                }
+            }
+        }
+    }
+
+    /**
+     * Retrieves the list of service checklist items from the database using the
+     * service id.
+     *
+     * @param serviceId
+     */
+    public void loadList(String serviceId) {
+        setServiceId(serviceId);
+        serviceChecklistItemList.clear();
+        // Translate the TO's with the saved data to Beans and replace the original bean list
+        TypeConverters.TransferObjectListToBeanList(
+                WSManager.getInstance().getCaseManagementService().getServiceChecklistItem(serviceId),
+                ServiceChecklistItemBean.class, (List) serviceChecklistItemList);
     }
 }
