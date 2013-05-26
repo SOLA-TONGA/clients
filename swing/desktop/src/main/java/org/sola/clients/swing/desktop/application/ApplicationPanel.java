@@ -74,6 +74,7 @@ import org.sola.clients.swing.desktop.source.DocumentSearchForm;
 import org.sola.clients.swing.desktop.source.DocumentsManagementExtPanel;
 import org.sola.clients.swing.desktop.source.TransactionedDocumentsPanel;
 import org.sola.clients.swing.desktop.workflow.ChecklistForm;
+import org.sola.clients.swing.desktop.workflow.SiteInspectionForm;
 import org.sola.clients.swing.gis.ui.controlsbundle.ControlsBundleForApplicationLocation;
 import org.sola.clients.swing.ui.ContentPanel;
 import org.sola.clients.swing.ui.HeaderPanel;
@@ -586,7 +587,7 @@ public class ApplicationPanel extends ContentPanel {
 
             // Determine what form to start for selected service
             
-            // Checklist
+            // Checklist Serivce Form
             if (requestType.equalsIgnoreCase(RequestTypeBean.CODE_CHECKLIST)) {
                 SolaTask t = new SolaTask<Void, Void>() {
                     @Override
@@ -598,7 +599,21 @@ public class ApplicationPanel extends ContentPanel {
                     }
                 };
                 TaskManager.getInstance().runTask(t);
-            } // Power of attorney or other type document registration
+            } 
+            // Site Inspection Service Form
+            else if (requestType.equalsIgnoreCase(RequestTypeBean.CODE_SITE_INSPECTION)) {
+                SolaTask t = new SolaTask<Void, Void>() {
+                    @Override
+                    public Void doTask() {
+                        //setMessage(MessageUtility.getLocalizedMessageText(ClientMessage.PROGRESS_MSG_OPEN_DOCREGISTRATION));
+                        SiteInspectionForm siteInspection = new SiteInspectionForm(appBean, service);
+                        getMainContentPanel().addPanel(siteInspection, MainContentPanel.CARD_SITE_INSPECTION, true);
+                        return null;
+                    }
+                };
+                TaskManager.getInstance().runTask(t);
+            } 
+            // Power of attorney or other type document registration
             else if (requestType.equalsIgnoreCase(RequestTypeBean.CODE_REG_POWER_OF_ATTORNEY)
                     || requestType.equalsIgnoreCase(RequestTypeBean.CODE_REG_STANDARD_DOCUMENT)
                     || requestType.equalsIgnoreCase(RequestTypeBean.CODE_CANCEL_POWER_OF_ATTORNEY)) {
@@ -921,7 +936,6 @@ public class ApplicationPanel extends ContentPanel {
         menuArchive = new javax.swing.JMenuItem();
         jFormattedTextField1 = new javax.swing.JFormattedTextField();
         landUseTypeListBean1 = new org.sola.clients.beans.referencedata.LandUseTypeListBean();
-        checklistGroupListBean1 = new org.sola.clients.beans.referencedata.ChecklistGroupListBean();
         pnlHeader = new org.sola.clients.swing.ui.HeaderPanel();
         jToolBar3 = new javax.swing.JToolBar();
         btnSave = new javax.swing.JButton();
@@ -3445,7 +3459,6 @@ public class ApplicationPanel extends ContentPanel {
     public javax.swing.JComboBox cbxCommunicationWay;
     private javax.swing.JComboBox cbxLandUse;
     private javax.swing.JCheckBox cbxPaid;
-    private org.sola.clients.beans.referencedata.ChecklistGroupListBean checklistGroupListBean1;
     private org.sola.clients.beans.referencedata.CommunicationTypeListBean communicationTypes;
     public javax.swing.JPanel contactPanel;
     public javax.swing.JPanel documentPanel;

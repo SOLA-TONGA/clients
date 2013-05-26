@@ -38,6 +38,7 @@ import org.sola.clients.beans.cache.CacheManager;
 import org.sola.clients.beans.controls.SolaList;
 import org.sola.clients.beans.controls.SolaObservableList;
 import org.sola.clients.beans.converters.TypeConverters;
+import org.sola.clients.beans.digitalarchive.DocumentBean;
 import org.sola.clients.beans.party.PartyBean;
 import org.sola.clients.beans.party.PartySummaryBean;
 import org.sola.clients.beans.referencedata.*;
@@ -95,6 +96,8 @@ public class ApplicationBean extends ApplicationSummaryBean {
     private PartySummaryBean agent;
     private String assigneeId;
     private ApplicationStatusTypeBean statusBean;
+    private DocumentBean archiveDocument;
+    public static final String ARCHIVE_DOCUMENT = "archiveDocument";
 
     /**
      * Default constructor to create application bean. Initializes the following list of beans which
@@ -900,5 +903,14 @@ public class ApplicationBean extends ApplicationSummaryBean {
         return TypeConverters.TransferObjectToBean(
                 WSManager.getInstance().getCaseManagementService().getApplicationByTransactionId(transactionId),
                 ApplicationBean.class, null);
+    }
+    
+    public DocumentBean getArchiveDocument() {
+        return archiveDocument;
+    }
+
+    public void setArchiveDocument(DocumentBean archiveDocument) {
+        this.archiveDocument = archiveDocument;
+        propertySupport.firePropertyChange(ARCHIVE_DOCUMENT, null, archiveDocument);
     }
 }

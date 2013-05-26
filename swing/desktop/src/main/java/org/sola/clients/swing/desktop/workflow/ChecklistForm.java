@@ -29,11 +29,8 @@
  */
 package org.sola.clients.swing.desktop.workflow;
 
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
 import org.sola.clients.beans.application.ApplicationBean;
 import org.sola.clients.beans.application.ApplicationServiceBean;
-import org.sola.clients.beans.referencedata.ChecklistGroupListBean;
 import org.sola.clients.swing.common.tasks.SolaTask;
 import org.sola.clients.swing.common.tasks.TaskManager;
 import org.sola.clients.swing.ui.ContentPanel;
@@ -48,7 +45,6 @@ public class ChecklistForm extends ContentPanel {
 
     private ApplicationBean applicationBean;
     private ApplicationServiceBean applicationService;
-    private String applicationId;
 
     /**
      * Creates new form ChecklistForm
@@ -88,7 +84,7 @@ public class ChecklistForm extends ContentPanel {
             }
             @Override
             public void taskDone() {
-                MessageUtility.displayMessage(ClientMessage.APPLICATION_SUCCESSFULLY_SAVED);
+                    MessageUtility.displayMessage(ClientMessage.APPLICATION_SUCCESSFULLY_SAVED);  
             }
         };
         TaskManager.getInstance().runTask(t);
@@ -232,6 +228,7 @@ public class ChecklistForm extends ContentPanel {
 
     private void btnSelectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelectActionPerformed
         serviceChecklistItemListBean.loadList(checklistGroupListBean.getSelectedChecklistGroup());
+        save();
     }//GEN-LAST:event_btnSelectActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private org.sola.clients.swing.common.buttons.BtnSave btnSave;

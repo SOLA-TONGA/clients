@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Site Inspection Form" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" resourceBundle="org.sola.clients.reports.locale.SiteInspection" uuid="e880b9f3-6305-4f1f-b0ec-df6f79d507c0">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="EXPECTED_INSPECTION_DATE" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="0" y="0" width="555" height="79" forecolor="#006666"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Ministry of Lands, Environment, Climate Change and Natural Resources
+Land Management Division
+Site Inspection]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="280" splitType="Stretch">
+			<textField>
+				<reportElement uuid="faeba29b-6652-44da-9175-62972b628306" x="0" y="0" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{village}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="c17996ca-5978-44b0-a71c-7fc8ea653e0b" x="0" y="32" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{applicant}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="da372ec3-d87c-4bc7-960f-0e442bf481c3" x="0" y="62" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{dateOfInspection}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="806bf572-b583-4cac-893e-dd3c9cc210ba" x="0" y="93" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{officer}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="806bf572-b583-4cac-893e-dd3c9cc210ba" x="0" y="124" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{occupants}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="806bf572-b583-4cac-893e-dd3c9cc210ba" x="0" y="186" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{comments}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="806bf572-b583-4cac-893e-dd3c9cc210ba" x="0" y="156" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{improvements}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="806bf572-b583-4cac-893e-dd3c9cc210ba" x="0" y="260" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{signature}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="806bf572-b583-4cac-893e-dd3c9cc210ba" x="285" y="260" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{checkedDate}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
