@@ -3,7 +3,21 @@
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
+	<subDataset name="SiteInspection" uuid="e51f337c-ee8f-4b57-a102-1a9cc18c7ee7">
+		<queryString>
+			<![CDATA[]]>
+		</queryString>
+		<field name="expectedCompletionDate" class="java.util.Date">
+			<fieldDescription><![CDATA[expectedCompletionDate]]></fieldDescription>
+		</field>
+	</subDataset>
 	<parameter name="EXPECTED_INSPECTION_DATE" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="expectedCompletionDate" class="java.util.Date">
+		<fieldDescription><![CDATA[expectedCompletionDate]]></fieldDescription>
+	</field>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
