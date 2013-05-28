@@ -11,7 +11,7 @@
 			<fieldDescription><![CDATA[expectedCompletionDate]]></fieldDescription>
 		</field>
 	</subDataset>
-	<parameter name="EXPECTED_INSPECTION_DATE" class="java.lang.String"/>
+	<parameter name="EXPECTED_INSPECTION_DATE" class="java.util.Date"/>
 	<queryString>
 		<![CDATA[]]>
 	</queryString>
@@ -24,9 +24,9 @@
 	<title>
 		<band height="79" splitType="Stretch">
 			<staticText>
-				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="0" y="0" width="555" height="79" forecolor="#006666"/>
+				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="0" y="0" width="555" height="79" forecolor="#006666" backcolor="#FFFFFF"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
-					<font size="16" isBold="true"/>
+					<font fontName="SansSerif" size="16" isBold="true" isUnderline="false"/>
 				</textElement>
 				<text><![CDATA[Ministry of Lands, Environment, Climate Change and Natural Resources
 Land Management Division
@@ -41,61 +41,80 @@ Site Inspection]]></text>
 		<band splitType="Stretch"/>
 	</columnHeader>
 	<detail>
-		<band height="280" splitType="Stretch">
+		<band height="230" splitType="Stretch">
 			<textField>
-				<reportElement uuid="faeba29b-6652-44da-9175-62972b628306" x="0" y="0" width="100" height="20"/>
-				<textElement/>
-				<textFieldExpression><![CDATA[$P{village}]]></textFieldExpression>
+				<reportElement uuid="faeba29b-6652-44da-9175-62972b628306" x="0" y="17" width="135" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$R{location}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="c17996ca-5978-44b0-a71c-7fc8ea653e0b" x="0" y="32" width="100" height="20"/>
-				<textElement/>
-				<textFieldExpression><![CDATA[$P{applicant}]]></textFieldExpression>
+				<reportElement uuid="c17996ca-5978-44b0-a71c-7fc8ea653e0b" x="0" y="49" width="135" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$R{applicant}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="da372ec3-d87c-4bc7-960f-0e442bf481c3" x="0" y="62" width="100" height="20"/>
-				<textElement/>
-				<textFieldExpression><![CDATA[$P{dateOfInspection}]]></textFieldExpression>
+				<reportElement uuid="da372ec3-d87c-4bc7-960f-0e442bf481c3" x="0" y="79" width="135" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$R{dateOfInspection}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="806bf572-b583-4cac-893e-dd3c9cc210ba" x="0" y="93" width="100" height="20"/>
-				<textElement/>
-				<textFieldExpression><![CDATA[$P{officer}]]></textFieldExpression>
+				<reportElement uuid="806bf572-b583-4cac-893e-dd3c9cc210ba" x="0" y="110" width="135" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$R{officer}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="806bf572-b583-4cac-893e-dd3c9cc210ba" x="0" y="124" width="100" height="20"/>
-				<textElement/>
-				<textFieldExpression><![CDATA[$P{occupants}]]></textFieldExpression>
+				<reportElement uuid="806bf572-b583-4cac-893e-dd3c9cc210ba" x="0" y="141" width="135" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$R{occupants}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="806bf572-b583-4cac-893e-dd3c9cc210ba" x="0" y="186" width="100" height="20"/>
-				<textElement/>
-				<textFieldExpression><![CDATA[$P{comments}]]></textFieldExpression>
+				<reportElement uuid="806bf572-b583-4cac-893e-dd3c9cc210ba" x="0" y="203" width="135" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$R{comments}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="806bf572-b583-4cac-893e-dd3c9cc210ba" x="0" y="156" width="100" height="20"/>
-				<textElement/>
-				<textFieldExpression><![CDATA[$P{improvements}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="806bf572-b583-4cac-893e-dd3c9cc210ba" x="0" y="260" width="100" height="20"/>
-				<textElement/>
-				<textFieldExpression><![CDATA[$P{signature}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="806bf572-b583-4cac-893e-dd3c9cc210ba" x="285" y="260" width="100" height="20"/>
-				<textElement/>
-				<textFieldExpression><![CDATA[$P{checkedDate}]]></textFieldExpression>
+				<reportElement uuid="806bf572-b583-4cac-893e-dd3c9cc210ba" x="0" y="173" width="135" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$R{improvements}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
 	<columnFooter>
-		<band height="45" splitType="Stretch"/>
+		<band splitType="Stretch"/>
 	</columnFooter>
 	<pageFooter>
-		<band height="54" splitType="Stretch"/>
+		<band height="23" splitType="Stretch">
+			<textField>
+				<reportElement uuid="806bf572-b583-4cac-893e-dd3c9cc210ba" x="0" y="0" width="286" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$R{signature}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="806bf572-b583-4cac-893e-dd3c9cc210ba" x="363" y="0" width="101" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$R{checkedDate}]]></textFieldExpression>
+			</textField>
+		</band>
 	</pageFooter>
 	<summary>
-		<band height="42" splitType="Stretch"/>
+		<band splitType="Stretch"/>
 	</summary>
 </jasperReport>

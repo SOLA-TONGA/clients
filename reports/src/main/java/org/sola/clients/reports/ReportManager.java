@@ -650,4 +650,21 @@ public class ReportManager {
         }
     }
     
+    public static JasperPrint getSiteInspectionReport(ApplicationBean appBean, Date expectedInspectionDate) {
+        HashMap inputParameters = new HashMap();
+        inputParameters.put("EXPECTED_INSPECTION_DATE", expectedInspectionDate);
+        ApplicationBean[] beans = new ApplicationBean[1];
+        beans[0] = appBean;
+        JRDataSource jds = new JRBeanArrayDataSource(beans);
+        try {
+            return JasperFillManager.fillReport(
+                    ReportManager.class.getResourceAsStream("/reports/SiteInspectionForm.jasper"),
+                    inputParameters, jds);
+        } catch (JRException ex) {
+            MessageUtility.displayMessage(ClientMessage.REPORT_GENERATION_FAILED,
+                    new Object[]{ex.getLocalizedMessage()});
+            return null;
+        }
+    }
+    
 }

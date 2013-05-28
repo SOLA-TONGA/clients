@@ -17,10 +17,22 @@ package org.sola.clients.swing.desktop.workflow;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import org.sola.clients.beans.application.ApplicationBean;
 import org.sola.clients.beans.application.ApplicationServiceBean;
 import org.sola.clients.beans.digitalarchive.DocumentBean;
 import org.sola.clients.beans.source.SourceBean;
+import org.sola.clients.reports.ReportManager;
+import org.sola.clients.swing.common.tasks.SolaTask;
+import org.sola.clients.swing.common.tasks.TaskManager;
+import org.sola.clients.swing.desktop.ReportViewerForm;
 import org.sola.clients.swing.ui.ContentPanel;
 import org.sola.clients.swing.ui.source.FileBrowserForm;
 
@@ -33,7 +45,7 @@ public class SiteInspectionForm extends ContentPanel {
     private ApplicationBean applicationBean;
     private ApplicationServiceBean applicationService;
     private SourceBean document;
-    
+        
     /**
      * Creates new form SiteInspectionForm
      */
@@ -56,7 +68,7 @@ public class SiteInspectionForm extends ContentPanel {
         }
     }
     
-    public void attachSiteInspection(){
+    public void addSiteInspection(){
         FileBrowserForm fileBrowser = new FileBrowserForm(null, true, FileBrowserForm.AttachAction.CLOSE_WINDOW);
         fileBrowser.setLocationRelativeTo(this);
         fileBrowser.addPropertyChangeListener(new PropertyChangeListener() {
@@ -86,6 +98,40 @@ public class SiteInspectionForm extends ContentPanel {
         }       
     }
    
+    private void showSiteInspectionForm(){
+        
+        //System.out.println(date);
+            String str = JOptionPane.showInputDialog(null, "Enter Date : ", "Expected Inspection Date", 1);
+            Date date = null;
+            try {
+                date = new SimpleDateFormat("dd/mm/yyyy").parse(str);
+            } catch (ParseException ex) {
+                Logger.getLogger(SiteInspectionForm.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            applicationBean.setExpectedCompletionDate(date);
+            //System.out.println(date); // Sat Jan 02 00:00:00 BOT 2010
+            if (str != null){
+                SolaTask t = new SolaTask<Void, Void>() {
+
+                    @Override
+                    protected Void doTask() {
+                            setMessage("Generating report");
+                            ApplicationBean appBean = new ApplicationBean();
+
+                            ReportViewerForm form = new ReportViewerForm(
+                                            ReportManager.getSiteInspectionReport(appBean, null));
+                            form.setVisible(true);
+                            return null;
+                    }
+                };
+                TaskManager.getInstance().runTask(t);
+            }
+    }
+    
+    public void showInputDialog(){
+        
+    }
+
      /** Adds new source into the list. 
     private void addDocument() {
         if (addDocumentForm != null) {
@@ -184,12 +230,14 @@ public class SiteInspectionForm extends ContentPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        applicationBean1 = new org.sola.clients.beans.application.ApplicationBean();
         headerPanel = new org.sola.clients.swing.ui.HeaderPanel();
         jToolBar = new javax.swing.JToolBar();
-        btnAdd1 = new org.sola.clients.swing.common.buttons.BtnAdd();
-        btnOpen1 = new org.sola.clients.swing.common.buttons.BtnOpen();
-        btnAttach1 = new org.sola.clients.swing.common.buttons.BtnAttach();
+        btnAdd = new org.sola.clients.swing.common.buttons.BtnAdd();
+        btnOpen = new org.sola.clients.swing.common.buttons.BtnOpen();
+        btnPrint = new org.sola.clients.swing.common.buttons.BtnPrint();
         jScrollPane1 = new javax.swing.JScrollPane();
+        jTableWithDefaultStyles = new org.sola.clients.swing.common.controls.JTableWithDefaultStyles();
 
         setName("Form"); // NOI18N
 
@@ -199,29 +247,40 @@ public class SiteInspectionForm extends ContentPanel {
         jToolBar.setFloatable(false);
         jToolBar.setRollover(true);
 
-        btnAdd1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnAdd1.addActionListener(new java.awt.event.ActionListener() {
+        btnAdd.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAdd1ActionPerformed(evt);
+                btnAddActionPerformed(evt);
             }
         });
-        jToolBar.add(btnAdd1);
+        jToolBar.add(btnAdd);
 
-        btnOpen1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnOpen1.addActionListener(new java.awt.event.ActionListener() {
+        btnOpen.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnOpen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnOpen1ActionPerformed(evt);
+                btnOpenActionPerformed(evt);
             }
         });
-        jToolBar.add(btnOpen1);
+        jToolBar.add(btnOpen);
 
-        btnAttach1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnAttach1.addActionListener(new java.awt.event.ActionListener() {
+        btnPrint.setText("Print New Form");
+        btnPrint.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnPrint.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAttach1ActionPerformed(evt);
+                btnPrintActionPerformed(evt);
             }
         });
-        jToolBar.add(btnAttach1);
+        jToolBar.add(btnPrint);
+
+        jTableWithDefaultStyles.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane1.setViewportView(jTableWithDefaultStyles);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -237,29 +296,31 @@ public class SiteInspectionForm extends ContentPanel {
                 .addComponent(headerPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(5, 5, 5)
                 .addComponent(jToolBar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 252, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnOpen1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOpen1ActionPerformed
+    private void btnOpenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOpenActionPerformed
         openSiteInspection();
-    }//GEN-LAST:event_btnOpen1ActionPerformed
+    }//GEN-LAST:event_btnOpenActionPerformed
 
-    private void btnAdd1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdd1ActionPerformed
-        
-    }//GEN-LAST:event_btnAdd1ActionPerformed
+    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
+        addSiteInspection();
+    }//GEN-LAST:event_btnAddActionPerformed
 
-    private void btnAttach1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAttach1ActionPerformed
-        attachSiteInspection();
-    }//GEN-LAST:event_btnAttach1ActionPerformed
+    private void btnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintActionPerformed
+        showSiteInspectionForm();
+    }//GEN-LAST:event_btnPrintActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private org.sola.clients.swing.common.buttons.BtnAdd btnAdd1;
-    private org.sola.clients.swing.common.buttons.BtnAttach btnAttach1;
-    private org.sola.clients.swing.common.buttons.BtnOpen btnOpen1;
+    private org.sola.clients.beans.application.ApplicationBean applicationBean1;
+    private org.sola.clients.swing.common.buttons.BtnAdd btnAdd;
+    private org.sola.clients.swing.common.buttons.BtnOpen btnOpen;
+    private org.sola.clients.swing.common.buttons.BtnPrint btnPrint;
     private org.sola.clients.swing.ui.HeaderPanel headerPanel;
     private javax.swing.JScrollPane jScrollPane1;
+    private org.sola.clients.swing.common.controls.JTableWithDefaultStyles jTableWithDefaultStyles;
     private javax.swing.JToolBar jToolBar;
     // End of variables declaration//GEN-END:variables
 }
