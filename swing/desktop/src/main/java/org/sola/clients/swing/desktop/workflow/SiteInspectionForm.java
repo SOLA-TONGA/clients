@@ -35,6 +35,7 @@ import org.sola.clients.swing.common.controls.CalendarForm;
 import org.sola.clients.swing.common.tasks.SolaTask;
 import org.sola.clients.swing.common.tasks.TaskManager;
 import org.sola.clients.swing.desktop.ReportViewerForm;
+import org.sola.clients.swing.desktop.source.DocumentsManagementExtPanel;
 import org.sola.clients.swing.ui.ContentPanel;
 import org.sola.clients.swing.ui.source.FileBrowserForm;
 
@@ -44,24 +45,23 @@ import org.sola.clients.swing.ui.source.FileBrowserForm;
  */
 public class SiteInspectionForm extends ContentPanel {
 
-    private ApplicationBean applicationBean;
     private ApplicationServiceBean applicationService;
     private SourceBean document;
-        
+
     /**
      * Creates new form SiteInspectionForm
      */
     public SiteInspectionForm() {
         initComponents();
     }
-    
-    public SiteInspectionForm(ApplicationBean applicationBean, ApplicationServiceBean applicationService){
+
+    public SiteInspectionForm(ApplicationBean applicationBean, ApplicationServiceBean applicationService) {
         this.applicationBean = applicationBean;
         this.applicationService = applicationService;
         initComponents();
         customizeForm();
     }
-    
+
     private void customizeForm() {
         if (applicationService != null && applicationBean != null) {
             headerPanel.setTitleText(String.format("%s for Application: #%s",
@@ -69,8 +69,27 @@ public class SiteInspectionForm extends ContentPanel {
                     applicationBean.getNr()));
         }
     }
-    
-    public void addSiteInspection(){
+
+    private DocumentsManagementExtPanel createDocumentsPanel() {
+        if (documentsPanel == null) {
+            if (applicationBean != null) {
+                documentsPanel = new DocumentsManagementExtPanel(
+                        applicationBean.getSourceList(), null, applicationBean.isEditingAllowed());
+            } else {
+                documentsPanel = new DocumentsManagementExtPanel();
+            }
+        }
+        return documentsPanel;
+    }
+
+    private ApplicationBean getApplicationBean() {
+        if (applicationBean == null) {
+            applicationBean = new ApplicationBean();
+        }
+        return applicationBean;
+    }
+
+    public void addSiteInspection() {
         FileBrowserForm fileBrowser = new FileBrowserForm(null, true, FileBrowserForm.AttachAction.CLOSE_WINDOW);
         fileBrowser.setLocationRelativeTo(this);
         fileBrowser.addPropertyChangeListener(new PropertyChangeListener() {
@@ -85,110 +104,43 @@ public class SiteInspectionForm extends ContentPanel {
         });
         fileBrowser.setVisible(true);
     }
-    
+
     public SourceBean getSiteInspectionDocument() {
         if (document == null) {
             document = new SourceBean();
         }
         return document;
     }
-    
-    public void openSiteInspection(){
-        if (document != null){ 
+
+    public void openSiteInspection() {
+        if (document != null) {
             DocumentBean.openDocument(getSiteInspectionDocument().getArchiveDocument().getId(),
-                        getSiteInspectionDocument().getArchiveDocument().getFileName());
-        }       
-    }
-   
-    private void showSiteInspectionForm(){
-        SolaTask t = new SolaTask<Void, Void>() {
-
-            @Override
-            protected Void doTask() {
-                setMessage("Generating report");
-                ApplicationBean appBean = new ApplicationBean();
-
-                ReportViewerForm form = new ReportViewerForm(
-                    ReportManager.getSiteInspectionReport(appBean, null));
-                form.setVisible(true);
-                return null;
-            }
-        };
-        TaskManager.getInstance().runTask(t);
-            
-    }
-    
-    private void showCalendar(JFormattedTextField dateField) {
-        CalendarForm calendar = new CalendarForm(null, true, dateField);
-        calendar.setVisible(true);
-    }
-
-     /** Adds new source into the list. 
-    private void addDocument() {
-        if (addDocumentForm != null) {
-            addDocumentForm.dispose();
-        }
-
-        PropertyChangeListener listener = new PropertyChangeListener() {
-
-            @Override
-            public void propertyChange(PropertyChangeEvent e) {
-                attachDocument(e);
-            }
-        };
-
-        addDocumentForm = new AddDocumentForm(applicationBean, null, true);
-        addDocumentForm.setLocationRelativeTo(this);
-        addDocumentForm.addPropertyChangeListener(SourceListBean.SELECTED_SOURCE_PROPERTY, listener);
-        addDocumentForm.allowAddingOfNewDocuments(allowAddingOfNewDocuments);
-        addDocumentForm.setVisible(true);
-        addDocumentForm.removePropertyChangeListener(SourceListBean.SELECTED_SOURCE_PROPERTY, listener);
-    }
-    
-    public boolean saveDocument() {
-        if (validateDocument(true)) {
-            
-           if (!(this.archiveDocument==null)){ 
-            if (!this.archiveDocument.getId().equals("")) {
-                getDocument().setArchiveDocument(this.archiveDocument);
-            }
-           } 
-            getDocument().save();
-            fireDocumentChangeEvent();
-            return true;
-        } else {
-            return false;
+                    getSiteInspectionDocument().getArchiveDocument().getFileName());
         }
     }
-    
-    private void viewDocument(){
-        firePropertyChange(VIEW_DOCUMENT, null, documentsPanel.getSourceListBean().getSelectedSource());
-    }
-    
-        ** Attach file to the selected source. 
-    private void attachDocument(PropertyChangeEvent e) {
-        SourceBean document = null;
-        if (e.getPropertyName().equals(AddDocumentForm.SELECTED_SOURCE)
-                && e.getNewValue() != null) {
-            document = (SourceBean) e.getNewValue();
-            documentsPanel.addDocument(document);
+
+    private void showSiteInspectionForm() {
+
+        //System.out.println(date);
+        String str = JOptionPane.showInputDialog(null, "Enter Date : ", "Expected Inspection Date", 1);
+        Date date = null;
+        try {
+            date = new SimpleDateFormat("dd/mm/yyyy").parse(str);
+        } catch (ParseException ex) {
+            Logger.getLogger(SiteInspectionForm.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
-    
-     /**
-     Opens attached digital copy of document in the document's list.
-     
-    public void viewAttachment() {
-        if (sourceListBean.getSelectedSource() != null
-                && sourceListBean.getSelectedSource().getArchiveDocument() != null) {
-            // Try to open attached file
+        applicationBean.setExpectedCompletionDate(date);
+        //System.out.println(date); // Sat Jan 02 00:00:00 BOT 2010
+        if (str != null) {
             SolaTask t = new SolaTask<Void, Void>() {
-
                 @Override
-                public Void doTask() {
-                    setMessage(MessageUtility.getLocalizedMessageText(ClientMessage.PROGRESS_MSG_DOCUMENT_OPENING));
-                    DocumentBean.openDocument(sourceListBean.getSelectedSource().getArchiveDocument().getId(),
-                            sourceListBean.getSelectedSource().getArchiveDocument().getFileName());
+                protected Void doTask() {
+                    setMessage("Generating report");
+                    ApplicationBean appBean = new ApplicationBean();
+
+                    ReportViewerForm form = new ReportViewerForm(
+                            ReportManager.getSiteInspectionReport(appBean, null));
+                    form.setVisible(true);
                     return null;
                 }
             };
@@ -196,22 +148,70 @@ public class SiteInspectionForm extends ContentPanel {
         }
     }
 
-    
-    Removes selected document.
-     
-    public void removeSelectedDocument() {
-        if (sourceListBean.getSelectedSource() != null) {
-            if (MessageUtility.displayMessage(ClientMessage.CONFIRM_REMOVE_RECORD)
-                    == MessageUtility.BUTTON_ONE) {
-                sourceListBean.safeRemoveSelectedSource();
-            }
-        }
+    public void showInputDialog() {
     }
 
-   
-    public void addDocument(SourceBean document) {
-        sourceListBean.getSourceBeanList().addAsNew(document);
-    }*/
+    /**
+     * Adds new source into the list. private void addDocument() { if
+     * (addDocumentForm != null) { addDocumentForm.dispose(); }
+     *
+     * PropertyChangeListener listener = new PropertyChangeListener() {
+     *
+     * @Override public void propertyChange(PropertyChangeEvent e) {
+     * attachDocument(e); } };
+     *
+     * addDocumentForm = new AddDocumentForm(applicationBean, null, true);
+     * addDocumentForm.setLocationRelativeTo(this);
+     * addDocumentForm.addPropertyChangeListener(SourceListBean.SELECTED_SOURCE_PROPERTY,
+     * listener);
+     * addDocumentForm.allowAddingOfNewDocuments(allowAddingOfNewDocuments);
+     * addDocumentForm.setVisible(true);
+     * addDocumentForm.removePropertyChangeListener(SourceListBean.SELECTED_SOURCE_PROPERTY,
+     * listener); }
+     *
+     * public boolean saveDocument() { if (validateDocument(true)) {
+     *
+     * if (!(this.archiveDocument==null)){ if
+     * (!this.archiveDocument.getId().equals("")) {
+     * getDocument().setArchiveDocument(this.archiveDocument); } }
+     * getDocument().save(); fireDocumentChangeEvent(); return true; } else {
+     * return false; } }
+     *
+     * private void viewDocument(){ firePropertyChange(VIEW_DOCUMENT, null,
+     * documentsPanel.getSourceListBean().getSelectedSource()); }
+     *
+     ** Attach file to the selected source. private void
+     * attachDocument(PropertyChangeEvent e) { SourceBean document = null; if
+     * (e.getPropertyName().equals(AddDocumentForm.SELECTED_SOURCE) &&
+     * e.getNewValue() != null) { document = (SourceBean) e.getNewValue();
+     * documentsPanel.addDocument(document); } }
+     *
+     * /**
+     * Opens attached digital copy of document in the document's list.
+     *
+     * public void viewAttachment() { if (sourceListBean.getSelectedSource() !=
+     * null && sourceListBean.getSelectedSource().getArchiveDocument() != null)
+     * { // Try to open attached file SolaTask t = new SolaTask<Void, Void>() {
+     *
+     * @Override public Void doTask() {
+     * setMessage(MessageUtility.getLocalizedMessageText(ClientMessage.PROGRESS_MSG_DOCUMENT_OPENING));
+     * DocumentBean.openDocument(sourceListBean.getSelectedSource().getArchiveDocument().getId(),
+     * sourceListBean.getSelectedSource().getArchiveDocument().getFileName());
+     * return null; } }; TaskManager.getInstance().runTask(t); } }
+     *
+     *
+     * Removes selected document.
+     *
+     * public void removeSelectedDocument() { if
+     * (sourceListBean.getSelectedSource() != null) { if
+     * (MessageUtility.displayMessage(ClientMessage.CONFIRM_REMOVE_RECORD) ==
+     * MessageUtility.BUTTON_ONE) { sourceListBean.safeRemoveSelectedSource(); }
+     * } }
+     *
+     *
+     * public void addDocument(SourceBean document) {
+     * sourceListBean.getSourceBeanList().addAsNew(document); }
+     */
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -221,12 +221,10 @@ public class SiteInspectionForm extends ContentPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        applicationBean1 = new org.sola.clients.beans.application.ApplicationBean();
-        btnShowCalendarFrom = new javax.swing.JButton();
+        applicationBean = getApplicationBean();
         headerPanel = new org.sola.clients.swing.ui.HeaderPanel();
         jToolBar = new javax.swing.JToolBar();
-        btnAdd = new org.sola.clients.swing.common.buttons.BtnAdd();
-        btnOpen = new org.sola.clients.swing.common.buttons.BtnOpen();
+        btnSave = new org.sola.clients.swing.common.buttons.BtnOpen();
         btnPrint = new org.sola.clients.swing.common.buttons.BtnPrint();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableWithDefaultStyles = new org.sola.clients.swing.common.controls.JTableWithDefaultStyles();
@@ -240,6 +238,7 @@ public class SiteInspectionForm extends ContentPanel {
         btnShowCalendarFrom.setText(bundle.getString("ApplicationSearchPanel.btnShowCalendarFrom.text")); // NOI18N
         btnShowCalendarFrom.setBorder(null);
 
+        setHeaderPanel(headerPanel);
         setName("Form"); // NOI18N
 
         headerPanel.setName(""); // NOI18N
@@ -248,21 +247,15 @@ public class SiteInspectionForm extends ContentPanel {
         jToolBar.setFloatable(false);
         jToolBar.setRollover(true);
 
-        btnAdd.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnAdd.addActionListener(new java.awt.event.ActionListener() {
+        btnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/save.png"))); // NOI18N
+        btnSave.setText("Save");
+        btnSave.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddActionPerformed(evt);
+                btnSaveActionPerformed(evt);
             }
         });
-        jToolBar.add(btnAdd);
-
-        btnOpen.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnOpen.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnOpenActionPerformed(evt);
-            }
-        });
-        jToolBar.add(btnOpen);
+        jToolBar.add(btnSave);
 
         btnPrint.setText("Print New Form");
         btnPrint.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -306,18 +299,12 @@ public class SiteInspectionForm extends ContentPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(headerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 604, Short.MAX_VALUE)
-            .addComponent(jToolBar, javax.swing.GroupLayout.DEFAULT_SIZE, 604, Short.MAX_VALUE)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+            .addComponent(headerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jToolBar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(inspectionFormattedTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnShowCalendarFrom1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(inspectionCheckBox))
+                .addComponent(documentsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -337,13 +324,9 @@ public class SiteInspectionForm extends ContentPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnOpenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOpenActionPerformed
-        openSiteInspection();
-    }//GEN-LAST:event_btnOpenActionPerformed
-
-    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-        addSiteInspection();
-    }//GEN-LAST:event_btnAddActionPerformed
+    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
+        applicationBean.saveApplication();
+    }//GEN-LAST:event_btnSaveActionPerformed
 
     private void btnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintActionPerformed
         showSiteInspectionForm();
@@ -358,9 +341,7 @@ public class SiteInspectionForm extends ContentPanel {
     }//GEN-LAST:event_inspectionFormattedTextFieldActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private org.sola.clients.beans.application.ApplicationBean applicationBean1;
-    private org.sola.clients.swing.common.buttons.BtnAdd btnAdd;
-    private org.sola.clients.swing.common.buttons.BtnOpen btnOpen;
+    private org.sola.clients.beans.application.ApplicationBean applicationBean;
     private org.sola.clients.swing.common.buttons.BtnPrint btnPrint;
     private javax.swing.JButton btnShowCalendarFrom;
     private javax.swing.JButton btnShowCalendarFrom1;
