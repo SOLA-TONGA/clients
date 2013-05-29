@@ -24,12 +24,14 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
 import org.sola.clients.beans.application.ApplicationBean;
 import org.sola.clients.beans.application.ApplicationServiceBean;
 import org.sola.clients.beans.digitalarchive.DocumentBean;
 import org.sola.clients.beans.source.SourceBean;
 import org.sola.clients.reports.ReportManager;
+import org.sola.clients.swing.common.controls.CalendarForm;
 import org.sola.clients.swing.common.tasks.SolaTask;
 import org.sola.clients.swing.common.tasks.TaskManager;
 import org.sola.clients.swing.desktop.ReportViewerForm;
@@ -99,37 +101,26 @@ public class SiteInspectionForm extends ContentPanel {
     }
    
     private void showSiteInspectionForm(){
-        
-        //System.out.println(date);
-            String str = JOptionPane.showInputDialog(null, "Enter Date : ", "Expected Inspection Date", 1);
-            Date date = null;
-            try {
-                date = new SimpleDateFormat("dd/mm/yyyy").parse(str);
-            } catch (ParseException ex) {
-                Logger.getLogger(SiteInspectionForm.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            applicationBean.setExpectedCompletionDate(date);
-            //System.out.println(date); // Sat Jan 02 00:00:00 BOT 2010
-            if (str != null){
-                SolaTask t = new SolaTask<Void, Void>() {
+        SolaTask t = new SolaTask<Void, Void>() {
 
-                    @Override
-                    protected Void doTask() {
-                            setMessage("Generating report");
-                            ApplicationBean appBean = new ApplicationBean();
+            @Override
+            protected Void doTask() {
+                setMessage("Generating report");
+                ApplicationBean appBean = new ApplicationBean();
 
-                            ReportViewerForm form = new ReportViewerForm(
-                                            ReportManager.getSiteInspectionReport(appBean, null));
-                            form.setVisible(true);
-                            return null;
-                    }
-                };
-                TaskManager.getInstance().runTask(t);
+                ReportViewerForm form = new ReportViewerForm(
+                    ReportManager.getSiteInspectionReport(appBean, null));
+                form.setVisible(true);
+                return null;
             }
+        };
+        TaskManager.getInstance().runTask(t);
+            
     }
     
-    public void showInputDialog(){
-        
+    private void showCalendar(JFormattedTextField dateField) {
+        CalendarForm calendar = new CalendarForm(null, true, dateField);
+        calendar.setVisible(true);
     }
 
      /** Adds new source into the list. 
@@ -231,6 +222,7 @@ public class SiteInspectionForm extends ContentPanel {
     private void initComponents() {
 
         applicationBean1 = new org.sola.clients.beans.application.ApplicationBean();
+        btnShowCalendarFrom = new javax.swing.JButton();
         headerPanel = new org.sola.clients.swing.ui.HeaderPanel();
         jToolBar = new javax.swing.JToolBar();
         btnAdd = new org.sola.clients.swing.common.buttons.BtnAdd();
@@ -238,6 +230,15 @@ public class SiteInspectionForm extends ContentPanel {
         btnPrint = new org.sola.clients.swing.common.buttons.BtnPrint();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableWithDefaultStyles = new org.sola.clients.swing.common.controls.JTableWithDefaultStyles();
+        btnShowCalendarFrom1 = new javax.swing.JButton();
+        inspectionFormattedTextField = new javax.swing.JFormattedTextField();
+        jLabel1 = new javax.swing.JLabel();
+        inspectionCheckBox = new javax.swing.JCheckBox();
+
+        btnShowCalendarFrom.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/calendar.png"))); // NOI18N
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("org/sola/clients/swing/desktop/application/Bundle"); // NOI18N
+        btnShowCalendarFrom.setText(bundle.getString("ApplicationSearchPanel.btnShowCalendarFrom.text")); // NOI18N
+        btnShowCalendarFrom.setBorder(null);
 
         setName("Form"); // NOI18N
 
@@ -282,22 +283,57 @@ public class SiteInspectionForm extends ContentPanel {
         ));
         jScrollPane1.setViewportView(jTableWithDefaultStyles);
 
+        btnShowCalendarFrom1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/calendar.png"))); // NOI18N
+        btnShowCalendarFrom1.setText(bundle.getString("ApplicationSearchPanel.btnShowCalendarFrom.text")); // NOI18N
+        btnShowCalendarFrom1.setBorder(null);
+        btnShowCalendarFrom1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnShowCalendarFrom1ActionPerformed(evt);
+            }
+        });
+
+        inspectionFormattedTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inspectionFormattedTextFieldActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("Expected Inspection Date");
+
+        inspectionCheckBox.setText("Inspection Completed");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(headerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 604, Short.MAX_VALUE)
-            .addComponent(jToolBar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jToolBar, javax.swing.GroupLayout.DEFAULT_SIZE, 604, Short.MAX_VALUE)
             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(inspectionFormattedTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnShowCalendarFrom1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(inspectionCheckBox))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(headerPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(5, 5, 5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jToolBar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(inspectionFormattedTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel1))
+                    .addComponent(btnShowCalendarFrom1)
+                    .addComponent(inspectionCheckBox))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -313,12 +349,25 @@ public class SiteInspectionForm extends ContentPanel {
         showSiteInspectionForm();
     }//GEN-LAST:event_btnPrintActionPerformed
 
+    private void btnShowCalendarFrom1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowCalendarFrom1ActionPerformed
+        showCalendar(inspectionFormattedTextField);
+    }//GEN-LAST:event_btnShowCalendarFrom1ActionPerformed
+
+    private void inspectionFormattedTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inspectionFormattedTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_inspectionFormattedTextFieldActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private org.sola.clients.beans.application.ApplicationBean applicationBean1;
     private org.sola.clients.swing.common.buttons.BtnAdd btnAdd;
     private org.sola.clients.swing.common.buttons.BtnOpen btnOpen;
     private org.sola.clients.swing.common.buttons.BtnPrint btnPrint;
+    private javax.swing.JButton btnShowCalendarFrom;
+    private javax.swing.JButton btnShowCalendarFrom1;
     private org.sola.clients.swing.ui.HeaderPanel headerPanel;
+    private javax.swing.JCheckBox inspectionCheckBox;
+    private javax.swing.JFormattedTextField inspectionFormattedTextField;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private org.sola.clients.swing.common.controls.JTableWithDefaultStyles jTableWithDefaultStyles;
     private javax.swing.JToolBar jToolBar;
