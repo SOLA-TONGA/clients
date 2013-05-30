@@ -1,0 +1,24 @@
+﻿
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch master
+# Changes to be committed:
+#   (use "git reset HEAD <file>..." to unstage)
+#
+#	deleted:    reports/src/main/resources/org/sola/clients/reports/locale/SiteInspection_en_GB.properties
+#
+# Changes not staged for commit:
+#   (use "git add <file>..." to update what will be committed)
+#   (use "git checkout -- <file>..." to discard changes in working directory)
+#
+#	modified:   beans/src/main/java/org/sola/clients/beans/application/ApplicationBean.java
+#	modified:   reports/src/main/resources/org/sola/clients/reports/locale/SiteInspection.properties
+#	modified:   reports/src/main/resources/reports/ApplicationStatusReport.jasper
+#	modified:   reports/src/main/resources/reports/SiteInspectionForm.jasper
+#	modified:   reports/src/main/resources/reports/SiteInspectionForm.jrxml
+#	modified:   swing/desktop/src/main/java/org/sola/clients/swing/desktop/application/ApplicationPanel.java
+#	modified:   swing/desktop/src/main/java/org/sola/clients/swing/desktop/workflow/ChecklistForm.java
+#	modified:   swing/desktop/src/main/java/org/sola/clients/swing/desktop/workflow/SiteInspectionForm.form
+#	modified:   swing/desktop/src/main/java/org/sola/clients/swing/desktop/workflow/SiteInspectionForm.java
+#
+

@@ -63,8 +63,7 @@ public class ChecklistForm extends ContentPanel {
 
     private void customizeForm() {
         if (applicationService != null && applicationBean != null) {
-            headerPanel.setTitleText(String.format("%s for Application: #%s",
-                    applicationService.getRequestType().getDisplayValue(),
+            headerPanel.setTitleText(String.format("Checklist for Application: #%s",
                     applicationBean.getNr()));
         }
     }
@@ -89,6 +88,7 @@ public class ChecklistForm extends ContentPanel {
         };
         TaskManager.getInstance().runTask(t);
     }
+   
 
     /**
      * This method is called from within the constructor to initialize the form.

@@ -98,6 +98,9 @@ public class ApplicationBean extends ApplicationSummaryBean {
     private ApplicationStatusTypeBean statusBean;
     private DocumentBean archiveDocument;
     public static final String ARCHIVE_DOCUMENT = "archiveDocument";
+    
+    public Date expectedInspectionDate;
+    public boolean inspectionCompleted;
 
     /**
      * Default constructor to create application bean. Initializes the following list of beans which
@@ -912,5 +915,17 @@ public class ApplicationBean extends ApplicationSummaryBean {
     public void setArchiveDocument(DocumentBean archiveDocument) {
         this.archiveDocument = archiveDocument;
         propertySupport.firePropertyChange(ARCHIVE_DOCUMENT, null, archiveDocument);
+    }
+    
+    public Date getExpectedInspectionDate(){
+        return expectedInspectionDate;
+    }
+    
+    public boolean getInspectionCompleted(){
+        return inspectionCompleted;
+    }
+    
+    public void setInspectionCompleted(boolean isCompleted){
+        this.inspectionCompleted = isCompleted;
     }
 }

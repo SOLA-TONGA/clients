@@ -606,7 +606,7 @@ public class ApplicationPanel extends ContentPanel {
                     @Override
                     public Void doTask() {
                         //setMessage(MessageUtility.getLocalizedMessageText(ClientMessage.PROGRESS_MSG_OPEN_DOCREGISTRATION));
-                        SiteInspectionForm siteInspection = new SiteInspectionForm(appBean, service);
+                        SiteInspectionForm siteInspection = new SiteInspectionForm(appBean);
                         getMainContentPanel().addPanel(siteInspection, MainContentPanel.CARD_SITE_INSPECTION, true);
                         return null;
                     }

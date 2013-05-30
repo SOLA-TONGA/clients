@@ -2,31 +2,30 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Site Inspection Form" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" resourceBundle="org.sola.clients.reports.locale.SiteInspection" uuid="e880b9f3-6305-4f1f-b0ec-df6f79d507c0">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="459"/>
 	<subDataset name="SiteInspection" uuid="e51f337c-ee8f-4b57-a102-1a9cc18c7ee7">
 		<queryString>
 			<![CDATA[]]>
 		</queryString>
-		<field name="expectedCompletionDate" class="java.util.Date">
+		<field name="expectedInspectionDate" class="java.util.Date">
 			<fieldDescription><![CDATA[expectedCompletionDate]]></fieldDescription>
 		</field>
+		<field name="inspectionCompleted" class="java.lang.Boolean"/>
 	</subDataset>
 	<parameter name="EXPECTED_INSPECTION_DATE" class="java.util.Date"/>
 	<queryString>
 		<![CDATA[]]>
 	</queryString>
-	<field name="expectedCompletionDate" class="java.util.Date">
-		<fieldDescription><![CDATA[expectedCompletionDate]]></fieldDescription>
-	</field>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="79" splitType="Stretch">
+		<band height="139" splitType="Stretch">
 			<staticText>
-				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="0" y="0" width="555" height="79" forecolor="#006666" backcolor="#FFFFFF"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
-					<font fontName="SansSerif" size="16" isBold="true" isUnderline="false"/>
+				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="0" y="0" width="555" height="138" forecolor="#006666" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Tahoma" size="15" isBold="true" isUnderline="false"/>
+					<paragraph lineSpacing="1_1_2"/>
 				</textElement>
 				<text><![CDATA[Ministry of Lands, Environment, Climate Change and Natural Resources
 Land Management Division
@@ -41,38 +40,31 @@ Site Inspection]]></text>
 		<band splitType="Stretch"/>
 	</columnHeader>
 	<detail>
-		<band height="230" splitType="Stretch">
+		<band height="588" splitType="Stretch">
 			<textField>
-				<reportElement uuid="faeba29b-6652-44da-9175-62972b628306" x="0" y="17" width="135" height="20"/>
-				<textElement>
-					<font size="12" isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$R{location}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="c17996ca-5978-44b0-a71c-7fc8ea653e0b" x="0" y="49" width="135" height="20"/>
-				<textElement>
+				<reportElement uuid="c17996ca-5978-44b0-a71c-7fc8ea653e0b" x="0" y="43" width="124" height="20"/>
+				<textElement textAlignment="Right">
 					<font size="12" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$R{applicant}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="da372ec3-d87c-4bc7-960f-0e442bf481c3" x="0" y="79" width="135" height="20"/>
-				<textElement>
+				<reportElement uuid="da372ec3-d87c-4bc7-960f-0e442bf481c3" x="0" y="73" width="124" height="20"/>
+				<textElement textAlignment="Right">
 					<font size="12" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$R{dateOfInspection}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="806bf572-b583-4cac-893e-dd3c9cc210ba" x="0" y="110" width="135" height="20"/>
-				<textElement>
+				<reportElement uuid="806bf572-b583-4cac-893e-dd3c9cc210ba" x="0" y="104" width="124" height="20"/>
+				<textElement textAlignment="Right">
 					<font size="12" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$R{officer}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="806bf572-b583-4cac-893e-dd3c9cc210ba" x="0" y="141" width="135" height="20"/>
-				<textElement>
+				<reportElement uuid="806bf572-b583-4cac-893e-dd3c9cc210ba" x="0" y="135" width="124" height="20"/>
+				<textElement textAlignment="Right">
 					<font size="12" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$R{occupants}]]></textFieldExpression>
@@ -85,32 +77,66 @@ Site Inspection]]></text>
 				<textFieldExpression><![CDATA[$R{comments}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="806bf572-b583-4cac-893e-dd3c9cc210ba" x="0" y="173" width="135" height="20"/>
-				<textElement>
+				<reportElement uuid="806bf572-b583-4cac-893e-dd3c9cc210ba" x="0" y="167" width="124" height="20"/>
+				<textElement textAlignment="Right">
 					<font size="12" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$R{improvements}]]></textFieldExpression>
 			</textField>
+			<rectangle>
+				<reportElement uuid="79aeda4d-a270-431d-9573-a09862f8b225" x="135" y="43" width="420" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="79aeda4d-a270-431d-9573-a09862f8b225" x="135" y="73" width="420" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="79aeda4d-a270-431d-9573-a09862f8b225" x="135" y="104" width="420" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="79aeda4d-a270-431d-9573-a09862f8b225" x="135" y="135" width="420" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="79aeda4d-a270-431d-9573-a09862f8b225" x="135" y="167" width="420" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="468c8de6-2158-4c95-920a-ae134a10c4cb" positionType="FixRelativeToBottom" stretchType="RelativeToBandHeight" x="0" y="223" width="555" height="337"/>
+			</rectangle>
+			<textField>
+				<reportElement uuid="faeba29b-6652-44da-9175-62972b628306" x="0" y="11" width="124" height="20"/>
+				<textElement textAlignment="Right">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$R{location}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement uuid="79aeda4d-a270-431d-9573-a09862f8b225" x="135" y="11" width="420" height="20"/>
+			</rectangle>
 		</band>
 	</detail>
 	<columnFooter>
 		<band splitType="Stretch"/>
 	</columnFooter>
 	<pageFooter>
-		<band height="23" splitType="Stretch">
+		<band height="74" splitType="Stretch">
 			<textField>
-				<reportElement uuid="806bf572-b583-4cac-893e-dd3c9cc210ba" x="0" y="0" width="286" height="20"/>
-				<textElement>
-					<font size="12" isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$R{signature}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="806bf572-b583-4cac-893e-dd3c9cc210ba" x="363" y="0" width="101" height="20"/>
-				<textElement>
+				<reportElement uuid="806bf572-b583-4cac-893e-dd3c9cc210ba" x="337" y="0" width="101" height="20"/>
+				<textElement textAlignment="Right">
 					<font size="12" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$R{checkedDate}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement uuid="bd9f748a-177c-4df7-bb6e-c461c38533d6" x="135" y="19" width="177" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="c9de3517-61e0-4010-8984-2fed228ba9af" x="449" y="18" width="91" height="1"/>
+			</line>
+			<textField>
+				<reportElement uuid="806bf572-b583-4cac-893e-dd3c9cc210ba" x="0" y="0" width="124" height="20"/>
+				<textElement textAlignment="Right">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$R{signature}]]></textFieldExpression>
 			</textField>
 		</band>
 	</pageFooter>
