@@ -65,7 +65,7 @@ import org.sola.clients.swing.common.tasks.TaskManager;
 import org.sola.clients.swing.desktop.DashBoardPanel;
 import org.sola.clients.swing.desktop.MainForm;
 import org.sola.clients.swing.desktop.ReportViewerForm;
-import org.sola.clients.swing.desktop.administrative.PropertyPanel;
+import org.sola.clients.swing.desktop.administrative.TongaPropertyPanel;
 import org.sola.clients.swing.desktop.cadastre.CadastreTransactionMapPanel;
 import org.sola.clients.swing.desktop.cadastre.MapPanelForm;
 import org.sola.clients.swing.desktop.reports.SysRegCertParamsForm;
@@ -482,7 +482,7 @@ public class ApplicationPanel extends ContentPanel {
                 public Void doTask() {
                     setMessage(MessageUtility.getLocalizedMessageText(ClientMessage.PROGRESS_MSG_OPEN_PROPERTY));
                     ApplicationBean applicationBean = appBean.copy();
-                    PropertyPanel propertyPnl = new PropertyPanel(applicationBean, service, baUnitBean, readOnly);
+                    TongaPropertyPanel propertyPnl = new TongaPropertyPanel(applicationBean, service, baUnitBean, readOnly);
                     getMainContentPanel().addPanel(propertyPnl, MainContentPanel.CARD_PROPERTY_PANEL, true);
                     return null;
                 }
@@ -490,7 +490,7 @@ public class ApplicationPanel extends ContentPanel {
                 @Override
                 protected void taskDone() {
                     if (!service.getRequestTypeCode().equalsIgnoreCase(RequestTypeBean.CODE_NEW_DIGITAL_TITLE)) {
-                        ((PropertyPanel) getMainContentPanel().getPanel(MainContentPanel.CARD_PROPERTY_PANEL)).showPriorTitileMessage();
+                        ((TongaPropertyPanel) getMainContentPanel().getPanel(MainContentPanel.CARD_PROPERTY_PANEL)).showPriorTitileMessage();
                     }
                 }
             };
@@ -506,14 +506,14 @@ public class ApplicationPanel extends ContentPanel {
                 @Override
                 public Void doTask() {
                     ApplicationBean applicationBean = appBean.copy();
-                    PropertyPanel propertyPnl;
+                    TongaPropertyPanel propertyPnl;
 
                     if (applicationProperty.getBaUnitId() != null) {
                         setMessage(MessageUtility.getLocalizedMessageText(ClientMessage.PROGRESS_MSG_BA_UNIT_GETTING));
                         BaUnitBean baUnitBean = BaUnitBean.getBaUnitsById(applicationProperty.getBaUnitId());
-                        propertyPnl = new PropertyPanel(applicationBean, service, baUnitBean, readOnly);
+                        propertyPnl = new TongaPropertyPanel(applicationBean, service, baUnitBean, readOnly);
                     } else {
-                        propertyPnl = new PropertyPanel(applicationBean,
+                        propertyPnl = new TongaPropertyPanel(applicationBean,
                                 service, applicationProperty.getNameFirstpart(),
                                 applicationProperty.getNameLastpart(), readOnly);
                     }
@@ -751,13 +751,18 @@ public class ApplicationPanel extends ContentPanel {
                 } else {
 
                     // Open property form for new title registration
-                    if (requestType.equalsIgnoreCase(RequestTypeBean.CODE_NEW_APARTMENT)
-                            || requestType.equalsIgnoreCase(RequestTypeBean.CODE_NEW_FREEHOLD)
-                            || requestType.equalsIgnoreCase(RequestTypeBean.CODE_NEW_STATE)) {
-                        if (!readOnly) {
-                            // Open empty property form
-                            openPropertyForm(service, new BaUnitBean(), readOnly);
-                        }
+//                    if (requestType.equalsIgnoreCase(RequestTypeBean.CODE_NEW_APARTMENT)
+//                            || requestType.equalsIgnoreCase(RequestTypeBean.CODE_NEW_FREEHOLD)
+//                            || requestType.equalsIgnoreCase(RequestTypeBean.CODE_NEW_STATE)) {
+//                        if (!readOnly) {
+//                            // Open empty property form
+//                            openPropertyForm(service, new BaUnitBean(), readOnly);
+//                        }
+                    // Tonga customization - Registering a new lease or allotments requires
+                    // creating a new Property Record. 
+                    if (requestType.equalsIgnoreCase(RequestTypeBean.CODE_REGISTER_LEASE)){
+                        // Open empty property form
+                        openPropertyForm(service, new BaUnitBean(), readOnly);
                     } else {
 
                         // Open property form for existing title changes
