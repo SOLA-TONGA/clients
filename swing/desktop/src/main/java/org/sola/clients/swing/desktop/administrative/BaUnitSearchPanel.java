@@ -70,7 +70,7 @@ public class BaUnitSearchPanel extends ContentPanel {
             @Override
             public Void doTask() {
                 setMessage(MessageUtility.getLocalizedMessageText(ClientMessage.PROGRESS_MSG_OPEN_PROPERTY));
-                PropertyPanel propertyPanel = new PropertyPanel(nameFirstPart, nameLastPart);
+                TongaPropertyPanel propertyPanel = new TongaPropertyPanel(nameFirstPart, nameLastPart);
                 getMainContentPanel().addPanel(propertyPanel, MainContentPanel.CARD_PROPERTY_PANEL, true);
                 return null;
             }
