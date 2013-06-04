@@ -1,28 +1,36 @@
-/*
- * Copyright 2013 Food and Agriculture Organization of the United Nations (FAO).
+/**
+ * ******************************************************************************************
+ * Copyright (C) 2012 - Food and Agriculture Organization of the United Nations
+ * (FAO). All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ * 1. Redistributions of source code must retain the above copyright notice,this
+ * list of conditions and the following disclaimer. 2. Redistributions in binary
+ * form must reproduce the above copyright notice,this list of conditions and
+ * the following disclaimer in the documentation and/or other materials provided
+ * with the distribution. 3. Neither the name of FAO nor the names of its
+ * contributors may be used to endorse or promote products derived from this
+ * software without specific prior written permission.
  *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ * ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
+ * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,PROCUREMENT OF
+ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+ * CONTRACT,STRICT LIABILITY,OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING
+ * IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ * POSSIBILITY OF SUCH DAMAGE.
+ * *********************************************************************************************
  */
 package org.sola.clients.swing.desktop.workflow;
 
 
-import java.sql.Timestamp;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import javax.swing.JFormattedTextField;
-import javax.swing.text.DefaultFormatterFactory;
-import org.jfree.util.Log;
 import org.sola.clients.beans.application.ApplicationBean;
 import org.sola.clients.reports.ReportManager;
 import org.sola.clients.swing.common.controls.CalendarForm;
@@ -31,7 +39,7 @@ import org.sola.clients.swing.common.tasks.TaskManager;
 import org.sola.clients.swing.desktop.ReportViewerForm;
 import org.sola.clients.swing.desktop.source.DocumentsManagementExtPanel;
 import org.sola.clients.swing.ui.ContentPanel;
-import org.sola.common.logging.LogUtility;
+import org.sola.clients.swing.ui.renderers.FormattersFactory;
 import org.sola.common.messaging.ClientMessage;
 import org.sola.common.messaging.MessageUtility;
 
@@ -142,6 +150,7 @@ public class SiteInspectionForm extends ContentPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
         applicationBean = getApplicationBean();
         btnShowCalendarFrom = new javax.swing.JButton();
@@ -196,6 +205,11 @@ public class SiteInspectionForm extends ContentPanel {
             }
         });
 
+        inspectionFormattedTextField.setFormatterFactory(FormattersFactory.getInstance().getDateFormatterFactory());
+
+        org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, applicationBean, org.jdesktop.beansbinding.ELProperty.create("${expectedInspectionDate}"), inspectionFormattedTextField, org.jdesktop.beansbinding.BeanProperty.create("value"));
+        bindingGroup.addBinding(binding);
+
         inspectionFormattedTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 inspectionFormattedTextFieldActionPerformed(evt);
@@ -205,6 +219,10 @@ public class SiteInspectionForm extends ContentPanel {
         jLabel1.setText("Expected Inspection Date");
 
         inspectionCheckBox.setText("Inspection Completed");
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, applicationBean, org.jdesktop.beansbinding.ELProperty.create("${inspectionCompleted}"), inspectionCheckBox, org.jdesktop.beansbinding.BeanProperty.create("selected"));
+        bindingGroup.addBinding(binding);
+
         inspectionCheckBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 inspectionCheckBoxActionPerformed(evt);
@@ -245,6 +263,8 @@ public class SiteInspectionForm extends ContentPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(documentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 234, Short.MAX_VALUE))
         );
+
+        bindingGroup.bind();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintActionPerformed
@@ -279,5 +299,6 @@ public class SiteInspectionForm extends ContentPanel {
     private javax.swing.JFormattedTextField inspectionFormattedTextField;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JToolBar jToolBar;
+    private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 }

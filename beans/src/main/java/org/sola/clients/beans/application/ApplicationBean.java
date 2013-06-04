@@ -1,26 +1,30 @@
 /**
  * ******************************************************************************************
- * Copyright (C) 2012 - Food and Agriculture Organization of the United Nations (FAO). All rights
- * reserved.
+ * Copyright (C) 2012 - Food and Agriculture Organization of the United Nations
+ * (FAO). All rights reserved.
  *
- * Redistribution and use in source and binary forms, with or without modification, are permitted
- * provided that the following conditions are met:
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
  *
- * 1. Redistributions of source code must retain the above copyright notice,this list of conditions
- * and the following disclaimer. 2. Redistributions in binary form must reproduce the above
- * copyright notice,this list of conditions and the following disclaimer in the documentation and/or
- * other materials provided with the distribution. 3. Neither the name of FAO nor the names of its
- * contributors may be used to endorse or promote products derived from this software without
- * specific prior written permission.
+ * 1. Redistributions of source code must retain the above copyright notice,this
+ * list of conditions and the following disclaimer. 2. Redistributions in binary
+ * form must reproduce the above copyright notice,this list of conditions and
+ * the following disclaimer in the documentation and/or other materials provided
+ * with the distribution. 3. Neither the name of FAO nor the names of its
+ * contributors may be used to endorse or promote products derived from this
+ * software without specific prior written permission.
  *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR
- * IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
- * FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
- * DAMAGES (INCLUDING, BUT NOT LIMITED TO,PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
- * DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT,STRICT LIABILITY,OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY
- * WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ * ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
+ * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,PROCUREMENT OF
+ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+ * CONTRACT,STRICT LIABILITY,OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING
+ * IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ * POSSIBILITY OF SUCH DAMAGE.
  * *********************************************************************************************
  */
 package org.sola.clients.beans.application;
@@ -53,8 +57,9 @@ import org.sola.webservices.transferobjects.casemanagement.ApplicationTO;
 import org.sola.webservices.transferobjects.search.PropertyVerifierTO;
 
 /**
- * Represents full object of the application in the domain model. Could be populated from the {@link ApplicationTO}
- * object.<br /> For more information see data dictionary <b>Application</b> schema.
+ * Represents full object of the application in the domain model. Could be
+ * populated from the {@link ApplicationTO} object.<br /> For more information
+ * see data dictionary <b>Application</b> schema.
  */
 @ApplicationCheck
 public class ApplicationBean extends ApplicationSummaryBean {
@@ -76,6 +81,8 @@ public class ApplicationBean extends ApplicationSummaryBean {
     public static final String ASSIGNEE_ID_PROPERTY = "assigneeId";
     public static final String STATUS_TYPE_PROPERTY = "statusType";
     public static final String APPLICATION_PROPERTY = "application";
+    public static final String INSPECTION_COMPLETED_PROPERTY = "inspectionCompleted";
+    public static final String EXPECTED_INSPECTION_DATE_PROPERTY = "expectedInspectionDate";
     private ApplicationActionTypeBean actionBean;
     private String actionNotes;
     private SolaList<ApplicationPropertyBean> propertyList;
@@ -98,14 +105,15 @@ public class ApplicationBean extends ApplicationSummaryBean {
     private ApplicationStatusTypeBean statusBean;
     private DocumentBean archiveDocument;
     public static final String ARCHIVE_DOCUMENT = "archiveDocument";
-    
     public Date expectedInspectionDate;
     public boolean inspectionCompleted;
 
     /**
-     * Default constructor to create application bean. Initializes the following list of beans which
-     * are the parts of the application bean: <br /> {@link ApplicationActionTypeBean} <br /> {@link PartySummaryBean}
-     * <br /> {@link ApplicationPropertyBean} <br /> {@link ApplicationServiceBean} <br /> {@link SourceBean}
+     * Default constructor to create application bean. Initializes the following
+     * list of beans which are the parts of the application bean: <br />
+     * {@link ApplicationActionTypeBean} <br /> {@link PartySummaryBean}
+     * <br /> {@link ApplicationPropertyBean} <br />
+     * {@link ApplicationServiceBean} <br /> {@link SourceBean}
      */
     public ApplicationBean() {
         super();
@@ -129,12 +137,12 @@ public class ApplicationBean extends ApplicationSummaryBean {
     }
 
     public boolean canResubmit() {
-       return isRequisitioned();
+        return isRequisitioned();
     }
 
     /**
-     * Allow approval if the Application is assigned, has a status of lodged and all of the services
-     * are in an finalized state.
+     * Allow approval if the Application is assigned, has a status of lodged and
+     * all of the services are in an finalized state.
      *
      * @return
      */
@@ -161,7 +169,7 @@ public class ApplicationBean extends ApplicationSummaryBean {
     }
 
     public boolean canWithdraw() {
-        return (isAssigned() && isLodged()) || isRequisitioned(); 
+        return (isAssigned() && isLodged()) || isRequisitioned();
     }
 
     public boolean canRequisition() {
@@ -182,7 +190,7 @@ public class ApplicationBean extends ApplicationSummaryBean {
         String appStatus = getStatusCode();
         return StatusConstants.LODGED.equalsIgnoreCase(appStatus);
     }
-    
+
     public boolean isRequisitioned() {
         return StatusConstants.REQUISITIONED.equalsIgnoreCase(getStatusCode());
     }
@@ -249,7 +257,8 @@ public class ApplicationBean extends ApplicationSummaryBean {
     }
 
     /**
-     * Sets application status code and retrieves {@link ApplicationStatusTypeBean} from the cache.
+     * Sets application status code and retrieves
+     * {@link ApplicationStatusTypeBean} from the cache.
      *
      * @param value Application status code.
      */
@@ -269,8 +278,9 @@ public class ApplicationBean extends ApplicationSummaryBean {
     }
 
     /**
-     * Returns collection of {@link ApplicationBean} objects. This method is used by Jasper report
-     * designer to extract properties of application bean to help design a report.
+     * Returns collection of {@link ApplicationBean} objects. This method is
+     * used by Jasper report designer to extract properties of application bean
+     * to help design a report.
      */
     public static java.util.Collection generateCollection() {
         java.util.Vector collection = new java.util.Vector();
@@ -296,7 +306,8 @@ public class ApplicationBean extends ApplicationSummaryBean {
     }
 
     /**
-     * Sets application action code and retrieves {@link ApplicationActionTypeBean} from the cache.
+     * Sets application action code and retrieves
+     * {@link ApplicationActionTypeBean} from the cache.
      *
      * @param value Application action code.
      */
@@ -359,7 +370,7 @@ public class ApplicationBean extends ApplicationSummaryBean {
 
     public ApplicationPropertyBean getSelectedProperty() {
         if (getPropertyList().size() == 1) {
-            ApplicationPropertyBean onlyOneProperty=getPropertyList().get(0) ;
+            ApplicationPropertyBean onlyOneProperty = getPropertyList().get(0);
             selectedProperty = onlyOneProperty;
         }
         return selectedProperty;
@@ -472,9 +483,11 @@ public class ApplicationBean extends ApplicationSummaryBean {
     }
 
     /**
-     * Adds new service ({@link ApplicationServiceBean}) into the application services list.
+     * Adds new service ({@link ApplicationServiceBean}) into the application
+     * services list.
      *
-     * @param requestTypeBean Request type (service) from available services list.
+     * @param requestTypeBean Request type (service) from available services
+     * list.
      */
     public void addService(RequestTypeBean requestTypeBean) {
 
@@ -593,8 +606,8 @@ public class ApplicationBean extends ApplicationSummaryBean {
     }
 
     /**
-     * Adds new property object ({@link ApplicationPropertyBean}) into the list of application
-     * properties.
+     * Adds new property object ({@link ApplicationPropertyBean}) into the list
+     * of application properties.
      *
      * @param firstPart First part of the property's identification code.
      * @param lastPart Second part of the property's identification code.
@@ -627,7 +640,7 @@ public class ApplicationBean extends ApplicationSummaryBean {
                         new Object[]{bundle.getString("ApplicationPanel.labLastPart.text")});
                 return;
             }
-            
+
             ApplicationPropertyBean newProperty = new ApplicationPropertyBean();
             newProperty.setArea(area);
             newProperty.setNameFirstpart(firstPart);
@@ -649,8 +662,9 @@ public class ApplicationBean extends ApplicationSummaryBean {
     }
 
     /**
-     * Verifies selected property object. Checks if object exists in the database and on the map.
-     * Checks for the list of incomplete applications, related to the selected property object.
+     * Verifies selected property object. Checks if object exists in the
+     * database and on the map. Checks for the list of incomplete applications,
+     * related to the selected property object.
      */
     public boolean verifyProperty() {
         if (selectedProperty != null) {
@@ -672,7 +686,7 @@ public class ApplicationBean extends ApplicationSummaryBean {
                         && !verifier.getApplicationsWhereFound().equals("")) {
                     MessageUtility.displayMessage(ClientMessage.APPLICATION_PROPERTY_HAS_INCOMPLETE_APPLICATIONS,
                             new Object[]{selectedProperty.getNameFirstpart() + selectedProperty.getNameLastpart(),
-                                verifier.getApplicationsWhereFound()});
+                        verifier.getApplicationsWhereFound()});
                 }
             } else {
                 selectedProperty.setVerifiedExists(false);
@@ -837,18 +851,20 @@ public class ApplicationBean extends ApplicationSummaryBean {
         return result;
     }
 
-    /** Returns service by id. */
-    public ApplicationServiceBean getServiceById(String serviceId){
-        if(getServiceList()!=null && serviceId !=null){
-            for(ApplicationServiceBean service: getServiceList()){
-                if(service.getId().equals(serviceId)){
+    /**
+     * Returns service by id.
+     */
+    public ApplicationServiceBean getServiceById(String serviceId) {
+        if (getServiceList() != null && serviceId != null) {
+            for (ApplicationServiceBean service : getServiceList()) {
+                if (service.getId().equals(serviceId)) {
                     return service;
                 }
             }
         }
         return null;
     }
-    
+
     /**
      * Assigns application to the user.
      *
@@ -900,14 +916,16 @@ public class ApplicationBean extends ApplicationSummaryBean {
         ApplicationTO app = WSManager.getInstance().getCaseManagementService().getApplication(this.getId());
         TypeConverters.TransferObjectToBean(app, ApplicationBean.class, this);
     }
-    
-    /** Returns {@link ApplicationBean} by the given transaction ID. */
-    public static ApplicationBean getApplicationByTransactionId(String transactionId){
+
+    /**
+     * Returns {@link ApplicationBean} by the given transaction ID.
+     */
+    public static ApplicationBean getApplicationByTransactionId(String transactionId) {
         return TypeConverters.TransferObjectToBean(
                 WSManager.getInstance().getCaseManagementService().getApplicationByTransactionId(transactionId),
                 ApplicationBean.class, null);
     }
-    
+
     public DocumentBean getArchiveDocument() {
         return archiveDocument;
     }
@@ -916,16 +934,24 @@ public class ApplicationBean extends ApplicationSummaryBean {
         this.archiveDocument = archiveDocument;
         propertySupport.firePropertyChange(ARCHIVE_DOCUMENT, null, archiveDocument);
     }
-    
-    public Date getExpectedInspectionDate(){
+
+    public Date getExpectedInspectionDate() {
         return expectedInspectionDate;
     }
-    
-    public boolean getInspectionCompleted(){
+
+    public void setExpectedInspectionDate(Date value) {
+        Date old = expectedInspectionDate;
+        expectedInspectionDate = value;
+        propertySupport.firePropertyChange(EXPECTED_INSPECTION_DATE_PROPERTY, old, value);
+    }
+
+    public boolean getInspectionCompleted() {
         return inspectionCompleted;
     }
-    
-    public void setInspectionCompleted(boolean isCompleted){
-        this.inspectionCompleted = isCompleted;
+
+    public void setInspectionCompleted(boolean value) {
+        boolean old = inspectionCompleted;
+        inspectionCompleted = value;
+        propertySupport.firePropertyChange(INSPECTION_COMPLETED_PROPERTY, old, value);
     }
 }

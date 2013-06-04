@@ -130,6 +130,14 @@
       </Events>
     </Component>
     <Component class="javax.swing.JFormattedTextField" name="inspectionFormattedTextField">
+      <Properties>
+        <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="FormattersFactory.getInstance().getDateFormatterFactory()" type="code"/>
+        </Property>
+      </Properties>
+      <BindingProperties>
+        <BindingProperty name="value" source="applicationBean" sourcePath="${expectedInspectionDate}" target="inspectionFormattedTextField" targetPath="value" updateStrategy="0" immediately="false"/>
+      </BindingProperties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="inspectionFormattedTextFieldActionPerformed"/>
       </Events>
@@ -143,6 +151,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Inspection Completed"/>
       </Properties>
+      <BindingProperties>
+        <BindingProperty name="selected" source="applicationBean" sourcePath="${inspectionCompleted}" target="inspectionCheckBox" targetPath="selected" updateStrategy="0" immediately="false"/>
+      </BindingProperties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="inspectionCheckBoxActionPerformed"/>
       </Events>
