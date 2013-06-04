@@ -94,7 +94,7 @@ import org.sola.webservices.transferobjects.casemanagement.ApplicationTO;
  * {@link PartySummaryListBean}, <br />{@link CommunicationTypeListBean}, <br />
  * {@link SourceTypeListBean}, <br />{@link ApplicationDocumentsHelperBean}</p>
  */
-public class ApplicationPanel extends ContentPanel {
+public class TongaApplicationPanel extends ContentPanel {
 
     private ControlsBundleForApplicationLocation mapControl = null;
     public static final String APPLICATION_SAVED_PROPERTY = "applicationSaved";
@@ -159,7 +159,7 @@ public class ApplicationPanel extends ContentPanel {
     /**
      * Default constructor to create new application.
      */
-    public ApplicationPanel() {
+    public TongaApplicationPanel() {
         this((String) null);
     }
 
@@ -168,7 +168,7 @@ public class ApplicationPanel extends ContentPanel {
      *
      * @param applicationId ID of application to open.
      */
-    public ApplicationPanel(String applicationId) {
+    public TongaApplicationPanel(String applicationId) {
         this.applicationID = applicationId;
         initComponents();
         postInit();
@@ -179,7 +179,7 @@ public class ApplicationPanel extends ContentPanel {
      *
      * @param applicationId ID of application to open.
      */
-    public ApplicationPanel(String applicationId, boolean dashBoard) {
+    public TongaApplicationPanel(String applicationId, boolean dashBoard) {
         this.applicationID = applicationId;
         this.isDashboard = dashBoard;
         initComponents();
@@ -191,7 +191,7 @@ public class ApplicationPanel extends ContentPanel {
      *
      * @param application {@link ApplicationBean} to show on the form.
      */
-    public ApplicationPanel(ApplicationBean application) {
+    public TongaApplicationPanel(ApplicationBean application) {
         this.appBean = application;
         initComponents();
         postInit();
@@ -1065,7 +1065,7 @@ public class ApplicationPanel extends ContentPanel {
         popUpServices.setName("popUpServices"); // NOI18N
 
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("org/sola/clients/swing/desktop/application/Bundle"); // NOI18N
-        menuAddService.setText(bundle.getString("ApplicationPanel.menuAddService.text")); // NOI18N
+        menuAddService.setText(bundle.getString("TongaApplicationPanel.menuAddService.text")); // NOI18N
         menuAddService.setName("menuAddService"); // NOI18N
         menuAddService.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1074,7 +1074,7 @@ public class ApplicationPanel extends ContentPanel {
         });
         popUpServices.add(menuAddService);
 
-        menuRemoveService.setText(bundle.getString("ApplicationPanel.menuRemoveService.text")); // NOI18N
+        menuRemoveService.setText(bundle.getString("TongaApplicationPanel.menuRemoveService.text")); // NOI18N
         menuRemoveService.setName("menuRemoveService"); // NOI18N
         menuRemoveService.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1086,7 +1086,7 @@ public class ApplicationPanel extends ContentPanel {
         jSeparator3.setName("jSeparator3"); // NOI18N
         popUpServices.add(jSeparator3);
 
-        menuMoveServiceUp.setText(bundle.getString("ApplicationPanel.menuMoveServiceUp.text")); // NOI18N
+        menuMoveServiceUp.setText(bundle.getString("TongaApplicationPanel.menuMoveServiceUp.text")); // NOI18N
         menuMoveServiceUp.setName("menuMoveServiceUp"); // NOI18N
         menuMoveServiceUp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1095,7 +1095,7 @@ public class ApplicationPanel extends ContentPanel {
         });
         popUpServices.add(menuMoveServiceUp);
 
-        menuMoveServiceDown.setText(bundle.getString("ApplicationPanel.menuMoveServiceDown.text")); // NOI18N
+        menuMoveServiceDown.setText(bundle.getString("TongaApplicationPanel.menuMoveServiceDown.text")); // NOI18N
         menuMoveServiceDown.setName("menuMoveServiceDown"); // NOI18N
         menuMoveServiceDown.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1108,7 +1108,7 @@ public class ApplicationPanel extends ContentPanel {
         popUpServices.add(jSeparator4);
 
         menuViewService.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/view.png"))); // NOI18N
-        menuViewService.setText(bundle.getString("ApplicationPanel.menuViewService.text")); // NOI18N
+        menuViewService.setText(bundle.getString("TongaApplicationPanel.menuViewService.text")); // NOI18N
         menuViewService.setName("menuViewService"); // NOI18N
         menuViewService.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1118,7 +1118,7 @@ public class ApplicationPanel extends ContentPanel {
         popUpServices.add(menuViewService);
 
         menuStartService.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/start.png"))); // NOI18N
-        menuStartService.setText(bundle.getString("ApplicationPanel.menuStartService.text")); // NOI18N
+        menuStartService.setText(bundle.getString("TongaApplicationPanel.menuStartService.text")); // NOI18N
         menuStartService.setName("menuStartService"); // NOI18N
         menuStartService.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1128,7 +1128,7 @@ public class ApplicationPanel extends ContentPanel {
         popUpServices.add(menuStartService);
 
         menuCompleteService.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/confirm.png"))); // NOI18N
-        menuCompleteService.setText(bundle.getString("ApplicationPanel.menuCompleteService.text")); // NOI18N
+        menuCompleteService.setText(bundle.getString("TongaApplicationPanel.menuCompleteService.text")); // NOI18N
         menuCompleteService.setName("menuCompleteService"); // NOI18N
         menuCompleteService.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1138,7 +1138,7 @@ public class ApplicationPanel extends ContentPanel {
         popUpServices.add(menuCompleteService);
 
         menuRevertService.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/revert.png"))); // NOI18N
-        menuRevertService.setText(bundle.getString("ApplicationPanel.menuRevertService.text")); // NOI18N
+        menuRevertService.setText(bundle.getString("TongaApplicationPanel.menuRevertService.text")); // NOI18N
         menuRevertService.setName("menuRevertService"); // NOI18N
         menuRevertService.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1148,7 +1148,7 @@ public class ApplicationPanel extends ContentPanel {
         popUpServices.add(menuRevertService);
 
         menuCancelService.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/cancel.png"))); // NOI18N
-        menuCancelService.setText(bundle.getString("ApplicationPanel.menuCancelService.text")); // NOI18N
+        menuCancelService.setText(bundle.getString("TongaApplicationPanel.menuCancelService.text")); // NOI18N
         menuCancelService.setName("menuCancelService"); // NOI18N
         menuCancelService.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1160,7 +1160,7 @@ public class ApplicationPanel extends ContentPanel {
         popupApplicationActions.setName("popupApplicationActions"); // NOI18N
 
         menuApprove.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/approve.png"))); // NOI18N
-        menuApprove.setText(bundle.getString("ApplicationPanel.menuApprove.text")); // NOI18N
+        menuApprove.setText(bundle.getString("TongaApplicationPanel.menuApprove.text")); // NOI18N
         menuApprove.setName("menuApprove"); // NOI18N
         menuApprove.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1170,7 +1170,7 @@ public class ApplicationPanel extends ContentPanel {
         popupApplicationActions.add(menuApprove);
 
         menuCancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/reject.png"))); // NOI18N
-        menuCancel.setText(bundle.getString("ApplicationPanel.menuCancel.text")); // NOI18N
+        menuCancel.setText(bundle.getString("TongaApplicationPanel.menuCancel.text")); // NOI18N
         menuCancel.setName("menuCancel"); // NOI18N
         menuCancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1180,7 +1180,7 @@ public class ApplicationPanel extends ContentPanel {
         popupApplicationActions.add(menuCancel);
 
         menuWithdraw.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/withdraw.png"))); // NOI18N
-        menuWithdraw.setText(bundle.getString("ApplicationPanel.menuWithdraw.text")); // NOI18N
+        menuWithdraw.setText(bundle.getString("TongaApplicationPanel.menuWithdraw.text")); // NOI18N
         menuWithdraw.setName("menuWithdraw"); // NOI18N
         menuWithdraw.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1190,7 +1190,7 @@ public class ApplicationPanel extends ContentPanel {
         popupApplicationActions.add(menuWithdraw);
 
         menuLapse.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/lapse.png"))); // NOI18N
-        menuLapse.setText(bundle.getString("ApplicationPanel.menuLapse.text")); // NOI18N
+        menuLapse.setText(bundle.getString("TongaApplicationPanel.menuLapse.text")); // NOI18N
         menuLapse.setName("menuLapse"); // NOI18N
         menuLapse.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1200,7 +1200,7 @@ public class ApplicationPanel extends ContentPanel {
         popupApplicationActions.add(menuLapse);
 
         menuRequisition.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/requisition.png"))); // NOI18N
-        menuRequisition.setText(bundle.getString("ApplicationPanel.menuRequisition.text")); // NOI18N
+        menuRequisition.setText(bundle.getString("TongaApplicationPanel.menuRequisition.text")); // NOI18N
         menuRequisition.setName("menuRequisition"); // NOI18N
         menuRequisition.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1210,7 +1210,7 @@ public class ApplicationPanel extends ContentPanel {
         popupApplicationActions.add(menuRequisition);
 
         menuResubmit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/resubmit.png"))); // NOI18N
-        menuResubmit.setText(bundle.getString("ApplicationPanel.menuResubmit.text")); // NOI18N
+        menuResubmit.setText(bundle.getString("TongaApplicationPanel.menuResubmit.text")); // NOI18N
         menuResubmit.setName("menuResubmit"); // NOI18N
         menuResubmit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1220,7 +1220,7 @@ public class ApplicationPanel extends ContentPanel {
         popupApplicationActions.add(menuResubmit);
 
         menuDispatch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/envelope.png"))); // NOI18N
-        menuDispatch.setText(bundle.getString("ApplicationPanel.menuDispatch.text")); // NOI18N
+        menuDispatch.setText(bundle.getString("TongaApplicationPanel.menuDispatch.text")); // NOI18N
         menuDispatch.setName("menuDispatch"); // NOI18N
         menuDispatch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1230,7 +1230,7 @@ public class ApplicationPanel extends ContentPanel {
         popupApplicationActions.add(menuDispatch);
 
         menuArchive.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/archive.png"))); // NOI18N
-        menuArchive.setText(bundle.getString("ApplicationPanel.menuArchive.text")); // NOI18N
+        menuArchive.setText(bundle.getString("TongaApplicationPanel.menuArchive.text")); // NOI18N
         menuArchive.setName("menuArchive"); // NOI18N
         menuArchive.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1239,11 +1239,11 @@ public class ApplicationPanel extends ContentPanel {
         });
         popupApplicationActions.add(menuArchive);
 
-        jFormattedTextField1.setText(bundle.getString("ApplicationPanel.jFormattedTextField1.text")); // NOI18N
+        jFormattedTextField1.setText(bundle.getString("TongaApplicationPanel.jFormattedTextField1.text")); // NOI18N
         jFormattedTextField1.setName(bundle.getString("ApplicationPanel.jFormattedTextField1.name")); // NOI18N
 
         setHeaderPanel(pnlHeader);
-        setHelpTopic(bundle.getString("ApplicationPanel.helpTopic")); // NOI18N
+        setHelpTopic(bundle.getString("TongaApplicationPanel.helpTopic")); // NOI18N
         setMinimumSize(new java.awt.Dimension(660, 458));
         setName("Form"); // NOI18N
         setPreferredSize(new java.awt.Dimension(660, 458));
@@ -1254,7 +1254,7 @@ public class ApplicationPanel extends ContentPanel {
         });
 
         pnlHeader.setName("pnlHeader"); // NOI18N
-        pnlHeader.setTitleText(bundle.getString("ApplicationPanel.pnlHeader.titleText")); // NOI18N
+        pnlHeader.setTitleText(bundle.getString("TongaApplicationPanel.pnlHeader.titleText")); // NOI18N
 
         jToolBar3.setFloatable(false);
         jToolBar3.setRollover(true);
@@ -1262,7 +1262,7 @@ public class ApplicationPanel extends ContentPanel {
 
         LafManager.getInstance().setBtnProperties(btnSave);
         btnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/save.png"))); // NOI18N
-        btnSave.setText(bundle.getString("ApplicationPanel.btnSave.text")); // NOI18N
+        btnSave.setText(bundle.getString("TongaApplicationPanel.btnSave.text")); // NOI18N
         btnSave.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnSave.setName("btnSave"); // NOI18N
         btnSave.setComponentOrientation(ComponentOrientation.getOrientation(Locale.getDefault()));
@@ -1275,7 +1275,7 @@ public class ApplicationPanel extends ContentPanel {
 
         LafManager.getInstance().setBtnProperties(btnCalculateFee);
         btnCalculateFee.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/calculate.png"))); // NOI18N
-        btnCalculateFee.setText(bundle.getString("ApplicationPanel.btnCalculateFee.text")); // NOI18N
+        btnCalculateFee.setText(bundle.getString("TongaApplicationPanel.btnCalculateFee.text")); // NOI18N
         btnCalculateFee.setName("btnCalculateFee"); // NOI18N
         btnCalculateFee.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1285,7 +1285,7 @@ public class ApplicationPanel extends ContentPanel {
         jToolBar3.add(btnCalculateFee);
 
         btnValidate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/validation.png"))); // NOI18N
-        btnValidate.setText(bundle.getString("ApplicationPanel.btnValidate.text")); // NOI18N
+        btnValidate.setText(bundle.getString("TongaApplicationPanel.btnValidate.text")); // NOI18N
         btnValidate.setName("btnValidate"); // NOI18N
         btnValidate.setComponentOrientation(ComponentOrientation.getOrientation(Locale.getDefault()));
         btnValidate.addActionListener(new java.awt.event.ActionListener() {
@@ -1299,7 +1299,7 @@ public class ApplicationPanel extends ContentPanel {
         jToolBar3.add(jSeparator6);
 
         btnPrintFee.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/print.png"))); // NOI18N
-        btnPrintFee.setText(bundle.getString("ApplicationPanel.btnPrintFee.text")); // NOI18N
+        btnPrintFee.setText(bundle.getString("TongaApplicationPanel.btnPrintFee.text")); // NOI18N
         btnPrintFee.setName("btnPrintFee"); // NOI18N
         btnPrintFee.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1309,7 +1309,7 @@ public class ApplicationPanel extends ContentPanel {
         jToolBar3.add(btnPrintFee);
 
         btnPrintStatusReport.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/print.png"))); // NOI18N
-        btnPrintStatusReport.setText(bundle.getString("ApplicationPanel.btnPrintStatusReport.text")); // NOI18N
+        btnPrintStatusReport.setText(bundle.getString("TongaApplicationPanel.btnPrintStatusReport.text")); // NOI18N
         btnPrintStatusReport.setFocusable(false);
         btnPrintStatusReport.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnPrintStatusReport.setName("btnPrintStatusReport"); // NOI18N
@@ -1325,7 +1325,7 @@ public class ApplicationPanel extends ContentPanel {
         jToolBar3.add(jSeparator5);
 
         btnCertificate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/approve1.png"))); // NOI18N
-        btnCertificate.setText(bundle.getString("ApplicationPanel.btnCertificate.text")); // NOI18N
+        btnCertificate.setText(bundle.getString("TongaApplicationPanel.btnCertificate.text")); // NOI18N
         btnCertificate.setFocusable(false);
         btnCertificate.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         btnCertificate.setName(bundle.getString("ApplicationPanel.btnCertificate.name")); // NOI18N
@@ -1340,7 +1340,7 @@ public class ApplicationPanel extends ContentPanel {
         jSeparator7.setName(bundle.getString("ApplicationPanel.jSeparator7.name")); // NOI18N
         jToolBar3.add(jSeparator7);
 
-        dropDownButton1.setText(bundle.getString("ApplicationPanel.dropDownButton1.text")); // NOI18N
+        dropDownButton1.setText(bundle.getString("TongaApplicationPanel.dropDownButton1.text")); // NOI18N
         dropDownButton1.setComponentPopupMenu(popupApplicationActions);
         dropDownButton1.setFocusable(false);
         dropDownButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -1378,7 +1378,7 @@ public class ApplicationPanel extends ContentPanel {
         LafManager.getInstance().setLabProperties(labName);
         labName.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/red_asterisk.gif"))); // NOI18N
         labName.setLabelFor(txtFirstName);
-        labName.setText(bundle.getString("ApplicationPanel.labName.text")); // NOI18N
+        labName.setText(bundle.getString("TongaApplicationPanel.labName.text")); // NOI18N
         labName.setIconTextGap(1);
         labName.setName("labName"); // NOI18N
 
@@ -1388,8 +1388,8 @@ public class ApplicationPanel extends ContentPanel {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addComponent(labName, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(91, Short.MAX_VALUE))
-            .addComponent(txtFirstName, javax.swing.GroupLayout.DEFAULT_SIZE, 202, Short.MAX_VALUE)
+                .addContainerGap(99, Short.MAX_VALUE))
+            .addComponent(txtFirstName, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1406,7 +1406,7 @@ public class ApplicationPanel extends ContentPanel {
 
         LafManager.getInstance().setLabProperties(labLastName);
         labLastName.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/red_asterisk.gif"))); // NOI18N
-        labLastName.setText(bundle.getString("ApplicationPanel.labLastName.text")); // NOI18N
+        labLastName.setText(bundle.getString("TongaApplicationPanel.labLastName.text")); // NOI18N
         labLastName.setIconTextGap(1);
         labLastName.setName("labLastName"); // NOI18N
 
@@ -1424,8 +1424,8 @@ public class ApplicationPanel extends ContentPanel {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addComponent(labLastName)
-                .addContainerGap(142, Short.MAX_VALUE))
-            .addComponent(txtLastName, javax.swing.GroupLayout.DEFAULT_SIZE, 202, Short.MAX_VALUE)
+                .addContainerGap(150, Short.MAX_VALUE))
+            .addComponent(txtLastName, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1450,7 +1450,7 @@ public class ApplicationPanel extends ContentPanel {
 
         LafManager.getInstance().setLabProperties(labAddress);
         labAddress.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/red_asterisk.gif"))); // NOI18N
-        labAddress.setText(bundle.getString("ApplicationPanel.labAddress.text")); // NOI18N
+        labAddress.setText(bundle.getString("TongaApplicationPanel.labAddress.text")); // NOI18N
         labAddress.setIconTextGap(1);
         labAddress.setName("labAddress"); // NOI18N
 
@@ -1460,7 +1460,7 @@ public class ApplicationPanel extends ContentPanel {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addComponent(labAddress)
-                .addContainerGap(152, Short.MAX_VALUE))
+                .addContainerGap(160, Short.MAX_VALUE))
             .addComponent(txtAddress)
         );
         jPanel5Layout.setVerticalGroup(
@@ -1480,7 +1480,7 @@ public class ApplicationPanel extends ContentPanel {
         jPanel7.setName("jPanel7"); // NOI18N
 
         LafManager.getInstance().setLabProperties(labPhone);
-        labPhone.setText(bundle.getString("ApplicationPanel.labPhone.text")); // NOI18N
+        labPhone.setText(bundle.getString("TongaApplicationPanel.labPhone.text")); // NOI18N
         labPhone.setName("labPhone"); // NOI18N
 
         txtPhone.setName("txtPhone"); // NOI18N
@@ -1502,7 +1502,7 @@ public class ApplicationPanel extends ContentPanel {
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addComponent(labPhone)
-                .addContainerGap(172, Short.MAX_VALUE))
+                .addContainerGap(180, Short.MAX_VALUE))
             .addComponent(txtPhone, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         jPanel7Layout.setVerticalGroup(
@@ -1519,7 +1519,7 @@ public class ApplicationPanel extends ContentPanel {
         jPanel8.setName("jPanel8"); // NOI18N
 
         LafManager.getInstance().setLabProperties(labFax);
-        labFax.setText(bundle.getString("ApplicationPanel.labFax.text")); // NOI18N
+        labFax.setText(bundle.getString("TongaApplicationPanel.labFax.text")); // NOI18N
         labFax.setName("labFax"); // NOI18N
 
         txtFax.setName("txtFax"); // NOI18N
@@ -1539,7 +1539,7 @@ public class ApplicationPanel extends ContentPanel {
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(txtFax, javax.swing.GroupLayout.DEFAULT_SIZE, 202, Short.MAX_VALUE)
+            .addComponent(txtFax, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addComponent(labFax)
                 .addContainerGap())
@@ -1558,7 +1558,7 @@ public class ApplicationPanel extends ContentPanel {
         jPanel9.setName("jPanel9"); // NOI18N
 
         LafManager.getInstance().setLabProperties(labEmail);
-        labEmail.setText(bundle.getString("ApplicationPanel.labEmail.text")); // NOI18N
+        labEmail.setText(bundle.getString("TongaApplicationPanel.labEmail.text")); // NOI18N
         labEmail.setName("labEmail"); // NOI18N
 
         txtEmail.setName("txtEmail"); // NOI18N
@@ -1580,7 +1580,7 @@ public class ApplicationPanel extends ContentPanel {
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel9Layout.createSequentialGroup()
                 .addComponent(labEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(62, Short.MAX_VALUE))
+                .addContainerGap(70, Short.MAX_VALUE))
             .addComponent(txtEmail)
         );
         jPanel9Layout.setVerticalGroup(
@@ -1597,7 +1597,7 @@ public class ApplicationPanel extends ContentPanel {
         jPanel10.setName("jPanel10"); // NOI18N
 
         LafManager.getInstance().setLabProperties(labPreferredWay);
-        labPreferredWay.setText(bundle.getString("ApplicationPanel.labPreferredWay.text")); // NOI18N
+        labPreferredWay.setText(bundle.getString("TongaApplicationPanel.labPreferredWay.text")); // NOI18N
         labPreferredWay.setName("labPreferredWay"); // NOI18N
 
         LafManager.getInstance().setCmbProperties(cbxCommunicationWay);
@@ -1619,7 +1619,7 @@ public class ApplicationPanel extends ContentPanel {
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel10Layout.createSequentialGroup()
                 .addComponent(labPreferredWay)
-                .addContainerGap(83, Short.MAX_VALUE))
+                .addContainerGap(91, Short.MAX_VALUE))
             .addComponent(cbxCommunicationWay, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel10Layout.setVerticalGroup(
@@ -1639,7 +1639,7 @@ public class ApplicationPanel extends ContentPanel {
         jPanel19.setLayout(jPanel19Layout);
         jPanel19Layout.setHorizontalGroup(
             jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 202, Short.MAX_VALUE)
+            .addGap(0, 210, Short.MAX_VALUE)
         );
         jPanel19Layout.setVerticalGroup(
             jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1649,7 +1649,7 @@ public class ApplicationPanel extends ContentPanel {
         jPanel11.add(jPanel19);
 
         groupPanel1.setName("groupPanel1"); // NOI18N
-        groupPanel1.setTitleText(bundle.getString("ApplicationPanel.groupPanel1.titleText")); // NOI18N
+        groupPanel1.setTitleText(bundle.getString("TongaApplicationPanel.groupPanel1.titleText")); // NOI18N
 
         javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
         jPanel12.setLayout(jPanel12Layout);
@@ -1677,7 +1677,7 @@ public class ApplicationPanel extends ContentPanel {
         jPanel24.setName("jPanel24"); // NOI18N
         jPanel24.setRequestFocusEnabled(false);
 
-        jLabel1.setText(bundle.getString("ApplicationPanel.jLabel1.text")); // NOI18N
+        jLabel1.setText(bundle.getString("TongaApplicationPanel.jLabel1.text")); // NOI18N
         jLabel1.setName("jLabel1"); // NOI18N
 
         txtAppNumber.setEditable(false);
@@ -1693,8 +1693,8 @@ public class ApplicationPanel extends ContentPanel {
         jPanel24.setLayout(jPanel24Layout);
         jPanel24Layout.setHorizontalGroup(
             jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(txtAppNumber, javax.swing.GroupLayout.DEFAULT_SIZE, 202, Short.MAX_VALUE)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 202, Short.MAX_VALUE)
+            .addComponent(txtAppNumber, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
         );
         jPanel24Layout.setVerticalGroup(
             jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1713,11 +1713,11 @@ public class ApplicationPanel extends ContentPanel {
         jPanel13.setRequestFocusEnabled(false);
 
         LafManager.getInstance().setLabProperties(labDate);
-        labDate.setText(bundle.getString("ApplicationPanel.labDate.text")); // NOI18N
+        labDate.setText(bundle.getString("TongaApplicationPanel.labDate.text")); // NOI18N
         labDate.setName("labDate"); // NOI18N
 
         txtDate.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter()));
-        txtDate.setText(bundle.getString("ApplicationPanel.txtDate.text")); // NOI18N
+        txtDate.setText(bundle.getString("TongaApplicationPanel.txtDate.text")); // NOI18N
         txtDate.setEnabled(false);
         txtDate.setFocusable(false);
         txtDate.setName(bundle.getString("ApplicationPanel.txtDate.name")); // NOI18N
@@ -1729,7 +1729,7 @@ public class ApplicationPanel extends ContentPanel {
         jPanel13.setLayout(jPanel13Layout);
         jPanel13Layout.setHorizontalGroup(
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(labDate, javax.swing.GroupLayout.DEFAULT_SIZE, 202, Short.MAX_VALUE)
+            .addComponent(labDate, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
             .addComponent(txtDate)
         );
         jPanel13Layout.setVerticalGroup(
@@ -1748,11 +1748,11 @@ public class ApplicationPanel extends ContentPanel {
         jPanel26.setName("jPanel26"); // NOI18N
         jPanel26.setRequestFocusEnabled(false);
 
-        jLabel2.setText(bundle.getString("ApplicationPanel.jLabel2.text")); // NOI18N
+        jLabel2.setText(bundle.getString("TongaApplicationPanel.jLabel2.text")); // NOI18N
         jLabel2.setName("jLabel2"); // NOI18N
 
         txtCompleteBy.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter()));
-        txtCompleteBy.setText(bundle.getString("ApplicationPanel.txtCompleteBy.text")); // NOI18N
+        txtCompleteBy.setText(bundle.getString("TongaApplicationPanel.txtCompleteBy.text")); // NOI18N
         txtCompleteBy.setEnabled(false);
         txtCompleteBy.setFocusable(false);
         txtCompleteBy.setName(bundle.getString("ApplicationPanel.txtCompleteBy.name")); // NOI18N
@@ -1764,7 +1764,7 @@ public class ApplicationPanel extends ContentPanel {
         jPanel26.setLayout(jPanel26Layout);
         jPanel26Layout.setHorizontalGroup(
             jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 202, Short.MAX_VALUE)
+            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
             .addComponent(txtCompleteBy)
         );
         jPanel26Layout.setVerticalGroup(
@@ -1782,7 +1782,7 @@ public class ApplicationPanel extends ContentPanel {
         jPanel14.setName("jPanel14"); // NOI18N
 
         LafManager.getInstance().setLabProperties(labAgents);
-        labAgents.setText(bundle.getString("ApplicationPanel.labAgents.text")); // NOI18N
+        labAgents.setText(bundle.getString("TongaApplicationPanel.labAgents.text")); // NOI18N
         labAgents.setIconTextGap(1);
         labAgents.setName("labAgents"); // NOI18N
 
@@ -1804,10 +1804,10 @@ public class ApplicationPanel extends ContentPanel {
         jPanel14.setLayout(jPanel14Layout);
         jPanel14Layout.setHorizontalGroup(
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(cbxAgents, 0, 202, Short.MAX_VALUE)
+            .addComponent(cbxAgents, 0, 210, Short.MAX_VALUE)
             .addGroup(jPanel14Layout.createSequentialGroup()
                 .addComponent(labAgents)
-                .addContainerGap(173, Short.MAX_VALUE))
+                .addContainerGap(181, Short.MAX_VALUE))
         );
         jPanel14Layout.setVerticalGroup(
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1822,7 +1822,7 @@ public class ApplicationPanel extends ContentPanel {
         jPanel15.setName("jPanel15"); // NOI18N
 
         LafManager.getInstance().setLabProperties(labStatus);
-        labStatus.setText(bundle.getString("ApplicationPanel.labStatus.text")); // NOI18N
+        labStatus.setText(bundle.getString("TongaApplicationPanel.labStatus.text")); // NOI18N
         labStatus.setName("labStatus"); // NOI18N
 
         txtStatus.setEnabled(false);
@@ -1838,10 +1838,10 @@ public class ApplicationPanel extends ContentPanel {
         jPanel15.setLayout(jPanel15Layout);
         jPanel15Layout.setHorizontalGroup(
             jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(txtStatus, javax.swing.GroupLayout.DEFAULT_SIZE, 202, Short.MAX_VALUE)
+            .addComponent(txtStatus, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
             .addGroup(jPanel15Layout.createSequentialGroup()
                 .addComponent(labStatus)
-                .addContainerGap(171, Short.MAX_VALUE))
+                .addContainerGap(179, Short.MAX_VALUE))
         );
         jPanel15Layout.setVerticalGroup(
             jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1861,7 +1861,7 @@ public class ApplicationPanel extends ContentPanel {
             .addGroup(contactPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(contactPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel25, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(jPanel25, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -1875,7 +1875,7 @@ public class ApplicationPanel extends ContentPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        tabbedControlMain.addTab(bundle.getString("ApplicationPanel.contactPanel.TabConstraints.tabTitle"), contactPanel); // NOI18N
+        tabbedControlMain.addTab(bundle.getString("TongaApplicationPanel.contactPanel.TabConstraints.tabTitle"), contactPanel); // NOI18N
 
         servicesPanel.setName("servicesPanel"); // NOI18N
 
@@ -1924,7 +1924,7 @@ public class ApplicationPanel extends ContentPanel {
         tbServices.setName("tbServices"); // NOI18N
 
         btnAddService.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/add.png"))); // NOI18N
-        btnAddService.setText(bundle.getString("ApplicationPanel.btnAddService.text")); // NOI18N
+        btnAddService.setText(bundle.getString("TongaApplicationPanel.btnAddService.text")); // NOI18N
         btnAddService.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnAddService.setName("btnAddService"); // NOI18N
         btnAddService.setComponentOrientation(ComponentOrientation.getOrientation(Locale.getDefault()));
@@ -1936,7 +1936,7 @@ public class ApplicationPanel extends ContentPanel {
         tbServices.add(btnAddService);
 
         btnRemoveService.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/remove.png"))); // NOI18N
-        btnRemoveService.setText(bundle.getString("ApplicationPanel.btnRemoveService.text")); // NOI18N
+        btnRemoveService.setText(bundle.getString("TongaApplicationPanel.btnRemoveService.text")); // NOI18N
         btnRemoveService.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnRemoveService.setName("btnRemoveService"); // NOI18N
         btnRemoveService.addActionListener(new java.awt.event.ActionListener() {
@@ -1950,7 +1950,7 @@ public class ApplicationPanel extends ContentPanel {
         tbServices.add(jSeparator1);
 
         btnUPService.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/up.png"))); // NOI18N
-        btnUPService.setText(bundle.getString("ApplicationPanel.btnUPService.text")); // NOI18N
+        btnUPService.setText(bundle.getString("TongaApplicationPanel.btnUPService.text")); // NOI18N
         btnUPService.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnUPService.setName("btnUPService"); // NOI18N
         btnUPService.addActionListener(new java.awt.event.ActionListener() {
@@ -1961,7 +1961,7 @@ public class ApplicationPanel extends ContentPanel {
         tbServices.add(btnUPService);
 
         btnDownService.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/down.png"))); // NOI18N
-        btnDownService.setText(bundle.getString("ApplicationPanel.btnDownService.text")); // NOI18N
+        btnDownService.setText(bundle.getString("TongaApplicationPanel.btnDownService.text")); // NOI18N
         btnDownService.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnDownService.setName("btnDownService"); // NOI18N
         btnDownService.addActionListener(new java.awt.event.ActionListener() {
@@ -1975,7 +1975,7 @@ public class ApplicationPanel extends ContentPanel {
         tbServices.add(jSeparator2);
 
         btnViewService.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/view.png"))); // NOI18N
-        btnViewService.setText(bundle.getString("ApplicationPanel.btnViewService.text")); // NOI18N
+        btnViewService.setText(bundle.getString("TongaApplicationPanel.btnViewService.text")); // NOI18N
         btnViewService.setFocusable(false);
         btnViewService.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnViewService.setName("btnViewService"); // NOI18N
@@ -1988,7 +1988,7 @@ public class ApplicationPanel extends ContentPanel {
         tbServices.add(btnViewService);
 
         btnStartService.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/start.png"))); // NOI18N
-        btnStartService.setText(bundle.getString("ApplicationPanel.btnStartService.text")); // NOI18N
+        btnStartService.setText(bundle.getString("TongaApplicationPanel.btnStartService.text")); // NOI18N
         btnStartService.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnStartService.setName("btnStartService"); // NOI18N
         btnStartService.setComponentOrientation(ComponentOrientation.getOrientation(Locale.getDefault()));
@@ -2000,7 +2000,7 @@ public class ApplicationPanel extends ContentPanel {
         tbServices.add(btnStartService);
 
         btnCompleteService.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/confirm.png"))); // NOI18N
-        btnCompleteService.setText(bundle.getString("ApplicationPanel.btnCompleteService.text")); // NOI18N
+        btnCompleteService.setText(bundle.getString("TongaApplicationPanel.btnCompleteService.text")); // NOI18N
         btnCompleteService.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnCompleteService.setName("btnCompleteService"); // NOI18N
         btnCompleteService.addActionListener(new java.awt.event.ActionListener() {
@@ -2011,7 +2011,7 @@ public class ApplicationPanel extends ContentPanel {
         tbServices.add(btnCompleteService);
 
         btnRevertService.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/revert.png"))); // NOI18N
-        btnRevertService.setText(bundle.getString("ApplicationPanel.btnRevertService.text")); // NOI18N
+        btnRevertService.setText(bundle.getString("TongaApplicationPanel.btnRevertService.text")); // NOI18N
         btnRevertService.setFocusable(false);
         btnRevertService.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnRevertService.setName("btnRevertService"); // NOI18N
@@ -2024,7 +2024,7 @@ public class ApplicationPanel extends ContentPanel {
         tbServices.add(btnRevertService);
 
         btnCancelService.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/cancel.png"))); // NOI18N
-        btnCancelService.setText(bundle.getString("ApplicationPanel.btnCancelService.text")); // NOI18N
+        btnCancelService.setText(bundle.getString("TongaApplicationPanel.btnCancelService.text")); // NOI18N
         btnCancelService.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnCancelService.setName("btnCancelService"); // NOI18N
         btnCancelService.addActionListener(new java.awt.event.ActionListener() {
@@ -2041,8 +2041,8 @@ public class ApplicationPanel extends ContentPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, servicesPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(servicesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(scrollFeeDetails1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 638, Short.MAX_VALUE)
-                    .addComponent(tbServices, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 636, Short.MAX_VALUE))
+                    .addComponent(scrollFeeDetails1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 660, Short.MAX_VALUE)
+                    .addComponent(tbServices, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 660, Short.MAX_VALUE))
                 .addContainerGap())
         );
         servicesPanelLayout.setVerticalGroup(
@@ -2055,7 +2055,7 @@ public class ApplicationPanel extends ContentPanel {
                 .addContainerGap())
         );
 
-        tabbedControlMain.addTab(bundle.getString("ApplicationPanel.servicesPanel.TabConstraints.tabTitle"), servicesPanel); // NOI18N
+        tabbedControlMain.addTab(bundle.getString("TongaApplicationPanel.servicesPanel.TabConstraints.tabTitle"), servicesPanel); // NOI18N
 
         propertyPanel.setName("propertyPanel"); // NOI18N
         propertyPanel.setComponentOrientation(ComponentOrientation.getOrientation(Locale.getDefault()));
@@ -2067,11 +2067,11 @@ public class ApplicationPanel extends ContentPanel {
 
         tbPropertyDetails.setFloatable(false);
         tbPropertyDetails.setRollover(true);
-        tbPropertyDetails.setToolTipText(bundle.getString("ApplicationPanel.tbPropertyDetails.toolTipText")); // NOI18N
+        tbPropertyDetails.setToolTipText(bundle.getString("TongaApplicationPanel.tbPropertyDetails.toolTipText")); // NOI18N
         tbPropertyDetails.setName("tbPropertyDetails"); // NOI18N
 
         btnRemoveProperty.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/remove.png"))); // NOI18N
-        btnRemoveProperty.setText(bundle.getString("ApplicationPanel.btnRemoveProperty.text")); // NOI18N
+        btnRemoveProperty.setText(bundle.getString("TongaApplicationPanel.btnRemoveProperty.text")); // NOI18N
         btnRemoveProperty.setName("btnRemoveProperty"); // NOI18N
         btnRemoveProperty.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -2081,7 +2081,7 @@ public class ApplicationPanel extends ContentPanel {
         tbPropertyDetails.add(btnRemoveProperty);
 
         btnVerifyProperty.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/document-task.png"))); // NOI18N
-        btnVerifyProperty.setText(bundle.getString("ApplicationPanel.btnVerifyProperty.text")); // NOI18N
+        btnVerifyProperty.setText(bundle.getString("TongaApplicationPanel.btnVerifyProperty.text")); // NOI18N
         btnVerifyProperty.setName("btnVerifyProperty"); // NOI18N
         btnVerifyProperty.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -2132,15 +2132,15 @@ public class ApplicationPanel extends ContentPanel {
         bindingGroup.addBinding(binding);
 
         scrollPropertyDetails.setViewportView(tabPropertyDetails);
-        tabPropertyDetails.getColumnModel().getColumn(0).setHeaderValue(bundle.getString("ApplicationPanel.tabPropertyDetails.columnModel.title0")); // NOI18N
-        tabPropertyDetails.getColumnModel().getColumn(1).setHeaderValue(bundle.getString("ApplicationPanel.tabPropertyDetails.columnModel.title1")); // NOI18N
-        tabPropertyDetails.getColumnModel().getColumn(2).setHeaderValue(bundle.getString("ApplicationPanel.tabPropertyDetails.columnModel.title2")); // NOI18N
-        tabPropertyDetails.getColumnModel().getColumn(3).setHeaderValue(bundle.getString("ApplicationPanel.tabPropertyDetails.columnModel.title3")); // NOI18N
+        tabPropertyDetails.getColumnModel().getColumn(0).setHeaderValue(bundle.getString("TongaApplicationPanel.tabPropertyDetails.columnModel.title0")); // NOI18N
+        tabPropertyDetails.getColumnModel().getColumn(1).setHeaderValue(bundle.getString("TongaApplicationPanel.tabPropertyDetails.columnModel.title1")); // NOI18N
+        tabPropertyDetails.getColumnModel().getColumn(2).setHeaderValue(bundle.getString("TongaApplicationPanel.tabPropertyDetails.columnModel.title2")); // NOI18N
+        tabPropertyDetails.getColumnModel().getColumn(3).setHeaderValue(bundle.getString("TongaApplicationPanel.tabPropertyDetails.columnModel.title3")); // NOI18N
         tabPropertyDetails.getColumnModel().getColumn(4).setHeaderValue(bundle.getString("ApplicationPanel.tabPropertyDetails.columnModel.title6")); // NOI18N
         tabPropertyDetails.getColumnModel().getColumn(4).setCellRenderer(new ExistingObjectCellRenderer());
         tabPropertyDetails.getColumnModel().getColumn(5).setHeaderValue(bundle.getString("ApplicationPanel.tabPropertyDetails.columnModel.title4")); // NOI18N
         tabPropertyDetails.getColumnModel().getColumn(5).setCellRenderer(new ExistingObjectCellRenderer());
-        tabPropertyDetails.getColumnModel().getColumn(6).setHeaderValue(bundle.getString("ApplicationPanel.tabPropertyDetails.columnModel.title6_1")); // NOI18N
+        tabPropertyDetails.getColumnModel().getColumn(6).setHeaderValue(bundle.getString("TongaApplicationPanel.tabPropertyDetails.columnModel.title6_1")); // NOI18N
 
         propertypartPanel.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         propertypartPanel.setName("propertypartPanel"); // NOI18N
@@ -2150,20 +2150,20 @@ public class ApplicationPanel extends ContentPanel {
         jPanel16.setName("jPanel16"); // NOI18N
 
         LafManager.getInstance().setLabProperties(labFirstPart);
-        labFirstPart.setText(bundle.getString("ApplicationPanel.labFirstPart.text")); // NOI18N
+        labFirstPart.setText(bundle.getString("TongaApplicationPanel.labFirstPart.text")); // NOI18N
         labFirstPart.setName("labFirstPart"); // NOI18N
 
         LafManager.getInstance().setTxtProperties(txtFirstPart);
-        txtFirstPart.setText(bundle.getString("ApplicationPanel.txtFirstPart.text")); // NOI18N
+        txtFirstPart.setText(bundle.getString("TongaApplicationPanel.txtFirstPart.text")); // NOI18N
         txtFirstPart.setName("txtFirstPart"); // NOI18N
         txtFirstPart.setComponentOrientation(ComponentOrientation.getOrientation(Locale.getDefault()));
         txtFirstPart.setHorizontalAlignment(JTextField.LEADING);
 
         LafManager.getInstance().setLabProperties(labArea);
-        labArea.setText(bundle.getString("ApplicationPanel.labArea.text")); // NOI18N
+        labArea.setText(bundle.getString("TongaApplicationPanel.labArea.text")); // NOI18N
         labArea.setName("labArea"); // NOI18N
 
-        txtArea.setText(bundle.getString("ApplicationPanel.txtArea.text")); // NOI18N
+        txtArea.setText(bundle.getString("TongaApplicationPanel.txtArea.text")); // NOI18N
         txtArea.setName("txtArea"); // NOI18N
         txtArea.setComponentOrientation(ComponentOrientation.getOrientation(Locale.getDefault()));
         txtArea.setHorizontalAlignment(JTextField.LEADING);
@@ -2174,8 +2174,8 @@ public class ApplicationPanel extends ContentPanel {
             jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel16Layout.createSequentialGroup()
                 .addComponent(labFirstPart)
-                .addContainerGap(158, Short.MAX_VALUE))
-            .addComponent(txtFirstPart, javax.swing.GroupLayout.DEFAULT_SIZE, 202, Short.MAX_VALUE)
+                .addContainerGap(123, Short.MAX_VALUE))
+            .addComponent(txtFirstPart, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
             .addGroup(jPanel16Layout.createSequentialGroup()
                 .addComponent(labArea)
                 .addGap(0, 0, Short.MAX_VALUE))
@@ -2198,20 +2198,20 @@ public class ApplicationPanel extends ContentPanel {
 
         jPanel17.setName("jPanel17"); // NOI18N
 
-        txtLastPart.setText(bundle.getString("ApplicationPanel.txtLastPart.text")); // NOI18N
+        txtLastPart.setText(bundle.getString("TongaApplicationPanel.txtLastPart.text")); // NOI18N
         txtLastPart.setName("txtLastPart"); // NOI18N
         txtLastPart.setComponentOrientation(ComponentOrientation.getOrientation(Locale.getDefault()));
         txtLastPart.setHorizontalAlignment(JTextField.LEADING);
 
         LafManager.getInstance().setLabProperties(labLastPart);
-        labLastPart.setText(bundle.getString("ApplicationPanel.labLastPart.text")); // NOI18N
+        labLastPart.setText(bundle.getString("TongaApplicationPanel.labLastPart.text")); // NOI18N
         labLastPart.setName("labLastPart"); // NOI18N
 
         LafManager.getInstance().setLabProperties(labValue);
-        labValue.setText(bundle.getString("ApplicationPanel.labValue.text")); // NOI18N
+        labValue.setText(bundle.getString("TongaApplicationPanel.labValue.text")); // NOI18N
         labValue.setName("labValue"); // NOI18N
 
-        txtValue.setText(bundle.getString("ApplicationPanel.txtValue.text")); // NOI18N
+        txtValue.setText(bundle.getString("TongaApplicationPanel.txtValue.text")); // NOI18N
         txtValue.setName("txtValue"); // NOI18N
         txtValue.setComponentOrientation(ComponentOrientation.getOrientation(Locale.getDefault()));
         txtValue.setHorizontalAlignment(JTextField.LEADING);
@@ -2220,14 +2220,14 @@ public class ApplicationPanel extends ContentPanel {
         jPanel17.setLayout(jPanel17Layout);
         jPanel17Layout.setHorizontalGroup(
             jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(txtLastPart, javax.swing.GroupLayout.DEFAULT_SIZE, 202, Short.MAX_VALUE)
+            .addComponent(txtLastPart, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
             .addGroup(jPanel17Layout.createSequentialGroup()
                 .addComponent(labLastPart)
-                .addContainerGap(159, Short.MAX_VALUE))
+                .addContainerGap(150, Short.MAX_VALUE))
             .addGroup(jPanel17Layout.createSequentialGroup()
                 .addComponent(labValue)
                 .addGap(0, 0, Short.MAX_VALUE))
-            .addComponent(txtValue, javax.swing.GroupLayout.DEFAULT_SIZE, 202, Short.MAX_VALUE)
+            .addComponent(txtValue, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
         );
         jPanel17Layout.setVerticalGroup(
             jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2246,7 +2246,7 @@ public class ApplicationPanel extends ContentPanel {
 
         jPanel18.setName("jPanel18"); // NOI18N
 
-        labLandUse.setText(bundle.getString("ApplicationPanel.labLandUse.text")); // NOI18N
+        labLandUse.setText(bundle.getString("TongaApplicationPanel.labLandUse.text")); // NOI18N
         labLandUse.setName(bundle.getString("ApplicationPanel.labLandUse.name")); // NOI18N
 
         cbxLandUse.setName(bundle.getString("ApplicationPanel.cbxLandUse.name")); // NOI18N
@@ -2258,7 +2258,7 @@ public class ApplicationPanel extends ContentPanel {
         bindingGroup.addBinding(binding);
 
         LafManager.getInstance().setBtnProperties(btnAddProperty);
-        btnAddProperty.setText(bundle.getString("ApplicationPanel.btnAddProperty.text")); // NOI18N
+        btnAddProperty.setText(bundle.getString("TongaApplicationPanel.btnAddProperty.text")); // NOI18N
         btnAddProperty.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnAddProperty.setName("btnAddProperty"); // NOI18N
         btnAddProperty.addActionListener(new java.awt.event.ActionListener() {
@@ -2276,7 +2276,7 @@ public class ApplicationPanel extends ContentPanel {
                 .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(labLandUse, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAddProperty))
-                .addGap(0, 105, Short.MAX_VALUE))
+                .addGap(0, 113, Short.MAX_VALUE))
         );
         jPanel18Layout.setVerticalGroup(
             jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2298,9 +2298,9 @@ public class ApplicationPanel extends ContentPanel {
             .addGroup(propertyPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(propertyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(scrollPropertyDetails, javax.swing.GroupLayout.DEFAULT_SIZE, 636, Short.MAX_VALUE)
+                    .addComponent(scrollPropertyDetails)
                     .addComponent(tbPropertyDetails, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(propertypartPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 636, Short.MAX_VALUE))
+                    .addComponent(propertypartPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         propertyPanelLayout.setVerticalGroup(
@@ -2315,7 +2315,7 @@ public class ApplicationPanel extends ContentPanel {
                 .addContainerGap())
         );
 
-        tabbedControlMain.addTab(bundle.getString("ApplicationPanel.propertyPanel.TabConstraints.tabTitle"), propertyPanel); // NOI18N
+        tabbedControlMain.addTab(bundle.getString("TongaApplicationPanel.propertyPanel.TabConstraints.tabTitle"), propertyPanel); // NOI18N
 
         documentPanel.setName("documentPanel"); // NOI18N
         documentPanel.setComponentOrientation(ComponentOrientation.getOrientation(Locale.getDefault()));
@@ -2326,7 +2326,7 @@ public class ApplicationPanel extends ContentPanel {
         });
 
         labDocRequired.setBackground(new java.awt.Color(255, 255, 204));
-        labDocRequired.setText(bundle.getString("ApplicationPanel.labDocRequired.text")); // NOI18N
+        labDocRequired.setText(bundle.getString("TongaApplicationPanel.labDocRequired.text")); // NOI18N
         labDocRequired.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 102)));
         labDocRequired.setName("labDocRequired"); // NOI18N
         labDocRequired.setOpaque(true);
@@ -2360,9 +2360,9 @@ public class ApplicationPanel extends ContentPanel {
         tblDocTypesHelper.getColumnModel().getColumn(0).setMinWidth(20);
         tblDocTypesHelper.getColumnModel().getColumn(0).setPreferredWidth(20);
         tblDocTypesHelper.getColumnModel().getColumn(0).setMaxWidth(20);
-        tblDocTypesHelper.getColumnModel().getColumn(0).setHeaderValue(bundle.getString("ApplicationPanel.tblDocTypesHelper.columnModel.title0_1")); // NOI18N
+        tblDocTypesHelper.getColumnModel().getColumn(0).setHeaderValue(bundle.getString("TongaApplicationPanel.tblDocTypesHelper.columnModel.title0_1")); // NOI18N
         tblDocTypesHelper.getColumnModel().getColumn(0).setCellRenderer(new BooleanCellRenderer());
-        tblDocTypesHelper.getColumnModel().getColumn(1).setHeaderValue(bundle.getString("ApplicationPanel.tblDocTypesHelper.columnModel.title1_1")); // NOI18N
+        tblDocTypesHelper.getColumnModel().getColumn(1).setHeaderValue(bundle.getString("TongaApplicationPanel.tblDocTypesHelper.columnModel.title1_1")); // NOI18N
 
         documentsPanel.setName(bundle.getString("ApplicationPanel.documentsPanel.name")); // NOI18N
 
@@ -2372,7 +2372,7 @@ public class ApplicationPanel extends ContentPanel {
             documentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(documentPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(documentsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 390, Short.MAX_VALUE)
+                .addComponent(documentsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 414, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(documentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(scrollDocRequired, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2392,7 +2392,7 @@ public class ApplicationPanel extends ContentPanel {
                 .addContainerGap())
         );
 
-        tabbedControlMain.addTab(bundle.getString("ApplicationPanel.documentPanel.TabConstraints.tabTitle"), documentPanel); // NOI18N
+        tabbedControlMain.addTab(bundle.getString("TongaApplicationPanel.documentPanel.TabConstraints.tabTitle"), documentPanel); // NOI18N
 
         mapPanel.setName("mapPanel"); // NOI18N
 
@@ -2400,14 +2400,14 @@ public class ApplicationPanel extends ContentPanel {
         mapPanel.setLayout(mapPanelLayout);
         mapPanelLayout.setHorizontalGroup(
             mapPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 656, Short.MAX_VALUE)
+            .addGap(0, 680, Short.MAX_VALUE)
         );
         mapPanelLayout.setVerticalGroup(
             mapPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 347, Short.MAX_VALUE)
         );
 
-        tabbedControlMain.addTab(bundle.getString("ApplicationPanel.mapPanel.TabConstraints.tabTitle"), mapPanel); // NOI18N
+        tabbedControlMain.addTab(bundle.getString("TongaApplicationPanel.mapPanel.TabConstraints.tabTitle"), mapPanel); // NOI18N
 
         feesPanel.setName("feesPanel"); // NOI18N
         feesPanel.setComponentOrientation(ComponentOrientation.getOrientation(Locale.getDefault()));
@@ -2450,11 +2450,11 @@ public class ApplicationPanel extends ContentPanel {
         jTableBinding.bind();
         scrollFeeDetails.setViewportView(tabFeeDetails);
         tabFeeDetails.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        tabFeeDetails.getColumnModel().getColumn(0).setHeaderValue(bundle.getString("ApplicationPanel.tabFeeDetails.columnModel.title0")); // NOI18N
-        tabFeeDetails.getColumnModel().getColumn(1).setHeaderValue(bundle.getString("ApplicationPanel.tabFeeDetails.columnModel.title1_1")); // NOI18N
-        tabFeeDetails.getColumnModel().getColumn(2).setHeaderValue(bundle.getString("ApplicationPanel.tabFeeDetails.columnModel.title2_2")); // NOI18N
-        tabFeeDetails.getColumnModel().getColumn(3).setHeaderValue(bundle.getString("ApplicationPanel.tabFeeDetails.columnModel.title3")); // NOI18N
-        tabFeeDetails.getColumnModel().getColumn(4).setHeaderValue(bundle.getString("ApplicationPanel.tabFeeDetails.columnModel.title4")); // NOI18N
+        tabFeeDetails.getColumnModel().getColumn(0).setHeaderValue(bundle.getString("TongaApplicationPanel.tabFeeDetails.columnModel.title0")); // NOI18N
+        tabFeeDetails.getColumnModel().getColumn(1).setHeaderValue(bundle.getString("TongaApplicationPanel.tabFeeDetails.columnModel.title1_1")); // NOI18N
+        tabFeeDetails.getColumnModel().getColumn(2).setHeaderValue(bundle.getString("TongaApplicationPanel.tabFeeDetails.columnModel.title2_2")); // NOI18N
+        tabFeeDetails.getColumnModel().getColumn(3).setHeaderValue(bundle.getString("TongaApplicationPanel.tabFeeDetails.columnModel.title3")); // NOI18N
+        tabFeeDetails.getColumnModel().getColumn(4).setHeaderValue(bundle.getString("TongaApplicationPanel.tabFeeDetails.columnModel.title4")); // NOI18N
 
         jPanel2.setName("jPanel2"); // NOI18N
 
@@ -2491,20 +2491,20 @@ public class ApplicationPanel extends ContentPanel {
         formTxtFee.setHorizontalAlignment(JFormattedTextField.LEADING);
 
         LafManager.getInstance().setLabProperties(labTotalFee2);
-        labTotalFee2.setText(bundle.getString("ApplicationPanel.labTotalFee2.text")); // NOI18N
+        labTotalFee2.setText(bundle.getString("TongaApplicationPanel.labTotalFee2.text")); // NOI18N
         labTotalFee2.setName("labTotalFee2"); // NOI18N
 
         LafManager.getInstance().setLabProperties(labTotalFee);
-        labTotalFee.setText(bundle.getString("ApplicationPanel.labTotalFee.text")); // NOI18N
+        labTotalFee.setText(bundle.getString("TongaApplicationPanel.labTotalFee.text")); // NOI18N
         labTotalFee.setName("labTotalFee"); // NOI18N
 
         LafManager.getInstance().setLabProperties(labTotalFee1);
-        labTotalFee1.setText(bundle.getString("ApplicationPanel.labTotalFee1.text")); // NOI18N
+        labTotalFee1.setText(bundle.getString("TongaApplicationPanel.labTotalFee1.text")); // NOI18N
         labTotalFee1.setName("labTotalFee1"); // NOI18N
 
         labFixedFee.setBackground(new java.awt.Color(255, 255, 255));
         LafManager.getInstance().setLabProperties(labFixedFee);
-        labFixedFee.setText(bundle.getString("ApplicationPanel.labFixedFee.text")); // NOI18N
+        labFixedFee.setText(bundle.getString("TongaApplicationPanel.labFixedFee.text")); // NOI18N
         labFixedFee.setName("labFixedFee"); // NOI18N
 
         formTxtReceiptRef.setName(bundle.getString("ApplicationPanel.formTxtReceiptRef.name")); // NOI18N
@@ -2512,14 +2512,14 @@ public class ApplicationPanel extends ContentPanel {
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, appBean, org.jdesktop.beansbinding.ELProperty.create("${receiptRef}"), formTxtReceiptRef, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
 
-        labReceiptRef.setText(bundle.getString("ApplicationPanel.labReceiptRef.text")); // NOI18N
+        labReceiptRef.setText(bundle.getString("TongaApplicationPanel.labReceiptRef.text")); // NOI18N
         labReceiptRef.setName(bundle.getString("ApplicationPanel.labReceiptRef.name")); // NOI18N
 
-        labTotalFee3.setText(bundle.getString("ApplicationPanel.labTotalFee3.text")); // NOI18N
+        labTotalFee3.setText(bundle.getString("TongaApplicationPanel.labTotalFee3.text")); // NOI18N
         labTotalFee3.setName("labTotalFee3"); // NOI18N
 
-        cbxPaid.setText(bundle.getString("ApplicationPanel.cbxPaid.text")); // NOI18N
-        cbxPaid.setActionCommand(bundle.getString("ApplicationPanel.cbxPaid.actionCommand")); // NOI18N
+        cbxPaid.setText(bundle.getString("TongaApplicationPanel.cbxPaid.text")); // NOI18N
+        cbxPaid.setActionCommand(bundle.getString("TongaApplicationPanel.cbxPaid.actionCommand")); // NOI18N
         cbxPaid.setMargin(new java.awt.Insets(2, 0, 2, 2));
         cbxPaid.setName("cbxPaid"); // NOI18N
 
@@ -2527,7 +2527,7 @@ public class ApplicationPanel extends ContentPanel {
         bindingGroup.addBinding(binding);
 
         formTxtPaid.setFormatterFactory(BigDecimalMoneyConverter.getEditFormatterFactory());
-        formTxtPaid.setText(bundle.getString("ApplicationPanel.formTxtPaid.text")); // NOI18N
+        formTxtPaid.setText(bundle.getString("TongaApplicationPanel.formTxtPaid.text")); // NOI18N
         formTxtPaid.setName(bundle.getString("ApplicationPanel.formTxtPaid.name")); // NOI18N
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, appBean, org.jdesktop.beansbinding.ELProperty.create("${totalAmountPaid}"), formTxtPaid, org.jdesktop.beansbinding.BeanProperty.create("value"), "formTxtPaidBinding"); // NOI18N
@@ -2544,16 +2544,13 @@ public class ApplicationPanel extends ContentPanel {
                     .addComponent(formTxtServiceFee))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(labTotalFee1)
-                        .addGap(56, 56, 56))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(formTxtTaxes, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(labTotalFee1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(formTxtTaxes, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(labTotalFee, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(formTxtFee, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(formTxtFee, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(labTotalFee2, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(formTxtPaid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -2567,10 +2564,10 @@ public class ApplicationPanel extends ContentPanel {
                         .addComponent(labReceiptRef, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(labTotalFee3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(47, Short.MAX_VALUE))
+                .addContainerGap(52, Short.MAX_VALUE))
         );
 
-        jPanel2Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {formTxtFee, formTxtPaid, formTxtReceiptRef, formTxtServiceFee, formTxtTaxes});
+        jPanel2Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {formTxtFee, formTxtPaid, formTxtReceiptRef, formTxtServiceFee});
 
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2622,7 +2619,7 @@ public class ApplicationPanel extends ContentPanel {
                 .addContainerGap())
         );
 
-        tabbedControlMain.addTab(bundle.getString("ApplicationPanel.feesPanel.TabConstraints.tabTitle"), feesPanel); // NOI18N
+        tabbedControlMain.addTab(bundle.getString("TongaApplicationPanel.feesPanel.TabConstraints.tabTitle"), feesPanel); // NOI18N
 
         validationPanel.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         validationPanel.setName("validationPanel"); // NOI18N
@@ -2668,7 +2665,7 @@ public class ApplicationPanel extends ContentPanel {
             validationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(validationPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(validationsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 636, Short.MAX_VALUE)
+                .addComponent(validationsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 660, Short.MAX_VALUE)
                 .addContainerGap())
         );
         validationPanelLayout.setVerticalGroup(
@@ -2679,7 +2676,7 @@ public class ApplicationPanel extends ContentPanel {
                 .addContainerGap())
         );
 
-        tabbedControlMain.addTab(bundle.getString("ApplicationPanel.validationPanel.TabConstraints.tabTitle"), validationPanel); // NOI18N
+        tabbedControlMain.addTab(bundle.getString("TongaApplicationPanel.validationPanel.TabConstraints.tabTitle"), validationPanel); // NOI18N
 
         historyPanel.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         historyPanel.setName("historyPanel"); // NOI18N
@@ -2717,11 +2714,11 @@ public class ApplicationPanel extends ContentPanel {
         bindingGroup.addBinding(jTableBinding);
         jTableBinding.bind();
         actionLogPanel.setViewportView(tabActionLog);
-        tabActionLog.getColumnModel().getColumn(0).setHeaderValue(bundle.getString("ApplicationPanel.tabActionLog.columnModel.title0")); // NOI18N
+        tabActionLog.getColumnModel().getColumn(0).setHeaderValue(bundle.getString("TongaApplicationPanel.tabActionLog.columnModel.title0")); // NOI18N
         tabActionLog.getColumnModel().getColumn(0).setCellRenderer(new DateTimeRenderer());
-        tabActionLog.getColumnModel().getColumn(1).setHeaderValue(bundle.getString("ApplicationPanel.tabActionLog.columnModel.title1_1")); // NOI18N
-        tabActionLog.getColumnModel().getColumn(2).setHeaderValue(bundle.getString("ApplicationPanel.tabActionLog.columnModel.title2_1")); // NOI18N
-        tabActionLog.getColumnModel().getColumn(3).setHeaderValue(bundle.getString("ApplicationPanel.tabActionLog.columnModel.title3_1")); // NOI18N
+        tabActionLog.getColumnModel().getColumn(1).setHeaderValue(bundle.getString("TongaApplicationPanel.tabActionLog.columnModel.title1_1")); // NOI18N
+        tabActionLog.getColumnModel().getColumn(2).setHeaderValue(bundle.getString("TongaApplicationPanel.tabActionLog.columnModel.title2_1")); // NOI18N
+        tabActionLog.getColumnModel().getColumn(3).setHeaderValue(bundle.getString("TongaApplicationPanel.tabActionLog.columnModel.title3_1")); // NOI18N
         tabActionLog.setComponentOrientation(ComponentOrientation.getOrientation(Locale.getDefault()));
 
         javax.swing.GroupLayout historyPanelLayout = new javax.swing.GroupLayout(historyPanel);
@@ -2730,7 +2727,7 @@ public class ApplicationPanel extends ContentPanel {
             historyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(historyPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(actionLogPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 636, Short.MAX_VALUE)
+                .addComponent(actionLogPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 660, Short.MAX_VALUE)
                 .addContainerGap())
         );
         historyPanelLayout.setVerticalGroup(
@@ -2741,14 +2738,14 @@ public class ApplicationPanel extends ContentPanel {
                 .addContainerGap())
         );
 
-        tabbedControlMain.addTab(bundle.getString("ApplicationPanel.historyPanel.TabConstraints.tabTitle"), historyPanel); // NOI18N
+        tabbedControlMain.addTab(bundle.getString("TongaApplicationPanel.historyPanel.TabConstraints.tabTitle"), historyPanel); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlHeader, javax.swing.GroupLayout.DEFAULT_SIZE, 683, Short.MAX_VALUE)
-            .addComponent(jToolBar3, javax.swing.GroupLayout.DEFAULT_SIZE, 681, Short.MAX_VALUE)
+            .addComponent(pnlHeader, javax.swing.GroupLayout.DEFAULT_SIZE, 705, Short.MAX_VALUE)
+            .addComponent(jToolBar3, javax.swing.GroupLayout.DEFAULT_SIZE, 705, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(tabbedControlMain, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)

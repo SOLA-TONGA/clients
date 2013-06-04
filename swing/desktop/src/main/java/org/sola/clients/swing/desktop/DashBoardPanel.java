@@ -46,6 +46,7 @@ import org.sola.clients.beans.security.SecurityBean;
 import org.sola.clients.swing.common.LafManager;
 import org.sola.clients.swing.common.tasks.SolaTask;
 import org.sola.clients.swing.common.tasks.TaskManager;
+import org.sola.clients.swing.desktop.application.TongaApplicationPanel;
 import org.sola.clients.swing.ui.ContentPanel;
 import org.sola.clients.swing.ui.MainContentPanel;
 import org.sola.clients.swing.ui.renderers.BooleanCellRenderer;
@@ -218,14 +219,14 @@ public class DashBoardPanel extends ContentPanel {
 
                     @Override
                     public void propertyChange(PropertyChangeEvent e) {
-                        if (e.getPropertyName().equals(ApplicationPanel.APPLICATION_SAVED_PROPERTY)) {
+                        if (e.getPropertyName().equals(TongaApplicationPanel.APPLICATION_SAVED_PROPERTY)) {
                             refreshApplications();
                         }
                     }
                 };
 
                 if (getMainContentPanel() != null) {
-                    ApplicationPanel applicationPanel = new ApplicationPanel(appBean.getId(), true);
+                    TongaApplicationPanel applicationPanel = new TongaApplicationPanel(appBean.getId(), true);
                     applicationPanel.addPropertyChangeListener(ApplicationBean.APPLICATION_PROPERTY, listener);
                     getMainContentPanel().addPanel(applicationPanel, MainContentPanel.CARD_APPLICATION, true);
                 }
