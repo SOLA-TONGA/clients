@@ -16,7 +16,13 @@
 package org.sola.clients.swing.desktop.workflow;
 
 
+import java.sql.Timestamp;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import javax.swing.JFormattedTextField;
+import javax.swing.text.DefaultFormatterFactory;
+import org.jfree.util.Log;
 import org.sola.clients.beans.application.ApplicationBean;
 import org.sola.clients.reports.ReportManager;
 import org.sola.clients.swing.common.controls.CalendarForm;
@@ -25,6 +31,9 @@ import org.sola.clients.swing.common.tasks.TaskManager;
 import org.sola.clients.swing.desktop.ReportViewerForm;
 import org.sola.clients.swing.desktop.source.DocumentsManagementExtPanel;
 import org.sola.clients.swing.ui.ContentPanel;
+import org.sola.common.logging.LogUtility;
+import org.sola.common.messaging.ClientMessage;
+import org.sola.common.messaging.MessageUtility;
 
 /**
  *
@@ -94,10 +103,35 @@ public class SiteInspectionForm extends ContentPanel {
         calendar.setVisible(true);
     }
     
-    private void isCompleted(){
-        if(inspectionCheckBox.isSelected()){
-            //applicationBean.setInspectionCompleted(true);
-        }
+    private void save(){
+        // Save site inspection
+        SolaTask<Void, Void> t = new SolaTask<Void, Void>() {
+            @Override
+            public Void doTask() {
+                setMessage(MessageUtility.getLocalizedMessageText(ClientMessage.PROGRESS_MSG_SAVING));
+                /*DefaultFormatterFactory df = new DefaultFormatterFactory();
+                DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+                Timestamp timestamp = Timestamp.valueOf(inspectionFormattedTextField.getText());
+                System.out.println(timestamp.toString());
+                System.out.println(inspectionFormattedTextField.getText());
+                try {
+                    if(inspectionCheckBox.isSelected()){
+                        applicationBean.setInspectionCompleted(true);
+                    }
+                    applicationBean.setExpectedCompletionDate(df.parse(inspectionFormattedTextField.getText()));
+                } catch (ParseException e) {
+                    System.out.println(e);
+                }*/
+                applicationBean.saveApplication();
+                
+                return null;
+            }
+            @Override
+            public void taskDone() {
+                    MessageUtility.displayMessage(ClientMessage.APPLICATION_SUCCESSFULLY_SAVED);  
+            }
+        };
+        TaskManager.getInstance().runTask(t);
     }
 
     /**
@@ -226,11 +260,11 @@ public class SiteInspectionForm extends ContentPanel {
     }//GEN-LAST:event_inspectionFormattedTextFieldActionPerformed
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-        applicationBean.saveApplication();
+        save();
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void inspectionCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inspectionCheckBoxActionPerformed
-        isCompleted();
+
     }//GEN-LAST:event_inspectionCheckBoxActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
