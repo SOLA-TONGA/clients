@@ -95,7 +95,6 @@ public class SiteInspectionForm extends ContentPanel {
                 protected Void doTask() {
                     setMessage("Generating report");
                     ApplicationBean appBean = new ApplicationBean();
-
                     ReportViewerForm form = new ReportViewerForm(
                             ReportManager.getSiteInspectionReport(appBean, null));
                     form.setVisible(true);
@@ -111,27 +110,13 @@ public class SiteInspectionForm extends ContentPanel {
         calendar.setVisible(true);
     }
     
-    private void save(){
-        // Save site inspection
+    private void saveSiteInspection(){
+    
         SolaTask<Void, Void> t = new SolaTask<Void, Void>() {
             @Override
             public Void doTask() {
                 setMessage(MessageUtility.getLocalizedMessageText(ClientMessage.PROGRESS_MSG_SAVING));
-                /*DefaultFormatterFactory df = new DefaultFormatterFactory();
-                DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
-                Timestamp timestamp = Timestamp.valueOf(inspectionFormattedTextField.getText());
-                System.out.println(timestamp.toString());
-                System.out.println(inspectionFormattedTextField.getText());
-                try {
-                    if(inspectionCheckBox.isSelected()){
-                        applicationBean.setInspectionCompleted(true);
-                    }
-                    applicationBean.setExpectedCompletionDate(df.parse(inspectionFormattedTextField.getText()));
-                } catch (ParseException e) {
-                    System.out.println(e);
-                }*/
-                applicationBean.saveApplication();
-                
+                applicationBean.saveApplication();          
                 return null;
             }
             @Override
@@ -205,6 +190,7 @@ public class SiteInspectionForm extends ContentPanel {
             }
         });
 
+        inspectionFormattedTextField.setEditable(false);
         inspectionFormattedTextField.setFormatterFactory(FormattersFactory.getInstance().getDateFormatterFactory());
 
         org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, applicationBean, org.jdesktop.beansbinding.ELProperty.create("${expectedInspectionDate}"), inspectionFormattedTextField, org.jdesktop.beansbinding.BeanProperty.create("value"));
@@ -280,7 +266,7 @@ public class SiteInspectionForm extends ContentPanel {
     }//GEN-LAST:event_inspectionFormattedTextFieldActionPerformed
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-        save();
+        saveSiteInspection();
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void inspectionCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inspectionCheckBoxActionPerformed

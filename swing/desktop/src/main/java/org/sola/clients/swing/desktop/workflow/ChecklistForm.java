@@ -68,7 +68,7 @@ public class ChecklistForm extends ContentPanel {
         }
     }
 
-    private void save() {
+    private void saveChecklist() {
         // Make sure any user edits in the table are accepted
         if (this.checklistTable.getCellEditor() != null) {
             this.checklistTable.getCellEditor().stopCellEditing();
@@ -83,7 +83,7 @@ public class ChecklistForm extends ContentPanel {
             }
             @Override
             public void taskDone() {
-                    MessageUtility.displayMessage(ClientMessage.APPLICATION_SUCCESSFULLY_SAVED);  
+                    //MessageUtility.displayMessage(ClientMessage.APPLICATION_SUCCESSFULLY_SAVED);  
             }
         };
         TaskManager.getInstance().runTask(t);
@@ -223,12 +223,13 @@ public class ChecklistForm extends ContentPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-        save();
+        MessageUtility.displayMessage(ClientMessage.APPLICATION_SUCCESSFULLY_SAVED);
+        saveChecklist();
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void btnSelectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelectActionPerformed
         serviceChecklistItemListBean.loadList(checklistGroupListBean.getSelectedChecklistGroup());
-        save();
+        saveChecklist();
     }//GEN-LAST:event_btnSelectActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private org.sola.clients.swing.common.buttons.BtnSave btnSave;
