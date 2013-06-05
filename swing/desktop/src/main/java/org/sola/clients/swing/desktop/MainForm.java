@@ -46,7 +46,6 @@ import org.sola.clients.beans.AbstractBindingBean;
 import org.sola.clients.beans.application.ApplicationBean;
 import org.sola.clients.beans.security.SecurityBean;
 import org.sola.clients.beans.source.PowerOfAttorneyBean;
-import org.sola.clients.beans.source.SourceBean;
 import org.sola.clients.swing.common.DefaultExceptionHandler;
 import org.sola.clients.swing.common.LafManager;
 import org.sola.clients.swing.common.LocalizationManager;
@@ -57,6 +56,7 @@ import org.sola.clients.swing.desktop.administrative.BaUnitSearchPanel;
 import org.sola.clients.swing.desktop.administrative.RightsExportForm;
 import org.sola.clients.swing.desktop.application.ApplicationPanel;
 import org.sola.clients.swing.desktop.application.ApplicationSearchPanel;
+import org.sola.clients.swing.desktop.application.TongaApplicationPanel;
 import org.sola.clients.swing.desktop.cadastre.MapPanelForm;
 import org.sola.clients.swing.desktop.cadastre.MapPublicDisplayPanel;
 import org.sola.clients.swing.desktop.party.PartySearchPanelForm;
@@ -515,7 +515,7 @@ public class MainForm extends javax.swing.JFrame {
             @Override
             public Void doTask() {
                 setMessage(MessageUtility.getLocalizedMessageText(ClientMessage.PROGRESS_MSG_OPEN_APP));
-                ApplicationPanel form = new ApplicationPanel(app);
+                TongaApplicationPanel form = new TongaApplicationPanel(app);
                 getMainContentPanel().addPanel(form, MainContentPanel.CARD_APPLICATION, true);
                 return null;
             }
@@ -534,7 +534,7 @@ public class MainForm extends javax.swing.JFrame {
             @Override
             public Void doTask() {
                 setMessage(MessageUtility.getLocalizedMessageText(ClientMessage.PROGRESS_MSG_OPEN_APP));
-                ApplicationPanel form = new ApplicationPanel(id);
+                TongaApplicationPanel form = new TongaApplicationPanel(id);
                 getMainContentPanel().addPanel(form, MainContentPanel.CARD_APPLICATION, true);
                 return null;
             }
@@ -551,7 +551,7 @@ public class MainForm extends javax.swing.JFrame {
             @Override
             public Void doTask() {
                 setMessage(MessageUtility.getLocalizedMessageText(ClientMessage.PROGRESS_MSG_OPEN_APPNEW));
-                ApplicationPanel applicationPanel = new ApplicationPanel();
+                TongaApplicationPanel applicationPanel = new TongaApplicationPanel();
                 getMainContentPanel().addPanel(applicationPanel, MainContentPanel.CARD_APPLICATION, true);
                 return null;
             }

@@ -749,7 +749,7 @@ public class ApplicationSearchPanel extends ContentPanel {
             public Void doTask() {
                 setMessage(MessageUtility.getLocalizedMessageText(ClientMessage.PROGRESS_MSG_OPEN_APP));
                 if (getMainContentPanel() != null) {
-                    ApplicationPanel applicationPanel = new ApplicationPanel(
+                    TongaApplicationPanel applicationPanel = new TongaApplicationPanel(
                             appList.getSelectedApplication().getId());
                     getMainContentPanel().addPanel(applicationPanel, MainContentPanel.CARD_APPLICATION, true);
                 }
