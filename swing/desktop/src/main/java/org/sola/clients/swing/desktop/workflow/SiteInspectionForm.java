@@ -67,14 +67,16 @@ public class SiteInspectionForm extends ContentPanel {
     }
 
     private void customizeForm() {
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("org/sola/clients/swing/desktop/workflow/Bundle");
         if (applicationBean != null) {
-            headerPanel.setTitleText(String.format("Site Inspection for Application: #%s",
+            headerPanel.setTitleText(String.format(bundle.getString("SiteInspectionForm.headerPanel.titleText"),
                     applicationBean.getNr()));
         }
-        // Set the labels on the application service panel
-        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("org/sola/clients/swing/desktop/workflow/Bundle");
+        // Set the labels on the application service panel     
         appServicePanel.lblActionDate.setText(bundle.getString("SiteInspectionForm.appServicePanel.lblActionDate.text"));
         appServicePanel.lblActionCompleted.setText(bundle.getString("SiteInspectionForm.appServicePanel.lblActionCompleted.text"));
+        btnSave.setEnabled(!readOnly);
+        btnPrint.setEnabled(!readOnly);
     }
 
     private ApplicationServicePanel createAppServicePanel() {
