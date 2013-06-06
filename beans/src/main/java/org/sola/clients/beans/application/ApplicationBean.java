@@ -81,8 +81,6 @@ public class ApplicationBean extends ApplicationSummaryBean {
     public static final String ASSIGNEE_ID_PROPERTY = "assigneeId";
     public static final String STATUS_TYPE_PROPERTY = "statusType";
     public static final String APPLICATION_PROPERTY = "application";
-    public static final String INSPECTION_COMPLETED_PROPERTY = "inspectionCompleted";
-    public static final String EXPECTED_INSPECTION_DATE_PROPERTY = "expectedInspectionDate";
     private ApplicationActionTypeBean actionBean;
     private String actionNotes;
     private SolaList<ApplicationPropertyBean> propertyList;
@@ -105,8 +103,6 @@ public class ApplicationBean extends ApplicationSummaryBean {
     private ApplicationStatusTypeBean statusBean;
     private DocumentBean archiveDocument;
     public static final String ARCHIVE_DOCUMENT = "archiveDocument";
-    public Date expectedInspectionDate;
-    public boolean inspectionCompleted;
 
     /**
      * Default constructor to create application bean. Initializes the following
@@ -933,25 +929,5 @@ public class ApplicationBean extends ApplicationSummaryBean {
     public void setArchiveDocument(DocumentBean archiveDocument) {
         this.archiveDocument = archiveDocument;
         propertySupport.firePropertyChange(ARCHIVE_DOCUMENT, null, archiveDocument);
-    }
-
-    public Date getExpectedInspectionDate() {
-        return expectedInspectionDate;
-    }
-
-    public void setExpectedInspectionDate(Date value) {
-        Date old = expectedInspectionDate;
-        expectedInspectionDate = value;
-        propertySupport.firePropertyChange(EXPECTED_INSPECTION_DATE_PROPERTY, old, value);
-    }
-
-    public boolean getInspectionCompleted() {
-        return inspectionCompleted;
-    }
-
-    public void setInspectionCompleted(boolean value) {
-        boolean old = inspectionCompleted;
-        inspectionCompleted = value;
-        propertySupport.firePropertyChange(INSPECTION_COMPLETED_PROPERTY, old, value);
     }
 }

@@ -593,7 +593,7 @@ public class TongaApplicationPanel extends ContentPanel {
                     @Override
                     public Void doTask() {
                         //setMessage(MessageUtility.getLocalizedMessageText(ClientMessage.PROGRESS_MSG_OPEN_DOCREGISTRATION));
-                        ChecklistForm checklist = new ChecklistForm(appBean, service);
+                        ChecklistForm checklist = new ChecklistForm(appBean, service, readOnly);
                         getMainContentPanel().addPanel(checklist, MainContentPanel.CARD_CHECKLIST, true);
                         return null;
                     }
@@ -606,7 +606,7 @@ public class TongaApplicationPanel extends ContentPanel {
                     @Override
                     public Void doTask() {
                         //setMessage(MessageUtility.getLocalizedMessageText(ClientMessage.PROGRESS_MSG_OPEN_DOCREGISTRATION));
-                        SiteInspectionForm siteInspection = new SiteInspectionForm(appBean);
+                        SiteInspectionForm siteInspection = new SiteInspectionForm(appBean, service, readOnly);
                         getMainContentPanel().addPanel(siteInspection, MainContentPanel.CARD_SITE_INSPECTION, true);
                         return null;
                     }

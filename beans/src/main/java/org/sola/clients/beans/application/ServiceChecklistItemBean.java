@@ -29,7 +29,10 @@
  */
 package org.sola.clients.beans.application;
 
+import org.hibernate.validator.constraints.Length;
 import org.sola.clients.beans.AbstractVersionedBean;
+import org.sola.clients.beans.validation.Localized;
+import org.sola.common.messaging.ClientMessage;
 
 /**
  *
@@ -46,6 +49,7 @@ public class ServiceChecklistItemBean extends AbstractVersionedBean {
     private String checklistItemCode;
     private String checklistItemDisplayValue;
     private String checklistItemDescription;
+    @Length(max = 1000, message = ClientMessage.CHECK_COMMENT_LENGTH, payload = Localized.class)
     private String comment;
     private String result;
     private Boolean complies;
