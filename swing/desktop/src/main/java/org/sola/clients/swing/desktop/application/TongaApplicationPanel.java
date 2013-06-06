@@ -54,7 +54,6 @@ import org.sola.clients.beans.digitalarchive.DocumentBean;
 import org.sola.clients.beans.party.PartySummaryListBean;
 import org.sola.clients.beans.referencedata.*;
 import org.sola.clients.beans.security.SecurityBean;
-import org.sola.clients.beans.source.SourceBean;
 import org.sola.clients.beans.validation.ValidationResultBean;
 import org.sola.clients.reports.ReportManager;
 import org.sola.clients.swing.common.LafManager;
@@ -69,12 +68,12 @@ import org.sola.clients.swing.desktop.administrative.TongaPropertyPanel;
 import org.sola.clients.swing.desktop.cadastre.CadastreTransactionMapPanel;
 import org.sola.clients.swing.desktop.cadastre.MapPanelForm;
 import org.sola.clients.swing.desktop.reports.SysRegCertParamsForm;
-import org.sola.clients.swing.desktop.source.DocumentSearchDialog;
 import org.sola.clients.swing.desktop.source.DocumentSearchForm;
 import org.sola.clients.swing.desktop.source.DocumentsManagementExtPanel;
 import org.sola.clients.swing.desktop.source.TransactionedDocumentsPanel;
 import org.sola.clients.swing.desktop.workflow.ChecklistForm;
 import org.sola.clients.swing.desktop.workflow.SiteInspectionForm;
+import org.sola.clients.swing.desktop.workflow.SurveyForm;
 import org.sola.clients.swing.gis.ui.controlsbundle.ControlsBundleForApplicationLocation;
 import org.sola.clients.swing.ui.ContentPanel;
 import org.sola.clients.swing.ui.HeaderPanel;
@@ -586,34 +585,44 @@ public class TongaApplicationPanel extends ContentPanel {
             String requestType = service.getRequestTypeCode();
 
             // Determine what form to start for selected service
-            
+
             // Checklist Serivce Form
             if (requestType.equalsIgnoreCase(RequestTypeBean.CODE_CHECKLIST)) {
                 SolaTask t = new SolaTask<Void, Void>() {
                     @Override
                     public Void doTask() {
-                        //setMessage(MessageUtility.getLocalizedMessageText(ClientMessage.PROGRESS_MSG_OPEN_DOCREGISTRATION));
-                        ChecklistForm checklist = new ChecklistForm(appBean, service);
+                        setMessage(MessageUtility.getLocalizedMessageText(ClientMessage.PROGRESS_MSG_OPEN_CHECKLIST));
+                        ChecklistForm checklist = new ChecklistForm(appBean, service, readOnly);
                         getMainContentPanel().addPanel(checklist, MainContentPanel.CARD_CHECKLIST, true);
                         return null;
                     }
                 };
                 TaskManager.getInstance().runTask(t);
-            } 
-            // Site Inspection Service Form
+            } // Site Inspection Service Form
             else if (requestType.equalsIgnoreCase(RequestTypeBean.CODE_SITE_INSPECTION)) {
                 SolaTask t = new SolaTask<Void, Void>() {
                     @Override
                     public Void doTask() {
-                        //setMessage(MessageUtility.getLocalizedMessageText(ClientMessage.PROGRESS_MSG_OPEN_DOCREGISTRATION));
-                        SiteInspectionForm siteInspection = new SiteInspectionForm(appBean);
+                        setMessage(MessageUtility.getLocalizedMessageText(ClientMessage.PROGRESS_MSG_OPEN_SITE_INSPECTION));
+                        SiteInspectionForm siteInspection = new SiteInspectionForm(appBean, service, readOnly);
                         getMainContentPanel().addPanel(siteInspection, MainContentPanel.CARD_SITE_INSPECTION, true);
                         return null;
                     }
                 };
                 TaskManager.getInstance().runTask(t);
-            } 
-            // Power of attorney or other type document registration
+            } // Survey Service Form
+            else if (requestType.equalsIgnoreCase(RequestTypeBean.CODE_SURVEY)) {
+                SolaTask t = new SolaTask<Void, Void>() {
+                    @Override
+                    public Void doTask() {
+                        setMessage(MessageUtility.getLocalizedMessageText(ClientMessage.PROGRESS_MSG_OPEN_SURVEY));
+                        SurveyForm survey = new SurveyForm(appBean, service, readOnly);
+                        getMainContentPanel().addPanel(survey, MainContentPanel.CARD_SURVEY, true);
+                        return null;
+                    }
+                };
+                TaskManager.getInstance().runTask(t);
+            } // Power of attorney or other type document registration
             else if (requestType.equalsIgnoreCase(RequestTypeBean.CODE_REG_POWER_OF_ATTORNEY)
                     || requestType.equalsIgnoreCase(RequestTypeBean.CODE_REG_STANDARD_DOCUMENT)
                     || requestType.equalsIgnoreCase(RequestTypeBean.CODE_CANCEL_POWER_OF_ATTORNEY)) {
@@ -760,7 +769,7 @@ public class TongaApplicationPanel extends ContentPanel {
 //                        }
                     // Tonga customization - Registering a new lease or allotments requires
                     // creating a new Property Record. 
-                    if (requestType.equalsIgnoreCase(RequestTypeBean.CODE_REGISTER_LEASE)){
+                    if (requestType.equalsIgnoreCase(RequestTypeBean.CODE_REGISTER_LEASE)) {
                         // Open empty property form
                         openPropertyForm(service, new BaUnitBean(), readOnly);
                     } else {

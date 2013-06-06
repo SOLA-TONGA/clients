@@ -32,12 +32,16 @@ package org.sola.clients.beans.application;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ListIterator;
+import java.util.Set;
+import javax.validation.ConstraintViolation;
 import org.jdesktop.observablecollections.ObservableList;
+import org.sola.clients.beans.AbstractBindingBean;
 import org.sola.clients.beans.AbstractBindingListBean;
 import org.sola.clients.beans.controls.SolaList;
 import org.sola.clients.beans.converters.TypeConverters;
 import org.sola.clients.beans.referencedata.ChecklistGroupBean;
 import org.sola.clients.beans.referencedata.ChecklistItemBean;
+import org.sola.clients.beans.validation.ValidatorFactory;
 import org.sola.services.boundary.wsclients.WSManager;
 import org.sola.webservices.transferobjects.EntityAction;
 import org.sola.webservices.transferobjects.casemanagement.ServiceChecklistItemTO;
@@ -166,5 +170,29 @@ public class ServiceChecklistItemListBean extends AbstractBindingListBean {
         TypeConverters.TransferObjectListToBeanList(
                 WSManager.getInstance().getCaseManagementService().getServiceChecklistItem(serviceId),
                 ServiceChecklistItemBean.class, (List) serviceChecklistItemList);
+    }
+
+    /**
+     * Overrides the default validate method to ensure all ServiceChecklistItems
+     * are validated as well
+     *
+     * @param <T>
+     * @param showMessage
+     * @param group
+     * @return List of warning messages to display to the user
+     */
+    @Override
+    public <T extends AbstractBindingBean> Set<ConstraintViolation<T>> validate(boolean showMessage, Class<?>... group) {
+
+        Set<ConstraintViolation<T>> warningsList = super.validate(false, group);
+        for (ServiceChecklistItemBean bean : serviceChecklistItemList) {
+            Set<ConstraintViolation<T>> beanWarningsList = bean.validate(false, group);
+            warningsList.addAll(beanWarningsList);
+        }
+
+        if (showMessage) {
+            showMessage(warningsList);
+        }
+        return warningsList;
     }
 }

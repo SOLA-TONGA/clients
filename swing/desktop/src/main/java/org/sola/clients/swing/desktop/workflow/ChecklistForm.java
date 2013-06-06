@@ -31,6 +31,7 @@ package org.sola.clients.swing.desktop.workflow;
 
 import org.sola.clients.beans.application.ApplicationBean;
 import org.sola.clients.beans.application.ApplicationServiceBean;
+import org.sola.clients.beans.validation.Localized;
 import org.sola.clients.swing.common.tasks.SolaTask;
 import org.sola.clients.swing.common.tasks.TaskManager;
 import org.sola.clients.swing.ui.ContentPanel;
@@ -45,6 +46,7 @@ public class ChecklistForm extends ContentPanel {
 
     private ApplicationBean applicationBean;
     private ApplicationServiceBean applicationService;
+    private boolean readOnly = false;
 
     /**
      * Creates new form ChecklistForm
@@ -53,9 +55,11 @@ public class ChecklistForm extends ContentPanel {
         initComponents();
     }
 
-    public ChecklistForm(ApplicationBean applicationBean, ApplicationServiceBean applicationService) {
+    public ChecklistForm(ApplicationBean applicationBean, ApplicationServiceBean applicationService,
+            boolean readOnly) {
         this.applicationBean = applicationBean;
         this.applicationService = applicationService;
+        this.readOnly = readOnly;
         initComponents();
         customizeForm();
         serviceChecklistItemListBean.loadList(this.applicationService.getId());
@@ -66,6 +70,11 @@ public class ChecklistForm extends ContentPanel {
             headerPanel.setTitleText(String.format("Checklist for Application: #%s",
                     applicationBean.getNr()));
         }
+        // Disable the edit buttons if the form is in read only mode
+        btnSave.setEnabled(!readOnly);
+        cbxChecklistGroup.setEnabled(!readOnly);
+        btnSelect.setEnabled(!readOnly);
+        checklistTable.setEnabled(!readOnly);
     }
 
     private void saveChecklist() {
@@ -73,6 +82,7 @@ public class ChecklistForm extends ContentPanel {
         if (this.checklistTable.getCellEditor() != null) {
             this.checklistTable.getCellEditor().stopCellEditing();
         }
+<<<<<<< HEAD
         // Save the checklist items
         SolaTask<Void, Void> t = new SolaTask<Void, Void>() {
             @Override
@@ -87,8 +97,27 @@ public class ChecklistForm extends ContentPanel {
             }
         };
         TaskManager.getInstance().runTask(t);
+=======
+        if (serviceChecklistItemListBean.validate(true).size() < 1) {
+            // Save the checklist items
+            SolaTask<Void, Void> t = new SolaTask<Void, Void>() {
+                @Override
+                public Void doTask() {
+                    setMessage(MessageUtility.getLocalizedMessageText(ClientMessage.PROGRESS_MSG_SAVING));
+                    serviceChecklistItemListBean.validate(true);
+                    serviceChecklistItemListBean.saveList();
+                    return null;
+                }
+
+                @Override
+                public void taskDone() {
+                    MessageUtility.displayMessage(ClientMessage.APPLICATION_SUCCESSFULLY_SAVED);
+                }
+            };
+            TaskManager.getInstance().runTask(t);
+        }
+>>>>>>> ed875472b758c8918377e130faec91b64458de19
     }
-   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -188,19 +217,19 @@ public class ChecklistForm extends ContentPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(headerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(checklistToolBar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(checklistPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 663, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(checklistPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 663, Short.MAX_VALUE)
-                        .addContainerGap())
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(leaseHoldLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cbxChecklistGroup, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-            .addComponent(checklistToolBar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(leaseHoldLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(8, 8, 8)
+                        .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -209,14 +238,14 @@ public class ChecklistForm extends ContentPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(checklistToolBar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(leaseHoldLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(cbxChecklistGroup, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(leaseHoldLabel)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(checklistPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 336, Short.MAX_VALUE)
-                .addGap(16, 16, 16))
+                    .addComponent(cbxChecklistGroup, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(checklistPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         bindingGroup.bind();
