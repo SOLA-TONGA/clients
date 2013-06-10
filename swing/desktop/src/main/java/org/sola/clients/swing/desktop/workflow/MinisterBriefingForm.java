@@ -112,7 +112,7 @@ public class MinisterBriefingForm extends ContentPanel {
     }
     
     public void showReport(){
-        ReportViewerForm form = new ReportViewerForm(ReportManager.getMinisterialBriefingReport(applicationBean, applicationServiceBean.getActionDate()));
+        ReportViewerForm form = new ReportViewerForm(ReportManager.getMinisterialBriefingReport(applicationBean, null));
         form.setLocationRelativeTo(this);
         form.setVisible(true);
                
@@ -130,7 +130,7 @@ public class MinisterBriefingForm extends ContentPanel {
         jToolBar1 = new javax.swing.JToolBar();
         btnSave = new org.sola.clients.swing.common.buttons.BtnSave();
         btnPrint = new org.sola.clients.swing.common.buttons.BtnPrint();
-        appServicePanel = new org.sola.clients.swing.desktop.workflow.ApplicationServicePanel();
+        appServicePanel = createAppServicePanel();
 
         setHeaderPanel(headerPanel);
 
