@@ -92,57 +92,9 @@ public class SiteInspectionForm extends ContentPanel {
         }
         return appServicePanel;
     }
-
-    private void showSiteInspectionForm() {
-
-<<<<<<< HEAD
-            SolaTask t = new SolaTask<Void, Void>() {
-                @Override
-                protected Void doTask() {
-                    setMessage("Generating report");
-                    ApplicationBean appBean = new ApplicationBean();
-                    ReportViewerForm form = new ReportViewerForm(
-                            ReportManager.getSiteInspectionReport(appBean, null));
-                    form.setVisible(true);
-                    return null;
-                }
-            };
-            TaskManager.getInstance().runTask(t);
-        
-    }
     
-    private void showCalendar(JFormattedTextField dateField) {
-        CalendarForm calendar = new CalendarForm(null, true, dateField);
-        calendar.setVisible(true);
-    }
-    
-    private void saveSiteInspection(){
-    
-        SolaTask<Void, Void> t = new SolaTask<Void, Void>() {
-            @Override
-            public Void doTask() {
-                setMessage(MessageUtility.getLocalizedMessageText(ClientMessage.PROGRESS_MSG_SAVING));
-                applicationBean.saveApplication();          
-=======
-        SolaTask t = new SolaTask<Void, Void>() {
-            @Override
-            protected Void doTask() {
-                setMessage("Generating report");
-                ApplicationBean appBean = new ApplicationBean();
-
-                ReportViewerForm form = new ReportViewerForm(
-                        ReportManager.getSiteInspectionReport(appBean, null));
-                form.setVisible(true);
->>>>>>> ed875472b758c8918377e130faec91b64458de19
-                return null;
-            }
-        };
-        TaskManager.getInstance().runTask(t);
-
-    }
-
     private void save() {
-        // Save site inspection. Validate the applicationServiceBean to ensure
+        // Save survey form. Validate the applicationServiceBean to ensure
         // all user entered data is correct
         if (applicationServiceBean.validate(true).size() < 1) {
             SolaTask<Void, Void> t = new SolaTask<Void, Void>() {
@@ -160,6 +112,13 @@ public class SiteInspectionForm extends ContentPanel {
             };
             TaskManager.getInstance().runTask(t);
         }
+    }
+    
+    public void showInspectionReport(){
+        ReportViewerForm form = new ReportViewerForm(ReportManager.getSiteInspectionReport(applicationBean, null));
+        form.setLocationRelativeTo(this);
+        form.setVisible(true);
+        
     }
 
     /**
@@ -195,41 +154,10 @@ public class SiteInspectionForm extends ContentPanel {
         });
         jToolBar.add(btnSave);
 
-<<<<<<< HEAD
-        btnShowCalendarFrom1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/calendar.png"))); // NOI18N
-        btnShowCalendarFrom1.setText(bundle.getString("ApplicationSearchPanel.btnShowCalendarFrom.text")); // NOI18N
-        btnShowCalendarFrom1.setBorder(null);
-        btnShowCalendarFrom1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnShowCalendarFrom1ActionPerformed(evt);
-            }
-        });
-
-        inspectionFormattedTextField.setEditable(false);
-        inspectionFormattedTextField.setFormatterFactory(FormattersFactory.getInstance().getDateFormatterFactory());
-
-        org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, applicationBean, org.jdesktop.beansbinding.ELProperty.create("${expectedInspectionDate}"), inspectionFormattedTextField, org.jdesktop.beansbinding.BeanProperty.create("value"));
-        bindingGroup.addBinding(binding);
-
-        inspectionFormattedTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                inspectionFormattedTextFieldActionPerformed(evt);
-            }
-        });
-
-        jLabel1.setText("Expected Inspection Date");
-
-        inspectionCheckBox.setText("Inspection Completed");
-
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, applicationBean, org.jdesktop.beansbinding.ELProperty.create("${inspectionCompleted}"), inspectionCheckBox, org.jdesktop.beansbinding.BeanProperty.create("selected"));
-        bindingGroup.addBinding(binding);
-
-        inspectionCheckBox.addActionListener(new java.awt.event.ActionListener() {
-=======
         btnPrint.setText(bundle.getString("SiteInspectionForm.btnPrint.text")); // NOI18N
         btnPrint.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnPrint.addActionListener(new java.awt.event.ActionListener() {
->>>>>>> ed875472b758c8918377e130faec91b64458de19
+
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPrintActionPerformed(evt);
             }
@@ -256,11 +184,11 @@ public class SiteInspectionForm extends ContentPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintActionPerformed
-        showSiteInspectionForm();
+        showInspectionReport();
     }//GEN-LAST:event_btnPrintActionPerformed
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-        saveSiteInspection();
+        save();
     }//GEN-LAST:event_btnSaveActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private org.sola.clients.swing.desktop.workflow.ApplicationServicePanel appServicePanel;

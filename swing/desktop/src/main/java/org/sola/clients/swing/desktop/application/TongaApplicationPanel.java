@@ -72,6 +72,7 @@ import org.sola.clients.swing.desktop.source.DocumentSearchForm;
 import org.sola.clients.swing.desktop.source.DocumentsManagementExtPanel;
 import org.sola.clients.swing.desktop.source.TransactionedDocumentsPanel;
 import org.sola.clients.swing.desktop.workflow.ChecklistForm;
+import org.sola.clients.swing.desktop.workflow.MinisterBriefingForm;
 import org.sola.clients.swing.desktop.workflow.SiteInspectionForm;
 import org.sola.clients.swing.desktop.workflow.SurveyForm;
 import org.sola.clients.swing.gis.ui.controlsbundle.ControlsBundleForApplicationLocation;
@@ -622,7 +623,19 @@ public class TongaApplicationPanel extends ContentPanel {
                     }
                 };
                 TaskManager.getInstance().runTask(t);
-            } // Power of attorney or other type document registration
+            } //Minister Briefing Service Form
+             else if (requestType.equalsIgnoreCase(RequestTypeBean.CODE_MINISTER_BRIEFING)) {
+                SolaTask t = new SolaTask<Void, Void>() {
+                    @Override
+                    public Void doTask() {
+                        setMessage(MessageUtility.getLocalizedMessageText(ClientMessage.PROGRESS_MSG_OPEN_MINISTER_BRIEFING));
+                        MinisterBriefingForm ministerForm = new MinisterBriefingForm(appBean, service, readOnly);
+                        getMainContentPanel().addPanel(ministerForm, MainContentPanel.CARD_MINISTER_BRIEFING, true);
+                        return null;
+                    }
+                };
+                TaskManager.getInstance().runTask(t);
+             }// Power of attorney or other type document registration
             else if (requestType.equalsIgnoreCase(RequestTypeBean.CODE_REG_POWER_OF_ATTORNEY)
                     || requestType.equalsIgnoreCase(RequestTypeBean.CODE_REG_STANDARD_DOCUMENT)
                     || requestType.equalsIgnoreCase(RequestTypeBean.CODE_CANCEL_POWER_OF_ATTORNEY)) {

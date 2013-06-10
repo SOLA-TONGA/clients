@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Site Inspection Form" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" resourceBundle="org.sola.clients.reports.locale.SiteInspection" uuid="e880b9f3-6305-4f1f-b0ec-df6f79d507c0">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="459"/>
+	<property name="ireport.y" value="0"/>
 	<subDataset name="SiteInspection" uuid="e51f337c-ee8f-4b57-a102-1a9cc18c7ee7">
 		<queryString>
 			<![CDATA[]]>
@@ -12,7 +12,7 @@
 		</field>
 		<field name="inspectionCompleted" class="java.lang.Boolean"/>
 	</subDataset>
-	<parameter name="EXPECTED_INSPECTION_DATE" class="java.util.Date"/>
+	<parameter name="ACTION_DATE" class="java.util.Date"/>
 	<queryString>
 		<![CDATA[]]>
 	</queryString>

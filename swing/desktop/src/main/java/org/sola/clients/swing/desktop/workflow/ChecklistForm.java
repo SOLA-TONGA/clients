@@ -82,22 +82,7 @@ public class ChecklistForm extends ContentPanel {
         if (this.checklistTable.getCellEditor() != null) {
             this.checklistTable.getCellEditor().stopCellEditing();
         }
-<<<<<<< HEAD
-        // Save the checklist items
-        SolaTask<Void, Void> t = new SolaTask<Void, Void>() {
-            @Override
-            public Void doTask() {
-                setMessage(MessageUtility.getLocalizedMessageText(ClientMessage.PROGRESS_MSG_SAVING));
-                serviceChecklistItemListBean.saveList();
-                return null;
-            }
-            @Override
-            public void taskDone() {
-                    //MessageUtility.displayMessage(ClientMessage.APPLICATION_SUCCESSFULLY_SAVED);  
-            }
-        };
-        TaskManager.getInstance().runTask(t);
-=======
+        
         if (serviceChecklistItemListBean.validate(true).size() < 1) {
             // Save the checklist items
             SolaTask<Void, Void> t = new SolaTask<Void, Void>() {
@@ -116,7 +101,6 @@ public class ChecklistForm extends ContentPanel {
             };
             TaskManager.getInstance().runTask(t);
         }
->>>>>>> ed875472b758c8918377e130faec91b64458de19
     }
 
     /**
@@ -252,7 +236,7 @@ public class ChecklistForm extends ContentPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-        MessageUtility.displayMessage(ClientMessage.APPLICATION_SUCCESSFULLY_SAVED);
+
         saveChecklist();
     }//GEN-LAST:event_btnSaveActionPerformed
 
