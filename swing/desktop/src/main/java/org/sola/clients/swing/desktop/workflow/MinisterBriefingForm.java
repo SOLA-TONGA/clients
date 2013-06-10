@@ -115,8 +115,7 @@ public class MinisterBriefingForm extends ContentPanel {
         ReportViewerForm form = new ReportViewerForm(ReportManager.getMinisterialBriefingReport(applicationBean, applicationServiceBean.getActionDate()));
         form.setLocationRelativeTo(this);
         form.setVisible(true);
-        
-        
+               
     }
     /**
      * This method is called from within the constructor to initialize the form.
