@@ -667,7 +667,7 @@ public class ReportManager {
         }
     }
     
-        public static JasperPrint getMinisterialBriefingReport(ApplicationBean appBean, Date actionDate) {
+    public static JasperPrint getMinisterialBriefingReport(ApplicationBean appBean, Date actionDate) {
         HashMap inputParameters = new HashMap();
         inputParameters.put("ACTION_DATE", actionDate);
         ApplicationBean[] beans = new ApplicationBean[1];
@@ -676,6 +676,22 @@ public class ReportManager {
         try {
             return JasperFillManager.fillReport(
                     ReportManager.class.getResourceAsStream("/reports/MinisterBriefingReport.jasper"),
+                    inputParameters, jds);
+        } catch (JRException ex) {
+            MessageUtility.displayMessage(ClientMessage.REPORT_GENERATION_FAILED,
+                    new Object[]{ex.getLocalizedMessage()});
+            return null;
+        }
+    }
+    
+    public static JasperPrint getDeedOfLeaseReport(ApplicationBean appBean) {
+        HashMap inputParameters = new HashMap();
+        ApplicationBean[] beans = new ApplicationBean[1];
+        beans[0] = appBean;
+        JRDataSource jds = new JRBeanArrayDataSource(beans);
+        try {
+            return JasperFillManager.fillReport(
+                    ReportManager.class.getResourceAsStream("/reports/DeedOfLease.jasper"),
                     inputParameters, jds);
         } catch (JRException ex) {
             MessageUtility.displayMessage(ClientMessage.REPORT_GENERATION_FAILED,
