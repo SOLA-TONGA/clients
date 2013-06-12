@@ -70,6 +70,15 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPrintActionPerformed"/>
           </Events>
         </Component>
+        <Component class="org.sola.clients.swing.common.buttons.BtnPrint" name="btnPrintSurveySavingram">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Print Survey Savingram"/>
+            <Property name="verticalTextPosition" type="int" value="3"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPrintSurveySavingramActionPerformed"/>
+          </Events>
+        </Component>
       </SubComponents>
     </Container>
     <Component class="org.sola.clients.swing.desktop.workflow.ApplicationServicePanel" name="appServicePanel">

@@ -48,14 +48,14 @@ public class MinisterBriefingForm extends ContentPanel {
     ApplicationBean applicationBean;
     ApplicationServiceBean applicationServiceBean;
     boolean readOnly = false;
-    
+
     /**
      * Creates new form MinisterBriefingForm
      */
     public MinisterBriefingForm() {
         initComponents();
     }
-    
+
     public MinisterBriefingForm(ApplicationBean appBean, ApplicationServiceBean appServiceBean,
             boolean readOnly) {
         this.applicationBean = appBean;
@@ -64,7 +64,7 @@ public class MinisterBriefingForm extends ContentPanel {
         initComponents();
         customizeForm();
     }
-    
+
     private void customizeForm() {
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("org/sola/clients/swing/desktop/workflow/Bundle");
         if (applicationBean != null) {
@@ -76,7 +76,7 @@ public class MinisterBriefingForm extends ContentPanel {
         appServicePanel.lblActionCompleted.setText(bundle.getString("MinisterBriefingForm.appServicePanel.lblActionCompleted.text"));
         btnSave.setEnabled(!readOnly);
     }
-    
+
     private ApplicationServicePanel createAppServicePanel() {
         if (applicationBean == null) {
             applicationBean = new ApplicationBean();
@@ -90,7 +90,7 @@ public class MinisterBriefingForm extends ContentPanel {
         }
         return appServicePanel;
     }
-    
+
     private void save() {
 
         if (applicationServiceBean.validate(true).size() < 1) {
@@ -110,13 +110,20 @@ public class MinisterBriefingForm extends ContentPanel {
             TaskManager.getInstance().runTask(t);
         }
     }
-    
-    public void showReport(){
+
+    public void showReport() {
         ReportViewerForm form = new ReportViewerForm(ReportManager.getMinisterialBriefingReport(applicationBean, null));
         form.setLocationRelativeTo(this);
         form.setVisible(true);
-               
+
     }
+
+    public void showSurveySavingramReport() {
+        ReportViewerForm form = new ReportViewerForm(ReportManager.getSurveySavingramReport(applicationBean, null));
+        form.setLocationRelativeTo(this);
+        form.setVisible(true);
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -130,7 +137,8 @@ public class MinisterBriefingForm extends ContentPanel {
         jToolBar1 = new javax.swing.JToolBar();
         btnSave = new org.sola.clients.swing.common.buttons.BtnSave();
         btnPrint = new org.sola.clients.swing.common.buttons.BtnPrint();
-        appServicePanel = createAppServicePanel();
+        btnPrintSurveySavingram = new org.sola.clients.swing.common.buttons.BtnPrint();
+        appServicePanel = new org.sola.clients.swing.desktop.workflow.ApplicationServicePanel();
 
         setHeaderPanel(headerPanel);
 
@@ -155,6 +163,15 @@ public class MinisterBriefingForm extends ContentPanel {
             }
         });
         jToolBar1.add(btnPrint);
+
+        btnPrintSurveySavingram.setText("Print Survey Savingram");
+        btnPrintSurveySavingram.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnPrintSurveySavingram.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPrintSurveySavingramActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(btnPrintSurveySavingram);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -184,9 +201,14 @@ public class MinisterBriefingForm extends ContentPanel {
         showReport();
     }//GEN-LAST:event_btnPrintActionPerformed
 
+    private void btnPrintSurveySavingramActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintSurveySavingramActionPerformed
+        showSurveySavingramReport(); 
+    }//GEN-LAST:event_btnPrintSurveySavingramActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private org.sola.clients.swing.desktop.workflow.ApplicationServicePanel appServicePanel;
     private org.sola.clients.swing.common.buttons.BtnPrint btnPrint;
+    private org.sola.clients.swing.common.buttons.BtnPrint btnPrintSurveySavingram;
     private org.sola.clients.swing.common.buttons.BtnSave btnSave;
     private org.sola.clients.swing.ui.HeaderPanel headerPanel;
     private javax.swing.JToolBar jToolBar1;
