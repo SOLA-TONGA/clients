@@ -703,4 +703,21 @@ public class ReportManager {
             return null;
         }
     }
+    
+    public static JasperPrint getCabinetSubmissionReport(ApplicationBean appBean, Date actionDate) {
+        HashMap inputParameters = new HashMap();
+        inputParameters.put("ACTION_DATE", actionDate);
+        ApplicationBean[] beans = new ApplicationBean[1];
+        beans[0] = appBean;
+        JRDataSource jds = new JRBeanArrayDataSource(beans);
+        try {
+            return JasperFillManager.fillReport(
+                    ReportManager.class.getResourceAsStream("/reports/workflow/CabinetSubmissionReport.jasper"),
+                    inputParameters, jds);
+        } catch (JRException ex) {
+            MessageUtility.displayMessage(ClientMessage.REPORT_GENERATION_FAILED,
+                    new Object[]{ex.getLocalizedMessage()});
+            return null;
+        }
+    }
 }

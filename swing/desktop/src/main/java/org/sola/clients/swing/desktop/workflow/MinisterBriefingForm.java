@@ -111,11 +111,10 @@ public class MinisterBriefingForm extends ContentPanel {
         }
     }
 
-    public void showReport() {
+    public void showMinisterialBriefingReport() {
         ReportViewerForm form = new ReportViewerForm(ReportManager.getMinisterialBriefingReport(applicationBean, null));
         form.setLocationRelativeTo(this);
         form.setVisible(true);
-
     }
 
     public void showSurveySavingramReport() {
@@ -199,7 +198,7 @@ public class MinisterBriefingForm extends ContentPanel {
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void btnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintActionPerformed
-        showReport();
+        showMinisterialBriefingReport();
     }//GEN-LAST:event_btnPrintActionPerformed
 
     private void btnPrintSurveySavingramActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintSurveySavingramActionPerformed

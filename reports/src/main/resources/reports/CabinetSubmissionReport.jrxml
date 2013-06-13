@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="00bf21df-40ae-45f3-af17-3a6614efe40c">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="296"/>
+	<property name="ireport.y" value="0"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -25,18 +25,18 @@
 				<text><![CDATA[HON. CABINET MINISTERS:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="9cba40b3-33ae-4634-a4a7-1846a7a1e94d" x="0" y="35" width="288" height="20"/>
+				<reportElement uuid="9cba40b3-33ae-4634-a4a7-1846a7a1e94d" x="0" y="35" width="300" height="20"/>
 				<textElement>
 					<font size="12" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Application to lease a Town allotment (as Lessee)]]></text>
+				<text><![CDATA[Application to lease a Town allotment (as Lessee ) :]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="9cba40b3-33ae-4634-a4a7-1846a7a1e94d" x="0" y="55" width="288" height="20"/>
+				<reportElement uuid="9cba40b3-33ae-4634-a4a7-1846a7a1e94d" x="0" y="55" width="300" height="20"/>
 				<textElement>
 					<font size="12" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Location]]></text>
+				<text><![CDATA[Location :]]></text>
 			</staticText>
 			<staticText>
 				<reportElement uuid="9cba40b3-33ae-4634-a4a7-1846a7a1e94d" x="0" y="93" width="555" height="29"/>
@@ -76,97 +76,97 @@
 with the following details.]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="9cba40b3-33ae-4634-a4a7-1846a7a1e94d" x="0" y="391" width="67" height="19"/>
+				<reportElement uuid="9cba40b3-33ae-4634-a4a7-1846a7a1e94d" x="0" y="381" width="67" height="19"/>
 				<textElement verticalAlignment="Middle">
 					<font isBold="true" isItalic="false"/>
 				</textElement>
 				<text><![CDATA[Lessee]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="9cba40b3-33ae-4634-a4a7-1846a7a1e94d" x="0" y="410" width="67" height="19"/>
+				<reportElement uuid="9cba40b3-33ae-4634-a4a7-1846a7a1e94d" x="0" y="400" width="67" height="19"/>
 				<textElement verticalAlignment="Middle">
 					<font isBold="true" isItalic="false"/>
 				</textElement>
 				<text><![CDATA[Lessor]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="9cba40b3-33ae-4634-a4a7-1846a7a1e94d" x="0" y="429" width="67" height="19"/>
+				<reportElement uuid="9cba40b3-33ae-4634-a4a7-1846a7a1e94d" x="0" y="419" width="67" height="19"/>
 				<textElement verticalAlignment="Middle">
 					<font isBold="true" isItalic="false"/>
 				</textElement>
 				<text><![CDATA[Area]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="9cba40b3-33ae-4634-a4a7-1846a7a1e94d" x="0" y="448" width="67" height="19"/>
+				<reportElement uuid="9cba40b3-33ae-4634-a4a7-1846a7a1e94d" x="0" y="438" width="67" height="19"/>
 				<textElement verticalAlignment="Middle">
 					<font isBold="true" isItalic="false"/>
 				</textElement>
 				<text><![CDATA[Location]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="9cba40b3-33ae-4634-a4a7-1846a7a1e94d" x="0" y="486" width="67" height="19"/>
+				<reportElement uuid="9cba40b3-33ae-4634-a4a7-1846a7a1e94d" x="0" y="476" width="67" height="19"/>
 				<textElement verticalAlignment="Middle">
 					<font isBold="true" isItalic="false"/>
 				</textElement>
 				<text><![CDATA[Purpose]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="9cba40b3-33ae-4634-a4a7-1846a7a1e94d" x="0" y="467" width="67" height="19"/>
+				<reportElement uuid="9cba40b3-33ae-4634-a4a7-1846a7a1e94d" x="0" y="457" width="67" height="19"/>
 				<textElement verticalAlignment="Middle">
 					<font isBold="true" isItalic="false"/>
 				</textElement>
 				<text><![CDATA[Period]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="9cba40b3-33ae-4634-a4a7-1846a7a1e94d" x="0" y="505" width="67" height="19"/>
+				<reportElement uuid="9cba40b3-33ae-4634-a4a7-1846a7a1e94d" x="0" y="495" width="67" height="19"/>
 				<textElement verticalAlignment="Middle">
 					<font isBold="true" isItalic="false"/>
 				</textElement>
 				<text><![CDATA[Rental]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="9cba40b3-33ae-4634-a4a7-1846a7a1e94d" x="0" y="524" width="67" height="19"/>
+				<reportElement uuid="9cba40b3-33ae-4634-a4a7-1846a7a1e94d" x="0" y="514" width="67" height="19"/>
 				<textElement verticalAlignment="Middle">
 					<font isBold="true" isItalic="false"/>
 				</textElement>
 				<text><![CDATA[Effective]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="9cba40b3-33ae-4634-a4a7-1846a7a1e94d" x="0" y="574" width="67" height="19"/>
+				<reportElement uuid="9cba40b3-33ae-4634-a4a7-1846a7a1e94d" x="0" y="564" width="67" height="19"/>
 				<textElement verticalAlignment="Middle">
 					<font isBold="false" isItalic="true"/>
 				</textElement>
 				<text><![CDATA[Respectfully,]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="9cba40b3-33ae-4634-a4a7-1846a7a1e94d" x="0" y="657" width="82" height="19"/>
+				<reportElement uuid="9cba40b3-33ae-4634-a4a7-1846a7a1e94d" x="0" y="647" width="82" height="19"/>
 				<textElement verticalAlignment="Middle">
 					<font isBold="true" isItalic="false"/>
 				</textElement>
 				<text><![CDATA[Hon. Ma'afu]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="9cba40b3-33ae-4634-a4a7-1846a7a1e94d" x="0" y="676" width="339" height="19"/>
+				<reportElement uuid="9cba40b3-33ae-4634-a4a7-1846a7a1e94d" x="0" y="666" width="339" height="19"/>
 				<textElement verticalAlignment="Middle">
 					<font isBold="false" isItalic="true"/>
 				</textElement>
 				<text><![CDATA[Minister of Lands, Environment, Climate Change and Natural Resources]]></text>
 			</staticText>
 			<line>
-				<reportElement uuid="e838c743-ffe5-4c51-8344-73779fd7c91a" x="0" y="656" width="188" height="1"/>
+				<reportElement uuid="e838c743-ffe5-4c51-8344-73779fd7c91a" x="0" y="646" width="188" height="1"/>
 				<graphicElement>
 					<pen lineStyle="Dashed"/>
 				</graphicElement>
 			</line>
 			<staticText>
-				<reportElement uuid="9cba40b3-33ae-4634-a4a7-1846a7a1e94d" x="429" y="657" width="126" height="19"/>
+				<reportElement uuid="9cba40b3-33ae-4634-a4a7-1846a7a1e94d" x="429" y="647" width="126" height="19"/>
 				<textElement verticalAlignment="Middle">
 					<font isBold="false" isItalic="true"/>
 				</textElement>
 				<text><![CDATA[Reference]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="9cba40b3-33ae-4634-a4a7-1846a7a1e94d" x="429" y="676" width="126" height="19"/>
+				<reportElement uuid="9cba40b3-33ae-4634-a4a7-1846a7a1e94d" x="429" y="666" width="126" height="19"/>
 				<textElement verticalAlignment="Middle">
 					<font isBold="false" isItalic="true"/>
 				</textElement>

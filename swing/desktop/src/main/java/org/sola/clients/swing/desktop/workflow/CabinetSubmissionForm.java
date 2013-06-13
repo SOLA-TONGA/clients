@@ -31,8 +31,10 @@ package org.sola.clients.swing.desktop.workflow;
 
 import org.sola.clients.beans.application.ApplicationBean;
 import org.sola.clients.beans.application.ApplicationServiceBean;
+import org.sola.clients.reports.ReportManager;
 import org.sola.clients.swing.common.tasks.SolaTask;
 import org.sola.clients.swing.common.tasks.TaskManager;
+import org.sola.clients.swing.desktop.ReportViewerForm;
 import org.sola.clients.swing.ui.ContentPanel;
 import org.sola.common.messaging.ClientMessage;
 import org.sola.common.messaging.MessageUtility;
@@ -108,6 +110,12 @@ public class CabinetSubmissionForm extends ContentPanel {
             TaskManager.getInstance().runTask(t);
         }
     }
+    
+    public void showCabinetSubmissionReport() {
+        ReportViewerForm form = new ReportViewerForm(ReportManager.getCabinetSubmissionReport(applicationBean, null));
+        form.setLocationRelativeTo(this);
+        form.setVisible(true);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -121,6 +129,7 @@ public class CabinetSubmissionForm extends ContentPanel {
         headerPanel = new org.sola.clients.swing.ui.HeaderPanel();
         jToolBar1 = new javax.swing.JToolBar();
         btnSave = new org.sola.clients.swing.common.buttons.BtnSave();
+        btnPrint = new org.sola.clients.swing.common.buttons.BtnPrint();
         appServicePanel = createAppServicePanel();
 
         setHeaderPanel(headerPanel);
@@ -138,6 +147,15 @@ public class CabinetSubmissionForm extends ContentPanel {
             }
         });
         jToolBar1.add(btnSave);
+
+        btnPrint.setText(bundle.getString("CabinetSubmissionForm.btnPrint.text")); // NOI18N
+        btnPrint.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnPrint.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPrintActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(btnPrint);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -163,8 +181,13 @@ public class CabinetSubmissionForm extends ContentPanel {
         save();
     }//GEN-LAST:event_btnSaveActionPerformed
 
+    private void btnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintActionPerformed
+        showCabinetSubmissionReport();
+    }//GEN-LAST:event_btnPrintActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private org.sola.clients.swing.desktop.workflow.ApplicationServicePanel appServicePanel;
+    private org.sola.clients.swing.common.buttons.BtnPrint btnPrint;
     private org.sola.clients.swing.common.buttons.BtnSave btnSave;
     private org.sola.clients.swing.ui.HeaderPanel headerPanel;
     private javax.swing.JToolBar jToolBar1;
