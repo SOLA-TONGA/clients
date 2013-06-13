@@ -57,7 +57,7 @@ public class MinisterBriefingForm extends ContentPanel {
     }
 
     public MinisterBriefingForm(ApplicationBean appBean, ApplicationServiceBean appServiceBean,
-            boolean readOnly) {
+            Boolean readOnly) {
         this.applicationBean = appBean;
         this.applicationServiceBean = appServiceBean;
         this.readOnly = readOnly;
@@ -138,11 +138,12 @@ public class MinisterBriefingForm extends ContentPanel {
         btnSave = new org.sola.clients.swing.common.buttons.BtnSave();
         btnPrint = new org.sola.clients.swing.common.buttons.BtnPrint();
         btnPrintSurveySavingram = new org.sola.clients.swing.common.buttons.BtnPrint();
-        appServicePanel = new org.sola.clients.swing.desktop.workflow.ApplicationServicePanel();
+        appServicePanel = createAppServicePanel();
 
         setHeaderPanel(headerPanel);
 
-        headerPanel.setTitleText("Minister Briefing for Application: #%s");
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("org/sola/clients/swing/desktop/workflow/Bundle"); // NOI18N
+        headerPanel.setTitleText(bundle.getString("MinisterBriefingForm.headerPanel.titleText")); // NOI18N
 
         jToolBar1.setFloatable(false);
         jToolBar1.setRollover(true);
@@ -155,7 +156,7 @@ public class MinisterBriefingForm extends ContentPanel {
         });
         jToolBar1.add(btnSave);
 
-        btnPrint.setText("Print Ministerial Briefing Form");
+        btnPrint.setText(bundle.getString("MinisterBriefingForm.btnPrint.text")); // NOI18N
         btnPrint.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnPrint.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -164,7 +165,7 @@ public class MinisterBriefingForm extends ContentPanel {
         });
         jToolBar1.add(btnPrint);
 
-        btnPrintSurveySavingram.setText("Print Survey Savingram");
+        btnPrintSurveySavingram.setText(bundle.getString("MinisterBriefingForm.btnPrintSurveySavingram.text")); // NOI18N
         btnPrintSurveySavingram.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnPrintSurveySavingram.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

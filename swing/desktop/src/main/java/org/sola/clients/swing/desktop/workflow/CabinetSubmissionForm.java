@@ -38,22 +38,23 @@ import org.sola.common.messaging.ClientMessage;
 import org.sola.common.messaging.MessageUtility;
 
 /**
- * Form to capture details for the Survey workflow task
  *
- * @author soladev
+ * @author Admin
  */
-public class SurveyForm extends ContentPanel {
+public class CabinetSubmissionForm extends ContentPanel {
 
     ApplicationBean applicationBean;
     ApplicationServiceBean applicationServiceBean;
     boolean readOnly = false;
 
-    public SurveyForm() {
+    /**
+     * Creates new form CabinetSubmissionForm
+     */
+    public CabinetSubmissionForm() {
         initComponents();
-        customizeForm();
     }
 
-    public SurveyForm(ApplicationBean appBean, ApplicationServiceBean appServiceBean,
+    public CabinetSubmissionForm(ApplicationBean appBean, ApplicationServiceBean appServiceBean,
             Boolean readOnly) {
         this.applicationBean = appBean;
         this.applicationServiceBean = appServiceBean;
@@ -65,12 +66,12 @@ public class SurveyForm extends ContentPanel {
     private void customizeForm() {
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("org/sola/clients/swing/desktop/workflow/Bundle");
         if (applicationBean != null) {
-            headerPanel.setTitleText(String.format(bundle.getString("SurveyForm.headerPanel.titleText"),
+            headerPanel.setTitleText(String.format(bundle.getString("CabinetSubmissionForm.headerPanel.titleText"),
                     applicationBean.getNr()));
         }
         // Set the labels on the application service panel
-        appServicePanel.lblActionDate.setText(bundle.getString("SurveyForm.appServicePanel.lblActionDate.text"));
-        appServicePanel.lblActionCompleted.setText(bundle.getString("SurveyForm.appServicePanel.lblActionCompleted.text"));
+        appServicePanel.lblActionDate.setText(bundle.getString("CabinetSubmissionForm.appServicePanel.lblActionDate.text"));
+        appServicePanel.lblActionCompleted.setText(bundle.getString("CabinetSubmissionForm.appServicePanel.lblActionCompleted.text"));
         btnSave.setEnabled(!readOnly);
     }
 
@@ -89,8 +90,7 @@ public class SurveyForm extends ContentPanel {
     }
 
     private void save() {
-        // Save survey form. Validate the applicationServiceBean to ensure
-        // all user entered data is correct
+
         if (applicationServiceBean.validate(true).size() < 1) {
             SolaTask<Void, Void> t = new SolaTask<Void, Void>() {
                 @Override
@@ -118,15 +118,15 @@ public class SurveyForm extends ContentPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        appServicePanel = createAppServicePanel();
         headerPanel = new org.sola.clients.swing.ui.HeaderPanel();
         jToolBar1 = new javax.swing.JToolBar();
         btnSave = new org.sola.clients.swing.common.buttons.BtnSave();
+        appServicePanel = createAppServicePanel();
 
         setHeaderPanel(headerPanel);
 
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("org/sola/clients/swing/desktop/workflow/Bundle"); // NOI18N
-        headerPanel.setTitleText(bundle.getString("SurveyForm.headerPanel.titleText")); // NOI18N
+        headerPanel.setTitleText(bundle.getString("CabinetSubmissionForm.headerPanel.titleText")); // NOI18N
 
         jToolBar1.setFloatable(false);
         jToolBar1.setRollover(true);
@@ -143,23 +143,24 @@ public class SurveyForm extends ContentPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(appServicePanel, javax.swing.GroupLayout.DEFAULT_SIZE, 625, Short.MAX_VALUE)
-            .addComponent(headerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(headerPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
             .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(appServicePanel, javax.swing.GroupLayout.DEFAULT_SIZE, 617, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addComponent(headerPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(appServicePanel, javax.swing.GroupLayout.DEFAULT_SIZE, 372, Short.MAX_VALUE))
+                .addComponent(appServicePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(3, 3, 3))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-        save(); 
+        save();
     }//GEN-LAST:event_btnSaveActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

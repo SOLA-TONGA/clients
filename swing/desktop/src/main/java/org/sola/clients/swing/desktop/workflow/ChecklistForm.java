@@ -31,7 +31,6 @@ package org.sola.clients.swing.desktop.workflow;
 
 import org.sola.clients.beans.application.ApplicationBean;
 import org.sola.clients.beans.application.ApplicationServiceBean;
-import org.sola.clients.beans.validation.Localized;
 import org.sola.clients.swing.common.tasks.SolaTask;
 import org.sola.clients.swing.common.tasks.TaskManager;
 import org.sola.clients.swing.ui.ContentPanel;
@@ -56,7 +55,7 @@ public class ChecklistForm extends ContentPanel {
     }
 
     public ChecklistForm(ApplicationBean applicationBean, ApplicationServiceBean applicationService,
-            boolean readOnly) {
+            Boolean readOnly) {
         this.applicationBean = applicationBean;
         this.applicationService = applicationService;
         this.readOnly = readOnly;
