@@ -58,7 +58,7 @@ public class SiteInspectionForm extends ContentPanel {
     }
 
     public SiteInspectionForm(ApplicationBean appBean, ApplicationServiceBean appServiceBean,
-            boolean readOnly) {
+            Boolean readOnly) {
         this.applicationBean = appBean;
         this.applicationServiceBean = appServiceBean;
         this.readOnly = readOnly;
