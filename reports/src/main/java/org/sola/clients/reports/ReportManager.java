@@ -661,7 +661,7 @@ public class ReportManager {
         JRDataSource jds = new JRBeanArrayDataSource(beans);
         try {
             return JasperFillManager.fillReport(
-                    ReportManager.class.getResourceAsStream("/reports/SiteInspectionForm.jasper"),
+                    ReportManager.class.getResourceAsStream("/reports/workflow/SiteInspectionForm.jasper"),
                     inputParameters, jds);
         } catch (JRException ex) {
             MessageUtility.displayMessage(ClientMessage.REPORT_GENERATION_FAILED,
@@ -678,7 +678,7 @@ public class ReportManager {
         JRDataSource jds = new JRBeanArrayDataSource(beans);
         try {
             return JasperFillManager.fillReport(
-                    ReportManager.class.getResourceAsStream("/reports/MinisterBriefingReport.jasper"),
+                    ReportManager.class.getResourceAsStream("/reports/workflow/MinisterBriefingReport.jasper"),
                     inputParameters, jds);
         } catch (JRException ex) {
             MessageUtility.displayMessage(ClientMessage.REPORT_GENERATION_FAILED,
