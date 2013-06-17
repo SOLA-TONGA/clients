@@ -2,7 +2,8 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5b2b7ca3-4843-4aab-b1ca-5c3e3ee219dc">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="2888"/>
+	<property name="ireport.y" value="2467"/>
+	<parameter name="LEASE_DIAGRAM" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -1069,6 +1070,10 @@
 				</textElement>
 				<text><![CDATA[TOHI 'O E TOE FAKAPAPAU KE LISI]]></text>
 			</staticText>
+			<image>
+				<reportElement uuid="9297f5e8-6f8d-4f34-a414-9c6d534b419d" x="74" y="36" width="400" height="300"/>
+				<imageExpression><![CDATA[$P{LEASE_DIAGRAM}]]></imageExpression>
+			</image>
 		</band>
 	</detail>
 	<columnFooter>

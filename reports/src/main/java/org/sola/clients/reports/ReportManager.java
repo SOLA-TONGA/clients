@@ -30,7 +30,6 @@
 package org.sola.clients.reports;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.text.DateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -38,8 +37,6 @@ import java.util.HashMap;
 import java.util.Locale;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.data.JRBeanArrayDataSource;
-import net.sf.jasperreports.engine.design.JasperDesign;
-import net.sf.jasperreports.engine.xml.JRXmlLoader;
 import org.sola.clients.beans.administrative.BaUnitBean;
 import org.sola.clients.beans.administrative.RrrReportBean;
 import org.sola.clients.beans.application.*;
@@ -721,9 +718,11 @@ public class ReportManager {
         }
     }
     
-    public static JasperPrint getDeedOfLease(ApplicationBean appBean, Date actionDate) {
+    public static JasperPrint getDeedOfLease(ApplicationBean appBean, Date actionDate,
+            String leaseDiagramFilePath) {
         HashMap inputParameters = new HashMap();
         inputParameters.put("ACTION_DATE", actionDate);
+        inputParameters.put("LEASE_DIAGRAM", leaseDiagramFilePath);
         ApplicationBean[] beans = new ApplicationBean[1];
         beans[0] = appBean;
         JRDataSource jds = new JRBeanArrayDataSource(beans);

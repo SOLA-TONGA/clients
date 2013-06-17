@@ -1,26 +1,30 @@
 /**
  * ******************************************************************************************
- * Copyright (C) 2012 - Food and Agriculture Organization of the United Nations (FAO). All rights
- * reserved.
+ * Copyright (C) 2012 - Food and Agriculture Organization of the United Nations
+ * (FAO). All rights reserved.
  *
- * Redistribution and use in source and binary forms, with or without modification, are permitted
- * provided that the following conditions are met:
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
  *
- * 1. Redistributions of source code must retain the above copyright notice,this list of conditions
- * and the following disclaimer. 2. Redistributions in binary form must reproduce the above
- * copyright notice,this list of conditions and the following disclaimer in the documentation and/or
- * other materials provided with the distribution. 3. Neither the name of FAO nor the names of its
- * contributors may be used to endorse or promote products derived from this software without
- * specific prior written permission.
+ * 1. Redistributions of source code must retain the above copyright notice,this
+ * list of conditions and the following disclaimer. 2. Redistributions in binary
+ * form must reproduce the above copyright notice,this list of conditions and
+ * the following disclaimer in the documentation and/or other materials provided
+ * with the distribution. 3. Neither the name of FAO nor the names of its
+ * contributors may be used to endorse or promote products derived from this
+ * software without specific prior written permission.
  *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR
- * IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
- * FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
- * DAMAGES (INCLUDING, BUT NOT LIMITED TO,PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
- * DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- * WHETHER IN CONTRACT,STRICT LIABILITY,OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY
- * WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ * ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
+ * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,PROCUREMENT OF
+ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+ * CONTRACT,STRICT LIABILITY,OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING
+ * IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ * POSSIBILITY OF SUCH DAMAGE.
  * *********************************************************************************************
  */
 package org.sola.clients.beans.digitalarchive;
@@ -40,8 +44,9 @@ import org.sola.webservices.transferobjects.digitalarchive.DocumentBinaryTO;
 import org.sola.webservices.transferobjects.digitalarchive.DocumentTO;
 
 /**
- * Represents digital archive document, excluding binary content. Could be populated from the {@link DocumentTO}
- * object.<br /> For more information see data dictionary <b>d=Document</b> schema.
+ * Represents digital archive document, excluding binary content. Could be
+ * populated from the {@link DocumentTO} object.<br /> For more information see
+ * data dictionary <b>d=Document</b> schema.
  */
 public class DocumentBean extends AbstractIdBean {
 
@@ -56,7 +61,6 @@ public class DocumentBean extends AbstractIdBean {
     public DocumentBean() {
         super();
         this.addPropertyChangeListener(new PropertyChangeListener() {
-
             @Override
             public void propertyChange(PropertyChangeEvent evt) {
                 if (evt.getPropertyName().equals(AbstractVersionedBean.ENTITY_ACTION_PROPERTY)) {
@@ -105,7 +109,8 @@ public class DocumentBean extends AbstractIdBean {
     }
 
     /**
-     * Returns description property only if document is not deleted or disassociated
+     * Returns description property only if document is not deleted or
+     * disassociated
      */
     public String getName() {
         if (this.getEntityAction() != EntityAction.DISASSOCIATE
@@ -123,6 +128,27 @@ public class DocumentBean extends AbstractIdBean {
      */
     public String getFileName() {
         return FileUtility.generateFileName(getNr(), getRowVersion(), getExtension());
+    }
+
+    /**
+     * Checks if the document is already cached on the client, and if not,
+     * retrieves it from the server and puts it in the clients documents cache.
+     *
+     * @return The path and file name of the document loaded into the clients
+     * document cache.
+     */
+    public String loadDocument() {
+        String result = FileUtility.getCachePath();
+        if (!FileUtility.isCached(getFileName())) {
+            DocumentBinaryTO documentBinary = WSManager.getInstance().getDigitalArchive().getDocument(getId());
+            if (documentBinary == null) {
+                throw new SOLAException(ClientMessage.SOURCE_NO_DOCUMENT);
+            }
+            result = result + documentBinary.getFileName();
+        } else {
+            result = result + getFileName();
+        }
+        return result;
     }
 
     /**
@@ -163,8 +189,8 @@ public class DocumentBean extends AbstractIdBean {
     }
 
     /**
-     * Opens document from the digital archive. This method will not check the local documents cache
-     * before retrieving the document.
+     * Opens document from the digital archive. This method will not check the
+     * local documents cache before retrieving the document.
      *
      * @param Id The ID of the document to open.
      * @see #openDocument(java.lang.String, java.lang.String)
@@ -181,11 +207,13 @@ public class DocumentBean extends AbstractIdBean {
     }
 
     /**
-     * Checks if a document exists in the local documents cache and if so, opens the document from
-     * the cache, otherwise loads the document from the DigitalArchive service.
+     * Checks if a document exists in the local documents cache and if so, opens
+     * the document from the cache, otherwise loads the document from the
+     * DigitalArchive service.
      *
      * @param Id The id of the document to open
-     * @param fileName The name of the file. The file name should be consistent with
+     * @param fileName The name of the file. The file name should be consistent
+     * with
      * {@linkplain #getFileName(java.lang.String, int, java.lang.String) getFileName}
      * @see #openDocument(java.lang.String)
      */
