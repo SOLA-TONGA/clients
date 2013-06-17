@@ -890,6 +890,12 @@ public class TongaPropertyPanel extends ContentPanel {
                     baUnitBean1.getNameFirstpart(), baUnitBean1.getNameLastpart())));
         }
     }
+    
+    private void printDeedOfLease(){
+        ReportViewerForm form = new ReportViewerForm(ReportManager.getDeedOfLease(applicationBean, null));
+        form.setLocationRelativeTo(this);
+        form.setVisible(true);
+    }
 
     /**
      * Links document as a paper title on the BaUnit object.
@@ -2663,7 +2669,7 @@ private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:
     }//GEN-LAST:event_btnViewRightActionPerformed
     
     private void btnPrintBaUnitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintBaUnitActionPerformed
-        print();
+        printDeedOfLease();
     }//GEN-LAST:event_btnPrintBaUnitActionPerformed
     
     private void btnViewPaperTitleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewPaperTitleActionPerformed
