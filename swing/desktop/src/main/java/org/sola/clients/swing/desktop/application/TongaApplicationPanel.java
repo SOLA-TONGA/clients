@@ -71,11 +71,6 @@ import org.sola.clients.swing.desktop.reports.SysRegCertParamsForm;
 import org.sola.clients.swing.desktop.source.DocumentSearchForm;
 import org.sola.clients.swing.desktop.source.DocumentsManagementExtPanel;
 import org.sola.clients.swing.desktop.source.TransactionedDocumentsPanel;
-import org.sola.clients.swing.desktop.workflow.CabinetSubmissionForm;
-import org.sola.clients.swing.desktop.workflow.ChecklistForm;
-import org.sola.clients.swing.desktop.workflow.MinisterBriefingForm;
-import org.sola.clients.swing.desktop.workflow.SiteInspectionForm;
-import org.sola.clients.swing.desktop.workflow.SurveyForm;
 import org.sola.clients.swing.gis.ui.controlsbundle.ControlsBundleForApplicationLocation;
 import org.sola.clients.swing.ui.ContentPanel;
 import org.sola.clients.swing.ui.HeaderPanel;
@@ -590,9 +585,25 @@ public class TongaApplicationPanel extends ContentPanel {
             // Determine what form to start for selected service
             if (ServiceLauncher.isMapped(requestType)) {
                 boolean launched = false;
-                // Use the service launcher to open the service panel
-                launched = ServiceLauncher.launch(service.getRequestTypeCode(), getMainContentPanel(),
-                        appBean, service, readOnly);
+                
+                // Create property change listener to refresh the state of the appBean
+                // when the service form is closed. 
+                PropertyChangeListener refreshAppBeanOnClose = new PropertyChangeListener() {
+                    @Override
+                    public void propertyChange(PropertyChangeEvent evt) {
+                        if (evt.getPropertyName().equals(ContentPanel.CONTENT_PANEL_CLOSED)) {
+                            appBean.reload();
+                            customizeApplicationForm();
+                            saveAppState();
+                        }
+                    }
+                };
+
+                // Use the service launcher to open the service panel. Add a 
+                // listener to refresh the state of the appBean when the 
+                // service panel is closed. 
+                launched = ServiceLauncher.launch(service.getRequestTypeCode(),
+                        getMainContentPanel(), refreshAppBeanOnClose, appBean, service, readOnly);
 
             } // Power of attorney or other type document registration
             else if (requestType.equalsIgnoreCase(RequestTypeBean.CODE_REG_POWER_OF_ATTORNEY)
