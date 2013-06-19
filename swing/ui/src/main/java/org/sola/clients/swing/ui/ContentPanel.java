@@ -40,6 +40,7 @@ import org.sola.common.help.HelpUtility;
  */
 public class ContentPanel extends JPanel {
 
+    public static String CONTENT_PANEL_CLOSED = "contentPanelClosed";
     private MainContentPanel mainContentPanel;
     private HeaderPanel headerPanel;
     private PropertyChangeListener headerPanelListener;
@@ -135,6 +136,8 @@ public class ContentPanel extends JPanel {
     public void close() {
         if (getMainContentPanel() != null) {
             getMainContentPanel().closePanel(this);
+            // Notify any listeners that this content panel is now closed. 
+            firePropertyChange(CONTENT_PANEL_CLOSED, false, true);
         } else {
             firePropertyChange(HeaderPanel.CLOSE_BUTTON_CLICKED, false, true);
         }
