@@ -114,6 +114,11 @@ public final class ServiceLauncher {
         serviceMap.put(RequestTypeBean.CODE_SIGN_DEED,
                 new String[]{SignDeedForm.class.getName(), MainContentPanel.CARD_SIGN_DEED,
             ClientMessage.PROGRESS_MSG_OPEN_SIGN_DEED});
+        
+        //Item Number Form
+        serviceMap.put(RequestTypeBean.CODE_ITEM_NUMBER, 
+                new String[]{ItemNumberForm.class.getName(), MainContentPanel.CARD_ITEM_NUMBER,
+            ClientMessage.PROGRESS_MSG_OPEN_ITEM_NUMBER});
     }
 
     /**
