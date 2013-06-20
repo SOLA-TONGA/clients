@@ -1,0 +1,1006 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Tonga Lease Application Report" pageWidth="595" pageHeight="842" columnWidth="539" leftMargin="28" rightMargin="28" topMargin="28" bottomMargin="28" whenResourceMissingType="Empty" uuid="ac6f666c-9299-4670-8732-3db826427724">
+	<property name="ireport.zoom" value="1.3310000000000006"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#FFBFBF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="Table Dataset 1" uuid="ee211480-475c-4916-91b6-cfc0107196e8"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="contactPerson" class="org.sola.clients.beans.party.PartyBean">
+		<fieldDescription><![CDATA[contactPerson]]></fieldDescription>
+	</field>
+	<field name="locationDescription" class="java.lang.String">
+		<fieldDescription><![CDATA[locationDescription]]></fieldDescription>
+	</field>
+	<field name="purpose" class="java.lang.String">
+		<fieldDescription><![CDATA[purpose]]></fieldDescription>
+	</field>
+	<field name="receiptRef" class="java.lang.String">
+		<fieldDescription><![CDATA[receiptRef]]></fieldDescription>
+	</field>
+	<field name="selectedProperty" class="org.sola.clients.beans.application.ApplicationPropertyBean">
+		<fieldDescription><![CDATA[selectedProperty]]></fieldDescription>
+	</field>
+	<detail>
+		<band height="786" splitType="Stretch">
+			<rectangle>
+				<reportElement uuid="8e2fe9cf-5bad-4660-ad16-3032449a108a" mode="Transparent" x="417" y="644" width="117" height="44"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="417" y="644" width="117" height="28" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Serif" size="10" isBold="true" isItalic="false" isUnderline="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Lahi 'o e 'api  fakatofi'a]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="93dca089-6fd3-4b0a-ad36-6e7341b0b9ec" x="0" y="576" width="539" height="53"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Serif" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{selectedProperty}.getDescription()]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement uuid="8e2fe9cf-5bad-4660-ad16-3032449a108a" mode="Transparent" x="0" y="644" width="102" height="44"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="8e2fe9cf-5bad-4660-ad16-3032449a108a" mode="Transparent" x="402" y="291" width="134" height="44"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="8e2fe9cf-5bad-4660-ad16-3032449a108a" mode="Transparent" x="268" y="291" width="134" height="44"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="8e2fe9cf-5bad-4660-ad16-3032449a108a" mode="Transparent" x="134" y="291" width="134" height="44"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="8e2fe9cf-5bad-4660-ad16-3032449a108a" mode="Transparent" x="0" y="291" width="134" height="44"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="8e2fe9cf-5bad-4660-ad16-3032449a108a" mode="Transparent" x="402" y="227" width="134" height="44"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="8e2fe9cf-5bad-4660-ad16-3032449a108a" mode="Transparent" x="0" y="227" width="134" height="44"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="8e2fe9cf-5bad-4660-ad16-3032449a108a" mode="Transparent" x="134" y="227" width="134" height="44"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="402" y="227" width="134" height="28" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Serif" size="10" isBold="true" isItalic="false" isUnderline="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Ko hono kotoa 'o hono lahi 'o e kelekele 'oku ma'u]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement uuid="8e2fe9cf-5bad-4660-ad16-3032449a108a" mode="Transparent" x="268" y="227" width="134" height="44"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="332" y="0" width="51" height="16" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Serif" size="10" isBold="true" isItalic="false" isUnderline="false"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[Tu'asila]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="0" y="0" width="74" height="16" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Serif" size="10" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[Foomu L9]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="0" y="56" width="539" height="16" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Serif" size="10" isBold="true" isItalic="false" isUnderline="false"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[Ki he 'Eiki Minista Fonua]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="0" y="71" width="539" height="16" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Monotype Corsiva" size="11" isBold="false" isItalic="false" isUnderline="false"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[The Hon. Minister of Lands.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="0" y="86" width="539" height="16" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Serif" size="10" isBold="true" isItalic="false" isUnderline="false"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[Nuku'alofa]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="0" y="115" width="539" height="16" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Serif" size="10" isBold="true" isItalic="false" isUnderline="false"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[Tangata'eiki]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="0" y="130" width="539" height="16" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Monotype Corsiva" size="11" isBold="false" isItalic="false" isUnderline="false"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[Sirs]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="0" y="145" width="275" height="16" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Justified" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Serif" size="10" isBold="true" isItalic="false" isUnderline="false"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA['Oku ou faka'apa'apa mo fai 'eku no fonua ke lisi 'a e konga 'i]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="437" y="145" width="102" height="16" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Justified" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Serif" size="10" isBold="true" isItalic="false" isUnderline="false"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[pea koe fakamatala]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="93dca089-6fd3-4b0a-ad36-6e7341b0b9ec" x="275" y="145" width="162" height="16"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Serif" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{locationDescription}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="0" y="160" width="539" height="16" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Monotype Corsiva" size="11" isBold="false" isItalic="false" isUnderline="false"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[I have the honour to make application for the lease of certain property at more particularly]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="93dca089-6fd3-4b0a-ad36-6e7341b0b9ec" x="0" y="204" width="539" height="16"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Serif" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{purpose}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="93dca089-6fd3-4b0a-ad36-6e7341b0b9ec" x="390" y="0" width="149" height="16"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Serif" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{contactPerson}.getAddress()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="93dca089-6fd3-4b0a-ad36-6e7341b0b9ec" x="390" y="16" width="149" height="16"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Serif" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{contactPerson}.getPhone()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="332" y="16" width="51" height="16" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Serif" size="10" isBold="true" isItalic="false" isUnderline="false"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[Ph	]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="332" y="32" width="51" height="16" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Serif" size="10" isBold="true" isItalic="false" isUnderline="false"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[Date]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="93dca089-6fd3-4b0a-ad36-6e7341b0b9ec" x="390" y="32" width="149" height="16"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Serif" size="10" isPdfEmbedded="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.text.SimpleDateFormat("dd MMM yyyy").format(new java.util.Date())]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement uuid="8e2fe9cf-5bad-4660-ad16-3032449a108a" mode="Transparent" x="0" y="271" width="134" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="8e2fe9cf-5bad-4660-ad16-3032449a108a" mode="Transparent" x="134" y="271" width="134" height="20"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="0" y="175" width="539" height="15" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Justified" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Serif" size="10" isBold="true" isItalic="false" isUnderline="false"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[kiai 'oku ha 'i lalo ni. Ko e taumu'a 'a ia 'oku faka'amu ke nagaue'aki kiai 'a e konga 'api kuo lau kiai ko e]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="0" y="189" width="539" height="16" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Monotype Corsiva" size="11" isBold="false" isItalic="false" isUnderline="false"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[describe below. The purpose for which I wish to use the said property is]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="268" y="227" width="134" height="28" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Serif" size="10" isBold="true" isItalic="false" isUnderline="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA['Apikolo pe 'api tukuhau 'aho ne lesisita ai 'apikolo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="134" y="227" width="134" height="15" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Serif" size="10" isBold="true" isItalic="false" isUnderline="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Tofi'a 'o]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="0" y="227" width="134" height="15" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Serif" size="10" isBold="true" isItalic="false" isUnderline="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Vahe Fonua 'o]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="268" y="254" width="134" height="17" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Monotype Corsiva" size="11" isBold="false" isItalic="false" isUnderline="false"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[Tax 'api date of registration]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="134" y="241" width="134" height="16" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Monotype Corsiva" size="11" isBold="false" isItalic="false" isUnderline="false"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[Estate]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="0" y="241" width="134" height="16" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Monotype Corsiva" size="11" isBold="false" isItalic="false" isUnderline="false"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[District of]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="402" y="254" width="134" height="17" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Monotype Corsiva" size="11" isBold="false" isItalic="false" isUnderline="false"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[Area of holding]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement uuid="8e2fe9cf-5bad-4660-ad16-3032449a108a" mode="Transparent" x="268" y="271" width="134" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="8e2fe9cf-5bad-4660-ad16-3032449a108a" mode="Transparent" x="402" y="271" width="134" height="20"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="0" y="291" width="134" height="28" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Serif" size="10" isBold="true" isItalic="false" isUnderline="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Hono fakaofiofi 'o e konga 'oku no]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="134" y="291" width="134" height="16" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Serif" size="10" isBold="true" isItalic="false" isUnderline="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Lahi 'o e ta'u ke fai kiai]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="268" y="291" width="134" height="16" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Serif" size="10" isBold="true" isItalic="false" isUnderline="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Lisi 'i he Ta'u]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="134" y="306" width="134" height="16" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Monotype Corsiva" size="11" isBold="false" isItalic="false" isUnderline="false"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[Terms of years]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="268" y="306" width="134" height="16" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Monotype Corsiva" size="11" isBold="false" isItalic="false" isUnderline="false"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[Rent per annum]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="402" y="291" width="134" height="16" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Serif" size="10" isBold="true" isItalic="false" isUnderline="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Pa'anga totongi fua]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="402" y="306" width="134" height="16" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Monotype Corsiva" size="11" isBold="false" isItalic="false" isUnderline="false"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[Amount survey fee]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement uuid="8e2fe9cf-5bad-4660-ad16-3032449a108a" mode="Transparent" x="0" y="335" width="134" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="8e2fe9cf-5bad-4660-ad16-3032449a108a" mode="Transparent" x="134" y="335" width="134" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="8e2fe9cf-5bad-4660-ad16-3032449a108a" mode="Transparent" x="268" y="335" width="134" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="8e2fe9cf-5bad-4660-ad16-3032449a108a" mode="Transparent" x="402" y="335" width="134" height="20"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="0" y="369" width="539" height="15" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Serif" size="10" isBold="true" isItalic="false" isUnderline="false"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[Fakamo'oni 'a 'ana 'oku no fonua ..........................................................................................................................................]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="0" y="384" width="155" height="16" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Monotype Corsiva" size="11" isBold="false" isItalic="false" isUnderline="false"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[Signature of applicant]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="93dca089-6fd3-4b0a-ad36-6e7341b0b9ec" x="161" y="384" width="375" height="16"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Serif" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA["(" + $F{contactPerson}.getFullName() + ")"]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="93dca089-6fd3-4b0a-ad36-6e7341b0b9ec" x="0" y="271" width="134" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Serif" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{selectedProperty}.getDistrict()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="93dca089-6fd3-4b0a-ad36-6e7341b0b9ec" x="134" y="271" width="134" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Serif" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{selectedProperty}.getNobleEstate()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="93dca089-6fd3-4b0a-ad36-6e7341b0b9ec" x="268" y="271" width="134" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Serif" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{selectedProperty}.getRegistrationDate()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="93dca089-6fd3-4b0a-ad36-6e7341b0b9ec" x="402" y="271" width="134" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Serif" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{selectedProperty}.getArea()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="93dca089-6fd3-4b0a-ad36-6e7341b0b9ec" x="0" y="334" width="134" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Serif" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{selectedProperty}.getLeaseArea()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="93dca089-6fd3-4b0a-ad36-6e7341b0b9ec" x="134" y="335" width="134" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Serif" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{selectedProperty}.getLeaseTerm()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="93dca089-6fd3-4b0a-ad36-6e7341b0b9ec" x="268" y="334" width="134" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Serif" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{selectedProperty}.getAmount()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="93dca089-6fd3-4b0a-ad36-6e7341b0b9ec" x="402" y="334" width="134" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Serif" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{selectedProperty}.getSurveyFee()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="0" y="410" width="539" height="15" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Justified" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Serif" size="10" isBold="true" isItalic="false" isUnderline="false"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA['Oku ou fakaha heni 'oku ou loto ke lisi 'a e kelekele 'oku fakamatala kiai 'i 'olunga peau fakapapau foki 'oku]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="0" y="424" width="539" height="16" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Monotype Corsiva" size="11" isBold="false" isItalic="false" isUnderline="false"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[I hereby agree to the lease of the property as describe above and declare that there is no impediment]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="0" y="439" width="539" height="15" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Justified" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Serif" size="10" isBold="true" isItalic="false" isUnderline="false"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA['ikai ha me'a ke ta 'ofi ai 'a e no fonua ni]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="0" y="453" width="539" height="16" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Monotype Corsiva" size="11" isBold="false" isItalic="false" isUnderline="false"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[to prejudice this lease]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="0" y="478" width="539" height="15" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Serif" size="10" isBold="true" isItalic="false" isUnderline="false"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[Fakamo'oni 'a'ana 'oku 'o'ona 'a e kelekele ........................................................................................................................]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="0" y="493" width="155" height="16" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Monotype Corsiva" size="11" isBold="false" isItalic="false" isUnderline="false"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[Signature of Grantor]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="93dca089-6fd3-4b0a-ad36-6e7341b0b9ec" x="207" y="493" width="329" height="16"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Serif" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA["(" + $F{selectedProperty}.getLessorName() + ")"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="0" y="520" width="539" height="15" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Justified" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Serif" size="10" isBold="true" isItalic="false" isUnderline="false"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[Fakamo'oni ...............................................................................................................................................................................]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="0" y="535" width="539" height="16" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Monotype Corsiva" size="11" isBold="false" isItalic="false" isUnderline="false"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[Witness signature]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="0" y="562" width="539" height="15" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Serif" size="10" isBold="true" isItalic="false" isUnderline="false"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[Fakamatala 'a e Minisita Fonua pe ko hono fakafofonga]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement uuid="8e2fe9cf-5bad-4660-ad16-3032449a108a" mode="Transparent" x="0" y="688" width="102" height="20"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="0" y="629" width="539" height="15" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Serif" size="10" isBold="true" isItalic="false" isUnderline="false"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[TOFI'A]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="0" y="717" width="250" height="15" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Serif" size="10" isBold="true" isItalic="false" isUnderline="false"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[Fika 'o e tohi tali totongi fua .......................................]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="0" y="752" width="250" height="15" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Serif" size="10" isBold="true" isItalic="false" isUnderline="false"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA['Aho .................................................................................]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="297" y="752" width="239" height="14" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Serif" size="10" isBold="true" isItalic="false" isUnderline="false"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[Minista Fonua pe ko hono fakafofonga]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="0" y="731" width="250" height="16" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Monotype Corsiva" size="11" isBold="false" isItalic="false" isUnderline="false"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[Survey fee Official Receipt No.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="0" y="766" width="250" height="16" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Monotype Corsiva" size="11" isBold="false" isItalic="false" isUnderline="false"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="297" y="765" width="239" height="16" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Monotype Corsiva" size="11" isBold="false" isItalic="false" isUnderline="false"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[Minister for Lands or Deputy]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="297" y="737" width="239" height="15" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Serif" size="10" isBold="true" isItalic="false" isUnderline="false"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[...................................................................]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement uuid="8e2fe9cf-5bad-4660-ad16-3032449a108a" mode="Transparent" x="102" y="644" width="105" height="44"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="8e2fe9cf-5bad-4660-ad16-3032449a108a" mode="Transparent" x="207" y="644" width="105" height="44"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="8e2fe9cf-5bad-4660-ad16-3032449a108a" mode="Transparent" x="312" y="644" width="105" height="44"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="8e2fe9cf-5bad-4660-ad16-3032449a108a" mode="Transparent" x="102" y="688" width="105" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="8e2fe9cf-5bad-4660-ad16-3032449a108a" mode="Transparent" x="207" y="688" width="105" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="8e2fe9cf-5bad-4660-ad16-3032449a108a" mode="Transparent" x="312" y="688" width="105" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="8e2fe9cf-5bad-4660-ad16-3032449a108a" mode="Transparent" x="417" y="688" width="117" height="20"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="0" y="644" width="102" height="28" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Serif" size="10" isBold="true" isItalic="false" isUnderline="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Lahi 'o e kakai    Tukuhau]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="102" y="644" width="105" height="28" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Serif" size="10" isBold="true" isItalic="false" isUnderline="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Lahi 'o e kelekele lisi ki he muli]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="312" y="644" width="105" height="28" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Serif" size="10" isBold="true" isItalic="false" isUnderline="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Lahi 'o e Tofi'a]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="207" y="644" width="105" height="28" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Serif" size="10" isBold="true" isItalic="false" isUnderline="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Lahi kelekele lisi ki he Tonga]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="0" y="672" width="102" height="16" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Monotype Corsiva" size="11" isBold="false" isItalic="false" isUnderline="false"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[Total number of tax payers]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="102" y="672" width="105" height="16" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Monotype Corsiva" size="11" isBold="false" isItalic="false" isUnderline="false"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[Area leased Foreigners]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="207" y="672" width="105" height="16" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Monotype Corsiva" size="11" isBold="false" isItalic="false" isUnderline="false"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[Area leased Tongns]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="312" y="672" width="105" height="16" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Monotype Corsiva" size="11" isBold="false" isItalic="false" isUnderline="false"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[Total area of Tofi'a]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="417" y="672" width="117" height="16" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Monotype Corsiva" size="11" isBold="false" isItalic="false" isUnderline="false"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[Total area Noble's Reserve]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="0" y="318" width="134" height="16" forecolor="#000000" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Monotype Corsiva" size="11" isBold="false" isItalic="false" isUnderline="false"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[Approximated area require]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>

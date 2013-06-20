@@ -30,6 +30,7 @@
 package org.sola.clients.beans.application;
 
 import java.math.BigDecimal;
+import java.util.Date;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.sola.clients.beans.AbstractIdBean;
 import org.sola.clients.beans.cache.CacheManager;
@@ -56,6 +57,15 @@ public class ApplicationPropertyBean extends AbstractIdBean {
     public static final String BA_UNIT_ID_PROPERTY = "baUnitId";
     public static final String LAND_USE_TYPE_PROPERTY = "landUseType";
     public static final String LAND_USE_CODE_PROPERTY = "landUseCode";
+    public static final String LEASE_NUMBER_PROPERTY = "leaseNumber";
+    public static final String LEASE_AREA_PROPERTY = "leaseArea";
+    public static final String LEASE_TERM_PROPERTY = "leaseTerm";
+    public static final String AMOUNT_PROPERTY = "amount";
+    public static final String REGISTRATION_DATE_PROPERTY = "registrationDate";
+    public static final String LESSOR_NAME_PROPERTY = "lessorName";
+    public static final String DISTRICT_PROPERTY = "district";
+    public static final String NOBLE_ESTATE_PROPERTY = "nobleEstate";
+    public static final String DESCRIPTION_PROPERTY = "description";
     private String applicationId;
     private BigDecimal area;
     @NotEmpty(message = ClientMessage.CHECK_NOTNULL_FIRSTPART, payload = Localized.class)
@@ -68,11 +78,22 @@ public class ApplicationPropertyBean extends AbstractIdBean {
     private boolean verifiedLocation;
     private boolean verifiedApplications;
     private LandUseTypeBean landUseType;
+    // SOLA Tonga extensions
+    private String leaseNumber;
+    private BigDecimal leaseTerm;
+    private BigDecimal leaseArea;
+    private BigDecimal amount;
+    private Date registrationDate;
+    private String lessorName;
+    private String district;
+    private String nobleEstate;
+    private String description;
+    private transient BigDecimal surveyFee;
 
     public ApplicationPropertyBean() {
         super();
     }
-    
+
     public String getLandUseCode() {
         if (landUseType != null) {
             return landUseType.getCode();
@@ -90,7 +111,7 @@ public class ApplicationPropertyBean extends AbstractIdBean {
                 CacheManager.getLandUseTypes(), landUseCode));
         propertySupport.firePropertyChange(LAND_USE_CODE_PROPERTY, oldValue, landUseCode);
     }
-    
+
     public LandUseTypeBean getLandUseType() {
         return landUseType;
     }
@@ -188,4 +209,105 @@ public class ApplicationPropertyBean extends AbstractIdBean {
         totalValue = val;
         propertySupport.firePropertyChange(TOTAL_VALUE_PROPERTY, old, val);
     }
+
+    public String getLeaseNumber() {
+        return leaseNumber;
+    }
+
+    public void setLeaseNumber(String value) {
+        String old = leaseNumber;
+        leaseNumber = value;
+        propertySupport.firePropertyChange(LEASE_NUMBER_PROPERTY, old, value);
+    }
+
+    public BigDecimal getLeaseTerm() {
+        return leaseTerm;
+    }
+
+    public void setLeaseTerm(BigDecimal value) {
+        BigDecimal old = leaseTerm;
+        leaseTerm = value;
+        propertySupport.firePropertyChange(LEASE_TERM_PROPERTY, old, value);
+    }
+
+    public BigDecimal getLeaseArea() {
+        return leaseArea;
+    }
+
+    public void setLeaseArea(BigDecimal value) {
+        BigDecimal old = leaseArea;
+        leaseArea = value;
+        propertySupport.firePropertyChange(LEASE_AREA_PROPERTY, old, value);
+
+    }
+
+    public BigDecimal getAmount() {
+        return amount;
+    }
+
+    public void setAmount(BigDecimal value) {
+        BigDecimal old = amount;
+        amount = value;
+        propertySupport.firePropertyChange(AMOUNT_PROPERTY, old, value);
+    }
+
+    public Date getRegistrationDate() {
+        return registrationDate;
+    }
+
+    public void setRegistrationDate(Date value) {
+        Date old = registrationDate;
+        registrationDate = value;
+        propertySupport.firePropertyChange(REGISTRATION_DATE_PROPERTY, old, value);
+    }
+
+    public String getLessorName() {
+        return lessorName;
+    }
+
+    public void setLessorName(String value) {
+        String old = lessorName;
+        lessorName = value;
+        propertySupport.firePropertyChange(LESSOR_NAME_PROPERTY, old, value);
+    }
+
+    public String getDistrict() {
+        return district;
+    }
+
+    public void setDistrict(String value) {
+        String old = district;
+        district = value;
+        propertySupport.firePropertyChange(DISTRICT_PROPERTY, old, value);
+
+    }
+
+    public String getNobleEstate() {
+        return nobleEstate;
+    }
+
+    public void setNobleEstate(String value) {
+        String old = nobleEstate;
+        nobleEstate = value;
+        propertySupport.firePropertyChange(NOBLE_ESTATE_PROPERTY, old, value);
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String value) {
+        String old = description;
+        description = value;
+        propertySupport.firePropertyChange(DESCRIPTION_PROPERTY, old, value);
+    }
+
+    public BigDecimal getSurveyFee() {
+        return surveyFee;
+    }
+
+    public void setSurveyFee(BigDecimal surveyFee) {
+        this.surveyFee = surveyFee;
+    }
+    
 }
