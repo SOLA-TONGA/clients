@@ -64,6 +64,7 @@ public class ApplicationServiceBean extends ApplicationServiceSummaryBean {
     public static final String VALUE_FEE_PROPERTY = "valueFee";
     public static final String ACTION_DATE_PROPERTY = "actionDate";
     public static final String ACTION_COMPLETED_PROPERTY = "actionCompleted";
+    public static final String LEASE_MATTER = "leaseMatter";
     
     private ServiceActionTypeBean actionBean;
     private ServiceStatusTypeBean statusBean;
@@ -77,6 +78,7 @@ public class ApplicationServiceBean extends ApplicationServiceSummaryBean {
     private String concatenatedName;
     private Date actionDate;
     private boolean actionCompleted;
+    private String leaseMatter;
 
     /**
      * Creates object's instance and initializes the following beans, which are
@@ -227,6 +229,16 @@ public class ApplicationServiceBean extends ApplicationServiceSummaryBean {
         boolean old = actionCompleted;
         actionCompleted = value;
         propertySupport.firePropertyChange(ACTION_COMPLETED_PROPERTY, old, value);
+    }
+    
+    public String getLeaseMatter(){
+        return leaseMatter;
+    }
+    
+    public void setLeaseMatter(String  value){
+        String old = leaseMatter;
+        leaseMatter = value;
+        propertySupport.firePropertyChange(LEASE_MATTER, old, value);
     }
 
     /**

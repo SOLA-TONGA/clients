@@ -668,11 +668,11 @@ public class ReportManager {
         }
     }
 
-    public static JasperPrint getMinisterialBriefingReport(ApplicationBean appBean, Date actionDate) {
+    public static JasperPrint getMinisterialBriefingReport(ApplicationServiceBean appServiceBean, Date actionDate) {
         HashMap inputParameters = new HashMap();
         inputParameters.put("ACTION_DATE", actionDate);
-        ApplicationBean[] beans = new ApplicationBean[1];
-        beans[0] = appBean;
+        ApplicationServiceBean[] beans = new ApplicationServiceBean[1];
+        beans[0] = appServiceBean;
         JRDataSource jds = new JRBeanArrayDataSource(beans);
         try {
             return JasperFillManager.fillReport(
