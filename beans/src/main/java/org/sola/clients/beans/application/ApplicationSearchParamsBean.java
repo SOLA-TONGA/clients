@@ -35,6 +35,7 @@ import org.sola.webservices.transferobjects.search.ApplicationSearchParamsTO;
  */
 public class ApplicationSearchParamsBean extends AbstractBindingBean {
 
+    public static final String ITEM_NUMBER_PROPERTY = "itemNumber";
     public static final String NR_PROPERTY = "nr";
     public static final String FROM_DATE_PROPERTY = "fromDate";
     public static final String TO_DATE_PROPERTY = "toDate";
@@ -42,6 +43,7 @@ public class ApplicationSearchParamsBean extends AbstractBindingBean {
     public static final String CONTACT_PERSON_PROPERTY = "contactPerson";
     public static final String DOCUMENT_NUM_PROPERTY = "documentNumber";
     public static final String DOCUMENT_REF_PROPERTY = "documentReference";
+    private String itemNumber;
     private String nr;
     private Date fromDate;
     private Date toDate;
@@ -54,6 +56,16 @@ public class ApplicationSearchParamsBean extends AbstractBindingBean {
         super();
     }
 
+    public String getItemNumber(){
+        return itemNumber;
+    }
+    
+    public void setItemNumber(String value){
+        String oldValue = itemNumber;
+        itemNumber = value;
+        propertySupport.firePropertyChange(ITEM_NUMBER_PROPERTY, oldValue, value);
+    }
+    
     public String getContactPerson() {
         return contactPerson;
     }

@@ -64,6 +64,7 @@ import org.sola.webservices.transferobjects.search.PropertyVerifierTO;
 @ApplicationCheck
 public class ApplicationBean extends ApplicationSummaryBean {
 
+    public static final String APPLICATION_ITEM_NUMBER = "itemNumber";
     public static final String ACTION_CODE_PROPERTY = "actionCode";
     public static final String ACTION_PROPERTY = "action";
     public static final String ACTION_NOTES_PROPERTY = "actionNotes";
@@ -81,6 +82,7 @@ public class ApplicationBean extends ApplicationSummaryBean {
     public static final String ASSIGNEE_ID_PROPERTY = "assigneeId";
     public static final String STATUS_TYPE_PROPERTY = "statusType";
     public static final String APPLICATION_PROPERTY = "application";
+    private String itemNumber;
     private ApplicationActionTypeBean actionBean;
     private String actionNotes;
     private SolaList<ApplicationPropertyBean> propertyList;
@@ -271,6 +273,16 @@ public class ApplicationBean extends ApplicationSummaryBean {
         String old = assigneeId;
         assigneeId = value;
         propertySupport.firePropertyChange(ASSIGNEE_ID_PROPERTY, old, value);
+    }
+    
+    public String getItemNumber(){
+        return itemNumber;
+    }
+    
+    public void setItemNumber(String value){
+        String old = itemNumber;
+        itemNumber = value;
+        propertySupport.firePropertyChange(APPLICATION_ITEM_NUMBER, old, value);
     }
 
     /**
