@@ -48,6 +48,7 @@ public class MinisterBriefingForm extends ContentPanel {
     ApplicationBean applicationBean;
     ApplicationServiceBean applicationServiceBean;
     boolean readOnly = false;
+    private String leaseMatter;
 
     /**
      * Creates new form MinisterBriefingForm
@@ -61,6 +62,7 @@ public class MinisterBriefingForm extends ContentPanel {
         this.applicationBean = appBean;
         this.applicationServiceBean = appServiceBean;
         this.readOnly = readOnly;
+        this.applicationServiceBean.setLeaseMatter(leaseMatter);
         initComponents();
         customizeForm();
     }
@@ -112,7 +114,7 @@ public class MinisterBriefingForm extends ContentPanel {
     }
 
     public void showMinisterialBriefingReport() {
-        ReportViewerForm form = new ReportViewerForm(ReportManager.getMinisterialBriefingReport(applicationBean, null));
+        ReportViewerForm form = new ReportViewerForm(ReportManager.getMinisterialBriefingReport(applicationServiceBean, null));
         form.setLocationRelativeTo(this);
         form.setVisible(true);
     }
@@ -177,8 +179,6 @@ public class MinisterBriefingForm extends ContentPanel {
 
         jLabel1.setText(bundle.getString("MinisterBriefingForm.jLabel1.text")); // NOI18N
 
-        leaseMatterTextField.setText(bundle.getString("MinisterBriefingForm.leaseMatterTextField.text")); // NOI18N
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -190,7 +190,8 @@ public class MinisterBriefingForm extends ContentPanel {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(leaseMatterTextField))
+                .addComponent(leaseMatterTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 463, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
