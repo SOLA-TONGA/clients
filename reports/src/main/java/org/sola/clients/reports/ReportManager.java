@@ -35,6 +35,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
+import javax.swing.text.DateFormatter;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.data.JRBeanArrayDataSource;
 import org.sola.clients.beans.administrative.BaUnitBean;
@@ -700,7 +701,7 @@ public class ReportManager {
             return null;
         }
     }
-    
+
     public static JasperPrint getCabinetSubmissionReport(ApplicationBean appBean, Date actionDate) {
         HashMap inputParameters = new HashMap();
         inputParameters.put("ACTION_DATE", actionDate);
@@ -717,7 +718,7 @@ public class ReportManager {
             return null;
         }
     }
-    
+
     public static JasperPrint getDeedOfLease(ApplicationBean appBean, Date actionDate,
             String leaseDiagramFilePath) {
         HashMap inputParameters = new HashMap();
@@ -729,6 +730,22 @@ public class ReportManager {
         try {
             return JasperFillManager.fillReport(
                     ReportManager.class.getResourceAsStream("/reports/DeedOfLease.jasper"),
+                    inputParameters, jds);
+        } catch (JRException ex) {
+            MessageUtility.displayMessage(ClientMessage.REPORT_GENERATION_FAILED,
+                    new Object[]{ex.getLocalizedMessage()});
+            return null;
+        }
+    }
+
+    public static JasperPrint getLeaseApplicationReport(ApplicationBean appBean) {
+        HashMap inputParameters = new HashMap();
+        ApplicationBean[] beans = new ApplicationBean[1];
+        beans[0] = appBean;
+        JRDataSource jds = new JRBeanArrayDataSource(beans);
+        try {
+            return JasperFillManager.fillReport(
+                    ReportManager.class.getResourceAsStream("/reports/workflow/TongaLeaseApplicationReport.jasper"),
                     inputParameters, jds);
         } catch (JRException ex) {
             MessageUtility.displayMessage(ClientMessage.REPORT_GENERATION_FAILED,
