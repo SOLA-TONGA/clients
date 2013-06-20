@@ -29,6 +29,7 @@
  */
 package org.sola.clients.swing.desktop.application;
 
+import java.beans.PropertyChangeListener;
 import java.lang.reflect.Constructor;
 import java.util.HashMap;
 import java.util.Map;
@@ -206,12 +207,17 @@ public final class ServiceLauncher {
      *
      * @param requestType The request type for the service to launch
      * @param mainPanel The main content panel to show the service panel/form in
+     * @param panelListener Property Change Listener that is registered on the
+     * new panel to listen for property changes such as the closing of the
+     * panel. Can be null.
      * @param constructorArgs The arguments to pass to the constructor for the
-     * form
+     * form. Null if the nullary constructor is to be used.
      * @return true if the form is successfully launched, false otherwise.
      */
     public static boolean launch(final String requestType,
-            final MainContentPanel mainPanel, final Object... constructorArgs) {
+            final MainContentPanel mainPanel,
+            final PropertyChangeListener panelListener,
+            final Object... constructorArgs) {
         final boolean result[] = {false};
         if (isMapped(requestType)) {
             SolaTask t = new SolaTask<Void, Void>() {
@@ -219,8 +225,11 @@ public final class ServiceLauncher {
                 public Void doTask() {
                     setMessage(MessageUtility.getLocalizedMessageText(getInstance().getMessageCode(requestType)));
                     ContentPanel panel = getInstance().getServicePanel(requestType, constructorArgs);
+                    if (panelListener != null) {
+                        panel.addPropertyChangeListener(panelListener);
+                    }
                     if (panel != null) {
-                        mainPanel.addPanel(panel, getInstance().getMessageCode(requestType), true);
+                        mainPanel.addPanel(panel, getInstance().getCardName(requestType), true);
                         result[0] = true;
                     }
                     return null;
