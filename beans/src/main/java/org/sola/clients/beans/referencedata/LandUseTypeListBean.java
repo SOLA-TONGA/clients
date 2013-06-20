@@ -30,14 +30,14 @@
 package org.sola.clients.beans.referencedata;
 
 import org.jdesktop.observablecollections.ObservableList;
-import org.sola.clients.beans.AbstractBindingBean;
+import org.sola.clients.beans.AbstractBindingListBean;
 import org.sola.clients.beans.cache.CacheManager;
 import org.sola.clients.beans.controls.SolaCodeList;
 
 /**
  * Holds the list of {@link RrrTypeBean} objects.
  */
-public class LandUseTypeListBean extends AbstractBindingBean {
+public class LandUseTypeListBean extends AbstractBindingListBean {
 
     public static final String SELECTED_LAND_USE_TYPE_PROPERTY = "selectedLandUseType";
     private SolaCodeList<LandUseTypeBean> landUseTypeList;
@@ -48,8 +48,13 @@ public class LandUseTypeListBean extends AbstractBindingBean {
      * {@link LandUseTypeBean} &gt; with values from the cache.
      */
     public LandUseTypeListBean() {
-        // Load from cache by default
-        landUseTypeList = new SolaCodeList<LandUseTypeBean>(CacheManager.getLandUseTypes());
+        this(true);
+    }
+
+    public LandUseTypeListBean(boolean createDummy) {
+        landUseTypeList = new SolaCodeList<LandUseTypeBean>();
+        loadCodeList(LandUseTypeBean.class, landUseTypeList,
+                CacheManager.getLandUseTypes(), createDummy);
     }
 
     public ObservableList<LandUseTypeBean> getLandUseTypeList() {

@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Tonga Lease Application Report" pageWidth="595" pageHeight="842" columnWidth="539" leftMargin="28" rightMargin="28" topMargin="28" bottomMargin="28" whenResourceMissingType="Empty" uuid="ac6f666c-9299-4670-8732-3db826427724">
 	<property name="ireport.zoom" value="1.3310000000000006"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="237"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>
@@ -61,7 +61,7 @@
 				<text><![CDATA[Lahi 'o e 'api  fakatofi'a]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement uuid="93dca089-6fd3-4b0a-ad36-6e7341b0b9ec" x="0" y="576" width="539" height="53"/>
+				<reportElement uuid="93dca089-6fd3-4b0a-ad36-6e7341b0b9ec" x="0" y="564" width="539" height="65"/>
 				<textElement verticalAlignment="Top">
 					<font fontName="Serif" size="10"/>
 				</textElement>
@@ -71,28 +71,28 @@
 				<reportElement uuid="8e2fe9cf-5bad-4660-ad16-3032449a108a" mode="Transparent" x="0" y="644" width="102" height="44"/>
 			</rectangle>
 			<rectangle>
-				<reportElement uuid="8e2fe9cf-5bad-4660-ad16-3032449a108a" mode="Transparent" x="402" y="291" width="134" height="44"/>
+				<reportElement uuid="8e2fe9cf-5bad-4660-ad16-3032449a108a" mode="Transparent" x="402" y="278" width="134" height="44"/>
 			</rectangle>
 			<rectangle>
-				<reportElement uuid="8e2fe9cf-5bad-4660-ad16-3032449a108a" mode="Transparent" x="268" y="291" width="134" height="44"/>
+				<reportElement uuid="8e2fe9cf-5bad-4660-ad16-3032449a108a" mode="Transparent" x="268" y="278" width="134" height="44"/>
 			</rectangle>
 			<rectangle>
-				<reportElement uuid="8e2fe9cf-5bad-4660-ad16-3032449a108a" mode="Transparent" x="134" y="291" width="134" height="44"/>
+				<reportElement uuid="8e2fe9cf-5bad-4660-ad16-3032449a108a" mode="Transparent" x="134" y="278" width="134" height="44"/>
 			</rectangle>
 			<rectangle>
-				<reportElement uuid="8e2fe9cf-5bad-4660-ad16-3032449a108a" mode="Transparent" x="0" y="291" width="134" height="44"/>
+				<reportElement uuid="8e2fe9cf-5bad-4660-ad16-3032449a108a" mode="Transparent" x="0" y="278" width="134" height="44"/>
 			</rectangle>
 			<rectangle>
-				<reportElement uuid="8e2fe9cf-5bad-4660-ad16-3032449a108a" mode="Transparent" x="402" y="227" width="134" height="44"/>
+				<reportElement uuid="8e2fe9cf-5bad-4660-ad16-3032449a108a" mode="Transparent" x="402" y="214" width="134" height="44"/>
 			</rectangle>
 			<rectangle>
-				<reportElement uuid="8e2fe9cf-5bad-4660-ad16-3032449a108a" mode="Transparent" x="0" y="227" width="134" height="44"/>
+				<reportElement uuid="8e2fe9cf-5bad-4660-ad16-3032449a108a" mode="Transparent" x="0" y="214" width="134" height="44"/>
 			</rectangle>
 			<rectangle>
-				<reportElement uuid="8e2fe9cf-5bad-4660-ad16-3032449a108a" mode="Transparent" x="134" y="227" width="134" height="44"/>
+				<reportElement uuid="8e2fe9cf-5bad-4660-ad16-3032449a108a" mode="Transparent" x="134" y="214" width="134" height="44"/>
 			</rectangle>
 			<staticText>
-				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="402" y="227" width="134" height="28" forecolor="#000000" backcolor="#FFFFFF"/>
+				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="402" y="214" width="134" height="28" forecolor="#000000" backcolor="#FFFFFF"/>
 				<box>
 					<topPen lineWidth="0.0"/>
 					<leftPen lineWidth="0.0"/>
@@ -105,7 +105,7 @@
 				<text><![CDATA[Ko hono kotoa 'o hono lahi 'o e kelekele 'oku ma'u]]></text>
 			</staticText>
 			<rectangle>
-				<reportElement uuid="8e2fe9cf-5bad-4660-ad16-3032449a108a" mode="Transparent" x="268" y="227" width="134" height="44"/>
+				<reportElement uuid="8e2fe9cf-5bad-4660-ad16-3032449a108a" mode="Transparent" x="268" y="214" width="134" height="44"/>
 			</rectangle>
 			<staticText>
 				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="332" y="0" width="51" height="16" forecolor="#000000" backcolor="#FFFFFF"/>
@@ -218,7 +218,7 @@
 					<leftPen lineWidth="0.0"/>
 					<rightPen lineWidth="0.0"/>
 				</box>
-				<textElement textAlignment="Justified" verticalAlignment="Middle" rotation="None" markup="none">
+				<textElement textAlignment="Right" verticalAlignment="Middle" rotation="None" markup="none">
 					<font fontName="Serif" size="10" isBold="true" isItalic="false" isUnderline="false"/>
 					<paragraph lineSpacing="1_1_2"/>
 				</textElement>
@@ -245,18 +245,18 @@
 				<text><![CDATA[I have the honour to make application for the lease of certain property at more particularly]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement uuid="93dca089-6fd3-4b0a-ad36-6e7341b0b9ec" x="0" y="204" width="539" height="16"/>
+				<reportElement uuid="93dca089-6fd3-4b0a-ad36-6e7341b0b9ec" x="461" y="175" width="78" height="15"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Serif" size="10"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{purpose}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{selectedProperty}.getLandUseType().getDisplayValue()]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement uuid="93dca089-6fd3-4b0a-ad36-6e7341b0b9ec" x="390" y="0" width="149" height="16"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Serif" size="10"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{contactPerson}.getAddress()]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{contactPerson}.getAddress().getDescription()]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement uuid="93dca089-6fd3-4b0a-ad36-6e7341b0b9ec" x="390" y="16" width="149" height="16"/>
@@ -299,13 +299,13 @@
 				<textFieldExpression><![CDATA[new java.text.SimpleDateFormat("dd MMM yyyy").format(new java.util.Date())]]></textFieldExpression>
 			</textField>
 			<rectangle>
-				<reportElement uuid="8e2fe9cf-5bad-4660-ad16-3032449a108a" mode="Transparent" x="0" y="271" width="134" height="20"/>
+				<reportElement uuid="8e2fe9cf-5bad-4660-ad16-3032449a108a" mode="Transparent" x="0" y="258" width="134" height="20"/>
 			</rectangle>
 			<rectangle>
-				<reportElement uuid="8e2fe9cf-5bad-4660-ad16-3032449a108a" mode="Transparent" x="134" y="271" width="134" height="20"/>
+				<reportElement uuid="8e2fe9cf-5bad-4660-ad16-3032449a108a" mode="Transparent" x="134" y="258" width="134" height="20"/>
 			</rectangle>
 			<staticText>
-				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="0" y="175" width="539" height="15" forecolor="#000000" backcolor="#FFFFFF"/>
+				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="0" y="175" width="461" height="15" forecolor="#000000" backcolor="#FFFFFF"/>
 				<box>
 					<topPen lineWidth="0.0"/>
 					<leftPen lineWidth="0.0"/>
@@ -331,7 +331,7 @@
 				<text><![CDATA[describe below. The purpose for which I wish to use the said property is]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="268" y="227" width="134" height="28" forecolor="#000000" backcolor="#FFFFFF"/>
+				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="268" y="214" width="134" height="28" forecolor="#000000" backcolor="#FFFFFF"/>
 				<box>
 					<topPen lineWidth="0.0"/>
 					<leftPen lineWidth="0.0"/>
@@ -344,7 +344,7 @@
 				<text><![CDATA['Apikolo pe 'api tukuhau 'aho ne lesisita ai 'apikolo]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="134" y="227" width="134" height="15" forecolor="#000000" backcolor="#FFFFFF"/>
+				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="134" y="214" width="134" height="15" forecolor="#000000" backcolor="#FFFFFF"/>
 				<box>
 					<topPen lineWidth="0.0"/>
 					<leftPen lineWidth="0.0"/>
@@ -357,7 +357,7 @@
 				<text><![CDATA[Tofi'a 'o]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="0" y="227" width="134" height="15" forecolor="#000000" backcolor="#FFFFFF"/>
+				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="0" y="214" width="134" height="15" forecolor="#000000" backcolor="#FFFFFF"/>
 				<box>
 					<topPen lineWidth="0.0"/>
 					<leftPen lineWidth="0.0"/>
@@ -370,7 +370,7 @@
 				<text><![CDATA[Vahe Fonua 'o]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="268" y="254" width="134" height="17" forecolor="#000000" backcolor="#FFFFFF"/>
+				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="268" y="241" width="134" height="17" forecolor="#000000" backcolor="#FFFFFF"/>
 				<box>
 					<topPen lineWidth="0.0"/>
 					<leftPen lineWidth="0.0"/>
@@ -383,7 +383,7 @@
 				<text><![CDATA[Tax 'api date of registration]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="134" y="241" width="134" height="16" forecolor="#000000" backcolor="#FFFFFF"/>
+				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="134" y="228" width="134" height="16" forecolor="#000000" backcolor="#FFFFFF"/>
 				<box>
 					<topPen lineWidth="0.0"/>
 					<leftPen lineWidth="0.0"/>
@@ -396,7 +396,7 @@
 				<text><![CDATA[Estate]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="0" y="241" width="134" height="16" forecolor="#000000" backcolor="#FFFFFF"/>
+				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="0" y="228" width="134" height="16" forecolor="#000000" backcolor="#FFFFFF"/>
 				<box>
 					<topPen lineWidth="0.0"/>
 					<leftPen lineWidth="0.0"/>
@@ -409,7 +409,7 @@
 				<text><![CDATA[District of]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="402" y="254" width="134" height="17" forecolor="#000000" backcolor="#FFFFFF"/>
+				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="402" y="241" width="134" height="17" forecolor="#000000" backcolor="#FFFFFF"/>
 				<box>
 					<topPen lineWidth="0.0"/>
 					<leftPen lineWidth="0.0"/>
@@ -422,13 +422,13 @@
 				<text><![CDATA[Area of holding]]></text>
 			</staticText>
 			<rectangle>
-				<reportElement uuid="8e2fe9cf-5bad-4660-ad16-3032449a108a" mode="Transparent" x="268" y="271" width="134" height="20"/>
+				<reportElement uuid="8e2fe9cf-5bad-4660-ad16-3032449a108a" mode="Transparent" x="268" y="258" width="134" height="20"/>
 			</rectangle>
 			<rectangle>
-				<reportElement uuid="8e2fe9cf-5bad-4660-ad16-3032449a108a" mode="Transparent" x="402" y="271" width="134" height="20"/>
+				<reportElement uuid="8e2fe9cf-5bad-4660-ad16-3032449a108a" mode="Transparent" x="402" y="258" width="134" height="20"/>
 			</rectangle>
 			<staticText>
-				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="0" y="291" width="134" height="28" forecolor="#000000" backcolor="#FFFFFF"/>
+				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="0" y="278" width="134" height="28" forecolor="#000000" backcolor="#FFFFFF"/>
 				<box>
 					<topPen lineWidth="0.0"/>
 					<leftPen lineWidth="0.0"/>
@@ -441,7 +441,7 @@
 				<text><![CDATA[Hono fakaofiofi 'o e konga 'oku no]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="134" y="291" width="134" height="16" forecolor="#000000" backcolor="#FFFFFF"/>
+				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="134" y="278" width="134" height="16" forecolor="#000000" backcolor="#FFFFFF"/>
 				<box>
 					<topPen lineWidth="0.0"/>
 					<leftPen lineWidth="0.0"/>
@@ -454,7 +454,7 @@
 				<text><![CDATA[Lahi 'o e ta'u ke fai kiai]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="268" y="291" width="134" height="16" forecolor="#000000" backcolor="#FFFFFF"/>
+				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="268" y="278" width="134" height="16" forecolor="#000000" backcolor="#FFFFFF"/>
 				<box>
 					<topPen lineWidth="0.0"/>
 					<leftPen lineWidth="0.0"/>
@@ -467,7 +467,7 @@
 				<text><![CDATA[Lisi 'i he Ta'u]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="134" y="306" width="134" height="16" forecolor="#000000" backcolor="#FFFFFF"/>
+				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="134" y="293" width="134" height="16" forecolor="#000000" backcolor="#FFFFFF"/>
 				<box>
 					<topPen lineWidth="0.0"/>
 					<leftPen lineWidth="0.0"/>
@@ -480,7 +480,7 @@
 				<text><![CDATA[Terms of years]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="268" y="306" width="134" height="16" forecolor="#000000" backcolor="#FFFFFF"/>
+				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="268" y="293" width="134" height="16" forecolor="#000000" backcolor="#FFFFFF"/>
 				<box>
 					<topPen lineWidth="0.0"/>
 					<leftPen lineWidth="0.0"/>
@@ -493,7 +493,7 @@
 				<text><![CDATA[Rent per annum]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="402" y="291" width="134" height="16" forecolor="#000000" backcolor="#FFFFFF"/>
+				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="402" y="278" width="134" height="16" forecolor="#000000" backcolor="#FFFFFF"/>
 				<box>
 					<topPen lineWidth="0.0"/>
 					<leftPen lineWidth="0.0"/>
@@ -506,7 +506,7 @@
 				<text><![CDATA[Pa'anga totongi fua]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="402" y="306" width="134" height="16" forecolor="#000000" backcolor="#FFFFFF"/>
+				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="402" y="293" width="134" height="16" forecolor="#000000" backcolor="#FFFFFF"/>
 				<box>
 					<topPen lineWidth="0.0"/>
 					<leftPen lineWidth="0.0"/>
@@ -519,19 +519,19 @@
 				<text><![CDATA[Amount survey fee]]></text>
 			</staticText>
 			<rectangle>
-				<reportElement uuid="8e2fe9cf-5bad-4660-ad16-3032449a108a" mode="Transparent" x="0" y="335" width="134" height="20"/>
+				<reportElement uuid="8e2fe9cf-5bad-4660-ad16-3032449a108a" mode="Transparent" x="0" y="322" width="134" height="20"/>
 			</rectangle>
 			<rectangle>
-				<reportElement uuid="8e2fe9cf-5bad-4660-ad16-3032449a108a" mode="Transparent" x="134" y="335" width="134" height="20"/>
+				<reportElement uuid="8e2fe9cf-5bad-4660-ad16-3032449a108a" mode="Transparent" x="134" y="322" width="134" height="20"/>
 			</rectangle>
 			<rectangle>
-				<reportElement uuid="8e2fe9cf-5bad-4660-ad16-3032449a108a" mode="Transparent" x="268" y="335" width="134" height="20"/>
+				<reportElement uuid="8e2fe9cf-5bad-4660-ad16-3032449a108a" mode="Transparent" x="268" y="322" width="134" height="20"/>
 			</rectangle>
 			<rectangle>
-				<reportElement uuid="8e2fe9cf-5bad-4660-ad16-3032449a108a" mode="Transparent" x="402" y="335" width="134" height="20"/>
+				<reportElement uuid="8e2fe9cf-5bad-4660-ad16-3032449a108a" mode="Transparent" x="402" y="322" width="134" height="20"/>
 			</rectangle>
 			<staticText>
-				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="0" y="369" width="539" height="15" forecolor="#000000" backcolor="#FFFFFF"/>
+				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="0" y="356" width="539" height="15" forecolor="#000000" backcolor="#FFFFFF"/>
 				<box>
 					<topPen lineWidth="0.0"/>
 					<leftPen lineWidth="0.0"/>
@@ -544,7 +544,7 @@
 				<text><![CDATA[Fakamo'oni 'a 'ana 'oku no fonua ..........................................................................................................................................]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="0" y="384" width="155" height="16" forecolor="#000000" backcolor="#FFFFFF"/>
+				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="0" y="371" width="134" height="16" forecolor="#000000" backcolor="#FFFFFF"/>
 				<box>
 					<topPen lineWidth="0.0"/>
 					<leftPen lineWidth="0.0"/>
@@ -557,70 +557,70 @@
 				<text><![CDATA[Signature of applicant]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement uuid="93dca089-6fd3-4b0a-ad36-6e7341b0b9ec" x="161" y="384" width="375" height="16"/>
+				<reportElement uuid="93dca089-6fd3-4b0a-ad36-6e7341b0b9ec" x="184" y="371" width="267" height="16"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Serif" size="10"/>
 				</textElement>
 				<textFieldExpression><![CDATA["(" + $F{contactPerson}.getFullName() + ")"]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement uuid="93dca089-6fd3-4b0a-ad36-6e7341b0b9ec" x="0" y="271" width="134" height="20"/>
+				<reportElement uuid="93dca089-6fd3-4b0a-ad36-6e7341b0b9ec" x="0" y="258" width="134" height="20"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Serif" size="10"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{selectedProperty}.getDistrict()]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement uuid="93dca089-6fd3-4b0a-ad36-6e7341b0b9ec" x="134" y="271" width="134" height="20"/>
+				<reportElement uuid="93dca089-6fd3-4b0a-ad36-6e7341b0b9ec" x="134" y="258" width="134" height="20"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Serif" size="10"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{selectedProperty}.getNobleEstate()]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement uuid="93dca089-6fd3-4b0a-ad36-6e7341b0b9ec" x="268" y="271" width="134" height="20"/>
+				<reportElement uuid="93dca089-6fd3-4b0a-ad36-6e7341b0b9ec" x="268" y="258" width="134" height="20"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Serif" size="10"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{selectedProperty}.getRegistrationDate()]]></textFieldExpression>
+				<textFieldExpression><![CDATA[new java.text.SimpleDateFormat("dd MMM yyyy").format($F{selectedProperty}.getRegistrationDate())]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement uuid="93dca089-6fd3-4b0a-ad36-6e7341b0b9ec" x="402" y="271" width="134" height="20"/>
+				<reportElement uuid="93dca089-6fd3-4b0a-ad36-6e7341b0b9ec" x="402" y="258" width="134" height="20"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Serif" size="10"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{selectedProperty}.getArea()]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{selectedProperty}.getArea().intValue() + "m²"]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement uuid="93dca089-6fd3-4b0a-ad36-6e7341b0b9ec" x="0" y="334" width="134" height="20"/>
+				<reportElement uuid="93dca089-6fd3-4b0a-ad36-6e7341b0b9ec" x="0" y="321" width="134" height="20"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Serif" size="10"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{selectedProperty}.getLeaseArea()]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{selectedProperty}.getLeaseArea().intValue() + "m²"]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement uuid="93dca089-6fd3-4b0a-ad36-6e7341b0b9ec" x="134" y="335" width="134" height="20"/>
+				<reportElement uuid="93dca089-6fd3-4b0a-ad36-6e7341b0b9ec" x="134" y="322" width="134" height="20"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Serif" size="10"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{selectedProperty}.getLeaseTerm()]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{selectedProperty}.getLeaseTerm().intValue()]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement uuid="93dca089-6fd3-4b0a-ad36-6e7341b0b9ec" x="268" y="334" width="134" height="20"/>
+				<reportElement uuid="93dca089-6fd3-4b0a-ad36-6e7341b0b9ec" x="268" y="321" width="134" height="20"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Serif" size="10"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{selectedProperty}.getAmount()]]></textFieldExpression>
+				<textFieldExpression><![CDATA["$" + $F{selectedProperty}.getAmount()]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement uuid="93dca089-6fd3-4b0a-ad36-6e7341b0b9ec" x="402" y="334" width="134" height="20"/>
+				<reportElement uuid="93dca089-6fd3-4b0a-ad36-6e7341b0b9ec" x="402" y="321" width="134" height="20"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Serif" size="10"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{selectedProperty}.getSurveyFee()]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{selectedProperty}.getSurveyFee() == null ? "" : "$" + $F{selectedProperty}.getSurveyFee()]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="0" y="410" width="539" height="15" forecolor="#000000" backcolor="#FFFFFF"/>
+				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="0" y="397" width="539" height="15" forecolor="#000000" backcolor="#FFFFFF"/>
 				<box>
 					<topPen lineWidth="0.0"/>
 					<leftPen lineWidth="0.0"/>
@@ -633,7 +633,7 @@
 				<text><![CDATA['Oku ou fakaha heni 'oku ou loto ke lisi 'a e kelekele 'oku fakamatala kiai 'i 'olunga peau fakapapau foki 'oku]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="0" y="424" width="539" height="16" forecolor="#000000" backcolor="#FFFFFF"/>
+				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="0" y="411" width="539" height="16" forecolor="#000000" backcolor="#FFFFFF"/>
 				<box>
 					<topPen lineWidth="0.0"/>
 					<leftPen lineWidth="0.0"/>
@@ -646,7 +646,7 @@
 				<text><![CDATA[I hereby agree to the lease of the property as describe above and declare that there is no impediment]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="0" y="439" width="539" height="15" forecolor="#000000" backcolor="#FFFFFF"/>
+				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="0" y="426" width="539" height="15" forecolor="#000000" backcolor="#FFFFFF"/>
 				<box>
 					<topPen lineWidth="0.0"/>
 					<leftPen lineWidth="0.0"/>
@@ -659,7 +659,7 @@
 				<text><![CDATA['ikai ha me'a ke ta 'ofi ai 'a e no fonua ni]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="0" y="453" width="539" height="16" forecolor="#000000" backcolor="#FFFFFF"/>
+				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="0" y="440" width="539" height="16" forecolor="#000000" backcolor="#FFFFFF"/>
 				<box>
 					<topPen lineWidth="0.0"/>
 					<leftPen lineWidth="0.0"/>
@@ -672,7 +672,7 @@
 				<text><![CDATA[to prejudice this lease]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="0" y="478" width="539" height="15" forecolor="#000000" backcolor="#FFFFFF"/>
+				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="0" y="465" width="539" height="15" forecolor="#000000" backcolor="#FFFFFF"/>
 				<box>
 					<topPen lineWidth="0.0"/>
 					<leftPen lineWidth="0.0"/>
@@ -685,7 +685,7 @@
 				<text><![CDATA[Fakamo'oni 'a'ana 'oku 'o'ona 'a e kelekele ........................................................................................................................]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="0" y="493" width="155" height="16" forecolor="#000000" backcolor="#FFFFFF"/>
+				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="0" y="480" width="155" height="16" forecolor="#000000" backcolor="#FFFFFF"/>
 				<box>
 					<topPen lineWidth="0.0"/>
 					<leftPen lineWidth="0.0"/>
@@ -698,14 +698,14 @@
 				<text><![CDATA[Signature of Grantor]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement uuid="93dca089-6fd3-4b0a-ad36-6e7341b0b9ec" x="207" y="493" width="329" height="16"/>
+				<reportElement uuid="93dca089-6fd3-4b0a-ad36-6e7341b0b9ec" x="184" y="480" width="267" height="16"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Serif" size="10"/>
 				</textElement>
 				<textFieldExpression><![CDATA["(" + $F{selectedProperty}.getLessorName() + ")"]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="0" y="520" width="539" height="15" forecolor="#000000" backcolor="#FFFFFF"/>
+				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="0" y="507" width="539" height="15" forecolor="#000000" backcolor="#FFFFFF"/>
 				<box>
 					<topPen lineWidth="0.0"/>
 					<leftPen lineWidth="0.0"/>
@@ -718,7 +718,7 @@
 				<text><![CDATA[Fakamo'oni ...............................................................................................................................................................................]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="0" y="535" width="539" height="16" forecolor="#000000" backcolor="#FFFFFF"/>
+				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="0" y="522" width="539" height="16" forecolor="#000000" backcolor="#FFFFFF"/>
 				<box>
 					<topPen lineWidth="0.0"/>
 					<leftPen lineWidth="0.0"/>
@@ -731,7 +731,7 @@
 				<text><![CDATA[Witness signature]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="0" y="562" width="539" height="15" forecolor="#000000" backcolor="#FFFFFF"/>
+				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="0" y="549" width="539" height="15" forecolor="#000000" backcolor="#FFFFFF"/>
 				<box>
 					<topPen lineWidth="0.0"/>
 					<leftPen lineWidth="0.0"/>
@@ -960,7 +960,7 @@
 					<font fontName="Monotype Corsiva" size="11" isBold="false" isItalic="false" isUnderline="false"/>
 					<paragraph lineSpacing="1_1_2"/>
 				</textElement>
-				<text><![CDATA[Area leased Tongns]]></text>
+				<text><![CDATA[Area leased Tongans]]></text>
 			</staticText>
 			<staticText>
 				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="312" y="672" width="105" height="16" forecolor="#000000" backcolor="#FFFFFF"/>
@@ -989,7 +989,7 @@
 				<text><![CDATA[Total area Noble's Reserve]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="0" y="318" width="134" height="16" forecolor="#000000" backcolor="#FFFFFF"/>
+				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="0" y="305" width="134" height="16" forecolor="#000000" backcolor="#FFFFFF"/>
 				<box>
 					<topPen lineWidth="0.0"/>
 					<leftPen lineWidth="0.0"/>

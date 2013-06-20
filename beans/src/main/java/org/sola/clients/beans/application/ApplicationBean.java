@@ -48,6 +48,7 @@ import org.sola.clients.beans.referencedata.*;
 import org.sola.clients.beans.source.SourceBean;
 import org.sola.clients.beans.validation.Localized;
 import org.sola.clients.beans.validation.ValidationResultBean;
+import org.sola.common.Money;
 import org.sola.common.messaging.ClientMessage;
 import org.sola.common.messaging.MessageUtility;
 import org.sola.services.boundary.wsclients.WSManager;
@@ -125,6 +126,7 @@ public class ApplicationBean extends ApplicationSummaryBean {
         serviceList = new SolaObservableList<ApplicationServiceBean>();
         sourceList = new SolaList();
         appLogList = new SolaObservableList<ApplicationLogBean>();
+        propertyList.addAsNew(new ApplicationPropertyBean());
     }
 
     public boolean canArchive() {
@@ -277,12 +279,12 @@ public class ApplicationBean extends ApplicationSummaryBean {
         assigneeId = value;
         propertySupport.firePropertyChange(ASSIGNEE_ID_PROPERTY, old, value);
     }
-    
-    public String getItemNumber(){
+
+    public String getItemNumber() {
         return itemNumber;
     }
-    
-    public void setItemNumber(String value){
+
+    public void setItemNumber(String value) {
         String old = itemNumber;
         itemNumber = value;
         propertySupport.firePropertyChange(APPLICATION_ITEM_NUMBER, old, value);
@@ -946,6 +948,7 @@ public class ApplicationBean extends ApplicationSummaryBean {
     public void reload() {
         ApplicationTO app = WSManager.getInstance().getCaseManagementService().getApplication(this.getId());
         TypeConverters.TransferObjectToBean(app, ApplicationBean.class, this);
+        propertySupport.firePropertyChange(APPLICATION_PROPERTY, null, this);
     }
 
     /**
@@ -964,5 +967,30 @@ public class ApplicationBean extends ApplicationSummaryBean {
     public void setArchiveDocument(DocumentBean archiveDocument) {
         this.archiveDocument = archiveDocument;
         propertySupport.firePropertyChange(ARCHIVE_DOCUMENT, null, archiveDocument);
+    }
+
+    /**
+     * Calculates the total fee for a service including tax
+     *
+     * @param requestType The service to determine the fee for
+     * @return The fee for the service or null if the service was not on the
+     * application or the fee for the service was 0
+     */
+    public BigDecimal getTotalFeeForService(String requestType) {
+        BigDecimal result = null;
+        for (ApplicationServiceBean bean : getServiceList()) {
+            if (requestType.equals(bean.getRequestTypeCode())) {
+                if (this.getServicesFee() != null
+                        && BigDecimal.ZERO.compareTo(this.getServicesFee()) != 0) {
+                    Money feeAmt = new Money(bean.getAreaFee().add(bean.getBaseFee())
+                            .add(bean.getValueFee()));
+                    BigDecimal taxPercent = this.getTax().divide(this.getServicesFee());
+                    Money taxAmt = feeAmt.times(taxPercent);
+                    result = feeAmt.plus(taxAmt).getAmount();
+                    break;
+                }
+            }
+        }
+        return result;
     }
 }
