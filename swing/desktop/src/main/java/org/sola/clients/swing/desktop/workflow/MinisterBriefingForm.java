@@ -138,6 +138,8 @@ public class MinisterBriefingForm extends ContentPanel {
         btnPrint = new org.sola.clients.swing.common.buttons.BtnPrint();
         btnPrintSurveySavingram = new org.sola.clients.swing.common.buttons.BtnPrint();
         appServicePanel = createAppServicePanel();
+        jLabel1 = new javax.swing.JLabel();
+        leaseMatterTextField = new javax.swing.JTextField();
 
         setHeaderPanel(headerPanel);
 
@@ -173,13 +175,22 @@ public class MinisterBriefingForm extends ContentPanel {
         });
         jToolBar1.add(btnPrintSurveySavingram);
 
+        jLabel1.setText(bundle.getString("MinisterBriefingForm.jLabel1.text")); // NOI18N
+
+        leaseMatterTextField.setText(bundle.getString("MinisterBriefingForm.leaseMatterTextField.text")); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(headerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(appServicePanel, javax.swing.GroupLayout.DEFAULT_SIZE, 617, Short.MAX_VALUE)
+            .addComponent(appServicePanel, javax.swing.GroupLayout.DEFAULT_SIZE, 665, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(leaseMatterTextField))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -187,9 +198,13 @@ public class MinisterBriefingForm extends ContentPanel {
                 .addComponent(headerPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(appServicePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(3, 3, 3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(leaseMatterTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(7, 7, 7)
+                .addComponent(appServicePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -211,6 +226,8 @@ public class MinisterBriefingForm extends ContentPanel {
     private org.sola.clients.swing.common.buttons.BtnPrint btnPrintSurveySavingram;
     private org.sola.clients.swing.common.buttons.BtnSave btnSave;
     private org.sola.clients.swing.ui.HeaderPanel headerPanel;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JToolBar jToolBar1;
+    private javax.swing.JTextField leaseMatterTextField;
     // End of variables declaration//GEN-END:variables
 }
