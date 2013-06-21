@@ -46,7 +46,6 @@ import org.sola.common.messaging.MessageUtility;
 public class MinisterBriefingForm extends ContentPanel {
 
     ApplicationBean applicationBean;
-    ApplicationServiceBean applicationServiceBean;
     boolean readOnly = false;
     private String leaseMatter;
 
@@ -60,13 +59,12 @@ public class MinisterBriefingForm extends ContentPanel {
     public MinisterBriefingForm(ApplicationBean appBean, ApplicationServiceBean appServiceBean,
             Boolean readOnly) {
         this.applicationBean = appBean;
-        this.applicationServiceBean = appServiceBean;
+        this.applicationServiceBean1 = appServiceBean;
         this.readOnly = readOnly;
-        this.applicationServiceBean.setLeaseMatter(leaseMatter);
         initComponents();
         customizeForm();
     }
-
+    
     private void customizeForm() {
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("org/sola/clients/swing/desktop/workflow/Bundle");
         if (applicationBean != null) {
@@ -83,19 +81,27 @@ public class MinisterBriefingForm extends ContentPanel {
         if (applicationBean == null) {
             applicationBean = new ApplicationBean();
         }
-        if (applicationServiceBean == null) {
-            applicationServiceBean = new ApplicationServiceBean();
+        if (applicationServiceBean1 == null) {
+            applicationServiceBean1 = new ApplicationServiceBean();
         }
 
         if (appServicePanel == null) {
-            appServicePanel = new ApplicationServicePanel(applicationBean, applicationServiceBean, readOnly);
+            appServicePanel = new ApplicationServicePanel(applicationBean, applicationServiceBean1, readOnly);
         }
         return appServicePanel;
+    }
+    
+    private ApplicationServiceBean createServiceBean() {
+
+        if (applicationServiceBean1 == null) {
+            applicationServiceBean1 = new ApplicationServiceBean();
+        }
+        return applicationServiceBean1;
     }
 
     private void save() {
 
-        if (applicationServiceBean.validate(true).size() < 1) {
+        if (applicationServiceBean1.validate(true).size() < 1) {
             SolaTask<Void, Void> t = new SolaTask<Void, Void>() {
                 @Override
                 public Void doTask() {
@@ -114,7 +120,7 @@ public class MinisterBriefingForm extends ContentPanel {
     }
 
     public void showMinisterialBriefingReport() {
-        ReportViewerForm form = new ReportViewerForm(ReportManager.getMinisterialBriefingReport(applicationServiceBean, null));
+        ReportViewerForm form = new ReportViewerForm(ReportManager.getMinisterialBriefingReport(applicationServiceBean1, null));
         form.setLocationRelativeTo(this);
         form.setVisible(true);
     }
@@ -133,7 +139,9 @@ public class MinisterBriefingForm extends ContentPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
+        applicationServiceBean1 = createServiceBean();
         headerPanel = new org.sola.clients.swing.ui.HeaderPanel();
         jToolBar1 = new javax.swing.JToolBar();
         btnSave = new org.sola.clients.swing.common.buttons.BtnSave();
@@ -179,6 +187,9 @@ public class MinisterBriefingForm extends ContentPanel {
 
         jLabel1.setText(bundle.getString("MinisterBriefingForm.jLabel1.text")); // NOI18N
 
+        org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, applicationServiceBean1, org.jdesktop.beansbinding.ELProperty.create("${leaseMatter}"), leaseMatterTextField, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -207,6 +218,8 @@ public class MinisterBriefingForm extends ContentPanel {
                 .addComponent(appServicePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        bindingGroup.bind();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
@@ -223,6 +236,7 @@ public class MinisterBriefingForm extends ContentPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private org.sola.clients.swing.desktop.workflow.ApplicationServicePanel appServicePanel;
+    private org.sola.clients.beans.application.ApplicationServiceBean applicationServiceBean1;
     private org.sola.clients.swing.common.buttons.BtnPrint btnPrint;
     private org.sola.clients.swing.common.buttons.BtnPrint btnPrintSurveySavingram;
     private org.sola.clients.swing.common.buttons.BtnSave btnSave;
@@ -230,5 +244,6 @@ public class MinisterBriefingForm extends ContentPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JTextField leaseMatterTextField;
+    private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 }

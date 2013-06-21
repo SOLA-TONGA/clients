@@ -194,7 +194,7 @@ Brief to the Hon. Minister of Lands]]></text>
 			<textField isBlankWhenNull="true">
 				<reportElement uuid="ede40608-c7bf-4777-ae60-77cdb07303aa" x="136" y="67" width="419" height="20"/>
 				<textElement verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{leaseMatter}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[ $F{leaseMatter}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
