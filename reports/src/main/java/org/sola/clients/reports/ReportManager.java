@@ -313,6 +313,7 @@ public class ReportManager {
      * @param appBean Application bean containing data for the report.
      */
     public static JasperPrint getLodgementReport(LodgementBean lodgementBean, Date dateFrom, Date dateTo) {
+        String silaImage = "/images/sola/sila.png";
         HashMap inputParameters = new HashMap();
         Date currentdate = new Date(System.currentTimeMillis());
         inputParameters.put("REPORT_LOCALE", Locale.getDefault());
@@ -322,6 +323,8 @@ public class ReportManager {
         inputParameters.put("USER", SecurityBean.getCurrentUser().getFullUserName());
         inputParameters.put("FROMDATE", dateFrom);
         inputParameters.put("TODATE", dateTo);
+        inputParameters.put("SILA_IMAGE",
+                ReportManager.class.getResourceAsStream(silaImage));
         LodgementBean[] beans = new LodgementBean[1];
         beans[0] = lodgementBean;
         JRDataSource jds = new JRBeanArrayDataSource(beans);
@@ -652,8 +655,11 @@ public class ReportManager {
     }
 
     public static JasperPrint getSiteInspectionReport(ApplicationBean appBean, Date actionDate) {
+        String silaImage = "/images/sola/sila.png";
         HashMap inputParameters = new HashMap();
         inputParameters.put("ACTION_DATE", actionDate);
+        inputParameters.put("SILA_IMAGE",
+                ReportManager.class.getResourceAsStream(silaImage));
         ApplicationBean[] beans = new ApplicationBean[1];
         beans[0] = appBean;
         JRDataSource jds = new JRBeanArrayDataSource(beans);
@@ -669,8 +675,11 @@ public class ReportManager {
     }
 
     public static JasperPrint getMinisterialBriefingReport(ApplicationServiceBean appServiceBean, Date actionDate) {
+        String silaImage = "/images/sola/sila.png";
         HashMap inputParameters = new HashMap();
         inputParameters.put("ACTION_DATE", actionDate);
+        inputParameters.put("SILA_IMAGE",
+                ReportManager.class.getResourceAsStream(silaImage));
         ApplicationServiceBean[] beans = new ApplicationServiceBean[1];
         beans[0] = appServiceBean;
         JRDataSource jds = new JRBeanArrayDataSource(beans);
@@ -703,8 +712,11 @@ public class ReportManager {
     }
 
     public static JasperPrint getCabinetSubmissionReport(ApplicationBean appBean, Date actionDate) {
+        String silaImage = "/images/sola/sila.png";
         HashMap inputParameters = new HashMap();
         inputParameters.put("ACTION_DATE", actionDate);
+        inputParameters.put("SILA_IMAGE",
+                ReportManager.class.getResourceAsStream(silaImage));
         ApplicationBean[] beans = new ApplicationBean[1];
         beans[0] = appBean;
         JRDataSource jds = new JRBeanArrayDataSource(beans);

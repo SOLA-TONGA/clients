@@ -47,7 +47,6 @@ public class MinisterBriefingForm extends ContentPanel {
 
     ApplicationBean applicationBean;
     boolean readOnly = false;
-    private String leaseMatter;
 
     /**
      * Creates new form MinisterBriefingForm

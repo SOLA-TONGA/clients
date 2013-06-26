@@ -1,13 +1,69 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="00bf21df-40ae-45f3-af17-3a6614efe40c">
-	<property name="ireport.zoom" value="1.0"/>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="00bf21df-40ae-45f3-af17-3a6614efe40c">
+	<property name="ireport.zoom" value="1.0000000000000002"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="192"/>
+	<parameter name="SILA_IMAGE" class="java.io.InputStream"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="fullName" class="java.lang.String">
+		<fieldDescription><![CDATA[contactPerson.fullName]]></fieldDescription>
+	</field>
+	<field name="amount" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[selectedProperty.amount]]></fieldDescription>
+	</field>
+	<field name="area" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[selectedProperty.area]]></fieldDescription>
+	</field>
+	<field name="landUseType" class="org.sola.clients.beans.referencedata.LandUseTypeBean">
+		<fieldDescription><![CDATA[selectedProperty.landUseType]]></fieldDescription>
+	</field>
+	<field name="leaseTerm" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[selectedProperty.leaseTerm]]></fieldDescription>
+	</field>
+	<field name="lessorName" class="java.lang.String">
+		<fieldDescription><![CDATA[selectedProperty.lessorName]]></fieldDescription>
+	</field>
+	<field name="registrationDate" class="java.util.Date">
+		<fieldDescription><![CDATA[selectedProperty.registrationDate]]></fieldDescription>
+	</field>
+	<field name="district" class="java.lang.String">
+		<fieldDescription><![CDATA[selectedProperty.district]]></fieldDescription>
+	</field>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band splitType="Stretch"/>
+		<band height="105" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="88" y="50" width="465" height="42" forecolor="#006666" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Cambria" size="16" isBold="false" isUnderline="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Land Management Division
+Cabinet Submission]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="1231a272-777f-4e5d-89f6-3dbc4c37f424" x="88" y="0" width="467" height="50"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Bookman Old Style" size="20" isBold="false"/>
+				</textElement>
+				<text><![CDATA[MINISTRY OF LANDS, ENVIRONMENT, 
+CLIMATE CHANGE & NATURAL RESOURCES]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="1d38a8c1-7da7-4526-9574-bb3e33f53689" x="0" y="104" width="555" height="1"/>
+				<graphicElement>
+					<pen lineWidth="1.5" lineColor="#666666"/>
+				</graphicElement>
+			</line>
+			<image>
+				<reportElement uuid="c1974432-3504-479c-b8e3-50ec98f9eee5" x="0" y="0" width="89" height="92"/>
+				<imageExpression><![CDATA[$P{SILA_IMAGE}]]></imageExpression>
+			</image>
+		</band>
 	</title>
 	<pageHeader>
 		<band splitType="Stretch"/>
@@ -16,161 +72,274 @@
 		<band splitType="Stretch"/>
 	</columnHeader>
 	<detail>
-		<band height="802" splitType="Stretch">
+		<band height="628" splitType="Stretch">
 			<staticText>
-				<reportElement uuid="9cba40b3-33ae-4634-a4a7-1846a7a1e94d" x="0" y="0" width="227" height="20"/>
+				<reportElement uuid="9cba40b3-33ae-4634-a4a7-1846a7a1e94d" x="0" y="10" width="227" height="19"/>
 				<textElement>
-					<font size="12" isBold="true"/>
+					<font fontName="Arial" size="13" isBold="true" isUnderline="true"/>
 				</textElement>
 				<text><![CDATA[HON. CABINET MINISTERS:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="9cba40b3-33ae-4634-a4a7-1846a7a1e94d" x="0" y="35" width="300" height="20"/>
+				<reportElement uuid="9cba40b3-33ae-4634-a4a7-1846a7a1e94d" x="0" y="36" width="313" height="19"/>
 				<textElement>
-					<font size="12" isBold="true"/>
+					<font fontName="Arial" size="13" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Application to lease a Town allotment (as Lessee ) :]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="9cba40b3-33ae-4634-a4a7-1846a7a1e94d" x="0" y="55" width="300" height="20"/>
+				<reportElement uuid="9cba40b3-33ae-4634-a4a7-1846a7a1e94d" x="0" y="85" width="67" height="19"/>
 				<textElement>
-					<font size="12" isBold="true"/>
+					<font fontName="Arial" size="13" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Location :]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="9cba40b3-33ae-4634-a4a7-1846a7a1e94d" x="0" y="93" width="555" height="29"/>
+				<reportElement uuid="9cba40b3-33ae-4634-a4a7-1846a7a1e94d" x="0" y="117" width="555" height="28"/>
 				<textElement>
-					<font isBold="false" isItalic="true"/>
+					<font fontName="Arial" size="12" isBold="false" isItalic="false"/>
 				</textElement>
 				<text><![CDATA[1.  I have the honour to submit the above-mentioned application for the Hon. Cabinet Minister's consideration
       and consent.]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="9cba40b3-33ae-4634-a4a7-1846a7a1e94d" x="0" y="248" width="555" height="29"/>
+				<reportElement uuid="9cba40b3-33ae-4634-a4a7-1846a7a1e94d" x="0" y="213" width="555" height="28"/>
 				<textElement>
-					<font isBold="false" isItalic="true"/>
+					<font fontName="Arial" size="12" isBold="false" isItalic="false"/>
 				</textElement>
 				<text><![CDATA[3.   Attached for the information of Hon. Cabinet Ministers is the application form.]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="9cba40b3-33ae-4634-a4a7-1846a7a1e94d" x="0" y="277" width="555" height="29"/>
+				<reportElement uuid="9cba40b3-33ae-4634-a4a7-1846a7a1e94d" x="16" y="241" width="539" height="34"/>
 				<textElement>
-					<font isBold="false" isItalic="true"/>
+					<font fontName="Arial" size="12" isBold="false" isItalic="false"/>
 				</textElement>
-				<text><![CDATA[4.    By section 19(3) of the Land Act, the Minister of Lands shall grant leases with the consent of Cabinet.]]></text>
+				<text><![CDATA[By section 19(3) of the Land Act, the Minister of Lands shall grant leases with the consent of
+Cabinet.]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="9cba40b3-33ae-4634-a4a7-1846a7a1e94d" x="0" y="320" width="288" height="20"/>
+				<reportElement uuid="9cba40b3-33ae-4634-a4a7-1846a7a1e94d" x="0" y="285" width="288" height="19"/>
 				<textElement>
-					<font size="12" isBold="true"/>
+					<font fontName="Arial" size="14" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Recommendation:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="9cba40b3-33ae-4634-a4a7-1846a7a1e94d" x="0" y="352" width="555" height="29"/>
+				<reportElement uuid="9cba40b3-33ae-4634-a4a7-1846a7a1e94d" x="0" y="317" width="555" height="28"/>
 				<textElement>
-					<font isBold="false" isItalic="true"/>
+					<font fontName="Arial" size="12" isBold="false" isItalic="false"/>
 				</textElement>
 				<text><![CDATA[That, pursuant to Section 19(3) of the Land Act, Cabinet Minister's consent to the MInister of Lands granting a lease
 with the following details.]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="9cba40b3-33ae-4634-a4a7-1846a7a1e94d" x="0" y="381" width="67" height="19"/>
+				<reportElement uuid="9cba40b3-33ae-4634-a4a7-1846a7a1e94d" x="0" y="357" width="51" height="18"/>
 				<textElement verticalAlignment="Middle">
-					<font isBold="true" isItalic="false"/>
+					<font fontName="Arial" size="12" isBold="true" isItalic="false"/>
 				</textElement>
 				<text><![CDATA[Lessee]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="9cba40b3-33ae-4634-a4a7-1846a7a1e94d" x="0" y="400" width="67" height="19"/>
+				<reportElement uuid="9cba40b3-33ae-4634-a4a7-1846a7a1e94d" x="0" y="376" width="51" height="18"/>
 				<textElement verticalAlignment="Middle">
-					<font isBold="true" isItalic="false"/>
+					<font fontName="Arial" size="12" isBold="true" isItalic="false"/>
 				</textElement>
 				<text><![CDATA[Lessor]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="9cba40b3-33ae-4634-a4a7-1846a7a1e94d" x="0" y="419" width="67" height="19"/>
+				<reportElement uuid="9cba40b3-33ae-4634-a4a7-1846a7a1e94d" x="0" y="395" width="51" height="18"/>
 				<textElement verticalAlignment="Middle">
-					<font isBold="true" isItalic="false"/>
+					<font fontName="Arial" size="12" isBold="true" isItalic="false"/>
 				</textElement>
 				<text><![CDATA[Area]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="9cba40b3-33ae-4634-a4a7-1846a7a1e94d" x="0" y="438" width="67" height="19"/>
+				<reportElement uuid="9cba40b3-33ae-4634-a4a7-1846a7a1e94d" x="0" y="433" width="51" height="18"/>
 				<textElement verticalAlignment="Middle">
-					<font isBold="true" isItalic="false"/>
-				</textElement>
-				<text><![CDATA[Location]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="9cba40b3-33ae-4634-a4a7-1846a7a1e94d" x="0" y="476" width="67" height="19"/>
-				<textElement verticalAlignment="Middle">
-					<font isBold="true" isItalic="false"/>
+					<font fontName="Arial" size="12" isBold="true" isItalic="false"/>
 				</textElement>
 				<text><![CDATA[Purpose]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="9cba40b3-33ae-4634-a4a7-1846a7a1e94d" x="0" y="457" width="67" height="19"/>
+				<reportElement uuid="9cba40b3-33ae-4634-a4a7-1846a7a1e94d" x="0" y="414" width="51" height="18"/>
 				<textElement verticalAlignment="Middle">
-					<font isBold="true" isItalic="false"/>
+					<font fontName="Arial" size="12" isBold="true" isItalic="false"/>
 				</textElement>
 				<text><![CDATA[Period]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="9cba40b3-33ae-4634-a4a7-1846a7a1e94d" x="0" y="495" width="67" height="19"/>
+				<reportElement uuid="9cba40b3-33ae-4634-a4a7-1846a7a1e94d" x="0" y="452" width="51" height="18"/>
 				<textElement verticalAlignment="Middle">
-					<font isBold="true" isItalic="false"/>
+					<font fontName="Arial" size="12" isBold="true" isItalic="false"/>
 				</textElement>
 				<text><![CDATA[Rental]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="9cba40b3-33ae-4634-a4a7-1846a7a1e94d" x="0" y="514" width="67" height="19"/>
+				<reportElement uuid="9cba40b3-33ae-4634-a4a7-1846a7a1e94d" x="0" y="471" width="51" height="18"/>
 				<textElement verticalAlignment="Middle">
-					<font isBold="true" isItalic="false"/>
+					<font fontName="Arial" size="12" isBold="true" isItalic="false"/>
 				</textElement>
 				<text><![CDATA[Effective]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="9cba40b3-33ae-4634-a4a7-1846a7a1e94d" x="0" y="564" width="67" height="19"/>
+				<reportElement uuid="9cba40b3-33ae-4634-a4a7-1846a7a1e94d" x="0" y="515" width="67" height="18"/>
 				<textElement verticalAlignment="Middle">
-					<font isBold="false" isItalic="true"/>
+					<font fontName="Arial" size="12" isBold="false" isItalic="false"/>
 				</textElement>
 				<text><![CDATA[Respectfully,]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="9cba40b3-33ae-4634-a4a7-1846a7a1e94d" x="0" y="647" width="82" height="19"/>
+				<reportElement uuid="9cba40b3-33ae-4634-a4a7-1846a7a1e94d" x="0" y="576" width="82" height="18"/>
 				<textElement verticalAlignment="Middle">
-					<font isBold="true" isItalic="false"/>
+					<font fontName="Arial" size="12" isBold="false" isItalic="false"/>
 				</textElement>
 				<text><![CDATA[Hon. Ma'afu]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="9cba40b3-33ae-4634-a4a7-1846a7a1e94d" x="0" y="666" width="339" height="19"/>
+				<reportElement uuid="9cba40b3-33ae-4634-a4a7-1846a7a1e94d" x="0" y="595" width="366" height="18"/>
 				<textElement verticalAlignment="Middle">
-					<font isBold="false" isItalic="true"/>
+					<font fontName="Arial" size="12" isBold="true" isItalic="false"/>
 				</textElement>
 				<text><![CDATA[Minister of Lands, Environment, Climate Change and Natural Resources]]></text>
 			</staticText>
 			<line>
-				<reportElement uuid="e838c743-ffe5-4c51-8344-73779fd7c91a" x="0" y="646" width="188" height="1"/>
+				<reportElement uuid="e838c743-ffe5-4c51-8344-73779fd7c91a" x="0" y="575" width="188" height="1"/>
 				<graphicElement>
 					<pen lineStyle="Dashed"/>
 				</graphicElement>
 			</line>
 			<staticText>
-				<reportElement uuid="9cba40b3-33ae-4634-a4a7-1846a7a1e94d" x="429" y="647" width="126" height="19"/>
+				<reportElement uuid="9cba40b3-33ae-4634-a4a7-1846a7a1e94d" x="429" y="576" width="126" height="18"/>
 				<textElement verticalAlignment="Middle">
-					<font isBold="false" isItalic="true"/>
+					<font fontName="Arial" isBold="false" isItalic="false"/>
 				</textElement>
 				<text><![CDATA[Reference]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="9cba40b3-33ae-4634-a4a7-1846a7a1e94d" x="429" y="666" width="126" height="19"/>
+				<reportElement uuid="9cba40b3-33ae-4634-a4a7-1846a7a1e94d" x="429" y="595" width="126" height="18"/>
 				<textElement verticalAlignment="Middle">
-					<font isBold="false" isItalic="true"/>
+					<font fontName="Arial" isBold="false" isItalic="false"/>
 				</textElement>
 				<text><![CDATA[Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="9cba40b3-33ae-4634-a4a7-1846a7a1e94d" x="0" y="158" width="16" height="18"/>
+				<textElement>
+					<font fontName="Cambria" size="12" isBold="false" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[2.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="9cba40b3-33ae-4634-a4a7-1846a7a1e94d" x="51" y="357" width="57" height="18"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[-]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="9cba40b3-33ae-4634-a4a7-1846a7a1e94d" x="51" y="376" width="57" height="18"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[-]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="9cba40b3-33ae-4634-a4a7-1846a7a1e94d" x="51" y="395" width="57" height="18"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[-]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="9cba40b3-33ae-4634-a4a7-1846a7a1e94d" x="51" y="414" width="57" height="18"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[-]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="9cba40b3-33ae-4634-a4a7-1846a7a1e94d" x="51" y="433" width="57" height="18"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[-]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="9cba40b3-33ae-4634-a4a7-1846a7a1e94d" x="51" y="471" width="57" height="18"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[-]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="9cba40b3-33ae-4634-a4a7-1846a7a1e94d" x="51" y="452" width="57" height="18"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[-]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="a71ec60e-c6c6-4dbe-b551-24e30e4da078" x="108" y="356" width="359" height="19"/>
+				<textElement markup="none">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fullName}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="2e9df3c4-937b-4d50-bfc2-b57ad676eed4" x="108" y="375" width="359" height="19"/>
+				<textElement>
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{lessorName}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="2e9df3c4-937b-4d50-bfc2-b57ad676eed4" x="108" y="394" width="359" height="19"/>
+				<textElement>
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{area}+" m²"]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="2e9df3c4-937b-4d50-bfc2-b57ad676eed4" x="108" y="413" width="359" height="19"/>
+				<textElement>
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{leaseTerm}+" years"]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="2e9df3c4-937b-4d50-bfc2-b57ad676eed4" x="108" y="433" width="359" height="19"/>
+				<textElement>
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{landUseType}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="2e9df3c4-937b-4d50-bfc2-b57ad676eed4" x="108" y="452" width="359" height="19"/>
+				<textElement>
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["$"+$F{amount}+" pa"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="436dbfa9-e5c5-4acc-bd62-7b93038d6d81" x="0" y="56" width="555" height="19"/>
+				<textElement markup="none">
+					<font fontName="Arial" size="13" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fullName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="5ca3b257-84ce-43cf-ac44-5b91939ee732" x="67" y="85" width="488" height="19"/>
+				<textElement markup="none">
+					<font fontName="Arial" size="13" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{district}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="9cba40b3-33ae-4634-a4a7-1846a7a1e94d" x="0" y="241" width="16" height="18"/>
+				<textElement>
+					<font fontName="Cambria" size="12" isBold="false" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[4.]]></text>
 			</staticText>
 		</band>
 	</detail>

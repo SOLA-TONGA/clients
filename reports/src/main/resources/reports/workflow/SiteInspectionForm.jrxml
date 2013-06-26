@@ -1,18 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Site Inspection Form" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" resourceBundle="org.sola.clients.reports.locale.SiteInspection" uuid="e880b9f3-6305-4f1f-b0ec-df6f79d507c0">
-	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.zoom" value="0.9090909090909103"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
-	<subDataset name="SiteInspection" uuid="e51f337c-ee8f-4b57-a102-1a9cc18c7ee7">
-		<queryString>
-			<![CDATA[]]>
-		</queryString>
-		<field name="expectedInspectionDate" class="java.util.Date">
-			<fieldDescription><![CDATA[expectedCompletionDate]]></fieldDescription>
-		</field>
-		<field name="inspectionCompleted" class="java.lang.Boolean"/>
-	</subDataset>
-	<parameter name="ACTION_DATE" class="java.util.Date"/>
+	<property name="ireport.y" value="34"/>
+	<parameter name="SILA_IMAGE" class="java.io.InputStream"/>
 	<queryString>
 		<![CDATA[]]>
 	</queryString>
@@ -20,17 +11,34 @@
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="139" splitType="Stretch">
+		<band height="105" splitType="Stretch">
 			<staticText>
-				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="0" y="0" width="555" height="138" forecolor="#006666" backcolor="#FFFFFF"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
-					<font fontName="Tahoma" size="15" isBold="true" isUnderline="false"/>
-					<paragraph lineSpacing="1_1_2"/>
+				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="88" y="50" width="465" height="42" forecolor="#006666" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Cambria" size="16" isBold="false" isUnderline="false"/>
+					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<text><![CDATA[Ministry of Lands, Environment, Climate Change and Natural Resources
-Land Management Division
+				<text><![CDATA[Land Management Division
 Site Inspection]]></text>
 			</staticText>
+			<staticText>
+				<reportElement uuid="1231a272-777f-4e5d-89f6-3dbc4c37f424" x="88" y="0" width="467" height="50"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Bookman Old Style" size="20" isBold="false"/>
+				</textElement>
+				<text><![CDATA[MINISTRY OF LANDS, ENVIRONMENT, 
+CLIMATE CHANGE & NATURAL RESOURCES]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="1d38a8c1-7da7-4526-9574-bb3e33f53689" x="0" y="104" width="555" height="1"/>
+				<graphicElement>
+					<pen lineWidth="1.5" lineColor="#666666"/>
+				</graphicElement>
+			</line>
+			<image>
+				<reportElement uuid="c1974432-3504-479c-b8e3-50ec98f9eee5" x="0" y="0" width="89" height="92"/>
+				<imageExpression><![CDATA[$P{SILA_IMAGE}]]></imageExpression>
+			</image>
 		</band>
 	</title>
 	<pageHeader>
@@ -41,75 +49,75 @@ Site Inspection]]></text>
 	</columnHeader>
 	<detail>
 		<band height="588" splitType="Stretch">
-			<textField>
-				<reportElement uuid="c17996ca-5978-44b0-a71c-7fc8ea653e0b" x="0" y="43" width="124" height="20"/>
-				<textElement textAlignment="Right">
-					<font size="12" isBold="true"/>
+			<staticText>
+				<reportElement uuid="bdb1600a-7016-494b-97ce-5a8d949aa5ac" x="0" y="43" width="124" height="30"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle" markup="none">
+					<font fontName="Arial" size="12" isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$R{applicant}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="da372ec3-d87c-4bc7-960f-0e442bf481c3" x="0" y="73" width="124" height="20"/>
-				<textElement textAlignment="Right">
-					<font size="12" isBold="true"/>
+				<text><![CDATA[Application]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="2f2ad79d-8561-4258-be5e-cd85926d708f" x="0" y="73" width="124" height="31"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle" markup="none">
+					<font fontName="Arial" size="12" isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$R{dateOfInspection}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="806bf572-b583-4cac-893e-dd3c9cc210ba" x="0" y="104" width="124" height="20"/>
-				<textElement textAlignment="Right">
-					<font size="12" isBold="true"/>
+				<text><![CDATA[Inspection Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="fc11dd67-4785-4ad3-9fe5-a1c52e330597" x="0" y="104" width="124" height="31"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle" markup="none">
+					<font fontName="Arial" size="12" isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$R{officer}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="806bf572-b583-4cac-893e-dd3c9cc210ba" x="0" y="135" width="124" height="20"/>
-				<textElement textAlignment="Right">
-					<font size="12" isBold="true"/>
+				<text><![CDATA[Officer]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="42212bc3-13d7-4893-a178-f1571c300148" x="0" y="135" width="124" height="32"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle" markup="none">
+					<font fontName="Arial" size="12" isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$R{occupants}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="806bf572-b583-4cac-893e-dd3c9cc210ba" x="0" y="203" width="135" height="20"/>
-				<textElement>
-					<font size="12" isBold="true"/>
+				<text><![CDATA[Occupants]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="97b6c5f9-242a-4479-af48-0aab98888ddc" x="0" y="212" width="135" height="20"/>
+				<textElement markup="none">
+					<font fontName="Arial" size="12" isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$R{comments}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="806bf572-b583-4cac-893e-dd3c9cc210ba" x="0" y="167" width="124" height="20"/>
-				<textElement textAlignment="Right">
-					<font size="12" isBold="true"/>
+				<text><![CDATA[Comments]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="4e277c0a-5eae-4803-bbaa-f3206f3fe829" x="0" y="167" width="124" height="32"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle" markup="none">
+					<font fontName="Arial" size="12" isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$R{improvements}]]></textFieldExpression>
-			</textField>
+				<text><![CDATA[Improvements]]></text>
+			</staticText>
 			<rectangle>
-				<reportElement uuid="79aeda4d-a270-431d-9573-a09862f8b225" x="135" y="43" width="420" height="20"/>
+				<reportElement uuid="79aeda4d-a270-431d-9573-a09862f8b225" x="135" y="43" width="420" height="30"/>
 			</rectangle>
 			<rectangle>
-				<reportElement uuid="79aeda4d-a270-431d-9573-a09862f8b225" x="135" y="73" width="420" height="20"/>
+				<reportElement uuid="79aeda4d-a270-431d-9573-a09862f8b225" x="135" y="73" width="420" height="31"/>
 			</rectangle>
 			<rectangle>
-				<reportElement uuid="79aeda4d-a270-431d-9573-a09862f8b225" x="135" y="104" width="420" height="20"/>
+				<reportElement uuid="79aeda4d-a270-431d-9573-a09862f8b225" x="135" y="104" width="420" height="31"/>
 			</rectangle>
 			<rectangle>
-				<reportElement uuid="79aeda4d-a270-431d-9573-a09862f8b225" x="135" y="135" width="420" height="20"/>
+				<reportElement uuid="79aeda4d-a270-431d-9573-a09862f8b225" x="135" y="135" width="420" height="32"/>
 			</rectangle>
 			<rectangle>
-				<reportElement uuid="79aeda4d-a270-431d-9573-a09862f8b225" x="135" y="167" width="420" height="20"/>
+				<reportElement uuid="79aeda4d-a270-431d-9573-a09862f8b225" x="135" y="167" width="420" height="32"/>
 			</rectangle>
 			<rectangle>
-				<reportElement uuid="468c8de6-2158-4c95-920a-ae134a10c4cb" positionType="FixRelativeToBottom" stretchType="RelativeToBandHeight" x="0" y="223" width="555" height="337"/>
+				<reportElement uuid="468c8de6-2158-4c95-920a-ae134a10c4cb" positionType="FixRelativeToBottom" stretchType="RelativeToBandHeight" x="0" y="232" width="555" height="335"/>
 			</rectangle>
-			<textField>
-				<reportElement uuid="faeba29b-6652-44da-9175-62972b628306" x="0" y="11" width="124" height="20"/>
-				<textElement textAlignment="Right">
-					<font size="12" isBold="true"/>
+			<staticText>
+				<reportElement uuid="030a3590-6800-49d0-a3dd-92a060bddb8d" x="0" y="11" width="124" height="32"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle" markup="none">
+					<font fontName="Arial" size="12" isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$R{location}]]></textFieldExpression>
-			</textField>
+				<text><![CDATA[Village/Location]]></text>
+			</staticText>
 			<rectangle>
-				<reportElement uuid="79aeda4d-a270-431d-9573-a09862f8b225" x="135" y="11" width="420" height="20"/>
+				<reportElement uuid="79aeda4d-a270-431d-9573-a09862f8b225" x="135" y="11" width="420" height="32"/>
 			</rectangle>
 		</band>
 	</detail>
@@ -117,27 +125,33 @@ Site Inspection]]></text>
 		<band splitType="Stretch"/>
 	</columnFooter>
 	<pageFooter>
-		<band height="74" splitType="Stretch">
-			<textField>
-				<reportElement uuid="806bf572-b583-4cac-893e-dd3c9cc210ba" x="337" y="0" width="101" height="20"/>
-				<textElement textAlignment="Right">
-					<font size="12" isBold="true"/>
+		<band height="32" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="2c6470a3-dd71-48af-b785-2c1239666d16" x="337" y="0" width="101" height="17"/>
+				<textElement textAlignment="Right" verticalAlignment="Bottom" markup="none">
+					<font fontName="Arial" size="12" isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$R{checkedDate}]]></textFieldExpression>
-			</textField>
+				<text><![CDATA[Checked Date]]></text>
+			</staticText>
 			<line>
-				<reportElement uuid="bd9f748a-177c-4df7-bb6e-c461c38533d6" x="135" y="19" width="177" height="1"/>
+				<reportElement uuid="bd9f748a-177c-4df7-bb6e-c461c38533d6" x="135" y="17" width="177" height="1"/>
+				<graphicElement>
+					<pen lineStyle="Dashed"/>
+				</graphicElement>
 			</line>
 			<line>
-				<reportElement uuid="c9de3517-61e0-4010-8984-2fed228ba9af" x="449" y="18" width="91" height="1"/>
+				<reportElement uuid="c9de3517-61e0-4010-8984-2fed228ba9af" x="448" y="16" width="91" height="1"/>
+				<graphicElement>
+					<pen lineStyle="Dashed"/>
+				</graphicElement>
 			</line>
-			<textField>
-				<reportElement uuid="806bf572-b583-4cac-893e-dd3c9cc210ba" x="0" y="0" width="124" height="20"/>
-				<textElement textAlignment="Right">
-					<font size="12" isBold="true"/>
+			<staticText>
+				<reportElement uuid="b974d785-30a4-4db4-8b1c-6f6e585d70be" x="0" y="0" width="124" height="18"/>
+				<textElement textAlignment="Right" verticalAlignment="Bottom" markup="none">
+					<font fontName="Arial" size="12" isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$R{signature}]]></textFieldExpression>
-			</textField>
+				<text><![CDATA[Officer's Signature]]></text>
+			</staticText>
 		</band>
 	</pageFooter>
 	<summary>

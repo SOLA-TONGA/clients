@@ -226,6 +226,7 @@
 	<parameter name="DEALS" class="java.util.List" isForPrompting="false"/>
 	<parameter name="TIMING" class="java.util.List"/>
 	<parameter name="CURRENT_DATE" class="java.util.Date"/>
+	<parameter name="SILA_IMAGE" class="java.io.InputStream"/>
 	<queryString>
 		<![CDATA[]]>
 	</queryString>
@@ -243,19 +244,15 @@
 			<staticText>
 				<reportElement uuid="1231a272-777f-4e5d-89f6-3dbc4c37f424" x="88" y="0" width="467" height="50"/>
 				<textElement verticalAlignment="Middle">
-					<font fontName="Bookman Old Style" size="20"/>
+					<font fontName="Bookman Old Style" size="20" isBold="false"/>
 				</textElement>
 				<text><![CDATA[MINISTRY OF LANDS, ENVIRONMENT, 
 CLIMATE CHANGE & NATURAL RESOURCES]]></text>
 			</staticText>
-			<image>
-				<reportElement uuid="796377f3-8ce0-492a-b4c8-9b6be4ab0fe6" x="0" y="0" width="88" height="92"/>
-				<imageExpression><![CDATA["D:\\source\\tonga\\code\\clients\\reports\\src\\main\\resources\\images\\sola\\sila.png"]]></imageExpression>
-			</image>
 			<staticText>
 				<reportElement uuid="cfa14ba7-c8d3-43fc-bd7b-74ef46693fe4" x="88" y="50" width="178" height="14"/>
 				<textElement verticalAlignment="Middle">
-					<font fontName="Bookman Old Style" size="11"/>
+					<font fontName="Bookman Old Style" size="11" isBold="false"/>
 					<paragraph lineSpacing="1_1_2"/>
 				</textElement>
 				<text><![CDATA[GOVERNMENT OF TONGA]]></text>
@@ -263,27 +260,79 @@ CLIMATE CHANGE & NATURAL RESOURCES]]></text>
 			<staticText>
 				<reportElement uuid="cfa14ba7-c8d3-43fc-bd7b-74ef46693fe4" x="88" y="64" width="178" height="14"/>
 				<textElement verticalAlignment="Middle">
-					<font fontName="Bookman Old Style" size="11"/>
+					<font fontName="Bookman Old Style" size="11" isBold="false"/>
 					<paragraph lineSpacing="1_1_2"/>
 				</textElement>
 				<text><![CDATA[P.O. Box 5, Nuku'alofa, Tonga]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="cfa14ba7-c8d3-43fc-bd7b-74ef46693fe4" x="88" y="78" width="357" height="14"/>
+				<reportElement uuid="cfa14ba7-c8d3-43fc-bd7b-74ef46693fe4" x="88" y="78" width="69" height="14"/>
 				<textElement verticalAlignment="Middle">
-					<font fontName="Bookman Old Style" size="8"/>
+					<font fontName="Bookman Old Style" size="9" isBold="false" isUnderline="false"/>
 					<paragraph lineSpacing="1_1_2"/>
 				</textElement>
-				<text><![CDATA[General Office: +(676)23 611         Fax: +(676)23 316        CEO Direct: +(676)23 210]]></text>
+				<text><![CDATA[General Office:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="cfa14ba7-c8d3-43fc-bd7b-74ef46693fe4" x="445" y="78" width="110" height="14"/>
+				<reportElement uuid="cfa14ba7-c8d3-43fc-bd7b-74ef46693fe4" x="224" y="78" width="27" height="14"/>
 				<textElement verticalAlignment="Middle">
-					<font fontName="Bookman Old Style" size="8" isBold="true" isUnderline="true"/>
+					<font fontName="Bookman Old Style" size="9" isBold="false" isUnderline="false"/>
 					<paragraph lineSpacing="1_1_2"/>
 				</textElement>
-				<text><![CDATA[E-mail: ceo@lands.gov.to]]></text>
+				<text><![CDATA[Fax:]]></text>
 			</staticText>
+			<staticText>
+				<reportElement uuid="cfa14ba7-c8d3-43fc-bd7b-74ef46693fe4" x="324" y="78" width="53" height="14"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Bookman Old Style" size="9" isBold="false" isUnderline="false"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[CEO Direct:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="cfa14ba7-c8d3-43fc-bd7b-74ef46693fe4" x="450" y="78" width="34" height="14"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Bookman Old Style" size="9" isBold="false" isUnderline="false"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[E-mail:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="cfa14ba7-c8d3-43fc-bd7b-74ef46693fe4" x="157" y="78" width="67" height="14"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Bookman Old Style" size="8" isBold="false" isUnderline="false"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[+(676)23 611]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="cfa14ba7-c8d3-43fc-bd7b-74ef46693fe4" x="251" y="78" width="73" height="14"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Bookman Old Style" size="8" isBold="false" isUnderline="false"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[+(676)23 316]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="cfa14ba7-c8d3-43fc-bd7b-74ef46693fe4" x="377" y="78" width="73" height="14"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Bookman Old Style" size="8" isBold="false" isUnderline="false"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[+(676)23 210]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="cfa14ba7-c8d3-43fc-bd7b-74ef46693fe4" x="484" y="78" width="71" height="14"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Bookman Old Style" size="8" isBold="false" isUnderline="false"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[ceo@lands.gov.to]]></text>
+			</staticText>
+			<image>
+				<reportElement uuid="17a99e82-9ae0-498a-8fee-74fab48ba28a" x="0" y="0" width="88" height="92"/>
+				<imageExpression><![CDATA[$P{SILA_IMAGE}]]></imageExpression>
+			</image>
 		</band>
 	</title>
 	<pageHeader>
@@ -530,40 +579,33 @@ CLIMATE CHANGE & NATURAL RESOURCES]]></text>
 				<text><![CDATA[Application processing timing]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="320804c4-6651-48d7-b66a-c57785ffb196" x="224" y="66" width="42" height="20"/>
+				<reportElement uuid="320804c4-6651-48d7-b66a-c57785ffb196" x="257" y="12" width="42" height="20"/>
 				<textElement>
 					<font fontName="Tahoma" size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[From:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="da8b7308-1057-466d-934c-2d48afa3b06d" x="389" y="66" width="30" height="20"/>
+				<reportElement uuid="da8b7308-1057-466d-934c-2d48afa3b06d" x="422" y="12" width="30" height="20"/>
 				<textElement>
 					<font fontName="Tahoma" size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[To:]]></text>
 			</staticText>
 			<textField>
-				<reportElement uuid="6d522b46-4a00-4846-9899-24d8bc865d8c" x="266" y="66" width="100" height="20"/>
+				<reportElement uuid="6d522b46-4a00-4846-9899-24d8bc865d8c" x="299" y="12" width="100" height="20"/>
 				<textElement>
 					<font size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{FROMDATE}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="267d5b53-4c8f-4c2c-921f-03d7736692a4" x="419" y="66" width="100" height="20"/>
+				<reportElement uuid="267d5b53-4c8f-4c2c-921f-03d7736692a4" x="452" y="12" width="100" height="20"/>
 				<textElement>
 					<font size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{TODATE}]]></textFieldExpression>
 			</textField>
-			<staticText>
-				<reportElement uuid="fb5c2f55-a7a1-4333-a29b-1423ef9a45ba" x="224" y="12" width="283" height="42" forecolor="#006666"/>
-				<textElement>
-					<font size="28" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Lodgement Report]]></text>
-			</staticText>
 			<staticText>
 				<reportElement uuid="8a22ef36-041a-41ac-bc60-fb4020a83fbe" mode="Transparent" x="3" y="12" width="76" height="20" forecolor="#000000" backcolor="#FFFFFF"/>
 				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" markup="none">
