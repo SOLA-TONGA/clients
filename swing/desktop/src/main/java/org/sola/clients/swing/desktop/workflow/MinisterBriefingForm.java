@@ -58,7 +58,7 @@ public class MinisterBriefingForm extends ContentPanel {
     public MinisterBriefingForm(ApplicationBean appBean, ApplicationServiceBean appServiceBean,
             Boolean readOnly) {
         this.applicationBean = appBean;
-        this.applicationServiceBean1 = appServiceBean;
+        this.applicationServiceBean = appServiceBean;
         this.readOnly = readOnly;
         initComponents();
         customizeForm();
@@ -80,27 +80,27 @@ public class MinisterBriefingForm extends ContentPanel {
         if (applicationBean == null) {
             applicationBean = new ApplicationBean();
         }
-        if (applicationServiceBean1 == null) {
-            applicationServiceBean1 = new ApplicationServiceBean();
+        if (applicationServiceBean == null) {
+            applicationServiceBean = new ApplicationServiceBean();
         }
 
         if (appServicePanel == null) {
-            appServicePanel = new ApplicationServicePanel(applicationBean, applicationServiceBean1, readOnly);
+            appServicePanel = new ApplicationServicePanel(applicationBean, applicationServiceBean, readOnly);
         }
         return appServicePanel;
     }
     
     private ApplicationServiceBean createServiceBean() {
 
-        if (applicationServiceBean1 == null) {
-            applicationServiceBean1 = new ApplicationServiceBean();
+        if (applicationServiceBean == null) {
+            applicationServiceBean = new ApplicationServiceBean();
         }
-        return applicationServiceBean1;
+        return applicationServiceBean;
     }
 
     private void save() {
 
-        if (applicationServiceBean1.validate(true).size() < 1) {
+        if (applicationServiceBean.validate(true).size() < 1) {
             SolaTask<Void, Void> t = new SolaTask<Void, Void>() {
                 @Override
                 public Void doTask() {
@@ -119,7 +119,7 @@ public class MinisterBriefingForm extends ContentPanel {
     }
 
     public void showMinisterialBriefingReport() {
-        ReportViewerForm form = new ReportViewerForm(ReportManager.getMinisterialBriefingReport(applicationServiceBean1, null));
+        ReportViewerForm form = new ReportViewerForm(ReportManager.getMinisterialBriefingReport(applicationServiceBean, null));
         form.setLocationRelativeTo(this);
         form.setVisible(true);
     }
@@ -140,7 +140,7 @@ public class MinisterBriefingForm extends ContentPanel {
     private void initComponents() {
         bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
-        applicationServiceBean1 = createServiceBean();
+        applicationServiceBean = createServiceBean();
         headerPanel = new org.sola.clients.swing.ui.HeaderPanel();
         jToolBar1 = new javax.swing.JToolBar();
         btnSave = new org.sola.clients.swing.common.buttons.BtnSave();
@@ -186,7 +186,7 @@ public class MinisterBriefingForm extends ContentPanel {
 
         jLabel1.setText(bundle.getString("MinisterBriefingForm.jLabel1.text")); // NOI18N
 
-        org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, applicationServiceBean1, org.jdesktop.beansbinding.ELProperty.create("${leaseMatter}"), leaseMatterTextField, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, applicationServiceBean, org.jdesktop.beansbinding.ELProperty.create("${leaseMatter}"), leaseMatterTextField, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -235,7 +235,7 @@ public class MinisterBriefingForm extends ContentPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private org.sola.clients.swing.desktop.workflow.ApplicationServicePanel appServicePanel;
-    private org.sola.clients.beans.application.ApplicationServiceBean applicationServiceBean1;
+    private org.sola.clients.beans.application.ApplicationServiceBean applicationServiceBean;
     private org.sola.clients.swing.common.buttons.BtnPrint btnPrint;
     private org.sola.clients.swing.common.buttons.BtnPrint btnPrintSurveySavingram;
     private org.sola.clients.swing.common.buttons.BtnSave btnSave;

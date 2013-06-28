@@ -2,7 +2,7 @@
 
 <Form version="1.5" maxVersion="1.8" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
   <NonVisualComponents>
-    <Component class="org.sola.clients.beans.application.ApplicationServiceBean" name="applicationServiceBean1">
+    <Component class="org.sola.clients.beans.application.ApplicationServiceBean" name="applicationServiceBean">
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="createServiceBean()"/>
       </AuxValues>
@@ -120,7 +120,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="leaseMatterTextField">
       <BindingProperties>
-        <BindingProperty name="text" source="applicationServiceBean1" sourcePath="${leaseMatter}" target="leaseMatterTextField" targetPath="text" updateStrategy="0" immediately="false">
+        <BindingProperty name="text" source="applicationServiceBean" sourcePath="${leaseMatter}" target="leaseMatterTextField" targetPath="text" updateStrategy="0" immediately="false">
           <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
         </BindingProperty>
       </BindingProperties>
