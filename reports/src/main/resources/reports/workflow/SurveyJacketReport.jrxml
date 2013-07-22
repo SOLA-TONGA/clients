@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="7a1a0df8-815e-47b3-9764-c8f6b9bcfc96">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="SILA_IMAGE" class="java.io.InputStream"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="105" splitType="Stretch">
+			<image>
+				<reportElement uuid="c1974432-3504-479c-b8e3-50ec98f9eee5" x="0" y="0" width="89" height="92"/>
+				<imageExpression><![CDATA[$P{SILA_IMAGE}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement uuid="1231a272-777f-4e5d-89f6-3dbc4c37f424" x="88" y="0" width="467" height="50"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Bookman Old Style" size="20" isBold="false"/>
+				</textElement>
+				<text><![CDATA[MINISTRY OF LANDS, ENVIRONMENT, 
+CLIMATE CHANGE & NATURAL RESOURCES]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="1d38a8c1-7da7-4526-9574-bb3e33f53689" x="0" y="104" width="555" height="1"/>
+				<graphicElement>
+					<pen lineWidth="1.5" lineColor="#666666"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="88" y="50" width="465" height="42" forecolor="#006666" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Cambria" size="16" isBold="false" isUnderline="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Land Management Division
+Survey Jacket]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="584" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="030a3590-6800-49d0-a3dd-92a060bddb8d" x="10" y="21" width="44" height="32"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[1.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="030a3590-6800-49d0-a3dd-92a060bddb8d" x="305" y="53" width="246" height="32"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ke tracing/photocopy]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="030a3590-6800-49d0-a3dd-92a060bddb8d" x="54" y="533" width="251" height="32"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" markup="none">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA['Ave ki he Va'a Lekooti ke tauhi 'a e mape]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="030a3590-6800-49d0-a3dd-92a060bddb8d" x="305" y="181" width="246" height="32"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ke fua savea]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="030a3590-6800-49d0-a3dd-92a060bddb8d" x="54" y="85" width="251" height="32"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" markup="none">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fakafoki ki he Tamape Ma'olunga ko]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="030a3590-6800-49d0-a3dd-92a060bddb8d" x="54" y="181" width="251" height="32"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" markup="none">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA['Ave ki he Savea ko]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="030a3590-6800-49d0-a3dd-92a060bddb8d" x="54" y="373" width="251" height="32"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" markup="none">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fakafoki ki he Pule Tamape]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="030a3590-6800-49d0-a3dd-92a060bddb8d" x="305" y="277" width="246" height="32"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ke ta hono mape Savea]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="030a3590-6800-49d0-a3dd-92a060bddb8d" x="305" y="309" width="246" height="32"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ke sivi 'a e ngaue]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="030a3590-6800-49d0-a3dd-92a060bddb8d" x="10" y="309" width="44" height="32"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[10.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="030a3590-6800-49d0-a3dd-92a060bddb8d" x="54" y="213" width="251" height="32"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" markup="none">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fakafoki ki he Pule Savea]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="030a3590-6800-49d0-a3dd-92a060bddb8d" x="54" y="405" width="251" height="32"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" markup="none">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA['Ave ki he Tamape Ma'olunga ko]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="030a3590-6800-49d0-a3dd-92a060bddb8d" x="10" y="373" width="44" height="32"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[12.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="030a3590-6800-49d0-a3dd-92a060bddb8d" x="10" y="245" width="44" height="32"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[8.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="030a3590-6800-49d0-a3dd-92a060bddb8d" x="54" y="277" width="251" height="32"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" markup="none">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA['Ave ki he Tamape Ma'olunga ko]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="030a3590-6800-49d0-a3dd-92a060bddb8d" x="10" y="277" width="44" height="32"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[9.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="030a3590-6800-49d0-a3dd-92a060bddb8d" x="54" y="341" width="251" height="32"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" markup="none">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA['Ave ki he Savea Pule ke approve 'a e mape]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="030a3590-6800-49d0-a3dd-92a060bddb8d" x="10" y="501" width="44" height="32"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[16.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="030a3590-6800-49d0-a3dd-92a060bddb8d" x="54" y="21" width="251" height="32"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" markup="none">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA['Ave ki he Pule Tamape]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="030a3590-6800-49d0-a3dd-92a060bddb8d" x="54" y="469" width="251" height="32"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" markup="none">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA['Ave ki he Tamape Ma'olunga ko]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="030a3590-6800-49d0-a3dd-92a060bddb8d" x="54" y="149" width="251" height="32"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" markup="none">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA['Ave ki he Pule Savea]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="030a3590-6800-49d0-a3dd-92a060bddb8d" x="54" y="245" width="251" height="32"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" markup="none">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA['Ave ki he Pule Tamape]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="030a3590-6800-49d0-a3dd-92a060bddb8d" x="10" y="405" width="44" height="32"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[13.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="030a3590-6800-49d0-a3dd-92a060bddb8d" x="54" y="501" width="251" height="32"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" markup="none">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA['Ave ki he Failesisita ke lesisita]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="030a3590-6800-49d0-a3dd-92a060bddb8d" x="305" y="85" width="246" height="32"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ke sivi]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="030a3590-6800-49d0-a3dd-92a060bddb8d" x="10" y="117" width="44" height="32"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[4.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="030a3590-6800-49d0-a3dd-92a060bddb8d" x="305" y="213" width="246" height="32"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ke sivi 'a e fua savea]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="030a3590-6800-49d0-a3dd-92a060bddb8d" x="305" y="469" width="246" height="32"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ke sivi 'a e Deed]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="030a3590-6800-49d0-a3dd-92a060bddb8d" x="54" y="53" width="251" height="32"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" markup="none">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA['Ave ki he Tamape ko]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="030a3590-6800-49d0-a3dd-92a060bddb8d" x="10" y="213" width="44" height="32"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[7.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="030a3590-6800-49d0-a3dd-92a060bddb8d" x="10" y="181" width="44" height="32"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[6.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="030a3590-6800-49d0-a3dd-92a060bddb8d" x="54" y="437" width="251" height="32"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" markup="none">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA['Ave ki he Tamape ko]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="030a3590-6800-49d0-a3dd-92a060bddb8d" x="10" y="85" width="44" height="32"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[3.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="030a3590-6800-49d0-a3dd-92a060bddb8d" x="10" y="53" width="44" height="32"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[2.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="030a3590-6800-49d0-a3dd-92a060bddb8d" x="54" y="117" width="251" height="32"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" markup="none">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA['Ave ki he Pule Faifika]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="030a3590-6800-49d0-a3dd-92a060bddb8d" x="305" y="405" width="246" height="32"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ke ta ki he mape 'ofisi]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="030a3590-6800-49d0-a3dd-92a060bddb8d" x="10" y="437" width="44" height="32"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[14.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="030a3590-6800-49d0-a3dd-92a060bddb8d" x="305" y="437" width="246" height="32"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ke ta hano Deed]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="030a3590-6800-49d0-a3dd-92a060bddb8d" x="10" y="533" width="44" height="32"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[17.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="030a3590-6800-49d0-a3dd-92a060bddb8d" x="10" y="341" width="44" height="32"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[11.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="030a3590-6800-49d0-a3dd-92a060bddb8d" x="10" y="469" width="44" height="32"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[15.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="030a3590-6800-49d0-a3dd-92a060bddb8d" x="54" y="309" width="251" height="32"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" markup="none">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fakafoki ki he Pule Tamape]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="030a3590-6800-49d0-a3dd-92a060bddb8d" x="10" y="138" width="44" height="32"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[5.]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
