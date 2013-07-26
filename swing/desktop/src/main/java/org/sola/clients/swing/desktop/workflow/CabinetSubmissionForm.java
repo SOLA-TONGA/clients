@@ -29,13 +29,16 @@
  */
 package org.sola.clients.swing.desktop.workflow;
 
+import javax.swing.JFormattedTextField;
 import org.sola.clients.beans.application.ApplicationBean;
 import org.sola.clients.beans.application.ApplicationServiceBean;
 import org.sola.clients.reports.ReportManager;
+import org.sola.clients.swing.common.controls.CalendarForm;
 import org.sola.clients.swing.common.tasks.SolaTask;
 import org.sola.clients.swing.common.tasks.TaskManager;
 import org.sola.clients.swing.desktop.ReportViewerForm;
 import org.sola.clients.swing.ui.ContentPanel;
+import org.sola.clients.swing.ui.renderers.FormattersFactory;
 import org.sola.common.messaging.ClientMessage;
 import org.sola.common.messaging.MessageUtility;
 
@@ -46,7 +49,6 @@ import org.sola.common.messaging.MessageUtility;
 public class CabinetSubmissionForm extends ContentPanel {
 
     ApplicationBean applicationBean;
-    ApplicationServiceBean applicationServiceBean;
     boolean readOnly = false;
 
     /**
@@ -75,6 +77,14 @@ public class CabinetSubmissionForm extends ContentPanel {
         appServicePanel.lblActionDate.setText(bundle.getString("CabinetSubmissionForm.appServicePanel.lblActionDate.text"));
         appServicePanel.lblActionCompleted.setText(bundle.getString("CabinetSubmissionForm.appServicePanel.lblActionCompleted.text"));
         btnSave.setEnabled(!readOnly);
+    }
+    
+    private ApplicationServiceBean createServiceBean() {
+
+        if (applicationServiceBean == null) {
+            applicationServiceBean = new ApplicationServiceBean();
+        }
+        return applicationServiceBean;
     }
 
     private ApplicationServicePanel createAppServicePanel() {
@@ -116,6 +126,11 @@ public class CabinetSubmissionForm extends ContentPanel {
         form.setLocationRelativeTo(this);
         form.setVisible(true);
     }
+    
+    private void showCalendar(JFormattedTextField dateField) {
+        CalendarForm calendar = new CalendarForm(null, true, dateField);
+        calendar.setVisible(true);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -125,12 +140,19 @@ public class CabinetSubmissionForm extends ContentPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
+        applicationServiceBean = createServiceBean();
         headerPanel = new org.sola.clients.swing.ui.HeaderPanel();
         jToolBar1 = new javax.swing.JToolBar();
         btnSave = new org.sola.clients.swing.common.buttons.BtnSave();
         btnPrint = new org.sola.clients.swing.common.buttons.BtnPrint();
         appServicePanel = createAppServicePanel();
+        btnApprovalDateCalender = new javax.swing.JButton();
+        approvalDateLabel = new javax.swing.JLabel();
+        approvalNumberLabel = new javax.swing.JLabel();
+        txtApprovalNumber = new javax.swing.JTextField();
+        txtApprovalDate = new javax.swing.JFormattedTextField();
 
         setHeaderPanel(headerPanel);
 
@@ -157,13 +179,53 @@ public class CabinetSubmissionForm extends ContentPanel {
         });
         jToolBar1.add(btnPrint);
 
+        btnApprovalDateCalender.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/calendar.png"))); // NOI18N
+        btnApprovalDateCalender.setBorder(null);
+        btnApprovalDateCalender.setName("btnApprovalDateCalender"); // NOI18N
+        btnApprovalDateCalender.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnApprovalDateCalenderActionPerformed(evt);
+            }
+        });
+
+        approvalDateLabel.setText(bundle.getString("CabinetSubmissionForm.approvalDateLabel.text")); // NOI18N
+
+        approvalNumberLabel.setText(bundle.getString("CabinetSubmissionForm.approvalNumberLabel.text")); // NOI18N
+
+        org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, applicationServiceBean, org.jdesktop.beansbinding.ELProperty.create("${approvalNumber}"), txtApprovalNumber, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+
+        txtApprovalNumber.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtApprovalNumberActionPerformed(evt);
+            }
+        });
+
+        txtApprovalDate.setText(bundle.getString("CabinetSubmissionForm.txtApprovalDate.text")); // NOI18N
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, applicationServiceBean, org.jdesktop.beansbinding.ELProperty.create("${approvalDate}"), txtApprovalDate, org.jdesktop.beansbinding.BeanProperty.create("value"));
+        bindingGroup.addBinding(binding);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(headerPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+            .addComponent(headerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(appServicePanel, javax.swing.GroupLayout.DEFAULT_SIZE, 676, Short.MAX_VALUE)
+            .addComponent(appServicePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(approvalDateLabel)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(txtApprovalDate, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnApprovalDateCalender, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(42, 42, 42)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(approvalNumberLabel)
+                    .addComponent(txtApprovalNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -172,9 +234,20 @@ public class CabinetSubmissionForm extends ContentPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(appServicePanel, javax.swing.GroupLayout.DEFAULT_SIZE, 406, Short.MAX_VALUE)
-                .addGap(3, 3, 3))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(approvalDateLabel)
+                    .addComponent(approvalNumberLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnApprovalDateCalender)
+                    .addComponent(txtApprovalNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtApprovalDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(appServicePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        bindingGroup.bind();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
@@ -185,11 +258,26 @@ public class CabinetSubmissionForm extends ContentPanel {
         showCabinetSubmissionReport();
     }//GEN-LAST:event_btnPrintActionPerformed
 
+    private void btnApprovalDateCalenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApprovalDateCalenderActionPerformed
+        showCalendar(txtApprovalDate);
+    }//GEN-LAST:event_btnApprovalDateCalenderActionPerformed
+
+    private void txtApprovalNumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtApprovalNumberActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtApprovalNumberActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private org.sola.clients.swing.desktop.workflow.ApplicationServicePanel appServicePanel;
+    private org.sola.clients.beans.application.ApplicationServiceBean applicationServiceBean;
+    private javax.swing.JLabel approvalDateLabel;
+    private javax.swing.JLabel approvalNumberLabel;
+    private javax.swing.JButton btnApprovalDateCalender;
     private org.sola.clients.swing.common.buttons.BtnPrint btnPrint;
     private org.sola.clients.swing.common.buttons.BtnSave btnSave;
     private org.sola.clients.swing.ui.HeaderPanel headerPanel;
     private javax.swing.JToolBar jToolBar1;
+    private javax.swing.JFormattedTextField txtApprovalDate;
+    private javax.swing.JTextField txtApprovalNumber;
+    private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 }

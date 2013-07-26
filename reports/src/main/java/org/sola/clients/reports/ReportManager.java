@@ -784,4 +784,23 @@ public class ReportManager {
             return null;
         }
     }
+    
+        public static JasperPrint getSignDeedNotification(ApplicationBean appBean) {
+        String silaImage = "/images/sola/sila.png";
+        HashMap inputParameters = new HashMap();
+        inputParameters.put("SILA_IMAGE",
+                ReportManager.class.getResourceAsStream(silaImage));
+        ApplicationBean[] beans = new ApplicationBean[1];
+        beans[0] = appBean;
+        JRDataSource jds = new JRBeanArrayDataSource(beans);
+        try {
+            return JasperFillManager.fillReport(
+                    ReportManager.class.getResourceAsStream("/reports/workflow/SignDeedNotification.jasper"),
+                    inputParameters, jds);
+        } catch (JRException ex) {
+            MessageUtility.displayMessage(ClientMessage.REPORT_GENERATION_FAILED,
+                    new Object[]{ex.getLocalizedMessage()});
+            return null;
+        }
+    }
 }
