@@ -38,8 +38,7 @@ import org.sola.webservices.transferobjects.EntityAction;
 
 /**
  * Extends {@link ExtendedList} to implement filtering of code beans, inherited
- * from {@link AbstractCodeBean}. Filters by status,
- * {@link EntityAction} and
+ * from {@link AbstractCodeBean}. Filters by status, {@link EntityAction} and
  * <code>code</code> properties.
  */
 public class SolaCodeList<E extends AbstractCodeBean> extends ExtendedList<E> {
@@ -55,6 +54,7 @@ public class SolaCodeList<E extends AbstractCodeBean> extends ExtendedList<E> {
 
         @Override
         public boolean isAllowedByFilter(Object element) {
+
             if (element == null && showAll) {
                 return true;
             }
@@ -66,13 +66,26 @@ public class SolaCodeList<E extends AbstractCodeBean> extends ExtendedList<E> {
             } else {
                 return true;
             }
-            
+
             // Don't filter dummy items
             if (codeBean.getCode() == null && codeBean.getEntityAction() == EntityAction.DISASSOCIATE) {
                 return true;
             }
-            
-            // Checks excluded codes
+
+            // Determine the codes that should remain after filtering
+            if (allowedCodes != null) {
+                for (String code : allowedCodes) {
+                    if (code != null && code.equalsIgnoreCase(codeBean.getCode())) {
+                        return true;
+                    }
+                }
+                // The code is not allowed. Exclude it from the filtered list. 
+                return false; 
+            }
+
+            // Checks excluded codes. Note this is only an override to ensure 
+            // codes that might otherwise be filtered out due to status, etc. 
+            // are included in the filtered list
             if (excludedCodes != null) {
                 for (String code : excludedCodes) {
                     if (code != null && code.equalsIgnoreCase(codeBean.getCode())) {
@@ -80,7 +93,7 @@ public class SolaCodeList<E extends AbstractCodeBean> extends ExtendedList<E> {
                     }
                 }
             }
-            
+
             // Check state.
             if (codeBean.getEntityAction() == EntityAction.DISASSOCIATE
                     || codeBean.getEntityAction() == EntityAction.DELETE) {
@@ -97,6 +110,7 @@ public class SolaCodeList<E extends AbstractCodeBean> extends ExtendedList<E> {
     }
     private boolean showAll = false;
     private String[] excludedCodes;
+    private String[] allowedCodes;
 
     /**
      * Default class constructor.
@@ -104,17 +118,19 @@ public class SolaCodeList<E extends AbstractCodeBean> extends ExtendedList<E> {
     public SolaCodeList() {
         this(false);
     }
-    
+
     /**
      * Class constructor.
+     *
      * @param excludedCodes Codes, which should be skipped while filtering.
      */
-    public SolaCodeList(String ... excludedCodes) {
+    public SolaCodeList(String... excludedCodes) {
         this(new ArrayList<E>(), false, excludedCodes);
     }
 
     /**
      * Class constructor.
+     *
      * @param showAll If true, all codes will be shown, without filtering.
      */
     public SolaCodeList(boolean showAll) {
@@ -123,6 +139,7 @@ public class SolaCodeList<E extends AbstractCodeBean> extends ExtendedList<E> {
 
     /**
      * Class constructor with initial list.
+     *
      * @param list Initial unfiltered list
      */
     public SolaCodeList(List<E> list) {
@@ -131,11 +148,12 @@ public class SolaCodeList<E extends AbstractCodeBean> extends ExtendedList<E> {
 
     /**
      * Class constructor with initial list.
+     *
      * @param list Initial unfiltered list
      * @param showAll If true, all codes will be shown, without filtering.
      * @param excludedCodes Codes, which should be skipped while filtering.
      */
-    public SolaCodeList(List<E> list, boolean showAll, String ... excludedCodes) {
+    public SolaCodeList(List<E> list, boolean showAll, String... excludedCodes) {
         super(list);
         this.showAll = showAll;
         this.excludedCodes = excludedCodes;
@@ -143,30 +161,63 @@ public class SolaCodeList<E extends AbstractCodeBean> extends ExtendedList<E> {
         setFilter(filter);
     }
 
-    /** Returns read-only collection of excluded code. Codes, which are skipped while filtering. */
+    /**
+     * Returns read-only collection of excluded code. Codes, which are skipped
+     * while filtering.
+     */
     public String[] getExcludedCodes() {
-        if(excludedCodes!=null){
+        if (excludedCodes != null) {
             return excludedCodes.clone();
-        }else{
+        } else {
             return null;
         }
     }
 
-    /** Sets codes, which should be skipped while filtering. */
-    public void setExcludedCodes(String ... excludedCodes) {
+    /**
+     * Sets codes, which should be skipped while filtering. Note this is only an
+     * override to ensure codes that might otherwise be filtered out due to
+     * status, etc. are included in the filtered list
+     */
+    public void setExcludedCodes(String... excludedCodes) {
         this.excludedCodes = excludedCodes;
         super.filter();
     }
 
-    /** Returns true if no filtering required. Default is false.*/
+    /**
+     * Returns read-only collection of the allowed codes. If set, only the
+     * codes in this list will remain after filtering.  
+     * @return 
+     */
+    public String[] getAllowedCodes() {
+        if (allowedCodes != null) {
+            return allowedCodes.clone();
+        } else {
+            return null;
+        }
+    }
+
+    /**
+     * Sets the codes that must remain after filtering. To clear this filter
+     * set the allowedCodes to null. 
+     * @param allowedCodes 
+     */
+    public void setAllowedCodes(String[] allowedCodes) {
+        this.allowedCodes = allowedCodes;
+        super.filter();
+    }
+
+    /**
+     * Returns true if no filtering required. Default is false.
+     */
     public boolean isShowAll() {
         return showAll;
     }
 
-    /** If set to true, all codes will be shown, without filtering. */
+    /**
+     * If set to true, all codes will be shown, without filtering.
+     */
     public void setShowAll(boolean showAll) {
         this.showAll = showAll;
         super.filter();
     }
-    
 }

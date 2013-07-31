@@ -57,7 +57,8 @@ public final class CacheManager {
      */
     public static final String REQUEST_TYPES_KEY = RequestTypeBean.class.getName() + LIST_POSTFIX;
     /**
-     * Cache key of the code/displayValue map based on {@link RequestTypeBean} collection.
+     * Cache key of the code/displayValue map based on {@link RequestTypeBean}
+     * collection.
      */
     public static final String REQUEST_TYPES_MAP_KEY = RequestTypeBean.class.getName() + MAP_POSTFIX;
     /**
@@ -65,7 +66,8 @@ public final class CacheManager {
      */
     public static final String COMMUNICATION_TYPES_KEY = CommunicationTypeBean.class.getName() + LIST_POSTFIX;
     /**
-     * Cache key of the code/displayValue map based on {@link CommunicationTypeBean} collection.
+     * Cache key of the code/displayValue map based on
+     * {@link CommunicationTypeBean} collection.
      */
     public static final String COMMUNICATION_TYPES_MAP_KEY = CommunicationTypeBean.class.getName() + MAP_POSTFIX;
     /**
@@ -73,7 +75,8 @@ public final class CacheManager {
      */
     public static final String GENDER_TYPES_KEY = GenderTypeBean.class.getName() + LIST_POSTFIX;
     /**
-     * Cache key of the code/displayValue map based on {@link GenderTypeBean} collection.
+     * Cache key of the code/displayValue map based on {@link GenderTypeBean}
+     * collection.
      */
     public static final String GENDER_TYPES_MAP_KEY = GenderTypeBean.class.getName() + MAP_POSTFIX;
     /**
@@ -81,7 +84,8 @@ public final class CacheManager {
      */
     public static final String SOURCE_TYPES_KEY = SourceTypeBean.class.getName() + LIST_POSTFIX;
     /**
-     * Cache key of the code/displayValue map based on {@link SourceTypeBean} collection.
+     * Cache key of the code/displayValue map based on {@link SourceTypeBean}
+     * collection.
      */
     public static final String SOURCE_TYPES_MAP_KEY = SourceTypeBean.class.getName() + MAP_POSTFIX;
     /**
@@ -89,7 +93,8 @@ public final class CacheManager {
      */
     public static final String APP_STATUS_TYPE_CODES_KEY = ApplicationStatusTypeBean.class.getName() + LIST_POSTFIX;
     /**
-     * Cache key of the code/displayValue map based on {@link ApplicationStatusTypeBean} collection.
+     * Cache key of the code/displayValue map based on
+     * {@link ApplicationStatusTypeBean} collection.
      */
     public static final String APP_STATUS_TYPE_CODES_MAP_KEY = ApplicationStatusTypeBean.class.getName() + MAP_POSTFIX;
     /**
@@ -192,13 +197,12 @@ public final class CacheManager {
      * Cache key of the {@link LeaseConditionBean} collection.
      */
     public static final String LEASE_CONDITION_CODES_KEY = LeaseConditionBean.class.getName() + LIST_POSTFIX;
-    
     public static final String CHECKLIST_GROUP_CODES_KEY = ChecklistGroupBean.class.getName() + LIST_POSTFIX;
     public static final String CHECKLIST_ITEM_CODES_KEY = ChecklistItemBean.class.getName() + LIST_POSTFIX;
-    
+    public static final String ESTATES_KEY = EstateBean.class.getName() + LIST_POSTFIX;
+    public static final String ESTATES_MAP_KEY = EstateBean.class.getName() + MAP_POSTFIX;
     public static final String GET_CHECKLIST_GROUP = "getChecklistGroups";
     public static final String GET_CHECKLIST_ITEM = "getChecklistItem";
-    
     private static final String GET_APPLICATION_STATUS_TYPES = "getApplicationStatusTypes";
     private static final String GET_SOURCE_TYPES = "getSourceTypes";
     private static final String GET_COMMUNICATION_TYPES = "getCommunicationTypes";
@@ -228,13 +232,14 @@ public final class CacheManager {
     private static final String GET_BA_UNIT_REL_TYPES = "getBaUnitRelTypes";
     private static final String GET_LAND_USE_TYPES = "getLandUseTypes";
     private static final String GET_LEASE_CONDITIONS = "getLeaseConditions";
-    
+    private static final String GET_ESTATES = "getEstates";
+
     public static List<ChecklistGroupBean> getChecklistGroups() {
         return getCachedBeanList(ChecklistGroupBean.class,
                 WSManager.getInstance().getReferenceDataService(),
                 GET_CHECKLIST_GROUP, CHECKLIST_GROUP_CODES_KEY);
     }
-            
+
     public static List<BrValidationTargetTypeBean> getBrValidationTargetTypes() {
         return getCachedBeanList(BrValidationTargetTypeBean.class,
                 WSManager.getInstance().getReferenceDataService(),
@@ -348,7 +353,7 @@ public final class CacheManager {
                 WSManager.getInstance().getReferenceDataService(),
                 GET_LEASE_CONDITIONS, LEASE_CONDITION_CODES_KEY);
     }
-    
+
     public static List<PartyTypeBean> getPartyTypes() {
         return getCachedBeanList(PartyTypeBean.class,
                 WSManager.getInstance().getReferenceDataService(),
@@ -449,6 +454,20 @@ public final class CacheManager {
                 REQUEST_TYPES_MAP_KEY);
     }
 
+    public static List<EstateBean> getEstates() {
+        return getCachedBeanList(EstateBean.class,
+                WSManager.getInstance().getReferenceDataService(),
+                GET_ESTATES, ESTATES_KEY);
+    }
+
+    public static Map getEstatesMap() {
+        return getCachedMap(
+                getCachedBeanList(EstateBean.class,
+                WSManager.getInstance().getReferenceDataService(),
+                GET_ESTATES, ESTATES_KEY),
+                ESTATES_MAP_KEY);
+    }
+
     /**
      * Generic method to create cached list of the beans, representing reference
      * table data. The list holds full object, transfered from the server. If
@@ -482,7 +501,7 @@ public final class CacheManager {
                     LogUtility.log("IllegalArgumentException: ", ex);
                     Logger.getLogger(CacheManager.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (InvocationTargetException ex) {
-                    LogUtility.log("InvocationTargetException: ",ex);
+                    LogUtility.log("InvocationTargetException: ", ex);
                     MessageUtility.displayMessage(ClientMessage.GENERAL_UNEXPECTED,
                             new Object[]{ex.getLocalizedMessage()});
                 } catch (NoSuchMethodException ex) {
