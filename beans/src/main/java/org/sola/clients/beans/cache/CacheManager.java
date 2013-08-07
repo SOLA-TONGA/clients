@@ -201,6 +201,10 @@ public final class CacheManager {
     public static final String CHECKLIST_ITEM_CODES_KEY = ChecklistItemBean.class.getName() + LIST_POSTFIX;
     public static final String ESTATES_KEY = EstateBean.class.getName() + LIST_POSTFIX;
     public static final String ESTATES_MAP_KEY = EstateBean.class.getName() + MAP_POSTFIX;
+    public static final String TOWNS_KEY = TownBean.class.getName() + LIST_POSTFIX;
+    public static final String TOWNS_MAP_KEY = TownBean.class.getName() + MAP_POSTFIX;
+    public static final String DISTRICTS_KEY = DistrictBean.class.getName() + LIST_POSTFIX;
+    public static final String DISTRICTS_MAP_KEY = DistrictBean.class.getName() + MAP_POSTFIX;
     public static final String GET_CHECKLIST_GROUP = "getChecklistGroups";
     public static final String GET_CHECKLIST_ITEM = "getChecklistItem";
     private static final String GET_APPLICATION_STATUS_TYPES = "getApplicationStatusTypes";
@@ -233,6 +237,8 @@ public final class CacheManager {
     private static final String GET_LAND_USE_TYPES = "getLandUseTypes";
     private static final String GET_LEASE_CONDITIONS = "getLeaseConditions";
     private static final String GET_ESTATES = "getEstates";
+    private static final String GET_TOWNS = "getTowns";
+    private static final String GET_DISTRICTS = "getDistricts";
 
     public static List<ChecklistGroupBean> getChecklistGroups() {
         return getCachedBeanList(ChecklistGroupBean.class,
@@ -466,6 +472,34 @@ public final class CacheManager {
                 WSManager.getInstance().getReferenceDataService(),
                 GET_ESTATES, ESTATES_KEY),
                 ESTATES_MAP_KEY);
+    }
+    
+    public static List<TownBean> getTowns() {
+        return getCachedBeanList(TownBean.class,
+                WSManager.getInstance().getReferenceDataService(),
+                GET_TOWNS, TOWNS_KEY);
+    }
+    
+    public static Map getTownsMap() {
+        return getCachedMap(
+                getCachedBeanList(TownBean.class,
+                WSManager.getInstance().getReferenceDataService(),
+                GET_TOWNS, TOWNS_KEY),
+                TOWNS_MAP_KEY);
+    }
+    
+    public static List<DistrictBean> getDistricts() {
+        return getCachedBeanList(DistrictBean.class,
+                WSManager.getInstance().getReferenceDataService(),
+                GET_DISTRICTS, DISTRICTS_KEY);
+    }
+    
+    public static Map getDistrictsMap() {
+        return getCachedMap(
+                getCachedBeanList(TownBean.class,
+                WSManager.getInstance().getReferenceDataService(),
+                GET_DISTRICTS, DISTRICTS_KEY),
+                DISTRICTS_MAP_KEY);
     }
 
     /**
