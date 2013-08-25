@@ -2,13 +2,19 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Minister Briefing Report" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" resourceBundle="org.sola.clients.reports.locale.MinisterBriefingReport_en_NZ" uuid="ac6f666c-9299-4670-8732-3db826427724">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="376"/>
+	<property name="ireport.y" value="392"/>
 	<parameter name="SILA_IMAGE" class="java.io.InputStream"/>
 	<queryString>
 		<![CDATA[]]>
 	</queryString>
 	<field name="leaseMatter" class="java.lang.String">
 		<fieldDescription><![CDATA[leaseMatter]]></fieldDescription>
+	</field>
+	<field name="description" class="java.lang.String">
+		<fieldDescription><![CDATA[description]]></fieldDescription>
+	</field>
+	<field name="locationDescription" class="java.lang.String">
+		<fieldDescription><![CDATA[locationDescription]]></fieldDescription>
 	</field>
 	<background>
 		<band splitType="Stretch"/>
@@ -248,6 +254,11 @@ CLIMATE CHANGE & NATURAL RESOURCES]]></text>
 					<font fontName="Arial" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{leaseMatter}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="4ce5f186-ad38-4a2d-9859-af9f646c8137" x="137" y="294" width="417" height="89"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{locationDescription}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

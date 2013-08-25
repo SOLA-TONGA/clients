@@ -323,6 +323,10 @@
         <Property name="name" type="java.lang.String" value="groupPanel4" noResource="true"/>
       </Properties>
     </Component>
+    <Component class="org.sola.clients.beans.referencedata.DistrictListBean" name="districtListBean1">
+    </Component>
+    <Component class="org.sola.clients.beans.referencedata.EstateListBean" name="estateListBean1">
+    </Component>
   </NonVisualComponents>
   <Properties>
     <Property name="headerPanel" type="org.sola.clients.swing.ui.HeaderPanel" editor="org.netbeans.modules.form.ComponentChooserEditor">
@@ -1661,7 +1665,7 @@
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="lblDistrict" alignment="0" pref="210" max="32767" attributes="0"/>
-                              <Component id="txtDistrict" alignment="0" max="32767" attributes="0"/>
+                              <Component id="cbxDistrict" alignment="0" pref="210" max="32767" attributes="0"/>
                           </Group>
                         </DimensionLayout>
                         <DimensionLayout dim="1">
@@ -1669,13 +1673,21 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="lblDistrict" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="txtDistrict" min="-2" max="-2" attributes="0"/>
+                                  <Component id="cbxDistrict" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="0" pref="15" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
                       </Layout>
                       <SubComponents>
+                        <Component class="javax.swing.JComboBox" name="cbxDistrict">
+                          <Properties>
+                            <Property name="name" type="java.lang.String" value="cbxDistrict" noResource="true"/>
+                          </Properties>
+                          <BindingProperties>
+                            <BindingProperty name="elements" source="districtListBean1" sourcePath="${selectedDistrict.displayValue}" target="cbxDistrict" targetPath="elements" updateStrategy="0" immediately="false"/>
+                          </BindingProperties>
+                        </Component>
                         <Component class="javax.swing.JLabel" name="lblDistrict">
                           <Properties>
                             <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
@@ -1683,16 +1695,6 @@
                             </Property>
                             <Property name="name" type="java.lang.String" value="lblDistrict" noResource="true"/>
                           </Properties>
-                        </Component>
-                        <Component class="javax.swing.JTextField" name="txtDistrict">
-                          <Properties>
-                            <Property name="name" type="java.lang.String" value="txtDistrict" noResource="true"/>
-                          </Properties>
-                          <BindingProperties>
-                            <BindingProperty name="text" source="appBean" sourcePath="${selectedProperty.district}" target="txtDistrict" targetPath="text" updateStrategy="0" immediately="false">
-                              <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
-                            </BindingProperty>
-                          </BindingProperties>
                         </Component>
                       </SubComponents>
                     </Container>
@@ -1705,7 +1707,7 @@
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="lblEstate" alignment="0" pref="210" max="32767" attributes="0"/>
-                              <Component id="txtEstate" alignment="0" max="32767" attributes="0"/>
+                              <Component id="cbxEstate" alignment="0" pref="210" max="32767" attributes="0"/>
                           </Group>
                         </DimensionLayout>
                         <DimensionLayout dim="1">
@@ -1713,13 +1715,21 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="lblEstate" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="txtEstate" min="-2" max="-2" attributes="0"/>
+                                  <Component id="cbxEstate" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="0" pref="15" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
                       </Layout>
                       <SubComponents>
+                        <Component class="javax.swing.JComboBox" name="cbxEstate">
+                          <Properties>
+                            <Property name="name" type="java.lang.String" value="cbxEstate" noResource="true"/>
+                          </Properties>
+                          <BindingProperties>
+                            <BindingProperty name="elements" source="estateListBean1" sourcePath="${selectedEstate.displayValue}" target="cbxEstate" targetPath="elements" updateStrategy="0" immediately="false"/>
+                          </BindingProperties>
+                        </Component>
                         <Component class="javax.swing.JLabel" name="lblEstate">
                           <Properties>
                             <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
@@ -1727,16 +1737,6 @@
                             </Property>
                             <Property name="name" type="java.lang.String" value="lblEstate" noResource="true"/>
                           </Properties>
-                        </Component>
-                        <Component class="javax.swing.JTextField" name="txtEstate">
-                          <Properties>
-                            <Property name="name" type="java.lang.String" value="txtEstate" noResource="true"/>
-                          </Properties>
-                          <BindingProperties>
-                            <BindingProperty name="text" source="appBean" sourcePath="${selectedProperty.nobleEstate}" target="txtEstate" targetPath="text" updateStrategy="0" immediately="false">
-                              <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
-                            </BindingProperty>
-                          </BindingProperties>
                         </Component>
                       </SubComponents>
                     </Container>
@@ -1841,7 +1841,7 @@
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="lblPurpose" pref="210" max="32767" attributes="0"/>
-                              <Component id="cbxPurpose" pref="200" max="32767" attributes="0"/>
+                              <Component id="cbxPurpose" pref="210" max="32767" attributes="0"/>
                           </Group>
                         </DimensionLayout>
                         <DimensionLayout dim="1">

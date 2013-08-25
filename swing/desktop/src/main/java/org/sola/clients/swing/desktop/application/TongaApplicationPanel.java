@@ -943,6 +943,8 @@ public class TongaApplicationPanel extends ContentPanel {
         jPanel33 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         groupPanel4 = new org.sola.clients.swing.ui.GroupPanel();
+        districtListBean1 = new org.sola.clients.beans.referencedata.DistrictListBean();
+        estateListBean1 = new org.sola.clients.beans.referencedata.EstateListBean();
         pnlHeader = new org.sola.clients.swing.ui.HeaderPanel();
         jToolBar3 = new javax.swing.JToolBar();
         btnSave = new javax.swing.JButton();
@@ -1017,11 +1019,11 @@ public class TongaApplicationPanel extends ContentPanel {
         lblAllotmentHolder = new javax.swing.JLabel();
         txtAllotmentHolder = new javax.swing.JTextField();
         jPanel23 = new javax.swing.JPanel();
+        cbxDistrict = new javax.swing.JComboBox();
         lblDistrict = new javax.swing.JLabel();
-        txtDistrict = new javax.swing.JTextField();
         jPanel29 = new javax.swing.JPanel();
+        cbxEstate = new javax.swing.JComboBox();
         lblEstate = new javax.swing.JLabel();
-        txtEstate = new javax.swing.JTextField();
         jPanel30 = new javax.swing.JPanel();
         lblDateOfRegistration = new javax.swing.JLabel();
         txtDateOfRegistration = new javax.swing.JFormattedTextField();
@@ -2104,27 +2106,28 @@ public class TongaApplicationPanel extends ContentPanel {
 
         jPanel23.setName("jPanel23"); // NOI18N
 
+        cbxDistrict.setName("cbxDistrict"); // NOI18N
+
+        eLProperty = org.jdesktop.beansbinding.ELProperty.create("${selectedDistrict.displayValue}");
+        jComboBoxBinding = org.jdesktop.swingbinding.SwingBindings.createJComboBoxBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, districtListBean1, eLProperty, cbxDistrict);
+        bindingGroup.addBinding(jComboBoxBinding);
+
         lblDistrict.setText(bundle.getString("TongaApplicationPanel.lblDistrict.text")); // NOI18N
         lblDistrict.setName("lblDistrict"); // NOI18N
-
-        txtDistrict.setName("txtDistrict"); // NOI18N
-
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, appBean, org.jdesktop.beansbinding.ELProperty.create("${selectedProperty.district}"), txtDistrict, org.jdesktop.beansbinding.BeanProperty.create("text"));
-        bindingGroup.addBinding(binding);
 
         javax.swing.GroupLayout jPanel23Layout = new javax.swing.GroupLayout(jPanel23);
         jPanel23.setLayout(jPanel23Layout);
         jPanel23Layout.setHorizontalGroup(
             jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(lblDistrict, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
-            .addComponent(txtDistrict)
+            .addComponent(cbxDistrict, 0, 210, Short.MAX_VALUE)
         );
         jPanel23Layout.setVerticalGroup(
             jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel23Layout.createSequentialGroup()
                 .addComponent(lblDistrict)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtDistrict, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cbxDistrict, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 15, Short.MAX_VALUE))
         );
 
@@ -2132,27 +2135,28 @@ public class TongaApplicationPanel extends ContentPanel {
 
         jPanel29.setName("jPanel29"); // NOI18N
 
+        cbxEstate.setName("cbxEstate"); // NOI18N
+
+        eLProperty = org.jdesktop.beansbinding.ELProperty.create("${selectedEstate.displayValue}");
+        jComboBoxBinding = org.jdesktop.swingbinding.SwingBindings.createJComboBoxBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, estateListBean1, eLProperty, cbxEstate);
+        bindingGroup.addBinding(jComboBoxBinding);
+
         lblEstate.setText(bundle.getString("TongaApplicationPanel.lblEstate.text")); // NOI18N
         lblEstate.setName("lblEstate"); // NOI18N
-
-        txtEstate.setName("txtEstate"); // NOI18N
-
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, appBean, org.jdesktop.beansbinding.ELProperty.create("${selectedProperty.nobleEstate}"), txtEstate, org.jdesktop.beansbinding.BeanProperty.create("text"));
-        bindingGroup.addBinding(binding);
 
         javax.swing.GroupLayout jPanel29Layout = new javax.swing.GroupLayout(jPanel29);
         jPanel29.setLayout(jPanel29Layout);
         jPanel29Layout.setHorizontalGroup(
             jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(lblEstate, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
-            .addComponent(txtEstate)
+            .addComponent(cbxEstate, 0, 210, Short.MAX_VALUE)
         );
         jPanel29Layout.setVerticalGroup(
             jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel29Layout.createSequentialGroup()
                 .addComponent(lblEstate)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtEstate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cbxEstate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 15, Short.MAX_VALUE))
         );
 
@@ -2234,7 +2238,7 @@ public class TongaApplicationPanel extends ContentPanel {
         jPanel40Layout.setHorizontalGroup(
             jPanel40Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(lblPurpose, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
-            .addComponent(cbxPurpose, 0, 200, Short.MAX_VALUE)
+            .addComponent(cbxPurpose, 0, 210, Short.MAX_VALUE)
         );
         jPanel40Layout.setVerticalGroup(
             jPanel40Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -4091,6 +4095,8 @@ public class TongaApplicationPanel extends ContentPanel {
     private javax.swing.JComboBox cbxAgents;
     private javax.swing.JCheckBox cbxAllotmentExists;
     public javax.swing.JComboBox cbxCommunicationWay;
+    private javax.swing.JComboBox cbxDistrict;
+    private javax.swing.JComboBox cbxEstate;
     private javax.swing.JComboBox cbxLandUse;
     private javax.swing.JCheckBox cbxLeaseExists;
     private javax.swing.JCheckBox cbxPaid;
@@ -4098,9 +4104,11 @@ public class TongaApplicationPanel extends ContentPanel {
     private org.sola.clients.beans.referencedata.CommunicationTypeListBean communicationTypes;
     public javax.swing.JPanel contactPanel;
     private javax.swing.JPanel descriptionPanel;
+    private org.sola.clients.beans.referencedata.DistrictListBean districtListBean1;
     public javax.swing.JPanel documentPanel;
     private org.sola.clients.swing.desktop.source.DocumentsManagementExtPanel documentsPanel;
     private org.sola.clients.swing.common.controls.DropDownButton dropDownButton1;
+    private org.sola.clients.beans.referencedata.EstateListBean estateListBean1;
     public javax.swing.JPanel feesPanel;
     private javax.swing.Box.Filler filler2;
     private javax.swing.Box.Filler filler3;
@@ -4255,9 +4263,7 @@ public class TongaApplicationPanel extends ContentPanel {
     private javax.swing.JFormattedTextField txtCompleteBy;
     private javax.swing.JFormattedTextField txtDate;
     private javax.swing.JFormattedTextField txtDateOfRegistration;
-    private javax.swing.JTextField txtDistrict;
     public javax.swing.JTextField txtEmail;
-    private javax.swing.JTextField txtEstate;
     public javax.swing.JTextField txtFax;
     public javax.swing.JTextField txtFirstName;
     private javax.swing.JTextField txtFirstPart;

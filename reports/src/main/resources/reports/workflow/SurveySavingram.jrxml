@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Survey Savingram" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" resourceBundle="org.sola.clients.reports.locale.MinisterBriefingReport_en_NZ" uuid="ac6f666c-9299-4670-8732-3db826427724">
 	<property name="ireport.zoom" value="1.2100000000000002"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="432"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -221,14 +221,14 @@
 				<text><![CDATA[-]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="06b0ad20-a8df-4ff9-baf8-4278bf6fa4d0" x="14" y="305" width="526" height="44"/>
+				<reportElement uuid="06b0ad20-a8df-4ff9-baf8-4278bf6fa4d0" x="14" y="361" width="526" height="44"/>
 				<textElement>
 					<font fontName="SansSerif" size="12" isBold="false" isItalic="true"/>
 				</textElement>
 				<text><![CDATA[Ka maau e ngaue pea fakafoki mai 'ene tohi fakamo'oni aleapau no fonua ke fakakakato 'ene lesisita]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="06b0ad20-a8df-4ff9-baf8-4278bf6fa4d0" x="14" y="372" width="526" height="78"/>
+				<reportElement uuid="06b0ad20-a8df-4ff9-baf8-4278bf6fa4d0" x="14" y="416" width="526" height="78"/>
 				<textElement textAlignment="Center" verticalAlignment="Top">
 					<font fontName="SansSerif" size="12" isBold="false" isItalic="true"/>
 				</textElement>
