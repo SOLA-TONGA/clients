@@ -1685,7 +1685,7 @@
                             <Property name="name" type="java.lang.String" value="cbxDistrict" noResource="true"/>
                           </Properties>
                           <BindingProperties>
-                            <BindingProperty name="elements" source="districtListBean1" sourcePath="${selectedDistrict.displayValue}" target="cbxDistrict" targetPath="elements" updateStrategy="0" immediately="false"/>
+                            <BindingProperty name="elements" source="districtListBean1" sourcePath="${selectedDistrict.islandId}" target="cbxDistrict" targetPath="elements" updateStrategy="0" immediately="false"/>
                           </BindingProperties>
                         </Component>
                         <Component class="javax.swing.JLabel" name="lblDistrict">
@@ -2807,7 +2807,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="labFirstPart" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="123" max="32767" attributes="0"/>
+                              <EmptySpace pref="142" max="32767" attributes="0"/>
                           </Group>
                           <Component id="txtFirstPart" alignment="0" pref="210" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
@@ -2887,7 +2887,7 @@
                           <Component id="txtLastPart" alignment="0" pref="210" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="labLastPart" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="150" max="32767" attributes="0"/>
+                              <EmptySpace pref="188" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="labValue" min="-2" max="-2" attributes="0"/>

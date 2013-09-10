@@ -1586,7 +1586,7 @@ public class TongaPropertyPanel extends ContentPanel {
             jPanel10Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel10Layout.createSequentialGroup()
                 .add(jLabel1)
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addContainerGap(57, Short.MAX_VALUE))
             .add(txtFirstPart)
         );
         jPanel10Layout.setVerticalGroup(
@@ -1617,7 +1617,7 @@ public class TongaPropertyPanel extends ContentPanel {
             jPanel9Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel9Layout.createSequentialGroup()
                 .add(jLabel2)
-                .addContainerGap(62, Short.MAX_VALUE))
+                .addContainerGap(100, Short.MAX_VALUE))
             .add(txtLastPart)
         );
         jPanel9Layout.setVerticalGroup(

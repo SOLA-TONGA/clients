@@ -2108,7 +2108,7 @@ public class TongaApplicationPanel extends ContentPanel {
 
         cbxDistrict.setName("cbxDistrict"); // NOI18N
 
-        eLProperty = org.jdesktop.beansbinding.ELProperty.create("${selectedDistrict.displayValue}");
+        eLProperty = org.jdesktop.beansbinding.ELProperty.create("${selectedDistrict.islandId}");
         jComboBoxBinding = org.jdesktop.swingbinding.SwingBindings.createJComboBoxBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, districtListBean1, eLProperty, cbxDistrict);
         bindingGroup.addBinding(jComboBoxBinding);
 
@@ -2810,7 +2810,7 @@ public class TongaApplicationPanel extends ContentPanel {
             jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel16Layout.createSequentialGroup()
                 .addComponent(labFirstPart)
-                .addContainerGap(123, Short.MAX_VALUE))
+                .addContainerGap(142, Short.MAX_VALUE))
             .addComponent(txtFirstPart, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
             .addGroup(jPanel16Layout.createSequentialGroup()
                 .addComponent(labArea)
@@ -2859,7 +2859,7 @@ public class TongaApplicationPanel extends ContentPanel {
             .addComponent(txtLastPart, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
             .addGroup(jPanel17Layout.createSequentialGroup()
                 .addComponent(labLastPart)
-                .addContainerGap(150, Short.MAX_VALUE))
+                .addContainerGap(188, Short.MAX_VALUE))
             .addGroup(jPanel17Layout.createSequentialGroup()
                 .addComponent(labValue)
                 .addGap(0, 0, Short.MAX_VALUE))
