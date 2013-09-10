@@ -2810,7 +2810,7 @@ public class TongaApplicationPanel extends ContentPanel {
             jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel16Layout.createSequentialGroup()
                 .addComponent(labFirstPart)
-                .addContainerGap(142, Short.MAX_VALUE))
+                .addContainerGap(145, Short.MAX_VALUE))
             .addComponent(txtFirstPart, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
             .addGroup(jPanel16Layout.createSequentialGroup()
                 .addComponent(labArea)
