@@ -38,7 +38,7 @@ import org.geotools.swing.mapaction.extended.print.PrintLayout;
 import org.sola.clients.beans.application.ApplicationServiceBean;
 import org.sola.clients.beans.referencedata.RequestTypeBean;
 import org.sola.clients.reports.ReportManager;
-import org.sola.clients.swing.gis.ui.control.SolaPrintViewerForm;
+import org.sola.clients.swing.ui.reports.ReportViewerPanel;
 
 /**
  * This map action extends the Print map action that handles the print of the map according to a
@@ -159,14 +159,14 @@ public class SolaJasperPrint extends Print {
                 serviceBean.setApplicationId(this.applicationId);
             }
             serviceBean.saveInformationService();
-            generateAndShowReport(layout.getId(), mapImageLocation, scalebarImageLocation);
+            generateAndShowReport(layout.getFileName(), mapImageLocation, scalebarImageLocation);
         } catch (IOException ex) {
             throw new RuntimeException(ex);
         }
     }
     
     protected void generateAndShowReport(
-            String layoutId, String mapImageLocation, String scalebarImageLocation )
+            String fileName, String mapImageLocation, String scalebarImageLocation )
     throws IOException{
         //This will be the bean containing data for the report. 
         //it is the data source for the report
@@ -174,9 +174,9 @@ public class SolaJasperPrint extends Print {
         Object dataBean = new Object();
 
         //   This is to call the report generation         
-        SolaPrintViewerForm form = new SolaPrintViewerForm(
+        ReportViewerPanel form = new ReportViewerPanel(
                 ReportManager.getSolaPrintReport(
-                layoutId, dataBean, mapImageLocation, scalebarImageLocation));
+                fileName, dataBean, mapImageLocation, scalebarImageLocation));
         // this is to visualize the generated report            
         form.setVisible(true);
     }

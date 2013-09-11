@@ -196,7 +196,7 @@ public final class CacheManager {
     /**
      * Cache key of the {@link LeaseConditionBean} collection.
      */
-    public static final String LEASE_CONDITION_CODES_KEY = LeaseConditionBean.class.getName() + LIST_POSTFIX;
+    public static final String LEASE_CONDITION_CODES_KEY = LeaseConditionBean.class.getName() + LIST_POSTFIX; 
     public static final String CHECKLIST_GROUP_CODES_KEY = ChecklistGroupBean.class.getName() + LIST_POSTFIX;
     public static final String CHECKLIST_ITEM_CODES_KEY = ChecklistItemBean.class.getName() + LIST_POSTFIX;
     public static final String ESTATES_KEY = EstateBean.class.getName() + LIST_POSTFIX;
@@ -207,6 +207,12 @@ public final class CacheManager {
     public static final String DISTRICTS_MAP_KEY = DistrictBean.class.getName() + MAP_POSTFIX;
     public static final String GET_CHECKLIST_GROUP = "getChecklistGroups";
     public static final String GET_CHECKLIST_ITEM = "getChecklistItem";
+    
+    /**
+     * Cache key of the {@link HierarchyLevelBean} collection.
+     */
+    public static final String HIERARCHY_LEVEL_KEY = HierarchyLevelBean.class.getName() + LIST_POSTFIX;
+
     private static final String GET_APPLICATION_STATUS_TYPES = "getApplicationStatusTypes";
     private static final String GET_SOURCE_TYPES = "getSourceTypes";
     private static final String GET_COMMUNICATION_TYPES = "getCommunicationTypes";
@@ -239,13 +245,14 @@ public final class CacheManager {
     private static final String GET_ESTATES = "getEstates";
     private static final String GET_TOWNS = "getTowns";
     private static final String GET_DISTRICTS = "getDistricts";
+    private static final String GET_HIERARCHY_LEVELS = "getHierarchyLevels";
 
     public static List<ChecklistGroupBean> getChecklistGroups() {
         return getCachedBeanList(ChecklistGroupBean.class,
                 WSManager.getInstance().getReferenceDataService(),
                 GET_CHECKLIST_GROUP, CHECKLIST_GROUP_CODES_KEY);
     }
-
+          
     public static List<BrValidationTargetTypeBean> getBrValidationTargetTypes() {
         return getCachedBeanList(BrValidationTargetTypeBean.class,
                 WSManager.getInstance().getReferenceDataService(),
@@ -500,6 +507,12 @@ public final class CacheManager {
                 WSManager.getInstance().getReferenceDataService(),
                 GET_DISTRICTS, DISTRICTS_KEY),
                 DISTRICTS_MAP_KEY);
+    }
+    
+    public static List<HierarchyLevelBean> getHierarchyLevels() {
+        return getCachedBeanList(HierarchyLevelBean.class,
+                WSManager.getInstance().getReferenceDataService(),
+                GET_HIERARCHY_LEVELS, HIERARCHY_LEVEL_KEY);
     }
 
     /**

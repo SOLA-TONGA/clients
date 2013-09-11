@@ -36,6 +36,7 @@ import org.geotools.map.extended.layer.ExtendedLayer;
 import org.geotools.swing.extended.ControlsBundle;
 import org.geotools.swing.extended.exception.InitializeLayerException;
 import org.geotools.swing.extended.exception.InitializeMapException;
+import org.geotools.swing.extended.util.CRSUtility;
 import org.geotools.swing.mapaction.extended.KMLExportAction;
 import org.sola.clients.beans.security.SecurityBean;
 import org.sola.clients.swing.gis.Messaging;
@@ -45,6 +46,7 @@ import org.sola.clients.swing.gis.tool.InformationTool;
 import org.sola.clients.swing.gis.ui.control.SearchPanel;
 import org.sola.common.messaging.GisMessage;
 import org.sola.webservices.search.ConfigMapLayerTO;
+import org.sola.webservices.search.CrsTO;
 import org.sola.webservices.search.MapDefinitionTO;
 
 // CHOOSE WHICH TOOL IS PREFERRED FOR THE MAP PRINT COMMENTING AND UNCOMMENTING THE FOLLOWING LINES
@@ -96,7 +98,8 @@ public abstract class SolaControlsBundle extends ControlsBundle {
         try {
             this.pojoDataAccess = pojoDataAccess;
             MapDefinitionTO mapDefinition = pojoDataAccess.getMapDefinition();
-            super.Setup(mapDefinition.getSrid(), mapDefinition.getWktOfCrs(), true);
+            CrsTO firstCrs = mapDefinition.getCrsList().get(0);
+            super.Setup(firstCrs.getSrid(), firstCrs.getWkt(), true);
             this.addSearchPanel();
             InformationTool infoTool = new InformationTool(this.pojoDataAccess);
             this.getMap().addTool(infoTool, this.getToolbar(), true);
@@ -108,7 +111,9 @@ public abstract class SolaControlsBundle extends ControlsBundle {
             //this is used for creating a jasper report map print
             this.solaPrint = new SolaJasperPrint(this.getMap());
 
-            this.getMap().addMapAction(this.solaPrint, this.getToolbar(), true);
+            if (SecurityBean.isInRole(RolesConstants.GIS_PRINT)) {
+                this.getMap().addMapAction(this.solaPrint, this.getToolbar(), true);
+            }
             if (SecurityBean.isInRole(RolesConstants.GIS_EXPORT_MAP)) {
                 this.getMap().addMapAction(new KMLExportAction(this.getMap()), this.getToolbar(), true);
             }
@@ -207,14 +212,15 @@ public abstract class SolaControlsBundle extends ControlsBundle {
     }
 
     /**
-     * It adds the layers in the map control. It is called internally 
-     * from Setup.
+     * It adds the layers in the map control. It is called internally from
+     * Setup.
+     *
      * @throws InitializeLayerException
-     * @throws SchemaException 
+     * @throws SchemaException
      */
     protected void addLayers() throws InitializeLayerException, SchemaException {
-        for (ConfigMapLayerTO configMapLayer :
-                this.getPojoDataAccess().getMapDefinition().getLayers()) {
+        for (ConfigMapLayerTO configMapLayer
+                : this.getPojoDataAccess().getMapDefinition().getLayers()) {
             this.addLayerConfig(configMapLayer);
         }
     }
