@@ -66,6 +66,7 @@ public class ApplicationPropertyBean extends AbstractIdBean {
     public static final String DISTRICT_PROPERTY = "district";
     public static final String NOBLE_ESTATE_PROPERTY = "nobleEstate";
     public static final String DESCRIPTION_PROPERTY = "description";
+
     private String applicationId;
     private BigDecimal area;
     @NotEmpty(message = ClientMessage.CHECK_NOTNULL_FIRSTPART, payload = Localized.class)
@@ -89,6 +90,7 @@ public class ApplicationPropertyBean extends AbstractIdBean {
     private String nobleEstate;
     private String description;
     private transient BigDecimal surveyFee;
+
 
     public ApplicationPropertyBean() {
         super();

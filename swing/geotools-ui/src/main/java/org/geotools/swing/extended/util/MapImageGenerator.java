@@ -67,9 +67,6 @@ public class MapImageGenerator {
      */
     public MapImageGenerator(MapContent mapContent) {
         this.mapContent = mapContent;
-//        this.mapContent = new MapContent();
-//        this.mapContent.addLayers(mapContent.layers());
-//        this.mapContent.setViewport(new MapViewport(mapContent.getViewport()));
     }
     
     /**
@@ -154,12 +151,15 @@ public class MapImageGenerator {
         //Define a new viewport 
         MapViewport mapViewport = new MapViewport(extent, true);
         mapViewport.setScreenArea(rectangle);
+        mapViewport.setCoordinateReferenceSystem(this.mapContent.getViewport().getCoordinateReferenceSystem());
         
         //Set the new viewport
         renderer.getMapContent().setViewport(mapViewport);
         
-        //Render map according to the new viewport
-        renderer.paint(graphics, rectangle, extent);
+        // Render map according to the new viewport. Use the viewport 
+        // worldToScreen transformation to ensure the image is rendered 
+        // with the same orientation as the map. 
+        renderer.paint(graphics, rectangle, extent, mapViewport.getWorldToScreen());
         //Set the previous viewport back
         this.mapContent.setViewport(mapViewportOriginal);
         graphics.setColor(Color.BLACK);
