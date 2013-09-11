@@ -76,13 +76,12 @@ public class DocumentSearchPanel extends javax.swing.JPanel {
         initComponents();
         customizeButtons();
         InternalNumberComparator comp = new InternalNumberComparator();
-        DefaultRowSorter rowSorter= (DefaultRowSorter) this.tblSearchResults.getRowSorter();
+        DefaultRowSorter rowSorter = (DefaultRowSorter) this.tblSearchResults.getRowSorter();
         rowSorter.setComparator(1, comp);
 
-        
+
         cbxSourceType.setSelectedIndex(-1);
         searchResultsList.addPropertyChangeListener(new PropertyChangeListener() {
-
             @Override
             public void propertyChange(PropertyChangeEvent evt) {
                 if (evt.getPropertyName().equals(SourceSearchResultsListBean.SELECTED_SOURCE_PROPERTY)) {
@@ -144,7 +143,7 @@ public class DocumentSearchPanel extends javax.swing.JPanel {
         btnOpenApplication.setVisible(show);
         menuOpenApplication.setVisible(show);
     }
-    
+
     public boolean isShowViewButton() {
         return btnView.isVisible();
     }
@@ -167,10 +166,12 @@ public class DocumentSearchPanel extends javax.swing.JPanel {
                 && !searchResultsList.getSelectedSource().getArchiveDocumentId().isEmpty()) {
             enabled = true;
         }
-        btnPrint.setEnabled(selected);
+        if (SecurityBean.isInRole(RolesConstants.SOURCE_PRINT)) {
+            btnPrint.setEnabled(selected);
+            menuPrint.setEnabled(selected);
+        }
         btnOpenAttachment.setEnabled(enabled);
         menuOpenAttachment.setEnabled(enabled);
-        menuPrint.setEnabled(selected);
         btnEdit.setEnabled(selected && hasRight);
         menuEdit.setEnabled(btnEdit.isEnabled());
         btnAttach.setEnabled(selected && hasRight);
@@ -208,16 +209,16 @@ public class DocumentSearchPanel extends javax.swing.JPanel {
         return searchResultsList.getSelectedSource();
     }
 
-       private void print() {
-                String titleRequested = null;
-                SourceBean selectedSource = SourceBean.getSource(searchResultsList.getSelectedSource().getId());
-                if (selectedSource != null && selectedSource.getArchiveDocument() != null) {
-                 titleRequested = selectedSource.getReferenceNr();
-                } 
-        if (ApplicationServiceBean.saveInformationService(RequestTypeBean.CODE_DOCUMENT_COPY,titleRequested)) {
-             openDocument();
-         }
-      }
+    private void print() {
+        String titleRequested = null;
+        SourceBean selectedSource = SourceBean.getSource(searchResultsList.getSelectedSource().getId());
+        if (selectedSource != null && selectedSource.getArchiveDocument() != null) {
+            titleRequested = selectedSource.getReferenceNr();
+        }
+        if (ApplicationServiceBean.saveInformationService(RequestTypeBean.CODE_DOCUMENT_COPY, titleRequested)) {
+            openDocument();
+        }
+    }
 
     private void openDocument() {
         if (searchResultsList.getSelectedSource().getArchiveDocumentId() == null
@@ -226,7 +227,6 @@ public class DocumentSearchPanel extends javax.swing.JPanel {
         }
 
         SolaTask t = new SolaTask<Void, Void>() {
-
             @Override
             public Void doTask() {
                 setMessage(MessageUtility.getLocalizedMessageText(ClientMessage.PROGRESS_MSG_DOCUMENT_OPENING));
@@ -246,7 +246,7 @@ public class DocumentSearchPanel extends javax.swing.JPanel {
     private void fireEditSource() {
         fireSourceEvent(EDIT_SOURCE);
     }
-    
+
     private void fireViewSource() {
         fireSourceEvent(VIEW_SOURCE);
     }
@@ -257,7 +257,6 @@ public class DocumentSearchPanel extends javax.swing.JPanel {
         }
 
         SolaTask t = new SolaTask<Void, Void>() {
-
             SourceBean source;
 
             @Override
@@ -282,7 +281,6 @@ public class DocumentSearchPanel extends javax.swing.JPanel {
     private void fireOpenApplication() {
         if (searchResultsList.getSelectedSource() != null) {
             SolaTask t = new SolaTask<Void, Void>() {
-
                 ApplicationBean app;
 
                 @Override
@@ -319,7 +317,6 @@ public class DocumentSearchPanel extends javax.swing.JPanel {
 
     public void searchDocuments() {
         SolaTask t = new SolaTask<Void, Void>() {
-
             @Override
             public Void doTask() {
                 setMessage(MessageUtility.getLocalizedMessageText(ClientMessage.PROGRESS_MSG_DOCUMENT_SEARCHING));
@@ -487,6 +484,7 @@ public class DocumentSearchPanel extends javax.swing.JPanel {
 
         tblSearchResults.setComponentPopupMenu(popUpSearchResults);
         tblSearchResults.setName("tblSearchResults"); // NOI18N
+        tblSearchResults.getTableHeader().setReorderingAllowed(false);
 
         org.jdesktop.beansbinding.ELProperty eLProperty = org.jdesktop.beansbinding.ELProperty.create("${sourceSearchResultsList}");
         org.jdesktop.swingbinding.JTableBinding jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, searchResultsList, eLProperty, tblSearchResults);
@@ -537,15 +535,15 @@ public class DocumentSearchPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblSearchResults);
         tblSearchResults.getColumnModel().getColumn(0).setHeaderValue(bundle.getString("DocumentSeachPanel.tblSearchResults.columnModel.title5_1_1")); // NOI18N
-        tblSearchResults.getColumnModel().getColumn(1).setMaxWidth(70);
+        tblSearchResults.getColumnModel().getColumn(1).setPreferredWidth(70);
         tblSearchResults.getColumnModel().getColumn(1).setHeaderValue(bundle.getString("DocumentSeachPanel.tblSearchResults.columnModel.title1_1_1")); // NOI18N
-        tblSearchResults.getColumnModel().getColumn(2).setMaxWidth(70);
+        tblSearchResults.getColumnModel().getColumn(2).setPreferredWidth(70);
         tblSearchResults.getColumnModel().getColumn(2).setHeaderValue(bundle.getString("DocumentSearchPanel.tblSearchResults.columnModel.title2_1")); // NOI18N
-        tblSearchResults.getColumnModel().getColumn(3).setMaxWidth(60);
+        tblSearchResults.getColumnModel().getColumn(3).setPreferredWidth(60);
         tblSearchResults.getColumnModel().getColumn(3).setHeaderValue(bundle.getString("DocumentSeachPanel.tblSearchResults.columnModel.title0_1_1")); // NOI18N
-        tblSearchResults.getColumnModel().getColumn(4).setMaxWidth(70);
+        tblSearchResults.getColumnModel().getColumn(4).setPreferredWidth(70);
         tblSearchResults.getColumnModel().getColumn(4).setHeaderValue(bundle.getString("DocumentSeachPanel.tblSearchResults.columnModel.title3_1_1")); // NOI18N
-        tblSearchResults.getColumnModel().getColumn(5).setMaxWidth(50);
+        tblSearchResults.getColumnModel().getColumn(5).setPreferredWidth(50);
         tblSearchResults.getColumnModel().getColumn(5).setHeaderValue(bundle.getString("DocumentSeachPanel.tblSearchResults.columnModel.title4_1")); // NOI18N
         tblSearchResults.getColumnModel().getColumn(6).setHeaderValue(bundle.getString("DocumentSearchPanel.tblSearchResults.columnModel.title7")); // NOI18N
         tblSearchResults.getColumnModel().getColumn(7).setHeaderValue(bundle.getString("DocumentSearchPanel.tblSearchResults.columnModel.title8")); // NOI18N
@@ -1182,7 +1180,6 @@ public class DocumentSearchPanel extends javax.swing.JPanel {
     private void menuViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuViewActionPerformed
         fireViewSource();
     }//GEN-LAST:event_menuViewActionPerformed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAttach;
     private javax.swing.JButton btnClear;

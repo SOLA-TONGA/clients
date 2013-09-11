@@ -38,6 +38,7 @@ import org.jdesktop.observablecollections.ObservableList;
 import org.sola.clients.beans.application.validation.ApplicationCheck;
 import org.sola.clients.beans.applicationlog.ApplicationLogBean;
 import org.sola.clients.beans.cache.CacheManager;
+import org.sola.clients.beans.cadastre.CadastreObjectBean;
 import org.sola.clients.beans.controls.SolaList;
 import org.sola.clients.beans.controls.SolaObservableList;
 import org.sola.clients.beans.converters.TypeConverters;
@@ -82,6 +83,8 @@ public class ApplicationBean extends ApplicationSummaryBean {
     public static final String ASSIGNEE_ID_PROPERTY = "assigneeId";
     public static final String STATUS_TYPE_PROPERTY = "statusType";
     public static final String APPLICATION_PROPERTY = "application";
+    public static final String SELECTED_CADASTRE_OBJECT = "selectedCadastreObject";
+    public static final String LODGED_ROLE = "applicant";
     public static final String LOCATION_DESCRIPTION_PROPERTY = "locationDescription";
     public static final String PURPOSE_PROPERTY = "purpose";
     private String itemNumber;
@@ -107,6 +110,8 @@ public class ApplicationBean extends ApplicationSummaryBean {
     private PartySummaryBean agent;
     private String assigneeId;
     private ApplicationStatusTypeBean statusBean;
+    private SolaList<CadastreObjectBean> cadastreObjectList;
+    private transient CadastreObjectBean selectedCadastreObject;
     private DocumentBean archiveDocument;
     public static final String ARCHIVE_DOCUMENT = "archiveDocument";
 
@@ -127,6 +132,7 @@ public class ApplicationBean extends ApplicationSummaryBean {
         sourceList = new SolaList();
         appLogList = new SolaObservableList<ApplicationLogBean>();
         propertyList.addAsNew(new ApplicationPropertyBean());
+        cadastreObjectList = new SolaList();
     }
 
     public boolean canArchive() {
@@ -495,6 +501,56 @@ public class ApplicationBean extends ApplicationSummaryBean {
         propertySupport.firePropertyChange(RECEIPT_REF_PROPERTY, old, value);
     }
 
+    public SolaList<CadastreObjectBean> getCadastreObjectList() {
+        return cadastreObjectList;
+    }
+
+    public ObservableList<CadastreObjectBean> getCadastreObjectFilteredList() {
+        return cadastreObjectList.getFilteredList();
+    }
+
+    public void setCadastreObjectList(SolaList<CadastreObjectBean> cadastreObjectList) {
+        this.cadastreObjectList = cadastreObjectList;
+    }
+
+    /**
+     * Removes selected cadastre object from the list of CadastreObjects.
+     */
+    public void removeSelectedCadastreObject() {
+        if (selectedCadastreObject != null && cadastreObjectList != null) {
+            cadastreObjectList.safeRemove(selectedCadastreObject, EntityAction.DISASSOCIATE);
+        }
+    }
+
+    /**
+     * Adds new cadastre object in the list of CadastreObjects.
+     */
+    public void addCadastreObject(CadastreObjectBean cadastreObject) {
+        if (getCadastreObjectList() != null && cadastreObject != null
+                && cadastreObject.getEntityAction() != EntityAction.DELETE
+                && cadastreObject.getEntityAction() != EntityAction.DISASSOCIATE) {
+
+            for (CadastreObjectBean co : getCadastreObjectList()) {
+                if (co.getId() != null && cadastreObject.getId() != null && co.getId().equals(cadastreObject.getId())) {
+                    if (co.getEntityAction() == EntityAction.DELETE || co.getEntityAction() == EntityAction.DISASSOCIATE) {
+                        co.setEntityAction(null);
+                    }
+                    return;
+                }
+            }
+            getCadastreObjectList().addAsNew(cadastreObject);
+        }
+    }
+
+    public CadastreObjectBean getSelectedCadastreObject() {
+        return selectedCadastreObject;
+    }
+
+    public void setSelectedCadastreObject(CadastreObjectBean selectedCadastreObject) {
+        this.selectedCadastreObject = selectedCadastreObject;
+        propertySupport.firePropertyChange(SELECTED_CADASTRE_OBJECT, null, this.selectedCadastreObject);
+    }
+
     public String getLocationDescription() {
         return locationDescription;
     }
@@ -543,7 +599,6 @@ public class ApplicationBean extends ApplicationSummaryBean {
 
             if (this.isFeePaid()) {
                 MessageUtility.displayMessage(ClientMessage.APPLICATION_WARNING_ADDEDSERVICE);
-//                        return;
             }
             for (Iterator<ApplicationServiceBean> it = serviceList.iterator(); it.hasNext();) {
                 ApplicationServiceBean applicationServiceBean = it.next();
@@ -904,24 +959,54 @@ public class ApplicationBean extends ApplicationSummaryBean {
      * @param userId ID of the user.
      */
     public boolean assignUser(String userId) {
+        if (ApplicationBean.assignUser(this, userId)) {
+            this.reload();
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * Assigns or unassigns application to the user. If userId is null,
+     * application will be unassigned
+     *
+     * @param userId ID of the user.
+     * @param app Application to assign/unassign
+     */
+    public static boolean assignUser(ApplicationSummaryBean app, String userId) {
         if (userId == null) {
             WSManager.getInstance().getCaseManagementService().applicationActionUnassign(
-                    this.getId(), this.getRowVersion());
+                    app.getId(), app.getRowVersion());
         } else {
             WSManager.getInstance().getCaseManagementService().applicationActionAssign(
-                    this.getId(), userId, this.getRowVersion());
+                    app.getId(), userId, app.getRowVersion());
 
         }
-        this.reload();
         return true;
     }
 
     /**
+     * set the contact person's role to applicant
+     *
+     */
+    public boolean setApplicantRole() {
+        PartyRoleTypeBean partyRoleType = new PartyRoleTypeBean();
+        partyRoleType.setCode(LODGED_ROLE);
+        if (!contactPerson.checkRoleExists(partyRoleType)) {
+            contactPerson.addRole(partyRoleType);
+        }
+        return true;
+    }
+
+    /**
+     *
+     * /**
      * Creates new application in the database.
      *
      * @throws Exception
      */
     public boolean lodgeApplication() {
+        setApplicantRole();
         ApplicationTO app = TypeConverters.BeanToTrasferObject(this, ApplicationTO.class);
         app = WSManager.getInstance().getCaseManagementService().createApplication(app);
         TypeConverters.TransferObjectToBean(app, ApplicationBean.class, this);
@@ -935,6 +1020,7 @@ public class ApplicationBean extends ApplicationSummaryBean {
      * @throws Exception
      */
     public boolean saveApplication() {
+        setApplicantRole();
         ApplicationTO app = TypeConverters.BeanToTrasferObject(this, ApplicationTO.class);
         app = WSManager.getInstance().getCaseManagementService().saveApplication(app);
         TypeConverters.TransferObjectToBean(app, ApplicationBean.class, this);
@@ -948,7 +1034,6 @@ public class ApplicationBean extends ApplicationSummaryBean {
     public void reload() {
         ApplicationTO app = WSManager.getInstance().getCaseManagementService().getApplication(this.getId());
         TypeConverters.TransferObjectToBean(app, ApplicationBean.class, this);
-        propertySupport.firePropertyChange(APPLICATION_PROPERTY, null, this);
     }
 
     /**

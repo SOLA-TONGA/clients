@@ -30,6 +30,7 @@
 package org.sola.clients.swing.gis.ui.controlsbundle;
 
 import java.util.List;
+import org.geotools.feature.SchemaException;
 import org.geotools.geometry.jts.ReferencedEnvelope;
 import org.geotools.swing.extended.exception.InitializeLayerException;
 import org.sola.clients.beans.application.ApplicationBean;
@@ -185,14 +186,22 @@ public final class ControlsBundleForCadastreChange extends ControlsBundleForTran
         }
     }
 
+    
     @Override
-    protected void addLayers() throws InitializeLayerException {
+    protected void addLayers() throws InitializeLayerException, SchemaException {
         super.addLayers();
         this.targetParcelsLayer = new CadastreChangeTargetCadastreObjectLayer();
         this.getMap().addLayer(targetParcelsLayer);
 
         this.newCadastreObjectLayer = new CadastreChangeNewCadastreObjectLayer(
                 getLastPart(this.lastPartEntry));
+        //This flag defines if the client side generator or server side generator
+        // will be used for new cadastre object identifier.
+        // If it is false the server side generator will be used. Then
+        // the database functions: cadastre.get_new_cadastre_object_identifier_last_part
+        // and cadastre.get_new_cadastre_object_identifier_first_part has to be updated
+        // to reflect the algorithm that is used for generating the identifier.
+        this.newCadastreObjectLayer.setUseClientSideIdentifierGenerator(true);
         this.getMap().addLayer(newCadastreObjectLayer);
 
         this.newPointsLayer = new CadastreChangeNewSurveyPointLayer(this.newCadastreObjectLayer);

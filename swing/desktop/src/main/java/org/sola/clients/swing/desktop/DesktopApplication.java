@@ -43,12 +43,15 @@ import org.sola.common.logging.LogUtility;
  * The main class of the application.
  */
 public class DesktopApplication {
+
     /**
      * Main method to run the application.
      *
      * @param args Array of input parameters.
      */
     public static void main(String[] args) {
+        // #321 Set class to record user preferences for
+        WindowUtility.setMainAppClass(DesktopApplication.class);
         // Show splash screen
         SplashForm splash = new SplashForm();
         WindowUtility.centerForm(splash);
@@ -63,17 +66,22 @@ public class DesktopApplication {
         splash.dispose();
 
         java.awt.EventQueue.invokeLater(new Runnable() {
-
             @Override
             public void run() {
                 Thread.setDefaultUncaughtExceptionHandler(new DesktopClientExceptionHandler());
-                LocalizationManager.loadLanguage(DesktopApplication.class);
+                LocalizationManager.loadLanguage();
                 LogUtility.initialize(DesktopApplication.class);
-                LafManager.getInstance().setProperties("green");
+                
+                // Select the Look and Feel Theme based on whether this is 
+                // the production version or the test version of SOLA. 
+                if (LocalizationManager.isProductionHost()) {
+                    LafManager.getInstance().setProperties("green");
+                } else {
+                    LafManager.getInstance().setProperties("autumn");
+                }
 
-                final LoginForm loginForm = new LoginForm(DesktopApplication.class);
+                final LoginForm loginForm = new LoginForm();
                 loginForm.addPropertyChangeListener(new PropertyChangeListener() {
-
                     @Override
                     public void propertyChange(PropertyChangeEvent evt) {
                         if (evt.getPropertyName().equals(LoginPanel.LOGIN_RESULT)) {

@@ -4,13 +4,11 @@
  */
 package org.sola.clients.swing.gis.ui.control;
 
-import com.vividsolutions.jts.geom.Envelope;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 import org.geotools.geometry.jts.ReferencedEnvelope;
-import org.geotools.swing.extended.Map;
 import org.geotools.swing.extended.util.MapImageGenerator;
 import org.geotools.swing.extended.util.Messaging;
 import org.geotools.swing.extended.util.ScalebarGenerator;
@@ -22,7 +20,9 @@ import org.sola.clients.swing.gis.data.PojoDataAccess;
 import org.sola.clients.swing.gis.data.PojoPublicDisplayFeatureSource;
 import org.sola.clients.swing.gis.layer.PojoForPublicDisplayLayer;
 import org.sola.clients.swing.gis.ui.controlsbundle.ControlsBundleForPublicDisplay;
+import org.sola.clients.swing.ui.reports.ReportViewerForm;
 import org.sola.common.messaging.GisMessage;
+import org.sola.common.messaging.MessageUtility;
 
 /**
  * This panel provides the necessary user interface to manage and start the printing
@@ -169,7 +169,7 @@ public class PublicDisplayPrintPanel extends javax.swing.JPanel {
                 serviceBean.setApplicationId(this.applicationId);
             }
             serviceBean.saveInformationService();
-            generateAndShowReport(layout.getId(), mapImageLocation, scalebarImageLocation);
+            generateAndShowReport(layout.getFileName(), mapImageLocation, scalebarImageLocation);
         } catch (IOException ex) {
             throw new RuntimeException(ex);
         }
@@ -178,20 +178,20 @@ public class PublicDisplayPrintPanel extends javax.swing.JPanel {
     /**
      * It calls the generate report functionality and displays it.
      *
-     * @param layoutId
+     * @param fileName
      * @param mapImageLocation
      * @param scalebarImageLocation
      * @throws IOException
      */
     private void generateAndShowReport(
-            String layoutId,
+            String fileName,
             String mapImageLocation,
             String scalebarImageLocation) throws IOException {
 
         //   This is to call the report generation         
-        SolaPrintViewerForm form = new SolaPrintViewerForm(
+        ReportViewerForm form = new ReportViewerForm(
                 ReportManager.getMapPublicDisplayReport(
-                layoutId, this.txtArea.getText(),
+                fileName, this.txtArea.getText(),
                 this.txtNotificationPeriod.getText(),
                 mapImageLocation, scalebarImageLocation));
         // this is to visualize the generated report            
@@ -205,10 +205,12 @@ public class PublicDisplayPrintPanel extends javax.swing.JPanel {
     private void centerMap() {
         ReferencedEnvelope envelope = PojoDataAccess.getInstance().getExtentOfPublicDisplay(
                 getFilterNameLastPart());        
-        if (envelope != null) {
-            envelope.expandBy(10);
-            this.mapBundle.getMap().setDisplayArea(envelope);
+        if (envelope == null) {
+            MessageUtility.displayMessage(GisMessage.PRINT_PUBLIC_DISPLAY_CENTER_LAST_PART_CO_NOT_FOUND);
+            return;
         }
+        envelope.expandBy(10);
+        this.mapBundle.getMap().setDisplayArea(envelope);        
     }
 
     /**
