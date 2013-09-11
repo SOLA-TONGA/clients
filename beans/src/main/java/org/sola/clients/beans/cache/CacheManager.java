@@ -196,7 +196,7 @@ public final class CacheManager {
     /**
      * Cache key of the {@link LeaseConditionBean} collection.
      */
-    public static final String LEASE_CONDITION_CODES_KEY = LeaseConditionBean.class.getName() + LIST_POSTFIX; 
+    public static final String CONDITION_TYPE_CODES_KEY = ConditionTypeBean.class.getName() + LIST_POSTFIX;
     public static final String CHECKLIST_GROUP_CODES_KEY = ChecklistGroupBean.class.getName() + LIST_POSTFIX;
     public static final String CHECKLIST_ITEM_CODES_KEY = ChecklistItemBean.class.getName() + LIST_POSTFIX;
     public static final String ESTATES_KEY = EstateBean.class.getName() + LIST_POSTFIX;
@@ -241,7 +241,7 @@ public final class CacheManager {
     private static final String GET_BR_VALIDATION_TARGET_TYPES = "getBrValidationTargetTypes";
     private static final String GET_BA_UNIT_REL_TYPES = "getBaUnitRelTypes";
     private static final String GET_LAND_USE_TYPES = "getLandUseTypes";
-    private static final String GET_LEASE_CONDITIONS = "getLeaseConditions";
+    private static final String GET_CONDITION_TYPES = "getConditionTypes";
     private static final String GET_ESTATES = "getEstates";
     private static final String GET_TOWNS = "getTowns";
     private static final String GET_DISTRICTS = "getDistricts";
@@ -361,10 +361,10 @@ public final class CacheManager {
                 GET_ID_TYPES, ID_TYPE_CODES_KEY);
     }
 
-    public static List<LeaseConditionBean> getLeaseConditions() {
-        return getCachedBeanList(LeaseConditionBean.class,
+    public static List<ConditionTypeBean> getConditionTypes() {
+        return getCachedBeanList(ConditionTypeBean.class,
                 WSManager.getInstance().getReferenceDataService(),
-                GET_LEASE_CONDITIONS, LEASE_CONDITION_CODES_KEY);
+                GET_CONDITION_TYPES, CONDITION_TYPE_CODES_KEY);
     }
 
     public static List<PartyTypeBean> getPartyTypes() {
