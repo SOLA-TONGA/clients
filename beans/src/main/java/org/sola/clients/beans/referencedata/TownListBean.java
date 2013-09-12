@@ -83,7 +83,7 @@ public class TownListBean extends AbstractBindingListBean{
     /*
      * Returns list of towns filtered by the appropriate criteria
      */
-    public ObservableList<TownBean> getFilteredEstateList() {
+    public ObservableList<TownBean> getFilteredTownList() {
         return townListBean.getFilteredList();
     }
 
