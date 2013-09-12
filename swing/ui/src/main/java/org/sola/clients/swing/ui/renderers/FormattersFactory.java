@@ -39,6 +39,8 @@ import javax.swing.text.DateFormatter;
 import javax.swing.text.DefaultFormatter;
 import javax.swing.text.DefaultFormatterFactory;
 import javax.swing.text.NumberFormatter;
+import org.sola.common.NumberUtility;
+import org.sola.common.logging.LogUtility;
 
 /**
  * Provides formatters for {@link JFormattedTextField}
@@ -49,6 +51,7 @@ public class FormattersFactory {
     private DefaultFormatterFactory integerFormatterFactory;
     private DefaultFormatterFactory shortFormatterFactory;
     private DefaultFormatterFactory dateFormatterFactory;
+    private DefaultFormatterFactory imperialFormatterFactory;
 
     private FormattersFactory() {
     }
@@ -116,5 +119,51 @@ public class FormattersFactory {
             dateFormatterFactory = new DefaultFormatterFactory(displayFormat, displayFormat, editFormat);
         }
         return dateFormatterFactory;
+    }
+
+    /**
+     * Returns a custom formatter factory for displaying and editing an area
+     * value in imperial format i.e. acres (a), roods (r) and perches (p). To
+     * use this factory, set the formatterFactory property of the
+     * JFormattedTextField to
+     * {@code FormattersFactory.getInstance().getImperialFormatterFactory()}
+     *
+     */
+    public DefaultFormatterFactory getImperialFormatterFactory() {
+        if (imperialFormatterFactory == null) {
+            DefaultFormatter format = new DefaultFormatter() {
+                // Accept null or emtpy string values entered by the user as null.
+                @Override
+                public Object stringToValue(String userInput) throws ParseException {
+                    Object result = null;
+                    if (userInput != null && !userInput.trim().isEmpty()) {
+                        try {
+                            // Try to convert the user input into a metric 
+                            // (metres sqrd) value. 
+                            result = NumberUtility.convertImperialToMetric(userInput);
+                        } catch (Exception ex) {
+                            result = null;
+                            LogUtility.log("Unable to parse imperial value " + userInput, ex);
+                        }
+                        if (result == null) {
+                            throw new ParseException("Unable to parse imperial value", 0);
+                        }
+                    }
+                    return result;
+                }
+
+                @Override
+                public String valueToString(Object value) throws ParseException {
+                    String result = null;
+                    if (value != null && BigDecimal.class.isAssignableFrom(value.getClass())) {
+                        // Display the value as an imperial area. 
+                        result = NumberUtility.formatAreaImperial((BigDecimal) value);
+                    }
+                    return result;
+                }
+            };
+            imperialFormatterFactory = new DefaultFormatterFactory(format, format, format);
+        }
+        return imperialFormatterFactory;
     }
 }

@@ -293,6 +293,7 @@ public class TongaPropertyPanel extends ContentPanel {
                     resourceBundle.getString("PropertyPanel.existingProperty.Text"),
                     nameFirstPart, nameLastPart));
             allowEdit(txtArea, false);
+            allowEdit(txtAreaImperial, false);
             allowEdit(txtFirstPart, false);
             allowEdit(txtLastPart, false);
             if (txtArea.getText().indexOf('.') != -1) {
@@ -304,6 +305,7 @@ public class TongaPropertyPanel extends ContentPanel {
 
             areaPanel.setEnabled(true);
             allowEdit(txtArea, true);
+            allowEdit(txtAreaImperial, true);
             allowEdit(txtFirstPart, true);
             allowEdit(txtLastPart, true);
             labArea.setEnabled(true);
@@ -1242,15 +1244,15 @@ public class TongaPropertyPanel extends ContentPanel {
         jPanel9 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         txtLastPart = new javax.swing.JTextField();
-        jPanel11 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
-        txtEstateType = new javax.swing.JTextField();
         jPanel6 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         txtBaUnitStatus = new javax.swing.JTextField();
         areaPanel = new javax.swing.JPanel();
         labArea = new javax.swing.JLabel();
         txtArea = new javax.swing.JTextField();
+        jPanel11 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        txtAreaImperial = new javax.swing.JFormattedTextField();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableParcels = new org.sola.clients.swing.common.controls.JTableWithDefaultStyles();
@@ -1631,38 +1633,6 @@ public class TongaPropertyPanel extends ContentPanel {
 
         jPanel13.add(jPanel9);
 
-        jPanel11.setName("jPanel11"); // NOI18N
-
-        jLabel4.setText(bundle.getString("TongaPropertyPanel.jLabel4.text")); // NOI18N
-        jLabel4.setName("jLabel4"); // NOI18N
-
-        txtEstateType.setEditable(false);
-        txtEstateType.setEnabled(false);
-        txtEstateType.setName("txtEstateType"); // NOI18N
-
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, baUnitBean1, org.jdesktop.beansbinding.ELProperty.create("${estateType}"), txtEstateType, org.jdesktop.beansbinding.BeanProperty.create("text"));
-        bindingGroup.addBinding(binding);
-
-        org.jdesktop.layout.GroupLayout jPanel11Layout = new org.jdesktop.layout.GroupLayout(jPanel11);
-        jPanel11.setLayout(jPanel11Layout);
-        jPanel11Layout.setHorizontalGroup(
-            jPanel11Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel11Layout.createSequentialGroup()
-                .add(jLabel4)
-                .add(0, 66, Short.MAX_VALUE))
-            .add(txtEstateType)
-        );
-        jPanel11Layout.setVerticalGroup(
-            jPanel11Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel11Layout.createSequentialGroup()
-                .add(jLabel4)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(txtEstateType, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        jPanel13.add(jPanel11);
-
         jPanel6.setName("jPanel6"); // NOI18N
 
         jLabel7.setText(bundle.getString("TongaPropertyPanel.jLabel7.text")); // NOI18N
@@ -1715,10 +1685,7 @@ public class TongaPropertyPanel extends ContentPanel {
         areaPanelLayout.setHorizontalGroup(
             areaPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(txtArea, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE)
-            .add(areaPanelLayout.createSequentialGroup()
-                .add(1, 1, 1)
-                .add(labArea)
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, labArea, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         areaPanelLayout.setVerticalGroup(
             areaPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -1730,6 +1697,38 @@ public class TongaPropertyPanel extends ContentPanel {
         );
 
         jPanel13.add(areaPanel);
+
+        jPanel11.setName("jPanel11"); // NOI18N
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/red_asterisk.gif"))); // NOI18N
+        jLabel4.setText(bundle.getString("TongaPropertyPanel.jLabel4.text")); // NOI18N
+        jLabel4.setName("jLabel4"); // NOI18N
+
+        txtAreaImperial.setFormatterFactory(FormattersFactory.getInstance().getImperialFormatterFactory());
+        txtAreaImperial.setText(bundle.getString("TongaPropertyPanel.txtAreaImperial.text")); // NOI18N
+        txtAreaImperial.setToolTipText(bundle.getString("TongaPropertyPanel.txtAreaImperial.toolTipText")); // NOI18N
+        txtAreaImperial.setName("txtAreaImperial"); // NOI18N
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, baUnitAreaBean1, org.jdesktop.beansbinding.ELProperty.create("${size}"), txtAreaImperial, org.jdesktop.beansbinding.BeanProperty.create("value"));
+        bindingGroup.addBinding(binding);
+
+        org.jdesktop.layout.GroupLayout jPanel11Layout = new org.jdesktop.layout.GroupLayout(jPanel11);
+        jPanel11.setLayout(jPanel11Layout);
+        jPanel11Layout.setHorizontalGroup(
+            jPanel11Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jLabel4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE)
+            .add(txtAreaImperial)
+        );
+        jPanel11Layout.setVerticalGroup(
+            jPanel11Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel11Layout.createSequentialGroup()
+                .add(jLabel4)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(txtAreaImperial, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel13.add(jPanel11);
 
         org.jdesktop.layout.GroupLayout jPanel7Layout = new org.jdesktop.layout.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -2949,8 +2948,8 @@ private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:
     private org.sola.clients.swing.common.controls.JTableWithDefaultStyles tableRightsHistory;
     private javax.swing.JTabbedPane tabsMain;
     private javax.swing.JTextField txtArea;
+    private javax.swing.JFormattedTextField txtAreaImperial;
     private javax.swing.JTextField txtBaUnitStatus;
-    private javax.swing.JTextField txtEstateType;
     private javax.swing.JTextField txtFirstPart;
     private javax.swing.JTextField txtLastPart;
     private javax.swing.JTextField txtName;
