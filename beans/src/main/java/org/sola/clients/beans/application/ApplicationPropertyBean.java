@@ -31,12 +31,10 @@ package org.sola.clients.beans.application;
 
 import java.math.BigDecimal;
 import java.util.Date;
-import org.hibernate.validator.constraints.NotEmpty;
+import javax.swing.Icon;
 import org.sola.clients.beans.AbstractIdBean;
 import org.sola.clients.beans.cache.CacheManager;
 import org.sola.clients.beans.referencedata.LandUseTypeBean;
-import org.sola.clients.beans.validation.Localized;
-import org.sola.common.messaging.ClientMessage;
 import org.sola.webservices.transferobjects.casemanagement.ApplicationPropertyTO;
 
 /**
@@ -63,15 +61,17 @@ public class ApplicationPropertyBean extends AbstractIdBean {
     public static final String AMOUNT_PROPERTY = "amount";
     public static final String REGISTRATION_DATE_PROPERTY = "registrationDate";
     public static final String LESSOR_NAME_PROPERTY = "lessorName";
-    public static final String DISTRICT_PROPERTY = "district";
-    public static final String NOBLE_ESTATE_PROPERTY = "nobleEstate";
+    public static final String ISLAND_PROPERTY = "islandId";
+    public static final String NOBLE_ESTATE_PROPERTY = "nobleEstateId";
     public static final String DESCRIPTION_PROPERTY = "description";
-
+    public static final String TOWN_PROPERTY = "townId";
+    public static final String LESSEE_NAME_PROPERTY = "lesseeName";
+    public static final String LEASE_LINKED_PROPERTY = "leaseLinked";
     private String applicationId;
     private BigDecimal area;
-    @NotEmpty(message = ClientMessage.CHECK_NOTNULL_FIRSTPART, payload = Localized.class)
+    //@NotEmpty(message = ClientMessage.CHECK_NOTNULL_FIRSTPART, payload = Localized.class)
     private String nameFirstpart;
-    @NotEmpty(message = ClientMessage.CHECK_NOTNULL_FIRSTPART, payload = Localized.class)
+    // @NotEmpty(message = ClientMessage.CHECK_NOTNULL_FIRSTPART, payload = Localized.class)
     private String nameLastpart;
     private BigDecimal totalValue;
     private String baUnitId;
@@ -86,11 +86,14 @@ public class ApplicationPropertyBean extends AbstractIdBean {
     private BigDecimal amount;
     private Date registrationDate;
     private String lessorName;
-    private String district;
-    private String nobleEstate;
+    private String islandId;
+    private String nobleEstateId;
     private String description;
+    private String townId;
     private transient BigDecimal surveyFee;
-
+    private String lesseeName;
+    private boolean leaseLinked;
+    private String leaseBaUnitId;
 
     public ApplicationPropertyBean() {
         super();
@@ -273,24 +276,24 @@ public class ApplicationPropertyBean extends AbstractIdBean {
         propertySupport.firePropertyChange(LESSOR_NAME_PROPERTY, old, value);
     }
 
-    public String getDistrict() {
-        return district;
+    public String getIslandId() {
+        return islandId;
     }
 
-    public void setDistrict(String value) {
-        String old = district;
-        district = value;
-        propertySupport.firePropertyChange(DISTRICT_PROPERTY, old, value);
+    public void setIslandId(String value) {
+        String old = islandId;
+        islandId = value;
+        propertySupport.firePropertyChange(ISLAND_PROPERTY, old, value);
 
     }
 
-    public String getNobleEstate() {
-        return nobleEstate;
+    public String getNobleEstateId() {
+        return nobleEstateId;
     }
 
-    public void setNobleEstate(String value) {
-        String old = nobleEstate;
-        nobleEstate = value;
+    public void setNobleEstateId(String value) {
+        String old = nobleEstateId;
+        nobleEstateId = value;
         propertySupport.firePropertyChange(NOBLE_ESTATE_PROPERTY, old, value);
     }
 
@@ -304,6 +307,42 @@ public class ApplicationPropertyBean extends AbstractIdBean {
         propertySupport.firePropertyChange(DESCRIPTION_PROPERTY, old, value);
     }
 
+    public String getTownId() {
+        return townId;
+    }
+
+    public void setTownId(String townId) {
+        this.townId = townId;
+    }
+
+    public String getLesseeName() {
+        return lesseeName;
+    }
+
+    public void setLesseeName(String value) {
+        String old = lesseeName;
+        lesseeName = value;
+        propertySupport.firePropertyChange(LESSEE_NAME_PROPERTY, old, value);
+    }
+
+    public boolean isLeaseLinked() {
+        return leaseLinked;
+    }
+
+    public void setLeaseLinked(boolean value) {
+        boolean old = leaseLinked;
+        leaseLinked = value;
+        propertySupport.firePropertyChange(LEASE_LINKED_PROPERTY, old, value);
+    }
+
+    public String getLeaseBaUnitId() {
+        return leaseBaUnitId;
+    }
+
+    public void setLeaseBaUnitId(String leaseBaUnitId) {
+        this.leaseBaUnitId = leaseBaUnitId;
+    }
+
     public BigDecimal getSurveyFee() {
         return surveyFee;
     }
@@ -311,5 +350,6 @@ public class ApplicationPropertyBean extends AbstractIdBean {
     public void setSurveyFee(BigDecimal surveyFee) {
         this.surveyFee = surveyFee;
     }
+    
     
 }
