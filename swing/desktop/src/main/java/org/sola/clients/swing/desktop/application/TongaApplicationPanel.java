@@ -945,6 +945,7 @@ public class TongaApplicationPanel extends ContentPanel {
         groupPanel4 = new org.sola.clients.swing.ui.GroupPanel();
         districtListBean1 = new org.sola.clients.beans.referencedata.DistrictListBean();
         estateListBean1 = new org.sola.clients.beans.referencedata.EstateListBean();
+        townListBean1 = new org.sola.clients.beans.referencedata.TownListBean();
         pnlHeader = new org.sola.clients.swing.ui.HeaderPanel();
         jToolBar3 = new javax.swing.JToolBar();
         btnSave = new javax.swing.JButton();
@@ -971,7 +972,7 @@ public class TongaApplicationPanel extends ContentPanel {
         labDate = new javax.swing.JLabel();
         jPanel24 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        txtLocationDescription = new javax.swing.JTextField();
+        cbxLocation = new javax.swing.JComboBox();
         jPanel15 = new javax.swing.JPanel();
         labStatus = new javax.swing.JLabel();
         txtStatus = new javax.swing.JTextField();
@@ -1568,24 +1569,27 @@ public class TongaApplicationPanel extends ContentPanel {
         jLabel1.setText(bundle.getString("TongaApplicationPanel.jLabel1.text")); // NOI18N
         jLabel1.setName("jLabel1"); // NOI18N
 
-        txtLocationDescription.setName("txtLocationDescription"); // NOI18N
+        cbxLocation.setName("cbxLocation"); // NOI18N
 
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, appBean, org.jdesktop.beansbinding.ELProperty.create("${locationDescription}"), txtLocationDescription, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        org.jdesktop.beansbinding.ELProperty eLProperty = org.jdesktop.beansbinding.ELProperty.create("${filteredTownList}");
+        org.jdesktop.swingbinding.JComboBoxBinding jComboBoxBinding = org.jdesktop.swingbinding.SwingBindings.createJComboBoxBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, townListBean1, eLProperty, cbxLocation);
+        bindingGroup.addBinding(jComboBoxBinding);
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, townListBean1, org.jdesktop.beansbinding.ELProperty.create("${selectedTown.displayValue}"), cbxLocation, org.jdesktop.beansbinding.BeanProperty.create("selectedItem"));
         bindingGroup.addBinding(binding);
 
         javax.swing.GroupLayout jPanel24Layout = new javax.swing.GroupLayout(jPanel24);
         jPanel24.setLayout(jPanel24Layout);
         jPanel24Layout.setHorizontalGroup(
             jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(txtLocationDescription)
             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
+            .addComponent(cbxLocation, 0, 210, Short.MAX_VALUE)
         );
         jPanel24Layout.setVerticalGroup(
             jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel24Layout.createSequentialGroup()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtLocationDescription, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cbxLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(19, Short.MAX_VALUE))
         );
 
@@ -1905,8 +1909,8 @@ public class TongaApplicationPanel extends ContentPanel {
         cbxCommunicationWay.setName("cbxCommunicationWay"); // NOI18N
         cbxCommunicationWay.setRenderer(new SimpleComboBoxRenderer("getDisplayValue"));
 
-        org.jdesktop.beansbinding.ELProperty eLProperty = org.jdesktop.beansbinding.ELProperty.create("${communicationTypeList}");
-        org.jdesktop.swingbinding.JComboBoxBinding jComboBoxBinding = org.jdesktop.swingbinding.SwingBindings.createJComboBoxBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, communicationTypes, eLProperty, cbxCommunicationWay);
+        eLProperty = org.jdesktop.beansbinding.ELProperty.create("${communicationTypeList}");
+        jComboBoxBinding = org.jdesktop.swingbinding.SwingBindings.createJComboBoxBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, communicationTypes, eLProperty, cbxCommunicationWay);
         bindingGroup.addBinding(jComboBoxBinding);
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, appBean, org.jdesktop.beansbinding.ELProperty.create("${contactPerson.preferredCommunication}"), cbxCommunicationWay, org.jdesktop.beansbinding.BeanProperty.create("selectedItem"));
         bindingGroup.addBinding(binding);
@@ -4171,6 +4175,7 @@ public class TongaApplicationPanel extends ContentPanel {
     private javax.swing.JComboBox cbxEstate;
     private javax.swing.JComboBox cbxLandUse;
     private javax.swing.JCheckBox cbxLeaseExists;
+    private javax.swing.JComboBox cbxLocation;
     private javax.swing.JCheckBox cbxPaid;
     private javax.swing.JComboBox cbxPurpose;
     private org.sola.clients.beans.referencedata.CommunicationTypeListBean communicationTypes;
@@ -4330,6 +4335,7 @@ public class TongaApplicationPanel extends ContentPanel {
     private javax.swing.JToolBar tbServices;
     private org.sola.clients.swing.common.controls.JTableWithDefaultStyles tblDocTypesHelper;
     private javax.swing.JPanel tongaPropertyPanel;
+    private org.sola.clients.beans.referencedata.TownListBean townListBean1;
     public javax.swing.JTextField txtAddress;
     private javax.swing.JTextField txtAllotmentArea;
     private javax.swing.JFormattedTextField txtAllotmentAreaImperial;
@@ -4351,7 +4357,6 @@ public class TongaApplicationPanel extends ContentPanel {
     private javax.swing.JFormattedTextField txtLeaseAreaImperial;
     private javax.swing.JTextField txtLeaseNumber;
     private javax.swing.JTextField txtLeaseeName;
-    private javax.swing.JTextField txtLocationDescription;
     private javax.swing.JTextField txtPageNumber;
     public javax.swing.JTextField txtPhone;
     private javax.swing.JTextArea txtPropertyDescription;

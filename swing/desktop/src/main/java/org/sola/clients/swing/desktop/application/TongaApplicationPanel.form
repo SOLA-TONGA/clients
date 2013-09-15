@@ -327,6 +327,8 @@
     </Component>
     <Component class="org.sola.clients.beans.referencedata.EstateListBean" name="estateListBean1">
     </Component>
+    <Component class="org.sola.clients.beans.referencedata.TownListBean" name="townListBean1">
+    </Component>
   </NonVisualComponents>
   <Properties>
     <Property name="headerPanel" type="org.sola.clients.swing.ui.HeaderPanel" editor="org.netbeans.modules.form.ComponentChooserEditor">
@@ -785,8 +787,8 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="txtLocationDescription" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jLabel1" alignment="0" pref="210" max="32767" attributes="0"/>
+                          <Component id="jLabel1" pref="210" max="32767" attributes="0"/>
+                          <Component id="cbxLocation" pref="210" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
@@ -794,7 +796,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="txtLocationDescription" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbxLocation" min="-2" max="-2" attributes="0"/>
                               <EmptySpace pref="19" max="32767" attributes="0"/>
                           </Group>
                       </Group>
@@ -809,14 +811,13 @@
                         <Property name="name" type="java.lang.String" value="jLabel1" noResource="true"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="txtLocationDescription">
+                    <Component class="javax.swing.JComboBox" name="cbxLocation">
                       <Properties>
-                        <Property name="name" type="java.lang.String" value="txtLocationDescription" noResource="true"/>
+                        <Property name="name" type="java.lang.String" value="cbxLocation" noResource="true"/>
                       </Properties>
                       <BindingProperties>
-                        <BindingProperty name="text" source="appBean" sourcePath="${locationDescription}" target="txtLocationDescription" targetPath="text" updateStrategy="0" immediately="false">
-                          <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
-                        </BindingProperty>
+                        <BindingProperty name="elements" source="townListBean1" sourcePath="${filteredTownList}" target="cbxLocation" targetPath="elements" updateStrategy="0" immediately="false"/>
+                        <BindingProperty name="selectedItem" source="townListBean1" sourcePath="${selectedTown.displayValue}" target="cbxLocation" targetPath="selectedItem" updateStrategy="0" immediately="false"/>
                       </BindingProperties>
                     </Component>
                   </SubComponents>
