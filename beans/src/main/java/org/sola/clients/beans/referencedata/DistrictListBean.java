@@ -92,7 +92,7 @@ public class DistrictListBean extends AbstractBindingListBean{
         districtListBean.setAllowedCodes(codes);
     }
     
-    public DistrictBean getSelectedEstate() {
+    public DistrictBean getSelectedDistrict() {
         return selectedDistrictBean;
     }
 

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Tonga Lease Application Report" pageWidth="595" pageHeight="842" columnWidth="539" leftMargin="28" rightMargin="28" topMargin="28" bottomMargin="28" whenResourceMissingType="Empty" uuid="ac6f666c-9299-4670-8732-3db826427724">
 	<property name="ireport.zoom" value="1.3310000000000006"/>
-	<property name="ireport.x" value="31"/>
-	<property name="ireport.y" value="270"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>
@@ -571,14 +571,14 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Serif" size="10"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{selectedProperty}.getDistrict()]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{selectedProperty}.getIsland().getDisplayValue()]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement uuid="93dca089-6fd3-4b0a-ad36-6e7341b0b9ec" x="134" y="258" width="134" height="20"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Serif" size="10"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{selectedProperty}.getNobleEstate()]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{selectedProperty}.getNobleEstate().getDisplayValue()]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement uuid="93dca089-6fd3-4b0a-ad36-6e7341b0b9ec" x="268" y="258" width="134" height="20"/>
@@ -587,7 +587,7 @@
 				</textElement>
 				<textFieldExpression><![CDATA[new java.text.SimpleDateFormat("dd MMM yyyy").format($F{selectedProperty}.getRegistrationDate())]]></textFieldExpression>
 			</textField>
-			<textField isBlankWhenNull="true">
+			<textField isBlankWhenNull="false">
 				<reportElement uuid="93dca089-6fd3-4b0a-ad36-6e7341b0b9ec" x="402" y="258" width="134" height="20"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Serif" size="10"/>

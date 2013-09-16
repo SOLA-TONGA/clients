@@ -40,15 +40,16 @@ import org.sola.clients.beans.controls.SolaCodeList;
  *
  * @author Admin
  */
-public class TownListBean extends AbstractBindingListBean{
+public class TownListBean extends AbstractBindingListBean {
+
     public static final String SELECTED_TOWN_PROPERTY = "selectedTownBean";
     private SolaCodeList<TownBean> townListBean;
     private TownBean selectedTownBean;
-    
-    public TownListBean(){
+
+    public TownListBean() {
         this(false);
     }
-    
+
     /**
      * Creates object instance.
      *
@@ -57,7 +58,7 @@ public class TownListBean extends AbstractBindingListBean{
     public TownListBean(boolean createDummy) {
         this(createDummy, (String) null);
     }
-    
+
     /**
      * Creates object instance.
      *
@@ -69,7 +70,7 @@ public class TownListBean extends AbstractBindingListBean{
         townListBean = new SolaCodeList<TownBean>(excludedCodes);
         loadList(createDummy);
     }
-    
+
     /**
      * Loads list of {@link TownBean}.
      *
@@ -79,7 +80,7 @@ public class TownListBean extends AbstractBindingListBean{
         loadCodeList(TownBean.class, townListBean,
                 CacheManager.getTowns(), createDummy);
     }
-    
+
     /*
      * Returns list of towns filtered by the appropriate criteria
      */
@@ -95,13 +96,15 @@ public class TownListBean extends AbstractBindingListBean{
     }
 
     /**
-     * Filters the list of towns based on the islandId. If the islandId for
-     * the town is null, then the town is left in the list.
+     * Filters the list of towns based on the islandId. If the islandId for the
+     * town is null, then the town is left in the list.
      *
      * @param islandId The identifier for the island to use as the list filter
      */
     public void setIslandFilter(String islandId) {
         if (islandId == null) {
+            // Clear the filter
+            setAllowedCodes((String[]) null);
             return;
         }
         List<String> towns = new ArrayList<String>();
@@ -122,4 +125,3 @@ public class TownListBean extends AbstractBindingListBean{
         propertySupport.firePropertyChange(SELECTED_TOWN_PROPERTY, null, value);
     }
 }
-

@@ -31,10 +31,12 @@ package org.sola.clients.beans.application;
 
 import java.math.BigDecimal;
 import java.util.Date;
-import javax.swing.Icon;
 import org.sola.clients.beans.AbstractIdBean;
 import org.sola.clients.beans.cache.CacheManager;
+import org.sola.clients.beans.referencedata.DistrictBean;
+import org.sola.clients.beans.referencedata.EstateBean;
 import org.sola.clients.beans.referencedata.LandUseTypeBean;
+import org.sola.clients.beans.referencedata.TownBean;
 import org.sola.webservices.transferobjects.casemanagement.ApplicationPropertyTO;
 
 /**
@@ -61,10 +63,13 @@ public class ApplicationPropertyBean extends AbstractIdBean {
     public static final String AMOUNT_PROPERTY = "amount";
     public static final String REGISTRATION_DATE_PROPERTY = "registrationDate";
     public static final String LESSOR_NAME_PROPERTY = "lessorName";
-    public static final String ISLAND_PROPERTY = "islandId";
-    public static final String NOBLE_ESTATE_PROPERTY = "nobleEstateId";
+    public static final String ISLAND_ID_PROPERTY = "islandId";
+    public static final String ISLAND_PROPERTY = "island";
+    public static final String NOBLE_ESTATE_ID_PROPERTY = "nobleEstateId";
+    public static final String NOBLE_ESTATE_PROPERTY = "nobleEstate";
     public static final String DESCRIPTION_PROPERTY = "description";
-    public static final String TOWN_PROPERTY = "townId";
+    public static final String TOWN_ID_PROPERTY = "townId";
+    public static final String TOWN_PROPERTY = "town";
     public static final String LESSEE_NAME_PROPERTY = "lesseeName";
     public static final String LEASE_LINKED_PROPERTY = "leaseLinked";
     private String applicationId;
@@ -86,10 +91,10 @@ public class ApplicationPropertyBean extends AbstractIdBean {
     private BigDecimal amount;
     private Date registrationDate;
     private String lessorName;
-    private String islandId;
-    private String nobleEstateId;
+    private DistrictBean island;
+    private EstateBean nobleEstate;
     private String description;
-    private String townId;
+    private TownBean town;
     private transient BigDecimal surveyFee;
     private String lesseeName;
     private boolean leaseLinked;
@@ -97,32 +102,31 @@ public class ApplicationPropertyBean extends AbstractIdBean {
 
     public ApplicationPropertyBean() {
         super();
+        this.landUseType = new LandUseTypeBean();
+        this.island = new DistrictBean();
+        this.nobleEstate = new EstateBean();
+        this.town = new TownBean();
+
     }
 
     public String getLandUseCode() {
-        if (landUseType != null) {
-            return landUseType.getCode();
-        } else {
-            return null;
-        }
+        return getLandUseType().getCode();
     }
 
     public void setLandUseCode(String landUseCode) {
-        String oldValue = null;
-        if (landUseType != null) {
-            oldValue = landUseType.getCode();
-        }
+        String oldValue = getLandUseCode();
         setLandUseType(CacheManager.getBeanByCode(
                 CacheManager.getLandUseTypes(), landUseCode));
         propertySupport.firePropertyChange(LAND_USE_CODE_PROPERTY, oldValue, landUseCode);
     }
 
     public LandUseTypeBean getLandUseType() {
-        return landUseType;
+        return landUseType == null ? new LandUseTypeBean() : landUseType;
     }
 
     public void setLandUseType(LandUseTypeBean landUseType) {
         this.landUseType = landUseType;
+        propertySupport.firePropertyChange(LAND_USE_TYPE_PROPERTY, null, landUseType);
     }
 
     public String getApplicationId() {
@@ -277,24 +281,44 @@ public class ApplicationPropertyBean extends AbstractIdBean {
     }
 
     public String getIslandId() {
-        return islandId;
+        return getIsland().getCode();
     }
 
     public void setIslandId(String value) {
-        String old = islandId;
-        islandId = value;
-        propertySupport.firePropertyChange(ISLAND_PROPERTY, old, value);
+        String old = getIslandId();
+        setIsland(CacheManager.getBeanByCode(
+                CacheManager.getDistricts(), value));
+        propertySupport.firePropertyChange(ISLAND_ID_PROPERTY, old, value);
 
+    }
+
+    public DistrictBean getIsland() {
+        return island == null ? new DistrictBean() : island;
+    }
+
+    public void setIsland(DistrictBean value) {
+        this.island = value;
+        propertySupport.firePropertyChange(ISLAND_PROPERTY, null, value);
     }
 
     public String getNobleEstateId() {
-        return nobleEstateId;
+        return getNobleEstate().getCode();
     }
 
     public void setNobleEstateId(String value) {
-        String old = nobleEstateId;
-        nobleEstateId = value;
-        propertySupport.firePropertyChange(NOBLE_ESTATE_PROPERTY, old, value);
+        String old = getNobleEstateId();
+        setNobleEstate(CacheManager.getBeanByCode(
+                CacheManager.getEstates(), value));
+        propertySupport.firePropertyChange(NOBLE_ESTATE_ID_PROPERTY, old, value);
+    }
+
+    public EstateBean getNobleEstate() {
+        return nobleEstate == null ? new EstateBean() : nobleEstate;
+    }
+
+    public void setNobleEstate(EstateBean value) {
+        this.nobleEstate = value;
+        propertySupport.firePropertyChange(NOBLE_ESTATE_PROPERTY, null, value);
     }
 
     public String getDescription() {
@@ -308,11 +332,23 @@ public class ApplicationPropertyBean extends AbstractIdBean {
     }
 
     public String getTownId() {
-        return townId;
+        return getTown().getCode();
     }
 
-    public void setTownId(String townId) {
-        this.townId = townId;
+    public void setTownId(String value) {
+        String old = getTownId();
+        setTown(CacheManager.getBeanByCode(
+                CacheManager.getTowns(), value));
+        propertySupport.firePropertyChange(TOWN_ID_PROPERTY, old, value);
+    }
+
+    public TownBean getTown() {
+        return town == null ? new TownBean() : town;
+    }
+
+    public void setTown(TownBean value) {
+        this.town = value;
+        propertySupport.firePropertyChange(TOWN_PROPERTY, null, value);
     }
 
     public String getLesseeName() {
@@ -350,6 +386,27 @@ public class ApplicationPropertyBean extends AbstractIdBean {
     public void setSurveyFee(BigDecimal surveyFee) {
         this.surveyFee = surveyFee;
     }
-    
-    
+
+    public void reset() {
+        setAmount(null);
+        setArea(null);
+        setBaUnitId(null);
+        setIslandId(null);
+        setLandUseCode(null);
+        setLeaseArea(null);
+        setLeaseBaUnitId(null);
+        setLeaseLinked(false);
+        setLeaseNumber(null);
+        setLeaseTerm(null);
+        setLesseeName(null);
+        setLessorName(null);
+        setNameFirstpart(null);
+        setNameLastpart(null);
+        setNobleEstateId(null);
+        setRegistrationDate(null);
+        setTownId(null);
+        setVerifiedApplications(false);
+        setVerifiedExists(false);
+        setVerifiedLocation(false);
+    }
 }
