@@ -37,21 +37,9 @@ import org.sola.clients.beans.AbstractCodeBean;
  */
 public class DistrictBean extends AbstractCodeBean {
 
-    public static final String ISLAND_ID_PROPERTY = "islandId";
-    private String islandId;
-
     public DistrictBean() {
         super();
     }
 
-    public String getIslandId() {
-        return islandId;
-    }
-
-    public void setIslandId(String value) {
-        String old = islandId;
-        islandId = value;
-        propertySupport.firePropertyChange(ISLAND_ID_PROPERTY, old, value);
-    }
 }
 

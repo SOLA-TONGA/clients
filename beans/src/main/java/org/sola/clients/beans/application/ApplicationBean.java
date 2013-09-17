@@ -50,6 +50,7 @@ import org.sola.clients.beans.source.SourceBean;
 import org.sola.clients.beans.validation.Localized;
 import org.sola.clients.beans.validation.ValidationResultBean;
 import org.sola.common.Money;
+import org.sola.common.StringUtility;
 import org.sola.common.messaging.ClientMessage;
 import org.sola.common.messaging.MessageUtility;
 import org.sola.services.boundary.wsclients.WSManager;
@@ -757,17 +758,39 @@ public class ApplicationBean extends ApplicationSummaryBean {
     public boolean verifyProperty() {
         if (selectedProperty != null) {
             PropertyVerifierTO verifier = WSManager.getInstance().getSearchService().verifyApplicationProperty(
-                    this.getNr(), selectedProperty.getNameFirstpart(), selectedProperty.getNameLastpart());
+                    this.getNr(), selectedProperty.getNameFirstpart(), selectedProperty.getNameLastpart(),
+                    selectedProperty.getLeaseNumber());
             if (verifier != null) {
-                selectedProperty.setBaUnitId(verifier.getId());
-                selectedProperty.setVerifiedLocation(verifier.isHasLocation());
+                // Tonga customization, capture the details retrieved when verifying the lot and lease information
+                selectedProperty.setBaUnitId(verifier.getLotbaUnitId());
+                selectedProperty.setLeaseBaUnitId(verifier.getLeaseBaUnitId());
+                selectedProperty.setLeaseLinked(verifier.isLeaseLinked());
 
-                if (verifier.getId() != null && !verifier.getId().equals("")) {
-                    selectedProperty.setVerifiedExists(true);
-                } else {
-                    selectedProperty.setVerifiedExists(false);
+                // Re-purpose the exists and location flags to indicate if the lot or the lease exist. 
+                selectedProperty.setVerifiedExists(!StringUtility.isEmpty(verifier.getLotbaUnitId()));
+                selectedProperty.setVerifiedLocation(!StringUtility.isEmpty(verifier.getLeaseBaUnitId()));
+
+                if (!StringUtility.isEmpty(verifier.getLotbaUnitId())) {
+                    // Update the lot details with those retrieved from the database
+                    selectedProperty.setNameFirstpart(verifier.getDeedNumber());
+                    selectedProperty.setNameLastpart(verifier.getFolio());
+                    selectedProperty.setLessorName(verifier.getHolderName());
+                    selectedProperty.setLandUseCode(verifier.getLandUseCode());
+                    selectedProperty.setArea(verifier.getLotArea());
+                    selectedProperty.setRegistrationDate(TypeConverters.XMLDateToDate(verifier.getLotRegistrationDate()));
+                    selectedProperty.setArea(verifier.getLotArea());
+                    selectedProperty.setIslandId(verifier.getIslandId());
+                    selectedProperty.setTownId(verifier.getTownId());
                 }
-
+                
+                if (!StringUtility.isEmpty(verifier.getLeaseBaUnitId())) {
+                    // Update the lease details with those retrieved from the database
+                    selectedProperty.setLeaseNumber(verifier.getLeaseNumber());
+                    selectedProperty.setAmount(verifier.getLeaseRental());
+                    selectedProperty.setLesseeName(verifier.getLesseeName());
+                    selectedProperty.setLeaseTerm(verifier.getLeaseTerm());
+                    selectedProperty.setLeaseArea(verifier.getLeaseArea());
+                }
                 selectedProperty.setVerifiedApplications(true);
 
                 if (verifier.getApplicationsWhereFound() != null
@@ -777,6 +800,9 @@ public class ApplicationBean extends ApplicationSummaryBean {
                         verifier.getApplicationsWhereFound()});
                 }
             } else {
+                selectedProperty.setBaUnitId(null);
+                selectedProperty.setLeaseBaUnitId(null);
+                selectedProperty.setLeaseLinked(false);
                 selectedProperty.setVerifiedExists(false);
                 selectedProperty.setVerifiedApplications(false);
                 selectedProperty.setVerifiedLocation(false);

@@ -103,6 +103,8 @@ public class EstateListBean extends AbstractBindingListBean {
      */
     public void setIslandFilter(String islandId) {
         if (islandId == null) {
+            // Clear the filter
+            setAllowedCodes((String[]) null);
             return;
         }
         List<String> estates = new ArrayList<String>();
