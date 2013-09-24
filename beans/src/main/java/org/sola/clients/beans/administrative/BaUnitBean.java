@@ -51,7 +51,6 @@ import org.sola.services.boundary.wsclients.WSManager;
 import org.sola.webservices.transferobjects.EntityAction;
 import org.sola.webservices.transferobjects.administrative.BaUnitTO;
 import org.sola.webservices.transferobjects.search.SpatialSearchResultTO;
-import org.sola.webservices.transferobjects.administrative.BaUnitAreaTO;
 
 /** 
  * Contains properties and methods to manage <b>BA Unit</b> object of the 
