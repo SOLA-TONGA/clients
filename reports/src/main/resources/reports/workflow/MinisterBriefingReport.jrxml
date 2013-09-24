@@ -2,19 +2,25 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Minister Briefing Report" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" resourceBundle="org.sola.clients.reports.locale.MinisterBriefingReport_en_NZ" uuid="ac6f666c-9299-4670-8732-3db826427724">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="392"/>
+	<property name="ireport.y" value="0"/>
 	<parameter name="SILA_IMAGE" class="java.io.InputStream"/>
 	<queryString>
 		<![CDATA[]]>
 	</queryString>
-	<field name="leaseMatter" class="java.lang.String">
-		<fieldDescription><![CDATA[leaseMatter]]></fieldDescription>
+	<field name="appBean" class="org.sola.clients.beans.application.ApplicationBean">
+		<fieldDescription><![CDATA[appBean]]></fieldDescription>
 	</field>
-	<field name="description" class="java.lang.String">
-		<fieldDescription><![CDATA[description]]></fieldDescription>
+	<field name="appServiceBean" class="org.sola.clients.beans.application.ApplicationServiceBean">
+		<fieldDescription><![CDATA[appServiceBean]]></fieldDescription>
 	</field>
-	<field name="locationDescription" class="java.lang.String">
-		<fieldDescription><![CDATA[locationDescription]]></fieldDescription>
+	<field name="displayValue" class="java.lang.String">
+		<fieldDescription><![CDATA[appBean.selectedProperty.town.displayValue]]></fieldDescription>
+	</field>
+	<field name="displayValue_1" class="java.lang.String">
+		<fieldDescription><![CDATA[appBean.selectedProperty.island.displayValue]]></fieldDescription>
+	</field>
+	<field name="fullName" class="java.lang.String">
+		<fieldDescription><![CDATA[appBean.contactPerson.fullName]]></fieldDescription>
 	</field>
 	<background>
 		<band splitType="Stretch"/>
@@ -253,12 +259,28 @@ CLIMATE CHANGE & NATURAL RESOURCES]]></text>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Arial" size="12"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{leaseMatter}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{appServiceBean}.getLeaseMatter()]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="4ce5f186-ad38-4a2d-9859-af9f646c8137" x="137" y="294" width="417" height="89"/>
-				<textElement/>
-				<textFieldExpression><![CDATA[$F{locationDescription}]]></textFieldExpression>
+				<reportElement uuid="11e6fa75-ce1f-46d9-96b6-803a293a2471" x="137" y="139" width="418" height="254"/>
+				<textElement textAlignment="Left" verticalAlignment="Top" markup="none">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{appBean}.getSelectedProperty().getDescription()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="80580be5-fb79-4188-b49f-7f9dbb159491" x="136" y="15" width="418" height="27"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{displayValue}+", "+$F{displayValue_1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="e69f5dcf-9cb1-44e0-8d96-0f9d9b913e4a" x="135" y="42" width="419" height="25"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fullName}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

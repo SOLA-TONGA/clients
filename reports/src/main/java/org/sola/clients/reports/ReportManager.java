@@ -41,6 +41,7 @@ import net.sf.jasperreports.engine.data.JRBeanArrayDataSource;
 import org.sola.clients.beans.administrative.BaUnitBean;
 import org.sola.clients.beans.administrative.RrrReportBean;
 import org.sola.clients.beans.application.*;
+import org.sola.clients.beans.report.ServiceReportBean;
 import org.sola.clients.beans.system.BrReportBean;
 import org.sola.clients.beans.security.SecurityBean;
 import org.sola.clients.beans.system.BrListBean;
@@ -679,14 +680,14 @@ public class ReportManager {
         }
     }
 
-    public static JasperPrint getMinisterialBriefingReport(ApplicationServiceBean appServiceBean, Date actionDate) {
+    public static JasperPrint getMinisterialBriefingReport(ServiceReportBean serviceReportBean, Date actionDate) {
         String silaImage = "/images/sola/sila.png";
         HashMap inputParameters = new HashMap();
         inputParameters.put("ACTION_DATE", actionDate);
         inputParameters.put("SILA_IMAGE",
                 ReportManager.class.getResourceAsStream(silaImage));
-        ApplicationServiceBean[] beans = new ApplicationServiceBean[1];
-        beans[0] = appServiceBean;
+        ServiceReportBean[] beans = new ServiceReportBean[1];
+        beans[0] = serviceReportBean;
         JRDataSource jds = new JRBeanArrayDataSource(beans);
         try {
             return JasperFillManager.fillReport(
@@ -718,14 +719,14 @@ public class ReportManager {
         }
     }
 
-    public static JasperPrint getCabinetSubmissionReport(ApplicationBean appBean, Date actionDate) {
+    public static JasperPrint getCabinetSubmissionReport(ServiceReportBean serviceReportBean, Date actionDate) {
         String silaImage = "/images/sola/sila.png";
         HashMap inputParameters = new HashMap();
         inputParameters.put("ACTION_DATE", actionDate);
         inputParameters.put("SILA_IMAGE",
                 ReportManager.class.getResourceAsStream(silaImage));
-        ApplicationBean[] beans = new ApplicationBean[1];
-        beans[0] = appBean;
+        ServiceReportBean[] beans = new ServiceReportBean[1];
+        beans[0] = serviceReportBean;
         JRDataSource jds = new JRBeanArrayDataSource(beans);
         try {
             return JasperFillManager.fillReport(

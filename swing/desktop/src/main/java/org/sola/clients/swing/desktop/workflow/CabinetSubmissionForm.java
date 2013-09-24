@@ -32,6 +32,7 @@ package org.sola.clients.swing.desktop.workflow;
 import javax.swing.JFormattedTextField;
 import org.sola.clients.beans.application.ApplicationBean;
 import org.sola.clients.beans.application.ApplicationServiceBean;
+import org.sola.clients.beans.report.ServiceReportBean;
 import org.sola.clients.reports.ReportManager;
 import org.sola.clients.swing.common.controls.CalendarForm;
 import org.sola.clients.swing.common.tasks.SolaTask;
@@ -121,7 +122,10 @@ public class CabinetSubmissionForm extends ContentPanel {
     }
     
     public void showCabinetSubmissionReport() {
-        ReportViewerForm form = new ReportViewerForm(ReportManager.getCabinetSubmissionReport(applicationBean, null));
+        ServiceReportBean serviceReportBean = new ServiceReportBean();
+        serviceReportBean.setAppBean(applicationBean);
+        serviceReportBean.setAppServiceBean(applicationServiceBean);
+        ReportViewerForm form = new ReportViewerForm(ReportManager.getCabinetSubmissionReport(serviceReportBean, null));
         form.setLocationRelativeTo(this);
         form.setVisible(true);
     }

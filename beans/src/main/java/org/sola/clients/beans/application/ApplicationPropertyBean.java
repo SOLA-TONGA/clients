@@ -327,7 +327,7 @@ public class ApplicationPropertyBean extends AbstractIdBean {
 
     public void setDescription(String value) {
         String old = description;
-        description = value;
+        this.description = value;
         propertySupport.firePropertyChange(DESCRIPTION_PROPERTY, old, value);
     }
 

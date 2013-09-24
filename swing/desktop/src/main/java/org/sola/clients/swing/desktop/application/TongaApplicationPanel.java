@@ -2668,7 +2668,7 @@ public class TongaApplicationPanel extends ContentPanel {
         txtPropertyDescription.setRows(5);
         txtPropertyDescription.setName("txtPropertyDescription"); // NOI18N
 
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, appBean, org.jdesktop.beansbinding.ELProperty.create("${selectedProperty.description}"), txtPropertyDescription, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, appBean, org.jdesktop.beansbinding.ELProperty.create("${selectedProperty.description}"), txtPropertyDescription, org.jdesktop.beansbinding.BeanProperty.create("text"), "propertyDesc");
         bindingGroup.addBinding(binding);
 
         jScrollPane1.setViewportView(txtPropertyDescription);
