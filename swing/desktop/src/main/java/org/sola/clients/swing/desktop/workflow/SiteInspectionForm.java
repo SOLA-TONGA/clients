@@ -31,6 +31,7 @@ package org.sola.clients.swing.desktop.workflow;
 
 import org.sola.clients.beans.application.ApplicationBean;
 import org.sola.clients.beans.application.ApplicationServiceBean;
+import org.sola.clients.beans.report.ServiceReportBean;
 import org.sola.clients.reports.ReportManager;
 import org.sola.clients.swing.common.tasks.SolaTask;
 import org.sola.clients.swing.common.tasks.TaskManager;
@@ -115,7 +116,10 @@ public class SiteInspectionForm extends ContentPanel {
     }
     
     public void showInspectionReport(){
-        ReportViewerForm form = new ReportViewerForm(ReportManager.getSiteInspectionReport(applicationBean, null));
+        ServiceReportBean serviceReportBean = new ServiceReportBean();
+        serviceReportBean.setAppBean(applicationBean);
+        serviceReportBean.setAppServiceBean(applicationServiceBean);
+        ReportViewerForm form = new ReportViewerForm(ReportManager.getSiteInspectionReport(serviceReportBean, null));
         form.setLocationRelativeTo(this);
         form.setVisible(true);
         
