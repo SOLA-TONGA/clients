@@ -31,6 +31,7 @@ package org.sola.clients.swing.desktop.workflow;
 
 import org.sola.clients.beans.application.ApplicationBean;
 import org.sola.clients.beans.application.ApplicationServiceBean;
+import org.sola.clients.beans.report.ServiceReportBean;
 import org.sola.clients.reports.ReportManager;
 import org.sola.clients.swing.common.tasks.SolaTask;
 import org.sola.clients.swing.common.tasks.TaskManager;
@@ -119,7 +120,10 @@ public class MinisterBriefingForm extends ContentPanel {
     }
 
     public void showMinisterialBriefingReport() {
-        ReportViewerForm form = new ReportViewerForm(ReportManager.getMinisterialBriefingReport(applicationServiceBean, null));
+        ServiceReportBean serviceReportBean = new ServiceReportBean();
+        serviceReportBean.setAppBean(applicationBean);
+        serviceReportBean.setAppServiceBean(applicationServiceBean);
+        ReportViewerForm form = new ReportViewerForm(ReportManager.getMinisterialBriefingReport(serviceReportBean, null));
         form.setLocationRelativeTo(this);
         form.setVisible(true);
     }

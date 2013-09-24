@@ -67,6 +67,7 @@ public class ApplicationServiceBean extends ApplicationServiceSummaryBean {
     public static final String LEASE_MATTER = "leaseMatter";
     public static final String APPROVAL_DATE = "approvalDate";
     public static final String APPROVAL_NUMBER = "approvalNumber";
+    public static final String DESCRIPTION_PROPERTY = "description";
     
     private ServiceActionTypeBean actionBean;
     private ServiceStatusTypeBean statusBean;
@@ -83,6 +84,7 @@ public class ApplicationServiceBean extends ApplicationServiceSummaryBean {
     private String leaseMatter;
     private Date approvalDate;
     private String approvalNumber;
+    private String description;
 
     /**
      * Creates object's instance and initializes the following beans, which are
@@ -263,6 +265,16 @@ public class ApplicationServiceBean extends ApplicationServiceSummaryBean {
         String old = approvalNumber;
         approvalNumber = value;
         propertySupport.firePropertyChange(APPROVAL_NUMBER, old, value);
+    }
+    
+    public String getDescription(){
+        return description;
+    }
+    
+    public void setDescription(String value){
+        String old = description;
+        description = value;
+        propertySupport.firePropertyChange(DESCRIPTION_PROPERTY, old, value);
     }
 
     /**
