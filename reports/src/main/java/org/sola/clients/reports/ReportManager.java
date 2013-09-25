@@ -659,14 +659,14 @@ public class ReportManager {
         }
     }
 
-    public static JasperPrint getSiteInspectionReport(ApplicationBean appBean, Date actionDate) {
+    public static JasperPrint getSiteInspectionReport(ServiceReportBean serviceReportBean, Date actionDate) {
         String silaImage = "/images/sola/sila.png";
         HashMap inputParameters = new HashMap();
         inputParameters.put("ACTION_DATE", actionDate);
         inputParameters.put("SILA_IMAGE",
                 ReportManager.class.getResourceAsStream(silaImage));
-        ApplicationBean[] beans = new ApplicationBean[1];
-        beans[0] = appBean;
+        ServiceReportBean[] beans = new ServiceReportBean[1];
+        beans[0] = serviceReportBean;
         JRDataSource jds = new JRBeanArrayDataSource(beans);
         try {
             return JasperFillManager.fillReport(
