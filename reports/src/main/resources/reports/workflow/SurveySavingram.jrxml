@@ -2,7 +2,22 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Survey Savingram" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" resourceBundle="org.sola.clients.reports.locale.MinisterBriefingReport_en_NZ" uuid="ac6f666c-9299-4670-8732-3db826427724">
 	<property name="ireport.zoom" value="1.2100000000000002"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="432"/>
+	<property name="ireport.y" value="399"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="appBean" class="org.sola.clients.beans.application.ApplicationBean">
+		<fieldDescription><![CDATA[appBean]]></fieldDescription>
+	</field>
+	<field name="appServiceBean" class="org.sola.clients.beans.application.ApplicationServiceBean">
+		<fieldDescription><![CDATA[appServiceBean]]></fieldDescription>
+	</field>
+	<field name="formattedLeaseArea" class="java.lang.String">
+		<fieldDescription><![CDATA[formattedLeaseArea]]></fieldDescription>
+	</field>
+	<field name="landPurposeTongan" class="java.lang.String">
+		<fieldDescription><![CDATA[landPurposeTongan]]></fieldDescription>
+	</field>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -14,49 +29,49 @@
 			<staticText>
 				<reportElement uuid="fca9362f-ebd9-4d7e-93bb-d92b3f95bb32" x="-1" y="28" width="556" height="42"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Calibri" size="24" isBold="true" isItalic="true"/>
+					<font fontName="Arial" size="20" isBold="true" isItalic="true"/>
 				</textElement>
 				<text><![CDATA[SAVINGRAM]]></text>
 			</staticText>
 			<staticText>
 				<reportElement uuid="93c154ea-14ee-4d8a-b19a-201acc233e8c" x="1" y="123" width="106" height="20"/>
 				<textElement textAlignment="Right">
-					<font fontName="Calibri" size="14" isBold="true" isItalic="true"/>
+					<font fontName="Arial" size="12" isBold="true" isItalic="true"/>
 				</textElement>
 				<text><![CDATA[Savingram No. : ]]></text>
 			</staticText>
 			<staticText>
 				<reportElement uuid="93c154ea-14ee-4d8a-b19a-201acc233e8c" x="1" y="99" width="60" height="20"/>
 				<textElement textAlignment="Right">
-					<font fontName="Calibri" size="14" isBold="true" isItalic="true"/>
+					<font fontName="Arial" size="12" isBold="true" isItalic="true"/>
 				</textElement>
 				<text><![CDATA[To : ]]></text>
 			</staticText>
 			<staticText>
 				<reportElement uuid="4c280543-5201-4b8d-b05a-84f94d2ac817" x="1" y="74" width="60" height="20"/>
 				<textElement textAlignment="Right">
-					<font fontName="Calibri" size="14" isBold="true" isItalic="true"/>
+					<font fontName="Arial" size="12" isBold="true" isItalic="true"/>
 				</textElement>
 				<text><![CDATA[From : ]]></text>
 			</staticText>
 			<staticText>
 				<reportElement uuid="06b0ad20-a8df-4ff9-baf8-4278bf6fa4d0" x="61" y="99" width="493" height="20"/>
 				<textElement>
-					<font fontName="Calibri" size="14" isBold="false" isItalic="true"/>
+					<font fontName="Arial" size="12" isBold="false" isItalic="true"/>
 				</textElement>
 				<text><![CDATA[CEO Potungaue Fonua, 'Atakai, Feliuliuaki e 'Ea & Ngaahi Koloa Fakaenatula]]></text>
 			</staticText>
 			<staticText>
 				<reportElement uuid="06b0ad20-a8df-4ff9-baf8-4278bf6fa4d0" x="61" y="74" width="493" height="20"/>
 				<textElement>
-					<font fontName="Calibri" size="14" isBold="false" isItalic="true"/>
+					<font fontName="Arial" size="12" isBold="false" isItalic="true"/>
 				</textElement>
 				<text><![CDATA[Minisita Fonua, 'Atakai, Feliuliuaki e 'Ea & Ngaahi Koloa Fakaenatula]]></text>
 			</staticText>
 			<staticText>
 				<reportElement uuid="93c154ea-14ee-4d8a-b19a-201acc233e8c" x="346" y="123" width="48" height="20"/>
 				<textElement textAlignment="Right">
-					<font fontName="Calibri" size="14" isBold="true" isItalic="true"/>
+					<font fontName="Arial" size="12" isBold="true" isItalic="true"/>
 				</textElement>
 				<text><![CDATA[Date :]]></text>
 			</staticText>
@@ -68,7 +83,7 @@
 					<rightPen lineWidth="0.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
-					<font fontName="Calibri" size="16" isBold="false" isItalic="true" isUnderline="true"/>
+					<font fontName="Arial" size="14" isBold="false" isItalic="true" isUnderline="true"/>
 					<paragraph lineSpacing="1_1_2"/>
 				</textElement>
 				<text><![CDATA[GOVERNMENT OF TONGA
@@ -237,6 +252,48 @@ Hon. Ma'afu
 Minisita Fonua, 'Atakai, 
 Feliuliuaki e 'Ea & Ngaahi Koloa Fakaenatula]]></text>
 			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="17e33b21-1b5a-44e0-8b7c-0b875b0228e5" x="158" y="122" width="382" height="18"/>
+				<textElement>
+					<font size="12" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{appBean}.getSelectedProperty().getLesseeName()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="17e33b21-1b5a-44e0-8b7c-0b875b0228e5" x="158" y="140" width="382" height="18"/>
+				<textElement>
+					<font size="12" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{appBean}.getSelectedProperty().getLessorName()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="17e33b21-1b5a-44e0-8b7c-0b875b0228e5" x="158" y="158" width="382" height="18"/>
+				<textElement>
+					<font size="12" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{formattedLeaseArea}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="17e33b21-1b5a-44e0-8b7c-0b875b0228e5" x="158" y="194" width="382" height="18"/>
+				<textElement>
+					<font size="12" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{appBean}.getSelectedProperty().getLeaseTerm()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="17e33b21-1b5a-44e0-8b7c-0b875b0228e5" x="158" y="212" width="382" height="18"/>
+				<textElement>
+					<font size="12" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{landPurposeTongan}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="17e33b21-1b5a-44e0-8b7c-0b875b0228e5" x="158" y="230" width="382" height="18"/>
+				<textElement>
+					<font size="12" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["T$" + $F{appBean}.getSelectedProperty().getAmount()]]></textFieldExpression>
+			</textField>
 		</band>
 	</detail>
 	<columnFooter>

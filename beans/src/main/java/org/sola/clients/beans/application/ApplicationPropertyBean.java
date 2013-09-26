@@ -37,6 +37,7 @@ import org.sola.clients.beans.referencedata.DistrictBean;
 import org.sola.clients.beans.referencedata.EstateBean;
 import org.sola.clients.beans.referencedata.LandUseTypeBean;
 import org.sola.clients.beans.referencedata.TownBean;
+import org.sola.common.NumberUtility;
 import org.sola.webservices.transferobjects.casemanagement.ApplicationPropertyTO;
 
 /**
@@ -99,7 +100,7 @@ public class ApplicationPropertyBean extends AbstractIdBean {
     private String lesseeName;
     private boolean leaseLinked;
     private String leaseBaUnitId;
-
+    
     public ApplicationPropertyBean() {
         super();
         this.landUseType = new LandUseTypeBean();
@@ -396,12 +397,12 @@ public class ApplicationPropertyBean extends AbstractIdBean {
         setLeaseArea(null);
         setLeaseBaUnitId(null);
         setLeaseLinked(false);
-        setLeaseNumber(null);
+        //setLeaseNumber(null);
         setLeaseTerm(null);
         setLesseeName(null);
         setLessorName(null);
-        setNameFirstpart(null);
-        setNameLastpart(null);
+        //setNameFirstpart(null);
+        //setNameLastpart(null);
         setNobleEstateId(null);
         setRegistrationDate(null);
         setTownId(null);

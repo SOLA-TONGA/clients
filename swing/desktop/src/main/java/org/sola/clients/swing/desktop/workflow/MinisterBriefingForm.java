@@ -64,7 +64,7 @@ public class MinisterBriefingForm extends ContentPanel {
         initComponents();
         customizeForm();
     }
-    
+
     private void customizeForm() {
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("org/sola/clients/swing/desktop/workflow/Bundle");
         if (applicationBean != null) {
@@ -90,7 +90,7 @@ public class MinisterBriefingForm extends ContentPanel {
         }
         return appServicePanel;
     }
-    
+
     private ApplicationServiceBean createServiceBean() {
 
         if (applicationServiceBean == null) {
@@ -129,7 +129,8 @@ public class MinisterBriefingForm extends ContentPanel {
     }
 
     public void showSurveySavingramReport() {
-        ReportViewerForm form = new ReportViewerForm(ReportManager.getSurveySavingramReport(applicationBean, null));
+        ServiceReportBean reportBean = new ServiceReportBean(applicationBean, applicationServiceBean);
+        ReportViewerForm form = new ReportViewerForm(ReportManager.getSurveySavingramReport(reportBean, null));
         form.setLocationRelativeTo(this);
         form.setVisible(true);
     }
@@ -234,9 +235,8 @@ public class MinisterBriefingForm extends ContentPanel {
     }//GEN-LAST:event_btnPrintActionPerformed
 
     private void btnPrintSurveySavingramActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintSurveySavingramActionPerformed
-        showSurveySavingramReport(); 
+        showSurveySavingramReport();
     }//GEN-LAST:event_btnPrintSurveySavingramActionPerformed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private org.sola.clients.swing.desktop.workflow.ApplicationServicePanel appServicePanel;
     private org.sola.clients.beans.application.ApplicationServiceBean applicationServiceBean;
