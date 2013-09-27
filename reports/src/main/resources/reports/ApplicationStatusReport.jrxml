@@ -90,9 +90,6 @@
 	<field name="lastName" class="java.lang.String">
 		<fieldDescription><![CDATA[contactPerson.lastName]]></fieldDescription>
 	</field>
-	<field name="description" class="java.lang.String">
-		<fieldDescription><![CDATA[contactPerson.address.description]]></fieldDescription>
-	</field>
 	<field name="name" class="java.lang.String">
 		<fieldDescription><![CDATA[contactPerson.name]]></fieldDescription>
 	</field>
@@ -134,6 +131,9 @@
 	</field>
 	<field name="status" class="java.lang.String">
 		<fieldDescription><![CDATA[status.displayValue]]></fieldDescription>
+	</field>
+	<field name="description" class="java.lang.String">
+		<fieldDescription><![CDATA[description]]></fieldDescription>
 	</field>
 	<background>
 		<band splitType="Stretch"/>

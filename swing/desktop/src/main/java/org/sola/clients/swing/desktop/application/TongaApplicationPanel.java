@@ -338,7 +338,6 @@ public class TongaApplicationPanel extends ContentPanel {
                 && SecurityBean.isInRole(RolesConstants.APPLICATION_WITHDRAW));
         menuWithdraw.setEnabled(appBean.canWithdraw()
                 && SecurityBean.isInRole(RolesConstants.APPLICATION_WITHDRAW));
-        btnPrintStatusReport.setEnabled(appBean.getRowVersion() > 0);
 
         if (btnValidate.isEnabled()) {
             btnValidate.setEnabled(appBean.canValidate()
@@ -353,7 +352,6 @@ public class TongaApplicationPanel extends ContentPanel {
             btnRemoveProperty.setEnabled(editAllowed);
             btnVerifyProperty.setEnabled(editAllowed);
             btnCalculateFee.setEnabled(editAllowed);
-            btnPrintFee.setEnabled(editAllowed);
             btnValidate.setEnabled(editAllowed);
             cbxPaid.setEnabled(editAllowed);
             txtFirstName.setEditable(editAllowed);
@@ -969,18 +967,21 @@ public class TongaApplicationPanel extends ContentPanel {
         estateListBean1 = new EstateListBean(true);
         townListBean1 = new TownListBean(true);
         jScrollBar1 = new javax.swing.JScrollBar();
+        popupPrintAction = new javax.swing.JPopupMenu();
+        menuPrintInvoice = new javax.swing.JMenuItem();
+        menuPrintStatusReport = new javax.swing.JMenuItem();
+        menuPrintApplicationForm = new javax.swing.JMenuItem();
         pnlHeader = new org.sola.clients.swing.ui.HeaderPanel();
         jToolBar3 = new javax.swing.JToolBar();
         btnSave = new javax.swing.JButton();
         btnCalculateFee = new javax.swing.JButton();
         btnValidate = new javax.swing.JButton();
         jSeparator6 = new javax.swing.JToolBar.Separator();
-        btnPrintFee = new javax.swing.JButton();
-        btnPrintStatusReport = new javax.swing.JButton();
+        printDropDown = new org.sola.clients.swing.common.controls.DropDownButton();
         jSeparator5 = new javax.swing.JToolBar.Separator();
+        dropDownButton1 = new org.sola.clients.swing.common.controls.DropDownButton();
         btnCertificate = new javax.swing.JButton();
         jSeparator7 = new javax.swing.JToolBar.Separator();
-        dropDownButton1 = new org.sola.clients.swing.common.controls.DropDownButton();
         tabbedControlMain = new javax.swing.JTabbedPane();
         contactPanel = new javax.swing.JPanel();
         jPanel25 = new javax.swing.JPanel();
@@ -1363,6 +1364,41 @@ public class TongaApplicationPanel extends ContentPanel {
 
         jScrollBar1.setName("jScrollBar1"); // NOI18N
 
+        popupPrintAction.setName("popupPrintAction"); // NOI18N
+
+        menuPrintInvoice.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/print.png"))); // NOI18N
+        menuPrintInvoice.setText(bundle.getString("TongaApplicationPanel.menuPrintInvoice.text")); // NOI18N
+        menuPrintInvoice.setActionCommand(bundle.getString("TongaApplicationPanel.menuPrintInvoice.actionCommand")); // NOI18N
+        menuPrintInvoice.setName("menuPrintInvoice"); // NOI18N
+        menuPrintInvoice.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuPrintInvoiceActionPerformed(evt);
+            }
+        });
+        popupPrintAction.add(menuPrintInvoice);
+
+        menuPrintStatusReport.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/print.png"))); // NOI18N
+        menuPrintStatusReport.setText(bundle.getString("TongaApplicationPanel.menuPrintStatusReport.text")); // NOI18N
+        menuPrintStatusReport.setActionCommand(bundle.getString("TongaApplicationPanel.menuPrintStatusReport.actionCommand")); // NOI18N
+        menuPrintStatusReport.setName("menuPrintStatusReport"); // NOI18N
+        menuPrintStatusReport.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuPrintStatusReportActionPerformed(evt);
+            }
+        });
+        popupPrintAction.add(menuPrintStatusReport);
+
+        menuPrintApplicationForm.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/print.png"))); // NOI18N
+        menuPrintApplicationForm.setText(bundle.getString("TongaApplicationPanel.menuPrintApplicationForm.text")); // NOI18N
+        menuPrintApplicationForm.setActionCommand(bundle.getString("TongaApplicationPanel.menuPrintApplicationForm.actionCommand")); // NOI18N
+        menuPrintApplicationForm.setName("menuPrintApplicationForm"); // NOI18N
+        menuPrintApplicationForm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuPrintApplicationFormActionPerformed(evt);
+            }
+        });
+        popupPrintAction.add(menuPrintApplicationForm);
+
         setHeaderPanel(pnlHeader);
         setHelpTopic(bundle.getString("TongaApplicationPanel.helpTopic")); // NOI18N
         setMinimumSize(new java.awt.Dimension(660, 458));
@@ -1419,31 +1455,26 @@ public class TongaApplicationPanel extends ContentPanel {
         jSeparator6.setName("jSeparator6"); // NOI18N
         jToolBar3.add(jSeparator6);
 
-        btnPrintFee.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/print.png"))); // NOI18N
-        btnPrintFee.setText(bundle.getString("TongaApplicationPanel.btnPrintFee.text")); // NOI18N
-        btnPrintFee.setName("btnPrintFee"); // NOI18N
-        btnPrintFee.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPrintFeeActionPerformed(evt);
-            }
-        });
-        jToolBar3.add(btnPrintFee);
-
-        btnPrintStatusReport.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/print.png"))); // NOI18N
-        btnPrintStatusReport.setText(bundle.getString("TongaApplicationPanel.btnPrintStatusReport.text")); // NOI18N
-        btnPrintStatusReport.setFocusable(false);
-        btnPrintStatusReport.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnPrintStatusReport.setName("btnPrintStatusReport"); // NOI18N
-        btnPrintStatusReport.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnPrintStatusReport.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPrintStatusReportActionPerformed(evt);
-            }
-        });
-        jToolBar3.add(btnPrintStatusReport);
+        printDropDown.setText(bundle.getString("TongaApplicationPanel.printDropDown.text")); // NOI18N
+        printDropDown.setComponentPopupMenu(popupPrintAction);
+        printDropDown.setFocusable(false);
+        printDropDown.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        printDropDown.setName("printDropDown"); // NOI18N
+        printDropDown.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar3.add(printDropDown);
 
         jSeparator5.setName("jSeparator5"); // NOI18N
         jToolBar3.add(jSeparator5);
+
+        dropDownButton1.setText(bundle.getString("TongaApplicationPanel.dropDownButton1.text")); // NOI18N
+        dropDownButton1.setActionCommand(bundle.getString("TongaApplicationPanel.dropDownButton1.actionCommand")); // NOI18N
+        dropDownButton1.setComponentPopupMenu(popupApplicationActions);
+        dropDownButton1.setFocusable(false);
+        dropDownButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        dropDownButton1.setName("dropDownButton1"); // NOI18N
+        dropDownButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar3.add(dropDownButton1);
+        dropDownButton1.getAccessibleContext().setAccessibleDescription(bundle.getString("TongaApplicationPanel.dropDownButton1.AccessibleContext.accessibleDescription")); // NOI18N
 
         btnCertificate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/approve1.png"))); // NOI18N
         btnCertificate.setText(bundle.getString("TongaApplicationPanel.btnCertificate.text")); // NOI18N
@@ -1460,14 +1491,6 @@ public class TongaApplicationPanel extends ContentPanel {
 
         jSeparator7.setName(bundle.getString("ApplicationPanel.jSeparator7.name")); // NOI18N
         jToolBar3.add(jSeparator7);
-
-        dropDownButton1.setText(bundle.getString("TongaApplicationPanel.dropDownButton1.text")); // NOI18N
-        dropDownButton1.setComponentPopupMenu(popupApplicationActions);
-        dropDownButton1.setFocusable(false);
-        dropDownButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        dropDownButton1.setName("dropDownButton1"); // NOI18N
-        dropDownButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar3.add(dropDownButton1);
 
         tabbedControlMain.setName("tabbedControlMain"); // NOI18N
         tabbedControlMain.setPreferredSize(new java.awt.Dimension(440, 370));
@@ -1689,7 +1712,7 @@ public class TongaApplicationPanel extends ContentPanel {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addComponent(labName, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(100, Short.MAX_VALUE))
-            .addComponent(txtFirstName, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
+            .addComponent(txtFirstName, javax.swing.GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1725,7 +1748,7 @@ public class TongaApplicationPanel extends ContentPanel {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addComponent(labLastName)
                 .addContainerGap(151, Short.MAX_VALUE))
-            .addComponent(txtLastName, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
+            .addComponent(txtLastName, javax.swing.GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE)
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1979,7 +2002,7 @@ public class TongaApplicationPanel extends ContentPanel {
         jPanel12.setLayout(jPanel12Layout);
         jPanel12Layout.setHorizontalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, 665, Short.MAX_VALUE)
+            .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
             .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
         );
         jPanel12Layout.setVerticalGroup(
@@ -2003,7 +2026,7 @@ public class TongaApplicationPanel extends ContentPanel {
                 .addGroup(contactPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel25, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(groupPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(groupPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 665, Short.MAX_VALUE))
                 .addContainerGap())
         );
         contactPanelLayout.setVerticalGroup(
@@ -2103,7 +2126,7 @@ public class TongaApplicationPanel extends ContentPanel {
         jPanel40Layout.setHorizontalGroup(
             jPanel40Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(lblPurpose, javax.swing.GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE)
-            .addComponent(cbxPurpose, 0, 210, Short.MAX_VALUE)
+            .addComponent(cbxPurpose, 0, 211, Short.MAX_VALUE)
         );
         jPanel40Layout.setVerticalGroup(
             jPanel40Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2134,7 +2157,7 @@ public class TongaApplicationPanel extends ContentPanel {
         jPanel23Layout.setHorizontalGroup(
             jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(lblIsland, javax.swing.GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE)
-            .addComponent(cbxIsland, 0, 210, Short.MAX_VALUE)
+            .addComponent(cbxIsland, 0, 211, Short.MAX_VALUE)
         );
         jPanel23Layout.setVerticalGroup(
             jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2164,7 +2187,7 @@ public class TongaApplicationPanel extends ContentPanel {
         jPanel29.setLayout(jPanel29Layout);
         jPanel29Layout.setHorizontalGroup(
             jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblTown, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
+            .addComponent(lblTown, javax.swing.GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE)
             .addComponent(cbxTown, 0, 211, Short.MAX_VALUE)
         );
         jPanel29Layout.setVerticalGroup(
@@ -2196,7 +2219,7 @@ public class TongaApplicationPanel extends ContentPanel {
         jPanel43Layout.setHorizontalGroup(
             jPanel43Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(lblEstate, javax.swing.GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE)
-            .addComponent(cbxEstate, 0, 210, Short.MAX_VALUE)
+            .addComponent(cbxEstate, 0, 211, Short.MAX_VALUE)
         );
         jPanel43Layout.setVerticalGroup(
             jPanel43Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2863,7 +2886,7 @@ public class TongaApplicationPanel extends ContentPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, servicesPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(servicesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(scrollFeeDetails1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 660, Short.MAX_VALUE)
+                    .addComponent(scrollFeeDetails1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 665, Short.MAX_VALUE)
                     .addComponent(tbServices, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 665, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -2997,7 +3020,7 @@ public class TongaApplicationPanel extends ContentPanel {
             .addGroup(jPanel16Layout.createSequentialGroup()
                 .addComponent(labFirstPart)
                 .addContainerGap(146, Short.MAX_VALUE))
-            .addComponent(txtFirstPart, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
+            .addComponent(txtFirstPart, javax.swing.GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE)
             .addGroup(jPanel16Layout.createSequentialGroup()
                 .addComponent(labArea)
                 .addGap(0, 0, Short.MAX_VALUE))
@@ -3042,14 +3065,14 @@ public class TongaApplicationPanel extends ContentPanel {
         jPanel17.setLayout(jPanel17Layout);
         jPanel17Layout.setHorizontalGroup(
             jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(txtLastPart, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
+            .addComponent(txtLastPart, javax.swing.GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE)
             .addGroup(jPanel17Layout.createSequentialGroup()
                 .addComponent(labLastPart)
                 .addContainerGap(189, Short.MAX_VALUE))
             .addGroup(jPanel17Layout.createSequentialGroup()
                 .addComponent(labValue)
                 .addGap(0, 0, Short.MAX_VALUE))
-            .addComponent(txtValue, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
+            .addComponent(txtValue, javax.swing.GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE)
         );
         jPanel17Layout.setVerticalGroup(
             jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -3679,14 +3702,6 @@ public class TongaApplicationPanel extends ContentPanel {
         validateApplication();
     }//GEN-LAST:event_btnValidateActionPerformed
 
-    private void btnPrintFeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintFeeActionPerformed
-        printReceipt();
-    }//GEN-LAST:event_btnPrintFeeActionPerformed
-
-    private void btnPrintStatusReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintStatusReportActionPerformed
-        printStatusReport();
-    }//GEN-LAST:event_btnPrintStatusReportActionPerformed
-
     private void menuApproveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuApproveActionPerformed
         approveApplication();
     }//GEN-LAST:event_menuApproveActionPerformed
@@ -3810,6 +3825,18 @@ public class TongaApplicationPanel extends ContentPanel {
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
         appBean.getSelectedProperty().reset();
     }//GEN-LAST:event_btnClearActionPerformed
+
+    private void menuPrintApplicationFormActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuPrintApplicationFormActionPerformed
+        printApplicationReport();
+    }//GEN-LAST:event_menuPrintApplicationFormActionPerformed
+
+    private void menuPrintInvoiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuPrintInvoiceActionPerformed
+        printReceipt();
+    }//GEN-LAST:event_menuPrintInvoiceActionPerformed
+
+    private void menuPrintStatusReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuPrintStatusReportActionPerformed
+        printStatusReport();
+    }//GEN-LAST:event_menuPrintStatusReportActionPerformed
 
     private void openSysRegCertParamsForm(String nr) {
         SysRegCertParamsForm certificateGenerator = new SysRegCertParamsForm(null, true, nr, null);
@@ -4256,6 +4283,10 @@ public class TongaApplicationPanel extends ContentPanel {
             showReport(ReportManager.getApplicationStatusReport(appBean));
         }
     }
+    
+    private void printApplicationReport(){
+        showReport(ReportManager.getLeaseApplicationReport(appBean));
+    }
 
     @Override
     protected boolean panelClosing() {
@@ -4277,8 +4308,6 @@ public class TongaApplicationPanel extends ContentPanel {
     private javax.swing.JButton btnClear;
     private javax.swing.JButton btnCompleteService;
     private javax.swing.JButton btnDownService;
-    private javax.swing.JButton btnPrintFee;
-    private javax.swing.JButton btnPrintStatusReport;
     private javax.swing.JButton btnRemoveProperty;
     private javax.swing.JButton btnRemoveService;
     private javax.swing.JButton btnRevertService;
@@ -4434,6 +4463,9 @@ public class TongaApplicationPanel extends ContentPanel {
     private javax.swing.JMenuItem menuLapse;
     private javax.swing.JMenuItem menuMoveServiceDown;
     private javax.swing.JMenuItem menuMoveServiceUp;
+    private javax.swing.JMenuItem menuPrintApplicationForm;
+    private javax.swing.JMenuItem menuPrintInvoice;
+    private javax.swing.JMenuItem menuPrintStatusReport;
     private javax.swing.JMenuItem menuRemoveService;
     private javax.swing.JMenuItem menuRequisition;
     private javax.swing.JMenuItem menuResubmit;
@@ -4445,6 +4477,8 @@ public class TongaApplicationPanel extends ContentPanel {
     private org.sola.clients.swing.ui.HeaderPanel pnlHeader;
     private javax.swing.JPopupMenu popUpServices;
     private javax.swing.JPopupMenu popupApplicationActions;
+    private javax.swing.JPopupMenu popupPrintAction;
+    private org.sola.clients.swing.common.controls.DropDownButton printDropDown;
     public javax.swing.JPanel propertyPanel;
     private javax.swing.JPanel propertypartPanel;
     private javax.swing.JScrollPane scrollDocRequired;
