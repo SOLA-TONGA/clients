@@ -799,6 +799,7 @@ public class ApplicationSearchPanel extends ContentPanel {
         labResults.setText(null);
         tbAppList.setVisible(false);
         txtAppNumber.requestFocus();
+        txtItemNumber.setText(null);
     }//GEN-LAST:event_btnClearActionPerformed
 
     public void clickFind() {
