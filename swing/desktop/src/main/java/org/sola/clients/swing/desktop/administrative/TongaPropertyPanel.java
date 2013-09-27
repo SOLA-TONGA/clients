@@ -187,7 +187,7 @@ public class TongaPropertyPanel extends ContentPanel {
      */
     public TongaPropertyPanel(ApplicationBean applicationBean,
             ApplicationServiceBean applicationService,
-            String nameFirstPart, String nameLastPart, boolean readOnly) {
+            String nameFirstPart, String nameLastPart, Boolean readOnly) {
         this.readOnly = readOnly || !SecurityBean.isInRole(RolesConstants.ADMINISTRATIVE_BA_UNIT_SAVE);
         this.applicationBean = applicationBean;
         this.applicationService = applicationService;
@@ -212,7 +212,7 @@ public class TongaPropertyPanel extends ContentPanel {
      */
     public TongaPropertyPanel(ApplicationBean applicationBean,
             ApplicationServiceBean applicationService,
-            BaUnitBean baUnitBean, boolean readOnly) {
+            BaUnitBean baUnitBean, Boolean readOnly) {
         this.baUnitBean1 = baUnitBean;
         this.readOnly = readOnly || !SecurityBean.isInRole(RolesConstants.ADMINISTRATIVE_BA_UNIT_SAVE);
         this.applicationBean = applicationBean;
@@ -1039,7 +1039,7 @@ public class TongaPropertyPanel extends ContentPanel {
                 }
 
 
-                baUnitAreaBean1.setTypeCode("officialArea");
+                baUnitAreaBean1.setTypeCode(BaUnitAreaBean.CODE_OFFICIAL_AREA);
                 baUnitAreaBean1.setBaUnitId(baUnitBean1.getId());
             }
         }
@@ -1053,10 +1053,6 @@ public class TongaPropertyPanel extends ContentPanel {
                 if (baUnitID != null && !baUnitID.equals("")) {
                     baUnitBean1.saveBaUnit(applicationService.getId());
                 } else {
-                    // Tonga customization - set the type of BA Unit based on the service
-                    if (RequestTypeBean.CODE_REGISTER_LEASE.equals(applicationService.getRequestTypeCode())) {
-                        baUnitBean1.setTypeCode(BaUnitTypeBean.CODE_LEASED_UNIT);
-                    }
                     baUnitBean1.createBaUnit(applicationService.getId());
                 }
                 if (closeOnSave) {

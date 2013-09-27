@@ -63,6 +63,7 @@ import org.sola.clients.swing.common.tasks.SolaTask;
 import org.sola.clients.swing.common.tasks.TaskManager;
 import org.sola.clients.swing.desktop.DashBoardPanel;
 import org.sola.clients.swing.desktop.MainForm;
+import org.sola.clients.swing.desktop.administrative.PropertyHelper;
 import org.sola.clients.swing.desktop.administrative.TongaPropertyPanel;
 import org.sola.clients.swing.desktop.cadastre.CadastreTransactionMapPanel;
 import org.sola.clients.swing.desktop.cadastre.MapPanelForm;
@@ -175,7 +176,7 @@ public class TongaApplicationPanel extends ContentPanel {
      *
      * @param applicationId ID of application to open.
      */
-    public TongaApplicationPanel(String applicationId, boolean dashBoard) {
+    public TongaApplicationPanel(String applicationId, Boolean dashBoard) {
         this.applicationID = applicationId;
         this.isDashboard = dashBoard;
         initComponents();
@@ -277,12 +278,12 @@ public class TongaApplicationPanel extends ContentPanel {
         customizeServicesButtons();
         customizeApplicationForm();
         customizePropertyButtons();
-        applyIslandFilter(); 
+        applyIslandFilter();
     }
 
     /**
-     * Filters the list of Towns and Estates by Island (a.k.a District)
-     * Tonga Customization. 
+     * Filters the list of Towns and Estates by Island (a.k.a District) Tonga
+     * Customization.
      */
     private void applyIslandFilter() {
         String islandId = appBean.getSelectedProperty().getIslandId();
@@ -609,28 +610,28 @@ public class TongaApplicationPanel extends ContentPanel {
 
             String requestType = service.getRequestTypeCode();
 
-            // Determine what form to start for selected service
-            if (ServiceLauncher.isMapped(requestType)) {
-                boolean launched = false;
-
-                // Create property change listener to refresh the state of the appBean
-                // when the service form is closed. 
-                PropertyChangeListener refreshAppBeanOnClose = new PropertyChangeListener() {
-                    @Override
-                    public void propertyChange(PropertyChangeEvent evt) {
-                        if (evt.getPropertyName().equals(ContentPanel.CONTENT_PANEL_CLOSED)) {
-                            appBean.reload();
-                            customizeApplicationForm();
-                            saveAppState();
-                        }
+            // Create property change listener to refresh the state of the appBean
+            // when the service form is closed. 
+            PropertyChangeListener refreshAppBeanOnClose = new PropertyChangeListener() {
+                @Override
+                public void propertyChange(PropertyChangeEvent evt) {
+                    if (evt.getPropertyName().equals(ContentPanel.CONTENT_PANEL_CLOSED)) {
+                        appBean.reload();
+                        customizeApplicationForm();
+                        saveAppState();
                     }
-                };
+                }
+            };
 
-                // Use the service launcher to open the service panel. Add a 
-                // listener to refresh the state of the appBean when the 
+            // Determine what form to start for selected service
+            if (ServiceLauncher.isServiceCategory(requestType,
+                    RequestCategoryTypeBean.CODE_APPLICATION_CATEGORY)) {
+
+                // Use the service launcher to open the service panel for an application 
+                // service. Add a listener to refresh the state of the appBean when the 
                 // service panel is closed. 
-                launched = ServiceLauncher.launch(service.getRequestTypeCode(),
-                        getMainContentPanel(), refreshAppBeanOnClose, appBean, service, readOnly);
+                ServiceLauncher.launch(service.getRequestTypeCode(), getMainContentPanel(),
+                        refreshAppBeanOnClose, null, appBean, service, readOnly);
 
             } // Power of attorney or other type document registration
             else if (requestType.equalsIgnoreCase(RequestTypeBean.CODE_REG_POWER_OF_ATTORNEY)
@@ -765,7 +766,13 @@ public class TongaApplicationPanel extends ContentPanel {
                         });
                         getMainContentPanel().addPanel(baUnitListPanel, MainContentPanel.CARD_BAUNIT_SELECT_PANEL, true);
                     } else {
-                        openPropertyForm(service, baUnitsList.get(0), readOnly);
+                        if (ServiceLauncher.isMapped(requestType)) {
+                            // Use the service launcher to open the property panel for the registration service.
+                            ServiceLauncher.launch(service.getRequestTypeCode(), getMainContentPanel(),
+                                    refreshAppBeanOnClose, null, appBean, service, baUnitsList.get(0), readOnly);
+                        } else {
+                            openPropertyForm(service, baUnitsList.get(0), readOnly);
+                        }
                     }
                 } else {
 
@@ -780,8 +787,10 @@ public class TongaApplicationPanel extends ContentPanel {
                     // Tonga customization - Registering a new lease or allotments requires
                     // creating a new Property Record. 
                     if (requestType.equalsIgnoreCase(RequestTypeBean.CODE_REGISTER_LEASE)) {
-                        // Open empty property form
-                        openPropertyForm(service, new BaUnitBean(), readOnly);
+                        // Use the service launcher to open the property panel for the registration service.
+                        ServiceLauncher.launch(service.getRequestTypeCode(), getMainContentPanel(),
+                                refreshAppBeanOnClose, null, appBean, service,
+                                PropertyHelper.prepareNewLease(appBean), readOnly);
                     } else {
 
                         // Open property form for existing title changes
