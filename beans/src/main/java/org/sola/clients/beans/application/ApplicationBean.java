@@ -86,8 +86,6 @@ public class ApplicationBean extends ApplicationSummaryBean {
     public static final String APPLICATION_PROPERTY = "application";
     public static final String SELECTED_CADASTRE_OBJECT = "selectedCadastreObject";
     public static final String LODGED_ROLE = "applicant";
-    public static final String LOCATION_DESCRIPTION_PROPERTY = "locationDescription";
-    public static final String PURPOSE_PROPERTY = "purpose";
     private String itemNumber;
     private ApplicationActionTypeBean actionBean;
     private String actionNotes;
@@ -99,8 +97,6 @@ public class ApplicationBean extends ApplicationSummaryBean {
     private BigDecimal totalAmountPaid;
     private BigDecimal totalFee;
     private String receiptRef;
-    private String locationDescription;
-    private String purpose;
     @Size(min = 1, message = ClientMessage.CHECK_APP_SERVICES_NOT_EMPTY, payload = Localized.class)
     private SolaObservableList<ApplicationServiceBean> serviceList;
     private SolaList<SourceBean> sourceList;
@@ -550,26 +546,6 @@ public class ApplicationBean extends ApplicationSummaryBean {
     public void setSelectedCadastreObject(CadastreObjectBean selectedCadastreObject) {
         this.selectedCadastreObject = selectedCadastreObject;
         propertySupport.firePropertyChange(SELECTED_CADASTRE_OBJECT, null, this.selectedCadastreObject);
-    }
-
-    public String getLocationDescription() {
-        return locationDescription;
-    }
-
-    public void setLocationDescription(String value) {
-        String old = locationDescription;
-        this.locationDescription = value;
-        propertySupport.firePropertyChange(LOCATION_DESCRIPTION_PROPERTY, old, value);
-    }
-
-    public String getPurpose() {
-        return purpose;
-    }
-
-    public void setPurpose(String value) {
-        String old = purpose;
-        this.purpose = value;
-        propertySupport.firePropertyChange(PURPOSE_PROPERTY, old, value);
     }
 
     /**

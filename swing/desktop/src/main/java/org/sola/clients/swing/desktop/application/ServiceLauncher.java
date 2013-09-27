@@ -33,9 +33,11 @@ import java.beans.PropertyChangeListener;
 import java.lang.reflect.Constructor;
 import java.util.HashMap;
 import java.util.Map;
+import org.sola.clients.beans.cache.CacheManager;
 import org.sola.clients.beans.referencedata.RequestTypeBean;
 import org.sola.clients.swing.common.tasks.SolaTask;
 import org.sola.clients.swing.common.tasks.TaskManager;
+import org.sola.clients.swing.desktop.administrative.TongaPropertyPanel;
 import org.sola.clients.swing.desktop.workflow.*;
 import org.sola.clients.swing.ui.ContentPanel;
 import org.sola.clients.swing.ui.MainContentPanel;
@@ -115,11 +117,16 @@ public final class ServiceLauncher {
         serviceMap.put(RequestTypeBean.CODE_SIGN_DEED,
                 new String[]{SignDeedForm.class.getName(), MainContentPanel.CARD_SIGN_DEED,
             ClientMessage.PROGRESS_MSG_OPEN_SIGN_DEED});
-        
+
         //Item Number Form
-        serviceMap.put(RequestTypeBean.CODE_ITEM_NUMBER, 
+        serviceMap.put(RequestTypeBean.CODE_ITEM_NUMBER,
                 new String[]{ItemNumberForm.class.getName(), MainContentPanel.CARD_ITEM_NUMBER,
             ClientMessage.PROGRESS_MSG_OPEN_ITEM_NUMBER});
+
+        //Register Lease
+        serviceMap.put(RequestTypeBean.CODE_REGISTER_LEASE,
+                new String[]{TongaPropertyPanel.class.getName(), MainContentPanel.CARD_PROPERTY_PANEL,
+            ClientMessage.PROGRESS_MSG_OPEN_PROPERTY});
     }
 
     /**
@@ -210,6 +217,9 @@ public final class ServiceLauncher {
      * @param panelListener Property Change Listener that is registered on the
      * new panel to listen for property changes such as the closing of the
      * panel. Can be null.
+     * @param taskDone A runnable class that defines any actions to execute at
+     * the completion of loading the new panel. Can be null if no actions should
+     * occur
      * @param constructorArgs The arguments to pass to the constructor for the
      * form. Null if the nullary constructor is to be used.
      * @return true if the form is successfully launched, false otherwise.
@@ -217,6 +227,7 @@ public final class ServiceLauncher {
     public static boolean launch(final String requestType,
             final MainContentPanel mainPanel,
             final PropertyChangeListener panelListener,
+            final Runnable taskDone,
             final Object... constructorArgs) {
         final boolean result[] = {false};
         if (isMapped(requestType)) {
@@ -234,6 +245,13 @@ public final class ServiceLauncher {
                     }
                     return null;
                 }
+
+                @Override
+                protected void taskDone() {
+                    if (taskDone != null) {
+                        taskDone.run();
+                    }
+                }
             };
             TaskManager.getInstance().runTask(t);
         }
@@ -249,5 +267,20 @@ public final class ServiceLauncher {
      */
     public static boolean isMapped(String requestType) {
         return getInstance().getCardName(requestType) != null;
+    }
+
+    /**
+     * Determines if the request type is within the specified request category.
+     *
+     * @param requestType The type of the service
+     * @param requestCategoryCode The category of the the service to check
+     * against
+     * @return True if the request type is in the specified category, false
+     * otherwise.
+     */
+    public static boolean isServiceCategory(String requestType, String requestCategoryCode) {
+        RequestTypeBean bean = CacheManager.getBeanByCode(CacheManager.getRequestTypes(),
+                requestType);
+        return requestCategoryCode.equals(bean.getRequestCategoryCode());
     }
 }
