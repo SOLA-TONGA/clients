@@ -1,33 +1,70 @@
-/*
- * Copyright 2013 Food and Agriculture Organization of the United Nations (FAO).
+/**
+ * ******************************************************************************************
+ * Copyright (C) 2012 - Food and Agriculture Organization of the United Nations
+ * (FAO). All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ * 1. Redistributions of source code must retain the above copyright notice,this
+ * list of conditions and the following disclaimer. 2. Redistributions in binary
+ * form must reproduce the above copyright notice,this list of conditions and
+ * the following disclaimer in the documentation and/or other materials provided
+ * with the distribution. 3. Neither the name of FAO nor the names of its
+ * contributors may be used to endorse or promote products derived from this
+ * software without specific prior written permission.
  *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ * ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
+ * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,PROCUREMENT OF
+ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+ * CONTRACT,STRICT LIABILITY,OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING
+ * IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ * POSSIBILITY OF SUCH DAMAGE.
+ * *********************************************************************************************
  */
 package org.sola.clients.beans.report;
 
+import java.util.List;
 import org.sola.clients.beans.application.ApplicationBean;
 import org.sola.clients.beans.application.ApplicationServiceBean;
+import org.sola.clients.beans.system.LanguageBean;
+import org.sola.common.NumberUtility;
+import org.sola.services.boundary.wsclients.WSManager;
+import org.sola.webservices.transferobjects.AbstractCodeTO;
+import org.sola.webservices.transferobjects.referencedata.LandUseTypeTO;
 
 /**
  *
  * @author Admin
  */
 public class ServiceReportBean {
+
     private ApplicationBean appBean;
     private ApplicationServiceBean appServiceBean;
-    
-    public ServiceReportBean(){
+    /**
+     * Used to format the lease area as both metric and imperial for display in
+     * reports
+     */
+    private transient String formattedLeaseArea;
+    /**
+     * Used to obtain the Tongan description for the land purpose.
+     */
+    private transient String landPurposeTongan;
+
+    public ServiceReportBean() {
         super();
+    }
+
+    public ServiceReportBean(ApplicationBean appBean, ApplicationServiceBean appServiceBean) {
+        super();
+        this.appBean = appBean;
+        this.appServiceBean = appServiceBean;
+
     }
 
     public ApplicationBean getAppBean() {
@@ -44,5 +81,62 @@ public class ServiceReportBean {
 
     public void setAppServiceBean(ApplicationServiceBean appServiceBean) {
         this.appServiceBean = appServiceBean;
+    }
+
+    /**
+     * Formats the lease area as both metric and imperial values for display in
+     * reports.
+     */
+    public String getFormattedLeaseArea() {
+        String result = null;
+        if (appBean != null && appBean.getSelectedProperty() != null
+                && appBean.getSelectedProperty().getLeaseArea() != null) {
+            result = NumberUtility.formatAreaMetric(appBean.getSelectedProperty().getLeaseArea()) + " ("
+                    + NumberUtility.formatAreaImperial(appBean.getSelectedProperty().getLeaseArea()) + ")";
+        }
+        return result;
+    }
+
+    public String getLandPurposeTongan() {
+        String result = null;
+        if (appBean != null && appBean.getSelectedProperty() != null
+                && appBean.getSelectedProperty().getLandUseCode() != null) {
+            result = getTonganDisplayValue(WSManager.getInstance().getReferenceDataService().getLandUseTypes(null),
+                    appBean.getSelectedProperty().getLandUseCode(),
+                    appBean.getSelectedProperty().getLandUseType().getDisplayValue());
+        }
+        return result;
+    }
+
+    /**
+     * Obtains the Tongan display value for the specified code.
+     *
+     * @param <T>
+     * @param toList The list of code TOs correspodning to the code value with
+     * no language translation (i.e. retrieved from the web service with
+     * langCode = null)
+     * @param code The code to find the Tongan translation for
+     * @param defaultValue The default display value to use if there is no
+     * Tongan translation
+     * @return The Tongan display value for the code or the default value.
+     */
+    private <T extends AbstractCodeTO> String getTonganDisplayValue(List<T> toList,
+            String code, String defaultValue) {
+        String result = defaultValue;
+        String displayValues = null;
+        for (AbstractCodeTO to : toList) {
+            if (code.equals(to.getCode())) {
+                displayValues = to.getDisplayValue();
+                break;
+            }
+        }
+        if (displayValues != null) {
+            String temp = LanguageBean.getLocalizedValue(displayValues, LanguageBean.TONGAN_LANG_CODE);
+            // Check that a valid display value was found
+            if (temp != null && temp.split(LanguageBean.delimiter).length == 1) {
+                result = temp;
+            }
+        }
+        return result;
     }
 }

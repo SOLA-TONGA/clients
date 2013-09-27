@@ -4,9 +4,9 @@
     codebase="$$codebase"
     context="$$context"
     href="$$name"
-    version="SOLA Test $solaVersion">
+    version="SOLA Tonga Test $solaVersion">
   <information>
-    <title>SOLA Desktop Test</title>
+    <title>SOLA Tonga Desktop Test</title>
 #if($project.Organization.Name)
     <vendor>$project.Organization.Name</vendor>
 #end
@@ -19,7 +19,7 @@
 <icon href="../Images/Floss.jpg" width="40" height="26"/>
     <icon kind="shortcut" href="../Images/Floss.jpg" width="40" height="26"/>
     <!--icon kind="splash" href="../Images/splash.png" width="413" height="314"/-->
-    <shortcut><desktop/><menu submenu="SOLA Test"/></shortcut>
+    <shortcut><desktop/><menu submenu="SOLA Tonga Test"/></shortcut>
 #if($offlineAllowed)
     <offline-allowed/>
 #end

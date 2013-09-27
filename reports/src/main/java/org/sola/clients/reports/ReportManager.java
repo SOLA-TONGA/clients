@@ -701,11 +701,11 @@ public class ReportManager {
         }
     }
 
-    public static JasperPrint getSurveySavingramReport(ApplicationBean appBean, Date actionDate) {
+    public static JasperPrint getSurveySavingramReport(ServiceReportBean reportBean, Date actionDate) {
         HashMap inputParameters = new HashMap();
         inputParameters.put("ACTION_DATE", actionDate);
-        ApplicationBean[] beans = new ApplicationBean[1];
-        beans[0] = appBean;
+        ServiceReportBean[] beans = new ServiceReportBean[1];
+        beans[0] = reportBean;
         JRDataSource jds = new JRBeanArrayDataSource(beans);
         try {
             return JasperFillManager.fillReport(

@@ -13,7 +13,7 @@
         <table width="80%" cellspacing="0" cellpadding="3">
             <tr>
                 <td colspan="2">  
-                    <h1><img src="Images/SolaLogo.png"/>Welcome to the download for the SOLA Web Start applications.</h1>
+                    <h1><img src="Images/SolaLogo.png"/>Welcome to the download for the SOLA Tonga Web Start applications.</h1>
                 </td>
             </tr>
             <tr>
@@ -21,7 +21,7 @@
                 <td> <br><br>
                     Solutions for Open Land Administration (SOLA) is an open source software system that aims to make computerized cadastre and registration systems more affordable and more sustainable in developing countries.
                     <br><br>
-                    This page will guide you through the installation of the SOLA Web Start applications which includes the SOLA Desktop Web Start and SOLA Admin Web Start. The installation package for both applications is approximately 100Mb.
+                    This page will guide you through the installation of the SOLA Tonga Web Start applications which includes the SOLA Desktop Web Start and SOLA Admin Web Start. The installation package for both applications is approximately 100Mb.
                     <br><br> 
                 </td>
             </tr>
