@@ -31,14 +31,14 @@ package org.sola.clients.beans.administrative;
 
 import java.math.BigDecimal;
 import javax.validation.constraints.NotNull;
-import org.hibernate.validator.constraints.NotEmpty;
 import org.sola.clients.beans.AbstractIdBean;
 import org.sola.clients.beans.converters.TypeConverters;
 import org.sola.clients.beans.validation.Localized;
 import org.sola.common.messaging.ClientMessage;
-import org.sola.common.messaging.MessageUtility;
 import org.sola.services.boundary.wsclients.WSManager;
 import org.sola.webservices.transferobjects.administrative.BaUnitAreaTO;
+import org.sola.webservices.transferobjects.EntityAction;
+import org.sola.webservices.transferobjects.casemanagement.ApplicationPropertyTO;
 
 /**
  * Represents application property object. Could be populated from the
@@ -109,5 +109,13 @@ public class BaUnitAreaBean extends AbstractIdBean {
         baUnitArea = WSManager.getInstance().getAdministrative().createBaUnitArea(baUnitId, baUnitArea);
         TypeConverters.TransferObjectToBean(baUnitArea, BaUnitAreaBean.class, this);
         return true;
+    }
+
+    @Override
+    public EntityAction getEntityAction() {
+        if (getSize() == null || getSize().compareTo(BigDecimal.ZERO) < 1) {
+            return EntityAction.DELETE;
+        }
+        return super.getEntityAction();
     }
 }

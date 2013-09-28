@@ -43,6 +43,8 @@ public class BaUnitTypeBean extends AbstractCodeBean {
     public static final String CODE_TOWN_ALLOTMENT_UNIT = "townAllotmentUnit";
     public static final String CODE_TAX_UNIT = "taxUnit";
     public static final String CODE_ESTATE_UNIT = "estateUnit";
+    public static final String CODE_TOWN_UNIT = "townUnit";
+    public static final String CODE_ISLAND_UNIT = "islandUnit";
 
     public BaUnitTypeBean() {
         super();

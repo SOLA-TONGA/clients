@@ -1060,7 +1060,7 @@ public class TongaApplicationPanel extends ContentPanel {
         cbxEstate = new javax.swing.JComboBox();
         jPanel31 = new javax.swing.JPanel();
         lblArea = new javax.swing.JLabel();
-        txtAllotmentArea = new javax.swing.JTextField();
+        txtAllotmentArea = new javax.swing.JFormattedTextField();
         jPanel37 = new javax.swing.JPanel();
         lblArea1 = new javax.swing.JLabel();
         txtAllotmentAreaImperial = new javax.swing.JFormattedTextField();
@@ -1094,13 +1094,13 @@ public class TongaApplicationPanel extends ContentPanel {
         txtLeaseeName = new javax.swing.JTextField();
         jPanel41 = new javax.swing.JPanel();
         lblRental = new javax.swing.JLabel();
-        txtRental = new javax.swing.JTextField();
+        txtRental = new javax.swing.JFormattedTextField();
         jPanel36 = new javax.swing.JPanel();
         lblTerm = new javax.swing.JLabel();
-        txtTerm = new javax.swing.JTextField();
+        txtTerm = new javax.swing.JFormattedTextField();
         jPanel38 = new javax.swing.JPanel();
         lblLeaseArea = new javax.swing.JLabel();
-        txtLeaseArea = new javax.swing.JTextField();
+        txtLeaseArea = new javax.swing.JFormattedTextField();
         jPanel42 = new javax.swing.JPanel();
         lblLeaseAreaImperial = new javax.swing.JLabel();
         txtLeaseAreaImperial = new javax.swing.JFormattedTextField();
@@ -1532,6 +1532,9 @@ public class TongaApplicationPanel extends ContentPanel {
         txtAppNumber1.setName("txtAppNumber1"); // NOI18N
         txtAppNumber1.setRequestFocusEnabled(false);
 
+        org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, appBean, org.jdesktop.beansbinding.ELProperty.create("${nr}"), txtAppNumber1, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+
         javax.swing.GroupLayout jPanel28Layout = new javax.swing.GroupLayout(jPanel28);
         jPanel28.setLayout(jPanel28Layout);
         jPanel28Layout.setHorizontalGroup(
@@ -1565,7 +1568,7 @@ public class TongaApplicationPanel extends ContentPanel {
         txtItemNumber.setName("txtItemNumber"); // NOI18N
         txtItemNumber.setRequestFocusEnabled(false);
 
-        org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, appBean, org.jdesktop.beansbinding.ELProperty.create("${itemNumber}"), txtItemNumber, org.jdesktop.beansbinding.BeanProperty.create("text"), "a");
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, appBean, org.jdesktop.beansbinding.ELProperty.create("${itemNumber}"), txtItemNumber, org.jdesktop.beansbinding.BeanProperty.create("text"), "a");
         bindingGroup.addBinding(binding);
 
         javax.swing.GroupLayout jPanel27Layout = new javax.swing.GroupLayout(jPanel27);
@@ -2246,9 +2249,11 @@ public class TongaApplicationPanel extends ContentPanel {
         lblArea.setText(bundle.getString("TongaApplicationPanel.lblArea.text")); // NOI18N
         lblArea.setName("lblArea"); // NOI18N
 
+        txtAllotmentArea.setFormatterFactory(FormattersFactory.getInstance().getMetricAreaFormatterFactory());
+        txtAllotmentArea.setText(bundle.getString("TongaApplicationPanel.txtAllotmentArea.text")); // NOI18N
         txtAllotmentArea.setName("txtAllotmentArea"); // NOI18N
 
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, appBean, org.jdesktop.beansbinding.ELProperty.create("${selectedProperty.area}"), txtAllotmentArea, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, appBean, org.jdesktop.beansbinding.ELProperty.create("${selectedProperty.area}"), txtAllotmentArea, org.jdesktop.beansbinding.BeanProperty.create("value"));
         bindingGroup.addBinding(binding);
 
         javax.swing.GroupLayout jPanel31Layout = new javax.swing.GroupLayout(jPanel31);
@@ -2256,7 +2261,7 @@ public class TongaApplicationPanel extends ContentPanel {
         jPanel31Layout.setHorizontalGroup(
             jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(lblArea, javax.swing.GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE)
-            .addComponent(txtAllotmentArea)
+            .addComponent(txtAllotmentArea, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         jPanel31Layout.setVerticalGroup(
             jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2529,9 +2534,11 @@ public class TongaApplicationPanel extends ContentPanel {
         lblRental.setText(bundle.getString("TongaApplicationPanel.lblRental.text")); // NOI18N
         lblRental.setName("lblRental"); // NOI18N
 
+        txtRental.setFormatterFactory(FormattersFactory.getInstance().getMoneyFormatterFactory());
+        txtRental.setText(bundle.getString("TongaApplicationPanel.txtRental.text")); // NOI18N
         txtRental.setName("txtRental"); // NOI18N
 
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, appBean, org.jdesktop.beansbinding.ELProperty.create("${selectedProperty.amount}"), txtRental, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, appBean, org.jdesktop.beansbinding.ELProperty.create("${selectedProperty.amount}"), txtRental, org.jdesktop.beansbinding.BeanProperty.create("value"));
         bindingGroup.addBinding(binding);
 
         javax.swing.GroupLayout jPanel41Layout = new javax.swing.GroupLayout(jPanel41);
@@ -2558,9 +2565,11 @@ public class TongaApplicationPanel extends ContentPanel {
         lblTerm.setText(bundle.getString("TongaApplicationPanel.lblTerm.text")); // NOI18N
         lblTerm.setName("lblTerm"); // NOI18N
 
+        txtTerm.setFormatterFactory(FormattersFactory.getInstance().getDecimalFormatterFactory(1));
+        txtTerm.setText(bundle.getString("TongaApplicationPanel.txtTerm.text")); // NOI18N
         txtTerm.setName("txtTerm"); // NOI18N
 
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, appBean, org.jdesktop.beansbinding.ELProperty.create("${selectedProperty.leaseTerm}"), txtTerm, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, appBean, org.jdesktop.beansbinding.ELProperty.create("${selectedProperty.leaseTerm}"), txtTerm, org.jdesktop.beansbinding.BeanProperty.create("value"));
         bindingGroup.addBinding(binding);
 
         javax.swing.GroupLayout jPanel36Layout = new javax.swing.GroupLayout(jPanel36);
@@ -2568,7 +2577,7 @@ public class TongaApplicationPanel extends ContentPanel {
         jPanel36Layout.setHorizontalGroup(
             jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(lblTerm, javax.swing.GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE)
-            .addComponent(txtTerm)
+            .addComponent(txtTerm, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         jPanel36Layout.setVerticalGroup(
             jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2587,9 +2596,11 @@ public class TongaApplicationPanel extends ContentPanel {
         lblLeaseArea.setText(bundle.getString("TongaApplicationPanel.lblLeaseArea.text")); // NOI18N
         lblLeaseArea.setName("lblLeaseArea"); // NOI18N
 
+        txtLeaseArea.setFormatterFactory(FormattersFactory.getInstance().getMetricAreaFormatterFactory());
+        txtLeaseArea.setText(bundle.getString("TongaApplicationPanel.txtLeaseArea.text")); // NOI18N
         txtLeaseArea.setName("txtLeaseArea"); // NOI18N
 
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, appBean, org.jdesktop.beansbinding.ELProperty.create("${selectedProperty.leaseArea}"), txtLeaseArea, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, appBean, org.jdesktop.beansbinding.ELProperty.create("${selectedProperty.leaseArea}"), txtLeaseArea, org.jdesktop.beansbinding.BeanProperty.create("value"));
         bindingGroup.addBinding(binding);
 
         javax.swing.GroupLayout jPanel38Layout = new javax.swing.GroupLayout(jPanel38);
@@ -4507,7 +4518,7 @@ public class TongaApplicationPanel extends ContentPanel {
     private javax.swing.JPanel tongaPropertyPanel;
     private org.sola.clients.beans.referencedata.TownListBean townListBean1;
     public javax.swing.JTextField txtAddress;
-    private javax.swing.JTextField txtAllotmentArea;
+    private javax.swing.JFormattedTextField txtAllotmentArea;
     private javax.swing.JFormattedTextField txtAllotmentAreaImperial;
     private javax.swing.JTextField txtAllotmentHolder;
     private javax.swing.JTextField txtAppNumber1;
@@ -4524,15 +4535,15 @@ public class TongaApplicationPanel extends ContentPanel {
     private javax.swing.JTextField txtItemNumber;
     public javax.swing.JTextField txtLastName;
     private javax.swing.JTextField txtLastPart;
-    private javax.swing.JTextField txtLeaseArea;
+    private javax.swing.JFormattedTextField txtLeaseArea;
     private javax.swing.JFormattedTextField txtLeaseAreaImperial;
     private javax.swing.JTextField txtLeaseNumber;
     private javax.swing.JTextField txtLeaseeName;
     public javax.swing.JTextField txtPhone;
     private javax.swing.JTextArea txtPropertyDescription;
-    private javax.swing.JTextField txtRental;
+    private javax.swing.JFormattedTextField txtRental;
     private javax.swing.JTextField txtStatus;
-    private javax.swing.JTextField txtTerm;
+    private javax.swing.JFormattedTextField txtTerm;
     private javax.swing.JTextField txtValue;
     public javax.swing.JPanel validationPanel;
     private org.sola.clients.beans.validation.ValidationResultListBean validationResultListBean;

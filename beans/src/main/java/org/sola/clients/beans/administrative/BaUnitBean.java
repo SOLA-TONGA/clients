@@ -43,6 +43,7 @@ import org.sola.clients.beans.cadastre.CadastreObjectBean;
 import org.sola.clients.beans.controls.SolaList;
 import org.sola.clients.beans.controls.SolaObservableList;
 import org.sola.clients.beans.converters.TypeConverters;
+import org.sola.clients.beans.referencedata.BaUnitTypeBean;
 import org.sola.clients.beans.referencedata.LandUseTypeBean;
 import org.sola.clients.beans.referencedata.StatusConstants;
 import org.sola.clients.beans.referencedata.TypeActionBean;
@@ -182,6 +183,7 @@ public class BaUnitBean extends BaUnitSummaryBean {
     public static final String REGISTERED_NAME_PROPERTY = "registeredName";
     public static final String LAND_USE_TYPE_CODE_PROPERTY = "landUseTypeCode";
     public static final String LAND_USE_TYPE_PROPERTY = "landUseType";
+    public static final String OFFICIAL_AREA_PROPERTY = "officialArea";
     private SolaList<RrrBean> rrrList;
     private SolaList<BaUnitNotationBean> baUnitNotationList;
     private SolaList<CadastreObjectBean> cadastreObjectList;
@@ -204,6 +206,8 @@ public class BaUnitBean extends BaUnitSummaryBean {
     // Tonga Customization
     private String registeredName;
     private LandUseTypeBean landUseType;
+    private List<BaUnitAreaBean> baUnitAreaList;
+    private transient BaUnitAreaBean officialArea;
 
     public BigDecimal getCalculatedAreaSize() {
         return calculatedAreaSize;
@@ -222,6 +226,7 @@ public class BaUnitBean extends BaUnitSummaryBean {
         childBaUnits = new SolaList();
         parentBaUnits = new SolaList();
         sourceList = new SolaList();
+        baUnitAreaList = new ArrayList<BaUnitAreaBean>();
         allBaUnitNotationList = new SolaObservableList<BaUnitNotationBean>();
         rrrSharesList = new SolaObservableList<RrrShareWithStatus>();
         rrrList.getFilteredList().addObservableListListener(new RrrListListener());
@@ -766,5 +771,41 @@ public class BaUnitBean extends BaUnitSummaryBean {
         setLandUseType(CacheManager.getBeanByCode(
                 CacheManager.getLandUseTypes(), typeCode));
         propertySupport.firePropertyChange(LAND_USE_TYPE_CODE_PROPERTY, oldValue, typeCode);
+    }
+
+    public List<BaUnitAreaBean> getBaUnitAreaList() {
+        return baUnitAreaList;
+    }
+
+    public void setBaUnitAreaList(List<BaUnitAreaBean> baUnitAreaList) {
+        this.baUnitAreaList = baUnitAreaList;
+    }
+
+    public BaUnitAreaBean getOfficialArea() {
+        if (officialArea == null) {
+            if (baUnitAreaList.size() > 0) {
+                for (BaUnitAreaBean bean : baUnitAreaList) {
+                    if (BaUnitAreaBean.CODE_OFFICIAL_AREA.equals(bean.getTypeCode())) {
+                        officialArea = bean;
+                        break;
+                    }
+                }
+            }
+            if (officialArea == null) {
+                officialArea = new BaUnitAreaBean();
+                officialArea.setTypeCode(BaUnitAreaBean.CODE_OFFICIAL_AREA);
+                baUnitAreaList.add(officialArea);
+            }
+        }
+        return officialArea;
+    }
+
+    public void setOfficialArea(BaUnitAreaBean newValue) {
+        if (officialArea != null) {
+            baUnitAreaList.remove(officialArea);
+        }
+        officialArea = newValue;
+        baUnitAreaList.add(officialArea);
+
     }
 }

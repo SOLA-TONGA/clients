@@ -128,4 +128,41 @@ public class BaUnitSummaryBean extends AbstractTransactionedBean {
         this.folioRegDate = value;
         propertySupport.firePropertyChange(FOLIO_REG_DATE_PROPERTY, oldValue, value);
     }
+
+    /**
+     * Returns true if the property is a Lease
+     */
+    public boolean isLease() {
+        return BaUnitTypeBean.CODE_LEASED_UNIT.equals(this.getTypeCode());
+    }
+
+    /**
+     * Returns true if the property is an Allotment (either Town or Tax
+     * allotment)
+     */
+    public boolean isAllotment() {
+        return BaUnitTypeBean.CODE_TOWN_ALLOTMENT_UNIT.equals(this.getTypeCode())
+                || BaUnitTypeBean.CODE_TAX_UNIT.equals(this.getTypeCode());
+    }
+
+    /**
+     * Returns true if the property is the estate of a Noble or the King
+     */
+    public boolean isEstate() {
+        return BaUnitTypeBean.CODE_ESTATE_UNIT.equals(this.getTypeCode());
+    }
+
+    /**
+     * Returns true if the property represents a Town
+     */
+    public boolean isTown() {
+        return BaUnitTypeBean.CODE_TOWN_UNIT.equals(this.getTypeCode());
+    }
+
+    /**
+     * Returns true if the property represents an island
+     */
+    public boolean isIsland() {
+        return BaUnitTypeBean.CODE_ISLAND_UNIT.equals(this.getTypeCode());
+    }
 }

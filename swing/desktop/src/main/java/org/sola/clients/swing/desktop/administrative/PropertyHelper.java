@@ -29,7 +29,6 @@
  */
 package org.sola.clients.swing.desktop.administrative;
 
-import java.math.BigDecimal;
 import org.sola.clients.beans.administrative.BaUnitAreaBean;
 import org.sola.clients.beans.administrative.BaUnitBean;
 import org.sola.clients.beans.administrative.BaUnitSummaryBean;
@@ -46,17 +45,22 @@ import org.sola.clients.beans.referencedata.StatusConstants;
  */
 public class PropertyHelper {
 
+    public static final String NAME_PART_LEASE = "Lease";
+
     public static BaUnitBean prepareNewLease(ApplicationBean appBean) {
         BaUnitBean result = new BaUnitBean();
         result.setTypeCode(BaUnitTypeBean.CODE_LEASED_UNIT);
         result.setStatusCode(StatusConstants.PENDING);
+        result.setNameLastpart(NAME_PART_LEASE);
+        result.setName("");
         if (appBean.getSelectedProperty() != null) {
             if (appBean.getSelectedProperty().getLeaseNumber() != null
                     && appBean.getSelectedProperty().getLeaseBaUnitId() == null) {
                 // Set the lease number if it has been specified. 
                 result.setNameFirstpart(appBean.getSelectedProperty().getLeaseNumber());
-                result.setNameLastpart("");
+                result.setName(appBean.getSelectedProperty().getLeaseNumber());
             }
+
             // Set details of Lease RRR
             RrrBean leaseRrr = new RrrBean();
             leaseRrr.setTypeCode(RrrBean.CODE_LEASE);
@@ -71,6 +75,7 @@ public class PropertyHelper {
                 BaUnitAreaBean areaBean = new BaUnitAreaBean();
                 areaBean.setTypeCode(BaUnitAreaBean.CODE_OFFICIAL_AREA);
                 areaBean.setSize(appBean.getSelectedProperty().getLeaseArea());
+                result.setOfficialArea(areaBean);
             }
 
             // Associate the allotment to the lease
@@ -86,7 +91,7 @@ public class PropertyHelper {
             if (town != null) {
                 result.getParentBaUnits().addAsNew(town);
             }
-            
+
             if (appBean.getSelectedProperty().getDescription() != null) {
                 result.addBaUnitNotation(appBean.getSelectedProperty().getDescription());
             }

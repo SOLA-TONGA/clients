@@ -30,10 +30,13 @@
 package org.sola.clients.swing.ui.renderers;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.text.DateFormat;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.text.ParseException;
+import java.util.HashMap;
+import java.util.Map;
 import javax.swing.JFormattedTextField;
 import javax.swing.text.DateFormatter;
 import javax.swing.text.DefaultFormatter;
@@ -47,11 +50,14 @@ import org.sola.common.logging.LogUtility;
  */
 public class FormattersFactory {
 
-    private DefaultFormatterFactory decimalFormatterFactory;
-    private DefaultFormatterFactory integerFormatterFactory;
-    private DefaultFormatterFactory shortFormatterFactory;
-    private DefaultFormatterFactory dateFormatterFactory;
-    private DefaultFormatterFactory imperialFormatterFactory;
+    private Map<String, DefaultFormatterFactory> factoryMap = new HashMap<String, DefaultFormatterFactory>();
+    private static final String DECIMAL_FACTORY = "decimal";
+    private static final String INTEGER_FACTORY = "integer";
+    private static final String SHORT_FACTORY = "short";
+    private static final String DATE_FACTORY = "date";
+    private static final String IMPERIAL_FACTORY = "imperial";
+    private static final String METRIC_AREA_FACTORY = "metricArea";
+    private static final String MONEY_FACTORY = "money";
 
     private FormattersFactory() {
     }
@@ -65,31 +71,92 @@ public class FormattersFactory {
         private static final FormattersFactory INSTANCE = new FormattersFactory();
     }
 
+    /**
+     * Returns a custom formatter factory for displaying and editing a
+     * BigDecimal value. This default method will display the BigDecimal up to 5
+     * decimal points To use this factory, set the formatterFactory property of
+     * the JFormattedTextField to
+     * {@code FormattersFactory.getInstance().getDecimalFormatterFactory()}
+     */
     public DefaultFormatterFactory getDecimalFormatterFactory() {
-        if (decimalFormatterFactory == null) {
-            DefaultFormatter fmt = new NumberFormatter(new DecimalFormat("#.#######"));
+        return getDecimalFormatterFactory(5);
+    }
+
+    /**
+     * Returns a custom formatter factory for displaying and editing a
+     * BigDecimal value. The precision parameter can be used to indicate the
+     * number of decimal places to display. Must be a value from 0 (no decimal
+     * places) to up 12. To use this factory, set the formatterFactory property
+     * of the JFormattedTextField to
+     * {@code FormattersFactory.getInstance().getDecimalFormatterFactory(int)}
+     *
+     * @param precision The number of decimal places to display. From 0 to 12
+     * @return
+     */
+    public DefaultFormatterFactory getDecimalFormatterFactory(int precision) {
+        if (!factoryMap.containsKey(DECIMAL_FACTORY + Integer.toString(precision))) {
+            // Create a format mask to use for displaying the data value
+            String formatMask = "#";
+            if (precision > 0) {
+                formatMask += ".";
+                for (int x = 0; x < precision; x++) {
+                    formatMask += "#";
+                }
+            }
+            DefaultFormatter fmt = new NumberFormatter(new DecimalFormat(formatMask)) {
+                // Accept null or emtpy string values entered by the user as null.
+                @Override
+                public Object stringToValue(String userInput) throws ParseException {
+                    Object result = null;
+                    if (userInput != null && !userInput.trim().isEmpty()) {
+                        result = super.stringToValue(userInput);
+                    }
+                    return result;
+                }
+            };
             fmt.setValueClass(BigDecimal.class);
-            decimalFormatterFactory = new DefaultFormatterFactory(fmt, fmt, fmt);
+            factoryMap.put(DECIMAL_FACTORY + Integer.toString(precision),
+                    new DefaultFormatterFactory(fmt, fmt, fmt));
         }
-        return decimalFormatterFactory;
+        return factoryMap.get(DECIMAL_FACTORY + Integer.toString(precision));
     }
 
     public DefaultFormatterFactory getIntegerFormatterFactory() {
-        if (integerFormatterFactory == null) {
-            DefaultFormatter fmt = new NumberFormatter(NumberFormat.getIntegerInstance());
+        if (!factoryMap.containsKey(INTEGER_FACTORY)) {
+            DefaultFormatter fmt = new NumberFormatter(NumberFormat.getIntegerInstance()) {
+                // Accept null or emtpy string values entered by the user as null.
+                @Override
+                public Object stringToValue(String userInput) throws ParseException {
+                    Object result = null;
+                    if (userInput != null && !userInput.trim().isEmpty()) {
+                        result = super.stringToValue(userInput);
+                    }
+                    return result;
+                }
+            };
             fmt.setValueClass(Integer.class);
-            integerFormatterFactory = new DefaultFormatterFactory(fmt, fmt, fmt);
+            factoryMap.put(INTEGER_FACTORY, new DefaultFormatterFactory(fmt, fmt, fmt));
         }
-        return integerFormatterFactory;
+        return factoryMap.get(INTEGER_FACTORY);
     }
 
     public DefaultFormatterFactory getShortFormatterFactory() {
-        if (shortFormatterFactory == null) {
-            DefaultFormatter fmt = new NumberFormatter();
+        if (!factoryMap.containsKey(SHORT_FACTORY)) {
+            DefaultFormatter fmt = new NumberFormatter() {
+                // Accept null or emtpy string values entered by the user as null.
+                @Override
+                public Object stringToValue(String userInput) throws ParseException {
+                    Object result = null;
+                    if (userInput != null && !userInput.trim().isEmpty()) {
+                        result = super.stringToValue(userInput);
+                    }
+                    return result;
+                }
+            };
             fmt.setValueClass(Short.class);
-            shortFormatterFactory = new DefaultFormatterFactory(fmt, fmt, fmt);
+            factoryMap.put(SHORT_FACTORY, new DefaultFormatterFactory(fmt, fmt, fmt));
         }
-        return shortFormatterFactory;
+        return factoryMap.get(SHORT_FACTORY);
     }
 
     /**
@@ -102,7 +169,7 @@ public class FormattersFactory {
      * {@code FormattersFactory.getInstance().getDateFormatterFactory()}
      */
     public DefaultFormatterFactory getDateFormatterFactory() {
-        if (dateFormatterFactory == null) {
+        if (!factoryMap.containsKey(DATE_FACTORY)) {
             DateFormatter displayFormat = new DateFormatter(DateFormat.getDateInstance(DateFormat.MEDIUM));
             DateFormatter editFormat = new DateFormatter(DateFormat.getDateInstance(DateFormat.SHORT)) {
                 // Accept null or emtpy string values entered by the user as null.
@@ -115,10 +182,10 @@ public class FormattersFactory {
                     return result;
                 }
             };
-
-            dateFormatterFactory = new DefaultFormatterFactory(displayFormat, displayFormat, editFormat);
+            factoryMap.put(DATE_FACTORY,
+                    new DefaultFormatterFactory(displayFormat, displayFormat, editFormat));
         }
-        return dateFormatterFactory;
+        return factoryMap.get(DATE_FACTORY);
     }
 
     /**
@@ -127,10 +194,9 @@ public class FormattersFactory {
      * use this factory, set the formatterFactory property of the
      * JFormattedTextField to
      * {@code FormattersFactory.getInstance().getImperialFormatterFactory()}
-     *
      */
     public DefaultFormatterFactory getImperialFormatterFactory() {
-        if (imperialFormatterFactory == null) {
+        if (!factoryMap.containsKey(IMPERIAL_FACTORY)) {
             DefaultFormatter format = new DefaultFormatter() {
                 // Accept null or emtpy string values entered by the user as null.
                 @Override
@@ -162,8 +228,84 @@ public class FormattersFactory {
                     return result;
                 }
             };
-            imperialFormatterFactory = new DefaultFormatterFactory(format, format, format);
+            factoryMap.put(IMPERIAL_FACTORY, new DefaultFormatterFactory(format, format, format));
         }
-        return imperialFormatterFactory;
+        return factoryMap.get(IMPERIAL_FACTORY);
+    }
+
+    /**
+     * Returns a custom formatter factory for displaying and editing an area
+     * value in metric format. When displayed, the area will be represented as
+     * either hectares or meters depending on the size. When editing, the user
+     * will enter a meter value up to 1 dp. To use this factory, set the
+     * formatterFactory property of the JFormattedTextField to
+     * {@code FormattersFactory.getInstance().getMetricAreaFormatterFactory()}
+     */
+    public DefaultFormatterFactory getMetricAreaFormatterFactory() {
+        if (!factoryMap.containsKey(METRIC_AREA_FACTORY)) {
+
+            DefaultFormatter edit = new NumberFormatter(new DecimalFormat("#.#")) {
+                // Accept null or emtpy string values entered by the user as null.
+                @Override
+                public Object stringToValue(String userInput) throws ParseException {
+                    Object result = null;
+                    if (userInput != null && !userInput.trim().isEmpty()) {
+                        result = super.stringToValue(userInput);
+                    }
+                    return result;
+                }
+            };
+            edit.setValueClass(BigDecimal.class);
+
+            DefaultFormatter displayFormat = new DefaultFormatter() {
+                @Override
+                public String valueToString(Object value) throws ParseException {
+                    String result = null;
+                    if (value != null && BigDecimal.class.isAssignableFrom(value.getClass())) {
+                        // Display the value as an imperial area. 
+                        result = NumberUtility.formatAreaMetric((BigDecimal) value);
+                    }
+                    return result;
+                }
+            };
+
+            factoryMap.put(METRIC_AREA_FACTORY, new DefaultFormatterFactory(displayFormat,
+                    displayFormat, edit));
+        }
+        return factoryMap.get(METRIC_AREA_FACTORY);
+    }
+
+    /**
+     * Returns a custom formatter factory for displaying and editing money
+     * values. When displayed, the value will be represented with the
+     * appropriate currency symbol (e.g. $,£,€) . When editing, the user will
+     * enter a value up to 2 d.p. To use this factory, set the formatterFactory
+     * property of the JFormattedTextField to
+     * {@code FormattersFactory.getInstance().getMoneyFormatterFactory()}
+     */
+    public DefaultFormatterFactory getMoneyFormatterFactory() {
+        if (!factoryMap.containsKey(MONEY_FACTORY)) {
+
+            DefaultFormatter edit = new NumberFormatter(new DecimalFormat("#.00")) {
+                // Accept null or emtpy string values entered by the user as null.
+                @Override
+                public Object stringToValue(String userInput) throws ParseException {
+                    Object result = null;
+                    if (userInput != null && !userInput.trim().isEmpty()) {
+                        result = super.stringToValue(userInput);
+                    }
+                    return result;
+                }
+            };
+            edit.setValueClass(BigDecimal.class);
+
+            // Currency Symbol for Tonga is T$
+            DefaultFormatter displayFormat = new NumberFormatter(new DecimalFormat("T$#.00"));
+            displayFormat.setValueClass(BigDecimal.class);
+
+            factoryMap.put(MONEY_FACTORY, new DefaultFormatterFactory(displayFormat,
+                    displayFormat, edit));
+        }
+        return factoryMap.get(MONEY_FACTORY);
     }
 }

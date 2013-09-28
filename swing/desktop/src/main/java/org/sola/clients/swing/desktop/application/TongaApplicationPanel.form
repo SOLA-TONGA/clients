@@ -730,6 +730,11 @@
                         <Property name="name" type="java.lang.String" value="txtAppNumber1" noResource="true"/>
                         <Property name="requestFocusEnabled" type="boolean" value="false"/>
                       </Properties>
+                      <BindingProperties>
+                        <BindingProperty name="text" source="appBean" sourcePath="${nr}" target="txtAppNumber1" targetPath="text" updateStrategy="0" immediately="false">
+                          <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
+                        </BindingProperty>
+                      </BindingProperties>
                     </Component>
                   </SubComponents>
                 </Container>
@@ -1834,7 +1839,7 @@
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="lblArea" alignment="0" pref="211" max="32767" attributes="0"/>
-                              <Component id="txtAllotmentArea" alignment="0" max="32767" attributes="0"/>
+                              <Component id="txtAllotmentArea" alignment="1" max="32767" attributes="0"/>
                           </Group>
                         </DimensionLayout>
                         <DimensionLayout dim="1">
@@ -1857,14 +1862,18 @@
                             <Property name="name" type="java.lang.String" value="lblArea" noResource="true"/>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JTextField" name="txtAllotmentArea">
+                        <Component class="javax.swing.JFormattedTextField" name="txtAllotmentArea">
                           <Properties>
+                            <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="FormattersFactory.getInstance().getMetricAreaFormatterFactory()" type="code"/>
+                            </Property>
+                            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+                              <ResourceString bundle="org/sola/clients/swing/desktop/application/Bundle.properties" key="TongaApplicationPanel.txtAllotmentArea.text" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+                            </Property>
                             <Property name="name" type="java.lang.String" value="txtAllotmentArea" noResource="true"/>
                           </Properties>
                           <BindingProperties>
-                            <BindingProperty name="text" source="appBean" sourcePath="${selectedProperty.area}" target="txtAllotmentArea" targetPath="text" updateStrategy="0" immediately="false">
-                              <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
-                            </BindingProperty>
+                            <BindingProperty name="value" source="appBean" sourcePath="${selectedProperty.area}" target="txtAllotmentArea" targetPath="value" updateStrategy="0" immediately="false"/>
                           </BindingProperties>
                         </Component>
                       </SubComponents>
@@ -2356,7 +2365,7 @@
                       <Layout>
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="lblRental" alignment="0" pref="211" max="32767" attributes="0"/>
+                              <Component id="lblRental" pref="211" max="32767" attributes="0"/>
                               <Component id="txtRental" alignment="0" max="32767" attributes="0"/>
                           </Group>
                         </DimensionLayout>
@@ -2364,7 +2373,7 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="lblRental" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
                                   <Component id="txtRental" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace pref="15" max="32767" attributes="0"/>
                               </Group>
@@ -2380,14 +2389,18 @@
                             <Property name="name" type="java.lang.String" value="lblRental" noResource="true"/>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JTextField" name="txtRental">
+                        <Component class="javax.swing.JFormattedTextField" name="txtRental">
                           <Properties>
+                            <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="FormattersFactory.getInstance().getMoneyFormatterFactory()" type="code"/>
+                            </Property>
+                            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+                              <ResourceString bundle="org/sola/clients/swing/desktop/application/Bundle.properties" key="TongaApplicationPanel.txtRental.text" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+                            </Property>
                             <Property name="name" type="java.lang.String" value="txtRental" noResource="true"/>
                           </Properties>
                           <BindingProperties>
-                            <BindingProperty name="text" source="appBean" sourcePath="${selectedProperty.amount}" target="txtRental" targetPath="text" updateStrategy="0" immediately="false">
-                              <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
-                            </BindingProperty>
+                            <BindingProperty name="value" source="appBean" sourcePath="${selectedProperty.amount}" target="txtRental" targetPath="value" updateStrategy="0" immediately="false"/>
                           </BindingProperties>
                         </Component>
                       </SubComponents>
@@ -2404,7 +2417,7 @@
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="lblTerm" alignment="0" pref="211" max="32767" attributes="0"/>
-                              <Component id="txtTerm" alignment="0" max="32767" attributes="0"/>
+                              <Component id="txtTerm" alignment="1" max="32767" attributes="0"/>
                           </Group>
                         </DimensionLayout>
                         <DimensionLayout dim="1">
@@ -2427,14 +2440,18 @@
                             <Property name="name" type="java.lang.String" value="lblTerm" noResource="true"/>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JTextField" name="txtTerm">
+                        <Component class="javax.swing.JFormattedTextField" name="txtTerm">
                           <Properties>
+                            <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="FormattersFactory.getInstance().getDecimalFormatterFactory(1)" type="code"/>
+                            </Property>
+                            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+                              <ResourceString bundle="org/sola/clients/swing/desktop/application/Bundle.properties" key="TongaApplicationPanel.txtTerm.text" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+                            </Property>
                             <Property name="name" type="java.lang.String" value="txtTerm" noResource="true"/>
                           </Properties>
                           <BindingProperties>
-                            <BindingProperty name="text" source="appBean" sourcePath="${selectedProperty.leaseTerm}" target="txtTerm" targetPath="text" updateStrategy="0" immediately="false">
-                              <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
-                            </BindingProperty>
+                            <BindingProperty name="value" source="appBean" sourcePath="${selectedProperty.leaseTerm}" target="txtTerm" targetPath="value" updateStrategy="0" immediately="false"/>
                           </BindingProperties>
                         </Component>
                       </SubComponents>
@@ -2450,7 +2467,7 @@
                       <Layout>
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="lblLeaseArea" alignment="0" pref="211" max="32767" attributes="0"/>
+                              <Component id="lblLeaseArea" pref="211" max="32767" attributes="0"/>
                               <Component id="txtLeaseArea" alignment="0" max="32767" attributes="0"/>
                           </Group>
                         </DimensionLayout>
@@ -2458,7 +2475,7 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="lblLeaseArea" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
                                   <Component id="txtLeaseArea" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace pref="15" max="32767" attributes="0"/>
                               </Group>
@@ -2474,14 +2491,18 @@
                             <Property name="name" type="java.lang.String" value="lblLeaseArea" noResource="true"/>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JTextField" name="txtLeaseArea">
+                        <Component class="javax.swing.JFormattedTextField" name="txtLeaseArea">
                           <Properties>
+                            <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="FormattersFactory.getInstance().getMetricAreaFormatterFactory()" type="code"/>
+                            </Property>
+                            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+                              <ResourceString bundle="org/sola/clients/swing/desktop/application/Bundle.properties" key="TongaApplicationPanel.txtLeaseArea.text" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+                            </Property>
                             <Property name="name" type="java.lang.String" value="txtLeaseArea" noResource="true"/>
                           </Properties>
                           <BindingProperties>
-                            <BindingProperty name="text" source="appBean" sourcePath="${selectedProperty.leaseArea}" target="txtLeaseArea" targetPath="text" updateStrategy="0" immediately="false">
-                              <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
-                            </BindingProperty>
+                            <BindingProperty name="value" source="appBean" sourcePath="${selectedProperty.leaseArea}" target="txtLeaseArea" targetPath="value" updateStrategy="0" immediately="false"/>
                           </BindingProperties>
                         </Component>
                       </SubComponents>

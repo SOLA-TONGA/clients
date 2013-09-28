@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Tonga Lease Application Report" pageWidth="595" pageHeight="842" columnWidth="539" leftMargin="28" rightMargin="28" topMargin="28" bottomMargin="28" whenResourceMissingType="Empty" uuid="ac6f666c-9299-4670-8732-3db826427724">
 	<property name="ireport.zoom" value="1.3310000000000006"/>
-	<property name="ireport.x" value="136"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="674"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>
@@ -221,7 +221,7 @@
 				</textElement>
 				<text><![CDATA[pea koe fakamatala]]></text>
 			</staticText>
-			<textField isBlankWhenNull="false">
+			<textField isBlankWhenNull="true">
 				<reportElement uuid="93dca089-6fd3-4b0a-ad36-6e7341b0b9ec" x="275" y="145" width="162" height="16"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Serif" size="10"/>
@@ -241,21 +241,21 @@
 				</textElement>
 				<text><![CDATA[I have the honour to make application for the lease of certain property at more particularly]]></text>
 			</staticText>
-			<textField isBlankWhenNull="false">
+			<textField isBlankWhenNull="true">
 				<reportElement uuid="93dca089-6fd3-4b0a-ad36-6e7341b0b9ec" x="461" y="175" width="78" height="15"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Serif" size="10"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{selectedProperty}.getLandUseType().getDisplayValue()]]></textFieldExpression>
 			</textField>
-			<textField isBlankWhenNull="false">
+			<textField isBlankWhenNull="true">
 				<reportElement uuid="93dca089-6fd3-4b0a-ad36-6e7341b0b9ec" x="390" y="0" width="149" height="16"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Serif" size="10"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{contactPerson}.getAddress().getDescription()]]></textFieldExpression>
 			</textField>
-			<textField isBlankWhenNull="false">
+			<textField isBlankWhenNull="true">
 				<reportElement uuid="93dca089-6fd3-4b0a-ad36-6e7341b0b9ec" x="390" y="16" width="149" height="16"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Serif" size="10"/>
@@ -288,7 +288,7 @@
 				</textElement>
 				<text><![CDATA[Date]]></text>
 			</staticText>
-			<textField isBlankWhenNull="false">
+			<textField isBlankWhenNull="true">
 				<reportElement uuid="93dca089-6fd3-4b0a-ad36-6e7341b0b9ec" x="390" y="32" width="149" height="16"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Serif" size="10" isPdfEmbedded="false"/>
@@ -553,21 +553,21 @@
 				</textElement>
 				<text><![CDATA[Signature of applicant]]></text>
 			</staticText>
-			<textField isBlankWhenNull="false">
+			<textField isBlankWhenNull="true">
 				<reportElement uuid="93dca089-6fd3-4b0a-ad36-6e7341b0b9ec" x="184" y="371" width="267" height="16"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Serif" size="10"/>
 				</textElement>
 				<textFieldExpression><![CDATA["(" + $F{contactPerson}.getFullName() + ")"]]></textFieldExpression>
 			</textField>
-			<textField isBlankWhenNull="false">
+			<textField isBlankWhenNull="true">
 				<reportElement uuid="93dca089-6fd3-4b0a-ad36-6e7341b0b9ec" x="0" y="258" width="134" height="20"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Serif" size="10"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{selectedProperty}.getIsland().getDisplayValue()]]></textFieldExpression>
 			</textField>
-			<textField isBlankWhenNull="false">
+			<textField isBlankWhenNull="true">
 				<reportElement uuid="93dca089-6fd3-4b0a-ad36-6e7341b0b9ec" x="134" y="258" width="134" height="20"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Serif" size="10"/>
@@ -581,35 +581,35 @@
 				</textElement>
 				<textFieldExpression><![CDATA[new java.text.SimpleDateFormat("dd MMM yyyy").format($F{selectedProperty}.getRegistrationDate())]]></textFieldExpression>
 			</textField>
-			<textField isBlankWhenNull="false">
+			<textField isBlankWhenNull="true">
 				<reportElement uuid="93dca089-6fd3-4b0a-ad36-6e7341b0b9ec" x="402" y="258" width="134" height="20"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Serif" size="10"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{selectedProperty}.getArea().intValue() + "m²"]]></textFieldExpression>
 			</textField>
-			<textField isBlankWhenNull="false">
+			<textField isBlankWhenNull="true">
 				<reportElement uuid="93dca089-6fd3-4b0a-ad36-6e7341b0b9ec" x="0" y="321" width="134" height="20"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Serif" size="10"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{selectedProperty}.getLeaseArea().intValue() + "m²"]]></textFieldExpression>
 			</textField>
-			<textField isBlankWhenNull="false">
+			<textField isBlankWhenNull="true">
 				<reportElement uuid="93dca089-6fd3-4b0a-ad36-6e7341b0b9ec" x="134" y="322" width="134" height="20"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Serif" size="10"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{selectedProperty}.getLeaseTerm().intValue()]]></textFieldExpression>
 			</textField>
-			<textField isBlankWhenNull="false">
+			<textField isBlankWhenNull="true">
 				<reportElement uuid="93dca089-6fd3-4b0a-ad36-6e7341b0b9ec" x="268" y="321" width="134" height="20"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Serif" size="10"/>
 				</textElement>
 				<textFieldExpression><![CDATA["$" + $F{selectedProperty}.getAmount()]]></textFieldExpression>
 			</textField>
-			<textField isBlankWhenNull="false">
+			<textField isBlankWhenNull="true">
 				<reportElement uuid="93dca089-6fd3-4b0a-ad36-6e7341b0b9ec" x="402" y="321" width="134" height="20"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Serif" size="10"/>
@@ -694,7 +694,7 @@
 				</textElement>
 				<text><![CDATA[Signature of Grantor]]></text>
 			</staticText>
-			<textField isBlankWhenNull="false">
+			<textField isBlankWhenNull="true">
 				<reportElement uuid="93dca089-6fd3-4b0a-ad36-6e7341b0b9ec" x="184" y="480" width="267" height="16"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Serif" size="10"/>

@@ -68,7 +68,6 @@ public class ApplicationServiceBean extends ApplicationServiceSummaryBean {
     public static final String APPROVAL_DATE = "approvalDate";
     public static final String APPROVAL_NUMBER = "approvalNumber";
     public static final String DESCRIPTION_PROPERTY = "description";
-    
     private ServiceActionTypeBean actionBean;
     private ServiceStatusTypeBean statusBean;
     @Length(max = 4000, message = ClientMessage.CHECK_ACTION_NOTES_LENGTH, payload = Localized.class)
@@ -236,42 +235,42 @@ public class ApplicationServiceBean extends ApplicationServiceSummaryBean {
         actionCompleted = value;
         propertySupport.firePropertyChange(ACTION_COMPLETED_PROPERTY, old, value);
     }
-    
-    public String getLeaseMatter(){
+
+    public String getLeaseMatter() {
         return leaseMatter;
     }
-    
-    public void setLeaseMatter(String  value){
+
+    public void setLeaseMatter(String value) {
         String old = leaseMatter;
         leaseMatter = value;
         propertySupport.firePropertyChange(LEASE_MATTER, old, value);
     }
-    
-    public Date getApprovalDate(){
+
+    public Date getApprovalDate() {
         return approvalDate;
     }
-    
-    public void setApprovalDate(Date value){
+
+    public void setApprovalDate(Date value) {
         Date old = approvalDate;
         approvalDate = value;
         propertySupport.firePropertyChange(APPROVAL_DATE, old, value);
     }
-    
-    public String getApprovalNumber(){
+
+    public String getApprovalNumber() {
         return approvalNumber;
     }
-    
-    public void setApprovalNumber(String value){
+
+    public void setApprovalNumber(String value) {
         String old = approvalNumber;
         approvalNumber = value;
         propertySupport.firePropertyChange(APPROVAL_NUMBER, old, value);
     }
-    
-    public String getDescription(){
+
+    public String getDescription() {
         return description;
     }
-    
-    public void setDescription(String value){
+
+    public void setDescription(String value) {
         String old = description;
         description = value;
         propertySupport.firePropertyChange(DESCRIPTION_PROPERTY, old, value);
@@ -409,5 +408,21 @@ public class ApplicationServiceBean extends ApplicationServiceSummaryBean {
 
     public void setConcatenatedName(String concatenatedName) {
         this.concatenatedName = concatenatedName;
+    }
+
+    /**
+     * Identifies if this service is a registry correction service or not.
+     */
+    public boolean isRegistryCorrection() {
+        return RequestTypeBean.CODE_CORRECT_REGISTRY.equals(getRequestTypeCode())
+                || RequestTypeBean.CODE_CORRECT_REGISTRY_REMOVE.equals(getRequestTypeCode());
+    }
+
+    /**
+     * Identifies if the service is one used to create a new lease or allotment
+     * property
+     */
+    public boolean isNewProperty() {
+        return RequestTypeBean.CODE_REGISTER_LEASE.equals(getRequestTypeCode());
     }
 }
