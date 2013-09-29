@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Application status report" pageWidth="595" pageHeight="842" columnWidth="548" leftMargin="27" rightMargin="20" topMargin="24" bottomMargin="20" resourceBundle="org.sola.clients.reports.locale.ApplicationStatusReport" uuid="baab6da3-9ed1-4f44-96ff-06cea1e2fd89">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="48"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#006633"/>
@@ -132,9 +132,6 @@
 	<field name="status" class="java.lang.String">
 		<fieldDescription><![CDATA[status.displayValue]]></fieldDescription>
 	</field>
-	<field name="description" class="java.lang.String">
-		<fieldDescription><![CDATA[description]]></fieldDescription>
-	</field>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -259,13 +256,6 @@
 					<font fontName="SansSerif" size="12" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{name} + " " + $F{lastName}]]></textFieldExpression>
-			</textField>
-			<textField isBlankWhenNull="true">
-				<reportElement uuid="b161ee47-c034-45f4-8495-3868be6a92f8" x="106" y="121" width="442" height="20"/>
-				<textElement>
-					<font fontName="SansSerif" size="12" isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{description}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement uuid="e8961bff-2bf8-4474-8534-1e6c7bcb6a6c" x="106" y="146" width="442" height="20"/>
