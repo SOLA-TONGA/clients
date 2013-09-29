@@ -127,6 +127,31 @@ public final class ServiceLauncher {
         serviceMap.put(RequestTypeBean.CODE_REGISTER_LEASE,
                 new String[]{TongaPropertyPanel.class.getName(), MainContentPanel.CARD_PROPERTY_PANEL,
             ClientMessage.PROGRESS_MSG_OPEN_PROPERTY});
+
+        // Transfer Lease
+        serviceMap.put(RequestTypeBean.CODE_TRANSFER_LEASE,
+                new String[]{TongaPropertyPanel.class.getName(), MainContentPanel.CARD_PROPERTY_PANEL,
+            ClientMessage.PROGRESS_MSG_OPEN_PROPERTY});
+
+        // Cancel Property (Lease or Allotment)
+        serviceMap.put(RequestTypeBean.CODE_CANCEL_PROPERTY,
+                new String[]{TongaPropertyPanel.class.getName(), MainContentPanel.CARD_PROPERTY_PANEL,
+            ClientMessage.PROGRESS_MSG_OPEN_PROPERTY});
+
+        // Register Mortgage
+        serviceMap.put(RequestTypeBean.CODE_REGISTER_MORTGAGE,
+                new String[]{TongaPropertyPanel.class.getName(), MainContentPanel.CARD_PROPERTY_PANEL,
+            ClientMessage.PROGRESS_MSG_OPEN_PROPERTY});
+
+        // Vary Mortgage
+        serviceMap.put(RequestTypeBean.CODE_VARY_MORTGAGE,
+                new String[]{TongaPropertyPanel.class.getName(), MainContentPanel.CARD_PROPERTY_PANEL,
+            ClientMessage.PROGRESS_MSG_OPEN_PROPERTY});
+
+        // Discharge Mortgage
+        serviceMap.put(RequestTypeBean.CODE_DISCHARGE_MORTGAGE,
+                new String[]{TongaPropertyPanel.class.getName(), MainContentPanel.CARD_PROPERTY_PANEL,
+            ClientMessage.PROGRESS_MSG_OPEN_PROPERTY});
     }
 
     /**

@@ -245,8 +245,9 @@ public class TongaPropertyPanel extends ContentPanel {
                     customizeParentPropertyButtons();
                 } else if (evt.getPropertyName().equals(BaUnitBean.SELECTED_CHILD_BA_UNIT_PROPERTY)) {
                     customizeChildPropertyButtons();
+                } else if (evt.getPropertyName().equals(BaUnitBean.TYPE_CODE_PROPERTY)) {
+                    setTitle();
                 }
-
             }
         });
 
@@ -263,17 +264,11 @@ public class TongaPropertyPanel extends ContentPanel {
     }
 
     /**
-     * Runs form customization, to restrict certain actions, bind listeners on
-     * the {@link BaUnitBean} and other components.
+     * Sets the title for the TongaPropertyForm based on the property being
+     * displayed.
      */
-    private void customizeForm() {
+    private void setTitle() {
 
-        boolean enabled = !readOnly;
-        boolean enabledOnNew = enabled && applicationService != null
-                && (applicationService.isNewProperty()
-                || applicationService.isRegistryCorrection());
-
-        // Set the title for the form
         headerPanel.setTitleText(String.format(
                 resourceBundle.getString("TongaPropertyPanel.Property.headerPanel.text"),
                 CacheManager.getBeanByCode(CacheManager.getBaUnitTypes(),
@@ -286,15 +281,31 @@ public class TongaPropertyPanel extends ContentPanel {
                     String.format(resourceBundle.getString("TongaPropertyPanel.Application.headerPanel.text"),
                     applicationService.getRequestType().getDisplayValue(), applicationBean.getNr())));
         }
+    }
+
+    /**
+     * Runs form customization, to restrict certain actions, bind listeners on
+     * the {@link BaUnitBean} and other components.
+     */
+    private void customizeForm() {
+
+        boolean enabled = !readOnly;
+        boolean enabledOnNew = enabled && applicationService != null
+                && (applicationService.isNewProperty()
+                || applicationService.isRegistryCorrection());
+
+        // Set the title for the form
+        setTitle();
 
         areaPanel.setEnabled(enabledOnNew);
         allowEdit(txtFirstPart, enabledOnNew);
         allowEdit(txtLastPart, false);
         allowEdit(txtArea, enabledOnNew);
         allowEdit(txtAreaImperial, enabledOnNew);
-
+        rbTownAllotment.setVisible(false);
+        rbTaxAllotment.setVisible(false);
+        allowEdit(txtParcelName, enabledOnNew);
         btnSave.setEnabled(enabled);
-        txtName.setEditable(enabled);
         customizeRightsButtons(null);
         customizeNotationButtons(null);
         customizeRightTypesList();
@@ -317,6 +328,11 @@ public class TongaPropertyPanel extends ContentPanel {
             lblFirstPart.setText(resourceBundle.getString("TongaPropertyPanel.Allotment.lblFirstPart.text"));
             lblLastPart.setText(resourceBundle.getString("TongaPropertyPanel.Allotment.lblLastPart.text"));
             allowEdit(txtLastPart, enabledOnNew);
+            allowEdit(txtParcelName, enabledOnNew);
+            rbTownAllotment.setVisible(true);
+            rbTaxAllotment.setVisible(true);
+            rbTownAllotment.setEnabled(enabledOnNew);
+            rbTaxAllotment.setEnabled(enabledOnNew);
         } else if (baUnitBean1.isLease()) {
             lblFirstPart.setText(resourceBundle.getString("TongaPropertyPanel.Lease.lblFirstPart.text"));
         }
@@ -1164,8 +1180,8 @@ public class TongaPropertyPanel extends ContentPanel {
         tabsMain = new javax.swing.JTabbedPane();
         jPanel7 = new javax.swing.JPanel();
         jPanel12 = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
-        txtName = new javax.swing.JTextField();
+        lblParcelName = new javax.swing.JLabel();
+        txtParcelName = new javax.swing.JTextField();
         jToolBar4 = new javax.swing.JToolBar();
         btnViewPaperTitle = new javax.swing.JButton();
         btnLinkPaperTitle = new javax.swing.JButton();
@@ -1178,15 +1194,18 @@ public class TongaPropertyPanel extends ContentPanel {
         jPanel9 = new javax.swing.JPanel();
         lblLastPart = new javax.swing.JLabel();
         txtLastPart = new javax.swing.JTextField();
-        jPanel6 = new javax.swing.JPanel();
-        jLabel7 = new javax.swing.JLabel();
-        txtBaUnitStatus = new javax.swing.JTextField();
         areaPanel = new javax.swing.JPanel();
         labArea = new javax.swing.JLabel();
         txtArea = new javax.swing.JFormattedTextField();
         jPanel11 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         txtAreaImperial = new javax.swing.JFormattedTextField();
+        jPanel6 = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        txtBaUnitStatus = new javax.swing.JTextField();
+        jPanel18 = new javax.swing.JPanel();
+        rbTownAllotment = new javax.swing.JRadioButton();
+        rbTaxAllotment = new javax.swing.JRadioButton();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableParcels = new org.sola.clients.swing.common.controls.JTableWithDefaultStyles();
@@ -1447,27 +1466,27 @@ public class TongaPropertyPanel extends ContentPanel {
 
         jPanel12.setName("jPanel12"); // NOI18N
 
-        jLabel5.setText(bundle.getString("TongaPropertyPanel.jLabel5.text")); // NOI18N
-        jLabel5.setName("jLabel5"); // NOI18N
+        lblParcelName.setText(bundle.getString("TongaPropertyPanel.lblParcelName.text")); // NOI18N
+        lblParcelName.setName("lblParcelName"); // NOI18N
 
-        txtName.setName("txtName"); // NOI18N
+        txtParcelName.setName("txtParcelName"); // NOI18N
 
-        org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, baUnitBean1, org.jdesktop.beansbinding.ELProperty.create("${name}"), txtName, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, baUnitBean1, org.jdesktop.beansbinding.ELProperty.create("${registeredName}"), txtParcelName, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
 
         org.jdesktop.layout.GroupLayout jPanel12Layout = new org.jdesktop.layout.GroupLayout(jPanel12);
         jPanel12.setLayout(jPanel12Layout);
         jPanel12Layout.setHorizontalGroup(
             jPanel12Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(txtName)
-            .add(jLabel5, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .add(txtParcelName)
+            .add(lblParcelName, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel12Layout.setVerticalGroup(
             jPanel12Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel12Layout.createSequentialGroup()
-                .add(jLabel5)
+                .add(lblParcelName)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(txtName, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(txtParcelName, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -1561,38 +1580,6 @@ public class TongaPropertyPanel extends ContentPanel {
 
         jPanel13.add(jPanel9);
 
-        jPanel6.setName("jPanel6"); // NOI18N
-
-        jLabel7.setText(bundle.getString("TongaPropertyPanel.jLabel7.text")); // NOI18N
-        jLabel7.setName("jLabel7"); // NOI18N
-
-        txtBaUnitStatus.setEditable(false);
-        txtBaUnitStatus.setEnabled(false);
-        txtBaUnitStatus.setName("txtBaUnitStatus"); // NOI18N
-
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, baUnitBean1, org.jdesktop.beansbinding.ELProperty.create("${status.displayValue}"), txtBaUnitStatus, org.jdesktop.beansbinding.BeanProperty.create("text"));
-        bindingGroup.addBinding(binding);
-
-        org.jdesktop.layout.GroupLayout jPanel6Layout = new org.jdesktop.layout.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel6Layout.createSequentialGroup()
-                .add(jLabel7)
-                .addContainerGap(91, Short.MAX_VALUE))
-            .add(txtBaUnitStatus)
-        );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel6Layout.createSequentialGroup()
-                .add(jLabel7)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(txtBaUnitStatus, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        jPanel13.add(jPanel6);
-
         areaPanel.setName(bundle.getString("PropertyPanel.areaPanel.name_1")); // NOI18N
 
         labArea.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/red_asterisk.gif"))); // NOI18N
@@ -1656,6 +1643,70 @@ public class TongaPropertyPanel extends ContentPanel {
 
         jPanel13.add(jPanel11);
 
+        jPanel6.setName("jPanel6"); // NOI18N
+
+        jLabel7.setText(bundle.getString("TongaPropertyPanel.jLabel7.text")); // NOI18N
+        jLabel7.setName("jLabel7"); // NOI18N
+
+        txtBaUnitStatus.setEditable(false);
+        txtBaUnitStatus.setEnabled(false);
+        txtBaUnitStatus.setName("txtBaUnitStatus"); // NOI18N
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, baUnitBean1, org.jdesktop.beansbinding.ELProperty.create("${status.displayValue}"), txtBaUnitStatus, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+
+        org.jdesktop.layout.GroupLayout jPanel6Layout = new org.jdesktop.layout.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel6Layout.createSequentialGroup()
+                .add(jLabel7)
+                .addContainerGap(91, Short.MAX_VALUE))
+            .add(txtBaUnitStatus)
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel6Layout.createSequentialGroup()
+                .add(jLabel7)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(txtBaUnitStatus, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel13.add(jPanel6);
+
+        jPanel18.setName("jPanel18"); // NOI18N
+
+        rbTownAllotment.setText(bundle.getString("TongaPropertyPanel.rbTownAllotment.text")); // NOI18N
+        rbTownAllotment.setName("rbTownAllotment"); // NOI18N
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, baUnitBean1, org.jdesktop.beansbinding.ELProperty.create("${townAllotment}"), rbTownAllotment, org.jdesktop.beansbinding.BeanProperty.create("selected"));
+        bindingGroup.addBinding(binding);
+
+        rbTaxAllotment.setText(bundle.getString("TongaPropertyPanel.rbTaxAllotment.text")); // NOI18N
+        rbTaxAllotment.setName("rbTaxAllotment"); // NOI18N
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, baUnitBean1, org.jdesktop.beansbinding.ELProperty.create("${taxAllotment}"), rbTaxAllotment, org.jdesktop.beansbinding.BeanProperty.create("selected"));
+        bindingGroup.addBinding(binding);
+
+        org.jdesktop.layout.GroupLayout jPanel18Layout = new org.jdesktop.layout.GroupLayout(jPanel18);
+        jPanel18.setLayout(jPanel18Layout);
+        jPanel18Layout.setHorizontalGroup(
+            jPanel18Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel18Layout.createSequentialGroup()
+                .add(21, 21, 21)
+                .add(jPanel18Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, rbTownAllotment, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+                    .add(rbTaxAllotment, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+        );
+        jPanel18Layout.setVerticalGroup(
+            jPanel18Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel18Layout.createSequentialGroup()
+                .add(rbTownAllotment, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 26, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(rbTaxAllotment, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 25, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+        );
+
         org.jdesktop.layout.GroupLayout jPanel7Layout = new org.jdesktop.layout.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
@@ -1664,10 +1715,13 @@ public class TongaPropertyPanel extends ContentPanel {
                 .addContainerGap()
                 .add(jPanel7Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(documentsPanel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .add(jPanel12, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .add(groupPanel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .add(jToolBar4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .add(jPanel13, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .add(jPanel13, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel7Layout.createSequentialGroup()
+                        .add(jPanel12, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                        .add(jPanel18, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel7Layout.setVerticalGroup(
@@ -1675,9 +1729,11 @@ public class TongaPropertyPanel extends ContentPanel {
             .add(jPanel7Layout.createSequentialGroup()
                 .addContainerGap()
                 .add(jPanel13, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                .add(jPanel12, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jPanel7Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
+                    .add(jPanel12, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(jPanel18, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
                 .add(groupPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jToolBar4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 25, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
@@ -2797,7 +2853,6 @@ private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -2810,6 +2865,7 @@ private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:
     private javax.swing.JPanel jPanel15;
     private javax.swing.JPanel jPanel16;
     private javax.swing.JPanel jPanel17;
+    private javax.swing.JPanel jPanel18;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -2843,6 +2899,7 @@ private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:
     private javax.swing.JLabel labArea;
     private javax.swing.JLabel lblFirstPart;
     private javax.swing.JLabel lblLastPart;
+    private javax.swing.JLabel lblParcelName;
     private javax.swing.JPanel mapPanel;
     private javax.swing.JMenuItem menuAddParcel;
     private javax.swing.JMenuItem menuAddParentBaUnit;
@@ -2863,6 +2920,8 @@ private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:
     private javax.swing.JPopupMenu popupParcels;
     private javax.swing.JPopupMenu popupParentBaUnits;
     private javax.swing.JPopupMenu popupRights;
+    private javax.swing.JRadioButton rbTaxAllotment;
+    private javax.swing.JRadioButton rbTownAllotment;
     private org.sola.clients.beans.referencedata.RrrTypeListBean rrrTypes;
     private javax.swing.JTable tableChildBaUnits;
     private org.sola.clients.swing.common.controls.JTableWithDefaultStyles tableNotations;
@@ -2877,8 +2936,8 @@ private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:
     private javax.swing.JTextField txtBaUnitStatus;
     private javax.swing.JTextField txtFirstPart;
     private javax.swing.JTextField txtLastPart;
-    private javax.swing.JTextField txtName;
     private javax.swing.JTextField txtNotationText;
+    private javax.swing.JTextField txtParcelName;
     private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 }

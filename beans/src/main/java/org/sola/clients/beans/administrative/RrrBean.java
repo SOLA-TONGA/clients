@@ -107,20 +107,19 @@ public class RrrBean extends AbstractTransactionedBean {
     public static final String DUE_DATE_PROPERTY = "dueDate";
     public static final String SELECTED_CONDITION_PROPERTY = "selectedCondition";
     public static final String REGISTRATION_DATE_PROPERTY = "registrationDate";
-    public static final String BOOK_REFERENCE_PROPERTY = "bookReference";
-    public static final String PAGE_REFERENCE_PROPERTY = "pageReference";
+    public static final String REGISTRY_BOOK_REFERENCE_PROPERTY = "registryBookReference";
     public static final String RECEIPT_REFERENCE_PROPERTY = "receiptReference";
     public static final String TERM_PROPERTY = "term";
     public static final String RECEIPT_DATE_PROPERTY = "receiptDate";
     private String baUnitId;
     private String nr;
-    @Past(message = ClientMessage.CHECK_REGISTRATION_DATE, payload = Localized.class)
+    //@Past(message = ClientMessage.CHECK_REGISTRATION_DATE, payload = Localized.class)
     private Date registrationDate;
     private String transactionId;
-    @NotNull(message = ClientMessage.CHECK_NOTNULL_EXPIRATION, payload = Localized.class,
-            groups = {MortgageValidationGroup.class, LeaseValidationGroup.class})
-    @Future(message = ClientMessage.CHECK_FUTURE_EXPIRATION, payload = Localized.class,
-            groups = {MortgageValidationGroup.class})
+    // @NotNull(message = ClientMessage.CHECK_NOTNULL_EXPIRATION, payload = Localized.class,
+    //         groups = {MortgageValidationGroup.class, LeaseValidationGroup.class})
+    // @Future(message = ClientMessage.CHECK_FUTURE_EXPIRATION, payload = Localized.class,
+    //         groups = {MortgageValidationGroup.class})
     private Date expirationDate;
     @NotNull(message = ClientMessage.CHECK_NOTNULL_MORTGAGEAMOUNT, payload = Localized.class, groups = {MortgageValidationGroup.class})
     private BigDecimal amount;
@@ -129,8 +128,9 @@ public class RrrBean extends AbstractTransactionedBean {
     private MortgageTypeBean mortgageType;
     private BigDecimal mortgageInterestRate;
     private Integer mortgageRanking;
-    private String bookReference;
-    private String pageReference;
+    @NotNull(message = ClientMessage.CHECK_NOTNULL_REGISTRYBOOKREF, payload = Localized.class, groups = {LeaseValidationGroup.class})
+    private String registryBookReference;
+    @NotNull(message = ClientMessage.CHECK_NOTNULL_TERM, payload = Localized.class, groups = {LeaseValidationGroup.class})
     private BigDecimal term;
     private Date receiptDate;
     private String receiptReference;
@@ -161,7 +161,7 @@ public class RrrBean extends AbstractTransactionedBean {
 
     public RrrBean() {
         super();
-        registrationDate = Calendar.getInstance().getTime();
+        //registrationDate = Calendar.getInstance().getTime();
         sourceList = new SolaList();
         rrrShareList = new SolaList();
         rightHolderList = new SolaList();
@@ -350,24 +350,14 @@ public class RrrBean extends AbstractTransactionedBean {
         this.transactionId = transactionId;
     }
 
-    public String getBookReference() {
-        return bookReference;
+    public String getRegistryBookReference() {
+        return registryBookReference;
     }
 
-    public void setBookReference(String value) {
-        String oldValue = this.bookReference;
-        this.bookReference = value;
-        propertySupport.firePropertyChange(BOOK_REFERENCE_PROPERTY, oldValue, value);
-    }
-
-    public String getPageReference() {
-        return pageReference;
-    }
-
-    public void setPageReference(String value) {
-        String oldValue = this.pageReference;
-        this.pageReference = value;
-        propertySupport.firePropertyChange(PAGE_REFERENCE_PROPERTY, oldValue, value);
+    public void setRegistryBookReference(String value) {
+        String oldValue = this.registryBookReference;
+        this.registryBookReference = value;
+        propertySupport.firePropertyChange(REGISTRY_BOOK_REFERENCE_PROPERTY, oldValue, value);
     }
 
     public BigDecimal getTerm() {
@@ -479,8 +469,8 @@ public class RrrBean extends AbstractTransactionedBean {
         return conditionsList;
     }
 
-    @Size(min = 1, groups = {SimpleOwnershipValidationGroup.class, LeaseValidationGroup.class},
-            message = ClientMessage.CHECK_SIZE_CONDITIONS_LIST, payload = Localized.class)
+    //@Size(min = 1, groups = {SimpleOwnershipValidationGroup.class, LeaseValidationGroup.class},
+    //       message = ClientMessage.CHECK_SIZE_CONDITIONS_LIST, payload = Localized.class)
     public ObservableList<ConditionForRrrBean> getConditionsFilteredList() {
         return conditionsList.getFilteredList();
     }
