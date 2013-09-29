@@ -1,28 +1,30 @@
 /**
  * ******************************************************************************************
- * Copyright (C) 2012 - Food and Agriculture Organization of the United Nations (FAO).
- * All rights reserved.
+ * Copyright (C) 2012 - Food and Agriculture Organization of the United Nations
+ * (FAO). All rights reserved.
  *
- * Redistribution and use in source and binary forms, with or without modification,
- * are permitted provided that the following conditions are met:
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
  *
- *    1. Redistributions of source code must retain the above copyright notice,this list
- *       of conditions and the following disclaimer.
- *    2. Redistributions in binary form must reproduce the above copyright notice,this list
- *       of conditions and the following disclaimer in the documentation and/or other
- *       materials provided with the distribution.
- *    3. Neither the name of FAO nor the names of its contributors may be used to endorse or
- *       promote products derived from this software without specific prior written permission.
+ * 1. Redistributions of source code must retain the above copyright notice,this
+ * list of conditions and the following disclaimer. 2. Redistributions in binary
+ * form must reproduce the above copyright notice,this list of conditions and
+ * the following disclaimer in the documentation and/or other materials provided
+ * with the distribution. 3. Neither the name of FAO nor the names of its
+ * contributors may be used to endorse or promote products derived from this
+ * software without specific prior written permission.
  *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY
- * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
- * OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT
- * SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
- * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,PROCUREMENT
- * OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
- * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT,STRICT LIABILITY,OR TORT
- * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
- * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ * ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
+ * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,PROCUREMENT OF
+ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+ * CONTRACT,STRICT LIABILITY,OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING
+ * IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ * POSSIBILITY OF SUCH DAMAGE.
  * *********************************************************************************************
  */
 package org.sola.clients.beans.referencedata;
@@ -36,8 +38,8 @@ import org.sola.clients.beans.controls.SolaList;
 import org.sola.clients.beans.validation.CodeBeanNotEmpty;
 import org.sola.webservices.transferobjects.referencedata.RequestTypeTO;
 
-/** 
- * Represents reference data object of the <b>request_type</b> table.  Could be
+/**
+ * Represents reference data object of the <b>request_type</b> table. Could be
  * populated from the {
  * <p/>
  * @link RequestTypeTO} object.<br /> For more information see data dictionary
@@ -52,11 +54,16 @@ public class RequestTypeBean extends AbstractCodeBean {
     public static final String CODE_ITEM_NUMBER = "itemNumber";
     public static final String CODE_MINISTER_BRIEFING = "ministerBriefing";
     public static final String CODE_REGISTER_LEASE = "registerLease";
+    public static final String CODE_TRANSFER_LEASE = "varyLease";
     public static final String CODE_SIGN_DEED = "signDeed";
     public static final String CODE_SITE_INSPECTION = "siteInspection";
     public static final String CODE_SURVEY = "survey";
     public static final String CODE_CORRECT_REGISTRY = "correctRegistry";
     public static final String CODE_CORRECT_REGISTRY_REMOVE = "correctRegistryRem";
+    public static final String CODE_CANCEL_PROPERTY = "cancelProperty";
+    public static final String CODE_REGISTER_MORTGAGE = "mortgage";
+    public static final String CODE_VARY_MORTGAGE = "varyMortgage";
+    public static final String CODE_DISCHARGE_MORTGAGE = "removeRestriction";
     
     public static final String CODE_CADASTRE_PRINT = "cadastrePrint";
     public static final String CODE_CADASTRE_CHANGE = "cadastreChange";
@@ -72,9 +79,7 @@ public class RequestTypeBean extends AbstractCodeBean {
     public static final String CODE_TITLE_SERACH = "titleSearch";
     public static final String CODE_DOCUMENT_COPY = "documentCopy";
     public static final String CODE_SERVICE_ENQUIRY = "serviceEnquiry";
-    public static final String CODE_CANCEL_PROPERTY = "cancelProperty";
     public static final String CODE_SYSTEMATIC_REGISTRATION = "systematicRegn";
-    
     public static final String NR_DAYS_TO_COMPLETE_PROPERTY = "nrDaysToComplete";
     public static final String NR_PROPERTIES_REQUIRED_PROPERTY = "nrPropertiesRequired";
     public static final String NOTATION_TEMPLATE_PROPERTY = "notationTemplate";
@@ -87,23 +92,22 @@ public class RequestTypeBean extends AbstractCodeBean {
     public static final String BASE_FEE_PROPERTY = "baseFee";
     public static final String AREA_BASE_FEE_PROPERTY = "areaBaseFee";
     public static final String VALUE_BASE_FEE_PROPERTY = "valueBaseFee";
-    
     private int nrDaysToComplete;
     private int nrPropertiesRequired;
     private String notationTemplate;
     private RrrTypeBean rrrType;
     private TypeActionBean typeAction;
-    @NotNull(message="Select category type.")
-    @CodeBeanNotEmpty(message="Select category type.")
+    @NotNull(message = "Select category type.")
+    @CodeBeanNotEmpty(message = "Select category type.")
     private RequestCategoryTypeBean requestCategory;
     private SolaList<RequestTypeSourceTypeBean> sourceTypeCodes;
-    @NotNull(message="Enter base fee.")
+    @NotNull(message = "Enter base fee.")
     private BigDecimal baseFee;
-    @NotNull(message="Enter area base fee.")
+    @NotNull(message = "Enter area base fee.")
     private BigDecimal areaBaseFee;
-    @NotNull(message="Enter value base fee.")
+    @NotNull(message = "Enter value base fee.")
     private BigDecimal valueBaseFee;
-            
+
     public RequestTypeBean() {
         super();
         sourceTypeCodes = new SolaList<RequestTypeSourceTypeBean>();
@@ -155,7 +159,7 @@ public class RequestTypeBean extends AbstractCodeBean {
     }
 
     public TypeActionBean getTypeAction() {
-        if(typeAction == null){
+        if (typeAction == null) {
             typeAction = new TypeActionBean();
         }
         return typeAction;
@@ -184,9 +188,9 @@ public class RequestTypeBean extends AbstractCodeBean {
         setRrrType(CacheManager.getBeanByCode(CacheManager.getRrrTypes(), rrrTypeCode));
         propertySupport.firePropertyChange(RRR_TYPE_CODE_PROPERTY, oldValue, rrrTypeCode);
     }
-    
+
     public RrrTypeBean getRrrType() {
-        if(rrrType == null){
+        if (rrrType == null) {
             rrrType = new RrrTypeBean();
         }
         return rrrType;
@@ -217,7 +221,7 @@ public class RequestTypeBean extends AbstractCodeBean {
     }
 
     public RequestCategoryTypeBean getRequestCategory() {
-        if(requestCategory == null){
+        if (requestCategory == null) {
             requestCategory = new RequestCategoryTypeBean();
         }
         return requestCategory;

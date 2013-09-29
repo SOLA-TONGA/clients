@@ -35,7 +35,9 @@ import org.sola.clients.beans.administrative.BaUnitSummaryBean;
 import org.sola.clients.beans.administrative.RelatedBaUnitInfoBean;
 import org.sola.clients.beans.administrative.RrrBean;
 import org.sola.clients.beans.application.ApplicationBean;
+import org.sola.clients.beans.application.ApplicationPropertyBean;
 import org.sola.clients.beans.referencedata.BaUnitTypeBean;
+import org.sola.clients.beans.referencedata.RequestTypeBean;
 import org.sola.clients.beans.referencedata.StatusConstants;
 
 /**
@@ -46,6 +48,21 @@ import org.sola.clients.beans.referencedata.StatusConstants;
 public class PropertyHelper {
 
     public static final String NAME_PART_LEASE = "Lease";
+
+    public static BaUnitBean getBaUnitBeanForService(ApplicationBean appBean,
+            String requestType) {
+        BaUnitBean result = null;
+        if (RequestTypeBean.CODE_REGISTER_LEASE.equals(requestType)) {
+            result = prepareNewLease(appBean);
+        } else if (appBean != null && appBean.getSelectedProperty() != null) {
+            if (appBean.getSelectedProperty().getLeaseBaUnitId() != null) {
+                result = BaUnitBean.getBaUnitsById(appBean.getSelectedProperty().getLeaseBaUnitId());
+            } else {
+                result = BaUnitBean.getBaUnitsById(appBean.getSelectedProperty().getBaUnitId());
+            }
+        }
+        return result;
+    }
 
     public static BaUnitBean prepareNewLease(ApplicationBean appBean) {
         BaUnitBean result = new BaUnitBean();
@@ -68,6 +85,11 @@ public class PropertyHelper {
             leaseRrr.setStatusCode(StatusConstants.PENDING);
             leaseRrr.setAmount(appBean.getSelectedProperty().getAmount());
             leaseRrr.setTerm(appBean.getSelectedProperty().getLeaseTerm());
+            // Add the property description as a Notation on the lease
+            if (appBean.getSelectedProperty().getDescription() != null) {
+                leaseRrr.getNotation().setNotationText(appBean.getSelectedProperty().getDescription());
+            }
+
             result.addRrr(leaseRrr);
 
             if (appBean.getSelectedProperty().getLeaseArea() != null) {
@@ -90,10 +112,6 @@ public class PropertyHelper {
                     appBean.getSelectedProperty().getTownId(), RelatedBaUnitInfoBean.CODE_TOWN);
             if (town != null) {
                 result.getParentBaUnits().addAsNew(town);
-            }
-
-            if (appBean.getSelectedProperty().getDescription() != null) {
-                result.addBaUnitNotation(appBean.getSelectedProperty().getDescription());
             }
         }
         return result;

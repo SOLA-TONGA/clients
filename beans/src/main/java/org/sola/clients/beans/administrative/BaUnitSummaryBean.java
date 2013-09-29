@@ -48,6 +48,8 @@ public class BaUnitSummaryBean extends AbstractTransactionedBean {
     public static final String NAME_FIRSTPART_PROPERTY = "nameFirstpart";
     public static final String NAME_LASTPART_PROPERTY = "nameLastpart";
     public static final String FOLIO_REG_DATE_PROPERTY = "folioRegDate";
+    public static final String TAX_ALLOTMENT_PROPERTY = "taxAllotment";
+    public static final String TOWN_ALLOTMENT_PROPERTY = "townAllotment";
     private String name;
     //@NotEmpty(message = ClientMessage.CHECK_NOTNULL_FIRSTPART, payload=Localized.class)
     private String nameFirstpart;
@@ -55,6 +57,9 @@ public class BaUnitSummaryBean extends AbstractTransactionedBean {
     private String nameLastpart;
     private Date folioRegDate;
     private BaUnitTypeBean baUnitType;
+    // Not used, but required to configure binding on forms
+    private transient boolean taxAllotment;
+    private transient boolean townAllotment;
 
     public BaUnitSummaryBean() {
         super();
@@ -127,6 +132,34 @@ public class BaUnitSummaryBean extends AbstractTransactionedBean {
         Date oldValue = this.folioRegDate;
         this.folioRegDate = value;
         propertySupport.firePropertyChange(FOLIO_REG_DATE_PROPERTY, oldValue, value);
+    }
+
+    public boolean isTaxAllotment() {
+        return BaUnitTypeBean.CODE_TAX_UNIT.equals(this.getTypeCode());
+    }
+
+    public void setTaxAllotment(boolean taxAllotment) {
+        if (taxAllotment) {
+            // Only sets the type code when true. If false, then the typecode 
+            // needs to be explicitly changed using a 
+            // different method (e.g. setTownAllotment or setTypeCode) 
+            setTypeCode(BaUnitTypeBean.CODE_TAX_UNIT);
+            propertySupport.firePropertyChange(TAX_ALLOTMENT_PROPERTY, false, true);
+        }
+    }
+
+    public boolean isTownAllotment() {
+        return BaUnitTypeBean.CODE_TOWN_ALLOTMENT_UNIT.equals(this.getTypeCode());
+    }
+
+    public void setTownAllotment(boolean townAllotment) {
+        if (townAllotment) {
+            // Only sets the type code when true. If false, then the typecode 
+            // needs to be explicitly changed using a 
+            // different method (e.g. setTaxAllotment or setTypeCode) 
+            setTypeCode(BaUnitTypeBean.CODE_TOWN_ALLOTMENT_UNIT);
+            propertySupport.firePropertyChange(TOWN_ALLOTMENT_PROPERTY, false, true);
+        }
     }
 
     /**

@@ -784,11 +784,11 @@ public class TongaApplicationPanel extends ContentPanel {
 //                        }
                     // Tonga customization - Registering a new lease or allotments requires
                     // creating a new Property Record. 
-                    if (requestType.equalsIgnoreCase(RequestTypeBean.CODE_REGISTER_LEASE)) {
+                    if (ServiceLauncher.isMapped(requestType)) {
                         // Use the service launcher to open the property panel for the registration service.
                         ServiceLauncher.launch(service.getRequestTypeCode(), getMainContentPanel(),
                                 refreshAppBeanOnClose, null, appBean, service,
-                                PropertyHelper.prepareNewLease(appBean), readOnly);
+                                PropertyHelper.getBaUnitBeanForService(appBean, requestType), readOnly);
                     } else {
 
                         // Open property form for existing title changes
@@ -4303,8 +4303,8 @@ public class TongaApplicationPanel extends ContentPanel {
             showReport(ReportManager.getApplicationStatusReport(appBean));
         }
     }
-    
-    private void printApplicationReport(){
+
+    private void printApplicationReport() {
         showReport(ReportManager.getLeaseApplicationReport(appBean));
     }
 
