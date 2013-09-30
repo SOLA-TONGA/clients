@@ -29,6 +29,7 @@
  */
 package org.sola.clients.swing.desktop.administrative;
 
+import java.util.List;
 import org.sola.clients.beans.administrative.BaUnitAreaBean;
 import org.sola.clients.beans.administrative.BaUnitBean;
 import org.sola.clients.beans.administrative.BaUnitSummaryBean;
@@ -36,6 +37,7 @@ import org.sola.clients.beans.administrative.RelatedBaUnitInfoBean;
 import org.sola.clients.beans.administrative.RrrBean;
 import org.sola.clients.beans.application.ApplicationBean;
 import org.sola.clients.beans.application.ApplicationPropertyBean;
+import org.sola.clients.beans.application.ApplicationServiceBean;
 import org.sola.clients.beans.referencedata.BaUnitTypeBean;
 import org.sola.clients.beans.referencedata.RequestTypeBean;
 import org.sola.clients.beans.referencedata.StatusConstants;
@@ -49,21 +51,46 @@ public class PropertyHelper {
 
     public static final String NAME_PART_LEASE = "Lease";
 
+    /**
+     * Obtains the BaUnitBean to use for a service based on the details in the
+     * Application Property. If the application property is linked to a lease,
+     * then retrieve the lease details. If the application property is not
+     * linked to a lease, but is linked to an allotment, use the allotment
+     * details. Also checks the type of service as this may impact what property
+     * record to return (e.g. if Register Lease, create a new Lease record)
+     *
+     * @param appBean The ApplicationBean representing the application
+     * @param appService The Service to retrieve the BaUnitBean for (where the
+     * service has already been started).
+     * @param appProperty The property to retrieve the BaUnitBean for.
+     */
     public static BaUnitBean getBaUnitBeanForService(ApplicationBean appBean,
-            String requestType) {
-        BaUnitBean result = null;
-        if (RequestTypeBean.CODE_REGISTER_LEASE.equals(requestType)) {
-            result = prepareNewLease(appBean);
-        } else if (appBean != null && appBean.getSelectedProperty() != null) {
-            if (appBean.getSelectedProperty().getLeaseBaUnitId() != null) {
-                result = BaUnitBean.getBaUnitsById(appBean.getSelectedProperty().getLeaseBaUnitId());
-            } else {
-                result = BaUnitBean.getBaUnitsById(appBean.getSelectedProperty().getBaUnitId());
-            }
+            ApplicationServiceBean appService, ApplicationPropertyBean appProperty) {
+
+        if (appBean == null || appService == null || appProperty == null) {
+            return null;
         }
-        return result;
+
+        BaUnitBean result;
+        List<BaUnitBean> baUnitList = BaUnitBean.getBaUnitsByServiceId(appService.getId());
+        if (baUnitList != null && baUnitList.size() == 1) {
+            result = baUnitList.get(0);
+        } else if (RequestTypeBean.CODE_REGISTER_LEASE.equals(appService.getRequestTypeCode())) {
+            result = prepareNewLease(appBean);
+        } else {
+            String baUnitId = appProperty.getLeaseBaUnitId() == null
+                    ? appProperty.getBaUnitId() : appProperty.getLeaseBaUnitId();
+            result = BaUnitBean.getBaUnitsById(baUnitId);
+        }
+        return result != null ? result : new BaUnitBean();
     }
 
+    /**
+     * Creates a new BaUnitBean representing the new lease details. Used for the
+     * Register Lease service.
+     *
+     * @param appBean
+     */
     public static BaUnitBean prepareNewLease(ApplicationBean appBean) {
         BaUnitBean result = new BaUnitBean();
         result.setTypeCode(BaUnitTypeBean.CODE_LEASED_UNIT);

@@ -496,58 +496,6 @@ public class TongaApplicationPanel extends ContentPanel {
         return agentsList;
     }
 
-    private void openPropertyForm(final ApplicationServiceBean service,
-            final BaUnitBean baUnitBean, final boolean readOnly) {
-        if (baUnitBean != null) {
-            SolaTask t = new SolaTask<Void, Void>() {
-                @Override
-                public Void doTask() {
-                    setMessage(MessageUtility.getLocalizedMessageText(ClientMessage.PROGRESS_MSG_OPEN_PROPERTY));
-                    ApplicationBean applicationBean = appBean.copy();
-                    TongaPropertyPanel propertyPnl = new TongaPropertyPanel(applicationBean, service, baUnitBean, readOnly);
-                    getMainContentPanel().addPanel(propertyPnl, MainContentPanel.CARD_PROPERTY_PANEL, true);
-                    return null;
-                }
-
-                @Override
-                protected void taskDone() {
-                    if (!service.getRequestTypeCode().equalsIgnoreCase(RequestTypeBean.CODE_NEW_DIGITAL_TITLE)) {
-                        ((TongaPropertyPanel) getMainContentPanel().getPanel(MainContentPanel.CARD_PROPERTY_PANEL)).showPriorTitileMessage();
-                    }
-                }
-            };
-            TaskManager.getInstance().runTask(t);
-        }
-    }
-
-    private void openPropertyForm(final ApplicationServiceBean service,
-            final ApplicationPropertyBean applicationProperty, final boolean readOnly) {
-        if (applicationProperty != null) {
-
-            SolaTask t = new SolaTask<Void, Void>() {
-                @Override
-                public Void doTask() {
-                    ApplicationBean applicationBean = appBean.copy();
-                    TongaPropertyPanel propertyPnl;
-
-                    if (applicationProperty.getBaUnitId() != null) {
-                        setMessage(MessageUtility.getLocalizedMessageText(ClientMessage.PROGRESS_MSG_BA_UNIT_GETTING));
-                        BaUnitBean baUnitBean = BaUnitBean.getBaUnitsById(applicationProperty.getBaUnitId());
-                        propertyPnl = new TongaPropertyPanel(applicationBean, service, baUnitBean, readOnly);
-                    } else {
-                        propertyPnl = new TongaPropertyPanel(applicationBean,
-                                service, applicationProperty.getNameFirstpart(),
-                                applicationProperty.getNameLastpart(), readOnly);
-                    }
-                    setMessage(MessageUtility.getLocalizedMessageText(ClientMessage.PROGRESS_MSG_OPEN_PROPERTY));
-                    getMainContentPanel().addPanel(propertyPnl, MainContentPanel.CARD_PROPERTY_PANEL, true);
-                    return null;
-                }
-            };
-            TaskManager.getInstance().runTask(t);
-        }
-    }
-
     /**
      * Opens dialog form to display status change result for application or
      * service.
@@ -605,12 +553,11 @@ public class TongaApplicationPanel extends ContentPanel {
     private void launchService(final ApplicationServiceBean service, final boolean readOnly) {
 
         if (service != null) {
-
-            String requestType = service.getRequestTypeCode();
+            boolean launched = false;
 
             // Create property change listener to refresh the state of the appBean
             // when the service form is closed. 
-            PropertyChangeListener refreshAppBeanOnClose = new PropertyChangeListener() {
+            final PropertyChangeListener refreshAppBeanOnClose = new PropertyChangeListener() {
                 @Override
                 public void propertyChange(PropertyChangeEvent evt) {
                     if (evt.getPropertyName().equals(ContentPanel.CONTENT_PANEL_CLOSED)) {
@@ -622,202 +569,32 @@ public class TongaApplicationPanel extends ContentPanel {
             };
 
             // Determine what form to start for selected service
-            if (ServiceLauncher.isServiceCategory(requestType,
+            if (ServiceLauncher.isServiceCategory(service.getRequestTypeCode(),
                     RequestCategoryTypeBean.CODE_APPLICATION_CATEGORY)) {
 
                 // Use the service launcher to open the service panel for an application 
                 // service. Add a listener to refresh the state of the appBean when the 
                 // service panel is closed. 
-                ServiceLauncher.launch(service.getRequestTypeCode(), getMainContentPanel(),
+                launched = ServiceLauncher.launch(service.getRequestTypeCode(), getMainContentPanel(),
                         refreshAppBeanOnClose, null, appBean, service, readOnly);
-
-            } // Power of attorney or other type document registration
-            else if (requestType.equalsIgnoreCase(RequestTypeBean.CODE_REG_POWER_OF_ATTORNEY)
-                    || requestType.equalsIgnoreCase(RequestTypeBean.CODE_REG_STANDARD_DOCUMENT)
-                    || requestType.equalsIgnoreCase(RequestTypeBean.CODE_CANCEL_POWER_OF_ATTORNEY)) {
-                // Run registration/cancelation Power of attorney
-                SolaTask t = new SolaTask<Void, Void>() {
-                    @Override
-                    public Void doTask() {
-                        setMessage(MessageUtility.getLocalizedMessageText(ClientMessage.PROGRESS_MSG_OPEN_DOCREGISTRATION));
-                        TransactionedDocumentsPanel form = new TransactionedDocumentsPanel(appBean, service);
-                        getMainContentPanel().addPanel(form, MainContentPanel.CARD_TRANSACTIONED_DOCUMENT, true);
-                        return null;
-                    }
-                };
-                TaskManager.getInstance().runTask(t);
-            } // Document copy request
-            else if (requestType.equalsIgnoreCase(RequestTypeBean.CODE_DOCUMENT_COPY)) {
-                SolaTask t = new SolaTask<Void, Void>() {
-                    @Override
-                    public Void doTask() {
-                        setMessage(MessageUtility.getLocalizedMessageText(ClientMessage.PROGRESS_MSG_OPEN_DOCUMENTSEARCH));
-                        if (!getMainContentPanel().isPanelOpened(MainContentPanel.CARD_DOCUMENT_SEARCH)) {
-                            DocumentSearchForm documentSearchPanel = new DocumentSearchForm();
-                            getMainContentPanel().addPanel(documentSearchPanel, MainContentPanel.CARD_DOCUMENT_SEARCH);
-                        }
-                        getMainContentPanel().showPanel(MainContentPanel.CARD_DOCUMENT_SEARCH);
-                        return null;
-                    }
-                };
-                TaskManager.getInstance().runTask(t);
-            } // Cadastre print
-            else if (requestType.equalsIgnoreCase(RequestTypeBean.CODE_CADASTRE_PRINT)) {
-                SolaTask t = new SolaTask<Void, Void>() {
-                    @Override
-                    public Void doTask() {
-                        setMessage(MessageUtility.getLocalizedMessageText(ClientMessage.PROGRESS_MSG_OPEN_MAP));
-                        if (!getMainContentPanel().isPanelOpened(MainContentPanel.CARD_MAP)) {
-                            MapPanelForm mapPanel = new MapPanelForm();
-                            getMainContentPanel().addPanel(mapPanel, MainContentPanel.CARD_MAP);
-                        }
-                        getMainContentPanel().showPanel(MainContentPanel.CARD_MAP);
-                        return null;
-                    }
-                };
-                TaskManager.getInstance().runTask(t);
-            } // Service enquiry (application status report)
-            else if (requestType.equalsIgnoreCase(RequestTypeBean.CODE_SERVICE_ENQUIRY)) {
-                SolaTask t = new SolaTask<Void, Void>() {
-                    @Override
-                    public Void doTask() {
-                        setMessage(MessageUtility.getLocalizedMessageText(ClientMessage.PROGRESS_MSG_OPEN_APPSEARCH));
-                        if (!getMainContentPanel().isPanelOpened(MainContentPanel.CARD_APPSEARCH)) {
-                            ApplicationSearchPanel searchApplicationPanel = new ApplicationSearchPanel();
-                            getMainContentPanel().addPanel(searchApplicationPanel, MainContentPanel.CARD_APPSEARCH);
-                        }
-                        getMainContentPanel().showPanel(MainContentPanel.CARD_APPSEARCH);
-                        return null;
-                    }
-                };
-                TaskManager.getInstance().runTask(t);
-            } // Cadastre change services
-            else if (requestType.equalsIgnoreCase(RequestTypeBean.CODE_CADASTRE_CHANGE)
-                    || requestType.equalsIgnoreCase(RequestTypeBean.CODE_CADASTRE_REDEFINITION)) {
-
-                if (appBean.getPropertyList().getFilteredList().size() == 1) {
-                    SolaTask t = new SolaTask<Void, Void>() {
-                        @Override
-                        public Void doTask() {
-                            setMessage(MessageUtility.getLocalizedMessageText(ClientMessage.PROGRESS_MSG_OPEN_CADASTRE_CHANGE));
-                            CadastreTransactionMapPanel form = new CadastreTransactionMapPanel(
-                                    appBean, service, appBean.getPropertyList().getFilteredList().get(0));
-                            getMainContentPanel().addPanel(form, MainContentPanel.CARD_CADASTRECHANGE, true);
-                            return null;
-                        }
-                    };
-                    TaskManager.getInstance().runTask(t);
-
-                } else if (appBean.getPropertyList().getFilteredList().size() > 1) {
-                    PropertiesList propertyListForm = new PropertiesList(appBean.getPropertyList());
-                    propertyListForm.setLocationRelativeTo(this);
-
-                    propertyListForm.addPropertyChangeListener(new PropertyChangeListener() {
-                        @Override
-                        public void propertyChange(PropertyChangeEvent evt) {
-                            if (evt.getPropertyName().equals(PropertiesList.SELECTED_PROPERTY)
-                                    && evt.getNewValue() != null) {
-                                final ApplicationPropertyBean property =
-                                        (ApplicationPropertyBean) evt.getNewValue();
-                                ((JDialog) evt.getSource()).dispose();
-
-                                SolaTask t = new SolaTask<Void, Void>() {
-                                    @Override
-                                    public Void doTask() {
-                                        setMessage(MessageUtility.getLocalizedMessageText(ClientMessage.PROGRESS_MSG_OPEN_DOCREGISTRATION));
-                                        CadastreTransactionMapPanel form = new CadastreTransactionMapPanel(
-                                                appBean, service, property);
-                                        getMainContentPanel().addPanel(form, MainContentPanel.CARD_CADASTRECHANGE, true);
-                                        return null;
-                                    }
-                                };
-                                TaskManager.getInstance().runTask(t);
-                            }
-                        }
-                    });
-                    propertyListForm.setVisible(true);
-
-                } else {
-                    CadastreTransactionMapPanel form = new CadastreTransactionMapPanel(appBean, service, null);
-                    getMainContentPanel().addPanel(form, MainContentPanel.CARD_CADASTRECHANGE, true);
-                }
-
             } else {
+                // Try to determine the BaUnit to use for the service. 
+                BaUnitBean baUnit = PropertyHelper.getBaUnitBeanForService(appBean, service,
+                        appBean.getSelectedProperty());
 
-                // Try to get BA Units, created through the service
-                List<BaUnitBean> baUnitsList = BaUnitBean.getBaUnitsByServiceId(service.getId());
-
-                if (baUnitsList != null && baUnitsList.size() > 0) {
-                    if (baUnitsList.size() > 1) {
-                        // Show BA Unit Selection Form
-                        BaUnitsListPanel baUnitListPanel = new BaUnitsListPanel(baUnitsList);
-                        baUnitListPanel.addPropertyChangeListener(new PropertyChangeListener() {
-                            @Override
-                            public void propertyChange(PropertyChangeEvent evt) {
-                                if (evt.getPropertyName().equals(BaUnitsListPanel.SELECTED_BAUNIT_PROPERTY)
-                                        && evt.getNewValue() != null) {
-                                    BaUnitBean baUnitBean = (BaUnitBean) evt.getNewValue();
-                                    openPropertyForm(service, baUnitBean, readOnly);
-                                    ((ContentPanel) evt.getSource()).close();
-                                }
-                            }
-                        });
-                        getMainContentPanel().addPanel(baUnitListPanel, MainContentPanel.CARD_BAUNIT_SELECT_PANEL, true);
-                    } else {
-                        if (ServiceLauncher.isMapped(requestType)) {
-                            // Use the service launcher to open the property panel for the registration service.
-                            ServiceLauncher.launch(service.getRequestTypeCode(), getMainContentPanel(),
-                                    refreshAppBeanOnClose, null, appBean, service, baUnitsList.get(0), readOnly);
-                        } else {
-                            openPropertyForm(service, baUnitsList.get(0), readOnly);
-                        }
-                    }
-                } else {
-
-                    // Open property form for new title registration
-//                    if (requestType.equalsIgnoreCase(RequestTypeBean.CODE_NEW_APARTMENT)
-//                            || requestType.equalsIgnoreCase(RequestTypeBean.CODE_NEW_FREEHOLD)
-//                            || requestType.equalsIgnoreCase(RequestTypeBean.CODE_NEW_STATE)) {
-//                        if (!readOnly) {
-//                            // Open empty property form
-//                            openPropertyForm(service, new BaUnitBean(), readOnly);
-//                        }
-                    // Tonga customization - Registering a new lease or allotments requires
-                    // creating a new Property Record. 
-                    if (ServiceLauncher.isMapped(requestType)) {
-                        // Use the service launcher to open the property panel for the registration service.
-                        ServiceLauncher.launch(service.getRequestTypeCode(), getMainContentPanel(),
-                                refreshAppBeanOnClose, null, appBean, service,
-                                PropertyHelper.getBaUnitBeanForService(appBean, requestType), readOnly);
-                    } else {
-
-                        // Open property form for existing title changes
-                        if (appBean.getPropertyList().getFilteredList().size() == 1) {
-                            openPropertyForm(service, appBean.getPropertyList().getFilteredList().get(0), readOnly);
-                        } else if (appBean.getPropertyList().getFilteredList().size() > 1) {
-                            PropertiesList propertyListForm = new PropertiesList(appBean.getPropertyList());
-                            propertyListForm.setLocationRelativeTo(this);
-
-                            propertyListForm.addPropertyChangeListener(new PropertyChangeListener() {
-                                @Override
-                                public void propertyChange(PropertyChangeEvent evt) {
-                                    if (evt.getPropertyName().equals(PropertiesList.SELECTED_PROPERTY)
-                                            && evt.getNewValue() != null) {
-                                        ApplicationPropertyBean property = (ApplicationPropertyBean) evt.getNewValue();
-                                        ((JDialog) evt.getSource()).dispose();
-                                        openPropertyForm(service, property, readOnly);
-                                    }
-                                }
-                            });
-
-                            propertyListForm.setVisible(true);
-                        } else {
-                            MessageUtility.displayMessage(ClientMessage.APPLICATION_PROPERTY_LIST_EMPTY);
-                        }
-                    }
+                if (baUnit != null) {
+                    // Use the service launcher to open the property panel for the service.
+                    launched = ServiceLauncher.launch(service.getRequestTypeCode(), getMainContentPanel(),
+                            refreshAppBeanOnClose, null, appBean, service, baUnit, readOnly);
                 }
             }
 
+            if (!launched) {
+                // The service could not be started. Check it is mapped by the service launcher
+                MessageUtility.displayMessage(ClientMessage.APPLICATION_FAIL_SERVICE_START,
+                        new Object[]{CacheManager.getBeanByCode(CacheManager.getRequestTypes(),
+                    service.getRequestTypeCode()).getDisplayValue()});
+            }
         } else {
             MessageUtility.displayMessage(ClientMessage.APPLICATION_SELECT_SERVICE);
         }
@@ -3861,25 +3638,6 @@ public class TongaApplicationPanel extends ContentPanel {
     private void openSysRegCertParamsForm(String nr) {
         SysRegCertParamsForm certificateGenerator = new SysRegCertParamsForm(null, true, nr, null);
         certificateGenerator.setVisible(true);
-    }
-
-    /**
-     * Opens attached digital copy of the selected document
-     */
-    private void openAttachment() {
-        if (appBean.getSelectedSource() != null
-                && appBean.getSelectedSource().getArchiveDocument() != null) {
-            SolaTask t = new SolaTask<Void, Void>() {
-                @Override
-                public Void doTask() {
-                    setMessage(MessageUtility.getLocalizedMessageText(ClientMessage.PROGRESS_MSG_DOCUMENT_OPENING));
-                    DocumentBean.openDocument(appBean.getSelectedSource().getArchiveDocument().getId(),
-                            appBean.getSelectedSource().getArchiveDocument().getFileName());
-                    return null;
-                }
-            };
-            TaskManager.getInstance().runTask(t);
-        }
     }
 
     /**
