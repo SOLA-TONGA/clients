@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Survey Savingram" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" resourceBundle="org.sola.clients.reports.locale.MinisterBriefingReport_en_NZ" uuid="ac6f666c-9299-4670-8732-3db826427724">
 	<property name="ireport.zoom" value="1.2100000000000002"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="399"/>
+	<property name="ireport.y" value="0"/>
 	<queryString>
 		<![CDATA[]]>
 	</queryString>
@@ -102,7 +102,7 @@
 			<staticText>
 				<reportElement uuid="93c154ea-14ee-4d8a-b19a-201acc233e8c" x="14" y="17" width="526" height="18"/>
 				<textElement>
-					<font fontName="SansSerif" size="12" isBold="true" isItalic="true"/>
+					<font fontName="SansSerif" size="12" isBold="true" isItalic="true" isUnderline="false"/>
 				</textElement>
 				<text><![CDATA[FUASAVEA MO TA MAPE 'API LISI 'A]]></text>
 			</staticText>
@@ -293,6 +293,13 @@ Feliuliuaki e 'Ea & Ngaahi Koloa Fakaenatula]]></text>
 					<font size="12" isItalic="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA["T$" + $F{appBean}.getSelectedProperty().getAmount()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="2ee24f90-0abf-483d-8588-009f66b01971" x="246" y="17" width="294" height="20"/>
+				<textElement>
+					<font size="12" isBold="true" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{appBean}.getSelectedProperty().getLesseeName()]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="42c8e5cb-b441-42fe-b5f2-1fa0c20b36ab">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="14"/>
+	<property name="ireport.y" value="48"/>
 	<parameter name="SILA_IMAGE" class="java.io.InputStream"/>
 	<background>
 		<band splitType="Stretch"/>
@@ -52,7 +52,7 @@ Sign Deed]]></text>
 				<text><![CDATA[Ref. number:]]></text>
 			</staticText>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement uuid="77596868-a2d4-4d2b-b9df-a742d7ba4f8c" x="0" y="45" width="463" height="305"/>
+				<reportElement uuid="77596868-a2d4-4d2b-b9df-a742d7ba4f8c" x="0" y="45" width="555" height="305"/>
 				<textElement markup="html">
 					<font size="12"/>
 				</textElement>
@@ -67,8 +67,7 @@ prior to the signing and the uplifting of the documents.
 
 
 Regards,
-Land Administration office
-]]></textFieldExpression>
+Land Administration office]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement uuid="4b2f0300-7166-47f7-923c-5d576d677146" x="329" y="394" width="169" height="14"/>
