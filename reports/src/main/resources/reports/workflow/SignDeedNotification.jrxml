@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="42c8e5cb-b441-42fe-b5f2-1fa0c20b36ab">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="14"/>
 	<parameter name="SILA_IMAGE" class="java.io.InputStream"/>
 	<background>
 		<band splitType="Stretch"/>
@@ -45,7 +45,47 @@ Sign Deed]]></text>
 		<band splitType="Stretch"/>
 	</columnHeader>
 	<detail>
-		<band height="260" splitType="Stretch"/>
+		<band height="761" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="c60586e1-5e90-40b9-a940-b6a673f5e17b" x="0" y="13" width="95" height="19"/>
+				<textElement/>
+				<text><![CDATA[Ref. number:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="77596868-a2d4-4d2b-b9df-a742d7ba4f8c" x="0" y="45" width="463" height="305"/>
+				<textElement markup="html">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[Dear Sir/Madam, further to your lease application
+I am pleased to inform you that a lease       		for parcel 
+located at 		 of 	 squar meters is available.
+
+
+Could you please call the office to arrange for the signing of the Lease Deed
+You will also need to show that you have paid the first year's ground rent of 
+prior to the signing and the uplifting of the documents.
+
+
+Regards,
+Land Administration office
+]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="4b2f0300-7166-47f7-923c-5d576d677146" x="329" y="394" width="169" height="14"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Signature]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a48c9e1a-3be0-48ba-8f1b-f8491db52344" x="0" y="373" width="66" height="16"/>
+				<textElement/>
+				<text><![CDATA[Prepared by:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="7e67b1c1-38de-4b0a-bdf8-973f87c638b0" x="66" y="373" width="238" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{USER_NAME}]]></textFieldExpression>
+			</textField>
+		</band>
 	</detail>
 	<columnFooter>
 		<band splitType="Stretch"/>
