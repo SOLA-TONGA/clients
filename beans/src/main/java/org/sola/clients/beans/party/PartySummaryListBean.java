@@ -67,6 +67,18 @@ public class PartySummaryListBean extends AbstractBindingBean {
             partySummaryListBean.add(0, dummyAgent);
         }
     }
+    
+    public void FillNobles(boolean createDummyAgent) {
+        List<PartySummaryTO> lst = WSManager.getInstance().getCaseManagementService().getNobles();
+        partySummaryListBean.clear();
+        TypeConverters.TransferObjectListToBeanList(lst, PartySummaryBean.class, (List)partySummaryListBean);
+        if(createDummyAgent){
+            PartySummaryBean dummyAgent = new PartySummaryBean();
+            dummyAgent.setName(" ");
+            dummyAgent.setEntityAction(EntityAction.DISASSOCIATE);
+            partySummaryListBean.add(0, dummyAgent);
+        }
+    }
 
     public ObservableList<PartySummaryBean> getPartySummaryList() {
         return partySummaryListBean;
