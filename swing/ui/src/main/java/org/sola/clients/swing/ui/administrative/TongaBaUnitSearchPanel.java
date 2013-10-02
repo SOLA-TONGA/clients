@@ -207,20 +207,16 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
         cbxTax = new javax.swing.JCheckBox();
         jLabel24 = new javax.swing.JLabel();
         jToolBar2 = new javax.swing.JToolBar();
+        btnAllotmentSearch = new javax.swing.JButton();
+        btnAllotmentClear = new javax.swing.JButton();
+        jSeparator5 = new javax.swing.JToolBar.Separator();
         btnAllotmentOpen = new org.sola.clients.swing.common.buttons.BtnOpen();
         jSeparator1 = new javax.swing.JToolBar.Separator();
         jLabel10 = new javax.swing.JLabel();
         lblAllotmentSearchCount = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tableAllotment = new org.sola.clients.swing.common.controls.JTableWithDefaultStyles();
-        jPanel4 = new javax.swing.JPanel();
-        btnAllotmentClear = new javax.swing.JButton();
-        btnAllotmentSearch = new javax.swing.JButton();
         tabLease = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        jPanel18 = new javax.swing.JPanel();
-        btnLeaseClear = new javax.swing.JButton();
-        btnLeaseSearch = new javax.swing.JButton();
         jPanel28 = new javax.swing.JPanel();
         jPanel19 = new javax.swing.JPanel();
         jPanel21 = new javax.swing.JPanel();
@@ -230,13 +226,13 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
         jPanel24 = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
         cbxLeaseTown = new javax.swing.JComboBox();
-        jPanel22 = new javax.swing.JPanel();
-        jLabel12 = new javax.swing.JLabel();
-        txtLeaseLandHolder = new javax.swing.JTextField();
-        jPanel20 = new javax.swing.JPanel();
         jPanel25 = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
         txtLesseeName = new javax.swing.JTextField();
+        jPanel20 = new javax.swing.JPanel();
+        jPanel22 = new javax.swing.JPanel();
+        jLabel12 = new javax.swing.JLabel();
+        txtLeaseLandHolder = new javax.swing.JTextField();
         jPanel26 = new javax.swing.JPanel();
         jPanel29 = new javax.swing.JPanel();
         txtLeaseRegDateFrom = new javax.swing.JFormattedTextField();
@@ -247,6 +243,9 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
         jLabel17 = new javax.swing.JLabel();
         btnLeaseDateTo = new javax.swing.JButton();
         jToolBar3 = new javax.swing.JToolBar();
+        btnLeaseSearch = new javax.swing.JButton();
+        btnLeaseClear = new javax.swing.JButton();
+        jSeparator6 = new javax.swing.JToolBar.Separator();
         btnLeaseOpen = new org.sola.clients.swing.common.buttons.BtnOpen();
         jSeparator2 = new javax.swing.JToolBar.Separator();
         jLabel11 = new javax.swing.JLabel();
@@ -254,17 +253,13 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
         jScrollPane3 = new javax.swing.JScrollPane();
         tableLease = new org.sola.clients.swing.common.controls.JTableWithDefaultStyles();
         tabEstate = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
-        jPanel30 = new javax.swing.JPanel();
-        btnEstateClear = new javax.swing.JButton();
-        btnEstateSearch = new javax.swing.JButton();
         jPanel31 = new javax.swing.JPanel();
-        jPanel32 = new javax.swing.JPanel();
-        jLabel19 = new javax.swing.JLabel();
-        txtEstateName = new javax.swing.JTextField();
         jPanel33 = new javax.swing.JPanel();
         jLabel20 = new javax.swing.JLabel();
         txtNobleName = new javax.swing.JTextField();
+        jPanel32 = new javax.swing.JPanel();
+        jLabel19 = new javax.swing.JLabel();
+        txtEstateName = new javax.swing.JTextField();
         jPanel34 = new javax.swing.JPanel();
         jPanel36 = new javax.swing.JPanel();
         jLabel21 = new javax.swing.JLabel();
@@ -272,6 +267,9 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
         jPanel37 = new javax.swing.JPanel();
         jPanel35 = new javax.swing.JPanel();
         jToolBar4 = new javax.swing.JToolBar();
+        btnEstateSearch = new javax.swing.JButton();
+        btnEstateClear = new javax.swing.JButton();
+        jSeparator7 = new javax.swing.JToolBar.Separator();
         btnEstateOpen = new org.sola.clients.swing.common.buttons.BtnOpen();
         jSeparator3 = new javax.swing.JToolBar.Separator();
         jLabel18 = new javax.swing.JLabel();
@@ -279,10 +277,6 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
         jScrollPane4 = new javax.swing.JScrollPane();
         tableEstate = new org.sola.clients.swing.common.controls.JTableWithDefaultStyles();
         tabTownIsland = new javax.swing.JPanel();
-        pnlCriteriaTownIsland = new javax.swing.JPanel();
-        jPanel38 = new javax.swing.JPanel();
-        btnTownClear = new javax.swing.JButton();
-        btnTownSearch = new javax.swing.JButton();
         jPanel40 = new javax.swing.JPanel();
         jPanel39 = new javax.swing.JPanel();
         jPanel41 = new javax.swing.JPanel();
@@ -290,13 +284,16 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
         txtTownName = new javax.swing.JTextField();
         jPanel42 = new javax.swing.JPanel();
         jPanel43 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tableTown = new org.sola.clients.swing.common.controls.JTableWithDefaultStyles();
         jToolBar1 = new javax.swing.JToolBar();
+        btnTownSearch = new javax.swing.JButton();
+        btnTownClear = new javax.swing.JButton();
+        jSeparator8 = new javax.swing.JToolBar.Separator();
         btnTownOpen = new org.sola.clients.swing.common.buttons.BtnOpen();
         jSeparator4 = new javax.swing.JToolBar.Separator();
         jLabel25 = new javax.swing.JLabel();
         lblTownResultsCount = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tableTown = new org.sola.clients.swing.common.controls.JTableWithDefaultStyles();
 
         jPanel1.setLayout(new java.awt.GridLayout(1, 2, 12, 0));
 
@@ -311,7 +308,7 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
         jPanel12.setLayout(jPanel12Layout);
         jPanel12Layout.setHorizontalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
+            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE)
             .addComponent(txtAllotmentDeedNum)
         );
         jPanel12Layout.setVerticalGroup(
@@ -335,7 +332,7 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
         jPanel13Layout.setHorizontalGroup(
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(txtAllotmentFolio)
-            .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
+            .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE)
         );
         jPanel13Layout.setVerticalGroup(
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -357,7 +354,7 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
         jPanel15.setLayout(jPanel15Layout);
         jPanel15Layout.setHorizontalGroup(
             jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
+            .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE)
             .addComponent(txtAllotmentBookNum)
         );
         jPanel15Layout.setVerticalGroup(
@@ -381,7 +378,7 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
         jPanel14Layout.setHorizontalGroup(
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(txtAllotmentPage)
-            .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
+            .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE)
         );
         jPanel14Layout.setVerticalGroup(
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -415,7 +412,7 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
         jPanel10.setLayout(jPanel10Layout);
         jPanel10Layout.setHorizontalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE)
             .addGroup(jPanel10Layout.createSequentialGroup()
                 .addComponent(txtAllotmentRegDateFrom)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -454,7 +451,7 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
         jPanel11.setLayout(jPanel11Layout);
         jPanel11Layout.setHorizontalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
+            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE)
             .addGroup(jPanel11Layout.createSequentialGroup()
                 .addComponent(txtAllotmentRegDateTo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -488,7 +485,7 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
         jPanel16Layout.setHorizontalGroup(
             jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(txtAllotmentLandHolder)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 234, Short.MAX_VALUE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 269, Short.MAX_VALUE)
         );
         jPanel16Layout.setVerticalGroup(
             jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -510,7 +507,7 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
         jPanel17.setLayout(jPanel17Layout);
         jPanel17Layout.setHorizontalGroup(
             jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 234, Short.MAX_VALUE)
+            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 269, Short.MAX_VALUE)
             .addComponent(txtAllotmentParcelName)
         );
         jPanel17Layout.setVerticalGroup(
@@ -538,7 +535,7 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(cbAllotmentTown, 0, 117, Short.MAX_VALUE)
+            .addComponent(cbAllotmentTown, 0, 134, Short.MAX_VALUE)
             .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel7Layout.setVerticalGroup(
@@ -568,7 +565,7 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
         jPanel44Layout.setHorizontalGroup(
             jPanel44Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(cbxTown, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jLabel23, javax.swing.GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE)
+            .addComponent(jLabel23, javax.swing.GroupLayout.DEFAULT_SIZE, 67, Short.MAX_VALUE)
         );
         jPanel44Layout.setVerticalGroup(
             jPanel44Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -576,7 +573,7 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
                 .addComponent(jLabel23)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(cbxTown)
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
 
         jPanel8.add(jPanel44);
@@ -595,7 +592,7 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
         jPanel45Layout.setHorizontalGroup(
             jPanel45Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(cbxTax, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jLabel24, javax.swing.GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE)
+            .addComponent(jLabel24, javax.swing.GroupLayout.DEFAULT_SIZE, 67, Short.MAX_VALUE)
         );
         jPanel45Layout.setVerticalGroup(
             jPanel45Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -603,7 +600,7 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
                 .addComponent(jLabel24)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(cbxTax)
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
 
         jPanel8.add(jPanel45);
@@ -616,6 +613,25 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
 
         jToolBar2.setFloatable(false);
         jToolBar2.setRollover(true);
+
+        btnAllotmentSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/search.png"))); // NOI18N
+        btnAllotmentSearch.setText("Search");
+        btnAllotmentSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAllotmentSearchActionPerformed(evt);
+            }
+        });
+        jToolBar2.add(btnAllotmentSearch);
+
+        btnAllotmentClear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/eraser.png"))); // NOI18N
+        btnAllotmentClear.setText("Clear");
+        btnAllotmentClear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAllotmentClearActionPerformed(evt);
+            }
+        });
+        jToolBar2.add(btnAllotmentClear);
+        jToolBar2.add(jSeparator5);
 
         btnAllotmentOpen.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnAllotmentOpen.addActionListener(new java.awt.event.ActionListener() {
@@ -653,7 +669,7 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
         columnBinding.setColumnClass(String.class);
         columnBinding.setEditable(false);
         columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${registeredDate}"));
-        columnBinding.setColumnName("Reg. Date");
+        columnBinding.setColumnName("Registration Date");
         columnBinding.setColumnClass(java.util.Date.class);
         columnBinding.setEditable(false);
         columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${townName}"));
@@ -680,7 +696,7 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
         tableAllotment.getColumnModel().getColumn(0).setPreferredWidth(80);
         tableAllotment.getColumnModel().getColumn(1).setPreferredWidth(80);
         tableAllotment.getColumnModel().getColumn(2).setPreferredWidth(200);
-        tableAllotment.getColumnModel().getColumn(2).setCellRenderer(new org.sola.clients.swing.ui.renderers.CellDelimitedListRenderer("::::", false));
+        tableAllotment.getColumnModel().getColumn(2).setCellRenderer(new org.sola.clients.swing.ui.renderers.CellDelimitedListRenderer(",", false));
         tableAllotment.getColumnModel().getColumn(3).setPreferredWidth(150);
         tableAllotment.getColumnModel().getColumn(4).setCellRenderer(new DateTimeRenderer());
         tableAllotment.getColumnModel().getColumn(6).setMaxWidth(70);
@@ -688,39 +704,6 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
         tableAllotment.getColumnModel().getColumn(7).setMaxWidth(70);
         tableAllotment.getColumnModel().getColumn(7).setCellRenderer(new BooleanCellRenderer2());
         tableAllotment.getColumnModel().getColumn(8).setPreferredWidth(80);
-
-        btnAllotmentClear.setText("Clear");
-        btnAllotmentClear.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAllotmentClearActionPerformed(evt);
-            }
-        });
-
-        btnAllotmentSearch.setText("Search");
-        btnAllotmentSearch.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAllotmentSearchActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addComponent(btnAllotmentSearch)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addComponent(btnAllotmentClear, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(btnAllotmentClear)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnAllotmentSearch)
-                .addGap(19, 19, 19))
-        );
 
         javax.swing.GroupLayout tabAllotmentLayout = new javax.swing.GroupLayout(tabAllotment);
         tabAllotment.setLayout(tabAllotmentLayout);
@@ -731,58 +714,22 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
                 .addGroup(tabAllotmentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jToolBar2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jScrollPane2)
-                    .addGroup(tabAllotmentLayout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 551, Short.MAX_VALUE))
                 .addContainerGap())
         );
         tabAllotmentLayout.setVerticalGroup(
             tabAllotmentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(tabAllotmentLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(tabAllotmentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jToolBar2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 289, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         mainTabPane.addTab("Allotment", tabAllotment);
-
-        btnLeaseClear.setText("Clear");
-        btnLeaseClear.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLeaseClearActionPerformed(evt);
-            }
-        });
-
-        btnLeaseSearch.setText("Search");
-        btnLeaseSearch.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLeaseSearchActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel18Layout = new javax.swing.GroupLayout(jPanel18);
-        jPanel18.setLayout(jPanel18Layout);
-        jPanel18Layout.setHorizontalGroup(
-            jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnLeaseClear, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btnLeaseSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        jPanel18Layout.setVerticalGroup(
-            jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel18Layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(btnLeaseClear)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnLeaseSearch)
-                .addContainerGap())
-        );
 
         jPanel28.setLayout(new java.awt.GridLayout(1, 2, 12, 0));
 
@@ -799,7 +746,7 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
         jPanel23.setLayout(jPanel23Layout);
         jPanel23Layout.setHorizontalGroup(
             jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
+            .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE)
             .addComponent(txtLeaseNumber)
         );
         jPanel23Layout.setVerticalGroup(
@@ -825,7 +772,7 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
         jPanel24.setLayout(jPanel24Layout);
         jPanel24Layout.setHorizontalGroup(
             jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(cbxLeaseTown, 0, 111, Short.MAX_VALUE)
+            .addComponent(cbxLeaseTown, 0, 128, Short.MAX_VALUE)
             .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel24Layout.setVerticalGroup(
@@ -834,39 +781,12 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
                 .addComponent(jLabel14)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cbxLeaseTown, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         jPanel21.add(jPanel24);
 
         jPanel19.add(jPanel21);
-
-        jLabel12.setText("Landholder");
-
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, leaseParams, org.jdesktop.beansbinding.ELProperty.create("${otherRightholder}"), txtLeaseLandHolder, org.jdesktop.beansbinding.BeanProperty.create("text"));
-        bindingGroup.addBinding(binding);
-
-        javax.swing.GroupLayout jPanel22Layout = new javax.swing.GroupLayout(jPanel22);
-        jPanel22.setLayout(jPanel22Layout);
-        jPanel22Layout.setHorizontalGroup(
-            jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(txtLeaseLandHolder)
-            .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, 234, Short.MAX_VALUE)
-        );
-        jPanel22Layout.setVerticalGroup(
-            jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel22Layout.createSequentialGroup()
-                .addComponent(jLabel12)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtLeaseLandHolder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-
-        jPanel19.add(jPanel22);
-
-        jPanel28.add(jPanel19);
-
-        jPanel20.setLayout(new java.awt.GridLayout(2, 1, 12, 0));
 
         jLabel15.setText("Lessee Name");
 
@@ -877,7 +797,7 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
         jPanel25.setLayout(jPanel25Layout);
         jPanel25Layout.setHorizontalGroup(
             jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, 234, Short.MAX_VALUE)
+            .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, 269, Short.MAX_VALUE)
             .addComponent(txtLesseeName)
         );
         jPanel25Layout.setVerticalGroup(
@@ -889,7 +809,34 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        jPanel20.add(jPanel25);
+        jPanel19.add(jPanel25);
+
+        jPanel28.add(jPanel19);
+
+        jPanel20.setLayout(new java.awt.GridLayout(2, 1, 12, 0));
+
+        jLabel12.setText("Landholder");
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, leaseParams, org.jdesktop.beansbinding.ELProperty.create("${otherRightholder}"), txtLeaseLandHolder, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+
+        javax.swing.GroupLayout jPanel22Layout = new javax.swing.GroupLayout(jPanel22);
+        jPanel22.setLayout(jPanel22Layout);
+        jPanel22Layout.setHorizontalGroup(
+            jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(txtLeaseLandHolder)
+            .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, 269, Short.MAX_VALUE)
+        );
+        jPanel22Layout.setVerticalGroup(
+            jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel22Layout.createSequentialGroup()
+                .addComponent(jLabel12)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtLeaseLandHolder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        jPanel20.add(jPanel22);
 
         jPanel26.setLayout(new java.awt.GridLayout(1, 2, 12, 0));
 
@@ -913,7 +860,7 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
         jPanel29.setLayout(jPanel29Layout);
         jPanel29Layout.setHorizontalGroup(
             jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
+            .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE)
             .addGroup(jPanel29Layout.createSequentialGroup()
                 .addComponent(txtLeaseRegDateFrom)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -952,7 +899,7 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
         jPanel27.setLayout(jPanel27Layout);
         jPanel27Layout.setHorizontalGroup(
             jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
+            .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE)
             .addGroup(jPanel27Layout.createSequentialGroup()
                 .addComponent(txtLeaseRegDateTo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -976,26 +923,27 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
 
         jPanel28.add(jPanel20);
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addComponent(jPanel28, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel28, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-        );
-
         jToolBar3.setFloatable(false);
         jToolBar3.setRollover(true);
+
+        btnLeaseSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/search.png"))); // NOI18N
+        btnLeaseSearch.setText("Search");
+        btnLeaseSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLeaseSearchActionPerformed(evt);
+            }
+        });
+        jToolBar3.add(btnLeaseSearch);
+
+        btnLeaseClear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/eraser.png"))); // NOI18N
+        btnLeaseClear.setText("Clear");
+        btnLeaseClear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLeaseClearActionPerformed(evt);
+            }
+        });
+        jToolBar3.add(btnLeaseClear);
+        jToolBar3.add(jSeparator6);
 
         btnLeaseOpen.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnLeaseOpen.addActionListener(new java.awt.event.ActionListener() {
@@ -1029,7 +977,7 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
         columnBinding.setColumnClass(String.class);
         columnBinding.setEditable(false);
         columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${registeredDate}"));
-        columnBinding.setColumnName("Reg. Date");
+        columnBinding.setColumnName("Registration Date");
         columnBinding.setColumnClass(java.util.Date.class);
         columnBinding.setEditable(false);
         columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${townName}"));
@@ -1046,9 +994,9 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
 
         jScrollPane3.setViewportView(tableLease);
         tableLease.getColumnModel().getColumn(1).setPreferredWidth(200);
-        tableLease.getColumnModel().getColumn(1).setCellRenderer(new CellDelimitedListRenderer("::::", false));
+        tableLease.getColumnModel().getColumn(1).setCellRenderer(new CellDelimitedListRenderer(",", false));
         tableLease.getColumnModel().getColumn(2).setPreferredWidth(200);
-        tableLease.getColumnModel().getColumn(2).setCellRenderer(new CellDelimitedListRenderer("::::", false));
+        tableLease.getColumnModel().getColumn(2).setCellRenderer(new CellDelimitedListRenderer(",", false));
         tableLease.getColumnModel().getColumn(3).setCellRenderer(new DateTimeRenderer());
         tableLease.getColumnModel().getColumn(5).setPreferredWidth(80);
 
@@ -1059,82 +1007,33 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
             .addGroup(tabLeaseLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(tabLeaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jToolBar3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 551, Short.MAX_VALUE))
                 .addContainerGap())
+            .addGroup(tabLeaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(tabLeaseLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jPanel28, javax.swing.GroupLayout.DEFAULT_SIZE, 551, Short.MAX_VALUE)
+                    .addContainerGap()))
         );
         tabLeaseLayout.setVerticalGroup(
             tabLeaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(tabLeaseLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(119, 119, 119)
                 .addComponent(jToolBar3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 353, Short.MAX_VALUE)
                 .addContainerGap())
+            .addGroup(tabLeaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(tabLeaseLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jPanel28, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(393, Short.MAX_VALUE)))
         );
 
         mainTabPane.addTab("Lease", tabLease);
 
-        btnEstateClear.setText("Clear");
-        btnEstateClear.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEstateClearActionPerformed(evt);
-            }
-        });
-
-        btnEstateSearch.setText("Search");
-        btnEstateSearch.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEstateSearchActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel30Layout = new javax.swing.GroupLayout(jPanel30);
-        jPanel30.setLayout(jPanel30Layout);
-        jPanel30Layout.setHorizontalGroup(
-            jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel30Layout.createSequentialGroup()
-                .addComponent(btnEstateSearch)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addComponent(btnEstateClear, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        jPanel30Layout.setVerticalGroup(
-            jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel30Layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(btnEstateClear)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnEstateSearch)
-                .addContainerGap())
-        );
-
         jPanel31.setLayout(new java.awt.GridLayout(2, 2, 12, 0));
-
-        jLabel19.setText("Estate Name");
-
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, estateParams, org.jdesktop.beansbinding.ELProperty.create("${nameFirstPart}"), txtEstateName, org.jdesktop.beansbinding.BeanProperty.create("text"));
-        bindingGroup.addBinding(binding);
-
-        javax.swing.GroupLayout jPanel32Layout = new javax.swing.GroupLayout(jPanel32);
-        jPanel32.setLayout(jPanel32Layout);
-        jPanel32Layout.setHorizontalGroup(
-            jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(txtEstateName)
-            .addComponent(jLabel19, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 234, Short.MAX_VALUE)
-        );
-        jPanel32Layout.setVerticalGroup(
-            jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel32Layout.createSequentialGroup()
-                .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtEstateName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-
-        jPanel31.add(jPanel32);
 
         jLabel20.setText("Noble");
 
@@ -1145,7 +1044,7 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
         jPanel33.setLayout(jPanel33Layout);
         jPanel33Layout.setHorizontalGroup(
             jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel20, javax.swing.GroupLayout.DEFAULT_SIZE, 234, Short.MAX_VALUE)
+            .addComponent(jLabel20, javax.swing.GroupLayout.DEFAULT_SIZE, 269, Short.MAX_VALUE)
             .addComponent(txtNobleName)
         );
         jPanel33Layout.setVerticalGroup(
@@ -1158,6 +1057,29 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
         );
 
         jPanel31.add(jPanel33);
+
+        jLabel19.setText("Estate Name");
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, estateParams, org.jdesktop.beansbinding.ELProperty.create("${nameFirstPart}"), txtEstateName, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+
+        javax.swing.GroupLayout jPanel32Layout = new javax.swing.GroupLayout(jPanel32);
+        jPanel32.setLayout(jPanel32Layout);
+        jPanel32Layout.setHorizontalGroup(
+            jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(txtEstateName)
+            .addComponent(jLabel19, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 269, Short.MAX_VALUE)
+        );
+        jPanel32Layout.setVerticalGroup(
+            jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel32Layout.createSequentialGroup()
+                .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtEstateName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        jPanel31.add(jPanel32);
 
         jPanel34.setLayout(new java.awt.GridLayout(1, 2, 12, 0));
 
@@ -1173,7 +1095,7 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
         jPanel36.setLayout(jPanel36Layout);
         jPanel36Layout.setHorizontalGroup(
             jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jComboBox1, 0, 111, Short.MAX_VALUE)
+            .addComponent(jComboBox1, 0, 128, Short.MAX_VALUE)
             .addComponent(jLabel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel36Layout.setVerticalGroup(
@@ -1191,7 +1113,7 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
         jPanel37.setLayout(jPanel37Layout);
         jPanel37Layout.setHorizontalGroup(
             jPanel37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 111, Short.MAX_VALUE)
+            .addGap(0, 128, Short.MAX_VALUE)
         );
         jPanel37Layout.setVerticalGroup(
             jPanel37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1206,7 +1128,7 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
         jPanel35.setLayout(jPanel35Layout);
         jPanel35Layout.setHorizontalGroup(
             jPanel35Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 234, Short.MAX_VALUE)
+            .addGap(0, 269, Short.MAX_VALUE)
         );
         jPanel35Layout.setVerticalGroup(
             jPanel35Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1215,25 +1137,34 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
 
         jPanel31.add(jPanel35);
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addComponent(jPanel31, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel30, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel31, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel30, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-
         jToolBar4.setFloatable(false);
         jToolBar4.setRollover(true);
 
+        btnEstateSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/search.png"))); // NOI18N
+        btnEstateSearch.setText("Search");
+        btnEstateSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEstateSearchActionPerformed(evt);
+            }
+        });
+        jToolBar4.add(btnEstateSearch);
+
+        btnEstateClear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/eraser.png"))); // NOI18N
+        btnEstateClear.setText("Clear");
+        btnEstateClear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEstateClearActionPerformed(evt);
+            }
+        });
+        jToolBar4.add(btnEstateClear);
+        jToolBar4.add(jSeparator7);
+
         btnEstateOpen.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnEstateOpen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEstateOpenActionPerformed(evt);
+            }
+        });
         jToolBar4.add(btnEstateOpen);
         jToolBar4.add(jSeparator3);
 
@@ -1243,18 +1174,28 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
         lblEstateResultCount.setText(" ");
         jToolBar4.add(lblEstateResultCount);
 
-        tableEstate.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
+        tableEstate.getTableHeader().setReorderingAllowed(false);
+
+        eLProperty = org.jdesktop.beansbinding.ELProperty.create("${baUnitSearchResults}");
+        jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, estateResultsList, eLProperty, tableEstate);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${nameFirstPart}"));
+        columnBinding.setColumnName("Estate");
+        columnBinding.setColumnClass(String.class);
+        columnBinding.setEditable(false);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${rightholders}"));
+        columnBinding.setColumnName("Noble");
+        columnBinding.setColumnClass(String.class);
+        columnBinding.setEditable(false);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${islandName}"));
+        columnBinding.setColumnName("Island");
+        columnBinding.setColumnClass(String.class);
+        columnBinding.setEditable(false);
+        bindingGroup.addBinding(jTableBinding);
+        jTableBinding.bind();binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, estateResultsList, org.jdesktop.beansbinding.ELProperty.create("${selectedBaUnitSearchResult}"), tableEstate, org.jdesktop.beansbinding.BeanProperty.create("selectedElement"));
+        bindingGroup.addBinding(binding);
+
         jScrollPane4.setViewportView(tableEstate);
+        tableEstate.getColumnModel().getColumn(1).setCellRenderer(new org.sola.clients.swing.ui.renderers.CellDelimitedListRenderer(";", false));
 
         javax.swing.GroupLayout tabEstateLayout = new javax.swing.GroupLayout(tabEstate);
         tabEstate.setLayout(tabEstateLayout);
@@ -1263,55 +1204,31 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
             .addGroup(tabEstateLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(tabEstateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jToolBar4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane4))
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 551, Short.MAX_VALUE))
                 .addContainerGap())
+            .addGroup(tabEstateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(tabEstateLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jPanel31, javax.swing.GroupLayout.DEFAULT_SIZE, 551, Short.MAX_VALUE)
+                    .addContainerGap()))
         );
         tabEstateLayout.setVerticalGroup(
             tabEstateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(tabEstateLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(119, 119, 119)
                 .addComponent(jToolBar4, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 353, Short.MAX_VALUE)
                 .addContainerGap())
+            .addGroup(tabEstateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(tabEstateLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jPanel31, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(401, Short.MAX_VALUE)))
         );
 
         mainTabPane.addTab("Estate", tabEstate);
-
-        btnTownClear.setText("Clear");
-        btnTownClear.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTownClearActionPerformed(evt);
-            }
-        });
-
-        btnTownSearch.setText("Search");
-        btnTownSearch.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTownSearchActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel38Layout = new javax.swing.GroupLayout(jPanel38);
-        jPanel38.setLayout(jPanel38Layout);
-        jPanel38Layout.setHorizontalGroup(
-            jPanel38Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnTownSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btnTownClear, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        jPanel38Layout.setVerticalGroup(
-            jPanel38Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel38Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnTownClear)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnTownSearch)
-                .addContainerGap())
-        );
 
         jPanel40.setLayout(new java.awt.GridLayout(1, 2, 12, 0));
 
@@ -1327,7 +1244,7 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
         jPanel41Layout.setHorizontalGroup(
             jPanel41Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(txtTownName, javax.swing.GroupLayout.Alignment.TRAILING)
-            .addComponent(jLabel22, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 234, Short.MAX_VALUE)
+            .addComponent(jLabel22, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 269, Short.MAX_VALUE)
         );
         jPanel41Layout.setVerticalGroup(
             jPanel41Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1344,11 +1261,11 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
         jPanel42.setLayout(jPanel42Layout);
         jPanel42Layout.setHorizontalGroup(
             jPanel42Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 234, Short.MAX_VALUE)
+            .addGap(0, 269, Short.MAX_VALUE)
         );
         jPanel42Layout.setVerticalGroup(
             jPanel42Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 49, Short.MAX_VALUE)
+            .addGap(0, 51, Short.MAX_VALUE)
         );
 
         jPanel39.add(jPanel42);
@@ -1359,34 +1276,61 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
         jPanel43.setLayout(jPanel43Layout);
         jPanel43Layout.setHorizontalGroup(
             jPanel43Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 234, Short.MAX_VALUE)
+            .addGap(0, 269, Short.MAX_VALUE)
         );
         jPanel43Layout.setVerticalGroup(
             jPanel43Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 99, Short.MAX_VALUE)
+            .addGap(0, 102, Short.MAX_VALUE)
         );
 
         jPanel40.add(jPanel43);
 
-        javax.swing.GroupLayout pnlCriteriaTownIslandLayout = new javax.swing.GroupLayout(pnlCriteriaTownIsland);
-        pnlCriteriaTownIsland.setLayout(pnlCriteriaTownIslandLayout);
-        pnlCriteriaTownIslandLayout.setHorizontalGroup(
-            pnlCriteriaTownIslandLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCriteriaTownIslandLayout.createSequentialGroup()
-                .addComponent(jPanel40, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel38, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        pnlCriteriaTownIslandLayout.setVerticalGroup(
-            pnlCriteriaTownIslandLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel40, javax.swing.GroupLayout.PREFERRED_SIZE, 99, Short.MAX_VALUE)
-            .addComponent(jPanel38, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        tableTown.getTableHeader().setReorderingAllowed(false);
+
+        eLProperty = org.jdesktop.beansbinding.ELProperty.create("${baUnitSearchResults}");
+        jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, townResultsList, eLProperty, tableTown);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${nameFirstPart}"));
+        columnBinding.setColumnName("Name");
+        columnBinding.setColumnClass(String.class);
+        columnBinding.setEditable(false);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${islandName}"));
+        columnBinding.setColumnName("Island");
+        columnBinding.setColumnClass(String.class);
+        columnBinding.setEditable(false);
+        bindingGroup.addBinding(jTableBinding);
+        jTableBinding.bind();binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, townResultsList, org.jdesktop.beansbinding.ELProperty.create("${selectedBaUnitSearchResult}"), tableTown, org.jdesktop.beansbinding.BeanProperty.create("selectedElement"));
+        bindingGroup.addBinding(binding);
+
+        jScrollPane1.setViewportView(tableTown);
 
         jToolBar1.setFloatable(false);
         jToolBar1.setRollover(true);
 
+        btnTownSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/search.png"))); // NOI18N
+        btnTownSearch.setText("Search");
+        btnTownSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTownSearchActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(btnTownSearch);
+
+        btnTownClear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/eraser.png"))); // NOI18N
+        btnTownClear.setText("Clear");
+        btnTownClear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTownClearActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(btnTownClear);
+        jToolBar1.add(jSeparator8);
+
         btnTownOpen.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnTownOpen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTownOpenActionPerformed(evt);
+            }
+        });
         jToolBar1.add(btnTownOpen);
         jToolBar1.add(jSeparator4);
 
@@ -1396,19 +1340,6 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
         lblTownResultsCount.setText(" ");
         jToolBar1.add(lblTownResultsCount);
 
-        tableTown.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane1.setViewportView(tableTown);
-
         javax.swing.GroupLayout tabTownIslandLayout = new javax.swing.GroupLayout(tabTownIsland);
         tabTownIsland.setLayout(tabTownIslandLayout);
         tabTownIslandLayout.setHorizontalGroup(
@@ -1416,20 +1347,20 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
             .addGroup(tabTownIslandLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(tabTownIslandLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jToolBar1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(pnlCriteriaTownIsland, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 551, Short.MAX_VALUE)
+                    .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel40, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         tabTownIslandLayout.setVerticalGroup(
             tabTownIslandLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(tabTownIslandLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(pnlCriteriaTownIsland, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel40, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 196, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 353, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -1439,7 +1370,7 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(mainTabPane, javax.swing.GroupLayout.DEFAULT_SIZE, 576, Short.MAX_VALUE)
+            .addComponent(mainTabPane)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1506,6 +1437,15 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
     private void btnLeaseOpenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLeaseOpenActionPerformed
         openBaUnit(leaseResultsList.getSelectedBaUnitSearchResult());
     }//GEN-LAST:event_btnLeaseOpenActionPerformed
+
+    private void btnEstateOpenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEstateOpenActionPerformed
+        openBaUnit(estateResultsList.getSelectedBaUnitSearchResult());
+    }//GEN-LAST:event_btnEstateOpenActionPerformed
+
+    private void btnTownOpenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTownOpenActionPerformed
+        openBaUnit(townResultsList.getSelectedBaUnitSearchResult());
+    }//GEN-LAST:event_btnTownOpenActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private org.sola.clients.beans.administrative.BaUnitSearchParamsBean allotmentParams;
     private org.sola.clients.beans.administrative.BaUnitSearchResultListBean allotmentResultsList;
@@ -1567,9 +1507,7 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel15;
     private javax.swing.JPanel jPanel16;
     private javax.swing.JPanel jPanel17;
-    private javax.swing.JPanel jPanel18;
     private javax.swing.JPanel jPanel19;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel20;
     private javax.swing.JPanel jPanel21;
     private javax.swing.JPanel jPanel22;
@@ -1580,8 +1518,6 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel27;
     private javax.swing.JPanel jPanel28;
     private javax.swing.JPanel jPanel29;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel30;
     private javax.swing.JPanel jPanel31;
     private javax.swing.JPanel jPanel32;
     private javax.swing.JPanel jPanel33;
@@ -1589,9 +1525,7 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel35;
     private javax.swing.JPanel jPanel36;
     private javax.swing.JPanel jPanel37;
-    private javax.swing.JPanel jPanel38;
     private javax.swing.JPanel jPanel39;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel40;
     private javax.swing.JPanel jPanel41;
     private javax.swing.JPanel jPanel42;
@@ -1611,6 +1545,10 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
     private javax.swing.JToolBar.Separator jSeparator2;
     private javax.swing.JToolBar.Separator jSeparator3;
     private javax.swing.JToolBar.Separator jSeparator4;
+    private javax.swing.JToolBar.Separator jSeparator5;
+    private javax.swing.JToolBar.Separator jSeparator6;
+    private javax.swing.JToolBar.Separator jSeparator7;
+    private javax.swing.JToolBar.Separator jSeparator8;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JToolBar jToolBar2;
     private javax.swing.JToolBar jToolBar3;
@@ -1622,7 +1560,6 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
     private org.sola.clients.beans.administrative.BaUnitSearchParamsBean leaseParams;
     private org.sola.clients.beans.administrative.BaUnitSearchResultListBean leaseResultsList;
     private javax.swing.JTabbedPane mainTabPane;
-    private javax.swing.JPanel pnlCriteriaTownIsland;
     private javax.swing.JPanel tabAllotment;
     private javax.swing.JPanel tabEstate;
     private javax.swing.JPanel tabLease;
