@@ -553,8 +553,6 @@ public class TongaApplicationPanel extends ContentPanel {
     private void launchService(final ApplicationServiceBean service, final boolean readOnly) {
 
         if (service != null) {
-            boolean launched = false;
-
             // Create property change listener to refresh the state of the appBean
             // when the service form is closed. 
             final PropertyChangeListener refreshAppBeanOnClose = new PropertyChangeListener() {
@@ -571,11 +569,10 @@ public class TongaApplicationPanel extends ContentPanel {
             // Determine what form to start for selected service
             if (ServiceLauncher.isServiceCategory(service.getRequestTypeCode(),
                     RequestCategoryTypeBean.CODE_APPLICATION_CATEGORY)) {
-
                 // Use the service launcher to open the service panel for an application 
                 // service. Add a listener to refresh the state of the appBean when the 
                 // service panel is closed. 
-                launched = ServiceLauncher.launch(service.getRequestTypeCode(), getMainContentPanel(),
+                ServiceLauncher.launch(service.getRequestTypeCode(), getMainContentPanel(),
                         refreshAppBeanOnClose, null, appBean, service, readOnly);
             } else {
                 // Try to determine the BaUnit to use for the service. 
@@ -584,16 +581,9 @@ public class TongaApplicationPanel extends ContentPanel {
 
                 if (baUnit != null) {
                     // Use the service launcher to open the property panel for the service.
-                    launched = ServiceLauncher.launch(service.getRequestTypeCode(), getMainContentPanel(),
+                    ServiceLauncher.launch(service.getRequestTypeCode(), getMainContentPanel(),
                             refreshAppBeanOnClose, null, appBean, service, baUnit, readOnly);
                 }
-            }
-
-            if (!launched) {
-                // The service could not be started. Check it is mapped by the service launcher
-                MessageUtility.displayMessage(ClientMessage.APPLICATION_FAIL_SERVICE_START,
-                        new Object[]{CacheManager.getBeanByCode(CacheManager.getRequestTypes(),
-                    service.getRequestTypeCode()).getDisplayValue()});
             }
         } else {
             MessageUtility.displayMessage(ClientMessage.APPLICATION_SELECT_SERVICE);

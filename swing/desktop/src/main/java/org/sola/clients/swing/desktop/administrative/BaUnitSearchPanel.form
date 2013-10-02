@@ -1,13 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <Form version="1.5" maxVersion="1.7" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
-  <NonVisualComponents>
-    <Component class="org.sola.clients.swing.ui.administrative.BaUnitSearchPanel" name="baUnitSearchPanel1">
-      <Properties>
-        <Property name="name" type="java.lang.String" value="baUnitSearchPanel1" noResource="true"/>
-      </Properties>
-    </Component>
-  </NonVisualComponents>
   <Properties>
     <Property name="helpTopic" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
       <ResourceString bundle="org/sola/clients/swing/desktop/administrative/Bundle.properties" key="BaUnitSearchPanel.helpTopic" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
@@ -29,21 +22,21 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="headerPanel1" alignment="0" max="32767" attributes="0"/>
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="baUnitSearchPanel" max="32767" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Component id="searchPanel" alignment="0" pref="705" max="32767" attributes="0"/>
+                  <Component id="headerPanel1" alignment="0" max="32767" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="0" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
+          <Group type="102" attributes="0">
               <Component id="headerPanel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="baUnitSearchPanel" pref="279" max="32767" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <Component id="searchPanel" pref="356" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -57,9 +50,9 @@
         </Property>
       </Properties>
     </Component>
-    <Component class="org.sola.clients.swing.ui.administrative.BaUnitSearchPanel" name="baUnitSearchPanel">
+    <Component class="org.sola.clients.swing.ui.administrative.TongaBaUnitSearchPanel" name="searchPanel">
       <Properties>
-        <Property name="name" type="java.lang.String" value="baUnitSearchPanel" noResource="true"/>
+        <Property name="name" type="java.lang.String" value="searchPanel" noResource="true"/>
       </Properties>
     </Component>
   </SubComponents>

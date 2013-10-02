@@ -31,12 +31,13 @@ package org.sola.clients.swing.desktop.administrative;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import org.sola.clients.beans.administrative.BaUnitBean;
 import org.sola.clients.beans.administrative.BaUnitSearchResultBean;
 import org.sola.clients.swing.common.tasks.SolaTask;
 import org.sola.clients.swing.common.tasks.TaskManager;
-import org.sola.clients.swing.desktop.party.PartySearchPanelForm;
 import org.sola.clients.swing.ui.ContentPanel;
 import org.sola.clients.swing.ui.MainContentPanel;
+import org.sola.clients.swing.ui.administrative.TongaBaUnitSearchPanel;
 import org.sola.common.messaging.ClientMessage;
 import org.sola.common.messaging.MessageUtility;
 
@@ -51,26 +52,26 @@ public class BaUnitSearchPanel extends ContentPanel {
     public BaUnitSearchPanel() {
         initComponents();
         setHeaderPanel(headerPanel1);
-        baUnitSearchPanel.addPropertyChangeListener(new PropertyChangeListener() {
+        searchPanel.addPropertyChangeListener(new PropertyChangeListener() {
 
             @Override
             public void propertyChange(PropertyChangeEvent evt) {
-                if (evt.getPropertyName().equals(org.sola.clients.swing.ui.administrative.BaUnitSearchPanel.SELECTED_BAUNIT_SEARCH_RESULT)) {
-                    BaUnitSearchResultBean searchResult = (BaUnitSearchResultBean) evt.getNewValue();
-                    if (searchResult != null) {
-                        openPropertyForm(searchResult.getNameFirstPart(), searchResult.getNameLastPart());
+                if (evt.getPropertyName().equals(TongaBaUnitSearchPanel.SELECTED_BAUNIT_SEARCH_RESULT)) {
+                    BaUnitSearchResultBean selectedResult = (BaUnitSearchResultBean) evt.getNewValue();
+                    if (selectedResult != null) {
+                        openPropertyForm(selectedResult.getId());
                     }
                 }
             }
         });
     }
 
-    private void openPropertyForm(final String nameFirstPart, final String nameLastPart) {
+    private void openPropertyForm(final String baUnitId) {
         SolaTask t = new SolaTask<Void, Void>() {
             @Override
             public Void doTask() {
                 setMessage(MessageUtility.getLocalizedMessageText(ClientMessage.PROGRESS_MSG_OPEN_PROPERTY));
-                TongaPropertyPanel propertyPanel = new TongaPropertyPanel(nameFirstPart, nameLastPart);
+                TongaPropertyPanel propertyPanel = new TongaPropertyPanel(BaUnitBean.getBaUnitsById(baUnitId));
                 getMainContentPanel().addPanel(propertyPanel, MainContentPanel.CARD_PROPERTY_PANEL, true);
                 return null;
             }
@@ -80,18 +81,15 @@ public class BaUnitSearchPanel extends ContentPanel {
     
     
      public void clickFind() {
-        baUnitSearchPanel.clickFind();
+       searchPanel.clickFind();
     }
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        baUnitSearchPanel1 = new org.sola.clients.swing.ui.administrative.BaUnitSearchPanel();
         headerPanel1 = new org.sola.clients.swing.ui.HeaderPanel();
-        baUnitSearchPanel = new org.sola.clients.swing.ui.administrative.BaUnitSearchPanel();
-
-        baUnitSearchPanel1.setName("baUnitSearchPanel1"); // NOI18N
+        searchPanel = new org.sola.clients.swing.ui.administrative.TongaBaUnitSearchPanel();
 
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("org/sola/clients/swing/desktop/administrative/Bundle"); // NOI18N
         setHelpTopic(bundle.getString("BaUnitSearchPanel.helpTopic")); // NOI18N
@@ -100,30 +98,28 @@ public class BaUnitSearchPanel extends ContentPanel {
         headerPanel1.setName("headerPanel1"); // NOI18N
         headerPanel1.setTitleText(bundle.getString("BaUnitSearchPanel.headerPanel1.titleText")); // NOI18N
 
-        baUnitSearchPanel.setName("baUnitSearchPanel"); // NOI18N
+        searchPanel.setName("searchPanel"); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(headerPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(baUnitSearchPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(searchPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 705, Short.MAX_VALUE)
+                    .addComponent(headerPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, 0))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(headerPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(baUnitSearchPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(searchPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 356, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private org.sola.clients.swing.ui.administrative.BaUnitSearchPanel baUnitSearchPanel;
-    private org.sola.clients.swing.ui.administrative.BaUnitSearchPanel baUnitSearchPanel1;
     private org.sola.clients.swing.ui.HeaderPanel headerPanel1;
+    private org.sola.clients.swing.ui.administrative.TongaBaUnitSearchPanel searchPanel;
     // End of variables declaration//GEN-END:variables
 }

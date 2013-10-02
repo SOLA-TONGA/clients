@@ -247,9 +247,8 @@ public final class ServiceLauncher {
      * occur
      * @param constructorArgs The arguments to pass to the constructor for the
      * form. Null if the nullary constructor is to be used.
-     * @return true if the form is successfully launched, false otherwise.
      */
-    public static boolean launch(final String requestType,
+    public static void launch(final String requestType,
             final MainContentPanel mainPanel,
             final PropertyChangeListener panelListener,
             final Runnable taskDone,
@@ -273,14 +272,26 @@ public final class ServiceLauncher {
 
                 @Override
                 protected void taskDone() {
-                    if (taskDone != null) {
-                        taskDone.run();
+                    if (result[0]) {
+                        // Check if additional steps need to be executed 
+                        if (taskDone != null) {
+                            taskDone.run();
+                        }
+                    } else {
+                        // The service could not be started. Check it is mapped by the service launcher
+                        MessageUtility.displayMessage(ClientMessage.APPLICATION_FAIL_SERVICE_START,
+                                new Object[]{CacheManager.getBeanByCode(CacheManager.getRequestTypes(),
+                            requestType).getDisplayValue()});
                     }
                 }
             };
             TaskManager.getInstance().runTask(t);
+        } else {
+            // The service could not be started. Check it is mapped by the service launcher
+            MessageUtility.displayMessage(ClientMessage.APPLICATION_FAIL_SERVICE_START,
+                    new Object[]{CacheManager.getBeanByCode(CacheManager.getRequestTypes(),
+                requestType).getDisplayValue()});
         }
-        return result[0];
     }
 
     /**

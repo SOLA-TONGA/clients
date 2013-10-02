@@ -365,7 +365,6 @@ public class DashBoardPanel extends ContentPanel {
         unassignedScrollPanel.setName("unassignedScrollPanel"); // NOI18N
         unassignedScrollPanel.setComponentOrientation(ComponentOrientation.getOrientation(Locale.getDefault()));
 
-        tbUnassigned.setColumnSelectionAllowed(true);
         tbUnassigned.setComponentPopupMenu(popUpUnassignedApplications);
         tbUnassigned.setGridColor(new java.awt.Color(135, 127, 115));
         tbUnassigned.setName("tbUnassigned"); // NOI18N
@@ -396,6 +395,7 @@ public class DashBoardPanel extends ContentPanel {
         columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${contactPerson}"));
         columnBinding.setColumnName("Contact Person");
         columnBinding.setColumnClass(String.class);
+        columnBinding.setEditable(false);
         columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${agent}"));
         columnBinding.setColumnName("Agent");
         columnBinding.setColumnClass(String.class);
@@ -419,7 +419,6 @@ public class DashBoardPanel extends ContentPanel {
             }
         });
         unassignedScrollPanel.setViewportView(tbUnassigned);
-        tbUnassigned.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
         tbUnassigned.getColumnModel().getColumn(0).setMinWidth(25);
         tbUnassigned.getColumnModel().getColumn(0).setPreferredWidth(25);
         tbUnassigned.getColumnModel().getColumn(0).setMaxWidth(25);
@@ -595,6 +594,7 @@ public class DashBoardPanel extends ContentPanel {
         columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${contactPerson}"));
         columnBinding.setColumnName("Contact Person");
         columnBinding.setColumnClass(String.class);
+        columnBinding.setEditable(false);
         columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${agent}"));
         columnBinding.setColumnName("Agent");
         columnBinding.setColumnClass(String.class);
