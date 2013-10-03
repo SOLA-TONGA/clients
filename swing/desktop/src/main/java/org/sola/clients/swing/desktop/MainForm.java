@@ -54,6 +54,7 @@ import org.sola.clients.swing.common.controls.LanguageCombobox;
 import org.sola.clients.swing.common.tasks.SolaTask;
 import org.sola.clients.swing.common.tasks.TaskManager;
 import org.sola.clients.swing.desktop.administrative.BaUnitSearchPanel;
+import org.sola.clients.swing.desktop.administrative.CashierImportForm;
 import org.sola.clients.swing.desktop.administrative.RightsExportForm;
 import org.sola.clients.swing.desktop.application.ApplicationPanel;
 import org.sola.clients.swing.desktop.application.ApplicationSearchPanel;
@@ -645,6 +646,15 @@ public class MainForm extends javax.swing.JFrame {
             getMainContentPanel().addPanel(form, MainContentPanel.CARD_RIGHT_EXPORT, true);
         }
     }
+    
+    private void showCashierImportPanel() {
+        if (getMainContentPanel().isPanelOpened(MainContentPanel.CARD_CASHIER_IMPORT)) {
+            getMainContentPanel().showPanel(MainContentPanel.CARD_CASHIER_IMPORT);
+        } else {
+            CashierImportForm form = new CashierImportForm();
+            getMainContentPanel().addPanel(form, MainContentPanel.CARD_CASHIER_IMPORT, true);
+        }
+    }
 
     /**
      * Opens {@link PowerOfAttorneyViewForm} form and shows provided document.
@@ -690,6 +700,7 @@ public class MainForm extends javax.swing.JFrame {
         menuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
         menuExportRights = new javax.swing.JMenuItem();
+        menuCashierImport = new javax.swing.JMenuItem();
         javax.swing.JMenuItem menuExitItem = new javax.swing.JMenuItem();
         menuView = new javax.swing.JMenu();
         menuLanguage = new javax.swing.JMenu();
@@ -887,6 +898,15 @@ public class MainForm extends javax.swing.JFrame {
             }
         });
         fileMenu.add(menuExportRights);
+
+        menuCashierImport.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/export.png"))); // NOI18N
+        menuCashierImport.setText(bundle.getString("MainForm.menuCashierImport.text")); // NOI18N
+        menuCashierImport.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuCashierImportActionPerformed(evt);
+            }
+        });
+        fileMenu.add(menuCashierImport);
 
         menuExitItem.setText(bundle.getString("MainForm.menuExitItem.text")); // NOI18N
         menuExitItem.setToolTipText(bundle.getString("MainForm.menuExitItem.toolTipText")); // NOI18N
@@ -1323,6 +1343,10 @@ public class MainForm extends javax.swing.JFrame {
         openMapSpatialUnitGroupEditor();
     }//GEN-LAST:event_menuSpatialUnitGroupActionPerformed
 
+    private void menuCashierImportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCashierImportActionPerformed
+        showCashierImportPanel();
+    }//GEN-LAST:event_menuCashierImportActionPerformed
+
     private void editPassword() {
         showPasswordPanel();
     }
@@ -1367,6 +1391,7 @@ public class MainForm extends javax.swing.JFrame {
     private javax.swing.JMenu menuApplications;
     private javax.swing.JMenuItem menuBaUnitSearch;
     private javax.swing.JMenuBar menuBar;
+    private javax.swing.JMenuItem menuCashierImport;
     private javax.swing.JMenuItem menuCertificates;
     private javax.swing.JMenuItem menuDefaultLogLevel;
     private javax.swing.JMenuItem menuDocumentSearch;

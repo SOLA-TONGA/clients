@@ -95,6 +95,7 @@ public class MainContentPanel extends javax.swing.JPanel {
     public final static String CARD_DRAFT_DEED = "draftDeedPanel";
     public final static String CARD_SIGN_DEED = "signDeedPanel";
     public final static String CARD_ITEM_NUMBER = "itemNumber";
+    public final static String CARD_CASHIER_IMPORT = "cashierImportPanel";
     
     private HashMap<String, Component> cards;
     private ArrayList<String> cardsIndex;
