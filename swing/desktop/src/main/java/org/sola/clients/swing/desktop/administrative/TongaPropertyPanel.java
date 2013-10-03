@@ -149,6 +149,14 @@ public class TongaPropertyPanel extends ContentPanel {
     }
 
     /**
+     * Constructor that will display a BaUnitBean with readonly. 
+     * @param baUnitBean 
+     */
+    public TongaPropertyPanel(BaUnitBean baUnitBean) {
+        this(null, null, baUnitBean, true);
+    }
+
+    /**
      * Form constructor. Creates and open form in read only mode.
      *
      * @param nameFirstPart First part of the property code.

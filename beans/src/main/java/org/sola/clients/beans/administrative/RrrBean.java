@@ -111,6 +111,8 @@ public class RrrBean extends AbstractTransactionedBean {
     public static final String RECEIPT_REFERENCE_PROPERTY = "receiptReference";
     public static final String TERM_PROPERTY = "term";
     public static final String RECEIPT_DATE_PROPERTY = "receiptDate";
+    public static final String RECEIPT_AMOUNT_PROPERTY = "receiptAmount";
+    public static final String OTHER_RIGHTHOLDER_NAME_PROPERTY = "otherRightholderName";
     private String baUnitId;
     private String nr;
     //@Past(message = ClientMessage.CHECK_REGISTRATION_DATE, payload = Localized.class)
@@ -134,6 +136,8 @@ public class RrrBean extends AbstractTransactionedBean {
     private BigDecimal term;
     private Date receiptDate;
     private String receiptReference;
+    private BigDecimal receiptAmount;
+    private String otherRightholderName;
     private Double share;
     private SolaList<SourceBean> sourceList;
     @Valid
@@ -388,6 +392,26 @@ public class RrrBean extends AbstractTransactionedBean {
         String oldValue = this.receiptReference;
         this.receiptReference = value;
         propertySupport.firePropertyChange(RECEIPT_REFERENCE_PROPERTY, oldValue, value);
+    }
+
+    public BigDecimal getReceiptAmount() {
+        return receiptAmount;
+    }
+
+    public void setReceiptAmount(BigDecimal value) {
+        BigDecimal oldValue = this.receiptAmount;
+        this.receiptAmount = value;
+        propertySupport.firePropertyChange(RECEIPT_AMOUNT_PROPERTY, oldValue, value);
+    }
+
+    public String getOtherRightholderName() {
+        return otherRightholderName;
+    }
+
+    public void setOtherRightholderName(String value) {
+        String oldValue = this.otherRightholderName;
+        this.otherRightholderName = value;
+        propertySupport.firePropertyChange(OTHER_RIGHTHOLDER_NAME_PROPERTY, oldValue, value);
     }
 
     public SolaList<SourceBean> getSourceList() {

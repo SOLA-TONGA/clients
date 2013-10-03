@@ -30,7 +30,6 @@
 package org.sola.clients.swing.ui.renderers;
 
 import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.text.DateFormat;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;

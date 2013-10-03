@@ -37,7 +37,7 @@ import javax.swing.table.DefaultTableCellRenderer;
  * Formats table cell containing date.
  */
 public class DateTimeRenderer extends DefaultTableCellRenderer {
-    SimpleDateFormat f = new SimpleDateFormat("MMM d, yyyy HH:mm");
+    SimpleDateFormat f = new SimpleDateFormat("d MMM yyyy");
 
     @Override
     public Component getTableCellRendererComponent(JTable table,
