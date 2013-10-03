@@ -39,7 +39,7 @@ import org.sola.clients.beans.controls.SolaCodeList;
  * @author Admin
  */
 public class DistrictListBean extends AbstractBindingListBean{
-     public static final String SELECTED_DISTRICT_PROPERTY = "selectedDistrictBean";
+    public static final String SELECTED_DISTRICT_PROPERTY = "selectedDistrictBean";
     private SolaCodeList<DistrictBean> districtListBean;
     private DistrictBean selectedDistrictBean;
 

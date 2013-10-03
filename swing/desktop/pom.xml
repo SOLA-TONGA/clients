@@ -95,6 +95,11 @@
             <artifactId>ognl</artifactId>
             <version>3.0.3</version>
         </dependency>
+        <dependency>
+            <groupId>org.sola.clients</groupId>
+            <artifactId>clients-beans</artifactId>
+            <version>1.2-SNAPSHOT</version>
+        </dependency>
     </dependencies>
     <profiles>
         <profile>
