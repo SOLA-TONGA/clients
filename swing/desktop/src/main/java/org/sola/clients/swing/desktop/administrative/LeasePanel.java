@@ -36,7 +36,9 @@ import javax.validation.groups.Default;
 import net.sf.jasperreports.engine.JasperPrint;
 import org.sola.clients.beans.administrative.BaUnitBean;
 import org.sola.clients.beans.administrative.ConditionForRrrBean;
+import org.sola.clients.beans.administrative.RelatedBaUnitInfoBean;
 import org.sola.clients.beans.administrative.RrrBean;
+import org.sola.clients.beans.administrative.RrrPaymentHistoryListBean;
 import org.sola.clients.beans.administrative.RrrReportBean;
 import org.sola.clients.beans.administrative.validation.LeaseValidationGroup;
 import org.sola.clients.beans.application.ApplicationBean;
@@ -55,6 +57,7 @@ import org.sola.clients.swing.desktop.source.DocumentsManagementExtPanel;
 import org.sola.clients.swing.ui.ContentPanel;
 import org.sola.clients.swing.ui.MainContentPanel;
 import org.sola.clients.swing.ui.renderers.BooleanCellRenderer2;
+import org.sola.clients.swing.ui.renderers.DateTimeRenderer;
 import org.sola.clients.swing.ui.renderers.FormattersFactory;
 import org.sola.clients.swing.ui.renderers.TableCellTextAreaRenderer;
 import org.sola.clients.swing.ui.reports.FreeTextDialog;
@@ -100,6 +103,13 @@ public class LeasePanel extends ContentPanel {
         return rrrBean;
     }
 
+    private RrrPaymentHistoryListBean createPaymentHistoryListBean() {
+        if (paymentHistoryListBean == null) {
+            paymentHistoryListBean = new RrrPaymentHistoryListBean();
+        }
+        return paymentHistoryListBean;
+    }
+
     /**
      * Creates new form SimpleOwhershipPanel
      */
@@ -115,6 +125,9 @@ public class LeasePanel extends ContentPanel {
     }
 
     private void postInit() {
+        if (rrrBean != null && rrrBean.getId() != null) {
+            paymentHistoryListBean.loadList(rrrBean.getId());
+        }
         // Populate lease conditions list with standard conditions for new RrrBean
         if (rrrAction == RrrBean.RRR_ACTION.NEW) {
             rrrBean.addConditions(conditionTypes.getLeaseConditionList());
@@ -196,7 +209,12 @@ public class LeasePanel extends ContentPanel {
         txtReceiptRef.setEnabled(enabled);
         txtReceiptDate.setEnabled(enabled);
         txtDueDate.setEnabled(enabled);
-        txtNotationText.setEditable(enabled);
+        txtPaymentAmount.setEnabled(enabled);
+        txtNotationText.setEnabled(enabled);
+        // Don't allow the Landholder field to be edited if there is a 
+        // relationship to an allotment. 
+        txtLandholder.setEnabled(enabled
+                && !baUnit.hasParentRelationship(RelatedBaUnitInfoBean.CODE_ALLOTMENT));
 
         /*
          btnPrintDraftLease.setEnabled(enabled);
@@ -223,8 +241,8 @@ public class LeasePanel extends ContentPanel {
         jSeparator4.setVisible(false);
 
         // SOLA Tonga Customisation - Remove /Hide Lease Conditions Tab
-        if (jTabbedPane1.indexOfComponent(jPanel12) >= 0) {
-            jTabbedPane1.removeTabAt(jTabbedPane1.indexOfComponent(jPanel12));
+        if (tabPayments.indexOfComponent(jPanel12) >= 0) {
+            tabPayments.removeTabAt(tabPayments.indexOfComponent(jPanel12));
         }
     }
 
@@ -269,14 +287,19 @@ public class LeasePanel extends ContentPanel {
         menuRemoveOwner.setEnabled(btnRemoveOwner.isEnabled());
         menuEditOwner.setEnabled(btnEditOwner.isEnabled());
         menuViewOwner.setEnabled(btnViewOwner.isEnabled());
+
+
     }
 
     private boolean saveRrr() {
         if (rrrBean.validate(true, Default.class, LeaseValidationGroup.class).size() < 1) {
-            firePropertyChange(UPDATED_RRR, null, rrrBean);
+            firePropertyChange(UPDATED_RRR,
+                    null, rrrBean);
             close();
+
             return true;
         }
+
         return false;
     }
 
@@ -312,6 +335,8 @@ public class LeasePanel extends ContentPanel {
     private void editOwner() {
         if (rrrBean.getSelectedRightHolder() != null) {
             openRightHolderForm(rrrBean.getSelectedRightHolder(), false);
+
+
         }
     }
 
@@ -517,6 +542,7 @@ public class LeasePanel extends ContentPanel {
         menuAddCustomCondition = new javax.swing.JMenuItem();
         menuEditCondition = new javax.swing.JMenuItem();
         menuRemoveCondition = new javax.swing.JMenuItem();
+        paymentHistoryListBean = new org.sola.clients.beans.administrative.RrrPaymentHistoryListBean();
         headerPanel = new org.sola.clients.swing.ui.HeaderPanel();
         jToolBar1 = new javax.swing.JToolBar();
         btnSave = new javax.swing.JButton();
@@ -532,7 +558,7 @@ public class LeasePanel extends ContentPanel {
         jSeparator2 = new javax.swing.JToolBar.Separator();
         jLabel1 = new javax.swing.JLabel();
         lblStatus = new javax.swing.JLabel();
-        jTabbedPane1 = new javax.swing.JTabbedPane();
+        tabPayments = new javax.swing.JTabbedPane();
         jPanel11 = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
         jPanel13 = new javax.swing.JPanel();
@@ -568,13 +594,9 @@ public class LeasePanel extends ContentPanel {
         groupPanel2 = new org.sola.clients.swing.ui.GroupPanel();
         documentsManagementPanel = createDocumentsPanel();
         jPanel14 = new javax.swing.JPanel();
-        jPanel4 = new javax.swing.JPanel();
-        lblReceiptRef = new javax.swing.JLabel();
-        lblReceiptDate = new javax.swing.JLabel();
-        lblDueDate = new javax.swing.JLabel();
-        txtReceiptRef = new javax.swing.JTextField();
-        txtReceiptDate = new javax.swing.JFormattedTextField();
-        txtDueDate = new javax.swing.JFormattedTextField();
+        jPanel17 = new javax.swing.JPanel();
+        txtLandholder = new javax.swing.JTextField();
+        lblLandholder = new javax.swing.JLabel();
         jPanel15 = new javax.swing.JPanel();
         lblNotationText = new javax.swing.JLabel();
         txtNotationText = new javax.swing.JTextField();
@@ -590,6 +612,20 @@ public class LeasePanel extends ContentPanel {
         cbxStandardConditions = new javax.swing.JComboBox();
         filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(8, 0), new java.awt.Dimension(8, 0), new java.awt.Dimension(10, 32767));
         btnAddStandardCondition = new javax.swing.JButton();
+        jPanel10 = new javax.swing.JPanel();
+        jPanel16 = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
+        lblReceiptRef = new javax.swing.JLabel();
+        lblReceiptDate = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        lblDueDate = new javax.swing.JLabel();
+        txtReceiptRef = new javax.swing.JTextField();
+        txtReceiptDate = new javax.swing.JFormattedTextField();
+        txtPaymentAmount = new javax.swing.JFormattedTextField();
+        txtDueDate = new javax.swing.JFormattedTextField();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTableWithDefaultStyles1 = new org.sola.clients.swing.common.controls.JTableWithDefaultStyles();
+        groupPanel3 = new org.sola.clients.swing.ui.GroupPanel();
 
         menuAddOwner.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/add.png"))); // NOI18N
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("org/sola/clients/swing/desktop/administrative/Bundle"); // NOI18N
@@ -749,8 +785,8 @@ public class LeasePanel extends ContentPanel {
         jPanel13.setLayout(jPanel13Layout);
         jPanel13Layout.setHorizontalGroup(
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblRegistryNumber, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(txtRegistrationNumber)
+            .addComponent(txtRegistrationNumber, javax.swing.GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE)
+            .addComponent(lblRegistryNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
         );
         jPanel13Layout.setVerticalGroup(
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -988,7 +1024,7 @@ public class LeasePanel extends ContentPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jToolBar2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 66, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE))
         );
 
         jPanel1.add(jPanel2);
@@ -1007,46 +1043,34 @@ public class LeasePanel extends ContentPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addComponent(groupPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(documentsManagementPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE))
+                .addComponent(documentsManagementPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 191, Short.MAX_VALUE))
         );
 
         jPanel1.add(jPanel3);
 
         jPanel14.setLayout(new java.awt.GridLayout(1, 2, 15, 0));
 
-        jPanel4.setLayout(new java.awt.GridLayout(2, 3, 15, 2));
-
-        lblReceiptRef.setText(bundle.getString("LeasePanel.lblReceiptRef.text")); // NOI18N
-        jPanel4.add(lblReceiptRef);
-
-        lblReceiptDate.setText(bundle.getString("LeasePanel.lblReceiptDate.text")); // NOI18N
-        jPanel4.add(lblReceiptDate);
-
-        lblDueDate.setText(bundle.getString("LeasePanel.lblDueDate.text")); // NOI18N
-        jPanel4.add(lblDueDate);
-
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, rrrBean, org.jdesktop.beansbinding.ELProperty.create("${receiptReference}"), txtReceiptRef, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, rrrBean, org.jdesktop.beansbinding.ELProperty.create("${otherRightholderName}"), txtLandholder, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
 
-        jPanel4.add(txtReceiptRef);
+        lblLandholder.setText(bundle.getString("LeasePanel.lblLandholder.text")); // NOI18N
 
-        txtReceiptDate.setFormatterFactory(FormattersFactory.getInstance().getDateFormatterFactory());
-        txtReceiptDate.setText(bundle.getString("LeasePanel.txtReceiptDate.text")); // NOI18N
+        javax.swing.GroupLayout jPanel17Layout = new javax.swing.GroupLayout(jPanel17);
+        jPanel17.setLayout(jPanel17Layout);
+        jPanel17Layout.setHorizontalGroup(
+            jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblLandholder, javax.swing.GroupLayout.DEFAULT_SIZE, 305, Short.MAX_VALUE)
+            .addComponent(txtLandholder)
+        );
+        jPanel17Layout.setVerticalGroup(
+            jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel17Layout.createSequentialGroup()
+                .addComponent(lblLandholder)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                .addComponent(txtLandholder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
 
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, rrrBean, org.jdesktop.beansbinding.ELProperty.create("${receiptDate}"), txtReceiptDate, org.jdesktop.beansbinding.BeanProperty.create("value"));
-        bindingGroup.addBinding(binding);
-
-        jPanel4.add(txtReceiptDate);
-
-        txtDueDate.setFormatterFactory(FormattersFactory.getInstance().getDateFormatterFactory());
-        txtDueDate.setText(bundle.getString("LeasePanel.txtDueDate.text")); // NOI18N
-
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, rrrBean, org.jdesktop.beansbinding.ELProperty.create("${dueDate}"), txtDueDate, org.jdesktop.beansbinding.BeanProperty.create("value"));
-        bindingGroup.addBinding(binding);
-
-        jPanel4.add(txtDueDate);
-
-        jPanel14.add(jPanel4);
+        jPanel14.add(jPanel17);
 
         jPanel15.setLayout(new java.awt.GridLayout(2, 1, 0, 2));
 
@@ -1069,7 +1093,7 @@ public class LeasePanel extends ContentPanel {
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel11Layout.setVerticalGroup(
@@ -1079,12 +1103,12 @@ public class LeasePanel extends ContentPanel {
                 .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
                 .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 14, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 433, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        jTabbedPane1.addTab(bundle.getString("LeasePanel.jPanel11.TabConstraints.tabTitle"), jPanel11); // NOI18N
+        tabPayments.addTab(bundle.getString("LeasePanel.jPanel11.TabConstraints.tabTitle"), jPanel11); // NOI18N
 
         tableLeaseConditions.setComponentPopupMenu(leaseConditionsPopUp);
 
@@ -1188,11 +1212,130 @@ public class LeasePanel extends ContentPanel {
                 .addContainerGap()
                 .addComponent(jToolBar3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 322, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 514, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        jTabbedPane1.addTab(bundle.getString("LeasePanel.jPanel12.TabConstraints.tabTitle"), new javax.swing.ImageIcon(getClass().getResource("/images/common/red_asterisk.gif")), jPanel12); // NOI18N
+        tabPayments.addTab(bundle.getString("LeasePanel.jPanel12.TabConstraints.tabTitle"), new javax.swing.ImageIcon(getClass().getResource("/images/common/red_asterisk.gif")), jPanel12); // NOI18N
+
+        jPanel4.setLayout(new java.awt.GridLayout(2, 3, 15, 2));
+
+        lblReceiptRef.setText(bundle.getString("LeasePanel.lblReceiptRef.text")); // NOI18N
+        jPanel4.add(lblReceiptRef);
+
+        lblReceiptDate.setText(bundle.getString("LeasePanel.lblReceiptDate.text")); // NOI18N
+        jPanel4.add(lblReceiptDate);
+
+        jLabel2.setText(bundle.getString("LeasePanel.jLabel2.text")); // NOI18N
+        jPanel4.add(jLabel2);
+
+        lblDueDate.setText(bundle.getString("LeasePanel.lblDueDate.text")); // NOI18N
+        jPanel4.add(lblDueDate);
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, rrrBean, org.jdesktop.beansbinding.ELProperty.create("${receiptReference}"), txtReceiptRef, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+
+        jPanel4.add(txtReceiptRef);
+
+        txtReceiptDate.setFormatterFactory(FormattersFactory.getInstance().getDateFormatterFactory());
+        txtReceiptDate.setText(bundle.getString("LeasePanel.txtReceiptDate.text")); // NOI18N
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, rrrBean, org.jdesktop.beansbinding.ELProperty.create("${receiptDate}"), txtReceiptDate, org.jdesktop.beansbinding.BeanProperty.create("value"));
+        bindingGroup.addBinding(binding);
+
+        jPanel4.add(txtReceiptDate);
+
+        txtPaymentAmount.setFormatterFactory(FormattersFactory.getInstance().getMoneyFormatterFactory());
+        txtPaymentAmount.setText(bundle.getString("LeasePanel.txtPaymentAmount.text")); // NOI18N
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, rrrBean, org.jdesktop.beansbinding.ELProperty.create("${receiptAmount}"), txtPaymentAmount, org.jdesktop.beansbinding.BeanProperty.create("value"));
+        bindingGroup.addBinding(binding);
+
+        jPanel4.add(txtPaymentAmount);
+
+        txtDueDate.setFormatterFactory(FormattersFactory.getInstance().getDateFormatterFactory());
+        txtDueDate.setText(bundle.getString("LeasePanel.txtDueDate.text")); // NOI18N
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, rrrBean, org.jdesktop.beansbinding.ELProperty.create("${dueDate}"), txtDueDate, org.jdesktop.beansbinding.BeanProperty.create("value"));
+        bindingGroup.addBinding(binding);
+
+        jPanel4.add(txtDueDate);
+
+        javax.swing.GroupLayout jPanel16Layout = new javax.swing.GroupLayout(jPanel16);
+        jPanel16.setLayout(jPanel16Layout);
+        jPanel16Layout.setHorizontalGroup(
+            jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 626, Short.MAX_VALUE)
+        );
+        jPanel16Layout.setVerticalGroup(
+            jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel16Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jTableWithDefaultStyles1.getTableHeader().setReorderingAllowed(false);
+
+        eLProperty = org.jdesktop.beansbinding.ELProperty.create("${paymentHistoryList}");
+        jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, paymentHistoryListBean, eLProperty, jTableWithDefaultStyles1);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${receiptReference}"));
+        columnBinding.setColumnName("Receipt Reference");
+        columnBinding.setColumnClass(String.class);
+        columnBinding.setEditable(false);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${receiptDate}"));
+        columnBinding.setColumnName("Receipt Date");
+        columnBinding.setColumnClass(java.util.Date.class);
+        columnBinding.setEditable(false);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${receiptAmount}"));
+        columnBinding.setColumnName("Receipt Amount");
+        columnBinding.setColumnClass(java.math.BigDecimal.class);
+        columnBinding.setEditable(false);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${nextPaymentDate}"));
+        columnBinding.setColumnName("Next Payment Date");
+        columnBinding.setColumnClass(java.util.Date.class);
+        columnBinding.setEditable(false);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${changeUser}"));
+        columnBinding.setColumnName("Change User");
+        columnBinding.setColumnClass(String.class);
+        columnBinding.setEditable(false);
+        bindingGroup.addBinding(jTableBinding);
+        jTableBinding.bind();
+        jScrollPane3.setViewportView(jTableWithDefaultStyles1);
+        jTableWithDefaultStyles1.getColumnModel().getColumn(0).setHeaderValue(bundle.getString("LeasePanel.jTableWithDefaultStyles1.columnModel.title0_1")); // NOI18N
+        jTableWithDefaultStyles1.getColumnModel().getColumn(1).setHeaderValue(bundle.getString("LeasePanel.jTableWithDefaultStyles1.columnModel.title1_1")); // NOI18N
+        jTableWithDefaultStyles1.getColumnModel().getColumn(1).setCellRenderer(new DateTimeRenderer());
+        jTableWithDefaultStyles1.getColumnModel().getColumn(2).setHeaderValue(bundle.getString("LeasePanel.jTableWithDefaultStyles1.columnModel.title2_1")); // NOI18N
+        jTableWithDefaultStyles1.getColumnModel().getColumn(3).setHeaderValue(bundle.getString("LeasePanel.jTableWithDefaultStyles1.columnModel.title3_1")); // NOI18N
+        jTableWithDefaultStyles1.getColumnModel().getColumn(3).setCellRenderer(new DateTimeRenderer());
+        jTableWithDefaultStyles1.getColumnModel().getColumn(4).setHeaderValue(bundle.getString("LeasePanel.jTableWithDefaultStyles1.columnModel.title4")); // NOI18N
+
+        groupPanel3.setTitleText(bundle.getString("LeasePanel.groupPanel3.titleText")); // NOI18N
+
+        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
+        jPanel10.setLayout(jPanel10Layout);
+        jPanel10Layout.setHorizontalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel10Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 626, Short.MAX_VALUE)
+                    .addComponent(jPanel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(groupPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        jPanel10Layout.setVerticalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel10Layout.createSequentialGroup()
+                .addComponent(jPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(groupPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 466, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        tabPayments.addTab(bundle.getString("LeasePanel.jPanel10.TabConstraints.tabTitle"), jPanel10); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -1202,7 +1345,7 @@ public class LeasePanel extends ContentPanel {
             .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addComponent(tabPayments, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -1212,7 +1355,7 @@ public class LeasePanel extends ContentPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTabbedPane1)
+                .addComponent(tabPayments)
                 .addContainerGap())
         );
 
@@ -1331,14 +1474,19 @@ public class LeasePanel extends ContentPanel {
     private javax.swing.Box.Filler filler3;
     private org.sola.clients.swing.ui.GroupPanel groupPanel1;
     private org.sola.clients.swing.ui.GroupPanel groupPanel2;
+    private org.sola.clients.swing.ui.GroupPanel groupPanel3;
     private org.sola.clients.swing.ui.HeaderPanel headerPanel;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel15;
+    private javax.swing.JPanel jPanel16;
+    private javax.swing.JPanel jPanel17;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -1349,17 +1497,19 @@ public class LeasePanel extends ContentPanel {
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JToolBar.Separator jSeparator1;
     private javax.swing.JToolBar.Separator jSeparator2;
     private javax.swing.JToolBar.Separator jSeparator3;
     private javax.swing.JToolBar.Separator jSeparator4;
     private javax.swing.JToolBar.Separator jSeparator5;
-    private javax.swing.JTabbedPane jTabbedPane1;
+    private org.sola.clients.swing.common.controls.JTableWithDefaultStyles jTableWithDefaultStyles1;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JToolBar jToolBar2;
     private javax.swing.JToolBar jToolBar3;
     private javax.swing.JLabel lblDueDate;
     private javax.swing.JLabel lblExpirationDate;
+    private javax.swing.JLabel lblLandholder;
     private javax.swing.JLabel lblNotationText;
     private javax.swing.JLabel lblPrimaryRight;
     private javax.swing.JLabel lblReceiptDate;
@@ -1377,14 +1527,18 @@ public class LeasePanel extends ContentPanel {
     private javax.swing.JMenuItem menuRemoveCondition;
     private javax.swing.JMenuItem menuRemoveOwner;
     private javax.swing.JMenuItem menuViewOwner;
+    private org.sola.clients.beans.administrative.RrrPaymentHistoryListBean paymentHistoryListBean;
     private javax.swing.JPanel pnlPrimaryRight;
     private javax.swing.JPopupMenu popUpOwners;
     private org.sola.clients.beans.administrative.RrrBean rrrBean;
+    private javax.swing.JTabbedPane tabPayments;
     private org.sola.clients.swing.common.controls.JTableWithDefaultStyles tableLeaseConditions;
     private org.sola.clients.swing.common.controls.JTableWithDefaultStyles tableOwners;
     private javax.swing.JFormattedTextField txtDueDate;
     private javax.swing.JFormattedTextField txtExpirationDate;
+    private javax.swing.JTextField txtLandholder;
     private javax.swing.JTextField txtNotationText;
+    private javax.swing.JFormattedTextField txtPaymentAmount;
     private javax.swing.JFormattedTextField txtReceiptDate;
     private javax.swing.JTextField txtReceiptRef;
     private javax.swing.JFormattedTextField txtRegistrationDate;

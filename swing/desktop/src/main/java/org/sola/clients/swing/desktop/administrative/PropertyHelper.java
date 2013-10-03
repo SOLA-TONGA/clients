@@ -112,6 +112,8 @@ public class PropertyHelper {
             leaseRrr.setStatusCode(StatusConstants.PENDING);
             leaseRrr.setAmount(appBean.getSelectedProperty().getAmount());
             leaseRrr.setTerm(appBean.getSelectedProperty().getLeaseTerm());
+            leaseRrr.setRegistryBookReference(appBean.getSelectedProperty().getLeaseNumber());
+            leaseRrr.setOtherRightholderName(appBean.getSelectedProperty().getLessorName());
             // Add the property description as a Notation on the lease
             if (appBean.getSelectedProperty().getDescription() != null) {
                 leaseRrr.getNotation().setNotationText(appBean.getSelectedProperty().getDescription());

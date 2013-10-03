@@ -808,4 +808,23 @@ public class BaUnitBean extends BaUnitSummaryBean {
         baUnitAreaList.add(officialArea);
 
     }
+
+    /**
+     * Determines if the BaUnit has a relationship to a Parent BaUnit of the
+     * specified type.
+     *
+     * @param relationCode Relationship to check for
+     */
+    public boolean hasParentRelationship(String relationCode) {
+        boolean result = false;
+        if (relationCode != null) {
+            for (RelatedBaUnitInfoBean bean : getFilteredParentBaUnits()) {
+                if (relationCode.equals(bean.getRelationCode())) {
+                    result = true;
+                    break;
+                }
+            }
+        }
+        return result;
+    }
 }
