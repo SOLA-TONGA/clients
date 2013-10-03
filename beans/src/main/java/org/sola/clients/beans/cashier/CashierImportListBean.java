@@ -15,8 +15,12 @@
  */
 package org.sola.clients.beans.cashier;
 
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 import org.sola.clients.beans.AbstractBindingListBean;
 import org.sola.clients.beans.controls.SolaObservableList;
+import org.sola.clients.beans.utils.CsvFileUtility;
 
 /**
  *
@@ -31,12 +35,37 @@ public class CashierImportListBean extends AbstractBindingListBean{
         super();
     }
     
+        public void loadCashierCsv(String filePath){
+        int count = 0;
+         List<String[]> lines = CsvFileUtility.importFile(filePath);
+         for (String[] line: lines) {
+                count++;
+                if (count <= 1) {
+                    continue;
+                }
+                CashierImportBean bean = new CashierImportBean();
+                bean.setRentGov(new BigDecimal(cleanCsv(line[0])));
+                bean.setDeedLease(new BigDecimal(cleanCsv(line[1])));
+                bean.setRentalTax(new BigDecimal(cleanCsv(line[2])));
+                bean.setLeaseNumber(line[3]);
+                getCashierImportList().add(bean);
+        }
+    }
+        
+    public String cleanCsv(String text){
+       
+        if (text != null){
+            text = text.replaceAll("[^0-9\\.]", "");
+        }
+        return text;
+    }
+    
     public void setCashierImport(CashierImportBean selectedCashier) {
         this.selectedCashierImportBean = selectedCashier;
         propertySupport.firePropertyChange(SELECTED_CASHIER_IMPORT, null, selectedCashier);
     }
     
-    public SolaObservableList<CashierImportBean> getCashierList() {
+    public SolaObservableList<CashierImportBean> getCashierImportList() {
         if (cashierImportList == null) {
             cashierImportList = new SolaObservableList<CashierImportBean>();
         }

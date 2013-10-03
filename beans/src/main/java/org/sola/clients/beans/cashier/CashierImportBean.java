@@ -30,25 +30,6 @@ public class CashierImportBean extends AbstractBindingBean{
     public BigDecimal rentalTax;
     public BigDecimal deedLease;
     public String leaseNumber;
-    
-    public static List<CashierImportBean> loadCashierCsv(String filePath){
-        int count = 0;
-         List<String[]> lines = CsvFileUtility.importFile(filePath);
-         List<CashierImportBean> result = new ArrayList();
-         for (String[] line: lines) {
-                count++;
-                if (count <= 1) {
-                    break;
-                }
-                CashierImportBean bean = new CashierImportBean();
-                bean.setRentGov(new BigDecimal(line[0]));
-                bean.setDeedLease(new BigDecimal(line[1]));
-                bean.setRentalTax(new BigDecimal(line[2]));
-                bean.setLeaseNumber(line[3]);
-                result.add(bean);
-        }
-        return result;
-    }
 
     public BigDecimal getRentGov() {
         return rentGov;

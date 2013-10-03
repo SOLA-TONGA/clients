@@ -27,6 +27,7 @@ import org.sola.clients.swing.common.tasks.TaskManager;
 import org.sola.clients.swing.ui.ContentPanel;
 import org.sola.clients.swing.ui.source.FileBrowserForm;
 import org.sola.common.FileUtility;
+import org.sola.common.logging.LogUtility;
 import org.sola.common.messaging.ClientMessage;
 import org.sola.common.messaging.MessageUtility;
 
@@ -43,7 +44,7 @@ public class CashierImportForm extends ContentPanel {
         initComponents();
     }
     
-    private void load(final List<CashierImportBean> list) {
+    private void load() {
 
         JFileChooser jfc = new JFileChooser();
         jfc.removeChoosableFileFilter(jfc.getFileFilter());
@@ -87,7 +88,7 @@ public class CashierImportForm extends ContentPanel {
             @Override
             public Boolean doTask() {
                 try {
-                    cashierImportListBean1.getCashierList().addAll(cashierImportBean1.loadCashierCsv(file.getPath()));
+                    cashierImportListBean1.loadCashierCsv(file.getPath());
                 } catch (Exception e) {
                     ex = e;
                     return false;
@@ -97,7 +98,10 @@ public class CashierImportForm extends ContentPanel {
 
             @Override
             public void taskDone() {
-
+                if (ex != null)    {
+                    MessageUtility.displayMessage(ClientMessage.GENERAL_LOAD_FILE_FAILURE, new Object[]{file.getPath()});
+                    LogUtility.log("CSV file failure " + file.getPath(), ex);
+                }
             }
         };
         TaskManager.getInstance().runTask(t);
@@ -156,23 +160,23 @@ public class CashierImportForm extends ContentPanel {
         });
         jToolBar1.add(importButton);
 
-        org.jdesktop.beansbinding.ELProperty eLProperty = org.jdesktop.beansbinding.ELProperty.create("${cashierList}");
+        org.jdesktop.beansbinding.ELProperty eLProperty = org.jdesktop.beansbinding.ELProperty.create("${cashierImportList}");
         org.jdesktop.swingbinding.JTableBinding jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, cashierImportListBean1, eLProperty, jTableWithDefaultStyles1);
-        org.jdesktop.swingbinding.JTableBinding.ColumnBinding columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ObjectProperty.create());
+        org.jdesktop.swingbinding.JTableBinding.ColumnBinding columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${rentalTax}"));
         columnBinding.setColumnName("Lease Number");
         columnBinding.setColumnClass(String.class);
         columnBinding.setEditable(false);
-        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ObjectProperty.create());
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${rentGov}"));
         columnBinding.setColumnName("Government Rental");
-        columnBinding.setColumnClass(Double.class);
+        columnBinding.setColumnClass(java.math.BigDecimal.class);
         columnBinding.setEditable(false);
-        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ObjectProperty.create());
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${deedLease}"));
         columnBinding.setColumnName("Deed Lease");
-        columnBinding.setColumnClass(Double.class);
+        columnBinding.setColumnClass(java.math.BigDecimal.class);
         columnBinding.setEditable(false);
-        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ObjectProperty.create());
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${rentalTax}"));
         columnBinding.setColumnName("Rental Tax Allotment");
-        columnBinding.setColumnClass(Double.class);
+        columnBinding.setColumnClass(java.math.BigDecimal.class);
         columnBinding.setEditable(false);
         bindingGroup.addBinding(jTableBinding);
         jTableBinding.bind();
@@ -259,7 +263,7 @@ public class CashierImportForm extends ContentPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void importButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_importButtonActionPerformed
-        load(cashierImportListBean1.getCashierList());
+        load();
     }//GEN-LAST:event_importButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
