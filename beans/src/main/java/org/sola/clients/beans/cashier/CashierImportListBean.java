@@ -15,9 +15,7 @@
  */
 package org.sola.clients.beans.cashier;
 
-import org.jdesktop.observablecollections.ObservableList;
 import org.sola.clients.beans.AbstractBindingListBean;
-import org.sola.clients.beans.controls.SolaCodeList;
 import org.sola.clients.beans.controls.SolaObservableList;
 
 /**
