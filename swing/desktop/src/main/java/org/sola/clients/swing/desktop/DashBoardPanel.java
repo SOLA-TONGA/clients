@@ -425,7 +425,7 @@ public class DashBoardPanel extends ContentPanel {
         tbUnassigned.getColumnModel().getColumn(0).setHeaderValue(bundle.getString("DashBoardPanel.tbUnassigned.columnModel.title0")); // NOI18N
         tbUnassigned.getColumnModel().getColumn(1).setHeaderValue(bundle.getString("DashBoardPanel.tbUnassigned.columnModel.title1")); // NOI18N
         tbUnassigned.getColumnModel().getColumn(2).setHeaderValue(bundle.getString("DashBoardPanel.tbUnassigned.columnModel.title2")); // NOI18N
-        tbUnassigned.getColumnModel().getColumn(2).setCellRenderer(new DateTimeRenderer());
+        tbUnassigned.getColumnModel().getColumn(2).setCellRenderer(new DateTimeRenderer(true));
         tbUnassigned.getColumnModel().getColumn(3).setHeaderValue(bundle.getString("DashBoardPanel.tbUnassigned.columnModel.title3")); // NOI18N
         tbUnassigned.getColumnModel().getColumn(3).setCellRenderer(new DateTimeRenderer());
         tbUnassigned.getColumnModel().getColumn(4).setMinWidth(180);
@@ -623,7 +623,7 @@ public class DashBoardPanel extends ContentPanel {
         tbAssigned.getColumnModel().getColumn(0).setHeaderValue(bundle.getString("DashBoardPanel.tbAssigned.columnModel.title0")); // NOI18N
         tbAssigned.getColumnModel().getColumn(1).setHeaderValue(bundle.getString("DashBoardPanel.tbAssigned.columnModel.title1")); // NOI18N
         tbAssigned.getColumnModel().getColumn(2).setHeaderValue(bundle.getString("DashBoardPanel.tbAssigned.columnModel.title2")); // NOI18N
-        tbAssigned.getColumnModel().getColumn(2).setCellRenderer(new DateTimeRenderer());
+        tbAssigned.getColumnModel().getColumn(2).setCellRenderer(new DateTimeRenderer(true));
         tbAssigned.getColumnModel().getColumn(3).setHeaderValue(bundle.getString("DashBoardPanel.tbAssigned.columnModel.title3")); // NOI18N
         tbAssigned.getColumnModel().getColumn(3).setCellRenderer(new DateTimeRenderer());
         tbAssigned.getColumnModel().getColumn(4).setMinWidth(180);

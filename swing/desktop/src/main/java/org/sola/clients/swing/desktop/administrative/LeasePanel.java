@@ -59,6 +59,7 @@ import org.sola.clients.swing.ui.MainContentPanel;
 import org.sola.clients.swing.ui.renderers.BooleanCellRenderer2;
 import org.sola.clients.swing.ui.renderers.DateTimeRenderer;
 import org.sola.clients.swing.ui.renderers.FormattersFactory;
+import org.sola.clients.swing.ui.renderers.MoneyCellRenderer;
 import org.sola.clients.swing.ui.renderers.TableCellTextAreaRenderer;
 import org.sola.clients.swing.ui.reports.FreeTextDialog;
 import org.sola.clients.swing.ui.reports.ReportViewerForm;
@@ -1101,7 +1102,7 @@ public class LeasePanel extends ContentPanel {
             .addGroup(jPanel11Layout.createSequentialGroup()
                 .addGap(12, 12, 12)
                 .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
                 .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 14, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 433, Short.MAX_VALUE)
@@ -1306,6 +1307,7 @@ public class LeasePanel extends ContentPanel {
         jTableWithDefaultStyles1.getColumnModel().getColumn(1).setHeaderValue(bundle.getString("LeasePanel.jTableWithDefaultStyles1.columnModel.title1_1")); // NOI18N
         jTableWithDefaultStyles1.getColumnModel().getColumn(1).setCellRenderer(new DateTimeRenderer());
         jTableWithDefaultStyles1.getColumnModel().getColumn(2).setHeaderValue(bundle.getString("LeasePanel.jTableWithDefaultStyles1.columnModel.title2_1")); // NOI18N
+        jTableWithDefaultStyles1.getColumnModel().getColumn(2).setCellRenderer(new MoneyCellRenderer());
         jTableWithDefaultStyles1.getColumnModel().getColumn(3).setHeaderValue(bundle.getString("LeasePanel.jTableWithDefaultStyles1.columnModel.title3_1")); // NOI18N
         jTableWithDefaultStyles1.getColumnModel().getColumn(3).setCellRenderer(new DateTimeRenderer());
         jTableWithDefaultStyles1.getColumnModel().getColumn(4).setHeaderValue(bundle.getString("LeasePanel.jTableWithDefaultStyles1.columnModel.title4")); // NOI18N

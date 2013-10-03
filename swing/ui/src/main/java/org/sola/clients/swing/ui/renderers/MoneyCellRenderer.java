@@ -30,50 +30,29 @@
 package org.sola.clients.swing.ui.renderers;
 
 import java.awt.Component;
+import java.math.BigDecimal;
 import java.text.ParseException;
-import java.util.Date;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 import org.sola.common.logging.LogUtility;
 
 /**
- * Formats table cell containing date.
+ *
+ * @author Andrew
  */
-public class DateTimeRenderer extends DefaultTableCellRenderer {
-
-    boolean showTime;
-
-    public DateTimeRenderer() {
-        this(false);
-    }
-
-    /**
-     * If showTime is true, the renderer will show the 12hr clock time along
-     * with the date
-     *
-     * @param showTime
-     */
-    public DateTimeRenderer(boolean showTime) {
-        this.showTime = showTime;
-    }
+public class MoneyCellRenderer extends DefaultTableCellRenderer {
 
     @Override
     public Component getTableCellRendererComponent(JTable table,
             Object value, boolean isSelected, boolean hasFocus,
             int row, int column) {
-        if (value instanceof Date) {
+        if (value instanceof BigDecimal) {
             try {
-                if (showTime) {
-                    // Uses the FormattersFactory format the Datetime value. 
-                    value = FormattersFactory.getInstance().getDateTimeFormatterFactory()
-                            .getDisplayFormatter().valueToString(value);
-                } else {
-                    // Uses the FormattersFactory format the Date value. 
-                    value = FormattersFactory.getInstance().getDateFormatterFactory()
-                            .getDisplayFormatter().valueToString(value);
-                }
+                // Uses the FormattersFactory format the money value. 
+                value = FormattersFactory.getInstance().getMoneyFormatterFactory()
+                        .getDisplayFormatter().valueToString(value);
             } catch (ParseException pex) {
-                LogUtility.log("Error parsing date value: "
+                LogUtility.log("Error parsing money value: "
                         + value == null ? "null" : value.toString(), pex);
                 value = null;
             }

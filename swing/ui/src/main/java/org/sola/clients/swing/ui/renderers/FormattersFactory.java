@@ -34,6 +34,7 @@ import java.text.DateFormat;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JFormattedTextField;
@@ -54,6 +55,7 @@ public class FormattersFactory {
     private static final String INTEGER_FACTORY = "integer";
     private static final String SHORT_FACTORY = "short";
     private static final String DATE_FACTORY = "date";
+    private static final String DATETIME_FACTORY = "datetime";
     private static final String IMPERIAL_FACTORY = "imperial";
     private static final String METRIC_AREA_FACTORY = "metricArea";
     private static final String MONEY_FACTORY = "money";
@@ -169,7 +171,10 @@ public class FormattersFactory {
      */
     public DefaultFormatterFactory getDateFormatterFactory() {
         if (!factoryMap.containsKey(DATE_FACTORY)) {
-            DateFormatter displayFormat = new DateFormatter(DateFormat.getDateInstance(DateFormat.MEDIUM));
+            //DateFormatter displayFormat = new DateFormatter(DateFormat.getDateInstance(DateFormat.MEDIUM));
+            // Use custom display format instead of International MEDIUM format
+            SimpleDateFormat f = new SimpleDateFormat("d MMM yyyy");
+            DateFormatter displayFormat = new DateFormatter(f);
             DateFormatter editFormat = new DateFormatter(DateFormat.getDateInstance(DateFormat.SHORT)) {
                 // Accept null or emtpy string values entered by the user as null.
                 @Override
@@ -185,6 +190,35 @@ public class FormattersFactory {
                     new DefaultFormatterFactory(displayFormat, displayFormat, editFormat));
         }
         return factoryMap.get(DATE_FACTORY);
+    }
+
+    /**
+     * Returns a custom formatter factory for displaying and editing a date time
+     * value. To use this factory, set the formatterFactory property of the
+     * JFormattedTextField to
+     * {@code FormattersFactory.getInstance().getDateTimeFormatterFactory()}
+     */
+    public DefaultFormatterFactory getDateTimeFormatterFactory() {
+        if (!factoryMap.containsKey(DATETIME_FACTORY)) {
+            //DateFormatter displayFormat = new DateFormatter(DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.SHORT));
+            // Use custom display format instead of International MEDIUM format - 12 hour clock with AM/PM
+            SimpleDateFormat f = new SimpleDateFormat("d MMM yyyy h:mm a");
+            DateFormatter displayFormat = new DateFormatter(f);
+            DateFormatter editFormat = new DateFormatter(DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.SHORT)) {
+                // Accept null or emtpy string values entered by the user as null.
+                @Override
+                public Object stringToValue(String userInput) throws ParseException {
+                    Object result = null;
+                    if (userInput != null && !userInput.trim().isEmpty()) {
+                        result = super.stringToValue(userInput);
+                    }
+                    return result;
+                }
+            };
+            factoryMap.put(DATETIME_FACTORY,
+                    new DefaultFormatterFactory(displayFormat, displayFormat, editFormat));
+        }
+        return factoryMap.get(DATETIME_FACTORY);
     }
 
     /**
