@@ -34,6 +34,7 @@ import org.sola.clients.beans.AbstractBindingBean;
 import org.sola.clients.beans.cache.CacheManager;
 import org.sola.clients.beans.referencedata.BaUnitTypeBean;
 import org.sola.clients.beans.referencedata.RegistrationStatusTypeBean;
+import org.sola.clients.beans.referencedata.RrrTypeBean;
 
 /**
  * Represents BA unit search result.
@@ -55,6 +56,8 @@ public class BaUnitSearchResultBean extends AbstractBindingBean {
     public static final String REGISTRY_BOOK_REF_PROPERTY = "registryBookRef";
     public static final String BA_UNIT_TYPE_PROPERTY = "baUnitType";
     public static final String BA_UNIT_TYPE_CODE_PROPERTY = "baUnitTypeCode";
+    public static final String RRR_TYPE_PROPERTY = "rrrType";
+    public static final String RRR_TYPE_CODE_PROPERTY = "rrrTypeCode";
     private String id;
     private String name;
     private String nameFirstPart;
@@ -69,8 +72,10 @@ public class BaUnitSearchResultBean extends AbstractBindingBean {
     private String parcelName;
     private String registryBookRef;
     private BaUnitTypeBean baUnitType;
+    private RrrTypeBean rrrType;
     // Used to enable binding on the BaUnitTypeCode
     private transient String baUnitTypeCode;
+    private transient String rrrTypeCode;
 
     public BaUnitSearchResultBean() {
         super();
@@ -228,6 +233,28 @@ public class BaUnitSearchResultBean extends AbstractBindingBean {
         String oldValue = getBaUnitTypeCode();
         this.setBaUnitType(CacheManager.getBeanByCode(CacheManager.getBaUnitTypes(), value));
         propertySupport.firePropertyChange(BA_UNIT_TYPE_CODE_PROPERTY, oldValue, value);
+    }
+
+    public RrrTypeBean getRrrType() {
+        if (rrrType == null) {
+            rrrType = new RrrTypeBean();
+        }
+        return rrrType;
+    }
+
+    public void setRrrType(RrrTypeBean value) {
+        this.rrrType = value;
+        propertySupport.firePropertyChange(RRR_TYPE_PROPERTY, null, rrrType);
+    }
+
+    public String getRrrTypeCode() {
+        return getRrrType().getCode();
+    }
+
+    public void setRrrTypeCode(String value) {
+        String oldValue = getRrrTypeCode();
+        this.setRrrType(CacheManager.getBeanByCode(CacheManager.getRrrTypes(), value));
+        propertySupport.firePropertyChange(RRR_TYPE_CODE_PROPERTY, oldValue, value);
     }
 
     public boolean isTaxAllotment() {

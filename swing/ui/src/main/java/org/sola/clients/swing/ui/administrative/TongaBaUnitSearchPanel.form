@@ -423,7 +423,7 @@
                       <SubComponents>
                         <Component class="javax.swing.JLabel" name="jLabel1">
                           <Properties>
-                            <Property name="text" type="java.lang.String" value="Landholder"/>
+                            <Property name="text" type="java.lang.String" value="Landholder / Rightholder"/>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JTextField" name="txtAllotmentLandHolder">
@@ -677,6 +677,11 @@
                           <Editor/>
                           <Renderer/>
                         </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
                         <Column maxWidth="-1" minWidth="-1" prefWidth="200" resizable="true">
                           <Title/>
                           <Editor/>
@@ -738,8 +743,13 @@
                         <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="String.class"/>
                         <BindingParameter name="javax.swing.binding.ParameterKeys.EDITABLE" value="false"/>
                       </Subbinding>
+                      <Subbinding sourcePath="${rrrType.displayValue}">
+                        <BindingParameter name="NAME" value="Right Type"/>
+                        <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="String.class"/>
+                        <BindingParameter name="javax.swing.binding.ParameterKeys.EDITABLE" value="false"/>
+                      </Subbinding>
                       <Subbinding sourcePath="${rightholders}">
-                        <BindingParameter name="NAME" value="Landholder"/>
+                        <BindingParameter name="NAME" value="Landholder / Rightholder"/>
                         <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="String.class"/>
                         <BindingParameter name="javax.swing.binding.ParameterKeys.EDITABLE" value="false"/>
                       </Subbinding>
@@ -949,7 +959,7 @@
                       <SubComponents>
                         <Component class="javax.swing.JLabel" name="jLabel15">
                           <Properties>
-                            <Property name="text" type="java.lang.String" value="Lessee Name"/>
+                            <Property name="text" type="java.lang.String" value="Lessee / Rightholder"/>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JTextField" name="txtLesseeName">
@@ -1213,6 +1223,11 @@
                           <Editor/>
                           <Renderer/>
                         </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
                         <Column maxWidth="-1" minWidth="-1" prefWidth="200" resizable="true">
                           <Title/>
                           <Editor/>
@@ -1257,8 +1272,13 @@
                         <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="String.class"/>
                         <BindingParameter name="javax.swing.binding.ParameterKeys.EDITABLE" value="false"/>
                       </Subbinding>
+                      <Subbinding sourcePath="${rrrType.displayValue}">
+                        <BindingParameter name="NAME" value="Right Type"/>
+                        <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="String.class"/>
+                        <BindingParameter name="javax.swing.binding.ParameterKeys.EDITABLE" value="false"/>
+                      </Subbinding>
                       <Subbinding sourcePath="${rightholders}">
-                        <BindingParameter name="NAME" value="Lessee(s)"/>
+                        <BindingParameter name="NAME" value="Lessee / Rightholder"/>
                         <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="String.class"/>
                         <BindingParameter name="javax.swing.binding.ParameterKeys.EDITABLE" value="false"/>
                       </Subbinding>
@@ -1563,14 +1583,14 @@
                         <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                           <Title/>
                           <Editor/>
-                          <Renderer/>
+                          <Renderer editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                            <Connection code="new org.sola.clients.swing.ui.renderers.CellDelimitedListRenderer(&quot;;&quot;, false)" type="code"/>
+                          </Renderer>
                         </Column>
                         <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                           <Title/>
                           <Editor/>
-                          <Renderer editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                            <Connection code="new org.sola.clients.swing.ui.renderers.CellDelimitedListRenderer(&quot;;&quot;, false)" type="code"/>
-                          </Renderer>
+                          <Renderer/>
                         </Column>
                         <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                           <Title/>
@@ -1585,13 +1605,13 @@
                   </Properties>
                   <BindingProperties>
                     <BindingProperty name="elements" source="estateResultsList" sourcePath="${baUnitSearchResults}" target="tableEstate" targetPath="elements" updateStrategy="0" immediately="true">
-                      <Subbinding sourcePath="${nameFirstPart}">
-                        <BindingParameter name="NAME" value="Estate"/>
+                      <Subbinding sourcePath="${rightholders}">
+                        <BindingParameter name="NAME" value="Noble"/>
                         <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="String.class"/>
                         <BindingParameter name="javax.swing.binding.ParameterKeys.EDITABLE" value="false"/>
                       </Subbinding>
-                      <Subbinding sourcePath="${rightholders}">
-                        <BindingParameter name="NAME" value="Noble"/>
+                      <Subbinding sourcePath="${nameFirstPart}">
+                        <BindingParameter name="NAME" value="Estate"/>
                         <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="String.class"/>
                         <BindingParameter name="javax.swing.binding.ParameterKeys.EDITABLE" value="false"/>
                       </Subbinding>

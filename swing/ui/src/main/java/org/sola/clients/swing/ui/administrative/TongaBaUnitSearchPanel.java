@@ -475,7 +475,7 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
 
         jPanel5.setLayout(new java.awt.GridLayout(3, 1, 12, 0));
 
-        jLabel1.setText("Landholder");
+        jLabel1.setText("Landholder / Rightholder");
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, allotmentParams, org.jdesktop.beansbinding.ELProperty.create("${ownerName}"), txtAllotmentLandHolder, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
@@ -660,8 +660,12 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
         columnBinding.setColumnName("Book Ref.");
         columnBinding.setColumnClass(String.class);
         columnBinding.setEditable(false);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${rrrType.displayValue}"));
+        columnBinding.setColumnName("Right Type");
+        columnBinding.setColumnClass(String.class);
+        columnBinding.setEditable(false);
         columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${rightholders}"));
-        columnBinding.setColumnName("Landholder");
+        columnBinding.setColumnName("Landholder / Rightholder");
         columnBinding.setColumnClass(String.class);
         columnBinding.setEditable(false);
         columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${parcelName}"));
@@ -695,15 +699,15 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
         jScrollPane2.setViewportView(tableAllotment);
         tableAllotment.getColumnModel().getColumn(0).setPreferredWidth(80);
         tableAllotment.getColumnModel().getColumn(1).setPreferredWidth(80);
-        tableAllotment.getColumnModel().getColumn(2).setPreferredWidth(200);
-        tableAllotment.getColumnModel().getColumn(2).setCellRenderer(new org.sola.clients.swing.ui.renderers.CellDelimitedListRenderer(",", false));
-        tableAllotment.getColumnModel().getColumn(3).setPreferredWidth(150);
-        tableAllotment.getColumnModel().getColumn(4).setCellRenderer(new DateTimeRenderer());
-        tableAllotment.getColumnModel().getColumn(6).setMaxWidth(70);
-        tableAllotment.getColumnModel().getColumn(6).setCellRenderer(new BooleanCellRenderer2());
+        tableAllotment.getColumnModel().getColumn(3).setPreferredWidth(200);
+        tableAllotment.getColumnModel().getColumn(3).setCellRenderer(new org.sola.clients.swing.ui.renderers.CellDelimitedListRenderer(",", false));
+        tableAllotment.getColumnModel().getColumn(4).setPreferredWidth(150);
+        tableAllotment.getColumnModel().getColumn(5).setCellRenderer(new DateTimeRenderer());
         tableAllotment.getColumnModel().getColumn(7).setMaxWidth(70);
         tableAllotment.getColumnModel().getColumn(7).setCellRenderer(new BooleanCellRenderer2());
-        tableAllotment.getColumnModel().getColumn(8).setPreferredWidth(80);
+        tableAllotment.getColumnModel().getColumn(8).setMaxWidth(70);
+        tableAllotment.getColumnModel().getColumn(8).setCellRenderer(new BooleanCellRenderer2());
+        tableAllotment.getColumnModel().getColumn(9).setPreferredWidth(80);
 
         javax.swing.GroupLayout tabAllotmentLayout = new javax.swing.GroupLayout(tabAllotment);
         tabAllotment.setLayout(tabAllotmentLayout);
@@ -788,7 +792,7 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
 
         jPanel19.add(jPanel21);
 
-        jLabel15.setText("Lessee Name");
+        jLabel15.setText("Lessee / Rightholder");
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, leaseParams, org.jdesktop.beansbinding.ELProperty.create("${ownerName}"), txtLesseeName, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
@@ -968,8 +972,12 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
         columnBinding.setColumnName("Lease #");
         columnBinding.setColumnClass(String.class);
         columnBinding.setEditable(false);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${rrrType.displayValue}"));
+        columnBinding.setColumnName("Right Type");
+        columnBinding.setColumnClass(String.class);
+        columnBinding.setEditable(false);
         columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${rightholders}"));
-        columnBinding.setColumnName("Lessee(s)");
+        columnBinding.setColumnName("Lessee / Rightholder");
         columnBinding.setColumnClass(String.class);
         columnBinding.setEditable(false);
         columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${otherRightholders}"));
@@ -993,12 +1001,12 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
         bindingGroup.addBinding(binding);
 
         jScrollPane3.setViewportView(tableLease);
-        tableLease.getColumnModel().getColumn(1).setPreferredWidth(200);
-        tableLease.getColumnModel().getColumn(1).setCellRenderer(new CellDelimitedListRenderer(",", false));
         tableLease.getColumnModel().getColumn(2).setPreferredWidth(200);
         tableLease.getColumnModel().getColumn(2).setCellRenderer(new CellDelimitedListRenderer(",", false));
-        tableLease.getColumnModel().getColumn(3).setCellRenderer(new DateTimeRenderer());
-        tableLease.getColumnModel().getColumn(5).setPreferredWidth(80);
+        tableLease.getColumnModel().getColumn(3).setPreferredWidth(200);
+        tableLease.getColumnModel().getColumn(3).setCellRenderer(new CellDelimitedListRenderer(",", false));
+        tableLease.getColumnModel().getColumn(4).setCellRenderer(new DateTimeRenderer());
+        tableLease.getColumnModel().getColumn(6).setPreferredWidth(80);
 
         javax.swing.GroupLayout tabLeaseLayout = new javax.swing.GroupLayout(tabLease);
         tabLease.setLayout(tabLeaseLayout);
@@ -1178,12 +1186,12 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
 
         eLProperty = org.jdesktop.beansbinding.ELProperty.create("${baUnitSearchResults}");
         jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, estateResultsList, eLProperty, tableEstate);
-        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${nameFirstPart}"));
-        columnBinding.setColumnName("Estate");
-        columnBinding.setColumnClass(String.class);
-        columnBinding.setEditable(false);
         columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${rightholders}"));
         columnBinding.setColumnName("Noble");
+        columnBinding.setColumnClass(String.class);
+        columnBinding.setEditable(false);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${nameFirstPart}"));
+        columnBinding.setColumnName("Estate");
         columnBinding.setColumnClass(String.class);
         columnBinding.setEditable(false);
         columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${islandName}"));
@@ -1195,7 +1203,7 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
         bindingGroup.addBinding(binding);
 
         jScrollPane4.setViewportView(tableEstate);
-        tableEstate.getColumnModel().getColumn(1).setCellRenderer(new org.sola.clients.swing.ui.renderers.CellDelimitedListRenderer(";", false));
+        tableEstate.getColumnModel().getColumn(0).setCellRenderer(new org.sola.clients.swing.ui.renderers.CellDelimitedListRenderer(";", false));
 
         javax.swing.GroupLayout tabEstateLayout = new javax.swing.GroupLayout(tabEstate);
         tabEstate.setLayout(tabEstateLayout);
