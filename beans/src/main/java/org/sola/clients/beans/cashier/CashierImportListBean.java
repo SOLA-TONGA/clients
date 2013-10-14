@@ -1,17 +1,31 @@
-/*
- * Copyright 2013 Food and Agriculture Organization of the United Nations (FAO).
+/**
+ * ******************************************************************************************
+ * Copyright (C) 2012 - Food and Agriculture Organization of the United Nations
+ * (FAO). All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ * 1. Redistributions of source code must retain the above copyright notice,this
+ * list of conditions and the following disclaimer. 2. Redistributions in binary
+ * form must reproduce the above copyright notice,this list of conditions and
+ * the following disclaimer in the documentation and/or other materials provided
+ * with the distribution. 3. Neither the name of FAO nor the names of its
+ * contributors may be used to endorse or promote products derived from this
+ * software without specific prior written permission.
  *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ * ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
+ * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,PROCUREMENT OF
+ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+ * CONTRACT,STRICT LIABILITY,OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING
+ * IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ * POSSIBILITY OF SUCH DAMAGE.
+ * *********************************************************************************************
  */
 package org.sola.clients.beans.cashier;
 
@@ -35,7 +49,7 @@ public class CashierImportListBean extends AbstractBindingListBean{
         super();
     }
     
-        public void loadCashierCsv(String filePath){
+    public void loadCashierCsv(String filePath){
         int count = 0;
          List<String[]> lines = CsvFileUtility.importFile(filePath);
          for (String[] line: lines) {
@@ -43,12 +57,17 @@ public class CashierImportListBean extends AbstractBindingListBean{
                 if (count <= 1) {
                     continue;
                 }
-                CashierImportBean bean = new CashierImportBean();
-                bean.setRentGov(new BigDecimal(cleanCsv(line[0])));
-                bean.setDeedLease(new BigDecimal(cleanCsv(line[1])));
-                bean.setRentalTax(new BigDecimal(cleanCsv(line[2])));
-                bean.setLeaseNumber(line[3]);
-                getCashierImportList().add(bean);
+                if (!"Null".equals(line[6])){
+                    CashierImportBean bean = new CashierImportBean();
+                    bean.setRentGov(new BigDecimal(cleanCsv(line[0])));    
+                    bean.setRentalTax(new BigDecimal(cleanCsv(line[1])));
+                    bean.setDeedLease(new BigDecimal(cleanCsv(line[2])));
+                    bean.setRegisterFee(new BigDecimal(cleanCsv(line[3])));
+                    bean.setTransferFee(new BigDecimal(cleanCsv(line[4])));
+                    bean.setSurveyFee(new BigDecimal(cleanCsv(line[5])));
+                    bean.setLeaseNumber(line[6]);
+                    getCashierImportList().add(bean); 
+                }
         }
     }
         
