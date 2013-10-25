@@ -30,7 +30,6 @@
 package org.sola.clients.beans.cashier;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.List;
 import org.sola.clients.beans.AbstractBindingListBean;
 import org.sola.clients.beans.controls.SolaObservableList;
@@ -78,12 +77,16 @@ public class CashierImportListBean extends AbstractBindingListBean{
         }
         return text;
     }
-    
-    public void setCashierImport(CashierImportBean selectedCashier) {
-        this.selectedCashierImportBean = selectedCashier;
-        propertySupport.firePropertyChange(SELECTED_CASHIER_IMPORT, null, selectedCashier);
+
+    public CashierImportBean getSelectedCashierImportBean() {
+        return selectedCashierImportBean;
     }
-    
+
+    public void setSelectedCashierImportBean(CashierImportBean selectedCashierImportBean) {
+        this.selectedCashierImportBean = selectedCashierImportBean;
+        propertySupport.firePropertyChange(SELECTED_CASHIER_IMPORT, null, selectedCashierImportBean);
+    }
+     
     public SolaObservableList<CashierImportBean> getCashierImportList() {
         if (cashierImportList == null) {
             cashierImportList = new SolaObservableList<CashierImportBean>();

@@ -30,16 +30,11 @@
 package org.sola.clients.swing.desktop.administrative;
 
 import java.io.File;
-import java.math.BigDecimal;
-import java.util.List;
-import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileFilter;
-import org.sola.clients.beans.cashier.CashierImportBean;
 import org.sola.clients.swing.common.tasks.SolaTask;
 import org.sola.clients.swing.common.tasks.TaskManager;
 import org.sola.clients.swing.ui.ContentPanel;
-import org.sola.clients.swing.ui.source.FileBrowserForm;
 import org.sola.common.FileUtility;
 import org.sola.common.logging.LogUtility;
 import org.sola.common.messaging.ClientMessage;
@@ -58,7 +53,7 @@ public class CashierImportForm extends ContentPanel {
         initComponents();
     }
     
-    private void load() {
+    private void importFile() {
 
         JFileChooser jfc = new JFileChooser();
         jfc.removeChoosableFileFilter(jfc.getFileFilter());
@@ -138,14 +133,16 @@ public class CashierImportForm extends ContentPanel {
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jToolBar1 = new javax.swing.JToolBar();
-        importButton = new javax.swing.JButton();
+        btnImport = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableWithDefaultStyles1 = new org.sola.clients.swing.common.controls.JTableWithDefaultStyles();
         jPanel2 = new javax.swing.JPanel();
         jToolBar2 = new javax.swing.JToolBar();
-        jButton1 = new javax.swing.JButton();
+        btnLoad = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTableWithDefaultStyles2 = new org.sola.clients.swing.common.controls.JTableWithDefaultStyles();
+
+        setHeaderPanel(headerPanel1);
 
         headerPanel1.setTitleText("Cashier Import");
 
@@ -163,16 +160,16 @@ public class CashierImportForm extends ContentPanel {
         jToolBar1.setFloatable(false);
         jToolBar1.setRollover(true);
 
-        importButton.setText("Import");
-        importButton.setFocusable(false);
-        importButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        importButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        importButton.addActionListener(new java.awt.event.ActionListener() {
+        btnImport.setText("Import");
+        btnImport.setFocusable(false);
+        btnImport.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnImport.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnImport.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                importButtonActionPerformed(evt);
+                btnImportActionPerformed(evt);
             }
         });
-        jToolBar1.add(importButton);
+        jToolBar1.add(btnImport);
 
         org.jdesktop.beansbinding.ELProperty eLProperty = org.jdesktop.beansbinding.ELProperty.create("${cashierImportList}");
         org.jdesktop.swingbinding.JTableBinding jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, cashierImportListBean1, eLProperty, jTableWithDefaultStyles1);
@@ -234,11 +231,16 @@ public class CashierImportForm extends ContentPanel {
         jToolBar2.setFloatable(false);
         jToolBar2.setRollover(true);
 
-        jButton1.setText("Load");
-        jButton1.setFocusable(false);
-        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar2.add(jButton1);
+        btnLoad.setText("Load");
+        btnLoad.setFocusable(false);
+        btnLoad.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnLoad.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnLoad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLoadActionPerformed(evt);
+            }
+        });
+        jToolBar2.add(btnLoad);
 
         jTableWithDefaultStyles2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -288,16 +290,20 @@ public class CashierImportForm extends ContentPanel {
         bindingGroup.bind();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void importButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_importButtonActionPerformed
-        load();
-    }//GEN-LAST:event_importButtonActionPerformed
+    private void btnImportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImportActionPerformed
+        importFile();
+    }//GEN-LAST:event_btnImportActionPerformed
+
+    private void btnLoadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoadActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnLoadActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnImport;
+    private javax.swing.JButton btnLoad;
     private org.sola.clients.beans.cashier.CashierImportBean cashierImportBean1;
     private org.sola.clients.beans.cashier.CashierImportListBean cashierImportListBean1;
     private org.sola.clients.swing.ui.HeaderPanel headerPanel1;
-    private javax.swing.JButton importButton;
-    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
