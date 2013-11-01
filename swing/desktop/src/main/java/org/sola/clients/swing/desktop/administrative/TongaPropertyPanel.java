@@ -149,8 +149,9 @@ public class TongaPropertyPanel extends ContentPanel {
     }
 
     /**
-     * Constructor that will display a BaUnitBean with readonly. 
-     * @param baUnitBean 
+     * Constructor that will display a BaUnitBean with readonly.
+     *
+     * @param baUnitBean
      */
     public TongaPropertyPanel(BaUnitBean baUnitBean) {
         this(null, null, baUnitBean, true);
@@ -939,7 +940,8 @@ public class TongaPropertyPanel extends ContentPanel {
         if (rrrCode.equals(RrrBean.CODE_MORTGAGE)) {
             panel = new MortgagePanel(rrrBean, applicationBean, applicationService, action);
             cardName = MainContentPanel.CARD_MORTGAGE;
-        } else if (rrrCode.equalsIgnoreCase(RrrBean.CODE_LEASE)) {
+        } else if (rrrCode.equalsIgnoreCase(RrrBean.CODE_LEASE)
+                || rrrCode.equalsIgnoreCase(RrrBean.CODE_SUBLEASE)) {
             panel = new LeasePanel(baUnitBean1, rrrBean, applicationBean, applicationService, action);
             cardName = MainContentPanel.CARD_LEASE;
         } else if (rrrCode.equalsIgnoreCase(RrrBean.CODE_AGRI_ACTIVITY)

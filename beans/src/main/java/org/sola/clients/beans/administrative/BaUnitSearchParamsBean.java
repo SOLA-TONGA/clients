@@ -41,6 +41,7 @@ public class BaUnitSearchParamsBean extends AbstractBindingBean {
 
     public static final String SEARCH_TYPE_ALLOTMENT = "allotment";
     public static final String SEARCH_TYPE_LEASE = "lease";
+    public static final String SEARCH_TYPE_SUBLEASE = "sublease";
     public static final String SEARCH_TYPE_ESTATE = "estate";
     public static final String SEARCH_TYPE_TOWN = "town";
     public static final String NAME_FIRST_PART_PROPERTY = "nameFirstPart";
@@ -234,7 +235,7 @@ public class BaUnitSearchParamsBean extends AbstractBindingBean {
 
     public void clear() {
         this.setNameFirstPart(null);
-        this.setNameFirstPart(null);
+        this.setNameLastPart(null);
         this.setOwnerName(null);
         this.setRegistryBook(null);
         this.setRegistryPageRef(null);

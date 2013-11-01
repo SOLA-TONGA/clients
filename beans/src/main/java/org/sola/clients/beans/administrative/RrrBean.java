@@ -78,6 +78,7 @@ public class RrrBean extends AbstractTransactionedBean {
     public static final String CODE_FISHING = "fishing";
     public static final String CODE_GRAZING = "grazing";
     public static final String CODE_LEASE = "lease";
+    public static final String CODE_SUBLEASE = "sublease";
     public static final String CODE_OCCUPATION = "occupation";
     public static final String CODE_OWNERSHIP_ASSUMED = "ownershipAssumed";
     public static final String CODE_SUPERFICIES = "superficies";

@@ -40,6 +40,13 @@
         <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new BaUnitSearchParamsBean(BaUnitSearchParamsBean.SEARCH_TYPE_TOWN);"/>
       </AuxValues>
     </Component>
+    <Component class="org.sola.clients.beans.administrative.BaUnitSearchParamsBean" name="subleaseParams">
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new BaUnitSearchParamsBean(BaUnitSearchParamsBean.SEARCH_TYPE_SUBLEASE);"/>
+      </AuxValues>
+    </Component>
+    <Component class="org.sola.clients.beans.administrative.BaUnitSearchResultListBean" name="subleaseResultsList">
+    </Component>
   </NonVisualComponents>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
@@ -61,10 +68,7 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <Component id="mainTabPane" max="32767" attributes="0"/>
-              <EmptySpace min="-2" pref="0" max="-2" attributes="0"/>
-          </Group>
+          <Component id="mainTabPane" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -90,7 +94,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jToolBar2" max="32767" attributes="0"/>
                           <Component id="jScrollPane2" max="32767" attributes="0"/>
-                          <Component id="jPanel1" alignment="0" pref="551" max="32767" attributes="0"/>
+                          <Component id="jPanel1" alignment="0" pref="527" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -104,7 +108,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jToolBar2" min="-2" pref="25" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jScrollPane2" pref="289" max="32767" attributes="0"/>
+                      <Component id="jScrollPane2" pref="149" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -132,7 +136,7 @@
                       <Layout>
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel6" pref="128" max="32767" attributes="0"/>
+                              <Component id="jLabel6" pref="122" max="32767" attributes="0"/>
                               <Component id="txtAllotmentDeedNum" alignment="0" max="32767" attributes="0"/>
                           </Group>
                         </DimensionLayout>
@@ -168,7 +172,7 @@
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="txtAllotmentFolio" max="32767" attributes="0"/>
-                              <Component id="jLabel7" alignment="0" pref="128" max="32767" attributes="0"/>
+                              <Component id="jLabel7" alignment="0" pref="122" max="32767" attributes="0"/>
                           </Group>
                         </DimensionLayout>
                         <DimensionLayout dim="1">
@@ -202,7 +206,7 @@
                       <Layout>
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel8" pref="128" max="32767" attributes="0"/>
+                              <Component id="jLabel8" pref="122" max="32767" attributes="0"/>
                               <Component id="txtAllotmentBookNum" alignment="0" max="32767" attributes="0"/>
                           </Group>
                         </DimensionLayout>
@@ -238,7 +242,7 @@
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="txtAllotmentPage" max="32767" attributes="0"/>
-                              <Component id="jLabel9" alignment="0" pref="128" max="32767" attributes="0"/>
+                              <Component id="jLabel9" alignment="0" pref="122" max="32767" attributes="0"/>
                           </Group>
                         </DimensionLayout>
                         <DimensionLayout dim="1">
@@ -272,7 +276,7 @@
                       <Layout>
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel4" pref="128" max="32767" attributes="0"/>
+                              <Component id="jLabel4" pref="122" max="32767" attributes="0"/>
                               <Group type="102" attributes="0">
                                   <Component id="txtAllotmentRegDateFrom" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
@@ -333,7 +337,7 @@
                       <Layout>
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel5" pref="128" max="32767" attributes="0"/>
+                              <Component id="jLabel5" pref="122" max="32767" attributes="0"/>
                               <Group type="102" attributes="0">
                                   <Component id="txtAllotmentRegDateTo" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
@@ -406,7 +410,7 @@
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="txtAllotmentLandHolder" max="32767" attributes="0"/>
-                              <Component id="jLabel1" alignment="0" pref="269" max="32767" attributes="0"/>
+                              <Component id="jLabel1" alignment="0" pref="257" max="32767" attributes="0"/>
                           </Group>
                         </DimensionLayout>
                         <DimensionLayout dim="1">
@@ -440,7 +444,7 @@
                       <Layout>
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel2" pref="269" max="32767" attributes="0"/>
+                              <Component id="jLabel2" pref="257" max="32767" attributes="0"/>
                               <Component id="txtAllotmentParcelName" max="32767" attributes="0"/>
                           </Group>
                         </DimensionLayout>
@@ -482,7 +486,7 @@
                           <Layout>
                             <DimensionLayout dim="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="cbAllotmentTown" pref="134" max="32767" attributes="0"/>
+                                  <Component id="cbAllotmentTown" pref="128" max="32767" attributes="0"/>
                                   <Component id="jLabel3" alignment="0" max="32767" attributes="0"/>
                               </Group>
                             </DimensionLayout>
@@ -524,7 +528,7 @@
                                 <DimensionLayout dim="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="cbxTown" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="jLabel23" alignment="0" pref="67" max="32767" attributes="0"/>
+                                      <Component id="jLabel23" alignment="0" pref="64" max="32767" attributes="0"/>
                                   </Group>
                                 </DimensionLayout>
                                 <DimensionLayout dim="1">
@@ -562,7 +566,7 @@
                                 <DimensionLayout dim="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="cbxTax" alignment="1" max="32767" attributes="0"/>
-                                      <Component id="jLabel24" alignment="0" pref="67" max="32767" attributes="0"/>
+                                      <Component id="jLabel24" alignment="0" pref="64" max="32767" attributes="0"/>
                                   </Group>
                                 </DimensionLayout>
                                 <DimensionLayout dim="1">
@@ -806,17 +810,17 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jToolBar3" max="32767" attributes="0"/>
-                          <Component id="jScrollPane3" alignment="1" pref="551" max="32767" attributes="0"/>
+                          <Component id="jScrollPane3" pref="527" max="32767" attributes="0"/>
+                          <Component id="jToolBar3" alignment="0" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
                   <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jPanel28" pref="551" max="32767" attributes="0"/>
+                          <Component id="jPanel28" pref="527" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -825,17 +829,17 @@
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="119" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="127" max="-2" attributes="0"/>
                       <Component id="jToolBar3" min="-2" pref="25" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jScrollPane3" pref="353" max="32767" attributes="0"/>
+                      <Component id="jScrollPane3" pref="205" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
                   <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jPanel28" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="393" max="32767" attributes="0"/>
+                          <EmptySpace pref="253" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -870,7 +874,7 @@
                           <Layout>
                             <DimensionLayout dim="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLabel13" pref="128" max="32767" attributes="0"/>
+                                  <Component id="jLabel13" pref="122" max="32767" attributes="0"/>
                                   <Component id="txtLeaseNumber" alignment="0" max="32767" attributes="0"/>
                               </Group>
                             </DimensionLayout>
@@ -905,7 +909,7 @@
                           <Layout>
                             <DimensionLayout dim="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="cbxLeaseTown" pref="128" max="32767" attributes="0"/>
+                                  <Component id="cbxLeaseTown" pref="122" max="32767" attributes="0"/>
                                   <Component id="jLabel14" alignment="0" max="32767" attributes="0"/>
                               </Group>
                             </DimensionLayout>
@@ -941,7 +945,7 @@
                       <Layout>
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel15" pref="269" max="32767" attributes="0"/>
+                              <Component id="jLabel15" pref="257" max="32767" attributes="0"/>
                               <Component id="txtLesseeName" alignment="0" max="32767" attributes="0"/>
                           </Group>
                         </DimensionLayout>
@@ -987,7 +991,7 @@
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="txtLeaseLandHolder" max="32767" attributes="0"/>
-                              <Component id="jLabel12" alignment="0" pref="269" max="32767" attributes="0"/>
+                              <Component id="jLabel12" alignment="0" pref="257" max="32767" attributes="0"/>
                           </Group>
                         </DimensionLayout>
                         <DimensionLayout dim="1">
@@ -1029,7 +1033,7 @@
                           <Layout>
                             <DimensionLayout dim="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLabel16" alignment="0" pref="128" max="32767" attributes="0"/>
+                                  <Component id="jLabel16" alignment="0" pref="122" max="32767" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="txtLeaseRegDateFrom" max="32767" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
@@ -1090,7 +1094,7 @@
                           <Layout>
                             <DimensionLayout dim="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLabel17" alignment="0" pref="128" max="32767" attributes="0"/>
+                                  <Component id="jLabel17" alignment="0" pref="122" max="32767" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="txtLeaseRegDateTo" max="32767" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
@@ -1312,6 +1316,718 @@
             </Container>
           </SubComponents>
         </Container>
+        <Container class="javax.swing.JPanel" name="tabSublease">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+              <JTabbedPaneConstraints tabName="Sublease">
+                <Property name="tabTitle" type="java.lang.String" value="Sublease"/>
+              </JTabbedPaneConstraints>
+            </Constraint>
+          </Constraints>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="jToolBar6" max="32767" attributes="0"/>
+                          <Component id="jPanel2" alignment="0" pref="527" max="32767" attributes="0"/>
+                          <Component id="jScrollPane5" alignment="0" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jToolBar6" min="-2" pref="25" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jScrollPane5" pref="209" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Container class="javax.swing.JPanel" name="jPanel2">
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
+                <Property name="columns" type="int" value="2"/>
+                <Property name="horizontalGap" type="int" value="12"/>
+                <Property name="rows" type="int" value="2"/>
+              </Layout>
+              <SubComponents>
+                <Container class="javax.swing.JPanel" name="jPanel50">
+
+                  <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
+                    <Property name="columns" type="int" value="0"/>
+                    <Property name="horizontalGap" type="int" value="12"/>
+                    <Property name="rows" type="int" value="1"/>
+                  </Layout>
+                  <SubComponents>
+                    <Container class="javax.swing.JPanel" name="jPanel51">
+
+                      <Layout>
+                        <DimensionLayout dim="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jLabel32" alignment="0" pref="122" max="32767" attributes="0"/>
+                              <Component id="txtLeaseNumber1" alignment="0" max="32767" attributes="0"/>
+                          </Group>
+                        </DimensionLayout>
+                        <DimensionLayout dim="1">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="jLabel32" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="txtLeaseNumber1" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                        </DimensionLayout>
+                      </Layout>
+                      <SubComponents>
+                        <Component class="javax.swing.JLabel" name="jLabel32">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="Sublease Folio"/>
+                          </Properties>
+                        </Component>
+                        <Component class="javax.swing.JTextField" name="txtLeaseNumber1">
+                          <BindingProperties>
+                            <BindingProperty name="text" source="subleaseParams" sourcePath="${nameLastPart}" target="txtLeaseNumber1" targetPath="text" updateStrategy="0" immediately="false">
+                              <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
+                            </BindingProperty>
+                          </BindingProperties>
+                        </Component>
+                      </SubComponents>
+                    </Container>
+                    <Container class="javax.swing.JPanel" name="jPanel52">
+
+                      <Layout>
+                        <DimensionLayout dim="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="cbxLeaseTown1" alignment="0" pref="122" max="32767" attributes="0"/>
+                              <Component id="jLabel33" alignment="0" max="32767" attributes="0"/>
+                          </Group>
+                        </DimensionLayout>
+                        <DimensionLayout dim="1">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="jLabel33" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="cbxLeaseTown1" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace pref="13" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                        </DimensionLayout>
+                      </Layout>
+                      <SubComponents>
+                        <Component class="javax.swing.JLabel" name="jLabel33">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="Town"/>
+                          </Properties>
+                        </Component>
+                        <Component class="javax.swing.JComboBox" name="cbxLeaseTown1">
+                          <BindingProperties>
+                            <BindingProperty name="elements" source="townListBean" sourcePath="${filteredTownList}" target="cbxLeaseTown1" targetPath="elements" updateStrategy="0" immediately="false"/>
+                            <BindingProperty name="selectedItem" source="subleaseParams" sourcePath="${town}" target="cbxLeaseTown1" targetPath="selectedItem" updateStrategy="0" immediately="false"/>
+                          </BindingProperties>
+                        </Component>
+                      </SubComponents>
+                    </Container>
+                  </SubComponents>
+                </Container>
+                <Container class="javax.swing.JPanel" name="jPanel48">
+
+                  <Layout>
+                    <DimensionLayout dim="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="txtSubleaseLandHolder" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jLabel30" alignment="0" pref="257" max="32767" attributes="0"/>
+                      </Group>
+                    </DimensionLayout>
+                    <DimensionLayout dim="1">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="jLabel30" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="txtSubleaseLandHolder" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                    </DimensionLayout>
+                  </Layout>
+                  <SubComponents>
+                    <Component class="javax.swing.JLabel" name="jLabel30">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Lessee / Landholder"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="txtSubleaseLandHolder">
+                      <BindingProperties>
+                        <BindingProperty name="text" source="subleaseParams" sourcePath="${otherRightholder}" target="txtSubleaseLandHolder" targetPath="text" updateStrategy="0" immediately="false">
+                          <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
+                        </BindingProperty>
+                      </BindingProperties>
+                    </Component>
+                  </SubComponents>
+                </Container>
+                <Container class="javax.swing.JPanel" name="jPanel49">
+
+                  <Layout>
+                    <DimensionLayout dim="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jLabel31" alignment="0" pref="257" max="32767" attributes="0"/>
+                          <Component id="txtSublesseeName" alignment="0" max="32767" attributes="0"/>
+                      </Group>
+                    </DimensionLayout>
+                    <DimensionLayout dim="1">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="jLabel31" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="txtSublesseeName" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                    </DimensionLayout>
+                  </Layout>
+                  <SubComponents>
+                    <Component class="javax.swing.JLabel" name="jLabel31">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Sublessee / Rightholder"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="txtSublesseeName">
+                      <BindingProperties>
+                        <BindingProperty name="text" source="subleaseParams" sourcePath="${ownerName}" target="txtSublesseeName" targetPath="text" updateStrategy="0" immediately="false">
+                          <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
+                        </BindingProperty>
+                      </BindingProperties>
+                    </Component>
+                  </SubComponents>
+                </Container>
+                <Container class="javax.swing.JPanel" name="jPanel30">
+
+                  <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
+                    <Property name="columns" type="int" value="2"/>
+                    <Property name="horizontalGap" type="int" value="12"/>
+                    <Property name="rows" type="int" value="1"/>
+                  </Layout>
+                  <SubComponents>
+                    <Container class="javax.swing.JPanel" name="jPanel38">
+
+                      <Layout>
+                        <DimensionLayout dim="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jLabel27" alignment="0" pref="122" max="32767" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="txtSubleaseRegDateFrom" max="32767" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="btnSubleaseRegDateFrom" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                        </DimensionLayout>
+                        <DimensionLayout dim="1">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="jLabel27" min="-2" pref="14" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="txtSubleaseRegDateFrom" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="btnSubleaseRegDateFrom" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                        </DimensionLayout>
+                      </Layout>
+                      <SubComponents>
+                        <Component class="javax.swing.JFormattedTextField" name="txtSubleaseRegDateFrom">
+                          <Properties>
+                            <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="FormattersFactory.getInstance().getDateFormatterFactory()" type="code"/>
+                            </Property>
+                          </Properties>
+                          <BindingProperties>
+                            <BindingProperty name="value" source="subleaseParams" sourcePath="${registeredDateFrom}" target="txtSubleaseRegDateFrom" targetPath="value" updateStrategy="0" immediately="false"/>
+                          </BindingProperties>
+                        </Component>
+                        <Component class="javax.swing.JLabel" name="jLabel27">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="Registed Date (from)"/>
+                          </Properties>
+                        </Component>
+                        <Component class="javax.swing.JButton" name="btnSubleaseRegDateFrom">
+                          <Properties>
+                            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                              <Image iconType="3" name="/images/common/calendar.png"/>
+                            </Property>
+                            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+                              <ResourceString bundle="org/sola/clients/swing/ui/source/Bundle.properties" key="DocumentSearchPanel.btnDateFrom.text" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+                            </Property>
+                            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                              <Border info="null"/>
+                            </Property>
+                          </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSubleaseRegDateFromActionPerformed"/>
+                          </Events>
+                        </Component>
+                      </SubComponents>
+                    </Container>
+                    <Container class="javax.swing.JPanel" name="jPanel46">
+
+                      <Layout>
+                        <DimensionLayout dim="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jLabel28" alignment="0" pref="122" max="32767" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="txtSubleaseRegDateTo" max="32767" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="btnSubleaseDateTo" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                        </DimensionLayout>
+                        <DimensionLayout dim="1">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="jLabel28" min="-2" pref="14" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="txtSubleaseRegDateTo" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="btnSubleaseDateTo" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                        </DimensionLayout>
+                      </Layout>
+                      <SubComponents>
+                        <Component class="javax.swing.JFormattedTextField" name="txtSubleaseRegDateTo">
+                          <Properties>
+                            <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="FormattersFactory.getInstance().getDateFormatterFactory()" type="code"/>
+                            </Property>
+                          </Properties>
+                          <BindingProperties>
+                            <BindingProperty name="value" source="subleaseParams" sourcePath="${registeredDateTo}" target="txtSubleaseRegDateTo" targetPath="value" updateStrategy="0" immediately="false"/>
+                          </BindingProperties>
+                        </Component>
+                        <Component class="javax.swing.JLabel" name="jLabel28">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="Registered Date (to)"/>
+                          </Properties>
+                        </Component>
+                        <Component class="javax.swing.JButton" name="btnSubleaseDateTo">
+                          <Properties>
+                            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                              <Image iconType="3" name="/images/common/calendar.png"/>
+                            </Property>
+                            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+                              <ResourceString bundle="org/sola/clients/swing/ui/source/Bundle.properties" key="DocumentSearchPanel.btnDateFrom.text" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+                            </Property>
+                            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                              <Border info="null"/>
+                            </Property>
+                          </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSubleaseDateToActionPerformed"/>
+                          </Events>
+                        </Component>
+                      </SubComponents>
+                    </Container>
+                  </SubComponents>
+                </Container>
+              </SubComponents>
+            </Container>
+            <Container class="javax.swing.JScrollPane" name="jScrollPane5">
+              <AuxValues>
+                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+              </AuxValues>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+              <SubComponents>
+                <Component class="org.sola.clients.swing.common.controls.JTableWithDefaultStyles" name="tableSublease">
+                  <Properties>
+                    <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                      <TableColumnModel selectionModel="0">
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="200" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                            <Connection code="new CellDelimitedListRenderer(&quot;,&quot;, false)" type="code"/>
+                          </Renderer>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="200" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                            <Connection code="new CellDelimitedListRenderer(&quot;,&quot;, false)" type="code"/>
+                          </Renderer>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                            <Connection code="new DateTimeRenderer()" type="code"/>
+                          </Renderer>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="80" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                      </TableColumnModel>
+                    </Property>
+                    <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+                      <TableHeader reorderingAllowed="false" resizingAllowed="true"/>
+                    </Property>
+                  </Properties>
+                  <BindingProperties>
+                    <BindingProperty name="elements" source="subleaseResultsList" sourcePath="${baUnitSearchResults}" target="tableSublease" targetPath="elements" updateStrategy="0" immediately="true">
+                      <Subbinding sourcePath="${name}">
+                        <BindingParameter name="NAME" value="Sublease#"/>
+                        <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="String.class"/>
+                      </Subbinding>
+                      <Subbinding sourcePath="${baUnitType}">
+                        <BindingParameter name="NAME" value=" Right Type"/>
+                        <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="org.sola.clients.beans.referencedata.BaUnitTypeBean.class"/>
+                      </Subbinding>
+                      <Subbinding sourcePath="${rightholders}">
+                        <BindingParameter name="NAME" value="Sublessee / Rightholder"/>
+                        <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="String.class"/>
+                        <BindingParameter name="javax.swing.binding.ParameterKeys.EDITABLE" value="false"/>
+                      </Subbinding>
+                      <Subbinding sourcePath="${otherRightholders}">
+                        <BindingParameter name="NAME" value="Lessee / Landholder"/>
+                        <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="String.class"/>
+                        <BindingParameter name="javax.swing.binding.ParameterKeys.EDITABLE" value="false"/>
+                      </Subbinding>
+                      <Subbinding sourcePath="${registeredDate}">
+                        <BindingParameter name="NAME" value="Registered Date"/>
+                        <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="java.util.Date.class"/>
+                        <BindingParameter name="javax.swing.binding.ParameterKeys.EDITABLE" value="false"/>
+                      </Subbinding>
+                      <Subbinding sourcePath="${townName}">
+                        <BindingParameter name="NAME" value="Town"/>
+                        <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="String.class"/>
+                        <BindingParameter name="javax.swing.binding.ParameterKeys.EDITABLE" value="false"/>
+                      </Subbinding>
+                      <Subbinding sourcePath="${registrationStatus.displayValue}">
+                        <BindingParameter name="NAME" value="Status"/>
+                        <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="String.class"/>
+                        <BindingParameter name="javax.swing.binding.ParameterKeys.EDITABLE" value="false"/>
+                      </Subbinding>
+                    </BindingProperty>
+                    <BindingProperty name="selectedElement" source="subleaseResultsList" sourcePath="${selectedBaUnitSearchResult}" target="tableSublease" targetPath="selectedElement" updateStrategy="0" immediately="false">
+                      <BindingParameter name="IGNORE_ADJUSTING" value="N"/>
+                    </BindingProperty>
+                  </BindingProperties>
+                </Component>
+              </SubComponents>
+            </Container>
+            <Container class="javax.swing.JToolBar" name="jToolBar6">
+              <Properties>
+                <Property name="floatable" type="boolean" value="false"/>
+                <Property name="rollover" type="boolean" value="true"/>
+              </Properties>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBoxLayout"/>
+              <SubComponents>
+                <Component class="javax.swing.JButton" name="btnSubleaseSearch">
+                  <Properties>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/images/common/search.png"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Search"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSubleaseSearchActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JButton" name="btnSubleaseClear">
+                  <Properties>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/images/common/eraser.png"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Clear"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSubleaseClearActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JToolBar$Separator" name="jSeparator9">
+                </Component>
+                <Component class="org.sola.clients.swing.common.buttons.BtnOpen" name="btnSubleaseOpen">
+                  <Properties>
+                    <Property name="verticalTextPosition" type="int" value="3"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSubleaseOpenActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JToolBar$Separator" name="jSeparator10">
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel26">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Search results: "/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lblSubleaseResultsCount">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value=" "/>
+                  </Properties>
+                </Component>
+              </SubComponents>
+            </Container>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JPanel" name="tabTownIsland">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+              <JTabbedPaneConstraints tabName="Town / Island">
+                <Property name="tabTitle" type="java.lang.String" value="Town / Island"/>
+              </JTabbedPaneConstraints>
+            </Constraint>
+          </Constraints>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jScrollPane1" alignment="1" pref="527" max="32767" attributes="0"/>
+                          <Component id="jToolBar1" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jPanel40" alignment="1" pref="0" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jPanel40" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jToolBar1" min="-2" pref="25" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jScrollPane1" pref="213" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Container class="javax.swing.JPanel" name="jPanel40">
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
+                <Property name="columns" type="int" value="2"/>
+                <Property name="horizontalGap" type="int" value="12"/>
+                <Property name="rows" type="int" value="1"/>
+              </Layout>
+              <SubComponents>
+                <Container class="javax.swing.JPanel" name="jPanel39">
+
+                  <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
+                    <Property name="columns" type="int" value="1"/>
+                    <Property name="rows" type="int" value="2"/>
+                  </Layout>
+                  <SubComponents>
+                    <Container class="javax.swing.JPanel" name="jPanel41">
+
+                      <Layout>
+                        <DimensionLayout dim="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="txtTownName" alignment="1" max="32767" attributes="0"/>
+                              <Component id="jLabel22" alignment="1" pref="257" max="32767" attributes="0"/>
+                          </Group>
+                        </DimensionLayout>
+                        <DimensionLayout dim="1">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="jLabel22" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="txtTownName" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                        </DimensionLayout>
+                      </Layout>
+                      <SubComponents>
+                        <Component class="javax.swing.JLabel" name="jLabel22">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="Town / Island Name"/>
+                          </Properties>
+                        </Component>
+                        <Component class="javax.swing.JTextField" name="txtTownName">
+                          <BindingProperties>
+                            <BindingProperty name="text" source="townParams" sourcePath="${nameFirstPart}" target="txtTownName" targetPath="text" updateStrategy="0" immediately="false">
+                              <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
+                            </BindingProperty>
+                          </BindingProperties>
+                        </Component>
+                      </SubComponents>
+                    </Container>
+                    <Container class="javax.swing.JPanel" name="jPanel42">
+
+                      <Layout>
+                        <DimensionLayout dim="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <EmptySpace min="0" pref="257" max="32767" attributes="0"/>
+                          </Group>
+                        </DimensionLayout>
+                        <DimensionLayout dim="1">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <EmptySpace min="0" pref="51" max="32767" attributes="0"/>
+                          </Group>
+                        </DimensionLayout>
+                      </Layout>
+                    </Container>
+                  </SubComponents>
+                </Container>
+                <Container class="javax.swing.JPanel" name="jPanel43">
+
+                  <Layout>
+                    <DimensionLayout dim="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <EmptySpace min="0" pref="257" max="32767" attributes="0"/>
+                      </Group>
+                    </DimensionLayout>
+                    <DimensionLayout dim="1">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <EmptySpace min="0" pref="102" max="32767" attributes="0"/>
+                      </Group>
+                    </DimensionLayout>
+                  </Layout>
+                </Container>
+              </SubComponents>
+            </Container>
+            <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+              <AuxValues>
+                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+              </AuxValues>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+              <SubComponents>
+                <Component class="org.sola.clients.swing.common.controls.JTableWithDefaultStyles" name="tableTown">
+                  <Properties>
+                    <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                      <TableColumnModel selectionModel="0">
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                      </TableColumnModel>
+                    </Property>
+                    <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+                      <TableHeader reorderingAllowed="false" resizingAllowed="true"/>
+                    </Property>
+                  </Properties>
+                  <BindingProperties>
+                    <BindingProperty name="elements" source="townResultsList" sourcePath="${baUnitSearchResults}" target="tableTown" targetPath="elements" updateStrategy="0" immediately="true">
+                      <Subbinding sourcePath="${nameFirstPart}">
+                        <BindingParameter name="NAME" value="Name"/>
+                        <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="String.class"/>
+                        <BindingParameter name="javax.swing.binding.ParameterKeys.EDITABLE" value="false"/>
+                      </Subbinding>
+                      <Subbinding sourcePath="${islandName}">
+                        <BindingParameter name="NAME" value="Island"/>
+                        <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="String.class"/>
+                        <BindingParameter name="javax.swing.binding.ParameterKeys.EDITABLE" value="false"/>
+                      </Subbinding>
+                    </BindingProperty>
+                    <BindingProperty name="selectedElement" source="townResultsList" sourcePath="${selectedBaUnitSearchResult}" target="tableTown" targetPath="selectedElement" updateStrategy="0" immediately="false">
+                      <BindingParameter name="IGNORE_ADJUSTING" value="N"/>
+                    </BindingProperty>
+                  </BindingProperties>
+                </Component>
+              </SubComponents>
+            </Container>
+            <Container class="javax.swing.JToolBar" name="jToolBar1">
+              <Properties>
+                <Property name="floatable" type="boolean" value="false"/>
+                <Property name="rollover" type="boolean" value="true"/>
+              </Properties>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBoxLayout"/>
+              <SubComponents>
+                <Component class="javax.swing.JButton" name="btnTownSearch">
+                  <Properties>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/images/common/search.png"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Search"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTownSearchActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JButton" name="btnTownClear">
+                  <Properties>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/images/common/eraser.png"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Clear"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTownClearActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JToolBar$Separator" name="jSeparator8">
+                </Component>
+                <Component class="org.sola.clients.swing.common.buttons.BtnOpen" name="btnTownOpen">
+                  <Properties>
+                    <Property name="verticalTextPosition" type="int" value="3"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTownOpenActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JToolBar$Separator" name="jSeparator4">
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel25">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Search results: "/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lblTownResultsCount">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value=" "/>
+                  </Properties>
+                </Component>
+              </SubComponents>
+            </Container>
+          </SubComponents>
+        </Container>
         <Container class="javax.swing.JPanel" name="tabEstate">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
@@ -1324,18 +2040,18 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jToolBar4" max="32767" attributes="0"/>
-                          <Component id="jScrollPane4" alignment="0" pref="551" max="32767" attributes="0"/>
+                          <Component id="jScrollPane4" pref="527" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
                   <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jPanel31" pref="551" max="32767" attributes="0"/>
+                          <Component id="jPanel31" pref="527" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -1344,17 +2060,17 @@
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="119" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="129" max="-2" attributes="0"/>
                       <Component id="jToolBar4" min="-2" pref="25" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jScrollPane4" pref="353" max="32767" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jScrollPane4" pref="203" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jPanel31" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="401" max="32767" attributes="0"/>
+                          <EmptySpace pref="253" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -1374,7 +2090,7 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabel20" pref="269" max="32767" attributes="0"/>
+                          <Component id="jLabel20" pref="257" max="32767" attributes="0"/>
                           <Component id="txtNobleName" alignment="0" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
@@ -1410,7 +2126,7 @@
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="txtEstateName" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jLabel19" alignment="1" pref="269" max="32767" attributes="0"/>
+                          <Component id="jLabel19" alignment="1" pref="257" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
@@ -1452,7 +2168,7 @@
                       <Layout>
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jComboBox1" pref="128" max="32767" attributes="0"/>
+                              <Component id="jComboBox1" pref="122" max="32767" attributes="0"/>
                               <Component id="jLabel21" alignment="0" max="32767" attributes="0"/>
                           </Group>
                         </DimensionLayout>
@@ -1486,12 +2202,12 @@
                       <Layout>
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <EmptySpace min="0" pref="128" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="122" max="32767" attributes="0"/>
                           </Group>
                         </DimensionLayout>
                         <DimensionLayout dim="1">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <EmptySpace min="0" pref="51" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="55" max="32767" attributes="0"/>
                           </Group>
                         </DimensionLayout>
                       </Layout>
@@ -1503,12 +2219,12 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <EmptySpace min="0" pref="269" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="257" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <EmptySpace min="0" pref="51" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="55" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
                   </Layout>
@@ -1625,231 +2341,6 @@
                       <BindingParameter name="IGNORE_ADJUSTING" value="N"/>
                     </BindingProperty>
                   </BindingProperties>
-                </Component>
-              </SubComponents>
-            </Container>
-          </SubComponents>
-        </Container>
-        <Container class="javax.swing.JPanel" name="tabTownIsland">
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="Town / Island">
-                <Property name="tabTitle" type="java.lang.String" value="Town / Island"/>
-              </JTabbedPaneConstraints>
-            </Constraint>
-          </Constraints>
-
-          <Layout>
-            <DimensionLayout dim="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jScrollPane1" alignment="1" pref="551" max="32767" attributes="0"/>
-                          <Component id="jToolBar1" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jPanel40" alignment="1" max="32767" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                  </Group>
-              </Group>
-            </DimensionLayout>
-            <DimensionLayout dim="1">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jPanel40" min="-2" pref="102" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jToolBar1" min="-2" pref="25" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jScrollPane1" pref="353" max="32767" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                  </Group>
-              </Group>
-            </DimensionLayout>
-          </Layout>
-          <SubComponents>
-            <Container class="javax.swing.JPanel" name="jPanel40">
-
-              <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
-                <Property name="columns" type="int" value="2"/>
-                <Property name="horizontalGap" type="int" value="12"/>
-                <Property name="rows" type="int" value="1"/>
-              </Layout>
-              <SubComponents>
-                <Container class="javax.swing.JPanel" name="jPanel39">
-
-                  <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
-                    <Property name="columns" type="int" value="1"/>
-                    <Property name="rows" type="int" value="2"/>
-                  </Layout>
-                  <SubComponents>
-                    <Container class="javax.swing.JPanel" name="jPanel41">
-
-                      <Layout>
-                        <DimensionLayout dim="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="txtTownName" alignment="1" max="32767" attributes="0"/>
-                              <Component id="jLabel22" alignment="1" pref="269" max="32767" attributes="0"/>
-                          </Group>
-                        </DimensionLayout>
-                        <DimensionLayout dim="1">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jLabel22" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="txtTownName" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                        </DimensionLayout>
-                      </Layout>
-                      <SubComponents>
-                        <Component class="javax.swing.JLabel" name="jLabel22">
-                          <Properties>
-                            <Property name="text" type="java.lang.String" value="Town / Island Name"/>
-                          </Properties>
-                        </Component>
-                        <Component class="javax.swing.JTextField" name="txtTownName">
-                          <BindingProperties>
-                            <BindingProperty name="text" source="townParams" sourcePath="${nameFirstPart}" target="txtTownName" targetPath="text" updateStrategy="0" immediately="false">
-                              <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
-                            </BindingProperty>
-                          </BindingProperties>
-                        </Component>
-                      </SubComponents>
-                    </Container>
-                    <Container class="javax.swing.JPanel" name="jPanel42">
-
-                      <Layout>
-                        <DimensionLayout dim="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <EmptySpace min="0" pref="269" max="32767" attributes="0"/>
-                          </Group>
-                        </DimensionLayout>
-                        <DimensionLayout dim="1">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <EmptySpace min="0" pref="51" max="32767" attributes="0"/>
-                          </Group>
-                        </DimensionLayout>
-                      </Layout>
-                    </Container>
-                  </SubComponents>
-                </Container>
-                <Container class="javax.swing.JPanel" name="jPanel43">
-
-                  <Layout>
-                    <DimensionLayout dim="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <EmptySpace min="0" pref="269" max="32767" attributes="0"/>
-                      </Group>
-                    </DimensionLayout>
-                    <DimensionLayout dim="1">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <EmptySpace min="0" pref="102" max="32767" attributes="0"/>
-                      </Group>
-                    </DimensionLayout>
-                  </Layout>
-                </Container>
-              </SubComponents>
-            </Container>
-            <Container class="javax.swing.JScrollPane" name="jScrollPane1">
-              <AuxValues>
-                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-              </AuxValues>
-
-              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-              <SubComponents>
-                <Component class="org.sola.clients.swing.common.controls.JTableWithDefaultStyles" name="tableTown">
-                  <Properties>
-                    <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
-                      <TableColumnModel selectionModel="0">
-                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                          <Title/>
-                          <Editor/>
-                          <Renderer/>
-                        </Column>
-                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                          <Title/>
-                          <Editor/>
-                          <Renderer/>
-                        </Column>
-                      </TableColumnModel>
-                    </Property>
-                    <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
-                      <TableHeader reorderingAllowed="false" resizingAllowed="true"/>
-                    </Property>
-                  </Properties>
-                  <BindingProperties>
-                    <BindingProperty name="elements" source="townResultsList" sourcePath="${baUnitSearchResults}" target="tableTown" targetPath="elements" updateStrategy="0" immediately="true">
-                      <Subbinding sourcePath="${nameFirstPart}">
-                        <BindingParameter name="NAME" value="Name"/>
-                        <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="String.class"/>
-                        <BindingParameter name="javax.swing.binding.ParameterKeys.EDITABLE" value="false"/>
-                      </Subbinding>
-                      <Subbinding sourcePath="${islandName}">
-                        <BindingParameter name="NAME" value="Island"/>
-                        <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="String.class"/>
-                        <BindingParameter name="javax.swing.binding.ParameterKeys.EDITABLE" value="false"/>
-                      </Subbinding>
-                    </BindingProperty>
-                    <BindingProperty name="selectedElement" source="townResultsList" sourcePath="${selectedBaUnitSearchResult}" target="tableTown" targetPath="selectedElement" updateStrategy="0" immediately="false">
-                      <BindingParameter name="IGNORE_ADJUSTING" value="N"/>
-                    </BindingProperty>
-                  </BindingProperties>
-                </Component>
-              </SubComponents>
-            </Container>
-            <Container class="javax.swing.JToolBar" name="jToolBar1">
-              <Properties>
-                <Property name="floatable" type="boolean" value="false"/>
-                <Property name="rollover" type="boolean" value="true"/>
-              </Properties>
-
-              <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBoxLayout"/>
-              <SubComponents>
-                <Component class="javax.swing.JButton" name="btnTownSearch">
-                  <Properties>
-                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/images/common/search.png"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Search"/>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTownSearchActionPerformed"/>
-                  </Events>
-                </Component>
-                <Component class="javax.swing.JButton" name="btnTownClear">
-                  <Properties>
-                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/images/common/eraser.png"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Clear"/>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTownClearActionPerformed"/>
-                  </Events>
-                </Component>
-                <Component class="javax.swing.JToolBar$Separator" name="jSeparator8">
-                </Component>
-                <Component class="org.sola.clients.swing.common.buttons.BtnOpen" name="btnTownOpen">
-                  <Properties>
-                    <Property name="verticalTextPosition" type="int" value="3"/>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTownOpenActionPerformed"/>
-                  </Events>
-                </Component>
-                <Component class="javax.swing.JToolBar$Separator" name="jSeparator4">
-                </Component>
-                <Component class="javax.swing.JLabel" name="jLabel25">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Search results: "/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="lblTownResultsCount">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value=" "/>
-                  </Properties>
                 </Component>
               </SubComponents>
             </Container>
