@@ -40,6 +40,7 @@ import org.sola.webservices.transferobjects.referencedata.BaUnitTypeTO;
 public class BaUnitTypeBean extends AbstractCodeBean {
 
     public static final String CODE_LEASED_UNIT = "leasedUnit";
+    public static final String CODE_SUBLEASE_UNIT = "subleaseUnit";
     public static final String CODE_TOWN_ALLOTMENT_UNIT = "townAllotmentUnit";
     public static final String CODE_TAX_UNIT = "taxUnit";
     public static final String CODE_ESTATE_UNIT = "estateUnit";

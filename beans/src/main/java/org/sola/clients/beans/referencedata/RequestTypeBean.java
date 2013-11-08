@@ -54,6 +54,7 @@ public class RequestTypeBean extends AbstractCodeBean {
     public static final String CODE_ITEM_NUMBER = "itemNumber";
     public static final String CODE_MINISTER_BRIEFING = "ministerBriefing";
     public static final String CODE_REGISTER_LEASE = "registerLease";
+    public static final String CODE_REGISTER_SUBLEASE = "registerSublease";
     public static final String CODE_TRANSFER_LEASE = "varyLease";
     public static final String CODE_SIGN_DEED = "signDeed";
     public static final String CODE_SITE_INSPECTION = "siteInspection";

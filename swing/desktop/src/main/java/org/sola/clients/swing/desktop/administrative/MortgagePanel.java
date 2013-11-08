@@ -47,8 +47,6 @@ import org.sola.clients.swing.desktop.party.QuickSearchPartyForm;
 import org.sola.clients.swing.desktop.source.DocumentsManagementExtPanel;
 import org.sola.clients.swing.ui.ContentPanel;
 import org.sola.clients.swing.ui.renderers.FormattersFactory;
-import org.sola.clients.swing.ui.renderers.SimpleComboBoxRenderer;
-import org.sola.clients.swing.ui.source.DocumentsManagementPanel;
 import org.sola.common.messaging.ClientMessage;
 import org.sola.common.messaging.MessageUtility;
 
@@ -128,15 +126,15 @@ public class MortgagePanel extends ContentPanel {
         }
 
         if (rrrAction == RrrBean.RRR_ACTION.VIEW) {
-            btnSave.setVisible(false);
+            btnSave.setEnabled(false);
+            txtRegDatetime.setEnabled(false);
             txtNotationText.setEnabled(false);
-            txtRegDatetime.setEditable(false);
-            txtNotationText.setEditable(false);
-            txtAmount.setEditable(false);
-            txtExpiryDate.setEditable(false);
-            txtInterestRate.setEditable(false);
-            txtRanking.setEditable(false);
-            cbxType.setEditable(false);
+            txtAmount.setEnabled(false);
+            txtMortgageBookPage.setEnabled(false);
+            txtInterestRate.setEnabled(false);
+            txtTerm.setEnabled(false);
+            txtReceiptNumber.setEnabled(false);
+            txtReceiptDate.setEnabled(false);
             browseLender.setEnabled(false);
         } else {
             browseLender.addBrowseControlEventListener(new BrowseControlListener() {
@@ -205,6 +203,7 @@ public class MortgagePanel extends ContentPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
         bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
         rrrBean = CreateRrrBean();
@@ -216,35 +215,39 @@ public class MortgagePanel extends ContentPanel {
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(7, 0), new java.awt.Dimension(7, 0), new java.awt.Dimension(7, 32767));
         jLabel14 = new javax.swing.JLabel();
         lblStatus = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jPanel10 = new javax.swing.JPanel();
+        documentsManagementPanel1 = createDocumentsPanel();
         jPanel8 = new javax.swing.JPanel();
+        jPanel5 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        txtMortgageBookPage = new javax.swing.JTextField();
+        jPanel11 = new javax.swing.JPanel();
+        jLabel16 = new javax.swing.JLabel();
+        txtNotationText = new javax.swing.JTextField();
+        jPanel13 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
         txtRegDatetime = new javax.swing.JFormattedTextField();
-        jPanel5 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        txtExpiryDate = new javax.swing.JFormattedTextField();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        cbxType = new javax.swing.JComboBox();
-        jPanel3 = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
-        browseLender = new org.sola.clients.swing.common.controls.BrowseControl();
         jPanel6 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         txtAmount = new javax.swing.JFormattedTextField();
         jPanel9 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        txtRanking = new javax.swing.JFormattedTextField();
+        txtTerm = new javax.swing.JFormattedTextField();
         jPanel7 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         txtInterestRate = new javax.swing.JFormattedTextField();
-        jLabel16 = new javax.swing.JLabel();
-        txtNotationText = new javax.swing.JTextField();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
+        browseLender = new org.sola.clients.swing.common.controls.BrowseControl();
+        jPanel14 = new javax.swing.JPanel();
+        jPanel15 = new javax.swing.JPanel();
+        txtReceiptNumber = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        jPanel16 = new javax.swing.JPanel();
+        txtReceiptDate = new javax.swing.JFormattedTextField();
+        jLabel8 = new javax.swing.JLabel();
         groupPanel1 = new org.sola.clients.swing.ui.GroupPanel();
-        documentsManagementPanel1 = createDocumentsPanel();
 
         setCloseOnHide(true);
         setHeaderPanel(headerPanel);
@@ -288,17 +291,73 @@ public class MortgagePanel extends ContentPanel {
 
         jToolBar1.add(lblStatus);
 
-        jScrollPane1.setBorder(null);
-        jScrollPane1.setName("jScrollPane1"); // NOI18N
-
-        jPanel10.setName("jPanel10"); // NOI18N
+        documentsManagementPanel1.setName(bundle.getString("MortgagePanel.documentsManagementPanel1.name")); // NOI18N
 
         jPanel8.setName("jPanel8"); // NOI18N
-        jPanel8.setLayout(new java.awt.GridLayout(2, 3, 15, 0));
+        jPanel8.setLayout(new java.awt.GridLayout(3, 2, 12, 0));
+
+        jPanel5.setName("jPanel5"); // NOI18N
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/red_asterisk.gif"))); // NOI18N
+        jLabel3.setText(bundle.getString("MortgagePanel.jLabel3.text")); // NOI18N
+        jLabel3.setName("jLabel3"); // NOI18N
+
+        txtMortgageBookPage.setName("txtMortgageBookPage"); // NOI18N
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, rrrBean, org.jdesktop.beansbinding.ELProperty.create("${registryBookReference}"), txtMortgageBookPage, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 340, Short.MAX_VALUE)
+            .addComponent(txtMortgageBookPage)
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtMortgageBookPage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(15, Short.MAX_VALUE))
+        );
+
+        jPanel8.add(jPanel5);
+
+        jPanel11.setName("jPanel11"); // NOI18N
+
+        jLabel16.setText(bundle.getString("MortgagePanel.jLabel16.text")); // NOI18N
+        jLabel16.setName("jLabel16"); // NOI18N
+
+        txtNotationText.setName("txtNotationText"); // NOI18N
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, rrrBean, org.jdesktop.beansbinding.ELProperty.create("${notation.notationText}"), txtNotationText, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+
+        javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
+        jPanel11.setLayout(jPanel11Layout);
+        jPanel11Layout.setHorizontalGroup(
+            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(txtNotationText)
+            .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, 340, Short.MAX_VALUE)
+        );
+        jPanel11Layout.setVerticalGroup(
+            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel11Layout.createSequentialGroup()
+                .addComponent(jLabel16)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtNotationText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 15, Short.MAX_VALUE))
+        );
+
+        jPanel8.add(jPanel11);
+
+        jPanel13.setName("jPanel13"); // NOI18N
+        jPanel13.setLayout(new java.awt.GridLayout(1, 2, 12, 0));
 
         jPanel2.setName("jPanel2"); // NOI18N
 
-        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/red_asterisk.gif"))); // NOI18N
         jLabel13.setText(bundle.getString("MortgagePanel.jLabel13.text")); // NOI18N
         jLabel13.setName("jLabel13"); // NOI18N
 
@@ -312,10 +371,8 @@ public class MortgagePanel extends ContentPanel {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jLabel13)
-                .addContainerGap(112, Short.MAX_VALUE))
-            .addComponent(txtRegDatetime, javax.swing.GroupLayout.DEFAULT_SIZE, 214, Short.MAX_VALUE)
+            .addComponent(txtRegDatetime)
+            .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -323,77 +380,104 @@ public class MortgagePanel extends ContentPanel {
                 .addComponent(jLabel13)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtRegDatetime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
-        jPanel8.add(jPanel2);
+        jPanel13.add(jPanel2);
 
-        jPanel5.setName("jPanel5"); // NOI18N
+        jPanel6.setName("jPanel6"); // NOI18N
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/red_asterisk.gif"))); // NOI18N
-        jLabel3.setText(bundle.getString("MortgagePanel.jLabel3.text")); // NOI18N
-        jLabel3.setName("jLabel3"); // NOI18N
+        jLabel4.setText(bundle.getString("MortgagePanel.jLabel4.text")); // NOI18N
+        jLabel4.setName("jLabel4"); // NOI18N
 
-        txtExpiryDate.setFormatterFactory(FormattersFactory.getInstance().getDateFormatterFactory());
-        txtExpiryDate.setName("txtExpiryDate"); // NOI18N
+        txtAmount.setFormatterFactory(FormattersFactory.getInstance().getMoneyFormatterFactory());
+        txtAmount.setName("txtAmount"); // NOI18N
 
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, rrrBean, org.jdesktop.beansbinding.ELProperty.create("${expirationDate}"), txtExpiryDate, org.jdesktop.beansbinding.BeanProperty.create("value"));
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, rrrBean, org.jdesktop.beansbinding.ELProperty.create("${amount}"), txtAmount, org.jdesktop.beansbinding.BeanProperty.create("value"));
         bindingGroup.addBinding(binding);
 
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addComponent(jLabel3)
-                .addContainerGap(122, Short.MAX_VALUE))
-            .addComponent(txtExpiryDate, javax.swing.GroupLayout.DEFAULT_SIZE, 214, Short.MAX_VALUE)
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(txtAmount)
+            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
         );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addComponent(jLabel3)
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtExpiryDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addComponent(txtAmount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
-        jPanel8.add(jPanel5);
+        jPanel13.add(jPanel6);
 
-        jPanel1.setName("jPanel1"); // NOI18N
+        jPanel8.add(jPanel13);
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/red_asterisk.gif"))); // NOI18N
-        jLabel2.setText(bundle.getString("MortgagePanel.jLabel2.text")); // NOI18N
-        jLabel2.setName("jLabel2"); // NOI18N
+        jPanel9.setName("jPanel9"); // NOI18N
+        jPanel9.setLayout(new java.awt.GridLayout(1, 2, 12, 0));
 
-        cbxType.setName("cbxType"); // NOI18N
-        cbxType.setRenderer(new SimpleComboBoxRenderer("getDisplayValue"));
+        jPanel4.setName("jPanel4"); // NOI18N
 
-        org.jdesktop.beansbinding.ELProperty eLProperty = org.jdesktop.beansbinding.ELProperty.create("${mortgageTypeListBean}");
-        org.jdesktop.swingbinding.JComboBoxBinding jComboBoxBinding = org.jdesktop.swingbinding.SwingBindings.createJComboBoxBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, mortgageTypeListBean, eLProperty, cbxType);
-        bindingGroup.addBinding(jComboBoxBinding);
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, rrrBean, org.jdesktop.beansbinding.ELProperty.create("${mortgageType}"), cbxType, org.jdesktop.beansbinding.BeanProperty.create("selectedItem"));
+        jLabel1.setText(bundle.getString("MortgagePanel.jLabel1.text")); // NOI18N
+        jLabel1.setName("jLabel1"); // NOI18N
+
+        txtTerm.setFormatterFactory(FormattersFactory.getInstance().getDecimalFormatterFactory(2));
+        txtTerm.setName("txtTerm"); // NOI18N
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, rrrBean, org.jdesktop.beansbinding.ELProperty.create("${term}"), txtTerm, org.jdesktop.beansbinding.BeanProperty.create("value"));
         bindingGroup.addBinding(binding);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jLabel2)
-                .addContainerGap(172, Short.MAX_VALUE))
-            .addComponent(cbxType, 0, 214, Short.MAX_VALUE)
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(txtTerm, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jLabel2)
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cbxType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addComponent(txtTerm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
-        jPanel8.add(jPanel1);
+        jPanel9.add(jPanel4);
+
+        jPanel7.setName("jPanel7"); // NOI18N
+
+        jLabel5.setText(bundle.getString("MortgagePanel.jLabel5.text")); // NOI18N
+        jLabel5.setName("jLabel5"); // NOI18N
+
+        txtInterestRate.setFormatterFactory(FormattersFactory.getInstance().getDecimalFormatterFactory(2));
+        txtInterestRate.setName("txtInterestRate"); // NOI18N
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, rrrBean, org.jdesktop.beansbinding.ELProperty.create("${mortgageInterestRate}"), txtInterestRate, org.jdesktop.beansbinding.BeanProperty.create("value"));
+        bindingGroup.addBinding(binding);
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(txtInterestRate, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
+            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtInterestRate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(15, Short.MAX_VALUE))
+        );
+
+        jPanel9.add(jPanel7);
+
+        jPanel8.add(jPanel9);
 
         jPanel3.setName("jPanel3"); // NOI18N
 
@@ -414,10 +498,8 @@ public class MortgagePanel extends ContentPanel {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(jLabel6)
-                .addContainerGap(163, Short.MAX_VALUE))
-            .addComponent(browseLender, javax.swing.GroupLayout.DEFAULT_SIZE, 214, Short.MAX_VALUE)
+            .addComponent(browseLender, javax.swing.GroupLayout.DEFAULT_SIZE, 340, Short.MAX_VALUE)
+            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -425,159 +507,78 @@ public class MortgagePanel extends ContentPanel {
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(browseLender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         jPanel8.add(jPanel3);
 
-        jPanel6.setName("jPanel6"); // NOI18N
+        jPanel14.setName("jPanel14"); // NOI18N
+        jPanel14.setLayout(new java.awt.GridLayout(1, 2, 12, 0));
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/red_asterisk.gif"))); // NOI18N
-        jLabel4.setText(bundle.getString("MortgagePanel.jLabel4.text")); // NOI18N
-        jLabel4.setName("jLabel4"); // NOI18N
+        jPanel15.setName("jPanel15"); // NOI18N
 
-        txtAmount.setFormatterFactory(FormattersFactory.getInstance().getDecimalFormatterFactory());
-        txtAmount.setName("txtAmount"); // NOI18N
+        txtReceiptNumber.setName("txtReceiptNumber"); // NOI18N
 
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, rrrBean, org.jdesktop.beansbinding.ELProperty.create("${amount}"), txtAmount, org.jdesktop.beansbinding.BeanProperty.create("value"));
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, rrrBean, org.jdesktop.beansbinding.ELProperty.create("${receiptReference}"), txtReceiptNumber, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
 
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addComponent(jLabel4)
-                .addContainerGap())
-            .addComponent(txtAmount, javax.swing.GroupLayout.DEFAULT_SIZE, 214, Short.MAX_VALUE)
+        jLabel7.setText(bundle.getString("MortgagePanel.jLabel7.text")); // NOI18N
+        jLabel7.setName("jLabel7"); // NOI18N
+
+        javax.swing.GroupLayout jPanel15Layout = new javax.swing.GroupLayout(jPanel15);
+        jPanel15.setLayout(jPanel15Layout);
+        jPanel15Layout.setHorizontalGroup(
+            jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(txtReceiptNumber, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
         );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addComponent(jLabel4)
+        jPanel15Layout.setVerticalGroup(
+            jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel15Layout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtAmount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addComponent(txtReceiptNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
-        jPanel8.add(jPanel6);
+        jPanel14.add(jPanel15);
 
-        jPanel9.setName("jPanel9"); // NOI18N
-        jPanel9.setLayout(new java.awt.GridLayout(1, 2, 15, 0));
+        jPanel16.setName("jPanel16"); // NOI18N
 
-        jPanel4.setName("jPanel4"); // NOI18N
+        txtReceiptDate.setFormatterFactory(FormattersFactory.getInstance().getDateFormatterFactory());
+        txtReceiptDate.setText(bundle.getString("MortgagePanel.txtReceiptDate.text")); // NOI18N
+        txtReceiptDate.setName("txtReceiptDate"); // NOI18N
 
-        jLabel1.setText(bundle.getString("MortgagePanel.jLabel1.text")); // NOI18N
-        jLabel1.setName("jLabel1"); // NOI18N
-
-        txtRanking.setFormatterFactory(FormattersFactory.getInstance().getIntegerFormatterFactory());
-        txtRanking.setName("txtRanking"); // NOI18N
-
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, rrrBean, org.jdesktop.beansbinding.ELProperty.create("${mortgageRanking}"), txtRanking, org.jdesktop.beansbinding.BeanProperty.create("value"));
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, rrrBean, org.jdesktop.beansbinding.ELProperty.create("${receiptDate}"), txtReceiptDate, org.jdesktop.beansbinding.BeanProperty.create("value"));
         bindingGroup.addBinding(binding);
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addComponent(jLabel1)
-                .addContainerGap(57, Short.MAX_VALUE))
-            .addComponent(txtRanking, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE)
+        jLabel8.setText(bundle.getString("MortgagePanel.jLabel8.text")); // NOI18N
+        jLabel8.setName("jLabel8"); // NOI18N
+
+        javax.swing.GroupLayout jPanel16Layout = new javax.swing.GroupLayout(jPanel16);
+        jPanel16.setLayout(jPanel16Layout);
+        jPanel16Layout.setHorizontalGroup(
+            jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(txtReceiptDate)
+            .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
         );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addComponent(jLabel1)
+        jPanel16Layout.setVerticalGroup(
+            jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel16Layout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtRanking, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addComponent(txtReceiptDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
-        jPanel9.add(jPanel4);
+        jPanel14.add(jPanel16);
 
-        jPanel7.setName("jPanel7"); // NOI18N
-
-        jLabel5.setText(bundle.getString("MortgagePanel.jLabel5.text")); // NOI18N
-        jLabel5.setName("jLabel5"); // NOI18N
-
-        txtInterestRate.setFormatterFactory(FormattersFactory.getInstance().getDecimalFormatterFactory());
-        txtInterestRate.setName("txtInterestRate"); // NOI18N
-
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, rrrBean, org.jdesktop.beansbinding.ELProperty.create("${mortgageInterestRate}"), txtInterestRate, org.jdesktop.beansbinding.BeanProperty.create("value"));
-        bindingGroup.addBinding(binding);
-
-        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-        jPanel7.setLayout(jPanel7Layout);
-        jPanel7Layout.setHorizontalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
-                .addComponent(jLabel5)
-                .addContainerGap(33, Short.MAX_VALUE))
-            .addComponent(txtInterestRate, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE)
-        );
-        jPanel7Layout.setVerticalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
-                .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtInterestRate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(14, Short.MAX_VALUE))
-        );
-
-        jPanel9.add(jPanel7);
-
-        jPanel8.add(jPanel9);
-
-        jLabel16.setFont(LafManager.getInstance().getLabFontBold());
-        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/red_asterisk.gif"))); // NOI18N
-        jLabel16.setText(bundle.getString("MortgagePanel.jLabel16.text")); // NOI18N
-        jLabel16.setName("jLabel16"); // NOI18N
-
-        txtNotationText.setName("txtNotationText"); // NOI18N
-
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, rrrBean, org.jdesktop.beansbinding.ELProperty.create("${notation.notationText}"), txtNotationText, org.jdesktop.beansbinding.BeanProperty.create("text"));
-        bindingGroup.addBinding(binding);
+        jPanel8.add(jPanel14);
 
         groupPanel1.setName("groupPanel1"); // NOI18N
         groupPanel1.setTitleText(bundle.getString("MortgagePanel.groupPanel1.titleText")); // NOI18N
-
-        documentsManagementPanel1.setName(bundle.getString("MortgagePanel.documentsManagementPanel1.name")); // NOI18N
-
-        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
-        jPanel10.setLayout(jPanel10Layout);
-        jPanel10Layout.setHorizontalGroup(
-            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel10Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel10Layout.createSequentialGroup()
-                        .addComponent(jLabel16)
-                        .addGap(601, 601, 601))
-                    .addGroup(jPanel10Layout.createSequentialGroup()
-                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(documentsManagementPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtNotationText, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(groupPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addContainerGap())))
-        );
-        jPanel10Layout.setVerticalGroup(
-            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel10Layout.createSequentialGroup()
-                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel16)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtNotationText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(groupPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(documentsManagementPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        jScrollPane1.setViewportView(jPanel10);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -585,7 +586,13 @@ public class MortgagePanel extends ContentPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(headerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(documentsManagementPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, 693, Short.MAX_VALUE))
+                .addContainerGap())
+            .addComponent(groupPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -594,7 +601,12 @@ public class MortgagePanel extends ContentPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1))
+                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(groupPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(documentsManagementPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         bindingGroup.bind();
@@ -606,7 +618,6 @@ public class MortgagePanel extends ContentPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private org.sola.clients.swing.common.controls.BrowseControl browseLender;
     private javax.swing.JButton btnSave;
-    private javax.swing.JComboBox cbxType;
     private org.sola.clients.swing.desktop.source.DocumentsManagementExtPanel documentsManagementPanel1;
     private javax.swing.Box.Filler filler1;
     private org.sola.clients.swing.ui.GroupPanel groupPanel1;
@@ -615,13 +626,17 @@ public class MortgagePanel extends ContentPanel {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel10;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JPanel jPanel11;
+    private javax.swing.JPanel jPanel13;
+    private javax.swing.JPanel jPanel14;
+    private javax.swing.JPanel jPanel15;
+    private javax.swing.JPanel jPanel16;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -630,18 +645,19 @@ public class MortgagePanel extends ContentPanel {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JToolBar.Separator jSeparator1;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JLabel lblStatus;
     private org.sola.clients.beans.referencedata.MortgageTypeListBean mortgageTypeListBean;
     private org.sola.clients.beans.administrative.RrrBean rrrBean;
     private javax.swing.JFormattedTextField txtAmount;
-    private javax.swing.JFormattedTextField txtExpiryDate;
     private javax.swing.JFormattedTextField txtInterestRate;
+    private javax.swing.JTextField txtMortgageBookPage;
     public javax.swing.JTextField txtNotationText;
-    private javax.swing.JFormattedTextField txtRanking;
+    private javax.swing.JFormattedTextField txtReceiptDate;
+    private javax.swing.JTextField txtReceiptNumber;
     private javax.swing.JFormattedTextField txtRegDatetime;
+    private javax.swing.JFormattedTextField txtTerm;
     private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 }

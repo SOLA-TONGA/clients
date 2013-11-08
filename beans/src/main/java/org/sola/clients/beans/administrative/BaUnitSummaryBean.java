@@ -168,6 +168,13 @@ public class BaUnitSummaryBean extends AbstractTransactionedBean {
     public boolean isLease() {
         return BaUnitTypeBean.CODE_LEASED_UNIT.equals(this.getTypeCode());
     }
+    
+        /**
+     * Returns true if the property is a sublease
+     */
+    public boolean isSublease() {
+        return BaUnitTypeBean.CODE_SUBLEASE_UNIT.equals(this.getTypeCode());
+    }
 
     /**
      * Returns true if the property is an Allotment (either Town or Tax

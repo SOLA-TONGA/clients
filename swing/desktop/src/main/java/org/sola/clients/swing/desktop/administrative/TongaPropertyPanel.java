@@ -344,6 +344,10 @@ public class TongaPropertyPanel extends ContentPanel {
             rbTaxAllotment.setEnabled(enabledOnNew);
         } else if (baUnitBean1.isLease()) {
             lblFirstPart.setText(resourceBundle.getString("TongaPropertyPanel.Lease.lblFirstPart.text"));
+        } else if (baUnitBean1.isSublease()) {
+            lblFirstPart.setText(resourceBundle.getString("TongaPropertyPanel.Sublease.lblFirstPart.text"));
+            lblLastPart.setText(resourceBundle.getString("TongaPropertyPanel.Sublease.lblLastPart.text"));
+            allowEdit(txtLastPart, enabledOnNew);
         }
 
         isBtnNext = false;
@@ -518,7 +522,18 @@ public class TongaPropertyPanel extends ContentPanel {
      * .
      */
     private void customizePrintButton() {
-        btnPrintBaUnit.setEnabled(baUnitBean1.getRowVersion() > 0);
+        // Disable the print button until the Deed reports are ready. 
+        //btnPrintBaUnit.setEnabled(baUnitBean1.getRowVersion() > 0);
+        btnPrintBaUnit.setEnabled(false);
+        if (baUnitBean1.isLease()) {
+            btnPrintBaUnit.setText(resourceBundle.getString("TongaPropertyPanel.Lease.btnPrintBaUnit.text"));
+        } else if (baUnitBean1.isSublease()) {
+            btnPrintBaUnit.setText(resourceBundle.getString("TongaPropertyPanel.Sublease.btnPrintBaUnit.text"));
+        } else if (baUnitBean1.isAllotment()) {
+            btnPrintBaUnit.setText(resourceBundle.getString("TongaPropertyPanel.Allotment.btnPrintBaUnit.text"));
+        } else {
+            btnPrintBaUnit.setVisible(false);
+        }
     }
 
     private void customizeHistoricRightsViewButton() {
