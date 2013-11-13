@@ -1090,7 +1090,7 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
 
         jPanel50.setLayout(new java.awt.GridLayout(1, 0, 12, 0));
 
-        jLabel32.setText("Sublease Folio");
+        jLabel32.setText("Sublease #");
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, subleaseParams, org.jdesktop.beansbinding.ELProperty.create("${nameLastPart}"), txtLeaseNumber1, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
@@ -1275,10 +1275,10 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
         eLProperty = org.jdesktop.beansbinding.ELProperty.create("${baUnitSearchResults}");
         jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, subleaseResultsList, eLProperty, tableSublease);
         columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${name}"));
-        columnBinding.setColumnName("Sublease#");
+        columnBinding.setColumnName("Sublease #");
         columnBinding.setColumnClass(String.class);
         columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${baUnitType}"));
-        columnBinding.setColumnName(" Right Type");
+        columnBinding.setColumnName("Right Type");
         columnBinding.setColumnClass(org.sola.clients.beans.referencedata.BaUnitTypeBean.class);
         columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${rightholders}"));
         columnBinding.setColumnName("Sublessee / Rightholder");

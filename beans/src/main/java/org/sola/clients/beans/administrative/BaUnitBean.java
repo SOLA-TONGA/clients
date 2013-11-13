@@ -827,4 +827,19 @@ public class BaUnitBean extends BaUnitSummaryBean {
         }
         return result;
     }
+
+    /**
+     * Retrieves all Notations that are only associated to the BA Unit. These
+     * notations can only be created by users.
+     */
+    public ObservableList<BaUnitNotationBean> getUserNotations() {
+        ObservableList<BaUnitNotationBean> result = new SolaObservableList<BaUnitNotationBean>();
+        // Get all of the notations linked to the ba unit only. 
+        for (BaUnitNotationBean bean : allBaUnitNotationList) {
+            if (bean.getBaUnitId() != null) {
+                result.add(bean);
+            }
+        }
+        return result;
+    }
 }

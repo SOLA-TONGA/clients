@@ -152,6 +152,11 @@ public final class ServiceLauncher {
         serviceMap.put(RequestTypeBean.CODE_DISCHARGE_MORTGAGE,
                 new String[]{TongaPropertyPanel.class.getName(), MainContentPanel.CARD_PROPERTY_PANEL,
             ClientMessage.PROGRESS_MSG_OPEN_PROPERTY});
+
+        //Register Sublease
+        serviceMap.put(RequestTypeBean.CODE_REGISTER_SUBLEASE,
+                new String[]{TongaPropertyPanel.class.getName(), MainContentPanel.CARD_PROPERTY_PANEL,
+            ClientMessage.PROGRESS_MSG_OPEN_PROPERTY});
     }
 
     /**
@@ -207,7 +212,9 @@ public final class ServiceLauncher {
                     }
                     // Retrieve the constructor from the class that matches the argument types.
                     // Primitive types are boxed, so you must ensure the panel class construtor
-                    // is declared with boxed data types instead of primitive data types. 
+                    // is declared with boxed data types (i.e. nullable datatypes) instead of 
+                    // primitive (non-nullable) data types. e.g. use Boolean instead of boolean 
+                    // when declaring the readOnly parameter in the constructor arguments. 
                     Constructor<?> constructor = panelClass.getConstructor(constructorClasses);
                     panel = (ContentPanel) constructor.newInstance(constructorArgs);
                 } else {

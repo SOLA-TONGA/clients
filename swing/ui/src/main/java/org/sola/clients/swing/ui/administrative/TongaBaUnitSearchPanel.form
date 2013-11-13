@@ -1393,7 +1393,7 @@
                       <SubComponents>
                         <Component class="javax.swing.JLabel" name="jLabel32">
                           <Properties>
-                            <Property name="text" type="java.lang.String" value="Sublease Folio"/>
+                            <Property name="text" type="java.lang.String" value="Sublease #"/>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JTextField" name="txtLeaseNumber1">
@@ -1707,11 +1707,11 @@
                   <BindingProperties>
                     <BindingProperty name="elements" source="subleaseResultsList" sourcePath="${baUnitSearchResults}" target="tableSublease" targetPath="elements" updateStrategy="0" immediately="true">
                       <Subbinding sourcePath="${name}">
-                        <BindingParameter name="NAME" value="Sublease#"/>
+                        <BindingParameter name="NAME" value="Sublease #"/>
                         <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="String.class"/>
                       </Subbinding>
                       <Subbinding sourcePath="${baUnitType}">
-                        <BindingParameter name="NAME" value=" Right Type"/>
+                        <BindingParameter name="NAME" value="Right Type"/>
                         <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="org.sola.clients.beans.referencedata.BaUnitTypeBean.class"/>
                       </Subbinding>
                       <Subbinding sourcePath="${rightholders}">

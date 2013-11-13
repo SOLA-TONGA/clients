@@ -77,9 +77,13 @@ public class PropertyHelper {
             result = baUnitList.get(0);
         } else if (RequestTypeBean.CODE_REGISTER_LEASE.equals(appService.getRequestTypeCode())) {
             result = prepareNewLease(appBean);
+        } else if (RequestTypeBean.CODE_REGISTER_SUBLEASE.equals(appService.getRequestTypeCode())) {
+            result = prepareNewSublease(appBean);
         } else {
-            String baUnitId = appProperty.getLeaseBaUnitId() == null
-                    ? appProperty.getBaUnitId() : appProperty.getLeaseBaUnitId();
+            String baUnitId = appProperty.getSubleaseBaUnitId() == null
+                    ? appProperty.getLeaseBaUnitId() == null ? appProperty.getBaUnitId()
+                    : appProperty.getLeaseBaUnitId()
+                    : appProperty.getSubleaseBaUnitId();
             result = BaUnitBean.getBaUnitsById(baUnitId);
         }
         return result != null ? result : new BaUnitBean();
@@ -96,7 +100,6 @@ public class PropertyHelper {
         result.setTypeCode(BaUnitTypeBean.CODE_LEASED_UNIT);
         result.setStatusCode(StatusConstants.PENDING);
         result.setNameLastpart(NAME_PART_LEASE);
-        result.setName("");
         if (appBean.getSelectedProperty() != null) {
             if (appBean.getSelectedProperty().getLeaseNumber() != null
                     && appBean.getSelectedProperty().getLeaseBaUnitId() == null) {
@@ -164,6 +167,60 @@ public class PropertyHelper {
                 result.setRelationCode(relationCode);
                 result.setRelatedBaUnit(summary);
                 result.setRelatedBaUnitId(summary.getId());
+            }
+        }
+        return result;
+    }
+
+    /**
+     * Creates a new BaUnitBean representing the new sublease details. Used for the
+     * Register Sublease service. Note that most of the details for the sublease
+     * are left blank for the user to fill in manually as the Property tab on the
+     * TongaApplicationPanel does not capture much information for subleases. 
+     *
+     * @param appBean
+     */
+    public static BaUnitBean prepareNewSublease(ApplicationBean appBean) {
+        BaUnitBean result = new BaUnitBean();
+        result.setTypeCode(BaUnitTypeBean.CODE_SUBLEASE_UNIT);
+        result.setStatusCode(StatusConstants.PENDING);
+        if (appBean.getSelectedProperty() != null) {
+            if (appBean.getSelectedProperty().getSubleaseNumber() != null
+                    && appBean.getSelectedProperty().getSubleaseBaUnitId() == null) {
+                // Set the sublease number if it has been specified. 
+                result.setNameFirstpart(appBean.getSelectedProperty().getSubleaseNumber().split("/")[0]);
+                result.setNameLastpart(appBean.getSelectedProperty().getSubleaseNumber().split("/")[1]);
+                result.setName(appBean.getSelectedProperty().getSubleaseNumber());
+            }
+
+            // Set details of Sublease RRR
+            RrrBean subleaseRrr = new RrrBean();
+            subleaseRrr.setTypeCode(RrrBean.CODE_SUBLEASE);
+            subleaseRrr.setPrimary(true);
+            subleaseRrr.setStatusCode(StatusConstants.PENDING);
+            subleaseRrr.setRegistryBookReference(appBean.getSelectedProperty().getSubleaseNumber());
+
+            result.addRrr(subleaseRrr);
+
+            // Associate the lease to the sublease
+            RelatedBaUnitInfoBean lease = createRelatedBaUnit(
+                    appBean.getSelectedProperty().getLeaseBaUnitId(), RelatedBaUnitInfoBean.CODE_SUBLEASE);
+            if (lease != null) {
+                result.getParentBaUnits().addAsNew(lease);
+            } else {
+                // Check if there is an allotment to associate with the sublease instead
+                RelatedBaUnitInfoBean allotment = createRelatedBaUnit(
+                        appBean.getSelectedProperty().getBaUnitId(), RelatedBaUnitInfoBean.CODE_SUBLEASE);
+                if (allotment != null) {
+                    result.getParentBaUnits().addAsNew(allotment);
+                }
+            }
+
+            // Associate the town to the sublease
+            RelatedBaUnitInfoBean town = createRelatedBaUnit(
+                    appBean.getSelectedProperty().getTownId(), RelatedBaUnitInfoBean.CODE_TOWN);
+            if (town != null) {
+                result.getParentBaUnits().addAsNew(town);
             }
         }
         return result;
