@@ -231,6 +231,7 @@ public class MainForm extends javax.swing.JFrame {
         menuSearchApplication.setEnabled(btnSearchApplications.isEnabled());
         menuNewApplication.setEnabled(btnNewApplication.isEnabled());
         menuExportRights.setEnabled(SecurityBean.isInRole(RolesConstants.ADMINISTRATIVE_RIGHTS_EXPORT));
+        menuCashierImport.setEnabled(SecurityBean.isInRole(RolesConstants.ADMINISTRATIVE_CASHIER_IMPORT));
         menuBaUnitSearch.setEnabled(btnOpenBaUnitSearch.isEnabled());
         menuPersons.setEnabled(btnManageParties.isEnabled());
         menuShowMap.setEnabled(btnOpenMap.isEnabled());
@@ -239,9 +240,12 @@ public class MainForm extends javax.swing.JFrame {
         
         // AM 17-04-13 Systematic Registration is not required in Tonga.
         menuMap.setEnabled(btnOpenMap.isEnabled());
-        menuMap.setVisible(btnOpenMap.isVisible());
-        
+        menuMap.setVisible(btnOpenMap.isVisible());   
         menuSystematic.setVisible(false);
+        
+        // Hide other menu's that are not required for Tonga
+        menuExportRights.setVisible(false);
+        menuLangIT.setVisible(false);
 
         if (SecurityBean.isPasswordChangeReqd(false)) {
             // Load the user profile page
@@ -1041,6 +1045,7 @@ public class MainForm extends javax.swing.JFrame {
 
         menuReportsDesktop.setText(bundle.getString("MainForm.menuReportsDesktop.text_1")); // NOI18N
 
+        menuLodgementReport.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/print.png"))); // NOI18N
         menuLodgementReport.setText(bundle.getString("MainForm.menuLodgementReportDesktop.text_1")); // NOI18N
         menuLodgementReport.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
