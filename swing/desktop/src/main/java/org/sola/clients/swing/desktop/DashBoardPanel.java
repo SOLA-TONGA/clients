@@ -177,13 +177,13 @@ public class DashBoardPanel extends ContentPanel {
         if (appList == null || appList.size() < 1) {
             return;
         }
-
-        for (ApplicationSearchResultBean app : appList) {
-            if (!app.isFeePaid()) {
-                MessageUtility.displayMessage(ClientMessage.CHECK_FEES_NOT_PAID, new Object[]{app.getNr()});
-                return;
-            }
-        }
+// AM Tonga Customization - don't check if fees have been paid on assign. 
+//        for (ApplicationSearchResultBean app : appList) {
+//            if (!app.isFeePaid()) {
+//                MessageUtility.displayMessage(ClientMessage.CHECK_FEES_NOT_PAID, new Object[]{app.getNr()});
+//                return;
+//            }
+//        }
 
         if (assign) {
             ApplicationAssignmentDialog form = new ApplicationAssignmentDialog(appList, MainForm.getInstance(), true);

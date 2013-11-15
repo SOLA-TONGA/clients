@@ -97,14 +97,15 @@ public class FormattersFactory {
     public DefaultFormatterFactory getDecimalFormatterFactory(int precision) {
         if (!factoryMap.containsKey(DECIMAL_FACTORY + Integer.toString(precision))) {
             // Create a format mask to use for displaying the data value
-            String formatMask = "#";
+            String formatMask = "";
             if (precision > 0) {
                 formatMask += ".";
                 for (int x = 0; x < precision; x++) {
                     formatMask += "#";
                 }
             }
-            DefaultFormatter fmt = new NumberFormatter(new DecimalFormat(formatMask)) {
+            DefaultFormatter displayFormat = new NumberFormatter(new DecimalFormat("#,###" + formatMask));
+            DefaultFormatter editFormat = new NumberFormatter(new DecimalFormat("#" + formatMask)) {
                 // Accept null or emtpy string values entered by the user as null.
                 @Override
                 public Object stringToValue(String userInput) throws ParseException {
@@ -115,9 +116,10 @@ public class FormattersFactory {
                     return result;
                 }
             };
-            fmt.setValueClass(BigDecimal.class);
+            displayFormat.setValueClass(BigDecimal.class);
+            editFormat.setValueClass(BigDecimal.class);
             factoryMap.put(DECIMAL_FACTORY + Integer.toString(precision),
-                    new DefaultFormatterFactory(fmt, fmt, fmt));
+                    new DefaultFormatterFactory(displayFormat, displayFormat, editFormat));
         }
         return factoryMap.get(DECIMAL_FACTORY + Integer.toString(precision));
     }
@@ -333,7 +335,7 @@ public class FormattersFactory {
             edit.setValueClass(BigDecimal.class);
 
             // Currency Symbol for Tonga is T$
-            DefaultFormatter displayFormat = new NumberFormatter(new DecimalFormat("T$#.00"));
+            DefaultFormatter displayFormat = new NumberFormatter(new DecimalFormat("T$#,###.00"));
             displayFormat.setValueClass(BigDecimal.class);
 
             factoryMap.put(MONEY_FACTORY, new DefaultFormatterFactory(displayFormat,

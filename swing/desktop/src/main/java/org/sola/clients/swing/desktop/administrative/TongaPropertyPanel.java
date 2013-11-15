@@ -149,8 +149,9 @@ public class TongaPropertyPanel extends ContentPanel {
     }
 
     /**
-     * Constructor that will display a BaUnitBean with readonly. 
-     * @param baUnitBean 
+     * Constructor that will display a BaUnitBean with readonly.
+     *
+     * @param baUnitBean
      */
     public TongaPropertyPanel(BaUnitBean baUnitBean) {
         this(null, null, baUnitBean, true);
@@ -343,6 +344,10 @@ public class TongaPropertyPanel extends ContentPanel {
             rbTaxAllotment.setEnabled(enabledOnNew);
         } else if (baUnitBean1.isLease()) {
             lblFirstPart.setText(resourceBundle.getString("TongaPropertyPanel.Lease.lblFirstPart.text"));
+        } else if (baUnitBean1.isSublease()) {
+            lblFirstPart.setText(resourceBundle.getString("TongaPropertyPanel.Sublease.lblFirstPart.text"));
+            lblLastPart.setText(resourceBundle.getString("TongaPropertyPanel.Sublease.lblLastPart.text"));
+            allowEdit(txtLastPart, enabledOnNew);
         }
 
         isBtnNext = false;
@@ -517,7 +522,18 @@ public class TongaPropertyPanel extends ContentPanel {
      * .
      */
     private void customizePrintButton() {
-        btnPrintBaUnit.setEnabled(baUnitBean1.getRowVersion() > 0);
+        // Disable the print button until the Deed reports are ready. 
+        //btnPrintBaUnit.setEnabled(baUnitBean1.getRowVersion() > 0);
+        btnPrintBaUnit.setEnabled(false);
+        if (baUnitBean1.isLease()) {
+            btnPrintBaUnit.setText(resourceBundle.getString("TongaPropertyPanel.Lease.btnPrintBaUnit.text"));
+        } else if (baUnitBean1.isSublease()) {
+            btnPrintBaUnit.setText(resourceBundle.getString("TongaPropertyPanel.Sublease.btnPrintBaUnit.text"));
+        } else if (baUnitBean1.isAllotment()) {
+            btnPrintBaUnit.setText(resourceBundle.getString("TongaPropertyPanel.Allotment.btnPrintBaUnit.text"));
+        } else {
+            btnPrintBaUnit.setVisible(false);
+        }
     }
 
     private void customizeHistoricRightsViewButton() {
@@ -939,7 +955,8 @@ public class TongaPropertyPanel extends ContentPanel {
         if (rrrCode.equals(RrrBean.CODE_MORTGAGE)) {
             panel = new MortgagePanel(rrrBean, applicationBean, applicationService, action);
             cardName = MainContentPanel.CARD_MORTGAGE;
-        } else if (rrrCode.equalsIgnoreCase(RrrBean.CODE_LEASE)) {
+        } else if (rrrCode.equalsIgnoreCase(RrrBean.CODE_LEASE)
+                || rrrCode.equalsIgnoreCase(RrrBean.CODE_SUBLEASE)) {
             panel = new LeasePanel(baUnitBean1, rrrBean, applicationBean, applicationService, action);
             cardName = MainContentPanel.CARD_LEASE;
         } else if (rrrCode.equalsIgnoreCase(RrrBean.CODE_AGRI_ACTIVITY)
@@ -957,11 +974,11 @@ public class TongaPropertyPanel extends ContentPanel {
                 || rrrCode.equalsIgnoreCase(RrrBean.CODE_ADMIN_PUBLIC_SERVITUDE)
                 || rrrCode.equalsIgnoreCase(RrrBean.CODE_MONUMENT)
                 || rrrCode.equalsIgnoreCase(RrrBean.CODE_LIFE_ESTATE)
-                || rrrCode.equalsIgnoreCase(RrrBean.CODE_CAVEAT)) {
+                || rrrCode.equalsIgnoreCase(RrrBean.CODE_CAVEAT)
+                || rrrCode.equalsIgnoreCase(RrrBean.CODE_OWNERSHIP)) {
             panel = new SimpleRightholderPanel(rrrBean, applicationBean, applicationService, action);
             cardName = MainContentPanel.CARD_SIMPLE_OWNERSHIP;
-        } else if (rrrCode.equalsIgnoreCase(RrrBean.CODE_OWNERSHIP)
-                || rrrCode.equalsIgnoreCase(RrrBean.CODE_STATE_OWNERSHIP)
+        } else if (rrrCode.equalsIgnoreCase(RrrBean.CODE_STATE_OWNERSHIP)
                 || rrrCode.equalsIgnoreCase(RrrBean.CODE_APARTMENT)) {
             panel = new OwnershipPanel(rrrBean, applicationBean, applicationService, action);
             cardName = MainContentPanel.CARD_OWNERSHIP;
@@ -1884,6 +1901,7 @@ public class TongaPropertyPanel extends ContentPanel {
 
         tableRights.setComponentPopupMenu(popupRights);
         tableRights.setName("tableRights"); // NOI18N
+        tableRights.getTableHeader().setReorderingAllowed(false);
 
         eLProperty = org.jdesktop.beansbinding.ELProperty.create("${rrrFilteredList}");
         jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, baUnitBean1, eLProperty, tableRights);
@@ -1891,16 +1909,16 @@ public class TongaPropertyPanel extends ContentPanel {
         columnBinding.setColumnName("Rrr Type.display Value");
         columnBinding.setColumnClass(String.class);
         columnBinding.setEditable(false);
-        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${nr}"));
-        columnBinding.setColumnName("Nr");
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${registryBookReference}"));
+        columnBinding.setColumnName("Registry Book Reference");
         columnBinding.setColumnClass(String.class);
         columnBinding.setEditable(false);
         columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${registrationDate}"));
         columnBinding.setColumnName("Registration Date");
         columnBinding.setColumnClass(java.util.Date.class);
         columnBinding.setEditable(false);
-        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${concatenatedName}"));
-        columnBinding.setColumnName("Concatenated Name");
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${notation.notationText}"));
+        columnBinding.setColumnName("Notation.notation Text");
         columnBinding.setColumnClass(String.class);
         columnBinding.setEditable(false);
         columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${status.displayValue}"));
@@ -1918,18 +1936,15 @@ public class TongaPropertyPanel extends ContentPanel {
         });
         jScrollPane2.setViewportView(tableRights);
         tableRights.getColumnModel().getColumn(0).setPreferredWidth(100);
-        tableRights.getColumnModel().getColumn(0).setMaxWidth(100);
         tableRights.getColumnModel().getColumn(0).setHeaderValue(bundle.getString("TongaPropertyPanel.tableRights.columnModel.title0")); // NOI18N
         tableRights.getColumnModel().getColumn(1).setPreferredWidth(100);
-        tableRights.getColumnModel().getColumn(1).setMaxWidth(100);
         tableRights.getColumnModel().getColumn(1).setHeaderValue(bundle.getString("PropertyPanel.tableRights.columnModel.title3")); // NOI18N
         tableRights.getColumnModel().getColumn(2).setPreferredWidth(120);
-        tableRights.getColumnModel().getColumn(2).setMaxWidth(120);
         tableRights.getColumnModel().getColumn(2).setHeaderValue(bundle.getString("PropertyPanel.tableRights.columnModel.title1")); // NOI18N
         tableRights.getColumnModel().getColumn(2).setCellRenderer(new DateTimeRenderer());
+        tableRights.getColumnModel().getColumn(3).setPreferredWidth(300);
         tableRights.getColumnModel().getColumn(3).setHeaderValue(bundle.getString("PropertyPanel.tableRights.columnModel.title4_1")); // NOI18N
         tableRights.getColumnModel().getColumn(4).setPreferredWidth(100);
-        tableRights.getColumnModel().getColumn(4).setMaxWidth(100);
         tableRights.getColumnModel().getColumn(4).setHeaderValue(bundle.getString("PropertyPanel.tableRights.columnModel.title2")); // NOI18N
 
         jToolBar2.setFloatable(false);
@@ -2070,6 +2085,7 @@ public class TongaPropertyPanel extends ContentPanel {
         jScrollPane8.setName(bundle.getString("PropertyPanel.jScrollPane8.name")); // NOI18N
 
         tableRightsHistory.setName(bundle.getString("PropertyPanel.tableRightsHistory.name")); // NOI18N
+        tableRightsHistory.getTableHeader().setReorderingAllowed(false);
 
         eLProperty = org.jdesktop.beansbinding.ELProperty.create("${rrrHistoricList}");
         jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, baUnitBean1, eLProperty, tableRightsHistory);
@@ -2077,16 +2093,16 @@ public class TongaPropertyPanel extends ContentPanel {
         columnBinding.setColumnName("Rrr Type.display Value");
         columnBinding.setColumnClass(String.class);
         columnBinding.setEditable(false);
-        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${nr}"));
-        columnBinding.setColumnName("Nr");
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${registryBookReference}"));
+        columnBinding.setColumnName("Registry Book Reference");
         columnBinding.setColumnClass(String.class);
         columnBinding.setEditable(false);
         columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${registrationDate}"));
         columnBinding.setColumnName("Registration Date");
         columnBinding.setColumnClass(java.util.Date.class);
         columnBinding.setEditable(false);
-        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${concatenatedName}"));
-        columnBinding.setColumnName("Concatenated Name");
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${notation.notationText}"));
+        columnBinding.setColumnName("Notation.notation Text");
         columnBinding.setColumnClass(String.class);
         columnBinding.setEditable(false);
         columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${status.displayValue}"));
@@ -2104,18 +2120,15 @@ public class TongaPropertyPanel extends ContentPanel {
         });
         jScrollPane8.setViewportView(tableRightsHistory);
         tableRightsHistory.getColumnModel().getColumn(0).setPreferredWidth(100);
-        tableRightsHistory.getColumnModel().getColumn(0).setMaxWidth(100);
         tableRightsHistory.getColumnModel().getColumn(0).setHeaderValue(bundle.getString("TongaPropertyPanel.tableRightsHistory.columnModel.title0")); // NOI18N
         tableRightsHistory.getColumnModel().getColumn(1).setPreferredWidth(100);
-        tableRightsHistory.getColumnModel().getColumn(1).setMaxWidth(100);
         tableRightsHistory.getColumnModel().getColumn(1).setHeaderValue(bundle.getString("PropertyPanel.tableRightsHistory.columnModel.title3")); // NOI18N
         tableRightsHistory.getColumnModel().getColumn(2).setPreferredWidth(120);
-        tableRightsHistory.getColumnModel().getColumn(2).setMaxWidth(120);
         tableRightsHistory.getColumnModel().getColumn(2).setHeaderValue(bundle.getString("PropertyPanel.tableRightsHistory.columnModel.title1")); // NOI18N
         tableRightsHistory.getColumnModel().getColumn(2).setCellRenderer(new DateTimeRenderer());
+        tableRightsHistory.getColumnModel().getColumn(3).setPreferredWidth(300);
         tableRightsHistory.getColumnModel().getColumn(3).setHeaderValue(bundle.getString("PropertyPanel.tableRightsHistory.columnModel.title4")); // NOI18N
         tableRightsHistory.getColumnModel().getColumn(4).setPreferredWidth(100);
-        tableRightsHistory.getColumnModel().getColumn(4).setMaxWidth(100);
         tableRightsHistory.getColumnModel().getColumn(4).setHeaderValue(bundle.getString("PropertyPanel.tableRightsHistory.columnModel.title2")); // NOI18N
 
         org.jdesktop.layout.GroupLayout jPanel17Layout = new org.jdesktop.layout.GroupLayout(jPanel17);
@@ -2211,20 +2224,21 @@ public class TongaPropertyPanel extends ContentPanel {
 
         tableNotations.setComponentPopupMenu(popupNotations);
         tableNotations.setName("tableNotations"); // NOI18N
+        tableNotations.getTableHeader().setReorderingAllowed(false);
 
-        eLProperty = org.jdesktop.beansbinding.ELProperty.create("${allBaUnitNotationList}");
+        eLProperty = org.jdesktop.beansbinding.ELProperty.create("${userNotations}");
         jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, baUnitBean1, eLProperty, tableNotations);
         columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${notationText}"));
         columnBinding.setColumnName("Notation Text");
         columnBinding.setColumnClass(String.class);
         columnBinding.setEditable(false);
-        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${referenceNr}"));
-        columnBinding.setColumnName("Reference Nr");
-        columnBinding.setColumnClass(String.class);
-        columnBinding.setEditable(false);
         columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${changeTime}"));
         columnBinding.setColumnName("Change Time");
         columnBinding.setColumnClass(java.util.Date.class);
+        columnBinding.setEditable(false);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${changeUser}"));
+        columnBinding.setColumnName("Change User");
+        columnBinding.setColumnClass(String.class);
         columnBinding.setEditable(false);
         columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${status.displayValue}"));
         columnBinding.setColumnName("Status.display Value");
@@ -2235,17 +2249,15 @@ public class TongaPropertyPanel extends ContentPanel {
         bindingGroup.addBinding(binding);
 
         jScrollPane4.setViewportView(tableNotations);
+        tableNotations.getColumnModel().getColumn(0).setPreferredWidth(300);
         tableNotations.getColumnModel().getColumn(0).setHeaderValue(bundle.getString("PropertyPanel.tableNotations.columnModel.title1")); // NOI18N
-        tableNotations.getColumnModel().getColumn(1).setPreferredWidth(100);
-        tableNotations.getColumnModel().getColumn(1).setMaxWidth(100);
-        tableNotations.getColumnModel().getColumn(1).setHeaderValue(bundle.getString("PropertyPanel.tableNotations.columnModel.title0")); // NOI18N
-        tableNotations.getColumnModel().getColumn(2).setPreferredWidth(120);
-        tableNotations.getColumnModel().getColumn(2).setMaxWidth(120);
-        tableNotations.getColumnModel().getColumn(2).setHeaderValue(bundle.getString("PropertyPanel.tableNotations.columnModel.title3")); // NOI18N
-        tableNotations.getColumnModel().getColumn(2).setCellRenderer(new DateTimeRenderer());
+        tableNotations.getColumnModel().getColumn(1).setPreferredWidth(120);
+        tableNotations.getColumnModel().getColumn(1).setHeaderValue(bundle.getString("PropertyPanel.tableNotations.columnModel.title3")); // NOI18N
+        tableNotations.getColumnModel().getColumn(1).setCellRenderer(new DateTimeRenderer());
+        tableNotations.getColumnModel().getColumn(2).setPreferredWidth(100);
+        tableNotations.getColumnModel().getColumn(2).setHeaderValue(bundle.getString("PropertyPanel.tableNotations.columnModel.title0")); // NOI18N
         tableNotations.getColumnModel().getColumn(3).setPreferredWidth(100);
-        tableNotations.getColumnModel().getColumn(3).setMaxWidth(100);
-        tableNotations.getColumnModel().getColumn(3).setHeaderValue(bundle.getString("PropertyPanel.tableNotations.columnModel.title2")); // NOI18N
+        tableNotations.getColumnModel().getColumn(3).setHeaderValue(bundle.getString("TongaPropertyPanel.tableNotations.columnModel.title3")); // NOI18N
 
         jToolBar3.setFloatable(false);
         jToolBar3.setRollover(true);

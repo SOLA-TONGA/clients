@@ -77,6 +77,7 @@ public class LeasePanel extends ContentPanel {
     private ApplicationServiceBean appService;
     private RrrBean.RRR_ACTION rrrAction;
     private BaUnitBean baUnit;
+    java.util.ResourceBundle resourceBundle;
     public static final String UPDATED_RRR = "updatedRRR";
 
     private DocumentsManagementExtPanel createDocumentsPanel() {
@@ -120,6 +121,7 @@ public class LeasePanel extends ContentPanel {
         this.applicationBean = applicationBean;
         this.appService = applicationService;
         this.rrrAction = rrrAction;
+        resourceBundle = java.util.ResourceBundle.getBundle("org/sola/clients/swing/desktop/administrative/Bundle");
         prepareRrrBean(rrrBean, rrrAction);
         initComponents();
         postInit();
@@ -205,8 +207,7 @@ public class LeasePanel extends ContentPanel {
         txtNotationText.setEnabled(enabled);
         txtExpirationDate.setEnabled(enabled);
         txtRent.setEnabled(enabled);
-        cbxPrimaryRight.setVisible(false);
-        lblPrimaryRight.setVisible(false);
+        txtStartDate.setEnabled(enabled);
         txtReceiptRef.setEnabled(enabled);
         txtReceiptDate.setEnabled(enabled);
         txtDueDate.setEnabled(enabled);
@@ -244,6 +245,11 @@ public class LeasePanel extends ContentPanel {
         // SOLA Tonga Customisation - Remove /Hide Lease Conditions Tab
         if (tabPayments.indexOfComponent(jPanel12) >= 0) {
             tabPayments.removeTabAt(tabPayments.indexOfComponent(jPanel12));
+        }
+        
+        if (baUnit.isSublease()) {
+            // This is a sublease so make some minor adjustments to the form
+            lblLandholder.setText(resourceBundle.getString("LeasePanel.Sublease.lblLandholder.text"));
         }
     }
 
@@ -571,15 +577,15 @@ public class LeasePanel extends ContentPanel {
         jPanel6 = new javax.swing.JPanel();
         lblTerm = new javax.swing.JLabel();
         txtTerm = new javax.swing.JFormattedTextField();
+        pnlStartDate = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        txtStartDate = new javax.swing.JFormattedTextField();
         jPanel7 = new javax.swing.JPanel();
         lblExpirationDate = new javax.swing.JLabel();
         txtExpirationDate = new javax.swing.JFormattedTextField();
         jPanel8 = new javax.swing.JPanel();
         lblRent = new javax.swing.JLabel();
         txtRent = new javax.swing.JFormattedTextField();
-        pnlPrimaryRight = new javax.swing.JPanel();
-        lblPrimaryRight = new javax.swing.JLabel();
-        cbxPrimaryRight = new javax.swing.JCheckBox();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         groupPanel1 = new org.sola.clients.swing.ui.GroupPanel();
@@ -852,6 +858,32 @@ public class LeasePanel extends ContentPanel {
 
         jPanel9.add(jPanel6);
 
+        jLabel3.setText(bundle.getString("LeasePanel.jLabel3.text")); // NOI18N
+
+        txtStartDate.setFormatterFactory(FormattersFactory.getInstance().getDateFormatterFactory());
+        txtStartDate.setText(bundle.getString("LeasePanel.txtStartDate.text")); // NOI18N
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, rrrBean, org.jdesktop.beansbinding.ELProperty.create("${startDate}"), txtStartDate, org.jdesktop.beansbinding.BeanProperty.create("value"));
+        bindingGroup.addBinding(binding);
+
+        javax.swing.GroupLayout pnlStartDateLayout = new javax.swing.GroupLayout(pnlStartDate);
+        pnlStartDate.setLayout(pnlStartDateLayout);
+        pnlStartDateLayout.setHorizontalGroup(
+            pnlStartDateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE)
+            .addComponent(txtStartDate)
+        );
+        pnlStartDateLayout.setVerticalGroup(
+            pnlStartDateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlStartDateLayout.createSequentialGroup()
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtStartDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 5, Short.MAX_VALUE))
+        );
+
+        jPanel9.add(pnlStartDate);
+
         lblExpirationDate.setText(bundle.getString("LeasePanel.lblExpirationDate.text")); // NOI18N
 
         txtExpirationDate.setFormatterFactory(FormattersFactory.getInstance().getDateFormatterFactory());
@@ -901,37 +933,6 @@ public class LeasePanel extends ContentPanel {
         );
 
         jPanel9.add(jPanel8);
-
-        lblPrimaryRight.setText(bundle.getString("LeasePanel.lblPrimaryRight.text")); // NOI18N
-
-        cbxPrimaryRight.setText(bundle.getString("SimpleOwhershipPanel.cbxIsPrimary.text")); // NOI18N
-        cbxPrimaryRight.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        cbxPrimaryRight.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        cbxPrimaryRight.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        cbxPrimaryRight.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
-
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, rrrBean, org.jdesktop.beansbinding.ELProperty.create("${primary}"), cbxPrimaryRight, org.jdesktop.beansbinding.BeanProperty.create("selected"));
-        bindingGroup.addBinding(binding);
-
-        javax.swing.GroupLayout pnlPrimaryRightLayout = new javax.swing.GroupLayout(pnlPrimaryRight);
-        pnlPrimaryRight.setLayout(pnlPrimaryRightLayout);
-        pnlPrimaryRightLayout.setHorizontalGroup(
-            pnlPrimaryRightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlPrimaryRightLayout.createSequentialGroup()
-                .addGroup(pnlPrimaryRightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblPrimaryRight)
-                    .addComponent(cbxPrimaryRight))
-                .addGap(0, 15, Short.MAX_VALUE))
-        );
-        pnlPrimaryRightLayout.setVerticalGroup(
-            pnlPrimaryRightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlPrimaryRightLayout.createSequentialGroup()
-                .addComponent(lblPrimaryRight)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cbxPrimaryRight))
-        );
-
-        jPanel9.add(pnlPrimaryRight);
 
         jPanel1.setLayout(new java.awt.GridLayout(2, 1, 0, 10));
 
@@ -1073,15 +1074,25 @@ public class LeasePanel extends ContentPanel {
 
         jPanel14.add(jPanel17);
 
-        jPanel15.setLayout(new java.awt.GridLayout(2, 1, 0, 2));
-
         lblNotationText.setText(bundle.getString("SimpleOwhershipPanel.jLabel3.text")); // NOI18N
-        jPanel15.add(lblNotationText);
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, rrrBean, org.jdesktop.beansbinding.ELProperty.create("${notation.notationText}"), txtNotationText, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
 
-        jPanel15.add(txtNotationText);
+        javax.swing.GroupLayout jPanel15Layout = new javax.swing.GroupLayout(jPanel15);
+        jPanel15.setLayout(jPanel15Layout);
+        jPanel15Layout.setHorizontalGroup(
+            jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblNotationText, javax.swing.GroupLayout.DEFAULT_SIZE, 305, Short.MAX_VALUE)
+            .addComponent(txtNotationText)
+        );
+        jPanel15Layout.setVerticalGroup(
+            jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel15Layout.createSequentialGroup()
+                .addComponent(lblNotationText)
+                .addGap(8, 8, 8)
+                .addComponent(txtNotationText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
 
         jPanel14.add(jPanel15);
 
@@ -1467,7 +1478,6 @@ public class LeasePanel extends ContentPanel {
     private javax.swing.JButton btnSave;
     private javax.swing.JButton btnSelectExisting;
     private javax.swing.JButton btnViewOwner;
-    private javax.swing.JCheckBox cbxPrimaryRight;
     private javax.swing.JComboBox cbxStandardConditions;
     private org.sola.clients.beans.referencedata.ConditionTypeListBean conditionTypes;
     private org.sola.clients.swing.desktop.source.DocumentsManagementExtPanel documentsManagementPanel;
@@ -1480,6 +1490,7 @@ public class LeasePanel extends ContentPanel {
     private org.sola.clients.swing.ui.HeaderPanel headerPanel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
@@ -1513,7 +1524,6 @@ public class LeasePanel extends ContentPanel {
     private javax.swing.JLabel lblExpirationDate;
     private javax.swing.JLabel lblLandholder;
     private javax.swing.JLabel lblNotationText;
-    private javax.swing.JLabel lblPrimaryRight;
     private javax.swing.JLabel lblReceiptDate;
     private javax.swing.JLabel lblReceiptRef;
     private javax.swing.JLabel lblRegistrationDate;
@@ -1530,7 +1540,7 @@ public class LeasePanel extends ContentPanel {
     private javax.swing.JMenuItem menuRemoveOwner;
     private javax.swing.JMenuItem menuViewOwner;
     private org.sola.clients.beans.administrative.RrrPaymentHistoryListBean paymentHistoryListBean;
-    private javax.swing.JPanel pnlPrimaryRight;
+    private javax.swing.JPanel pnlStartDate;
     private javax.swing.JPopupMenu popUpOwners;
     private org.sola.clients.beans.administrative.RrrBean rrrBean;
     private javax.swing.JTabbedPane tabPayments;
@@ -1546,6 +1556,7 @@ public class LeasePanel extends ContentPanel {
     private javax.swing.JFormattedTextField txtRegistrationDate;
     private javax.swing.JTextField txtRegistrationNumber;
     private javax.swing.JFormattedTextField txtRent;
+    private javax.swing.JFormattedTextField txtStartDate;
     private javax.swing.JFormattedTextField txtTerm;
     private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables

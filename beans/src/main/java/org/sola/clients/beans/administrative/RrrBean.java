@@ -32,9 +32,7 @@ package org.sola.clients.beans.administrative;
 import java.math.BigDecimal;
 import java.util.*;
 import javax.validation.Valid;
-import javax.validation.constraints.Future;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
 import org.jdesktop.observablecollections.ObservableList;
 import org.sola.clients.beans.AbstractTransactionedBean;
@@ -78,6 +76,7 @@ public class RrrBean extends AbstractTransactionedBean {
     public static final String CODE_FISHING = "fishing";
     public static final String CODE_GRAZING = "grazing";
     public static final String CODE_LEASE = "lease";
+    public static final String CODE_SUBLEASE = "sublease";
     public static final String CODE_OCCUPATION = "occupation";
     public static final String CODE_OWNERSHIP_ASSUMED = "ownershipAssumed";
     public static final String CODE_SUPERFICIES = "superficies";
@@ -113,6 +112,7 @@ public class RrrBean extends AbstractTransactionedBean {
     public static final String RECEIPT_DATE_PROPERTY = "receiptDate";
     public static final String RECEIPT_AMOUNT_PROPERTY = "receiptAmount";
     public static final String OTHER_RIGHTHOLDER_NAME_PROPERTY = "otherRightholderName";
+    public static final String START_DATE_PROPERTY = "startDate";
     private String baUnitId;
     private String nr;
     //@Past(message = ClientMessage.CHECK_REGISTRATION_DATE, payload = Localized.class)
@@ -123,14 +123,14 @@ public class RrrBean extends AbstractTransactionedBean {
     // @Future(message = ClientMessage.CHECK_FUTURE_EXPIRATION, payload = Localized.class,
     //         groups = {MortgageValidationGroup.class})
     private Date expirationDate;
-    @NotNull(message = ClientMessage.CHECK_NOTNULL_MORTGAGEAMOUNT, payload = Localized.class, groups = {MortgageValidationGroup.class})
+    //@NotNull(message = ClientMessage.CHECK_NOTNULL_MORTGAGEAMOUNT, payload = Localized.class, groups = {MortgageValidationGroup.class})
     private BigDecimal amount;
     private Date dueDate;
-    @NotNull(message = ClientMessage.CHECK_NOTNULL_MORTAGAETYPE, payload = Localized.class, groups = {MortgageValidationGroup.class})
+    //@NotNull(message = ClientMessage.CHECK_NOTNULL_MORTAGAETYPE, payload = Localized.class, groups = {MortgageValidationGroup.class})
     private MortgageTypeBean mortgageType;
     private BigDecimal mortgageInterestRate;
     private Integer mortgageRanking;
-    @NotNull(message = ClientMessage.CHECK_NOTNULL_REGISTRYBOOKREF, payload = Localized.class, groups = {LeaseValidationGroup.class})
+    @NotNull(message = ClientMessage.CHECK_NOTNULL_REGISTRYBOOKREF, payload = Localized.class, groups = {LeaseValidationGroup.class, MortgageValidationGroup.class})
     private String registryBookReference;
     @NotNull(message = ClientMessage.CHECK_NOTNULL_TERM, payload = Localized.class, groups = {LeaseValidationGroup.class})
     private BigDecimal term;
@@ -138,6 +138,7 @@ public class RrrBean extends AbstractTransactionedBean {
     private String receiptReference;
     private BigDecimal receiptAmount;
     private String otherRightholderName;
+    private Date startDate;
     private Double share;
     private SolaList<SourceBean> sourceList;
     @Valid
@@ -412,6 +413,16 @@ public class RrrBean extends AbstractTransactionedBean {
         String oldValue = this.otherRightholderName;
         this.otherRightholderName = value;
         propertySupport.firePropertyChange(OTHER_RIGHTHOLDER_NAME_PROPERTY, oldValue, value);
+    }
+
+    public Date getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(Date value) {
+        Date oldValue = this.startDate;
+        this.startDate = value;
+        propertySupport.firePropertyChange(START_DATE_PROPERTY, oldValue, value);
     }
 
     public SolaList<SourceBean> getSourceList() {

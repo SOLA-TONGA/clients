@@ -37,7 +37,7 @@ import org.sola.clients.beans.referencedata.DistrictBean;
 import org.sola.clients.beans.referencedata.EstateBean;
 import org.sola.clients.beans.referencedata.LandUseTypeBean;
 import org.sola.clients.beans.referencedata.TownBean;
-import org.sola.common.NumberUtility;
+import org.sola.common.StringUtility;
 import org.sola.webservices.transferobjects.casemanagement.ApplicationPropertyTO;
 
 /**
@@ -73,6 +73,9 @@ public class ApplicationPropertyBean extends AbstractIdBean {
     public static final String TOWN_PROPERTY = "town";
     public static final String LESSEE_NAME_PROPERTY = "lesseeName";
     public static final String LEASE_LINKED_PROPERTY = "leaseLinked";
+    public static final String SUBLEASE_LINKED_PROPERTY = "subleaseLinked";
+    public static final String SUBLEASE_NUMBER_PROPERTY = "subleaseNumber";
+    public static final String SUBLEASE_EXISTS_PROPERTY = "subleaseExists";
     private String applicationId;
     private BigDecimal area;
     //@NotEmpty(message = ClientMessage.CHECK_NOTNULL_FIRSTPART, payload = Localized.class)
@@ -100,7 +103,11 @@ public class ApplicationPropertyBean extends AbstractIdBean {
     private String lesseeName;
     private boolean leaseLinked;
     private String leaseBaUnitId;
-    
+    private String subleaseNumber;
+    private boolean subleaseLinked;
+    private String subleaseBaUnitId;
+    private boolean subleaseExists;
+
     public ApplicationPropertyBean() {
         super();
         this.landUseType = new LandUseTypeBean();
@@ -388,6 +395,44 @@ public class ApplicationPropertyBean extends AbstractIdBean {
         this.surveyFee = surveyFee;
     }
 
+    public String getSubleaseNumber() {
+        return subleaseNumber;
+    }
+
+    public void setSubleaseNumber(String value) {
+        String old = subleaseNumber;
+        subleaseNumber = value;
+        propertySupport.firePropertyChange(SUBLEASE_NUMBER_PROPERTY, old, value);
+    }
+
+    public boolean isSubleaseLinked() {
+        return subleaseLinked;
+    }
+
+    public void setSubleaseLinked(boolean value) {
+        boolean old = subleaseLinked;
+        subleaseLinked = value;
+        propertySupport.firePropertyChange(SUBLEASE_LINKED_PROPERTY, old, value);
+    }
+
+    public String getSubleaseBaUnitId() {
+        return subleaseBaUnitId;
+    }
+
+    public void setSubleaseBaUnitId(String subleaseBaUnitId) {
+        this.subleaseBaUnitId = subleaseBaUnitId;
+    }
+
+    public boolean isSubleaseExists() {
+        return subleaseExists;
+    }
+
+    public void setSubleaseExists(boolean value) {
+        boolean old = subleaseExists;
+        subleaseExists = value;
+        propertySupport.firePropertyChange(SUBLEASE_EXISTS_PROPERTY, old, value);
+    }
+
     public void reset() {
         setAmount(null);
         setArea(null);
@@ -409,5 +454,9 @@ public class ApplicationPropertyBean extends AbstractIdBean {
         setVerifiedApplications(false);
         setVerifiedExists(false);
         setVerifiedLocation(false);
+        //setSubleaseNumber(null);
+        setSubleaseBaUnitId(null);
+        setSubleaseLinked(false);
+        setSubleaseExists(false);
     }
 }

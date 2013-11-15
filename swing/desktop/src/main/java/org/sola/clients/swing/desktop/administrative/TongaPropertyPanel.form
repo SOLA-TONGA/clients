@@ -1159,21 +1159,21 @@
                               <Properties>
                                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                                   <TableColumnModel selectionModel="0">
-                                    <Column maxWidth="100" minWidth="-1" prefWidth="100" resizable="true">
+                                    <Column maxWidth="-1" minWidth="-1" prefWidth="100" resizable="true">
                                       <Title editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
                                         <ResourceString bundle="org/sola/clients/swing/desktop/administrative/Bundle.properties" key="TongaPropertyPanel.tableRights.columnModel.title0" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
                                       </Title>
                                       <Editor/>
                                       <Renderer/>
                                     </Column>
-                                    <Column maxWidth="100" minWidth="-1" prefWidth="100" resizable="true">
+                                    <Column maxWidth="-1" minWidth="-1" prefWidth="100" resizable="true">
                                       <Title editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
                                         <ResourceString bundle="org/sola/clients/swing/desktop/administrative/Bundle.properties" key="PropertyPanel.tableRights.columnModel.title3" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
                                       </Title>
                                       <Editor/>
                                       <Renderer/>
                                     </Column>
-                                    <Column maxWidth="120" minWidth="-1" prefWidth="120" resizable="true">
+                                    <Column maxWidth="-1" minWidth="-1" prefWidth="120" resizable="true">
                                       <Title editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
                                         <ResourceString bundle="org/sola/clients/swing/desktop/administrative/Bundle.properties" key="PropertyPanel.tableRights.columnModel.title1" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
                                       </Title>
@@ -1182,14 +1182,14 @@
                                         <Connection code="new DateTimeRenderer()" type="code"/>
                                       </Renderer>
                                     </Column>
-                                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                    <Column maxWidth="-1" minWidth="-1" prefWidth="300" resizable="true">
                                       <Title editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
                                         <ResourceString bundle="org/sola/clients/swing/desktop/administrative/Bundle.properties" key="PropertyPanel.tableRights.columnModel.title4_1" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
                                       </Title>
                                       <Editor/>
                                       <Renderer/>
                                     </Column>
-                                    <Column maxWidth="100" minWidth="-1" prefWidth="100" resizable="true">
+                                    <Column maxWidth="-1" minWidth="-1" prefWidth="100" resizable="true">
                                       <Title editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
                                         <ResourceString bundle="org/sola/clients/swing/desktop/administrative/Bundle.properties" key="PropertyPanel.tableRights.columnModel.title2" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
                                       </Title>
@@ -1203,7 +1203,7 @@
                                 </Property>
                                 <Property name="name" type="java.lang.String" value="tableRights" noResource="true"/>
                                 <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
-                                  <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
+                                  <TableHeader reorderingAllowed="false" resizingAllowed="true"/>
                                 </Property>
                               </Properties>
                               <BindingProperties>
@@ -1212,7 +1212,7 @@
                                     <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="String.class"/>
                                     <BindingParameter name="javax.swing.binding.ParameterKeys.EDITABLE" value="false"/>
                                   </Subbinding>
-                                  <Subbinding sourcePath="${nr}">
+                                  <Subbinding sourcePath="${registryBookReference}">
                                     <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="String.class"/>
                                     <BindingParameter name="javax.swing.binding.ParameterKeys.EDITABLE" value="false"/>
                                   </Subbinding>
@@ -1220,7 +1220,7 @@
                                     <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="java.util.Date.class"/>
                                     <BindingParameter name="javax.swing.binding.ParameterKeys.EDITABLE" value="false"/>
                                   </Subbinding>
-                                  <Subbinding sourcePath="${concatenatedName}">
+                                  <Subbinding sourcePath="${notation.notationText}">
                                     <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="String.class"/>
                                     <BindingParameter name="javax.swing.binding.ParameterKeys.EDITABLE" value="false"/>
                                   </Subbinding>
@@ -1493,21 +1493,21 @@
                               <Properties>
                                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                                   <TableColumnModel selectionModel="0">
-                                    <Column maxWidth="100" minWidth="-1" prefWidth="100" resizable="true">
+                                    <Column maxWidth="-1" minWidth="-1" prefWidth="100" resizable="true">
                                       <Title editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
                                         <ResourceString bundle="org/sola/clients/swing/desktop/administrative/Bundle.properties" key="TongaPropertyPanel.tableRightsHistory.columnModel.title0" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
                                       </Title>
                                       <Editor/>
                                       <Renderer/>
                                     </Column>
-                                    <Column maxWidth="100" minWidth="-1" prefWidth="100" resizable="true">
+                                    <Column maxWidth="-1" minWidth="-1" prefWidth="100" resizable="true">
                                       <Title editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
                                         <ResourceString bundle="org/sola/clients/swing/desktop/administrative/Bundle.properties" key="PropertyPanel.tableRightsHistory.columnModel.title3" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
                                       </Title>
                                       <Editor/>
                                       <Renderer/>
                                     </Column>
-                                    <Column maxWidth="120" minWidth="-1" prefWidth="120" resizable="true">
+                                    <Column maxWidth="-1" minWidth="-1" prefWidth="120" resizable="true">
                                       <Title editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
                                         <ResourceString bundle="org/sola/clients/swing/desktop/administrative/Bundle.properties" key="PropertyPanel.tableRightsHistory.columnModel.title1" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
                                       </Title>
@@ -1516,14 +1516,14 @@
                                         <Connection code="new DateTimeRenderer()" type="code"/>
                                       </Renderer>
                                     </Column>
-                                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                    <Column maxWidth="-1" minWidth="-1" prefWidth="300" resizable="true">
                                       <Title editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
                                         <ResourceString bundle="org/sola/clients/swing/desktop/administrative/Bundle.properties" key="PropertyPanel.tableRightsHistory.columnModel.title4" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
                                       </Title>
                                       <Editor/>
                                       <Renderer/>
                                     </Column>
-                                    <Column maxWidth="100" minWidth="-1" prefWidth="100" resizable="true">
+                                    <Column maxWidth="-1" minWidth="-1" prefWidth="100" resizable="true">
                                       <Title editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
                                         <ResourceString bundle="org/sola/clients/swing/desktop/administrative/Bundle.properties" key="PropertyPanel.tableRightsHistory.columnModel.title2" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
                                       </Title>
@@ -1536,7 +1536,7 @@
                                   <ResourceString bundle="org/sola/clients/swing/desktop/administrative/Bundle.properties" key="PropertyPanel.tableRightsHistory.name" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
                                 </Property>
                                 <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
-                                  <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
+                                  <TableHeader reorderingAllowed="false" resizingAllowed="true"/>
                                 </Property>
                               </Properties>
                               <BindingProperties>
@@ -1545,7 +1545,7 @@
                                     <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="String.class"/>
                                     <BindingParameter name="javax.swing.binding.ParameterKeys.EDITABLE" value="false"/>
                                   </Subbinding>
-                                  <Subbinding sourcePath="${nr}">
+                                  <Subbinding sourcePath="${registryBookReference}">
                                     <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="String.class"/>
                                     <BindingParameter name="javax.swing.binding.ParameterKeys.EDITABLE" value="false"/>
                                   </Subbinding>
@@ -1553,7 +1553,7 @@
                                     <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="java.util.Date.class"/>
                                     <BindingParameter name="javax.swing.binding.ParameterKeys.EDITABLE" value="false"/>
                                   </Subbinding>
-                                  <Subbinding sourcePath="${concatenatedName}">
+                                  <Subbinding sourcePath="${notation.notationText}">
                                     <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="String.class"/>
                                     <BindingParameter name="javax.swing.binding.ParameterKeys.EDITABLE" value="false"/>
                                   </Subbinding>
@@ -1738,21 +1738,14 @@
                       <Properties>
                         <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                           <TableColumnModel selectionModel="0">
-                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="300" resizable="true">
                               <Title editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
                                 <ResourceString bundle="org/sola/clients/swing/desktop/administrative/Bundle.properties" key="PropertyPanel.tableNotations.columnModel.title1" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
                               </Title>
                               <Editor/>
                               <Renderer/>
                             </Column>
-                            <Column maxWidth="100" minWidth="-1" prefWidth="100" resizable="true">
-                              <Title editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
-                                <ResourceString bundle="org/sola/clients/swing/desktop/administrative/Bundle.properties" key="PropertyPanel.tableNotations.columnModel.title0" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
-                              </Title>
-                              <Editor/>
-                              <Renderer/>
-                            </Column>
-                            <Column maxWidth="120" minWidth="-1" prefWidth="120" resizable="true">
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="120" resizable="true">
                               <Title editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
                                 <ResourceString bundle="org/sola/clients/swing/desktop/administrative/Bundle.properties" key="PropertyPanel.tableNotations.columnModel.title3" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
                               </Title>
@@ -1761,9 +1754,16 @@
                                 <Connection code="new DateTimeRenderer()" type="code"/>
                               </Renderer>
                             </Column>
-                            <Column maxWidth="100" minWidth="-1" prefWidth="100" resizable="true">
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="100" resizable="true">
                               <Title editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
-                                <ResourceString bundle="org/sola/clients/swing/desktop/administrative/Bundle.properties" key="PropertyPanel.tableNotations.columnModel.title2" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+                                <ResourceString bundle="org/sola/clients/swing/desktop/administrative/Bundle.properties" key="PropertyPanel.tableNotations.columnModel.title0" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+                              </Title>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="100" resizable="true">
+                              <Title editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+                                <ResourceString bundle="org/sola/clients/swing/desktop/administrative/Bundle.properties" key="TongaPropertyPanel.tableNotations.columnModel.title3" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
                               </Title>
                               <Editor/>
                               <Renderer/>
@@ -1775,21 +1775,21 @@
                         </Property>
                         <Property name="name" type="java.lang.String" value="tableNotations" noResource="true"/>
                         <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
-                          <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
+                          <TableHeader reorderingAllowed="false" resizingAllowed="true"/>
                         </Property>
                       </Properties>
                       <BindingProperties>
-                        <BindingProperty name="elements" source="baUnitBean1" sourcePath="${allBaUnitNotationList}" target="tableNotations" targetPath="elements" updateStrategy="0" immediately="true">
+                        <BindingProperty name="elements" source="baUnitBean1" sourcePath="${userNotations}" target="tableNotations" targetPath="elements" updateStrategy="0" immediately="true">
                           <Subbinding sourcePath="${notationText}">
-                            <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="String.class"/>
-                            <BindingParameter name="javax.swing.binding.ParameterKeys.EDITABLE" value="false"/>
-                          </Subbinding>
-                          <Subbinding sourcePath="${referenceNr}">
                             <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="String.class"/>
                             <BindingParameter name="javax.swing.binding.ParameterKeys.EDITABLE" value="false"/>
                           </Subbinding>
                           <Subbinding sourcePath="${changeTime}">
                             <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="java.util.Date.class"/>
+                            <BindingParameter name="javax.swing.binding.ParameterKeys.EDITABLE" value="false"/>
+                          </Subbinding>
+                          <Subbinding sourcePath="${changeUser}">
+                            <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="String.class"/>
                             <BindingParameter name="javax.swing.binding.ParameterKeys.EDITABLE" value="false"/>
                           </Subbinding>
                           <Subbinding sourcePath="${status.displayValue}">

@@ -419,10 +419,11 @@ public class ApplicationServiceBean extends ApplicationServiceSummaryBean {
     }
 
     /**
-     * Identifies if the service is one used to create a new lease or allotment
-     * property
+     * Identifies if the service is one used to create a new lease, sublease or
+     * allotment property
      */
     public boolean isNewProperty() {
-        return RequestTypeBean.CODE_REGISTER_LEASE.equals(getRequestTypeCode());
+        return RequestTypeBean.CODE_REGISTER_LEASE.equals(getRequestTypeCode())
+                || RequestTypeBean.CODE_REGISTER_SUBLEASE.equals(getRequestTypeCode());
     }
 }

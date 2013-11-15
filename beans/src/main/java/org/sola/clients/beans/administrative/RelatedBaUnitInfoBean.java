@@ -48,6 +48,7 @@ public class RelatedBaUnitInfoBean extends AbstractVersionedBean {
     public static final String RELATED_BA_UNIT_PROPERTY = "relatedBaUnit";
     public static final String CODE_ALLOTMENT = "allotment";
     public static final String CODE_LEASE = "lease";
+    public static final String CODE_SUBLEASE = "sublease";
     public static final String CODE_ESTATE = "estate";
     public static final String CODE_ISLAND = "island";
     public static final String CODE_TOWN = "town";

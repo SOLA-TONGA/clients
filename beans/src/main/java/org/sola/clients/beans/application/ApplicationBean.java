@@ -735,18 +735,21 @@ public class ApplicationBean extends ApplicationSummaryBean {
         if (selectedProperty != null) {
             PropertyVerifierTO verifier = WSManager.getInstance().getSearchService().verifyApplicationProperty(
                     this.getNr(), selectedProperty.getNameFirstpart(), selectedProperty.getNameLastpart(),
-                    selectedProperty.getLeaseNumber());
+                    selectedProperty.getLeaseNumber(), selectedProperty.getSubleaseNumber());
             if (verifier != null) {
                 // Tonga customization, capture the details retrieved when verifying the lot and lease information
-                selectedProperty.setBaUnitId(verifier.getLotbaUnitId());
+                selectedProperty.setBaUnitId(verifier.getLotBaUnitId());
                 selectedProperty.setLeaseBaUnitId(verifier.getLeaseBaUnitId());
                 selectedProperty.setLeaseLinked(verifier.isLeaseLinked());
+                selectedProperty.setSubleaseBaUnitId(verifier.getSubleaseBaUnitId());
+                selectedProperty.setSubleaseLinked(verifier.isSubleaseLinked());
 
                 // Re-purpose the exists and location flags to indicate if the lot or the lease exist. 
-                selectedProperty.setVerifiedExists(!StringUtility.isEmpty(verifier.getLotbaUnitId()));
+                selectedProperty.setVerifiedExists(!StringUtility.isEmpty(verifier.getLotBaUnitId()));
                 selectedProperty.setVerifiedLocation(!StringUtility.isEmpty(verifier.getLeaseBaUnitId()));
+                selectedProperty.setSubleaseExists(!StringUtility.isEmpty(verifier.getSubleaseBaUnitId()));
 
-                if (!StringUtility.isEmpty(verifier.getLotbaUnitId())) {
+                if (!StringUtility.isEmpty(verifier.getLotBaUnitId())) {
                     // Update the lot details with those retrieved from the database
                     selectedProperty.setNameFirstpart(verifier.getDeedNumber());
                     selectedProperty.setNameLastpart(verifier.getFolio());
