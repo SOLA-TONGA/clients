@@ -64,6 +64,7 @@ import org.sola.clients.swing.ui.source.AddDocumentForm;
 import org.sola.clients.swing.ui.source.DocumentsPanel;
 import org.sola.common.FileUtility;
 import org.sola.common.RolesConstants;
+import org.sola.common.StringUtility;
 import org.sola.common.messaging.ClientMessage;
 import org.sola.common.messaging.MessageUtility;
 import org.sola.services.boundary.wsclients.WSManager;
@@ -281,7 +282,9 @@ public class TongaPropertyPanel extends ContentPanel {
         headerPanel.setTitleText(String.format(
                 resourceBundle.getString("TongaPropertyPanel.Property.headerPanel.text"),
                 CacheManager.getBeanByCode(CacheManager.getBaUnitTypes(),
-                baUnitBean1.getTypeCode()).getDisplayValue(), baUnitBean1.getName()));
+                baUnitBean1.getTypeCode()).getDisplayValue(),
+                StringUtility.isEmpty(baUnitBean1.getName()) ? baUnitBean1.getNameFirstpart()
+                : baUnitBean1.getName()));
 
         if (applicationBean != null && applicationService != null) {
             // Append information about the application to the title
@@ -348,6 +351,11 @@ public class TongaPropertyPanel extends ContentPanel {
             lblFirstPart.setText(resourceBundle.getString("TongaPropertyPanel.Sublease.lblFirstPart.text"));
             lblLastPart.setText(resourceBundle.getString("TongaPropertyPanel.Sublease.lblLastPart.text"));
             allowEdit(txtLastPart, enabledOnNew);
+        } else if (baUnitBean1.isEstate()) {
+            lblLastPart.setText(resourceBundle.getString("TongaPropertyPanel.Estate.lblLastPart.text"));
+            lblFirstPart.setText(resourceBundle.getString("TongaPropertyPanel.Estate.lblFirstPart.text"));
+        } else if (baUnitBean1.isTown()) {
+            lblLastPart.setText(resourceBundle.getString("TongaPropertyPanel.Town.lblLastPart.text"));
         }
 
         isBtnNext = false;
@@ -565,6 +573,7 @@ public class TongaPropertyPanel extends ContentPanel {
             btnRemoveNotation.setEnabled(true);
         }
         btnAddNotation.setEnabled(!readOnly);
+        allowEdit(txtNotationText, btnAddNotation.isEnabled());
         menuRemoveNotation.setEnabled(btnRemoveNotation.isEnabled());
     }
 
@@ -1496,7 +1505,7 @@ public class TongaPropertyPanel extends ContentPanel {
 
         txtParcelName.setName("txtParcelName"); // NOI18N
 
-        org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, baUnitBean1, org.jdesktop.beansbinding.ELProperty.create("${registeredName}"), txtParcelName, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, baUnitBean1, org.jdesktop.beansbinding.ELProperty.create("${registeredName}"), txtParcelName, org.jdesktop.beansbinding.BeanProperty.create("text"), "parcelNameBinding");
         bindingGroup.addBinding(binding);
 
         org.jdesktop.layout.GroupLayout jPanel12Layout = new org.jdesktop.layout.GroupLayout(jPanel12);
