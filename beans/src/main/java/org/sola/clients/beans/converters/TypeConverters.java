@@ -38,6 +38,7 @@ import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
 import org.dozer.Mapper;
 import org.sola.clients.beans.AbstractBindingBean;
+import org.sola.clients.beans.cashier.CashierImportBean;
 import org.sola.common.mapping.MappingManager;
 
 /**

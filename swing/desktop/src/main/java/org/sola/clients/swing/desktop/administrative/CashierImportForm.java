@@ -35,6 +35,8 @@ import javax.swing.filechooser.FileFilter;
 import org.sola.clients.swing.common.tasks.SolaTask;
 import org.sola.clients.swing.common.tasks.TaskManager;
 import org.sola.clients.swing.ui.ContentPanel;
+import org.sola.clients.swing.ui.renderers.DateTimeCellEditor;
+import org.sola.clients.swing.ui.renderers.DateTimeRenderer;
 import org.sola.common.FileUtility;
 import org.sola.common.logging.LogUtility;
 import org.sola.common.messaging.ClientMessage;
@@ -115,6 +117,24 @@ public class CashierImportForm extends ContentPanel {
         };
         TaskManager.getInstance().runTask(t);
     }
+    private void saveCashierImport() {
+            SolaTask<Void, Void> t = new SolaTask<Void, Void>() {
+                @Override
+                public Void doTask() {
+                    setMessage(MessageUtility.getLocalizedMessageText(ClientMessage.PROGRESS_MSG_SAVING));
+                    if (cashierImportListBean1 != null){
+                        cashierImportListBean1.saveCashierImport();
+                    }
+                    return null;
+                }
+
+                @Override
+                public void taskDone() {
+                    MessageUtility.displayMessage(ClientMessage.APPLICATION_SUCCESSFULLY_SAVED);
+                }
+            };
+            TaskManager.getInstance().runTask(t);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -128,34 +148,33 @@ public class CashierImportForm extends ContentPanel {
 
         cashierImportBean1 = new org.sola.clients.beans.cashier.CashierImportBean();
         cashierImportListBean1 = new org.sola.clients.beans.cashier.CashierImportListBean();
+        jPanel4 = new javax.swing.JPanel();
         headerPanel1 = new org.sola.clients.swing.ui.HeaderPanel();
-        jTabbedPane1 = new javax.swing.JTabbedPane();
-        jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jToolBar1 = new javax.swing.JToolBar();
         btnImport = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableWithDefaultStyles1 = new org.sola.clients.swing.common.controls.JTableWithDefaultStyles();
-        jPanel2 = new javax.swing.JPanel();
-        jToolBar2 = new javax.swing.JToolBar();
-        btnLoad = new javax.swing.JButton();
+        jPanel6 = new javax.swing.JPanel();
+        jToolBar3 = new javax.swing.JToolBar();
+        btnLoad1 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTableWithDefaultStyles2 = new org.sola.clients.swing.common.controls.JTableWithDefaultStyles();
+        jTextArea1 = new javax.swing.JTextArea();
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
 
         setHeaderPanel(headerPanel1);
 
         headerPanel1.setTitleText("Cashier Import");
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 38, Short.MAX_VALUE)
-        );
 
         jToolBar1.setFloatable(false);
         jToolBar1.setRollover(true);
@@ -171,120 +190,125 @@ public class CashierImportForm extends ContentPanel {
         });
         jToolBar1.add(btnImport);
 
+        jTableWithDefaultStyles1.setMinimumSize(new java.awt.Dimension(12341234, 0));
+
         org.jdesktop.beansbinding.ELProperty eLProperty = org.jdesktop.beansbinding.ELProperty.create("${cashierImportList}");
         org.jdesktop.swingbinding.JTableBinding jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, cashierImportListBean1, eLProperty, jTableWithDefaultStyles1);
-        org.jdesktop.swingbinding.JTableBinding.ColumnBinding columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${leaseNumber}"));
+        org.jdesktop.swingbinding.JTableBinding.ColumnBinding columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${recordId}"));
+        columnBinding.setColumnName("ID");
+        columnBinding.setColumnClass(Integer.class);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${leaseNumber}"));
         columnBinding.setColumnName("Lease Number");
         columnBinding.setColumnClass(String.class);
-        columnBinding.setEditable(false);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${paymentDate}"));
+        columnBinding.setColumnName("Payment Date");
+        columnBinding.setColumnClass(java.util.Date.class);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${paymentParticulars}"));
+        columnBinding.setColumnName("Payment Particulars");
+        columnBinding.setColumnClass(String.class);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${paymentDescription}"));
+        columnBinding.setColumnName("Payment Description");
+        columnBinding.setColumnClass(String.class);
         columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${rentGov}"));
         columnBinding.setColumnName("Government Rental");
         columnBinding.setColumnClass(java.math.BigDecimal.class);
-        columnBinding.setEditable(false);
         columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${deedLease}"));
         columnBinding.setColumnName("Deed Lease");
         columnBinding.setColumnClass(java.math.BigDecimal.class);
-        columnBinding.setEditable(false);
         columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${rentalTax}"));
         columnBinding.setColumnName("Rental Tax Allotment");
         columnBinding.setColumnClass(java.math.BigDecimal.class);
-        columnBinding.setEditable(false);
         columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${registerFee}"));
         columnBinding.setColumnName("Register Fee");
         columnBinding.setColumnClass(java.math.BigDecimal.class);
-        columnBinding.setEditable(false);
         columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${transferFee}"));
         columnBinding.setColumnName("Transfer Fee");
         columnBinding.setColumnClass(java.math.BigDecimal.class);
-        columnBinding.setEditable(false);
         columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${surveyFee}"));
         columnBinding.setColumnName("Survey Fee");
         columnBinding.setColumnClass(java.math.BigDecimal.class);
-        columnBinding.setEditable(false);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${receiptNumber}"));
+        columnBinding.setColumnName("Receipt #");
+        columnBinding.setColumnClass(String.class);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${totalPayment}"));
+        columnBinding.setColumnName("Total");
+        columnBinding.setColumnClass(java.math.BigDecimal.class);
         bindingGroup.addBinding(jTableBinding);
         jTableBinding.bind();
         jScrollPane1.setViewportView(jTableWithDefaultStyles1);
+        jTableWithDefaultStyles1.getColumnModel().getColumn(2).setCellEditor(new DateTimeCellEditor());
+        jTableWithDefaultStyles1.getColumnModel().getColumn(2).setCellRenderer(new DateTimeRenderer());
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 652, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jToolBar1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane1)
+            .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Import", jPanel1);
+        jToolBar3.setFloatable(false);
+        jToolBar3.setRollover(true);
 
-        jToolBar2.setFloatable(false);
-        jToolBar2.setRollover(true);
-
-        btnLoad.setText("Load");
-        btnLoad.setFocusable(false);
-        btnLoad.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnLoad.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnLoad.addActionListener(new java.awt.event.ActionListener() {
+        btnLoad1.setText("Load");
+        btnLoad1.setFocusable(false);
+        btnLoad1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnLoad1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnLoad1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLoadActionPerformed(evt);
+                btnLoad1ActionPerformed(evt);
             }
         });
-        jToolBar2.add(btnLoad);
+        jToolBar3.add(btnLoad1);
 
-        jTableWithDefaultStyles2.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane2.setViewportView(jTableWithDefaultStyles2);
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jToolBar2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 652, Short.MAX_VALUE)
+        org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, cashierImportListBean1, org.jdesktop.beansbinding.ELProperty.create("${cashierSaveResult}"), jTextArea1, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+
+        jScrollPane2.setViewportView(jTextArea1);
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jToolBar3, javax.swing.GroupLayout.DEFAULT_SIZE, 842, Short.MAX_VALUE)
+            .addComponent(jScrollPane2)
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jToolBar2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addComponent(jToolBar3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 274, Short.MAX_VALUE))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 216, Short.MAX_VALUE))
         );
-
-        jTabbedPane1.addTab("Load", jPanel2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(headerPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(headerPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 842, Short.MAX_VALUE)
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(headerPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTabbedPane1))
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         bindingGroup.bind();
@@ -294,26 +318,25 @@ public class CashierImportForm extends ContentPanel {
         importFile();
     }//GEN-LAST:event_btnImportActionPerformed
 
-    private void btnLoadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoadActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnLoadActionPerformed
+    private void btnLoad1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoad1ActionPerformed
+        saveCashierImport();
+    }//GEN-LAST:event_btnLoad1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnImport;
-    private javax.swing.JButton btnLoad;
+    private javax.swing.JButton btnLoad1;
     private org.sola.clients.beans.cashier.CashierImportBean cashierImportBean1;
     private org.sola.clients.beans.cashier.CashierImportListBean cashierImportListBean1;
     private org.sola.clients.swing.ui.HeaderPanel headerPanel1;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTabbedPane jTabbedPane1;
     private org.sola.clients.swing.common.controls.JTableWithDefaultStyles jTableWithDefaultStyles1;
-    private org.sola.clients.swing.common.controls.JTableWithDefaultStyles jTableWithDefaultStyles2;
+    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JToolBar jToolBar1;
-    private javax.swing.JToolBar jToolBar2;
+    private javax.swing.JToolBar jToolBar3;
     private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 }

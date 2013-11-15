@@ -200,4 +200,5 @@ public class CashierImportBean extends AbstractBindingBean {
         this.leaseNumber = value;
         propertySupport.firePropertyChange(LEASE_NUMBER_PROPERTY, oldValue, value);
     }
+    
 }
