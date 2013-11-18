@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="00bf21df-40ae-45f3-af17-3a6614efe40c">
+	<property name="ireport.zoom" value="1.0000000000000002"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="SILA_IMAGE" class="java.io.InputStream"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="appBean" class="org.sola.clients.beans.application.ApplicationBean">
+		<fieldDescription><![CDATA[appBean]]></fieldDescription>
+	</field>
+	<field name="formattedLodgementDate" class="java.lang.String">
+		<fieldDescription><![CDATA[formattedLodgementDate]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="105" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="88" y="50" width="465" height="42" forecolor="#006666" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Cambria" size="16" isBold="false" isUnderline="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Land Management Division
+Lodgement Notice]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="1231a272-777f-4e5d-89f6-3dbc4c37f424" x="88" y="0" width="467" height="50"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Bookman Old Style" size="20" isBold="false"/>
+				</textElement>
+				<text><![CDATA[MINISTRY OF LANDS, ENVIRONMENT, 
+CLIMATE CHANGE & NATURAL RESOURCES]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="1d38a8c1-7da7-4526-9574-bb3e33f53689" x="0" y="104" width="555" height="1"/>
+				<graphicElement>
+					<pen lineWidth="1.5" lineColor="#666666"/>
+				</graphicElement>
+			</line>
+			<image>
+				<reportElement uuid="c1974432-3504-479c-b8e3-50ec98f9eee5" x="0" y="0" width="89" height="92"/>
+				<imageExpression><![CDATA[$P{SILA_IMAGE}]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="628" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="9cba40b3-33ae-4634-a4a7-1846a7a1e94d" x="0" y="19" width="99" height="19"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="true" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Application N#]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="170259c8-2c91-42c9-b369-229c0874cd03" x="99" y="19" width="173" height="19"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{appBean}.getNr()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="170259c8-2c91-42c9-b369-229c0874cd03" x="0" y="48" width="553" height="19"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{appBean}.getContactPerson().getFullName()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="170259c8-2c91-42c9-b369-229c0874cd03" x="0" y="67" width="553" height="19"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{appBean}.getContactPerson().getAddress() == null ? "" : $F{appBean}.getContactPerson().getAddress().getDescription()]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

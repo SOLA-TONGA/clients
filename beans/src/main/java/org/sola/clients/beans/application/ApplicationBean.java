@@ -761,7 +761,7 @@ public class ApplicationBean extends ApplicationSummaryBean {
                     selectedProperty.setIslandId(verifier.getIslandId());
                     selectedProperty.setTownId(verifier.getTownId());
                 }
-                
+
                 if (!StringUtility.isEmpty(verifier.getLeaseBaUnitId())) {
                     // Update the lease details with those retrieved from the database
                     selectedProperty.setLeaseNumber(verifier.getLeaseNumber());
@@ -1077,6 +1077,27 @@ public class ApplicationBean extends ApplicationSummaryBean {
                     BigDecimal taxPercent = this.getTax().divide(this.getServicesFee());
                     Money taxAmt = feeAmt.times(taxPercent);
                     result = feeAmt.plus(taxAmt).getAmount();
+                    break;
+                }
+            }
+        }
+        return result;
+    }
+
+    /**
+     * Tongan Customization. Determines if the application has the specified
+     * service added to it.
+     *
+     * @param serviceType
+     * @return true if the serviceType has been added to the application, false
+     * otherwise.
+     */
+    public boolean hasService(String serviceType) {
+        boolean result = false;
+        if (serviceType != null) {
+            for (ApplicationServiceBean bean : getServiceList()) {
+                if (serviceType.equals(bean.getRequestTypeCode())) {
+                    result = true;
                     break;
                 }
             }

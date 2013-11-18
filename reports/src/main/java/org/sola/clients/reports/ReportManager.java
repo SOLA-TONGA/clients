@@ -41,6 +41,7 @@ import net.sf.jasperreports.engine.data.JRBeanArrayDataSource;
 import org.sola.clients.beans.administrative.BaUnitBean;
 import org.sola.clients.beans.administrative.RrrReportBean;
 import org.sola.clients.beans.application.*;
+import org.sola.clients.beans.report.ApplicationReportBean;
 import org.sola.clients.beans.report.ServiceReportBean;
 import org.sola.clients.beans.system.BrReportBean;
 import org.sola.clients.beans.security.SecurityBean;
@@ -776,7 +777,27 @@ public class ReportManager {
             return null;
         }
     }
-    
+
+    public static JasperPrint getTongaLodgementNotice(ApplicationReportBean appBean) {
+        String silaImage = "/images/sola/sila.png";
+        HashMap inputParameters = new HashMap();
+        inputParameters.put("SILA_IMAGE",
+                ReportManager.class.getResourceAsStream(silaImage));
+        ApplicationReportBean[] beans = new ApplicationReportBean[1];
+        beans[0] = appBean;
+        JRDataSource jds = new JRBeanArrayDataSource(beans);
+        try {
+            return JasperFillManager.fillReport(
+                    ReportManager.class.getResourceAsStream("/reports/workflow/TongaLodgementNotice.jasper"),
+                    inputParameters, jds);
+        } catch (JRException ex) {
+            LogUtility.log(LogUtility.getStackTraceAsString(ex), Level.SEVERE);
+            MessageUtility.displayMessage(ClientMessage.REPORT_GENERATION_FAILED,
+                    new Object[]{ex.getLocalizedMessage()});
+            return null;
+        }
+    }
+
     public static JasperPrint getSurveyJacketReport(ApplicationBean appBean) {
         String silaImage = "/images/sola/sila.png";
         HashMap inputParameters = new HashMap();
@@ -796,8 +817,8 @@ public class ReportManager {
             return null;
         }
     }
-    
-        public static JasperPrint getSignDeedNotification(ServiceReportBean serviceReportBean) {
+
+    public static JasperPrint getSignDeedNotification(ServiceReportBean serviceReportBean) {
         String silaImage = "/images/sola/sila.png";
         HashMap inputParameters = new HashMap();
         inputParameters.put("SILA_IMAGE",
