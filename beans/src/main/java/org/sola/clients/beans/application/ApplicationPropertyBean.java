@@ -33,11 +33,11 @@ import java.math.BigDecimal;
 import java.util.Date;
 import org.sola.clients.beans.AbstractIdBean;
 import org.sola.clients.beans.cache.CacheManager;
+import org.sola.clients.beans.party.PartySummaryBean;
 import org.sola.clients.beans.referencedata.DistrictBean;
 import org.sola.clients.beans.referencedata.EstateBean;
 import org.sola.clients.beans.referencedata.LandUseTypeBean;
 import org.sola.clients.beans.referencedata.TownBean;
-import org.sola.common.StringUtility;
 import org.sola.webservices.transferobjects.casemanagement.ApplicationPropertyTO;
 
 /**
@@ -96,7 +96,8 @@ public class ApplicationPropertyBean extends AbstractIdBean {
     private Date registrationDate;
     private String lessorName;
     private DistrictBean island;
-    private EstateBean nobleEstate;
+    String nobleEstateId;
+    private PartySummaryBean nobleEstate;
     private String description;
     private TownBean town;
     private transient BigDecimal surveyFee;
@@ -112,7 +113,7 @@ public class ApplicationPropertyBean extends AbstractIdBean {
         super();
         this.landUseType = new LandUseTypeBean();
         this.island = new DistrictBean();
-        this.nobleEstate = new EstateBean();
+        this.nobleEstate = new PartySummaryBean();
         this.town = new TownBean();
 
     }
@@ -310,22 +311,26 @@ public class ApplicationPropertyBean extends AbstractIdBean {
     }
 
     public String getNobleEstateId() {
-        return getNobleEstate().getCode();
+        return nobleEstateId;
     }
 
     public void setNobleEstateId(String value) {
-        String old = getNobleEstateId();
-        setNobleEstate(CacheManager.getBeanByCode(
-                CacheManager.getEstates(), value));
+        String old = nobleEstateId;
+        nobleEstateId = value;
         propertySupport.firePropertyChange(NOBLE_ESTATE_ID_PROPERTY, old, value);
     }
 
-    public EstateBean getNobleEstate() {
-        return nobleEstate == null ? new EstateBean() : nobleEstate;
+    public PartySummaryBean getNobleEstate() {
+        return nobleEstate;
     }
 
-    public void setNobleEstate(EstateBean value) {
+    public void setNobleEstate(PartySummaryBean value) {
         this.nobleEstate = value;
+        if (value == null) {
+            nobleEstateId = null;
+        } else if (!value.getId().equals(nobleEstateId)) {
+            nobleEstateId = value.getId();
+        }
         propertySupport.firePropertyChange(NOBLE_ESTATE_PROPERTY, null, value);
     }
 

@@ -75,11 +75,15 @@ public class PropertyHelper {
         List<BaUnitBean> baUnitList = BaUnitBean.getBaUnitsByServiceId(appService.getId());
         if (baUnitList != null && baUnitList.size() == 1) {
             result = baUnitList.get(0);
+        } else if (RequestTypeBean.CODE_REGISTER_TOWN_API.equals(appService.getRequestTypeCode())
+                || RequestTypeBean.CODE_REGISTER_TAX_API.equals(appService.getRequestTypeCode())) {
+            result = prepareNewAllotment(appBean, appService.getRequestTypeCode());
         } else if (RequestTypeBean.CODE_REGISTER_LEASE.equals(appService.getRequestTypeCode())) {
             result = prepareNewLease(appBean);
         } else if (RequestTypeBean.CODE_REGISTER_SUBLEASE.equals(appService.getRequestTypeCode())) {
             result = prepareNewSublease(appBean);
         } else {
+            // Determine whether to apply the service to a sublease, lease or allotment
             String baUnitId = appProperty.getSubleaseBaUnitId() == null
                     ? appProperty.getLeaseBaUnitId() == null ? appProperty.getBaUnitId()
                     : appProperty.getLeaseBaUnitId()
@@ -87,6 +91,61 @@ public class PropertyHelper {
             result = BaUnitBean.getBaUnitsById(baUnitId);
         }
         return result != null ? result : new BaUnitBean();
+    }
+
+    /**
+     * Creates a new BaUnitBean representing the new allotment details. Used for
+     * the Register Tax Api and Town Api services.
+     *
+     * @param appBean
+     */
+    public static BaUnitBean prepareNewAllotment(ApplicationBean appBean, String serviceType) {
+        BaUnitBean result = new BaUnitBean();
+        if (RequestTypeBean.CODE_REGISTER_TOWN_API.equals(serviceType)) {
+            result.setTypeCode(BaUnitTypeBean.CODE_TOWN_ALLOTMENT_UNIT);
+        } else {
+            result.setTypeCode(BaUnitTypeBean.CODE_TAX_UNIT);
+        }
+        result.setStatusCode(StatusConstants.PENDING);
+        if (appBean.getSelectedProperty() != null) {
+            if (appBean.getSelectedProperty().getBaUnitId() == null) {
+                // Set the Deed and Folio for the allotment if specified. 
+                result.setNameFirstpart(appBean.getSelectedProperty().getNameFirstpart());
+                result.setNameFirstpart(appBean.getSelectedProperty().getNameLastpart());
+                result.setName(result.getNameFirstpart() + "/" + result.getNameLastpart());
+            }
+
+            result.setLandUseTypeCode(appBean.getSelectedProperty().getLandUseCode());
+
+            // Set details of Lease RRR
+            RrrBean landHolderRrr = new RrrBean();
+            landHolderRrr.setTypeCode(RrrBean.CODE_OWNERSHIP);
+            landHolderRrr.setPrimary(true);
+            landHolderRrr.setStatusCode(StatusConstants.PENDING);
+
+            // Add the property description as a Notation on the allotment
+            if (appBean.getSelectedProperty().getDescription() != null) {
+                landHolderRrr.getNotation().setNotationText(appBean.getSelectedProperty().getDescription());
+            }
+
+            result.addRrr(landHolderRrr);
+
+            if (appBean.getSelectedProperty().getArea() != null) {
+                // Set Lease Area
+                BaUnitAreaBean areaBean = new BaUnitAreaBean();
+                areaBean.setTypeCode(BaUnitAreaBean.CODE_OFFICIAL_AREA);
+                areaBean.setSize(appBean.getSelectedProperty().getArea());
+                result.setOfficialArea(areaBean);
+            }
+
+            // Associate the town to the allotment
+            RelatedBaUnitInfoBean town = createRelatedBaUnit(
+                    appBean.getSelectedProperty().getTownId(), RelatedBaUnitInfoBean.CODE_TOWN);
+            if (town != null) {
+                result.getParentBaUnits().addAsNew(town);
+            }
+        }
+        return result;
     }
 
     /**
@@ -173,10 +232,11 @@ public class PropertyHelper {
     }
 
     /**
-     * Creates a new BaUnitBean representing the new sublease details. Used for the
-     * Register Sublease service. Note that most of the details for the sublease
-     * are left blank for the user to fill in manually as the Property tab on the
-     * TongaApplicationPanel does not capture much information for subleases. 
+     * Creates a new BaUnitBean representing the new sublease details. Used for
+     * the Register Sublease service. Note that most of the details for the
+     * sublease are left blank for the user to fill in manually as the Property
+     * tab on the TongaApplicationPanel does not capture much information for
+     * subleases.
      *
      * @param appBean
      */

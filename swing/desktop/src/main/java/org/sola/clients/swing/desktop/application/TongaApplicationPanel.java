@@ -37,7 +37,6 @@ import java.math.BigDecimal;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
-import javax.swing.JDialog;
 import javax.swing.JFormattedTextField;
 import javax.swing.JTextField;
 import net.sf.jasperreports.engine.JasperPrint;
@@ -50,7 +49,6 @@ import org.sola.clients.beans.application.ApplicationPropertyBean;
 import org.sola.clients.beans.application.ApplicationServiceBean;
 import org.sola.clients.beans.cache.CacheManager;
 import org.sola.clients.beans.converters.TypeConverters;
-import org.sola.clients.beans.digitalarchive.DocumentBean;
 import org.sola.clients.beans.party.PartySummaryListBean;
 import org.sola.clients.beans.referencedata.*;
 import org.sola.clients.beans.security.SecurityBean;
@@ -64,13 +62,8 @@ import org.sola.clients.swing.common.tasks.TaskManager;
 import org.sola.clients.swing.desktop.DashBoardPanel;
 import org.sola.clients.swing.desktop.MainForm;
 import org.sola.clients.swing.desktop.administrative.PropertyHelper;
-import org.sola.clients.swing.desktop.administrative.TongaPropertyPanel;
-import org.sola.clients.swing.desktop.cadastre.CadastreTransactionMapPanel;
-import org.sola.clients.swing.desktop.cadastre.MapPanelForm;
 import org.sola.clients.swing.desktop.reports.SysRegCertParamsForm;
-import org.sola.clients.swing.desktop.source.DocumentSearchForm;
 import org.sola.clients.swing.desktop.source.DocumentsManagementExtPanel;
-import org.sola.clients.swing.desktop.source.TransactionedDocumentsPanel;
 import org.sola.clients.swing.gis.ui.controlsbundle.ControlsBundleForApplicationLocation;
 import org.sola.clients.swing.ui.ContentPanel;
 import org.sola.clients.swing.ui.HeaderPanel;
@@ -279,6 +272,12 @@ public class TongaApplicationPanel extends ContentPanel {
         customizeApplicationForm();
         customizePropertyButtons();
         applyIslandFilter();
+        
+        // Set the noble on the Selected Property bean as required. 
+        if (appBean.getSelectedProperty().getNobleEstateId() != null) {
+            appBean.getSelectedProperty().setNobleEstate(
+                    noblePartyListBean.getParty(appBean.getSelectedProperty().getNobleEstateId()));
+        }
     }
 
     /**
@@ -287,7 +286,7 @@ public class TongaApplicationPanel extends ContentPanel {
      */
     private void applyIslandFilter() {
         String islandId = appBean.getSelectedProperty().getIslandId();
-        estateListBean1.setIslandFilter(islandId);
+        //estateListBean1.setIslandFilter(islandId);
         townListBean1.setIslandFilter(islandId);
     }
 
@@ -495,7 +494,7 @@ public class TongaApplicationPanel extends ContentPanel {
         agentsList.FillAgents(true);
         return agentsList;
     }
-    
+
     /**
      * This method is used by the form designer to create the list of nobles.
      */
@@ -583,6 +582,13 @@ public class TongaApplicationPanel extends ContentPanel {
                 // service panel is closed. 
                 ServiceLauncher.launch(service.getRequestTypeCode(), getMainContentPanel(),
                         refreshAppBeanOnClose, null, appBean, service, readOnly);
+            } else if (ServiceLauncher.isServiceCategory(service.getRequestTypeCode(),
+                    RequestCategoryTypeBean.CODE_DOC_REGISTRATION_CATEGORY)) {
+                // Use the service launcher to open the service panel for a document 
+                // registration service. Add a listener to refresh the state of the 
+                // appBean when the service panel is closed. 
+                ServiceLauncher.launch(service.getRequestTypeCode(), getMainContentPanel(),
+                        refreshAppBeanOnClose, null, appBean, service);
             } else {
                 // Try to determine the BaUnit to use for the service. 
                 BaUnitBean baUnit = PropertyHelper.getBaUnitBeanForService(appBean, service,
@@ -756,7 +762,7 @@ public class TongaApplicationPanel extends ContentPanel {
         menuPrintInvoice = new javax.swing.JMenuItem();
         menuPrintStatusReport = new javax.swing.JMenuItem();
         menuPrintApplicationForm = new javax.swing.JMenuItem();
-        partySummaryListBean1 = createNobleList();
+        noblePartyListBean = createNobleList();
         pnlHeader = new org.sola.clients.swing.ui.HeaderPanel();
         jToolBar3 = new javax.swing.JToolBar();
         btnSave = new javax.swing.JButton();
@@ -2004,7 +2010,7 @@ public class TongaApplicationPanel extends ContentPanel {
         cbxEstate.setName("cbxEstate"); // NOI18N
 
         eLProperty = org.jdesktop.beansbinding.ELProperty.create("${partySummaryList}");
-        jComboBoxBinding = org.jdesktop.swingbinding.SwingBindings.createJComboBoxBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, partySummaryListBean1, eLProperty, cbxEstate);
+        jComboBoxBinding = org.jdesktop.swingbinding.SwingBindings.createJComboBoxBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, noblePartyListBean, eLProperty, cbxEstate);
         bindingGroup.addBinding(jComboBoxBinding);
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, appBean, org.jdesktop.beansbinding.ELProperty.create("${selectedProperty.nobleEstate}"), cbxEstate, org.jdesktop.beansbinding.BeanProperty.create("selectedItem"));
         bindingGroup.addBinding(binding);
@@ -4309,8 +4315,8 @@ public class TongaApplicationPanel extends ContentPanel {
     private javax.swing.JMenuItem menuStartService;
     private javax.swing.JMenuItem menuViewService;
     private javax.swing.JMenuItem menuWithdraw;
+    private org.sola.clients.beans.party.PartySummaryListBean noblePartyListBean;
     private org.sola.clients.beans.party.PartySummaryListBean partySummaryList;
-    private org.sola.clients.beans.party.PartySummaryListBean partySummaryListBean1;
     private org.sola.clients.swing.ui.HeaderPanel pnlHeader;
     private javax.swing.JPopupMenu popUpServices;
     private javax.swing.JPopupMenu popupApplicationActions;

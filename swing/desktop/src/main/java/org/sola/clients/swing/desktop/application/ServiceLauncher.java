@@ -123,6 +123,36 @@ public final class ServiceLauncher {
                 new String[]{ItemNumberForm.class.getName(), MainContentPanel.CARD_ITEM_NUMBER,
             ClientMessage.PROGRESS_MSG_OPEN_ITEM_NUMBER});
 
+        //Register Tax Api
+        serviceMap.put(RequestTypeBean.CODE_REGISTER_TAX_API,
+                new String[]{TongaPropertyPanel.class.getName(), MainContentPanel.CARD_PROPERTY_PANEL,
+            ClientMessage.PROGRESS_MSG_OPEN_PROPERTY});
+
+        //Register Town Api
+        serviceMap.put(RequestTypeBean.CODE_REGISTER_TOWN_API,
+                new String[]{TongaPropertyPanel.class.getName(), MainContentPanel.CARD_PROPERTY_PANEL,
+            ClientMessage.PROGRESS_MSG_OPEN_PROPERTY});
+
+        //Surrender Api
+        serviceMap.put(RequestTypeBean.CODE_SURRENDER_API,
+                new String[]{TongaPropertyPanel.class.getName(), MainContentPanel.CARD_PROPERTY_PANEL,
+            ClientMessage.PROGRESS_MSG_OPEN_PROPERTY});
+
+        //Exchange Api
+        serviceMap.put(RequestTypeBean.CODE_EXCHANGE_API,
+                new String[]{TongaPropertyPanel.class.getName(), MainContentPanel.CARD_PROPERTY_PANEL,
+            ClientMessage.PROGRESS_MSG_OPEN_PROPERTY});
+
+        //Ejectment Api
+        serviceMap.put(RequestTypeBean.CODE_EJECTMENT_API,
+                new String[]{TongaPropertyPanel.class.getName(), MainContentPanel.CARD_PROPERTY_PANEL,
+            ClientMessage.PROGRESS_MSG_OPEN_PROPERTY});
+
+        //Cancel Api
+        serviceMap.put(RequestTypeBean.CODE_CANCEL_API,
+                new String[]{TongaPropertyPanel.class.getName(), MainContentPanel.CARD_PROPERTY_PANEL,
+            ClientMessage.PROGRESS_MSG_OPEN_PROPERTY});
+
         //Register Lease
         serviceMap.put(RequestTypeBean.CODE_REGISTER_LEASE,
                 new String[]{TongaPropertyPanel.class.getName(), MainContentPanel.CARD_PROPERTY_PANEL,
@@ -133,8 +163,63 @@ public final class ServiceLauncher {
                 new String[]{TongaPropertyPanel.class.getName(), MainContentPanel.CARD_PROPERTY_PANEL,
             ClientMessage.PROGRESS_MSG_OPEN_PROPERTY});
 
-        // Cancel Property (Lease or Allotment)
-        serviceMap.put(RequestTypeBean.CODE_CANCEL_PROPERTY,
+        // Transfer Lease - Mortgagee in Possession
+        serviceMap.put(RequestTypeBean.CODE_TRANSFER_LEASE_MORTGAGEE_IN_POSSESSION,
+                new String[]{TongaPropertyPanel.class.getName(), MainContentPanel.CARD_PROPERTY_PANEL,
+            ClientMessage.PROGRESS_MSG_OPEN_PROPERTY});
+
+        // Transfer Lease - Probate
+        serviceMap.put(RequestTypeBean.CODE_TRANSFER_LEASE_PROBATE,
+                new String[]{TongaPropertyPanel.class.getName(), MainContentPanel.CARD_PROPERTY_PANEL,
+            ClientMessage.PROGRESS_MSG_OPEN_PROPERTY});
+
+        // Register Document Affecting Lease 
+        serviceMap.put(RequestTypeBean.CODE_LEASE_DOCUMENT,
+                new String[]{TongaPropertyPanel.class.getName(), MainContentPanel.CARD_PROPERTY_PANEL,
+            ClientMessage.PROGRESS_MSG_OPEN_PROPERTY});
+
+        // Renew Lease
+        serviceMap.put(RequestTypeBean.CODE_RENEW_LEASE,
+                new String[]{TongaPropertyPanel.class.getName(), MainContentPanel.CARD_PROPERTY_PANEL,
+            ClientMessage.PROGRESS_MSG_OPEN_PROPERTY});
+
+        // Surrender Lease
+        serviceMap.put(RequestTypeBean.CODE_SURRENDER_LEASE,
+                new String[]{TongaPropertyPanel.class.getName(), MainContentPanel.CARD_PROPERTY_PANEL,
+            ClientMessage.PROGRESS_MSG_OPEN_PROPERTY});
+
+        // Terminate Lease
+        serviceMap.put(RequestTypeBean.CODE_TERMINATE_LEASE,
+                new String[]{TongaPropertyPanel.class.getName(), MainContentPanel.CARD_PROPERTY_PANEL,
+            ClientMessage.PROGRESS_MSG_OPEN_PROPERTY});
+
+        //Register Sublease
+        serviceMap.put(RequestTypeBean.CODE_REGISTER_SUBLEASE,
+                new String[]{TongaPropertyPanel.class.getName(), MainContentPanel.CARD_PROPERTY_PANEL,
+            ClientMessage.PROGRESS_MSG_OPEN_PROPERTY});
+
+        //Transfer Sublease
+        serviceMap.put(RequestTypeBean.CODE_TRANSFER_SUBLEASE,
+                new String[]{TongaPropertyPanel.class.getName(), MainContentPanel.CARD_PROPERTY_PANEL,
+            ClientMessage.PROGRESS_MSG_OPEN_PROPERTY});
+
+        //Transfer Sublease - Mortgagee In Possession
+        serviceMap.put(RequestTypeBean.CODE_TRANSFER_SUBLEASE_MORTGAGEE_IN_POSSESSION,
+                new String[]{TongaPropertyPanel.class.getName(), MainContentPanel.CARD_PROPERTY_PANEL,
+            ClientMessage.PROGRESS_MSG_OPEN_PROPERTY});
+
+        // Transfer Sublease - Probate
+        serviceMap.put(RequestTypeBean.CODE_TRANSFER_SUBLEASE_PROBATE,
+                new String[]{TongaPropertyPanel.class.getName(), MainContentPanel.CARD_PROPERTY_PANEL,
+            ClientMessage.PROGRESS_MSG_OPEN_PROPERTY});
+
+        // Surrender Sublease 
+        serviceMap.put(RequestTypeBean.CODE_SURRENDER_SUBLEASE,
+                new String[]{TongaPropertyPanel.class.getName(), MainContentPanel.CARD_PROPERTY_PANEL,
+            ClientMessage.PROGRESS_MSG_OPEN_PROPERTY});
+
+        // Terminate Sublease 
+        serviceMap.put(RequestTypeBean.CODE_TERMINATE_SUBLEASE,
                 new String[]{TongaPropertyPanel.class.getName(), MainContentPanel.CARD_PROPERTY_PANEL,
             ClientMessage.PROGRESS_MSG_OPEN_PROPERTY});
 
@@ -153,10 +238,106 @@ public final class ServiceLauncher {
                 new String[]{TongaPropertyPanel.class.getName(), MainContentPanel.CARD_PROPERTY_PANEL,
             ClientMessage.PROGRESS_MSG_OPEN_PROPERTY});
 
-        //Register Sublease
-        serviceMap.put(RequestTypeBean.CODE_REGISTER_SUBLEASE,
+        // Assign Mortgage
+        serviceMap.put(RequestTypeBean.CODE_ASSIGN_MORTGAGE,
                 new String[]{TongaPropertyPanel.class.getName(), MainContentPanel.CARD_PROPERTY_PANEL,
             ClientMessage.PROGRESS_MSG_OPEN_PROPERTY});
+
+        // Register Document Affecting Mortgage
+        serviceMap.put(RequestTypeBean.CODE_MORTGAGE_DOCUMENT,
+                new String[]{TongaPropertyPanel.class.getName(), MainContentPanel.CARD_PROPERTY_PANEL,
+            ClientMessage.PROGRESS_MSG_OPEN_PROPERTY});
+
+        // Register Caveat
+        serviceMap.put(RequestTypeBean.CODE_REGISTER_CAVEAT,
+                new String[]{TongaPropertyPanel.class.getName(), MainContentPanel.CARD_PROPERTY_PANEL,
+            ClientMessage.PROGRESS_MSG_OPEN_PROPERTY});
+
+        // Vary Caveat
+        serviceMap.put(RequestTypeBean.CODE_VARY_CAVEAT,
+                new String[]{TongaPropertyPanel.class.getName(), MainContentPanel.CARD_PROPERTY_PANEL,
+            ClientMessage.PROGRESS_MSG_OPEN_PROPERTY});
+
+        // Remove Caveat
+        serviceMap.put(RequestTypeBean.CODE_REMOVE_CAVEAT,
+                new String[]{TongaPropertyPanel.class.getName(), MainContentPanel.CARD_PROPERTY_PANEL,
+            ClientMessage.PROGRESS_MSG_OPEN_PROPERTY});
+
+        // Register Life Estate
+        serviceMap.put(RequestTypeBean.CODE_REGISTER_LIFE_ESTATE,
+                new String[]{TongaPropertyPanel.class.getName(), MainContentPanel.CARD_PROPERTY_PANEL,
+            ClientMessage.PROGRESS_MSG_OPEN_PROPERTY});
+
+        // Vary Life Estate
+        serviceMap.put(RequestTypeBean.CODE_VARY_LIFE_ESTATE,
+                new String[]{TongaPropertyPanel.class.getName(), MainContentPanel.CARD_PROPERTY_PANEL,
+            ClientMessage.PROGRESS_MSG_OPEN_PROPERTY});
+
+        // Remove Life Estate
+        serviceMap.put(RequestTypeBean.CODE_REMOVE_LIFE_ESTATE,
+                new String[]{TongaPropertyPanel.class.getName(), MainContentPanel.CARD_PROPERTY_PANEL,
+            ClientMessage.PROGRESS_MSG_OPEN_PROPERTY});
+
+        // Register Easement
+        serviceMap.put(RequestTypeBean.CODE_REGISTER_EASEMENT,
+                new String[]{TongaPropertyPanel.class.getName(), MainContentPanel.CARD_PROPERTY_PANEL,
+            ClientMessage.PROGRESS_MSG_OPEN_PROPERTY});
+
+        // Vary Easement
+        serviceMap.put(RequestTypeBean.CODE_VARY_EASEMENT,
+                new String[]{TongaPropertyPanel.class.getName(), MainContentPanel.CARD_PROPERTY_PANEL,
+            ClientMessage.PROGRESS_MSG_OPEN_PROPERTY});
+
+        // Remove Easement
+        serviceMap.put(RequestTypeBean.CODE_REMOVE_EASEMENT,
+                new String[]{TongaPropertyPanel.class.getName(), MainContentPanel.CARD_PROPERTY_PANEL,
+            ClientMessage.PROGRESS_MSG_OPEN_PROPERTY});
+
+        // Register Trustee
+        serviceMap.put(RequestTypeBean.CODE_REGISTER_TRUSTEE,
+                new String[]{TongaPropertyPanel.class.getName(), MainContentPanel.CARD_PROPERTY_PANEL,
+            ClientMessage.PROGRESS_MSG_OPEN_PROPERTY});
+
+        // Vary Trustee
+        serviceMap.put(RequestTypeBean.CODE_VARY_TRUSTEE,
+                new String[]{TongaPropertyPanel.class.getName(), MainContentPanel.CARD_PROPERTY_PANEL,
+            ClientMessage.PROGRESS_MSG_OPEN_PROPERTY});
+
+        // Remove Trustee
+        serviceMap.put(RequestTypeBean.CODE_REMOVE_TRUSTEE,
+                new String[]{TongaPropertyPanel.class.getName(), MainContentPanel.CARD_PROPERTY_PANEL,
+            ClientMessage.PROGRESS_MSG_OPEN_PROPERTY});
+
+        // Register Power of Attorney
+        serviceMap.put(RequestTypeBean.CODE_REG_POWER_OF_ATTORNEY,
+                new String[]{TongaPropertyPanel.class.getName(), MainContentPanel.CARD_TRANSACTIONED_DOCUMENT,
+            ClientMessage.PROGRESS_MSG_OPEN_DOCREGISTRATION});
+
+        // Cancel Power of Attorney
+        serviceMap.put(RequestTypeBean.CODE_CANCEL_POWER_OF_ATTORNEY,
+                new String[]{TongaPropertyPanel.class.getName(), MainContentPanel.CARD_TRANSACTIONED_DOCUMENT,
+            ClientMessage.PROGRESS_MSG_OPEN_DOCREGISTRATION});
+
+        // Register Permit
+        serviceMap.put(RequestTypeBean.CODE_REGISTER_PERMIT,
+                new String[]{TongaPropertyPanel.class.getName(), MainContentPanel.CARD_TRANSACTIONED_DOCUMENT,
+            ClientMessage.PROGRESS_MSG_OPEN_DOCREGISTRATION});
+
+        // Cancel Permit
+        serviceMap.put(RequestTypeBean.CODE_CANCEL_PERMIT,
+                new String[]{TongaPropertyPanel.class.getName(), MainContentPanel.CARD_TRANSACTIONED_DOCUMENT,
+            ClientMessage.PROGRESS_MSG_OPEN_DOCREGISTRATION});
+
+        // Correct Registry
+        serviceMap.put(RequestTypeBean.CODE_CORRECT_REGISTRY,
+                new String[]{TongaPropertyPanel.class.getName(), MainContentPanel.CARD_PROPERTY_PANEL,
+            ClientMessage.PROGRESS_MSG_OPEN_PROPERTY});
+
+        // Correct Registry - Remove
+        serviceMap.put(RequestTypeBean.CODE_CORRECT_REGISTRY_REMOVE,
+                new String[]{TongaPropertyPanel.class.getName(), MainContentPanel.CARD_PROPERTY_PANEL,
+            ClientMessage.PROGRESS_MSG_OPEN_PROPERTY});
+
     }
 
     /**

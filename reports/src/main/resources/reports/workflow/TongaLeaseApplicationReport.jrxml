@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Tonga Lease Application Report" pageWidth="595" pageHeight="842" columnWidth="539" leftMargin="28" rightMargin="28" topMargin="28" bottomMargin="28" whenResourceMissingType="Empty" uuid="ac6f666c-9299-4670-8732-3db826427724">
 	<property name="ireport.zoom" value="1.3310000000000006"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="674"/>
+	<property name="ireport.y" value="777"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>
@@ -572,7 +572,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Serif" size="10"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{selectedProperty}.getNobleEstate().getDisplayValue()]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{selectedProperty}.getNobleEstate().getFullName()]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement uuid="93dca089-6fd3-4b0a-ad36-6e7341b0b9ec" x="268" y="258" width="134" height="20"/>
@@ -607,14 +607,14 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Serif" size="10"/>
 				</textElement>
-				<textFieldExpression><![CDATA["$" + $F{selectedProperty}.getAmount()]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{selectedProperty}.getAmount() == null ? "" : "T$" + $F{selectedProperty}.getAmount()]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement uuid="93dca089-6fd3-4b0a-ad36-6e7341b0b9ec" x="402" y="321" width="134" height="20"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Serif" size="10"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{selectedProperty}.getSurveyFee() == null ? "" : "$" + $F{selectedProperty}.getSurveyFee()]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{selectedProperty}.getSurveyFee() == null ? "" : "T$" + $F{selectedProperty}.getSurveyFee()]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="0" y="397" width="539" height="15" forecolor="#000000" backcolor="#FFFFFF"/>

@@ -408,7 +408,7 @@
         </MenuItem>
       </SubComponents>
     </Container>
-    <Component class="org.sola.clients.beans.party.PartySummaryListBean" name="partySummaryListBean1">
+    <Component class="org.sola.clients.beans.party.PartySummaryListBean" name="noblePartyListBean">
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="createNobleList()"/>
       </AuxValues>
@@ -1822,7 +1822,7 @@
                             <Property name="name" type="java.lang.String" value="cbxEstate" noResource="true"/>
                           </Properties>
                           <BindingProperties>
-                            <BindingProperty name="elements" source="partySummaryListBean1" sourcePath="${partySummaryList}" target="cbxEstate" targetPath="elements" updateStrategy="0" immediately="false"/>
+                            <BindingProperty name="elements" source="noblePartyListBean" sourcePath="${partySummaryList}" target="cbxEstate" targetPath="elements" updateStrategy="0" immediately="false"/>
                             <BindingProperty name="selectedItem" source="appBean" sourcePath="${selectedProperty.nobleEstate}" target="cbxEstate" targetPath="selectedItem" updateStrategy="0" immediately="false"/>
                           </BindingProperties>
                         </Component>

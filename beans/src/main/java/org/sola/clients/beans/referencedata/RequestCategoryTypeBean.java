@@ -46,6 +46,7 @@ public class RequestCategoryTypeBean extends AbstractCodeBean {
     public static String CODE_REGISTRATION_CATEGORY = "registrationServices";
     public static String CODE_CADASTRAL_CATEGORY = "cadastralServices";
     public static String CODE_INFORMATION_CATEGORY = "informationServices";
+    public static String CODE_DOC_REGISTRATION_CATEGORY = "docRegServices";
 
     public RequestCategoryTypeBean() {
         super();
