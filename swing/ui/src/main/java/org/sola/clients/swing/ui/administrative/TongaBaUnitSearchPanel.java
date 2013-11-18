@@ -299,12 +299,9 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
         lblSubleaseResultsCount = new javax.swing.JLabel();
         tabTownIsland = new javax.swing.JPanel();
         jPanel40 = new javax.swing.JPanel();
-        jPanel39 = new javax.swing.JPanel();
         jPanel41 = new javax.swing.JPanel();
         jLabel22 = new javax.swing.JLabel();
         txtTownName = new javax.swing.JTextField();
-        jPanel42 = new javax.swing.JPanel();
-        jPanel43 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableTown = new org.sola.clients.swing.common.controls.JTableWithDefaultStyles();
         jToolBar1 = new javax.swing.JToolBar();
@@ -344,7 +341,7 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
 
         jPanel9.setLayout(new java.awt.GridLayout(3, 2, 12, 0));
 
-        jLabel6.setText("Deed #");
+        jLabel6.setText("Deed #:");
 
         org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, allotmentParams, org.jdesktop.beansbinding.ELProperty.create("${nameFirstPart}"), txtAllotmentDeedNum, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
@@ -367,7 +364,7 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
 
         jPanel9.add(jPanel12);
 
-        jLabel7.setText("Folio");
+        jLabel7.setText("Folio:");
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, allotmentParams, org.jdesktop.beansbinding.ELProperty.create("${nameLastPart}"), txtAllotmentFolio, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
@@ -390,7 +387,7 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
 
         jPanel9.add(jPanel13);
 
-        jLabel8.setText("Registry Book");
+        jLabel8.setText("Registry Book:");
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, allotmentParams, org.jdesktop.beansbinding.ELProperty.create("${registryBook}"), txtAllotmentBookNum, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
@@ -413,7 +410,7 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
 
         jPanel9.add(jPanel15);
 
-        jLabel9.setText("Registry Page/Ref.");
+        jLabel9.setText("Registry Page/Ref.:");
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, allotmentParams, org.jdesktop.beansbinding.ELProperty.create("${registryPageRef}"), txtAllotmentPage, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
@@ -441,12 +438,13 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, allotmentParams, org.jdesktop.beansbinding.ELProperty.create("${registeredDateFrom}"), txtAllotmentRegDateFrom, org.jdesktop.beansbinding.BeanProperty.create("value"));
         bindingGroup.addBinding(binding);
 
-        jLabel4.setText("Registered Date (from)");
+        jLabel4.setText("Registered Date From:");
 
         btnAllotmentDateFrom.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/calendar.png"))); // NOI18N
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("org/sola/clients/swing/ui/source/Bundle"); // NOI18N
         btnAllotmentDateFrom.setText(bundle.getString("DocumentSearchPanel.btnDateFrom.text")); // NOI18N
         btnAllotmentDateFrom.setBorder(null);
+        btnAllotmentDateFrom.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnAllotmentDateFrom.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAllotmentDateFromActionPerformed(evt);
@@ -461,7 +459,7 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
             .addGroup(jPanel10Layout.createSequentialGroup()
                 .addComponent(txtAllotmentRegDateFrom)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnAllotmentDateFrom))
+                .addComponent(btnAllotmentDateFrom, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -481,11 +479,12 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, allotmentParams, org.jdesktop.beansbinding.ELProperty.create("${registeredDateTo}"), txtAllotmentRegDateTo, org.jdesktop.beansbinding.BeanProperty.create("value"));
         bindingGroup.addBinding(binding);
 
-        jLabel5.setText("Registered Date (to)");
+        jLabel5.setText("Registered Date To:");
 
         btnAllotmentDateTo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/calendar.png"))); // NOI18N
         btnAllotmentDateTo.setText(bundle.getString("DocumentSearchPanel.btnDateFrom.text")); // NOI18N
         btnAllotmentDateTo.setBorder(null);
+        btnAllotmentDateTo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnAllotmentDateTo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAllotmentDateToActionPerformed(evt);
@@ -520,7 +519,7 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
 
         jPanel5.setLayout(new java.awt.GridLayout(3, 1, 12, 0));
 
-        jLabel1.setText("Landholder / Rightholder");
+        jLabel1.setText("Landholder / Rightholder:");
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, allotmentParams, org.jdesktop.beansbinding.ELProperty.create("${ownerName}"), txtAllotmentLandHolder, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
@@ -543,7 +542,7 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
 
         jPanel5.add(jPanel16);
 
-        jLabel2.setText("Parcel Name");
+        jLabel2.setText("Parcel Name:");
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, allotmentParams, org.jdesktop.beansbinding.ELProperty.create("${parcelName}"), txtAllotmentParcelName, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
@@ -574,7 +573,7 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, allotmentParams, org.jdesktop.beansbinding.ELProperty.create("${town}"), cbAllotmentTown, org.jdesktop.beansbinding.BeanProperty.create("selectedItem"));
         bindingGroup.addBinding(binding);
 
-        jLabel3.setText("Town");
+        jLabel3.setText("Town:");
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -786,7 +785,7 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
 
         jPanel21.setLayout(new java.awt.GridLayout(1, 0, 12, 0));
 
-        jLabel13.setText("Lease #");
+        jLabel13.setText("Lease #:");
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, leaseParams, org.jdesktop.beansbinding.ELProperty.create("${nameFirstPart}"), txtLeaseNumber, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
@@ -809,7 +808,7 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
 
         jPanel21.add(jPanel23);
 
-        jLabel14.setText("Town");
+        jLabel14.setText("Town:");
 
         eLProperty = org.jdesktop.beansbinding.ELProperty.create("${filteredTownList}");
         jComboBoxBinding = org.jdesktop.swingbinding.SwingBindings.createJComboBoxBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, townListBean, eLProperty, cbxLeaseTown);
@@ -837,7 +836,7 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
 
         jPanel19.add(jPanel21);
 
-        jLabel15.setText("Lessee / Rightholder");
+        jLabel15.setText("Lessee / Rightholder:");
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, leaseParams, org.jdesktop.beansbinding.ELProperty.create("${ownerName}"), txtLesseeName, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
@@ -864,7 +863,7 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
 
         jPanel20.setLayout(new java.awt.GridLayout(2, 1, 12, 0));
 
-        jLabel12.setText("Landholder");
+        jLabel12.setText("Landholder:");
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, leaseParams, org.jdesktop.beansbinding.ELProperty.create("${otherRightholder}"), txtLeaseLandHolder, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
@@ -894,7 +893,7 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, leaseParams, org.jdesktop.beansbinding.ELProperty.create("${registeredDateFrom}"), txtLeaseRegDateFrom, org.jdesktop.beansbinding.BeanProperty.create("value"));
         bindingGroup.addBinding(binding);
 
-        jLabel16.setText("Registed Date (from)");
+        jLabel16.setText("Registed Date From:");
 
         btnLeaseRegDateFrom.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/calendar.png"))); // NOI18N
         btnLeaseRegDateFrom.setText(bundle.getString("DocumentSearchPanel.btnDateFrom.text")); // NOI18N
@@ -933,7 +932,7 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, leaseParams, org.jdesktop.beansbinding.ELProperty.create("${registeredDateTo}"), txtLeaseRegDateTo, org.jdesktop.beansbinding.BeanProperty.create("value"));
         bindingGroup.addBinding(binding);
 
-        jLabel17.setText("Registered Date (to)");
+        jLabel17.setText("Registered Date To:");
 
         btnLeaseDateTo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/calendar.png"))); // NOI18N
         btnLeaseDateTo.setText(bundle.getString("DocumentSearchPanel.btnDateFrom.text")); // NOI18N
@@ -1090,7 +1089,7 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
 
         jPanel50.setLayout(new java.awt.GridLayout(1, 0, 12, 0));
 
-        jLabel32.setText("Sublease #");
+        jLabel32.setText("Sublease #:");
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, subleaseParams, org.jdesktop.beansbinding.ELProperty.create("${nameLastPart}"), txtLeaseNumber1, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
@@ -1113,7 +1112,7 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
 
         jPanel50.add(jPanel51);
 
-        jLabel33.setText("Town");
+        jLabel33.setText("Town:");
 
         eLProperty = org.jdesktop.beansbinding.ELProperty.create("${filteredTownList}");
         jComboBoxBinding = org.jdesktop.swingbinding.SwingBindings.createJComboBoxBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, townListBean, eLProperty, cbxLeaseTown1);
@@ -1141,7 +1140,7 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
 
         jPanel2.add(jPanel50);
 
-        jLabel30.setText("Lessee / Landholder");
+        jLabel30.setText("Lessee / Landholder:");
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, subleaseParams, org.jdesktop.beansbinding.ELProperty.create("${otherRightholder}"), txtSubleaseLandHolder, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
@@ -1164,7 +1163,7 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
 
         jPanel2.add(jPanel48);
 
-        jLabel31.setText("Sublessee / Rightholder");
+        jLabel31.setText("Sublessee / Rightholder:");
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, subleaseParams, org.jdesktop.beansbinding.ELProperty.create("${ownerName}"), txtSublesseeName, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
@@ -1194,7 +1193,7 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, subleaseParams, org.jdesktop.beansbinding.ELProperty.create("${registeredDateFrom}"), txtSubleaseRegDateFrom, org.jdesktop.beansbinding.BeanProperty.create("value"));
         bindingGroup.addBinding(binding);
 
-        jLabel27.setText("Registed Date (from)");
+        jLabel27.setText("Registed Date From:");
 
         btnSubleaseRegDateFrom.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/calendar.png"))); // NOI18N
         btnSubleaseRegDateFrom.setText(bundle.getString("DocumentSearchPanel.btnDateFrom.text")); // NOI18N
@@ -1233,7 +1232,7 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, subleaseParams, org.jdesktop.beansbinding.ELProperty.create("${registeredDateTo}"), txtSubleaseRegDateTo, org.jdesktop.beansbinding.BeanProperty.create("value"));
         bindingGroup.addBinding(binding);
 
-        jLabel28.setText("Registered Date (to)");
+        jLabel28.setText("Registered Date To:");
 
         btnSubleaseDateTo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/calendar.png"))); // NOI18N
         btnSubleaseDateTo.setText(bundle.getString("DocumentSearchPanel.btnDateFrom.text")); // NOI18N
@@ -1375,11 +1374,7 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
 
         mainTabPane.addTab("Sublease", tabSublease);
 
-        jPanel40.setLayout(new java.awt.GridLayout(1, 2, 12, 0));
-
-        jPanel39.setLayout(new java.awt.GridLayout(2, 1));
-
-        jLabel22.setText("Town / Island Name");
+        jLabel22.setText("Town / Island Name:");
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, townParams, org.jdesktop.beansbinding.ELProperty.create("${nameFirstPart}"), txtTownName, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
@@ -1389,7 +1384,7 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
         jPanel41Layout.setHorizontalGroup(
             jPanel41Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(txtTownName, javax.swing.GroupLayout.Alignment.TRAILING)
-            .addComponent(jLabel22, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE)
+            .addComponent(jLabel22, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 527, Short.MAX_VALUE)
         );
         jPanel41Layout.setVerticalGroup(
             jPanel41Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1400,35 +1395,16 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        jPanel39.add(jPanel41);
-
-        javax.swing.GroupLayout jPanel42Layout = new javax.swing.GroupLayout(jPanel42);
-        jPanel42.setLayout(jPanel42Layout);
-        jPanel42Layout.setHorizontalGroup(
-            jPanel42Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 257, Short.MAX_VALUE)
+        javax.swing.GroupLayout jPanel40Layout = new javax.swing.GroupLayout(jPanel40);
+        jPanel40.setLayout(jPanel40Layout);
+        jPanel40Layout.setHorizontalGroup(
+            jPanel40Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel41, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
-        jPanel42Layout.setVerticalGroup(
-            jPanel42Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 51, Short.MAX_VALUE)
+        jPanel40Layout.setVerticalGroup(
+            jPanel40Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel41, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
-
-        jPanel39.add(jPanel42);
-
-        jPanel40.add(jPanel39);
-
-        javax.swing.GroupLayout jPanel43Layout = new javax.swing.GroupLayout(jPanel43);
-        jPanel43.setLayout(jPanel43Layout);
-        jPanel43Layout.setHorizontalGroup(
-            jPanel43Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 257, Short.MAX_VALUE)
-        );
-        jPanel43Layout.setVerticalGroup(
-            jPanel43Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 102, Short.MAX_VALUE)
-        );
-
-        jPanel40.add(jPanel43);
 
         tableTown.getTableHeader().setReorderingAllowed(false);
 
@@ -1492,9 +1468,9 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
             .addGroup(tabTownIslandLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(tabTownIslandLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 527, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel40, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addComponent(jPanel40, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         tabTownIslandLayout.setVerticalGroup(
@@ -1505,7 +1481,7 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 213, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 264, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -1513,7 +1489,7 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
 
         jPanel31.setLayout(new java.awt.GridLayout(2, 2, 12, 0));
 
-        jLabel20.setText("Noble");
+        jLabel20.setText("Noble:");
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, estateParams, org.jdesktop.beansbinding.ELProperty.create("${ownerName}"), txtNobleName, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
@@ -1536,7 +1512,7 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
 
         jPanel31.add(jPanel33);
 
-        jLabel19.setText("Estate Name");
+        jLabel19.setText("Estate Name:");
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, estateParams, org.jdesktop.beansbinding.ELProperty.create("${nameFirstPart}"), txtEstateName, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
@@ -1901,11 +1877,8 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel36;
     private javax.swing.JPanel jPanel37;
     private javax.swing.JPanel jPanel38;
-    private javax.swing.JPanel jPanel39;
     private javax.swing.JPanel jPanel40;
     private javax.swing.JPanel jPanel41;
-    private javax.swing.JPanel jPanel42;
-    private javax.swing.JPanel jPanel43;
     private javax.swing.JPanel jPanel44;
     private javax.swing.JPanel jPanel45;
     private javax.swing.JPanel jPanel46;

@@ -234,6 +234,9 @@ public class PartySearchPanel extends JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tableSearchResults = new org.sola.clients.swing.common.controls.JTableWithDefaultStyles();
         jToolBar1 = new javax.swing.JToolBar();
+        btnSearch = new javax.swing.JButton();
+        btnClear = new javax.swing.JButton();
+        jSeparator3 = new javax.swing.JToolBar.Separator();
         btnView = new javax.swing.JButton();
         btnSelect = new javax.swing.JButton();
         separator1 = new javax.swing.JToolBar.Separator();
@@ -254,10 +257,6 @@ public class PartySearchPanel extends JPanel {
         jPanel3 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         cbxRoles = new javax.swing.JComboBox();
-        jPanel5 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
-        btnSearch = new javax.swing.JButton();
-        btnClear = new javax.swing.JButton();
 
         popupParties.setName("popupParties"); // NOI18N
 
@@ -359,6 +358,29 @@ public class PartySearchPanel extends JPanel {
         jToolBar1.setFloatable(false);
         jToolBar1.setRollover(true);
         jToolBar1.setName("jToolBar1"); // NOI18N
+
+        btnSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/search.png"))); // NOI18N
+        btnSearch.setText(bundle.getString("PartySearchPanel.btnSearch.text")); // NOI18N
+        btnSearch.setName("btnSearch"); // NOI18N
+        btnSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(btnSearch);
+
+        btnClear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/eraser.png"))); // NOI18N
+        btnClear.setText(bundle.getString("PartySearchPanel.btnClear.text")); // NOI18N
+        btnClear.setName(bundle.getString("PartySearchPanel.btnClear.name")); // NOI18N
+        btnClear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClearActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(btnClear);
+
+        jSeparator3.setName("jSeparator3"); // NOI18N
+        jToolBar1.add(jSeparator3);
 
         btnView.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/view.png"))); // NOI18N
         btnView.setText(bundle.getString("PartySearchPanel.btnView.text")); // NOI18N
@@ -476,7 +498,7 @@ public class PartySearchPanel extends JPanel {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jLabel1)
-                .addContainerGap(130, Short.MAX_VALUE))
+                .addContainerGap(187, Short.MAX_VALUE))
             .addComponent(txtName)
         );
         jPanel1Layout.setVerticalGroup(
@@ -509,7 +531,7 @@ public class PartySearchPanel extends JPanel {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(jLabel2)
-                .addContainerGap(133, Short.MAX_VALUE))
+                .addContainerGap(190, Short.MAX_VALUE))
             .addComponent(cbxPartyTypes, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
@@ -542,7 +564,7 @@ public class PartySearchPanel extends JPanel {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addComponent(jLabel3)
-                .addContainerGap(136, Short.MAX_VALUE))
+                .addContainerGap(193, Short.MAX_VALUE))
             .addComponent(cbxRoles, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
@@ -555,55 +577,6 @@ public class PartySearchPanel extends JPanel {
         );
 
         jPanel4.add(jPanel3);
-
-        jPanel5.setName("jPanel5"); // NOI18N
-
-        jLabel4.setText(bundle.getString("PartySearchPanel.jLabel4.text")); // NOI18N
-        jLabel4.setName(bundle.getString("PartySearchPanel.jLabel4.name")); // NOI18N
-
-        btnSearch.setText(bundle.getString("PartySearchPanel.btnSearch.text")); // NOI18N
-        btnSearch.setName("btnSearch"); // NOI18N
-        btnSearch.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSearchActionPerformed(evt);
-            }
-        });
-
-        btnClear.setText(bundle.getString("PartySearchPanel.btnClear.text")); // NOI18N
-        btnClear.setName(bundle.getString("PartySearchPanel.btnClear.name")); // NOI18N
-        btnClear.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnClearActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addComponent(jLabel4)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap(21, Short.MAX_VALUE)
-                .addComponent(btnClear)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSearch)
-                    .addComponent(btnClear))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        jPanel5Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnClear, btnSearch});
-
-        jPanel4.add(jPanel5);
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -737,17 +710,16 @@ public class PartySearchPanel extends JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JToolBar.Separator jSeparator1;
+    private javax.swing.JToolBar.Separator jSeparator3;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JLabel lblSearchResultNumber;
     private javax.swing.JMenuItem menuAdd;
