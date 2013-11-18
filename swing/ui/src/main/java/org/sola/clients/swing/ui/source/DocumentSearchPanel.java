@@ -355,14 +355,10 @@ public class DocumentSearchPanel extends javax.swing.JPanel {
         menuPrint = new javax.swing.JMenuItem();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblSearchResults = new org.sola.clients.swing.common.controls.JTableWithDefaultStyles();
-        jPanel9 = new javax.swing.JPanel();
-        jPanel13 = new javax.swing.JPanel();
-        jLabel9 = new javax.swing.JLabel();
-        btnClear = new javax.swing.JButton();
-        jPanel14 = new javax.swing.JPanel();
-        jLabel10 = new javax.swing.JLabel();
-        btnSearch = new javax.swing.JButton();
         jToolBar1 = new javax.swing.JToolBar();
+        btnSearch = new javax.swing.JButton();
+        btnClear = new javax.swing.JButton();
+        jSeparator3 = new javax.swing.JToolBar.Separator();
         btnView = new javax.swing.JButton();
         btnOpenAttachment = new javax.swing.JButton();
         btnOpenApplication = new javax.swing.JButton();
@@ -552,46 +548,11 @@ public class DocumentSearchPanel extends javax.swing.JPanel {
         tblSearchResults.getColumnModel().getColumn(8).setHeaderValue(bundle.getString("DocumentSearchPanel.tblSearchResults.columnModel.title6_1")); // NOI18N
         tblSearchResults.getColumnModel().getColumn(8).setCellRenderer(new AttachedDocumentCellRenderer());
 
-        jPanel9.setName("jPanel9"); // NOI18N
-        jPanel9.setLayout(new java.awt.GridLayout(2, 1));
+        jToolBar1.setFloatable(false);
+        jToolBar1.setRollover(true);
+        jToolBar1.setName("jToolBar1"); // NOI18N
 
-        jPanel13.setName(bundle.getString("DocumentSearchPanel.jPanel13.name")); // NOI18N
-
-        jLabel9.setText(bundle.getString("DocumentSearchPanel.jLabel9.text")); // NOI18N
-        jLabel9.setName(bundle.getString("DocumentSearchPanel.jLabel9.name")); // NOI18N
-
-        btnClear.setText(bundle.getString("DocumentSearchPanel.btnClear.text")); // NOI18N
-        btnClear.setName("btnClear"); // NOI18N
-        btnClear.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnClearActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
-        jPanel13.setLayout(jPanel13Layout);
-        jPanel13Layout.setHorizontalGroup(
-            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel13Layout.createSequentialGroup()
-                .addComponent(jLabel9)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addComponent(btnClear, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
-        );
-        jPanel13Layout.setVerticalGroup(
-            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel13Layout.createSequentialGroup()
-                .addComponent(jLabel9)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnClear))
-        );
-
-        jPanel9.add(jPanel13);
-
-        jPanel14.setName(bundle.getString("DocumentSearchPanel.jPanel14.name")); // NOI18N
-
-        jLabel10.setText(bundle.getString("DocumentSearchPanel.jLabel10.text")); // NOI18N
-        jLabel10.setName(bundle.getString("DocumentSearchPanel.jLabel10.name")); // NOI18N
-
+        btnSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/search.png"))); // NOI18N
         btnSearch.setText(bundle.getString("DocumentSearchPanel.btnSearch.text")); // NOI18N
         btnSearch.setName("btnSearch"); // NOI18N
         btnSearch.addActionListener(new java.awt.event.ActionListener() {
@@ -599,29 +560,20 @@ public class DocumentSearchPanel extends javax.swing.JPanel {
                 btnSearchActionPerformed(evt);
             }
         });
+        jToolBar1.add(btnSearch);
 
-        javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
-        jPanel14.setLayout(jPanel14Layout);
-        jPanel14Layout.setHorizontalGroup(
-            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel14Layout.createSequentialGroup()
-                .addComponent(jLabel10)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addComponent(btnSearch, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
-        );
-        jPanel14Layout.setVerticalGroup(
-            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel14Layout.createSequentialGroup()
-                .addComponent(jLabel10)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnSearch))
-        );
+        btnClear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/eraser.png"))); // NOI18N
+        btnClear.setText(bundle.getString("DocumentSearchPanel.btnClear.text")); // NOI18N
+        btnClear.setName("btnClear"); // NOI18N
+        btnClear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClearActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(btnClear);
 
-        jPanel9.add(jPanel14);
-
-        jToolBar1.setFloatable(false);
-        jToolBar1.setRollover(true);
-        jToolBar1.setName("jToolBar1"); // NOI18N
+        jSeparator3.setName("jSeparator3"); // NOI18N
+        jToolBar1.add(jSeparator3);
 
         btnView.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/view.png"))); // NOI18N
         btnView.setText(bundle.getString("DocumentSearchPanel.btnView.text")); // NOI18N
@@ -843,7 +795,7 @@ public class DocumentSearchPanel extends javax.swing.JPanel {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel7)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addComponent(txtDateFrom)
+                .addComponent(txtDateFrom, javax.swing.GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnDateFrom))
         );
@@ -990,7 +942,7 @@ public class DocumentSearchPanel extends javax.swing.JPanel {
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addComponent(jLabel1)
-                .addContainerGap(157, Short.MAX_VALUE))
+                .addContainerGap(153, Short.MAX_VALUE))
             .addComponent(cbxSourceType, 0, 181, Short.MAX_VALUE)
         );
         jPanel8Layout.setVerticalGroup(
@@ -1023,7 +975,7 @@ public class DocumentSearchPanel extends javax.swing.JPanel {
             jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel15Layout.createSequentialGroup()
                 .addComponent(jLabel11)
-                .addGap(0, 57, Short.MAX_VALUE))
+                .addGap(0, 273, Short.MAX_VALUE))
             .addComponent(txtOwnerName)
         );
         jPanel15Layout.setVerticalGroup(
@@ -1053,7 +1005,7 @@ public class DocumentSearchPanel extends javax.swing.JPanel {
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel12Layout.createSequentialGroup()
                 .addComponent(jLabel12)
-                .addGap(0, 76, Short.MAX_VALUE))
+                .addGap(0, 292, Short.MAX_VALUE))
             .addComponent(txtDescription)
         );
         jPanel12Layout.setVerticalGroup(
@@ -1071,16 +1023,14 @@ public class DocumentSearchPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 777, Short.MAX_VALUE)
             .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1088,8 +1038,7 @@ public class DocumentSearchPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jPanel16, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel11, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel11, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1196,7 +1145,6 @@ public class DocumentSearchPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnView;
     private javax.swing.JComboBox cbxSourceType;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
@@ -1206,13 +1154,10 @@ public class DocumentSearchPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
-    private javax.swing.JPanel jPanel13;
-    private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel15;
     private javax.swing.JPanel jPanel16;
     private javax.swing.JPanel jPanel2;
@@ -1222,8 +1167,8 @@ public class DocumentSearchPanel extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
-    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JToolBar.Separator jSeparator3;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JLabel lblResults;
     private javax.swing.JMenuItem menuAttach;

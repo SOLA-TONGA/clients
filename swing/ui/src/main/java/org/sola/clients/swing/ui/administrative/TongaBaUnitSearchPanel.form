@@ -154,7 +154,7 @@
                       <SubComponents>
                         <Component class="javax.swing.JLabel" name="jLabel6">
                           <Properties>
-                            <Property name="text" type="java.lang.String" value="Deed #"/>
+                            <Property name="text" type="java.lang.String" value="Deed #:"/>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JTextField" name="txtAllotmentDeedNum">
@@ -189,7 +189,7 @@
                       <SubComponents>
                         <Component class="javax.swing.JLabel" name="jLabel7">
                           <Properties>
-                            <Property name="text" type="java.lang.String" value="Folio"/>
+                            <Property name="text" type="java.lang.String" value="Folio:"/>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JTextField" name="txtAllotmentFolio">
@@ -224,7 +224,7 @@
                       <SubComponents>
                         <Component class="javax.swing.JLabel" name="jLabel8">
                           <Properties>
-                            <Property name="text" type="java.lang.String" value="Registry Book"/>
+                            <Property name="text" type="java.lang.String" value="Registry Book:"/>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JTextField" name="txtAllotmentBookNum">
@@ -259,7 +259,7 @@
                       <SubComponents>
                         <Component class="javax.swing.JLabel" name="jLabel9">
                           <Properties>
-                            <Property name="text" type="java.lang.String" value="Registry Page/Ref."/>
+                            <Property name="text" type="java.lang.String" value="Registry Page/Ref.:"/>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JTextField" name="txtAllotmentPage">
@@ -280,7 +280,7 @@
                               <Group type="102" attributes="0">
                                   <Component id="txtAllotmentRegDateFrom" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="btnAllotmentDateFrom" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnAllotmentDateFrom" min="-2" pref="17" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -311,7 +311,7 @@
                         </Component>
                         <Component class="javax.swing.JLabel" name="jLabel4">
                           <Properties>
-                            <Property name="text" type="java.lang.String" value="Registered Date (from)"/>
+                            <Property name="text" type="java.lang.String" value="Registered Date From:"/>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JButton" name="btnAllotmentDateFrom">
@@ -325,6 +325,7 @@
                             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                               <Border info="null"/>
                             </Property>
+                            <Property name="horizontalTextPosition" type="int" value="0"/>
                           </Properties>
                           <Events>
                             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAllotmentDateFromActionPerformed"/>
@@ -373,7 +374,7 @@
                         </Component>
                         <Component class="javax.swing.JLabel" name="jLabel5">
                           <Properties>
-                            <Property name="text" type="java.lang.String" value="Registered Date (to)"/>
+                            <Property name="text" type="java.lang.String" value="Registered Date To:"/>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JButton" name="btnAllotmentDateTo">
@@ -387,6 +388,7 @@
                             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                               <Border info="null"/>
                             </Property>
+                            <Property name="horizontalTextPosition" type="int" value="0"/>
                           </Properties>
                           <Events>
                             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAllotmentDateToActionPerformed"/>
@@ -427,7 +429,7 @@
                       <SubComponents>
                         <Component class="javax.swing.JLabel" name="jLabel1">
                           <Properties>
-                            <Property name="text" type="java.lang.String" value="Landholder / Rightholder"/>
+                            <Property name="text" type="java.lang.String" value="Landholder / Rightholder:"/>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JTextField" name="txtAllotmentLandHolder">
@@ -462,7 +464,7 @@
                       <SubComponents>
                         <Component class="javax.swing.JLabel" name="jLabel2">
                           <Properties>
-                            <Property name="text" type="java.lang.String" value="Parcel Name"/>
+                            <Property name="text" type="java.lang.String" value="Parcel Name:"/>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JTextField" name="txtAllotmentParcelName">
@@ -510,7 +512,7 @@
                             </Component>
                             <Component class="javax.swing.JLabel" name="jLabel3">
                               <Properties>
-                                <Property name="text" type="java.lang.String" value="Town"/>
+                                <Property name="text" type="java.lang.String" value="Town:"/>
                               </Properties>
                             </Component>
                           </SubComponents>
@@ -895,7 +897,7 @@
                           <SubComponents>
                             <Component class="javax.swing.JLabel" name="jLabel13">
                               <Properties>
-                                <Property name="text" type="java.lang.String" value="Lease #"/>
+                                <Property name="text" type="java.lang.String" value="Lease #:"/>
                               </Properties>
                             </Component>
                             <Component class="javax.swing.JTextField" name="txtLeaseNumber">
@@ -930,7 +932,7 @@
                           <SubComponents>
                             <Component class="javax.swing.JLabel" name="jLabel14">
                               <Properties>
-                                <Property name="text" type="java.lang.String" value="Town"/>
+                                <Property name="text" type="java.lang.String" value="Town:"/>
                               </Properties>
                             </Component>
                             <Component class="javax.swing.JComboBox" name="cbxLeaseTown">
@@ -966,7 +968,7 @@
                       <SubComponents>
                         <Component class="javax.swing.JLabel" name="jLabel15">
                           <Properties>
-                            <Property name="text" type="java.lang.String" value="Lessee / Rightholder"/>
+                            <Property name="text" type="java.lang.String" value="Lessee / Rightholder:"/>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JTextField" name="txtLesseeName">
@@ -1011,7 +1013,7 @@
                       <SubComponents>
                         <Component class="javax.swing.JLabel" name="jLabel12">
                           <Properties>
-                            <Property name="text" type="java.lang.String" value="Landholder"/>
+                            <Property name="text" type="java.lang.String" value="Landholder:"/>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JTextField" name="txtLeaseLandHolder">
@@ -1071,7 +1073,7 @@
                             </Component>
                             <Component class="javax.swing.JLabel" name="jLabel16">
                               <Properties>
-                                <Property name="text" type="java.lang.String" value="Registed Date (from)"/>
+                                <Property name="text" type="java.lang.String" value="Registed Date From:"/>
                               </Properties>
                             </Component>
                             <Component class="javax.swing.JButton" name="btnLeaseRegDateFrom">
@@ -1133,7 +1135,7 @@
                             </Component>
                             <Component class="javax.swing.JLabel" name="jLabel17">
                               <Properties>
-                                <Property name="text" type="java.lang.String" value="Registered Date (to)"/>
+                                <Property name="text" type="java.lang.String" value="Registered Date To:"/>
                               </Properties>
                             </Component>
                             <Component class="javax.swing.JButton" name="btnLeaseDateTo">
@@ -1409,7 +1411,7 @@
                       <SubComponents>
                         <Component class="javax.swing.JLabel" name="jLabel32">
                           <Properties>
-                            <Property name="text" type="java.lang.String" value="Sublease #"/>
+                            <Property name="text" type="java.lang.String" value="Sublease #:"/>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JTextField" name="txtLeaseNumber1">
@@ -1444,7 +1446,7 @@
                       <SubComponents>
                         <Component class="javax.swing.JLabel" name="jLabel33">
                           <Properties>
-                            <Property name="text" type="java.lang.String" value="Town"/>
+                            <Property name="text" type="java.lang.String" value="Town:"/>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JComboBox" name="cbxLeaseTown1">
@@ -1480,7 +1482,7 @@
                   <SubComponents>
                     <Component class="javax.swing.JLabel" name="jLabel30">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="Lessee / Landholder"/>
+                        <Property name="text" type="java.lang.String" value="Lessee / Landholder:"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtSubleaseLandHolder">
@@ -1515,7 +1517,7 @@
                   <SubComponents>
                     <Component class="javax.swing.JLabel" name="jLabel31">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="Sublessee / Rightholder"/>
+                        <Property name="text" type="java.lang.String" value="Sublessee / Rightholder:"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtSublesseeName">
@@ -1575,7 +1577,7 @@
                         </Component>
                         <Component class="javax.swing.JLabel" name="jLabel27">
                           <Properties>
-                            <Property name="text" type="java.lang.String" value="Registed Date (from)"/>
+                            <Property name="text" type="java.lang.String" value="Registed Date From:"/>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JButton" name="btnSubleaseRegDateFrom">
@@ -1637,7 +1639,7 @@
                         </Component>
                         <Component class="javax.swing.JLabel" name="jLabel28">
                           <Properties>
-                            <Property name="text" type="java.lang.String" value="Registered Date (to)"/>
+                            <Property name="text" type="java.lang.String" value="Registered Date To:"/>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JButton" name="btnSubleaseDateTo">
@@ -1849,9 +1851,9 @@
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jScrollPane1" alignment="1" pref="527" max="32767" attributes="0"/>
+                          <Component id="jScrollPane1" alignment="1" max="32767" attributes="0"/>
                           <Component id="jToolBar1" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jPanel40" alignment="1" pref="0" max="32767" attributes="0"/>
+                          <Component id="jPanel40" alignment="1" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -1865,7 +1867,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jToolBar1" min="-2" pref="25" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jScrollPane1" pref="213" max="32767" attributes="0"/>
+                      <Component id="jScrollPane1" pref="264" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -1874,85 +1876,53 @@
           <SubComponents>
             <Container class="javax.swing.JPanel" name="jPanel40">
 
-              <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
-                <Property name="columns" type="int" value="2"/>
-                <Property name="horizontalGap" type="int" value="12"/>
-                <Property name="rows" type="int" value="1"/>
+              <Layout>
+                <DimensionLayout dim="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="jPanel41" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                </DimensionLayout>
+                <DimensionLayout dim="1">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="jPanel41" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Container class="javax.swing.JPanel" name="jPanel39">
-
-                  <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
-                    <Property name="columns" type="int" value="1"/>
-                    <Property name="rows" type="int" value="2"/>
-                  </Layout>
-                  <SubComponents>
-                    <Container class="javax.swing.JPanel" name="jPanel41">
-
-                      <Layout>
-                        <DimensionLayout dim="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="txtTownName" alignment="1" max="32767" attributes="0"/>
-                              <Component id="jLabel22" alignment="1" pref="257" max="32767" attributes="0"/>
-                          </Group>
-                        </DimensionLayout>
-                        <DimensionLayout dim="1">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jLabel22" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="txtTownName" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                        </DimensionLayout>
-                      </Layout>
-                      <SubComponents>
-                        <Component class="javax.swing.JLabel" name="jLabel22">
-                          <Properties>
-                            <Property name="text" type="java.lang.String" value="Town / Island Name"/>
-                          </Properties>
-                        </Component>
-                        <Component class="javax.swing.JTextField" name="txtTownName">
-                          <BindingProperties>
-                            <BindingProperty name="text" source="townParams" sourcePath="${nameFirstPart}" target="txtTownName" targetPath="text" updateStrategy="0" immediately="false">
-                              <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
-                            </BindingProperty>
-                          </BindingProperties>
-                        </Component>
-                      </SubComponents>
-                    </Container>
-                    <Container class="javax.swing.JPanel" name="jPanel42">
-
-                      <Layout>
-                        <DimensionLayout dim="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <EmptySpace min="0" pref="257" max="32767" attributes="0"/>
-                          </Group>
-                        </DimensionLayout>
-                        <DimensionLayout dim="1">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <EmptySpace min="0" pref="51" max="32767" attributes="0"/>
-                          </Group>
-                        </DimensionLayout>
-                      </Layout>
-                    </Container>
-                  </SubComponents>
-                </Container>
-                <Container class="javax.swing.JPanel" name="jPanel43">
+                <Container class="javax.swing.JPanel" name="jPanel41">
 
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <EmptySpace min="0" pref="257" max="32767" attributes="0"/>
+                          <Component id="txtTownName" alignment="1" max="32767" attributes="0"/>
+                          <Component id="jLabel22" alignment="1" pref="527" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <EmptySpace min="0" pref="102" max="32767" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="jLabel22" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="txtTownName" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                     </DimensionLayout>
                   </Layout>
+                  <SubComponents>
+                    <Component class="javax.swing.JLabel" name="jLabel22">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Town / Island Name:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="txtTownName">
+                      <BindingProperties>
+                        <BindingProperty name="text" source="townParams" sourcePath="${nameFirstPart}" target="txtTownName" targetPath="text" updateStrategy="0" immediately="false">
+                          <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
+                        </BindingProperty>
+                      </BindingProperties>
+                    </Component>
+                  </SubComponents>
                 </Container>
               </SubComponents>
             </Container>
@@ -2142,7 +2112,7 @@
                   <SubComponents>
                     <Component class="javax.swing.JLabel" name="jLabel20">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="Noble"/>
+                        <Property name="text" type="java.lang.String" value="Noble:"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtNobleName">
@@ -2177,7 +2147,7 @@
                   <SubComponents>
                     <Component class="javax.swing.JLabel" name="jLabel19">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="Estate Name"/>
+                        <Property name="text" type="java.lang.String" value="Estate Name:"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtEstateName">
