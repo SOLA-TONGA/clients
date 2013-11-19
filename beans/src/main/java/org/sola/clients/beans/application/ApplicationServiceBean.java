@@ -424,6 +424,8 @@ public class ApplicationServiceBean extends ApplicationServiceSummaryBean {
      */
     public boolean isNewProperty() {
         return RequestTypeBean.CODE_REGISTER_LEASE.equals(getRequestTypeCode())
-                || RequestTypeBean.CODE_REGISTER_SUBLEASE.equals(getRequestTypeCode());
+                || RequestTypeBean.CODE_REGISTER_SUBLEASE.equals(getRequestTypeCode())
+                || RequestTypeBean.CODE_REGISTER_TAX_API.equals(getRequestTypeCode())
+                || RequestTypeBean.CODE_REGISTER_TOWN_API.equals(getRequestTypeCode());
     }
 }

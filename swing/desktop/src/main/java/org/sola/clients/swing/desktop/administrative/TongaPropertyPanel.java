@@ -343,8 +343,8 @@ public class TongaPropertyPanel extends ContentPanel {
             allowEdit(txtParcelName, enabledOnNew);
             rbTownAllotment.setVisible(true);
             rbTaxAllotment.setVisible(true);
-            rbTownAllotment.setEnabled(enabledOnNew);
-            rbTaxAllotment.setEnabled(enabledOnNew);
+            rbTownAllotment.setEnabled(false);
+            rbTaxAllotment.setEnabled(false);
         } else if (baUnitBean1.isLease()) {
             lblFirstPart.setText(resourceBundle.getString("TongaPropertyPanel.Lease.lblFirstPart.text"));
         } else if (baUnitBean1.isSublease()) {

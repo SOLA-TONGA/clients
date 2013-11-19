@@ -111,7 +111,7 @@ public class PropertyHelper {
             if (appBean.getSelectedProperty().getBaUnitId() == null) {
                 // Set the Deed and Folio for the allotment if specified. 
                 result.setNameFirstpart(appBean.getSelectedProperty().getNameFirstpart());
-                result.setNameFirstpart(appBean.getSelectedProperty().getNameLastpart());
+                result.setNameLastpart(appBean.getSelectedProperty().getNameLastpart());
                 result.setName(result.getNameFirstpart() + "/" + result.getNameLastpart());
             }
 
