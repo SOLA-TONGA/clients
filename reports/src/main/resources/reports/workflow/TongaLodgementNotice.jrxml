@@ -2,16 +2,52 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="00bf21df-40ae-45f3-af17-3a6614efe40c">
 	<property name="ireport.zoom" value="1.0000000000000002"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="201"/>
+	<subDataset name="servicesList" whenResourceMissingType="Empty" uuid="902dd815-6534-4773-9456-5ea2d5c4f683">
+		<queryString>
+			<![CDATA[]]>
+		</queryString>
+		<field name="requestType" class="org.sola.clients.beans.referencedata.RequestTypeBean">
+			<fieldDescription><![CDATA[requestType]]></fieldDescription>
+		</field>
+		<field name="requestTypeCode" class="java.lang.String">
+			<fieldDescription><![CDATA[requestTypeCode]]></fieldDescription>
+		</field>
+		<field name="serviceOrder" class="java.lang.Integer">
+			<fieldDescription><![CDATA[serviceOrder]]></fieldDescription>
+		</field>
+		<field name="expectedCompletionDate" class="java.util.Date">
+			<fieldDescription><![CDATA[expectedCompletionDate]]></fieldDescription>
+		</field>
+		<sortField name="serviceOrder"/>
+	</subDataset>
+	<subDataset name="documentsList" whenResourceMissingType="Empty" uuid="4fcb345f-eeb4-41fa-8685-7f54e4b158a5">
+		<queryString>
+			<![CDATA[]]>
+		</queryString>
+		<field name="sourceType" class="org.sola.clients.beans.referencedata.SourceTypeBean">
+			<fieldDescription><![CDATA[sourceType]]></fieldDescription>
+		</field>
+		<field name="referenceNr" class="java.lang.String">
+			<fieldDescription><![CDATA[referenceNr]]></fieldDescription>
+		</field>
+		<field name="recordation" class="java.util.Date">
+			<fieldDescription><![CDATA[recordation]]></fieldDescription>
+		</field>
+		<field name="description" class="java.lang.String">
+			<fieldDescription><![CDATA[description]]></fieldDescription>
+		</field>
+	</subDataset>
 	<parameter name="SILA_IMAGE" class="java.io.InputStream"/>
+	<parameter name="USER_NAME" class="java.lang.String" isForPrompting="false"/>
 	<queryString>
 		<![CDATA[]]>
 	</queryString>
 	<field name="appBean" class="org.sola.clients.beans.application.ApplicationBean">
 		<fieldDescription><![CDATA[appBean]]></fieldDescription>
 	</field>
-	<field name="formattedLodgementDate" class="java.lang.String">
-		<fieldDescription><![CDATA[formattedLodgementDate]]></fieldDescription>
+	<field name="appReportBean" class="org.sola.clients.beans.report.ApplicationReportBean">
+		<fieldDescription><![CDATA[appReportBean]]></fieldDescription>
 	</field>
 	<background>
 		<band splitType="Stretch"/>
@@ -54,42 +90,238 @@ CLIMATE CHANGE & NATURAL RESOURCES]]></text>
 		<band splitType="Stretch"/>
 	</columnHeader>
 	<detail>
-		<band height="628" splitType="Stretch">
-			<staticText>
-				<reportElement uuid="9cba40b3-33ae-4634-a4a7-1846a7a1e94d" x="0" y="19" width="99" height="19"/>
-				<textElement verticalAlignment="Middle">
-					<font fontName="Arial" size="12" isBold="true" isUnderline="false"/>
-				</textElement>
-				<text><![CDATA[Application N#]]></text>
-			</staticText>
+		<band height="135" splitType="Stretch">
 			<textField isBlankWhenNull="true">
-				<reportElement uuid="170259c8-2c91-42c9-b369-229c0874cd03" x="99" y="19" width="173" height="19"/>
-				<textElement verticalAlignment="Middle">
-					<font fontName="Arial" size="12"/>
+				<reportElement uuid="170259c8-2c91-42c9-b369-229c0874cd03" x="357" y="9" width="185" height="16"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Serif" size="10" isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{appBean}.getNr()]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Application N# " + $F{appBean}.getNr()]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement uuid="170259c8-2c91-42c9-b369-229c0874cd03" x="0" y="48" width="553" height="19"/>
+				<reportElement uuid="170259c8-2c91-42c9-b369-229c0874cd03" x="11" y="38" width="531" height="18"/>
 				<textElement verticalAlignment="Middle">
-					<font fontName="Arial" size="12"/>
+					<font fontName="Serif" size="12" isItalic="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{appBean}.getContactPerson().getFullName()]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement uuid="170259c8-2c91-42c9-b369-229c0874cd03" x="0" y="67" width="553" height="19"/>
+				<reportElement uuid="170259c8-2c91-42c9-b369-229c0874cd03" x="11" y="56" width="531" height="18"/>
 				<textElement verticalAlignment="Middle">
-					<font fontName="Arial" size="12"/>
+					<font fontName="Serif" size="12" isItalic="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{appBean}.getContactPerson().getAddress() == null ? "" : $F{appBean}.getContactPerson().getAddress().getDescription()]]></textFieldExpression>
 			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="170259c8-2c91-42c9-b369-229c0874cd03" x="11" y="74" width="531" height="18"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Serif" size="12" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{appReportBean}.getPrimaryContactText()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="170259c8-2c91-42c9-b369-229c0874cd03" x="11" y="95" width="531" height="40"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Serif" size="12" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{appReportBean}.getLodgementNoticeIntroText()]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="48">
+			<staticText>
+				<reportElement uuid="ac85d12a-55f3-4002-bdff-3cc6e8fa24a8" x="11" y="8" width="531" height="18"/>
+				<textElement>
+					<font fontName="Serif" size="12" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Services]]></text>
+			</staticText>
+			<componentElement>
+				<reportElement uuid="4a4eb5f7-f2f0-408d-b8c0-5773dc124139" stretchType="RelativeToBandHeight" x="11" y="30" width="531" height="18" isRemoveLineWhenBlank="true"/>
+				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
+					<datasetRun subDataset="servicesList" uuid="4514fa4d-d045-4a99-95ab-ca15bde8d4ef">
+						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanArrayDataSource($F{appBean}.getServiceList().toArray())]]></dataSourceExpression>
+					</datasetRun>
+					<jr:listContents height="18" width="531">
+						<textField>
+							<reportElement uuid="0fd57e1a-7da7-4343-bb34-4dd0dd2b7b11" x="18" y="0" width="513" height="18" isRemoveLineWhenBlank="true"/>
+							<textElement>
+								<font fontName="Serif" size="12"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$F{requestType}.getDisplayValue()]]></textFieldExpression>
+						</textField>
+						<textField>
+							<reportElement uuid="929e9f7d-717a-49a6-860c-477d56369017" x="0" y="0" width="18" height="18" isRemoveLineWhenBlank="true"/>
+							<textElement>
+								<font fontName="Serif" size="12"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$F{serviceOrder}.toString() + "."]]></textFieldExpression>
+						</textField>
+					</jr:listContents>
+				</jr:list>
+			</componentElement>
+		</band>
+		<band height="49">
+			<staticText>
+				<reportElement uuid="ac85d12a-55f3-4002-bdff-3cc6e8fa24a8" x="11" y="8" width="531" height="18"/>
+				<textElement>
+					<font fontName="Serif" size="12" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Documents]]></text>
+			</staticText>
+			<componentElement>
+				<reportElement uuid="c6d15be5-4ac6-416d-9e2b-c623b26c3507" x="11" y="30" width="531" height="18" isRemoveLineWhenBlank="true"/>
+				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
+					<datasetRun subDataset="documentsList" uuid="2b1d438e-9007-4ede-b67f-e1ee04c1159c">
+						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanArrayDataSource($F{appBean}.getSourceFilteredList().toArray())]]></dataSourceExpression>
+					</datasetRun>
+					<jr:listContents height="18" width="531">
+						<textField>
+							<reportElement uuid="20a6437b-809c-4b4e-98a3-d0a9fca94b8c" x="18" y="0" width="513" height="18"/>
+							<textElement>
+								<font fontName="Serif" size="12"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$F{referenceNr} == null ? $F{sourceType}.getDisplayValue() : 
+$F{sourceType}.getDisplayValue() + " (" +  $F{referenceNr}  + ")"]]></textFieldExpression>
+						</textField>
+						<textField>
+							<reportElement uuid="576e2dfa-9ba9-49f1-aa47-572573e1ef84" x="0" y="0" width="18" height="18"/>
+							<textElement>
+								<font fontName="Serif" size="12"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$V{REPORT_COUNT} + "."]]></textFieldExpression>
+						</textField>
+					</jr:listContents>
+				</jr:list>
+			</componentElement>
+		</band>
+		<band height="114">
+			<staticText>
+				<reportElement uuid="ac85d12a-55f3-4002-bdff-3cc6e8fa24a8" x="11" y="8" width="531" height="18"/>
+				<textElement>
+					<font fontName="Serif" size="12" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Fees]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="170259c8-2c91-42c9-b369-229c0874cd03" x="120" y="30" width="48" height="18"/>
+				<textElement textAlignment="Right" verticalAlignment="Top">
+					<font fontName="Serif" size="12" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{appReportBean}.formatMoney( $F{appBean}.getServicesFee() )]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="ac85d12a-55f3-4002-bdff-3cc6e8fa24a8" x="27" y="30" width="93" height="18"/>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font fontName="Serif" size="12" isBold="false" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Service Fees]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="ac85d12a-55f3-4002-bdff-3cc6e8fa24a8" x="27" y="48" width="93" height="18"/>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font fontName="Serif" size="12" isBold="false" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Consumption Tax]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="170259c8-2c91-42c9-b369-229c0874cd03" x="120" y="48" width="48" height="18"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Serif" size="12" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{appReportBean}.formatMoney( $F{appBean}.getTax() )]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="ac85d12a-55f3-4002-bdff-3cc6e8fa24a8" x="27" y="66" width="93" height="18"/>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font fontName="Serif" size="12" isBold="false" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Total Fee]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="170259c8-2c91-42c9-b369-229c0874cd03" x="120" y="66" width="48" height="18"/>
+				<textElement textAlignment="Right" verticalAlignment="Top">
+					<font fontName="Serif" size="12" isBold="false" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{appReportBean}.formatMoney( $F{appBean}.getTotalFee() )]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="170259c8-2c91-42c9-b369-229c0874cd03" x="293" y="66" width="48" height="18"/>
+				<textElement textAlignment="Right" verticalAlignment="Top">
+					<font fontName="Serif" size="12" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{appReportBean}.formatMoney( $F{appBean}.getTotalAmountPaid() )]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="170259c8-2c91-42c9-b369-229c0874cd03" x="120" y="84" width="48" height="18"/>
+				<textElement textAlignment="Right" verticalAlignment="Top">
+					<font fontName="Serif" size="12" isBold="true" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{appReportBean}.formatMoney( $F{appBean}.getTotalFee().subtract($F{appBean}.getTotalAmountPaid())  )]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="170259c8-2c91-42c9-b369-229c0874cd03" x="357" y="66" width="149" height="36"/>
+				<textElement textAlignment="Right" verticalAlignment="Top">
+					<font fontName="Serif" size="12" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{appBean}.getReceiptRef() == null || $F{appBean}.getReceiptRef().trim() == "" ?
+"" : "Receipt N# " + $F{appBean}.getReceiptRef()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="ac85d12a-55f3-4002-bdff-3cc6e8fa24a8" x="27" y="84" width="93" height="18"/>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font fontName="Serif" size="12" isBold="true" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[To Pay]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="ac85d12a-55f3-4002-bdff-3cc6e8fa24a8" x="216" y="66" width="77" height="18"/>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font fontName="Serif" size="12" isBold="false" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Amount Paid]]></text>
+			</staticText>
 		</band>
 	</detail>
 	<columnFooter>
 		<band splitType="Stretch"/>
 	</columnFooter>
 	<pageFooter>
-		<band splitType="Stretch"/>
+		<band height="44" splitType="Stretch">
+			<textField>
+				<reportElement uuid="8329447c-4c1d-4eb2-9f8c-a90d0fc56540" x="11" y="10" width="255" height="14"/>
+				<textElement textAlignment="Left">
+					<font fontName="Serif"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Generated by " + $P{USER_NAME}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="7884902f-c113-4d4e-88a5-2196d5c37353" x="448" y="10" width="80" height="14"/>
+				<textElement textAlignment="Right">
+					<font fontName="Serif"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report" isBlankWhenNull="true">
+				<reportElement uuid="ce59a1fc-b7f1-4079-b2a4-adeab8f1b8fa" x="528" y="10" width="14" height="14"/>
+				<textElement>
+					<font fontName="Serif"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement uuid="1d38a8c1-7da7-4526-9574-bb3e33f53689" x="0" y="2" width="555" height="1"/>
+				<graphicElement>
+					<pen lineWidth="1.5" lineColor="#666666"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement uuid="8329447c-4c1d-4eb2-9f8c-a90d0fc56540" x="11" y="24" width="255" height="14"/>
+				<textElement textAlignment="Left">
+					<font fontName="Serif"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{appReportBean}.formatDateTime( new java.util.Date() )]]></textFieldExpression>
+			</textField>
+		</band>
 	</pageFooter>
 	<summary>
 		<band splitType="Stretch"/>

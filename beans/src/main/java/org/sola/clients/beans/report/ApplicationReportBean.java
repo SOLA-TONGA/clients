@@ -29,9 +29,16 @@
  */
 package org.sola.clients.beans.report;
 
+import java.math.BigDecimal;
+import java.text.DecimalFormat;
+import java.text.ParseException;
 import java.util.Date;
+import javax.swing.text.DefaultFormatter;
+import javax.swing.text.NumberFormatter;
 import org.sola.clients.beans.application.ApplicationBean;
+import org.sola.clients.beans.referencedata.RequestTypeBean;
 import org.sola.common.DateUtility;
+import org.sola.common.StringUtility;
 
 /**
  * Bean used to format and enhance the ApplicationBean for reporting purposes.
@@ -42,39 +49,25 @@ public class ApplicationReportBean {
 
     private static final String MEDIUM_DATE_FORMAT = "d MMM yyyy";
     private static final String MEDIUM_DATETIME_FORMAT = "d MMM yyyy h:mm a";
+    private static final String MEDIUM_TIME_FORMAT = "h:mm a";
+    private static final String MONEY_FORMAT = "T$#,##0.00";
     private ApplicationBean appBean;
-    private transient String formattedLodgementDate;
+    private DefaultFormatter moneyFormat;
+    // This field allows all public methods on the ApplicationReportBean to be exposed
+    // directly in JasperReports
+    private transient ApplicationReportBean appReportBean;
 
     public ApplicationReportBean() {
         super();
+        // Format for Tongan $
+        moneyFormat = new NumberFormatter(new DecimalFormat(MONEY_FORMAT));
+        moneyFormat.setValueClass(BigDecimal.class);
     }
 
     public ApplicationReportBean(ApplicationBean appBean) {
-        super();
+        this();
         this.appBean = appBean;
 
-    }
-
-    /**
-     * Formats a date value using the custom medium date format mask
-     *
-     * @param date
-     * @return
-     */
-    private String formatDate(Date date) {
-        String result = "";
-        if (date != null) {
-            result = DateUtility.simpleFormat(date, MEDIUM_DATE_FORMAT);
-        }
-        return result;
-    }
-
-    private String formatDateTime(Date date) {
-        String result = "";
-        if (date != null) {
-            result = DateUtility.simpleFormat(date, MEDIUM_DATETIME_FORMAT);
-        }
-        return result;
     }
 
     public ApplicationBean getAppBean() {
@@ -85,11 +78,111 @@ public class ApplicationReportBean {
         this.appBean = appBean;
     }
 
-    public String getFormattedLodgementDate() {
-        return formatDateTime(appBean.getLodgingDatetime());
+    /**
+     * Allows the methods on the ApplicationReportBean class to be exposed to
+     * JasperReports without the need to explicitly map a number of dummy fields
+     */
+    public ApplicationReportBean getAppReportBean() {
+        return this;
     }
 
-    public void setFormattedLodgementDate(String value) {
-        this.formattedLodgementDate = value;
+    /**
+     * Formats a date value using the custom medium date format mask
+     */
+    public String formatDate(Date date) {
+        String result = "";
+        if (date != null) {
+            result = DateUtility.simpleFormat(date, MEDIUM_DATE_FORMAT);
+        }
+        return result;
+    }
+
+    /**
+     * Formats a datetime value using the custom medium date format mask
+     */
+    public String formatDateTime(Date date) {
+        String result = "";
+        if (date != null) {
+            result = DateUtility.simpleFormat(date, MEDIUM_DATETIME_FORMAT);
+        }
+        return result;
+    }
+
+    /**
+     * Formats a time value using the custom medium time format mask
+     */
+    public String formatTime(Date date) {
+        String result = "";
+        if (date != null) {
+            result = DateUtility.simpleFormat(date, MEDIUM_TIME_FORMAT);
+        }
+        return result;
+    }
+
+    /**
+     * Formats money values with Tongan currency symbol.
+     */
+    public String formatMoney(BigDecimal amount) {
+        String result = "";
+        if (amount != null) {
+            try {
+                result = moneyFormat.valueToString(amount);
+            } catch (ParseException ex) {
+            }
+        }
+        return result;
+    }
+
+    /**
+     * Determines the primary contact information for the contact person.
+     * Returns the first populated value from mobile, phone and email. If none
+     * are populated, empty string ("") is returned.
+     */
+    public String getPrimaryContactText() {
+        return this.appBean.getContactPerson() == null ? ""
+                : StringUtility.isEmpty(this.appBean.getContactPerson().getMobile()) == false
+                ? "Ph: " + this.appBean.getContactPerson().getMobile()
+                : StringUtility.isEmpty(this.appBean.getContactPerson().getPhone()) == false
+                ? "Ph: " + this.appBean.getContactPerson().getPhone()
+                : StringUtility.isEmpty(this.appBean.getContactPerson().getEmail()) == false
+                ? "eMail: " + this.appBean.getContactPerson().getEmail()
+                : "";
+    }
+
+    /**
+     * Generates a sentence to use as the introduction for the Lodgement Notice
+     */
+    public String getLodgementNoticeIntroText() {
+        String result = "Application " + this.appBean.getNr()
+                + " lodged on " + formatDate(this.appBean.getLodgingDatetime())
+                + " at " + formatTime(this.appBean.getLodgingDatetime());
+
+        // Determine what the application is for and generate a suitable application description
+        if (this.appBean.hasService(RequestTypeBean.CODE_REGISTER_SUBLEASE)) {
+            result += " for a new sublease";
+        } else if (this.appBean.hasService(RequestTypeBean.CODE_REGISTER_LEASE)) {
+            result += " for a new lease";
+        } else if (this.appBean.hasService(RequestTypeBean.CODE_REGISTER_TAX_API)) {
+            result += " for a new tax allotment";
+        } else if (this.appBean.hasService(RequestTypeBean.CODE_REGISTER_TOWN_API)) {
+            result += " for a new town allotment";
+        } else if (!StringUtility.isEmpty(this.appBean.getSelectedProperty().getSubleaseNumber())) {
+            result += " affecting sublease " + this.appBean.getSelectedProperty().getSubleaseNumber();
+        } else if (!StringUtility.isEmpty(this.appBean.getSelectedProperty().getLeaseNumber())) {
+            result += " affecting lease " + this.appBean.getSelectedProperty().getLeaseNumber();
+        } else {
+            if (!StringUtility.isEmpty(this.appBean.getSelectedProperty().getNameFirstpart())
+                    && !StringUtility.isEmpty(this.appBean.getSelectedProperty().getNameLastpart())) {
+                result += " affecting allotment " + this.appBean.getSelectedProperty().getNameFirstpart()
+                        + "/" + this.appBean.getSelectedProperty().getNameLastpart();
+            } else {
+                result += " affecting allotment";
+            }
+        }
+        result += this.appBean.getSelectedProperty().getTown() != null
+                ? " located at " + this.appBean.getSelectedProperty().getTown().getDisplayValue()
+                : "";
+        result += ".";
+        return result;
     }
 }

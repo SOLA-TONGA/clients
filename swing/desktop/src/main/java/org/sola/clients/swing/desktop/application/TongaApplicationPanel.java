@@ -782,7 +782,6 @@ public class TongaApplicationPanel extends ContentPanel {
         dropDownButton1 = new org.sola.clients.swing.common.controls.DropDownButton();
         btnCertificate = new javax.swing.JButton();
         jSeparator7 = new javax.swing.JToolBar.Separator();
-        jButton1 = new javax.swing.JButton();
         tabbedControlMain = new javax.swing.JTabbedPane();
         contactPanel = new javax.swing.JPanel();
         jPanel25 = new javax.swing.JPanel();
@@ -1298,18 +1297,6 @@ public class TongaApplicationPanel extends ContentPanel {
 
         jSeparator7.setName(bundle.getString("ApplicationPanel.jSeparator7.name")); // NOI18N
         jToolBar3.add(jSeparator7);
-
-        jButton1.setText(bundle.getString("TongaApplicationPanel.jButton1.text")); // NOI18N
-        jButton1.setFocusable(false);
-        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton1.setName("jButton1"); // NOI18N
-        jButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        jToolBar3.add(jButton1);
 
         tabbedControlMain.setName("tabbedControlMain"); // NOI18N
         tabbedControlMain.setPreferredSize(new java.awt.Dimension(440, 370));
@@ -3715,10 +3702,6 @@ public class TongaApplicationPanel extends ContentPanel {
         printStatusReport();
     }//GEN-LAST:event_menuPrintStatusReportActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       showReport(ReportManager.getTongaLodgementNotice(new ApplicationReportBean(appBean)));
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void openSysRegCertParamsForm(String nr) {
         SysRegCertParamsForm certificateGenerator = new SysRegCertParamsForm(null, true, nr, null);
         certificateGenerator.setVisible(true);
@@ -4215,7 +4198,6 @@ public class TongaApplicationPanel extends ContentPanel {
     private org.sola.clients.swing.ui.GroupPanel groupPanel4;
     private org.sola.clients.swing.ui.GroupPanel groupPanel5;
     public javax.swing.JPanel historyPanel;
-    private javax.swing.JButton jButton1;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JLabel jLabel1;

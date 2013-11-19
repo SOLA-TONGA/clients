@@ -92,7 +92,7 @@ public class PropertyHelper {
         }
         return result != null ? result : new BaUnitBean();
     }
-
+ 
     /**
      * Creates a new BaUnitBean representing the new allotment details. Used for
      * the Register Tax Api and Town Api services.
