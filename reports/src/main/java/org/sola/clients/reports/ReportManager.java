@@ -783,6 +783,7 @@ public class ReportManager {
         HashMap inputParameters = new HashMap();
         inputParameters.put("SILA_IMAGE",
                 ReportManager.class.getResourceAsStream(silaImage));
+        inputParameters.put("USER_NAME", SecurityBean.getCurrentUser().getFullUserName());
         ApplicationReportBean[] beans = new ApplicationReportBean[1];
         beans[0] = appBean;
         JRDataSource jds = new JRBeanArrayDataSource(beans);

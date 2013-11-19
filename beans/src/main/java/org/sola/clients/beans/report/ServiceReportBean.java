@@ -36,7 +36,6 @@ import org.sola.clients.beans.system.LanguageBean;
 import org.sola.common.NumberUtility;
 import org.sola.services.boundary.wsclients.WSManager;
 import org.sola.webservices.transferobjects.AbstractCodeTO;
-import org.sola.webservices.transferobjects.referencedata.LandUseTypeTO;
 
 /**
  *
