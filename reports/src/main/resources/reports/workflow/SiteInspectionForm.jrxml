@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Site Inspection Form" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" resourceBundle="org.sola.clients.reports.locale.SiteInspection" uuid="e880b9f3-6305-4f1f-b0ec-df6f79d507c0">
 	<property name="ireport.zoom" value="0.9090909090909103"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="48"/>
+	<property name="ireport.y" value="0"/>
 	<parameter name="SILA_IMAGE" class="java.io.InputStream"/>
 	<queryString>
 		<![CDATA[]]>
@@ -87,7 +87,7 @@ CLIMATE CHANGE & NATURAL RESOURCES]]></text>
 				<text><![CDATA[Occupants]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="97b6c5f9-242a-4479-af48-0aab98888ddc" x="0" y="212" width="135" height="20"/>
+				<reportElement uuid="97b6c5f9-242a-4479-af48-0aab98888ddc" x="0" y="212" width="124" height="20"/>
 				<textElement markup="none">
 					<font fontName="Arial" size="12" isBold="true"/>
 				</textElement>
@@ -128,7 +128,7 @@ CLIMATE CHANGE & NATURAL RESOURCES]]></text>
 			<rectangle>
 				<reportElement uuid="79aeda4d-a270-431d-9573-a09862f8b225" x="135" y="11" width="420" height="32"/>
 			</rectangle>
-			<textField>
+			<textField isBlankWhenNull="true">
 				<reportElement uuid="35cbe6c7-0cde-4589-b053-a6c926e486ae" x="135" y="11" width="418" height="32"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Arial" size="12"/>
