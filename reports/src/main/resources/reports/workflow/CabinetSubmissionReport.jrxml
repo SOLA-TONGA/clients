@@ -280,7 +280,7 @@ with the following details.]]></text>
 				</textElement>
 				<text><![CDATA[-]]></text>
 			</staticText>
-			<textField>
+			<textField isBlankWhenNull="true">
 				<reportElement uuid="892b5e39-0562-4456-95b9-105136568a0d" x="108" y="356" width="359" height="19"/>
 				<textElement markup="none">
 					<font fontName="Arial" size="12"/>
@@ -294,40 +294,40 @@ with the following details.]]></text>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{lessorName}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField isBlankWhenNull="true">
 				<reportElement uuid="7c452e81-facf-4e2b-babd-8162961eded7" x="108" y="394" width="359" height="19"/>
 				<textElement markup="none">
 					<font fontName="Arial" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{area}+" m²"]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField isBlankWhenNull="true">
 				<reportElement uuid="700b727d-ab67-4e10-8017-68df43747d9c" x="108" y="413" width="359" height="19"/>
 				<textElement markup="none">
 					<font fontName="Arial" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{leaseTerm}+" years"]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField isBlankWhenNull="true">
 				<reportElement uuid="f367ea4f-a754-4b5f-b58a-7a17ec69faa6" x="108" y="452" width="359" height="19"/>
 				<textElement markup="none">
 					<font fontName="Arial" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{amount}+" pa"]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField isBlankWhenNull="true">
 				<reportElement uuid="748a9b35-ebc2-4943-9194-4606f8b7c5ce" x="0" y="56" width="555" height="19"/>
 				<textElement markup="none">
 					<font fontName="Arial" size="13" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{lesseeName}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField isBlankWhenNull="true">
 				<reportElement uuid="5ca3b257-84ce-43cf-ac44-5b91939ee732" x="67" y="85" width="488" height="19"/>
 				<textElement markup="none">
 					<font fontName="Arial" size="13" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{town}.getDisplayValue()+", "+$F{island}.getDisplayValue()]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{town}.getDisplayValue() == null ? "" : $F{town}.getDisplayValue()+", "+$F{island}.getDisplayValue()]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement uuid="9cba40b3-33ae-4634-a4a7-1846a7a1e94d" x="0" y="241" width="16" height="18"/>
@@ -336,14 +336,14 @@ with the following details.]]></text>
 				</textElement>
 				<text><![CDATA[4.]]></text>
 			</staticText>
-			<textField>
+			<textField isBlankWhenNull="true">
 				<reportElement uuid="03ac00e0-e638-4aca-a871-78a1d1be7719" x="16" y="158" width="539" height="55"/>
 				<textElement>
 					<font fontName="Arial" size="12" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{description}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField isBlankWhenNull="true">
 				<reportElement uuid="f367ea4f-a754-4b5f-b58a-7a17ec69faa6" x="108" y="433" width="359" height="19"/>
 				<textElement markup="none">
 					<font fontName="Arial" size="12"/>

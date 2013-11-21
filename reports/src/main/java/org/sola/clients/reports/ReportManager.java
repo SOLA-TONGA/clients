@@ -822,8 +822,8 @@ public class ReportManager {
     public static JasperPrint getSignDeedNotification(ServiceReportBean serviceReportBean) {
         String silaImage = "/images/sola/sila.png";
         HashMap inputParameters = new HashMap();
-        inputParameters.put("SILA_IMAGE",
-                ReportManager.class.getResourceAsStream(silaImage));
+        inputParameters.put("SILA_IMAGE", ReportManager.class.getResourceAsStream(silaImage));
+        inputParameters.put("USER_NAME", SecurityBean.getCurrentUser().getFullUserName());
         ServiceReportBean[] beans = new ServiceReportBean[1];
         beans[0] = serviceReportBean;
         JRDataSource jds = new JRBeanArrayDataSource(beans);

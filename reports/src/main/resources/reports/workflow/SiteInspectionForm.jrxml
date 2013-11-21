@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Site Inspection Form" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" resourceBundle="org.sola.clients.reports.locale.SiteInspection" uuid="e880b9f3-6305-4f1f-b0ec-df6f79d507c0">
 	<property name="ireport.zoom" value="0.9090909090909103"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="48"/>
 	<parameter name="SILA_IMAGE" class="java.io.InputStream"/>
 	<queryString>
 		<![CDATA[]]>
@@ -133,9 +133,9 @@ CLIMATE CHANGE & NATURAL RESOURCES]]></text>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Arial" size="12"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{town}.getDisplayValue()+", "+$F{island}.getDisplayValue()]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{town}.getDisplayValue() == null ? "" : $F{town}.getDisplayValue()+", "+$F{island}.getDisplayValue()]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField isBlankWhenNull="true">
 				<reportElement uuid="26598e3d-fe1f-4cb8-9478-c9a7665e0097" x="135" y="43" width="418" height="30"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Arial" size="12"/>

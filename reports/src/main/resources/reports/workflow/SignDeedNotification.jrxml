@@ -2,8 +2,27 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="42c8e5cb-b441-42fe-b5f2-1fa0c20b36ab">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="48"/>
+	<property name="ireport.y" value="96"/>
 	<parameter name="SILA_IMAGE" class="java.io.InputStream"/>
+	<parameter name="USER_NAME" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="displayValue" class="java.lang.String">
+		<fieldDescription><![CDATA[appBean.selectedProperty.island.displayValue]]></fieldDescription>
+	</field>
+	<field name="displayValue_1" class="java.lang.String">
+		<fieldDescription><![CDATA[appBean.selectedProperty.town.displayValue]]></fieldDescription>
+	</field>
+	<field name="lesseeName" class="java.lang.String">
+		<fieldDescription><![CDATA[appBean.selectedProperty.lesseeName]]></fieldDescription>
+	</field>
+	<field name="applicationId" class="java.lang.String">
+		<fieldDescription><![CDATA[appBean.selectedProperty.applicationId]]></fieldDescription>
+	</field>
+	<field name="nr" class="java.lang.String">
+		<fieldDescription><![CDATA[appBean.nr]]></fieldDescription>
+	</field>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -24,7 +43,7 @@ CLIMATE CHANGE & NATURAL RESOURCES]]></text>
 				</graphicElement>
 			</line>
 			<staticText>
-				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="88" y="50" width="465" height="42" forecolor="#006666" backcolor="#FFFFFF"/>
+				<reportElement uuid="83ee9293-55a8-493c-bf92-08f31297fa4c" x="88" y="50" width="467" height="42" forecolor="#006666" backcolor="#FFFFFF"/>
 				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
 					<font fontName="Cambria" size="16" isBold="false" isUnderline="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -45,44 +64,60 @@ Sign Deed]]></text>
 		<band splitType="Stretch"/>
 	</columnHeader>
 	<detail>
-		<band height="761" splitType="Stretch">
+		<band height="318" splitType="Stretch">
+			<textField>
+				<reportElement uuid="44ec69f5-0dcc-4850-a021-55d655032c1c" x="0" y="0" width="259" height="18"/>
+				<textElement markup="none"/>
+				<textFieldExpression><![CDATA["Application Number: "+$F{nr}]]></textFieldExpression>
+			</textField>
 			<staticText>
-				<reportElement uuid="c60586e1-5e90-40b9-a940-b6a673f5e17b" x="0" y="13" width="95" height="19"/>
-				<textElement/>
-				<text><![CDATA[Ref. number:]]></text>
-			</staticText>
-			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement uuid="77596868-a2d4-4d2b-b9df-a742d7ba4f8c" x="0" y="45" width="555" height="305"/>
+				<reportElement uuid="18b7f4a6-56b1-4fbf-94be-6565338d170c" x="0" y="145" width="555" height="23"/>
 				<textElement markup="html">
 					<font size="12"/>
 				</textElement>
-				<textFieldExpression><![CDATA[Dear Sir/Madam, further to your lease application
-I am pleased to inform you that a lease       		for parcel 
-located at 		 of 	 squar meters is available.
-
-
-Could you please call the office to arrange for the signing of the Lease Deed
-You will also need to show that you have paid the first year's ground rent of 
-prior to the signing and the uplifting of the documents.
-
-
-Regards,
-Land Administration office]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement uuid="4b2f0300-7166-47f7-923c-5d576d677146" x="329" y="394" width="169" height="14"/>
-				<textElement textAlignment="Center"/>
-				<text><![CDATA[Signature]]></text>
+				<text><![CDATA[Could you please contact the office to arrange for the signing of the Deed.]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="a48c9e1a-3be0-48ba-8f1b-f8491db52344" x="0" y="373" width="66" height="16"/>
-				<textElement/>
-				<text><![CDATA[Prepared by:]]></text>
+				<reportElement uuid="25f5439d-c0c2-452b-9848-ad3a16f13c74" x="0" y="205" width="555" height="29"/>
+				<textElement markup="none">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[Kind Regards,]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="25f5439d-c0c2-452b-9848-ad3a16f13c74" x="0" y="234" width="166" height="18"/>
+				<textElement markup="none">
+					<font fontName="Arial" size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Land Administration office,]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="25f5439d-c0c2-452b-9848-ad3a16f13c74" x="2" y="252" width="164" height="17"/>
+				<textElement markup="none">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[MLECCNR]]></text>
 			</staticText>
 			<textField>
-				<reportElement uuid="7e67b1c1-38de-4b0a-bdf8-973f87c638b0" x="66" y="373" width="238" height="20"/>
-				<textElement/>
-				<textFieldExpression><![CDATA[$P{USER_NAME}]]></textFieldExpression>
+				<reportElement uuid="dc2935de-299c-4501-ac21-056f5361ea9a" x="0" y="50" width="259" height="18"/>
+				<textElement markup="none">
+					<font fontName="Arial" size="12" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Dear "+$F{lesseeName}+","]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="25f5439d-c0c2-452b-9848-ad3a16f13c74" x="0" y="83" width="555" height="18"/>
+				<textElement markup="none">
+					<font fontName="Arial" size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Further to your lease application, I am pleased to inform you that your lease located at]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="ca4475f7-99b4-4bb7-a358-ab439b9998d8" x="0" y="101" width="555" height="20"/>
+				<textElement>
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{displayValue_1}+", "+$F{displayValue}+" has been approved."]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
@@ -90,7 +125,18 @@ Land Administration office]]></textFieldExpression>
 		<band splitType="Stretch"/>
 	</columnFooter>
 	<pageFooter>
-		<band splitType="Stretch"/>
+		<band height="45" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="4b2f0300-7166-47f7-923c-5d576d677146" x="384" y="16" width="171" height="14"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Signature]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="02f015e5-c013-41ba-a565-6892a2172941" x="0" y="0" width="166" height="16"/>
+				<textElement markup="none"/>
+				<textFieldExpression><![CDATA["Prepared by: "+$P{USER_NAME}]]></textFieldExpression>
+			</textField>
+		</band>
 	</pageFooter>
 	<summary>
 		<band splitType="Stretch"/>

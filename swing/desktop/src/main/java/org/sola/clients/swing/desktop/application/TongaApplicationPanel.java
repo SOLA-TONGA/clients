@@ -57,6 +57,7 @@ import org.sola.clients.beans.validation.ValidationResultBean;
 import org.sola.clients.reports.ReportManager;
 import org.sola.clients.swing.common.LafManager;
 import org.sola.clients.swing.common.controls.AutoCompletion;
+import org.sola.clients.swing.common.controls.CalendarForm;
 import org.sola.clients.swing.common.converters.BigDecimalMoneyConverter;
 import org.sola.clients.swing.common.tasks.SolaTask;
 import org.sola.clients.swing.common.tasks.TaskManager;
@@ -836,6 +837,8 @@ public class TongaApplicationPanel extends ContentPanel {
         txtAllotmentHolder = new javax.swing.JTextField();
         jPanel30 = new javax.swing.JPanel();
         lblDateOfRegistration = new javax.swing.JLabel();
+        jPanel44 = new javax.swing.JPanel();
+        btnDateOfRegistration = new javax.swing.JButton();
         txtDateOfRegistration = new javax.swing.JFormattedTextField();
         jPanel40 = new javax.swing.JPanel();
         lblPurpose = new javax.swing.JLabel();
@@ -1892,6 +1895,19 @@ public class TongaApplicationPanel extends ContentPanel {
         lblDateOfRegistration.setText(bundle.getString("TongaApplicationPanel.lblDateOfRegistration.text")); // NOI18N
         lblDateOfRegistration.setName("lblDateOfRegistration"); // NOI18N
 
+        jPanel44.setName("jPanel44"); // NOI18N
+
+        btnDateOfRegistration.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/calendar.png"))); // NOI18N
+        btnDateOfRegistration.setText(bundle.getString("TongaApplicationPanel.btnDateOfRegistration.text")); // NOI18N
+        btnDateOfRegistration.setBorder(null);
+        btnDateOfRegistration.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnDateOfRegistration.setName("btnDateOfRegistration"); // NOI18N
+        btnDateOfRegistration.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDateOfRegistrationActionPerformed(evt);
+            }
+        });
+
         txtDateOfRegistration.setFormatterFactory(FormattersFactory.getInstance().getDateFormatterFactory());
         txtDateOfRegistration.setText(bundle.getString("TongaApplicationPanel.txtDateOfRegistration.text")); // NOI18N
         txtDateOfRegistration.setName("txtDateOfRegistration"); // NOI18N
@@ -1899,20 +1915,40 @@ public class TongaApplicationPanel extends ContentPanel {
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, appBean, org.jdesktop.beansbinding.ELProperty.create("${selectedProperty.registrationDate}"), txtDateOfRegistration, org.jdesktop.beansbinding.BeanProperty.create("value"));
         bindingGroup.addBinding(binding);
 
+        javax.swing.GroupLayout jPanel44Layout = new javax.swing.GroupLayout(jPanel44);
+        jPanel44.setLayout(jPanel44Layout);
+        jPanel44Layout.setHorizontalGroup(
+            jPanel44Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel44Layout.createSequentialGroup()
+                .addComponent(txtDateOfRegistration)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnDateOfRegistration, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        jPanel44Layout.setVerticalGroup(
+            jPanel44Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel44Layout.createSequentialGroup()
+                .addGroup(jPanel44Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtDateOfRegistration, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnDateOfRegistration))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout jPanel30Layout = new javax.swing.GroupLayout(jPanel30);
         jPanel30.setLayout(jPanel30Layout);
         jPanel30Layout.setHorizontalGroup(
             jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(lblDateOfRegistration, javax.swing.GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE)
-            .addComponent(txtDateOfRegistration)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel30Layout.createSequentialGroup()
+                .addComponent(jPanel44, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(1, 1, 1))
         );
         jPanel30Layout.setVerticalGroup(
             jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel30Layout.createSequentialGroup()
                 .addComponent(lblDateOfRegistration)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtDateOfRegistration, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 15, Short.MAX_VALUE))
+                .addComponent(jPanel44, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel21.add(jPanel30);
@@ -2505,10 +2541,10 @@ public class TongaApplicationPanel extends ContentPanel {
         jPanel19.setLayout(jPanel19Layout);
         jPanel19Layout.setHorizontalGroup(
             jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 665, Short.MAX_VALUE)
             .addComponent(groupPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel34, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-            .addComponent(jPanel21, javax.swing.GroupLayout.DEFAULT_SIZE, 665, Short.MAX_VALUE)
+            .addComponent(jPanel21, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
             .addComponent(groupPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
         );
@@ -3702,6 +3738,10 @@ public class TongaApplicationPanel extends ContentPanel {
         printStatusReport();
     }//GEN-LAST:event_menuPrintStatusReportActionPerformed
 
+    private void btnDateOfRegistrationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDateOfRegistrationActionPerformed
+        showCalendar(txtDateOfRegistration);
+    }//GEN-LAST:event_btnDateOfRegistrationActionPerformed
+
     private void openSysRegCertParamsForm(String nr) {
         SysRegCertParamsForm certificateGenerator = new SysRegCertParamsForm(null, true, nr, null);
         certificateGenerator.setVisible(true);
@@ -4132,6 +4172,11 @@ public class TongaApplicationPanel extends ContentPanel {
     private void printApplicationReport() {
         showReport(ReportManager.getLeaseApplicationReport(appBean));
     }
+    
+    private void showCalendar(JFormattedTextField dateField) {
+        CalendarForm calendar = new CalendarForm(null, true, dateField);
+        calendar.setVisible(true);
+    }
 
     @Override
     protected boolean panelClosing() {
@@ -4152,6 +4197,7 @@ public class TongaApplicationPanel extends ContentPanel {
     private javax.swing.JButton btnCertificate;
     private javax.swing.JButton btnClear;
     private javax.swing.JButton btnCompleteService;
+    private javax.swing.JButton btnDateOfRegistration;
     private javax.swing.JButton btnDownService;
     private javax.swing.JButton btnRemoveProperty;
     private javax.swing.JButton btnRemoveService;
@@ -4244,6 +4290,7 @@ public class TongaApplicationPanel extends ContentPanel {
     private javax.swing.JPanel jPanel41;
     private javax.swing.JPanel jPanel42;
     private javax.swing.JPanel jPanel43;
+    private javax.swing.JPanel jPanel44;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
