@@ -99,7 +99,6 @@ public class RequestTypeBean extends AbstractCodeBean {
     public static final String CODE_CANCEL_PERMIT = "cancelPermit";
     public static final String CODE_CORRECT_REGISTRY = "correctRegistry";
     public static final String CODE_CORRECT_REGISTRY_REMOVE = "correctRegistryRem";
-    
     // Codes not used for SOLA Tonga
     public static final String CODE_CANCEL_PROPERTY = "cancelProperty";
     public static final String CODE_CADASTRE_PRINT = "cadastrePrint";
@@ -128,6 +127,8 @@ public class RequestTypeBean extends AbstractCodeBean {
     public static final String BASE_FEE_PROPERTY = "baseFee";
     public static final String AREA_BASE_FEE_PROPERTY = "areaBaseFee";
     public static final String VALUE_BASE_FEE_PROPERTY = "valueBaseFee";
+    public static final String DISPLAY_ORDER_PROPERTY = "displayOrder";
+    public static final String DISPLAY_GROUP_NAME_PROPERTY = "displayGroupName";
     private int nrDaysToComplete;
     private int nrPropertiesRequired;
     private String notationTemplate;
@@ -143,6 +144,8 @@ public class RequestTypeBean extends AbstractCodeBean {
     private BigDecimal areaBaseFee;
     @NotNull(message = "Enter value base fee.")
     private BigDecimal valueBaseFee;
+    private int displayOrder;
+    private String displayGroupName;
 
     public RequestTypeBean() {
         super();
@@ -303,5 +306,25 @@ public class RequestTypeBean extends AbstractCodeBean {
         BigDecimal oldValue = this.valueBaseFee;
         this.valueBaseFee = valueBaseFee;
         propertySupport.firePropertyChange(VALUE_BASE_FEE_PROPERTY, oldValue, this.valueBaseFee);
+    }
+
+    public int getDisplayOrder() {
+        return displayOrder;
+    }
+
+    public void setDisplayOrder(int displayOrder) {
+        int oldValue = this.displayOrder;
+        this.displayOrder = displayOrder;
+        propertySupport.firePropertyChange(DISPLAY_ORDER_PROPERTY, oldValue, this.displayOrder);
+    }
+
+    public String getDisplayGroupName() {
+        return displayGroupName;
+    }
+
+    public void setDisplayGroupName(String displayGroupName) {
+        String old = this.displayGroupName;
+        this.displayGroupName = displayGroupName;
+        propertySupport.firePropertyChange(DISPLAY_GROUP_NAME_PROPERTY, old, this.displayGroupName);
     }
 }
