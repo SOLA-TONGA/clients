@@ -87,17 +87,16 @@ public class DocumentSearchForm extends ContentPanel {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(documentSearchPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 849, Short.MAX_VALUE)
+                .addComponent(documentSearchPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 869, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(documentSearchPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 335, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(documentSearchPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 357, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab(bundle.getString("DocumentSearchForm.jPanel1.TabConstraints.tabTitle"), jPanel1); // NOI18N
@@ -113,15 +112,14 @@ public class DocumentSearchForm extends ContentPanel {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(powerOfAttorneySearchPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 849, Short.MAX_VALUE)
+                .addComponent(powerOfAttorneySearchPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 869, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(powerOfAttorneySearchPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 335, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(powerOfAttorneySearchPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 357, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab(bundle.getString("DocumentSearchForm.jPanel2.TabConstraints.tabTitle"), jPanel2); // NOI18N
@@ -131,18 +129,14 @@ public class DocumentSearchForm extends ContentPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(headerPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 874, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jTabbedPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(headerPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTabbedPane1)
-                .addContainerGap())
+                .addComponent(jTabbedPane1))
         );
     }// </editor-fold>//GEN-END:initComponents
     // Variables declaration - do not modify//GEN-BEGIN:variables

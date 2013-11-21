@@ -94,7 +94,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jToolBar2" max="32767" attributes="0"/>
                           <Component id="jScrollPane2" max="32767" attributes="0"/>
-                          <Component id="jPanel1" alignment="0" pref="527" max="32767" attributes="0"/>
+                          <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -108,8 +108,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jToolBar2" min="-2" pref="25" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jScrollPane2" pref="149" max="32767" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jScrollPane2" pref="160" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -136,7 +135,7 @@
                       <Layout>
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel6" pref="122" max="32767" attributes="0"/>
+                              <Component id="jLabel6" pref="165" max="32767" attributes="0"/>
                               <Component id="txtAllotmentDeedNum" alignment="0" max="32767" attributes="0"/>
                           </Group>
                         </DimensionLayout>
@@ -172,7 +171,7 @@
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="txtAllotmentFolio" max="32767" attributes="0"/>
-                              <Component id="jLabel7" alignment="0" pref="122" max="32767" attributes="0"/>
+                              <Component id="jLabel7" alignment="0" pref="165" max="32767" attributes="0"/>
                           </Group>
                         </DimensionLayout>
                         <DimensionLayout dim="1">
@@ -206,7 +205,7 @@
                       <Layout>
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel8" pref="122" max="32767" attributes="0"/>
+                              <Component id="jLabel8" pref="165" max="32767" attributes="0"/>
                               <Component id="txtAllotmentBookNum" alignment="0" max="32767" attributes="0"/>
                           </Group>
                         </DimensionLayout>
@@ -242,7 +241,7 @@
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="txtAllotmentPage" max="32767" attributes="0"/>
-                              <Component id="jLabel9" alignment="0" pref="122" max="32767" attributes="0"/>
+                              <Component id="jLabel9" alignment="0" pref="165" max="32767" attributes="0"/>
                           </Group>
                         </DimensionLayout>
                         <DimensionLayout dim="1">
@@ -276,12 +275,8 @@
                       <Layout>
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel4" pref="122" max="32767" attributes="0"/>
-                              <Group type="102" attributes="0">
-                                  <Component id="txtAllotmentRegDateFrom" max="32767" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="btnAllotmentDateFrom" min="-2" pref="17" max="-2" attributes="0"/>
-                              </Group>
+                              <Component id="jLabel4" pref="165" max="32767" attributes="0"/>
+                              <Component id="jPanel4" max="32767" attributes="0"/>
                           </Group>
                         </DimensionLayout>
                         <DimensionLayout dim="1">
@@ -289,48 +284,72 @@
                               <Group type="102" alignment="1" attributes="0">
                                   <Component id="jLabel4" min="-2" pref="14" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="txtAllotmentRegDateFrom" min="-2" max="-2" attributes="0"/>
-                                      <Component id="btnAllotmentDateFrom" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="jPanel4" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
                       </Layout>
                       <SubComponents>
-                        <Component class="javax.swing.JFormattedTextField" name="txtAllotmentRegDateFrom">
-                          <Properties>
-                            <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                              <Connection code="FormattersFactory.getInstance().getDateFormatterFactory()" type="code"/>
-                            </Property>
-                          </Properties>
-                          <BindingProperties>
-                            <BindingProperty name="value" source="allotmentParams" sourcePath="${registeredDateFrom}" target="txtAllotmentRegDateFrom" targetPath="value" updateStrategy="0" immediately="false"/>
-                          </BindingProperties>
-                        </Component>
                         <Component class="javax.swing.JLabel" name="jLabel4">
                           <Properties>
                             <Property name="text" type="java.lang.String" value="Registered Date From:"/>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JButton" name="btnAllotmentDateFrom">
-                          <Properties>
-                            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                              <Image iconType="3" name="/images/common/calendar.png"/>
-                            </Property>
-                            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
-                              <ResourceString bundle="org/sola/clients/swing/ui/source/Bundle.properties" key="DocumentSearchPanel.btnDateFrom.text" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
-                            </Property>
-                            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                              <Border info="null"/>
-                            </Property>
-                            <Property name="horizontalTextPosition" type="int" value="0"/>
-                          </Properties>
-                          <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAllotmentDateFromActionPerformed"/>
-                          </Events>
-                        </Component>
+                        <Container class="javax.swing.JPanel" name="jPanel4">
+
+                          <Layout>
+                            <DimensionLayout dim="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="txtAllotmentRegDateFrom" max="32767" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="btnAllotmentDateFrom" min="-2" pref="17" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                            </DimensionLayout>
+                            <DimensionLayout dim="1">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="txtAllotmentRegDateFrom" min="-2" max="-2" attributes="0"/>
+                                          <Component id="btnAllotmentDateFrom" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                  </Group>
+                              </Group>
+                            </DimensionLayout>
+                          </Layout>
+                          <SubComponents>
+                            <Component class="javax.swing.JButton" name="btnAllotmentDateFrom">
+                              <Properties>
+                                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                                  <Image iconType="3" name="/images/common/calendar.png"/>
+                                </Property>
+                                <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+                                  <ResourceString bundle="org/sola/clients/swing/ui/source/Bundle.properties" key="DocumentSearchPanel.btnDateFrom.text" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+                                </Property>
+                                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                                  <Border info="null"/>
+                                </Property>
+                                <Property name="horizontalTextPosition" type="int" value="0"/>
+                              </Properties>
+                              <Events>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAllotmentDateFromActionPerformed"/>
+                              </Events>
+                            </Component>
+                            <Component class="javax.swing.JFormattedTextField" name="txtAllotmentRegDateFrom">
+                              <Properties>
+                                <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                                  <Connection code="FormattersFactory.getInstance().getDateFormatterFactory()" type="code"/>
+                                </Property>
+                              </Properties>
+                              <BindingProperties>
+                                <BindingProperty name="value" source="allotmentParams" sourcePath="${registeredDateFrom}" target="txtAllotmentRegDateFrom" targetPath="value" updateStrategy="0" immediately="false"/>
+                              </BindingProperties>
+                            </Component>
+                          </SubComponents>
+                        </Container>
                       </SubComponents>
                     </Container>
                     <Container class="javax.swing.JPanel" name="jPanel11">
@@ -338,13 +357,11 @@
                       <Layout>
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel5" pref="122" max="32767" attributes="0"/>
                               <Group type="102" attributes="0">
-                                  <Component id="txtAllotmentRegDateTo" max="32767" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="btnAllotmentDateTo" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
+                                  <Component id="jLabel5" pref="134" max="32767" attributes="0"/>
+                                  <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                               </Group>
+                              <Component id="jPanel3" alignment="0" max="32767" attributes="0"/>
                           </Group>
                         </DimensionLayout>
                         <DimensionLayout dim="1">
@@ -352,48 +369,72 @@
                               <Group type="102" alignment="1" attributes="0">
                                   <Component id="jLabel5" min="-2" pref="14" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="txtAllotmentRegDateTo" min="-2" max="-2" attributes="0"/>
-                                      <Component id="btnAllotmentDateTo" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
                       </Layout>
                       <SubComponents>
-                        <Component class="javax.swing.JFormattedTextField" name="txtAllotmentRegDateTo">
-                          <Properties>
-                            <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                              <Connection code="FormattersFactory.getInstance().getDateFormatterFactory()" type="code"/>
-                            </Property>
-                          </Properties>
-                          <BindingProperties>
-                            <BindingProperty name="value" source="allotmentParams" sourcePath="${registeredDateTo}" target="txtAllotmentRegDateTo" targetPath="value" updateStrategy="0" immediately="false"/>
-                          </BindingProperties>
-                        </Component>
                         <Component class="javax.swing.JLabel" name="jLabel5">
                           <Properties>
                             <Property name="text" type="java.lang.String" value="Registered Date To:"/>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JButton" name="btnAllotmentDateTo">
-                          <Properties>
-                            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                              <Image iconType="3" name="/images/common/calendar.png"/>
-                            </Property>
-                            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
-                              <ResourceString bundle="org/sola/clients/swing/ui/source/Bundle.properties" key="DocumentSearchPanel.btnDateFrom.text" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
-                            </Property>
-                            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                              <Border info="null"/>
-                            </Property>
-                            <Property name="horizontalTextPosition" type="int" value="0"/>
-                          </Properties>
-                          <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAllotmentDateToActionPerformed"/>
-                          </Events>
-                        </Component>
+                        <Container class="javax.swing.JPanel" name="jPanel3">
+
+                          <Layout>
+                            <DimensionLayout dim="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="txtAllotmentRegDateTo" max="32767" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="btnAllotmentDateTo" min="-2" pref="17" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                            </DimensionLayout>
+                            <DimensionLayout dim="1">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="txtAllotmentRegDateTo" min="-2" max="-2" attributes="0"/>
+                                          <Component id="btnAllotmentDateTo" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                  </Group>
+                              </Group>
+                            </DimensionLayout>
+                          </Layout>
+                          <SubComponents>
+                            <Component class="javax.swing.JButton" name="btnAllotmentDateTo">
+                              <Properties>
+                                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                                  <Image iconType="3" name="/images/common/calendar.png"/>
+                                </Property>
+                                <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+                                  <ResourceString bundle="org/sola/clients/swing/ui/source/Bundle.properties" key="DocumentSearchPanel.btnDateFrom.text" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+                                </Property>
+                                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                                  <Border info="null"/>
+                                </Property>
+                                <Property name="horizontalTextPosition" type="int" value="0"/>
+                              </Properties>
+                              <Events>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAllotmentDateToActionPerformed"/>
+                              </Events>
+                            </Component>
+                            <Component class="javax.swing.JFormattedTextField" name="txtAllotmentRegDateTo">
+                              <Properties>
+                                <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                                  <Connection code="FormattersFactory.getInstance().getDateFormatterFactory()" type="code"/>
+                                </Property>
+                              </Properties>
+                              <BindingProperties>
+                                <BindingProperty name="value" source="allotmentParams" sourcePath="${registeredDateTo}" target="txtAllotmentRegDateTo" targetPath="value" updateStrategy="0" immediately="false"/>
+                              </BindingProperties>
+                            </Component>
+                          </SubComponents>
+                        </Container>
                       </SubComponents>
                     </Container>
                   </SubComponents>
@@ -412,7 +453,7 @@
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="txtAllotmentLandHolder" max="32767" attributes="0"/>
-                              <Component id="jLabel1" alignment="0" pref="257" max="32767" attributes="0"/>
+                              <Component id="jLabel1" alignment="0" pref="342" max="32767" attributes="0"/>
                           </Group>
                         </DimensionLayout>
                         <DimensionLayout dim="1">
@@ -446,7 +487,7 @@
                       <Layout>
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel2" pref="257" max="32767" attributes="0"/>
+                              <Component id="jLabel2" pref="342" max="32767" attributes="0"/>
                               <Component id="txtAllotmentParcelName" max="32767" attributes="0"/>
                           </Group>
                         </DimensionLayout>
@@ -488,7 +529,7 @@
                           <Layout>
                             <DimensionLayout dim="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="cbAllotmentTown" pref="128" max="32767" attributes="0"/>
+                                  <Component id="cbAllotmentTown" pref="171" max="32767" attributes="0"/>
                                   <Component id="jLabel3" alignment="0" max="32767" attributes="0"/>
                               </Group>
                             </DimensionLayout>
@@ -530,7 +571,7 @@
                                 <DimensionLayout dim="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="cbxTown" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="jLabel23" alignment="0" pref="64" max="32767" attributes="0"/>
+                                      <Component id="jLabel23" alignment="0" pref="85" max="32767" attributes="0"/>
                                   </Group>
                                 </DimensionLayout>
                                 <DimensionLayout dim="1">
@@ -568,7 +609,7 @@
                                 <DimensionLayout dim="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="cbxTax" alignment="1" max="32767" attributes="0"/>
-                                      <Component id="jLabel24" alignment="0" pref="64" max="32767" attributes="0"/>
+                                      <Component id="jLabel24" alignment="0" pref="85" max="32767" attributes="0"/>
                                   </Group>
                                 </DimensionLayout>
                                 <DimensionLayout dim="1">
@@ -817,7 +858,7 @@
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jScrollPane3" pref="527" max="32767" attributes="0"/>
+                          <Component id="jScrollPane3" pref="696" max="32767" attributes="0"/>
                           <Component id="jToolBar3" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -825,7 +866,7 @@
                   <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jPanel28" pref="527" max="32767" attributes="0"/>
+                          <Component id="jPanel28" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -837,8 +878,7 @@
                       <EmptySpace min="-2" pref="127" max="-2" attributes="0"/>
                       <Component id="jToolBar3" min="-2" pref="25" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jScrollPane3" pref="205" max="32767" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jScrollPane3" pref="216" max="32767" attributes="0"/>
                   </Group>
                   <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
@@ -879,7 +919,7 @@
                           <Layout>
                             <DimensionLayout dim="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLabel13" pref="122" max="32767" attributes="0"/>
+                                  <Component id="jLabel13" pref="165" max="32767" attributes="0"/>
                                   <Component id="txtLeaseNumber" alignment="0" max="32767" attributes="0"/>
                               </Group>
                             </DimensionLayout>
@@ -914,7 +954,7 @@
                           <Layout>
                             <DimensionLayout dim="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="cbxLeaseTown" pref="122" max="32767" attributes="0"/>
+                                  <Component id="cbxLeaseTown" pref="165" max="32767" attributes="0"/>
                                   <Component id="jLabel14" alignment="0" max="32767" attributes="0"/>
                               </Group>
                             </DimensionLayout>
@@ -950,7 +990,7 @@
                       <Layout>
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel15" pref="257" max="32767" attributes="0"/>
+                              <Component id="jLabel15" pref="342" max="32767" attributes="0"/>
                               <Component id="txtLesseeName" alignment="0" max="32767" attributes="0"/>
                           </Group>
                         </DimensionLayout>
@@ -996,7 +1036,7 @@
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="txtLeaseLandHolder" max="32767" attributes="0"/>
-                              <Component id="jLabel12" alignment="0" pref="257" max="32767" attributes="0"/>
+                              <Component id="jLabel12" alignment="0" pref="342" max="32767" attributes="0"/>
                           </Group>
                         </DimensionLayout>
                         <DimensionLayout dim="1">
@@ -1038,11 +1078,11 @@
                           <Layout>
                             <DimensionLayout dim="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLabel16" alignment="0" pref="122" max="32767" attributes="0"/>
+                                  <Component id="jLabel16" alignment="0" pref="165" max="32767" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="txtLeaseRegDateFrom" max="32767" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="btnLeaseRegDateFrom" min="-2" max="-2" attributes="0"/>
+                                      <Component id="btnLeaseRegDateFrom" min="-2" pref="17" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -1052,8 +1092,8 @@
                                       <Component id="jLabel16" min="-2" pref="14" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="txtLeaseRegDateFrom" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="btnLeaseRegDateFrom" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="btnLeaseRegDateFrom" min="-2" pref="17" max="-2" attributes="0"/>
+                                          <Component id="txtLeaseRegDateFrom" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                   </Group>
@@ -1099,7 +1139,7 @@
                           <Layout>
                             <DimensionLayout dim="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLabel17" alignment="0" pref="122" max="32767" attributes="0"/>
+                                  <Component id="jLabel17" alignment="0" pref="165" max="32767" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="txtLeaseRegDateTo" max="32767" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
@@ -1350,7 +1390,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Component id="jToolBar6" max="32767" attributes="0"/>
-                          <Component id="jPanel2" alignment="0" pref="527" max="32767" attributes="0"/>
+                          <Component id="jPanel2" alignment="0" max="32767" attributes="0"/>
                           <Component id="jScrollPane5" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -1365,8 +1405,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jToolBar6" min="-2" pref="25" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jScrollPane5" pref="209" max="32767" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jScrollPane5" pref="220" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1393,7 +1432,7 @@
                       <Layout>
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel32" alignment="0" pref="122" max="32767" attributes="0"/>
+                              <Component id="jLabel32" alignment="0" pref="165" max="32767" attributes="0"/>
                               <Component id="txtLeaseNumber1" alignment="0" max="32767" attributes="0"/>
                           </Group>
                         </DimensionLayout>
@@ -1428,7 +1467,7 @@
                       <Layout>
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="cbxLeaseTown1" alignment="0" pref="122" max="32767" attributes="0"/>
+                              <Component id="cbxLeaseTown1" alignment="0" pref="165" max="32767" attributes="0"/>
                               <Component id="jLabel33" alignment="0" max="32767" attributes="0"/>
                           </Group>
                         </DimensionLayout>
@@ -1465,7 +1504,7 @@
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="txtSubleaseLandHolder" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jLabel30" alignment="0" pref="257" max="32767" attributes="0"/>
+                          <Component id="jLabel30" alignment="0" pref="342" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
@@ -1499,7 +1538,7 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabel31" alignment="0" pref="257" max="32767" attributes="0"/>
+                          <Component id="jLabel31" alignment="0" pref="342" max="32767" attributes="0"/>
                           <Component id="txtSublesseeName" alignment="0" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
@@ -1542,7 +1581,7 @@
                       <Layout>
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel27" alignment="0" pref="122" max="32767" attributes="0"/>
+                              <Component id="jLabel27" alignment="0" pref="165" max="32767" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="txtSubleaseRegDateFrom" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
@@ -1603,7 +1642,7 @@
                       <Layout>
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel28" alignment="0" pref="122" max="32767" attributes="0"/>
+                              <Component id="jLabel28" alignment="0" pref="165" max="32767" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="txtSubleaseRegDateTo" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
@@ -1867,8 +1906,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jToolBar1" min="-2" pref="25" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jScrollPane1" pref="264" max="32767" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jScrollPane1" pref="275" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -2048,14 +2086,14 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jToolBar4" max="32767" attributes="0"/>
-                          <Component id="jScrollPane4" pref="527" max="32767" attributes="0"/>
+                          <Component id="jScrollPane4" pref="696" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
                   <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jPanel31" pref="527" max="32767" attributes="0"/>
+                          <Component id="jPanel31" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -2067,8 +2105,7 @@
                       <EmptySpace min="-2" pref="129" max="-2" attributes="0"/>
                       <Component id="jToolBar4" min="-2" pref="25" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jScrollPane4" pref="203" max="32767" attributes="0"/>
-                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                      <Component id="jScrollPane4" pref="214" max="32767" attributes="0"/>
                   </Group>
                   <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
@@ -2094,7 +2131,7 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabel20" pref="257" max="32767" attributes="0"/>
+                          <Component id="jLabel20" pref="342" max="32767" attributes="0"/>
                           <Component id="txtNobleName" alignment="0" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
@@ -2130,7 +2167,7 @@
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="txtEstateName" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jLabel19" alignment="1" pref="257" max="32767" attributes="0"/>
+                          <Component id="jLabel19" alignment="1" pref="342" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
@@ -2172,7 +2209,7 @@
                       <Layout>
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jComboBox1" pref="122" max="32767" attributes="0"/>
+                              <Component id="jComboBox1" pref="165" max="32767" attributes="0"/>
                               <Component id="jLabel21" alignment="0" max="32767" attributes="0"/>
                           </Group>
                         </DimensionLayout>
@@ -2206,7 +2243,7 @@
                       <Layout>
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <EmptySpace min="0" pref="122" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="165" max="32767" attributes="0"/>
                           </Group>
                         </DimensionLayout>
                         <DimensionLayout dim="1">
@@ -2223,7 +2260,7 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <EmptySpace min="0" pref="257" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="342" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">

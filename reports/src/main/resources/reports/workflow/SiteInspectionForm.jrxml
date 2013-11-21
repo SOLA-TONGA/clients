@@ -87,7 +87,7 @@ CLIMATE CHANGE & NATURAL RESOURCES]]></text>
 				<text><![CDATA[Occupants]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="97b6c5f9-242a-4479-af48-0aab98888ddc" x="0" y="212" width="135" height="20"/>
+				<reportElement uuid="97b6c5f9-242a-4479-af48-0aab98888ddc" x="0" y="212" width="124" height="20"/>
 				<textElement markup="none">
 					<font fontName="Arial" size="12" isBold="true"/>
 				</textElement>
@@ -128,14 +128,14 @@ CLIMATE CHANGE & NATURAL RESOURCES]]></text>
 			<rectangle>
 				<reportElement uuid="79aeda4d-a270-431d-9573-a09862f8b225" x="135" y="11" width="420" height="32"/>
 			</rectangle>
-			<textField>
+			<textField isBlankWhenNull="true">
 				<reportElement uuid="35cbe6c7-0cde-4589-b053-a6c926e486ae" x="135" y="11" width="418" height="32"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Arial" size="12"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{town}.getDisplayValue()+", "+$F{island}.getDisplayValue()]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{town}.getDisplayValue() == null ? "" : $F{town}.getDisplayValue()+", "+$F{island}.getDisplayValue()]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField isBlankWhenNull="true">
 				<reportElement uuid="26598e3d-fe1f-4cb8-9478-c9a7665e0097" x="135" y="43" width="418" height="30"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Arial" size="12"/>

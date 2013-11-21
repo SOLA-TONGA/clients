@@ -1772,8 +1772,7 @@ public class TongaPropertyPanel extends ContentPanel {
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jToolBar4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 25, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(documentsPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 70, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(93, Short.MAX_VALUE))
+                .add(documentsPanel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE))
         );
 
         tabsMain.addTab(bundle.getString("TongaPropertyPanel.jPanel7.TabConstraints.tabTitle"), jPanel7); // NOI18N
@@ -1893,7 +1892,7 @@ public class TongaPropertyPanel extends ContentPanel {
                 .addContainerGap()
                 .add(jToolBar1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 25, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 291, Short.MAX_VALUE)
+                .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 302, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -2061,7 +2060,7 @@ public class TongaPropertyPanel extends ContentPanel {
             .add(jPanel15Layout.createSequentialGroup()
                 .add(jToolBar2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jScrollPane2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE))
+                .add(jScrollPane2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE))
         );
 
         jPanel16.add(jPanel15);
@@ -2152,7 +2151,7 @@ public class TongaPropertyPanel extends ContentPanel {
             .add(jPanel17Layout.createSequentialGroup()
                 .add(jToolBar8, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 25, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jScrollPane8, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE))
+                .add(jScrollPane8, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE))
         );
 
         jPanel16.add(jPanel17);
@@ -2170,7 +2169,7 @@ public class TongaPropertyPanel extends ContentPanel {
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .add(jPanel16, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .add(jPanel16, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 333, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -2221,7 +2220,7 @@ public class TongaPropertyPanel extends ContentPanel {
             jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .add(jScrollPane5, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 322, Short.MAX_VALUE)
+                .add(jScrollPane5, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 333, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -2327,7 +2326,7 @@ public class TongaPropertyPanel extends ContentPanel {
                         .add(txtNotationText, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 23, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                         .add(jLabel15)))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jScrollPane4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 291, Short.MAX_VALUE)
+                .add(jScrollPane4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 302, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -2594,7 +2593,7 @@ public class TongaPropertyPanel extends ContentPanel {
         );
         mapPanelLayout.setVerticalGroup(
             mapPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 344, Short.MAX_VALUE)
+            .add(0, 355, Short.MAX_VALUE)
         );
 
         tabsMain.addTab(bundle.getString("TongaPropertyPanel.mapPanel.TabConstraints.tabTitle"), mapPanel); // NOI18N
@@ -2619,8 +2618,7 @@ public class TongaPropertyPanel extends ContentPanel {
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jToolBar5, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 25, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jScrollPane6, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 372, Short.MAX_VALUE)
-                .addContainerGap())
+                .add(jScrollPane6, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 383, Short.MAX_VALUE))
         );
 
         bindingGroup.bind();

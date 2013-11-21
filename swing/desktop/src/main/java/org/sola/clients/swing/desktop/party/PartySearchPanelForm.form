@@ -25,9 +25,9 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Component id="headerPanel" alignment="0" pref="746" max="32767" attributes="0"/>
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="10" pref="10" max="10" attributes="0"/>
-              <Component id="partySearchPanel" pref="726" max="32767" attributes="0"/>
+          <Group type="102" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="partySearchPanel" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -37,8 +37,7 @@
           <Group type="102" alignment="0" attributes="0">
               <Component id="headerPanel" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="partySearchPanel" pref="437" max="32767" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <Component id="partySearchPanel" pref="448" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
