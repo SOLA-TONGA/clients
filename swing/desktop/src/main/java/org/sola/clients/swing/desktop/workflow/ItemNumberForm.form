@@ -34,7 +34,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextField1" min="-2" pref="162" max="-2" attributes="0"/>
+                  <Component id="itemNumberTextField" min="-2" pref="162" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
           </Group>
@@ -49,7 +49,7 @@
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jTextField1" min="-2" max="-2" attributes="0"/>
+              <Component id="itemNumberTextField" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="307" max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -61,14 +61,14 @@
         <Property name="titleText" type="java.lang.String" value="Item Number for Application: #%s"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField1">
+    <Component class="javax.swing.JTextField" name="itemNumberTextField">
       <BindingProperties>
-        <BindingProperty name="text" source="applicationBean" sourcePath="${itemNumber}" target="jTextField1" targetPath="text" updateStrategy="0" immediately="false">
+        <BindingProperty name="text" source="applicationBean" sourcePath="${itemNumber}" target="itemNumberTextField" targetPath="text" updateStrategy="0" immediately="false">
           <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
         </BindingProperty>
       </BindingProperties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="itemNumberTextFieldActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">

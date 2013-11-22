@@ -77,6 +77,9 @@ public class CabinetSubmissionForm extends ContentPanel {
         appServicePanel.lblActionDate.setText(bundle.getString("CabinetSubmissionForm.appServicePanel.lblActionDate.text"));
         appServicePanel.lblActionCompleted.setText(bundle.getString("CabinetSubmissionForm.appServicePanel.lblActionCompleted.text"));
         btnSave.setEnabled(!readOnly);
+        txtApprovalDate.setEnabled(!readOnly);
+        txtApprovalNumber.setEnabled(!readOnly);
+        btnApprovalDateCalender.setEnabled(!readOnly);
     }
     
     private ApplicationServiceBean createServiceBean() {
