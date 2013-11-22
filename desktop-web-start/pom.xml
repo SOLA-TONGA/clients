@@ -66,7 +66,7 @@
                 together for easy deployment. These could be packaged separately if necessary. --> 
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>webstart-maven-plugin</artifactId>
-                <version>1.0-beta-3</version>
+                <version>1.0-beta-4</version>
                 <executions>
                     <execution>
                         <phase>process-resources</phase>
@@ -78,13 +78,20 @@
                 <configuration>
                     <outputDirectoryName>webstart</outputDirectoryName>  
                     <templateDirectory>${project.basedir}/template</templateDirectory>
+                    <updateManifestEntries>
+                        <Permissions>all-permissions</Permissions>
+                        <Codebase>*</Codebase>
+                        <Application-Name>SOLA Tonga</Application-Name>
+                    </updateManifestEntries>
                     <libPath>lib</libPath>
                     <!-- pack200 has some bugs that should have been fixed. 
                     See jira.codehaus.org/browse/MWEBSTART-159 for details.
                     The jnlp-download-servlet supports both pack200 and gzip, 
                     however as SOLA targets JRE 7, there is no need to use
                     the gzip format. -->
-                    <pack200>true</pack200>
+                    <!--pack200>
+                        <enabled>true</enabled>
+                    </pack200-->
                     <jnlpFiles>
                         <jnlpFile>
                             <!-- JNLP file for the SOLA Desktop application -->
