@@ -580,22 +580,21 @@ public class TongaPropertyPanel extends ContentPanel {
      * Enables or disables termination button, depending on the form state.
      */
     private void customizeTerminationButton() {
-        boolean enabled = !readOnly;
+        boolean enabled = false;
 
-        // Check BaUnit status to be current
-        if (baUnitBean1.getStatusCode() == null || !baUnitBean1.getStatusCode().equals(StatusConstants.CURRENT)) {
-            enabled = false;
-        }
-
-        // Check RequestType to have cancel action.
-        if (applicationService == null || applicationService.getRequestType() == null
-                || applicationService.getRequestType().getTypeActionCode() == null
-                || !applicationService.getRequestTypeCode().equalsIgnoreCase(RequestTypeBean.CODE_CANCEL_PROPERTY)) {
-            enabled = false;
+        if (applicationService != null && applicationService.getRequestType() != null 
+                && !readOnly) {
+            if (RequestTypeBean.CODE_CANCEL_API.equals(applicationService.getRequestTypeCode())
+                    || RequestTypeBean.CODE_SURRENDER_LEASE.equals(applicationService.getRequestTypeCode())
+                    || RequestTypeBean.CODE_TERMINATE_LEASE.equals(applicationService.getRequestTypeCode())
+                    || RequestTypeBean.CODE_SURRENDER_SUBLEASE.equals(applicationService.getRequestTypeCode())
+                    || RequestTypeBean.CODE_TERMINATE_SUBLEASE.equals(applicationService.getRequestTypeCode())) {
+                enabled = true;
+            }
         }
 
         // Determine what should be shown on the button, terminate or cancelling of termination.
-        if (baUnitBean1.getPendingActionCode() != null && applicationService.getRequestTypeCode().equalsIgnoreCase(RequestTypeBean.CODE_CANCEL_PROPERTY)) {
+        if (baUnitBean1.getPendingActionCode() != null && enabled) {
             // Show cancel
             btnTerminate.setIcon(new ImageIcon(getClass().getResource("/images/common/undo.png")));
             btnTerminate.setText(resourceBundle.getString("PropertyPanel.btnTerminate.text2"));
@@ -967,30 +966,17 @@ public class TongaPropertyPanel extends ContentPanel {
                 || rrrCode.equalsIgnoreCase(RrrBean.CODE_SUBLEASE)) {
             panel = new LeasePanel(baUnitBean1, rrrBean, applicationBean, applicationService, action);
             cardName = MainContentPanel.CARD_LEASE;
-        } else if (rrrCode.equalsIgnoreCase(RrrBean.CODE_AGRI_ACTIVITY)
-                || rrrCode.equalsIgnoreCase(RrrBean.CODE_COMMON_OWNERSHIP)
-                || rrrCode.equalsIgnoreCase(RrrBean.CODE_CUSTOMARY_TYPE)
-                || rrrCode.equalsIgnoreCase(RrrBean.CODE_FIREWOOD)
-                || rrrCode.equalsIgnoreCase(RrrBean.CODE_FISHING)
-                || rrrCode.equalsIgnoreCase(RrrBean.CODE_GRAZING)
-                || rrrCode.equalsIgnoreCase(RrrBean.CODE_OCCUPATION)
-                || rrrCode.equalsIgnoreCase(RrrBean.CODE_OWNERSHIP_ASSUMED)
-                || rrrCode.equalsIgnoreCase(RrrBean.CODE_SUPERFICIES)
-                || rrrCode.equalsIgnoreCase(RrrBean.CODE_TENANCY)
-                || rrrCode.equalsIgnoreCase(RrrBean.CODE_USUFRUCT)
-                || rrrCode.equalsIgnoreCase(RrrBean.CODE_WATERRIGHTS)
-                || rrrCode.equalsIgnoreCase(RrrBean.CODE_ADMIN_PUBLIC_SERVITUDE)
-                || rrrCode.equalsIgnoreCase(RrrBean.CODE_MONUMENT)
+        } else if (rrrCode.equalsIgnoreCase(RrrBean.CODE_OWNERSHIP)
                 || rrrCode.equalsIgnoreCase(RrrBean.CODE_LIFE_ESTATE)
                 || rrrCode.equalsIgnoreCase(RrrBean.CODE_CAVEAT)
-                || rrrCode.equalsIgnoreCase(RrrBean.CODE_OWNERSHIP)) {
+                || rrrCode.equalsIgnoreCase(RrrBean.CODE_TRUSTEE)) {
             panel = new SimpleRightholderPanel(rrrBean, applicationBean, applicationService, action);
             cardName = MainContentPanel.CARD_SIMPLE_OWNERSHIP;
-        } else if (rrrCode.equalsIgnoreCase(RrrBean.CODE_STATE_OWNERSHIP)
-                || rrrCode.equalsIgnoreCase(RrrBean.CODE_APARTMENT)) {
+        } else if (rrrCode.equalsIgnoreCase(RrrBean.CODE_STATE_OWNERSHIP) // N/A in Tonga
+                || rrrCode.equalsIgnoreCase(RrrBean.CODE_APARTMENT)) { // N/A in Tonga
             panel = new OwnershipPanel(rrrBean, applicationBean, applicationService, action);
             cardName = MainContentPanel.CARD_OWNERSHIP;
-        } else {
+        } else { // Easement
             panel = new SimpleRightPanel(rrrBean, applicationBean, applicationService, action);
         }
 

@@ -71,7 +71,8 @@ public class RequestTypeBean extends AbstractCodeBean {
     public static final String CODE_SURRENDER_LEASE = "surrenderLease";
     public static final String CODE_TERMINATE_LEASE = "terminateLease";
     public static final String CODE_REGISTER_SUBLEASE = "registerSublease";
-    public static final String CODE_TRANSFER_SUBLEASE = "varySublease";
+    public static final String CODE_TRANSFER_SUBLEASE = "transferSublease";
+    public static final String CODE_VARY_SUBLEASE = "varySublease";
     public static final String CODE_TRANSFER_SUBLEASE_MORTGAGEE_IN_POSSESSION = "subleaseInPossession";
     public static final String CODE_TRANSFER_SUBLEASE_PROBATE = "subleaseProbate";
     public static final String CODE_SURRENDER_SUBLEASE = "surrenderSublease";

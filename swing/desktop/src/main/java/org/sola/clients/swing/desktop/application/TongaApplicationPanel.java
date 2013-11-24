@@ -416,7 +416,7 @@ public class TongaApplicationPanel extends ContentPanel {
 
         if (enableServicesButtons) {
             if (selectedService != null) {
-                if (selectedService.isNew()) {
+                if (selectedService.isLodged()) {
                     btnRemoveService.setEnabled(true);
                     btnUPService.setEnabled(true);
                     btnDownService.setEnabled(true);
@@ -427,11 +427,12 @@ public class TongaApplicationPanel extends ContentPanel {
                 }
 
                 if (btnUPService.isEnabled()
-                        && appBean.getServiceList().indexOf(selectedService) == 0) {
+                        && appBean.getServiceList().getFilteredList().indexOf(selectedService) == 0) {
                     btnUPService.setEnabled(false);
                 }
                 if (btnDownService.isEnabled()
-                        && appBean.getServiceList().indexOf(selectedService) == appBean.getServiceList().size() - 1) {
+                        && appBean.getServiceList().getFilteredList().indexOf(selectedService) 
+                        == appBean.getServiceList().getFilteredList().size() - 1) {
                     btnDownService.setEnabled(false);
                 }
             }
@@ -678,8 +679,8 @@ public class TongaApplicationPanel extends ContentPanel {
                 if (applicationID == null || applicationID.equals("")) {
                     appBean.getSelectedProperty().setSurveyFee(
                             appBean.getTotalFeeForService(RequestTypeBean.CODE_SURVEY));
-                    
-                     showReport(ReportManager.getTongaLodgementNotice(new ApplicationReportBean(appBean)));
+
+                    showReport(ReportManager.getTongaLodgementNotice(new ApplicationReportBean(appBean)));
 
                     if (appBean.hasService(RequestTypeBean.CODE_REGISTER_LEASE)) {
                         // Only display the Lease Application Report when 
@@ -2634,23 +2635,20 @@ public class TongaApplicationPanel extends ContentPanel {
         tabServices.setComponentOrientation(ComponentOrientation.getOrientation(Locale.getDefault()));
         tabServices.getTableHeader().setReorderingAllowed(false);
 
-        eLProperty = org.jdesktop.beansbinding.ELProperty.create("${serviceList}");
+        eLProperty = org.jdesktop.beansbinding.ELProperty.create("${filteredServiceList}");
         org.jdesktop.swingbinding.JTableBinding jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, appBean, eLProperty, tabServices);
         org.jdesktop.swingbinding.JTableBinding.ColumnBinding columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${serviceOrder}"));
         columnBinding.setColumnName("Service Order");
         columnBinding.setColumnClass(Integer.class);
-        columnBinding.setEditable(false);
-        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${requestType.displayValue}"));
-        columnBinding.setColumnName("Request Type.display Value");
-        columnBinding.setColumnClass(String.class);
-        columnBinding.setEditable(false);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${requestType}"));
+        columnBinding.setColumnName("Request Type");
+        columnBinding.setColumnClass(org.sola.clients.beans.referencedata.RequestTypeBean.class);
         columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${concatenatedName}"));
         columnBinding.setColumnName("Concatenated Name");
         columnBinding.setColumnClass(String.class);
-        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${status.displayValue}"));
-        columnBinding.setColumnName("Status.display Value");
-        columnBinding.setColumnClass(String.class);
-        columnBinding.setEditable(false);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${status}"));
+        columnBinding.setColumnName("Status");
+        columnBinding.setColumnClass(org.sola.clients.beans.referencedata.ServiceStatusTypeBean.class);
         bindingGroup.addBinding(jTableBinding);
         jTableBinding.bind();binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, appBean, org.jdesktop.beansbinding.ELProperty.create("${selectedService}"), tabServices, org.jdesktop.beansbinding.BeanProperty.create("selectedElement"));
         bindingGroup.addBinding(binding);
@@ -3874,10 +3872,10 @@ public class TongaApplicationPanel extends ContentPanel {
     private void moveServiceUp() {
         ApplicationServiceBean asb = appBean.getSelectedService();
         if (asb != null) {
-            Integer order = (Integer) (tabServices.getValueAt(tabServices.getSelectedRow(), 0));
+           Integer order = (Integer) (tabServices.getValueAt(tabServices.getSelectedRow(), 0));
             if (appBean.moveServiceUp()) {
                 tabServices.setValueAt(order - 1, tabServices.getSelectedRow() - 1, 0);
-                tabServices.setValueAt(order, tabServices.getSelectedRow(), 0);
+                 tabServices.setValueAt(order, tabServices.getSelectedRow(), 0);
                 tabServices.getSelectionModel().setSelectionInterval(tabServices.getSelectedRow() - 1, tabServices.getSelectedRow() - 1);
             }
         } else {
@@ -4172,7 +4170,7 @@ public class TongaApplicationPanel extends ContentPanel {
     private void printApplicationReport() {
         showReport(ReportManager.getLeaseApplicationReport(appBean));
     }
-    
+
     private void showCalendar(JFormattedTextField dateField) {
         CalendarForm calendar = new CalendarForm(null, true, dateField);
         calendar.setVisible(true);

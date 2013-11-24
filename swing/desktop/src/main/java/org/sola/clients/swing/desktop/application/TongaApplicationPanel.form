@@ -2888,21 +2888,18 @@
                     </Property>
                   </Properties>
                   <BindingProperties>
-                    <BindingProperty name="elements" source="appBean" sourcePath="${serviceList}" target="tabServices" targetPath="elements" updateStrategy="0" immediately="true">
+                    <BindingProperty name="elements" source="appBean" sourcePath="${filteredServiceList}" target="tabServices" targetPath="elements" updateStrategy="0" immediately="true">
                       <Subbinding sourcePath="${serviceOrder}">
                         <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="Integer.class"/>
-                        <BindingParameter name="javax.swing.binding.ParameterKeys.EDITABLE" value="false"/>
                       </Subbinding>
-                      <Subbinding sourcePath="${requestType.displayValue}">
-                        <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="String.class"/>
-                        <BindingParameter name="javax.swing.binding.ParameterKeys.EDITABLE" value="false"/>
+                      <Subbinding sourcePath="${requestType}">
+                        <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="org.sola.clients.beans.referencedata.RequestTypeBean.class"/>
                       </Subbinding>
                       <Subbinding sourcePath="${concatenatedName}">
                         <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="String.class"/>
                       </Subbinding>
-                      <Subbinding sourcePath="${status.displayValue}">
-                        <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="String.class"/>
-                        <BindingParameter name="javax.swing.binding.ParameterKeys.EDITABLE" value="false"/>
+                      <Subbinding sourcePath="${status}">
+                        <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="org.sola.clients.beans.referencedata.ServiceStatusTypeBean.class"/>
                       </Subbinding>
                     </BindingProperty>
                     <BindingProperty name="selectedElement" source="appBean" sourcePath="${selectedService}" target="tabServices" targetPath="selectedElement" updateStrategy="0" immediately="false">

@@ -38,6 +38,7 @@ import org.sola.clients.beans.referencedata.RequestTypeBean;
 import org.sola.clients.swing.common.tasks.SolaTask;
 import org.sola.clients.swing.common.tasks.TaskManager;
 import org.sola.clients.swing.desktop.administrative.TongaPropertyPanel;
+import org.sola.clients.swing.desktop.source.TransactionedDocumentsPanel;
 import org.sola.clients.swing.desktop.workflow.*;
 import org.sola.clients.swing.ui.ContentPanel;
 import org.sola.clients.swing.ui.MainContentPanel;
@@ -197,6 +198,11 @@ public final class ServiceLauncher {
         serviceMap.put(RequestTypeBean.CODE_REGISTER_SUBLEASE,
                 new String[]{TongaPropertyPanel.class.getName(), MainContentPanel.CARD_PROPERTY_PANEL,
             ClientMessage.PROGRESS_MSG_OPEN_PROPERTY});
+        
+        //Vary Sublease
+        serviceMap.put(RequestTypeBean.CODE_VARY_SUBLEASE,
+                new String[]{TongaPropertyPanel.class.getName(), MainContentPanel.CARD_PROPERTY_PANEL,
+            ClientMessage.PROGRESS_MSG_OPEN_PROPERTY});
 
         //Transfer Sublease
         serviceMap.put(RequestTypeBean.CODE_TRANSFER_SUBLEASE,
@@ -310,22 +316,22 @@ public final class ServiceLauncher {
 
         // Register Power of Attorney
         serviceMap.put(RequestTypeBean.CODE_REG_POWER_OF_ATTORNEY,
-                new String[]{TongaPropertyPanel.class.getName(), MainContentPanel.CARD_TRANSACTIONED_DOCUMENT,
+                new String[]{TransactionedDocumentsPanel.class.getName(), MainContentPanel.CARD_TRANSACTIONED_DOCUMENT,
             ClientMessage.PROGRESS_MSG_OPEN_DOCREGISTRATION});
 
         // Cancel Power of Attorney
         serviceMap.put(RequestTypeBean.CODE_CANCEL_POWER_OF_ATTORNEY,
-                new String[]{TongaPropertyPanel.class.getName(), MainContentPanel.CARD_TRANSACTIONED_DOCUMENT,
+                new String[]{TransactionedDocumentsPanel.class.getName(), MainContentPanel.CARD_TRANSACTIONED_DOCUMENT,
             ClientMessage.PROGRESS_MSG_OPEN_DOCREGISTRATION});
 
         // Register Permit
         serviceMap.put(RequestTypeBean.CODE_REGISTER_PERMIT,
-                new String[]{TongaPropertyPanel.class.getName(), MainContentPanel.CARD_TRANSACTIONED_DOCUMENT,
+                new String[]{TransactionedDocumentsPanel.class.getName(), MainContentPanel.CARD_TRANSACTIONED_DOCUMENT,
             ClientMessage.PROGRESS_MSG_OPEN_DOCREGISTRATION});
 
         // Cancel Permit
         serviceMap.put(RequestTypeBean.CODE_CANCEL_PERMIT,
-                new String[]{TongaPropertyPanel.class.getName(), MainContentPanel.CARD_TRANSACTIONED_DOCUMENT,
+                new String[]{TransactionedDocumentsPanel.class.getName(), MainContentPanel.CARD_TRANSACTIONED_DOCUMENT,
             ClientMessage.PROGRESS_MSG_OPEN_DOCREGISTRATION});
 
         // Correct Registry
