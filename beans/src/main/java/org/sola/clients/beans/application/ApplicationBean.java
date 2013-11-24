@@ -56,6 +56,7 @@ import org.sola.common.messaging.MessageUtility;
 import org.sola.services.boundary.wsclients.WSManager;
 import org.sola.webservices.transferobjects.EntityAction;
 import org.sola.webservices.transferobjects.casemanagement.ApplicationTO;
+import org.sola.webservices.transferobjects.casemanagement.ServiceTO;
 import org.sola.webservices.transferobjects.search.PropertyVerifierTO;
 
 /**
@@ -98,7 +99,7 @@ public class ApplicationBean extends ApplicationSummaryBean {
     private BigDecimal totalFee;
     private String receiptRef;
     @Size(min = 1, message = ClientMessage.CHECK_APP_SERVICES_NOT_EMPTY, payload = Localized.class)
-    private SolaObservableList<ApplicationServiceBean> serviceList;
+    private SolaList<ApplicationServiceBean> serviceList;
     private SolaList<SourceBean> sourceList;
     private SolaObservableList<ApplicationLogBean> appLogList;
     private transient ApplicationServiceBean selectedService;
@@ -125,7 +126,7 @@ public class ApplicationBean extends ApplicationSummaryBean {
         statusBean = new ApplicationStatusTypeBean();
         propertyList = new SolaList();
         contactPerson = new PartyBean();
-        serviceList = new SolaObservableList<ApplicationServiceBean>();
+        serviceList = new SolaList();
         sourceList = new SolaList();
         appLogList = new SolaObservableList<ApplicationLogBean>();
         propertyList.addAsNew(new ApplicationPropertyBean());
@@ -409,7 +410,7 @@ public class ApplicationBean extends ApplicationSummaryBean {
         this.propertyList = propertyList;
     }
 
-    public void setServiceList(SolaObservableList<ApplicationServiceBean> serviceList) {
+    public void setServiceList(SolaList<ApplicationServiceBean> serviceList) {
         this.serviceList = serviceList;
     }
 
@@ -441,8 +442,12 @@ public class ApplicationBean extends ApplicationSummaryBean {
         propertySupport.firePropertyChange(SERVICES_FEE_PROPERTY, old, value);
     }
 
-    public ObservableList<ApplicationServiceBean> getServiceList() {
+    public SolaList<ApplicationServiceBean> getServiceList() {
         return serviceList;
+    }
+
+    public ObservableList<ApplicationServiceBean> getFilteredServiceList() {
+        return serviceList.getFilteredList();
     }
 
     public SolaList<SourceBean> getSourceList() {
@@ -600,7 +605,7 @@ public class ApplicationBean extends ApplicationSummaryBean {
      */
     public void removeSelectedService() {
         if (selectedService != null && serviceList != null) {
-            serviceList.remove(selectedService);
+            serviceList.safeRemove(selectedService, EntityAction.DELETE);
             renumerateServices();
         }
     }
@@ -610,10 +615,10 @@ public class ApplicationBean extends ApplicationSummaryBean {
      */
     private void renumerateServices() {
         int i = 1;
-        for (Iterator<ApplicationServiceBean> it = serviceList.iterator(); it.hasNext();) {
+        for (Iterator<ApplicationServiceBean> it = serviceList.getFilteredList().iterator(); it.hasNext();) {
             ApplicationServiceBean applicationServiceBean = it.next();
             applicationServiceBean.setServiceOrder(i);
-            i += 1;
+            i++;
         }
     }
 
@@ -622,18 +627,9 @@ public class ApplicationBean extends ApplicationSummaryBean {
      */
     public boolean moveServiceUp() {
         if (serviceList != null && selectedService != null) {
-            int i = 0;
-            for (Iterator<ApplicationServiceBean> iter = serviceList.iterator(); iter.hasNext();) {
-                ApplicationServiceBean swapApp = iter.next();
-                if (swapApp == selectedService && i > 0) {
-                    int order = swapApp.getServiceOrder();
-                    swapApp.setServiceOrder(selectedService.getServiceOrder());
-                    selectedService.setServiceOrder(order);
-                    Collections.swap(serviceList, i, i - 1);
-                    return true;
-                }
-                i += 1;
-            }
+            int idx = serviceList.getFilteredList().indexOf(selectedService);
+            Collections.swap(serviceList.getFilteredList(), idx, idx - 1);
+            return true;
         }
         return false;
     }
@@ -643,20 +639,9 @@ public class ApplicationBean extends ApplicationSummaryBean {
      */
     public boolean moveServiceDown() {
         if (serviceList != null && selectedService != null) {
-            int i = 0;
-            int size = serviceList.size();
-
-            for (Iterator<ApplicationServiceBean> iter = serviceList.iterator(); iter.hasNext();) {
-                ApplicationServiceBean swapApp = iter.next();
-                if (swapApp == selectedService && i + 1 < size) {
-                    int order = swapApp.getServiceOrder();
-                    swapApp.setServiceOrder(selectedService.getServiceOrder());
-                    selectedService.setServiceOrder(order);
-                    Collections.swap(serviceList, i, i + 1);
-                    return true;
-                }
-                i += 1;
-            }
+            int idx = serviceList.getFilteredList().indexOf(selectedService);
+            Collections.swap(serviceList.getFilteredList(), idx, idx + 1);
+            return true;
         }
         return false;
     }
@@ -1028,6 +1013,21 @@ public class ApplicationBean extends ApplicationSummaryBean {
         setApplicantRole();
         ApplicationTO app = TypeConverters.BeanToTrasferObject(this, ApplicationTO.class);
         app = WSManager.getInstance().getCaseManagementService().saveApplication(app);
+        if (app.getServiceList() != null) {
+            // Sort the services list so that they display in the correct order on the
+            // Services tab of the ApplicationDetails form. 
+            Collections.sort(app.getServiceList(), new Comparator<ServiceTO>() {
+                @Override
+                public int compare(ServiceTO s1, ServiceTO s2) {
+                    if (s1.getServiceOrder() == s2.getServiceOrder()) {
+                        return 0;
+                    } else if (s1.getServiceOrder() > s2.getServiceOrder()) {
+                        return 1;
+                    }
+                    return -1;
+                }
+            });
+        }
         TypeConverters.TransferObjectToBean(app, ApplicationBean.class, this);
         propertySupport.firePropertyChange(APPLICATION_PROPERTY, null, this);
         return true;

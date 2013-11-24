@@ -968,30 +968,17 @@ public class TongaPropertyPanel extends ContentPanel {
                 || rrrCode.equalsIgnoreCase(RrrBean.CODE_SUBLEASE)) {
             panel = new LeasePanel(baUnitBean1, rrrBean, applicationBean, applicationService, action);
             cardName = MainContentPanel.CARD_LEASE;
-        } else if (rrrCode.equalsIgnoreCase(RrrBean.CODE_AGRI_ACTIVITY)
-                || rrrCode.equalsIgnoreCase(RrrBean.CODE_COMMON_OWNERSHIP)
-                || rrrCode.equalsIgnoreCase(RrrBean.CODE_CUSTOMARY_TYPE)
-                || rrrCode.equalsIgnoreCase(RrrBean.CODE_FIREWOOD)
-                || rrrCode.equalsIgnoreCase(RrrBean.CODE_FISHING)
-                || rrrCode.equalsIgnoreCase(RrrBean.CODE_GRAZING)
-                || rrrCode.equalsIgnoreCase(RrrBean.CODE_OCCUPATION)
-                || rrrCode.equalsIgnoreCase(RrrBean.CODE_OWNERSHIP_ASSUMED)
-                || rrrCode.equalsIgnoreCase(RrrBean.CODE_SUPERFICIES)
-                || rrrCode.equalsIgnoreCase(RrrBean.CODE_TENANCY)
-                || rrrCode.equalsIgnoreCase(RrrBean.CODE_USUFRUCT)
-                || rrrCode.equalsIgnoreCase(RrrBean.CODE_WATERRIGHTS)
-                || rrrCode.equalsIgnoreCase(RrrBean.CODE_ADMIN_PUBLIC_SERVITUDE)
-                || rrrCode.equalsIgnoreCase(RrrBean.CODE_MONUMENT)
+        } else if (rrrCode.equalsIgnoreCase(RrrBean.CODE_OWNERSHIP)
                 || rrrCode.equalsIgnoreCase(RrrBean.CODE_LIFE_ESTATE)
                 || rrrCode.equalsIgnoreCase(RrrBean.CODE_CAVEAT)
-                || rrrCode.equalsIgnoreCase(RrrBean.CODE_OWNERSHIP)) {
+                || rrrCode.equalsIgnoreCase(RrrBean.CODE_TRUSTEE)) {
             panel = new SimpleRightholderPanel(rrrBean, applicationBean, applicationService, action);
             cardName = MainContentPanel.CARD_SIMPLE_OWNERSHIP;
-        } else if (rrrCode.equalsIgnoreCase(RrrBean.CODE_STATE_OWNERSHIP)
-                || rrrCode.equalsIgnoreCase(RrrBean.CODE_APARTMENT)) {
+        } else if (rrrCode.equalsIgnoreCase(RrrBean.CODE_STATE_OWNERSHIP) // N/A in Tonga
+                || rrrCode.equalsIgnoreCase(RrrBean.CODE_APARTMENT)) { // N/A in Tonga
             panel = new OwnershipPanel(rrrBean, applicationBean, applicationService, action);
             cardName = MainContentPanel.CARD_OWNERSHIP;
-        } else {
+        } else { // Easement
             panel = new SimpleRightPanel(rrrBean, applicationBean, applicationService, action);
         }
 

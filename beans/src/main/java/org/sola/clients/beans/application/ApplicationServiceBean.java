@@ -84,6 +84,7 @@ public class ApplicationServiceBean extends ApplicationServiceSummaryBean {
     private Date approvalDate;
     private String approvalNumber;
     private String description;
+    private Boolean hasTransaction;
 
     /**
      * Creates object's instance and initializes the following beans, which are
@@ -329,6 +330,11 @@ public class ApplicationServiceBean extends ApplicationServiceSummaryBean {
             result = false;
         }
         return result;
+    }
+
+    public boolean isLodged() {
+        return getStatusCode() == null
+                || StatusConstants.LODGED.equals(getStatusCode());
     }
 
     /**

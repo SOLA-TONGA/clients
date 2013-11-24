@@ -197,6 +197,11 @@ public final class ServiceLauncher {
         serviceMap.put(RequestTypeBean.CODE_REGISTER_SUBLEASE,
                 new String[]{TongaPropertyPanel.class.getName(), MainContentPanel.CARD_PROPERTY_PANEL,
             ClientMessage.PROGRESS_MSG_OPEN_PROPERTY});
+        
+        //Vary Sublease
+        serviceMap.put(RequestTypeBean.CODE_VARY_SUBLEASE,
+                new String[]{TongaPropertyPanel.class.getName(), MainContentPanel.CARD_PROPERTY_PANEL,
+            ClientMessage.PROGRESS_MSG_OPEN_PROPERTY});
 
         //Transfer Sublease
         serviceMap.put(RequestTypeBean.CODE_TRANSFER_SUBLEASE,
