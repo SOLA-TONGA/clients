@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="42c8e5cb-b441-42fe-b5f2-1fa0c20b36ab">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="96"/>
+	<property name="ireport.y" value="378"/>
 	<parameter name="SILA_IMAGE" class="java.io.InputStream"/>
 	<parameter name="USER_NAME" class="java.lang.String"/>
 	<queryString>
@@ -64,56 +64,56 @@ Sign Deed]]></text>
 		<band splitType="Stretch"/>
 	</columnHeader>
 	<detail>
-		<band height="318" splitType="Stretch">
+		<band height="481" splitType="Stretch">
 			<textField>
-				<reportElement uuid="44ec69f5-0dcc-4850-a021-55d655032c1c" x="0" y="0" width="259" height="18"/>
+				<reportElement uuid="44ec69f5-0dcc-4850-a021-55d655032c1c" x="0" y="14" width="259" height="18"/>
 				<textElement markup="none"/>
 				<textFieldExpression><![CDATA["Application Number: "+$F{nr}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement uuid="18b7f4a6-56b1-4fbf-94be-6565338d170c" x="0" y="145" width="555" height="23"/>
+				<reportElement uuid="18b7f4a6-56b1-4fbf-94be-6565338d170c" x="0" y="254" width="555" height="23"/>
 				<textElement markup="html">
 					<font size="12"/>
 				</textElement>
 				<text><![CDATA[Could you please contact the office to arrange for the signing of the Deed.]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="25f5439d-c0c2-452b-9848-ad3a16f13c74" x="0" y="205" width="555" height="29"/>
+				<reportElement uuid="25f5439d-c0c2-452b-9848-ad3a16f13c74" x="0" y="336" width="555" height="29"/>
 				<textElement markup="none">
 					<font fontName="Arial" size="12"/>
 				</textElement>
 				<text><![CDATA[Kind Regards,]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="25f5439d-c0c2-452b-9848-ad3a16f13c74" x="0" y="234" width="166" height="18"/>
+				<reportElement uuid="25f5439d-c0c2-452b-9848-ad3a16f13c74" x="0" y="365" width="166" height="18"/>
 				<textElement markup="none">
 					<font fontName="Arial" size="12" isBold="false"/>
 				</textElement>
 				<text><![CDATA[Land Administration office,]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="25f5439d-c0c2-452b-9848-ad3a16f13c74" x="2" y="252" width="164" height="17"/>
+				<reportElement uuid="25f5439d-c0c2-452b-9848-ad3a16f13c74" x="2" y="383" width="164" height="17"/>
 				<textElement markup="none">
 					<font fontName="Arial" size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[MLECCNR]]></text>
 			</staticText>
 			<textField>
-				<reportElement uuid="dc2935de-299c-4501-ac21-056f5361ea9a" x="0" y="50" width="259" height="18"/>
+				<reportElement uuid="dc2935de-299c-4501-ac21-056f5361ea9a" x="0" y="126" width="259" height="18"/>
 				<textElement markup="none">
 					<font fontName="Arial" size="12" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA["Dear "+$F{lesseeName}+","]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement uuid="25f5439d-c0c2-452b-9848-ad3a16f13c74" x="0" y="83" width="555" height="18"/>
+				<reportElement uuid="25f5439d-c0c2-452b-9848-ad3a16f13c74" x="2" y="186" width="555" height="18"/>
 				<textElement markup="none">
 					<font fontName="Arial" size="12" isBold="false"/>
 				</textElement>
 				<text><![CDATA[Further to your lease application, I am pleased to inform you that your lease located at]]></text>
 			</staticText>
 			<textField>
-				<reportElement uuid="ca4475f7-99b4-4bb7-a358-ab439b9998d8" x="0" y="101" width="555" height="20"/>
+				<reportElement uuid="ca4475f7-99b4-4bb7-a358-ab439b9998d8" x="2" y="204" width="555" height="20"/>
 				<textElement>
 					<font fontName="Arial" size="12"/>
 				</textElement>
@@ -132,7 +132,7 @@ Sign Deed]]></text>
 				<text><![CDATA[Signature]]></text>
 			</staticText>
 			<textField>
-				<reportElement uuid="02f015e5-c013-41ba-a565-6892a2172941" x="0" y="0" width="166" height="16"/>
+				<reportElement uuid="02f015e5-c013-41ba-a565-6892a2172941" x="0" y="0" width="299" height="16"/>
 				<textElement markup="none"/>
 				<textFieldExpression><![CDATA["Prepared by: "+$P{USER_NAME}]]></textFieldExpression>
 			</textField>

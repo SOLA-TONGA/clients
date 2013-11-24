@@ -75,6 +75,7 @@ public class MinisterBriefingForm extends ContentPanel {
         appServicePanel.lblActionDate.setText(bundle.getString("MinisterBriefingForm.appServicePanel.lblActionDate.text"));
         appServicePanel.lblActionCompleted.setText(bundle.getString("MinisterBriefingForm.appServicePanel.lblActionCompleted.text"));
         btnSave.setEnabled(!readOnly);
+        leaseMatterTextField.setEnabled(!readOnly);
     }
 
     private ApplicationServicePanel createAppServicePanel() {
