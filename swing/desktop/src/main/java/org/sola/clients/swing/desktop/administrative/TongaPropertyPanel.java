@@ -581,22 +581,21 @@ public class TongaPropertyPanel extends ContentPanel {
      * Enables or disables termination button, depending on the form state.
      */
     private void customizeTerminationButton() {
-        boolean enabled = !readOnly;
+        boolean enabled = false;
 
-        // Check BaUnit status to be current
-        if (baUnitBean1.getStatusCode() == null || !baUnitBean1.getStatusCode().equals(StatusConstants.CURRENT)) {
-            enabled = false;
-        }
-
-        // Check RequestType to have cancel action.
-        if (applicationService == null || applicationService.getRequestType() == null
-                || applicationService.getRequestType().getTypeActionCode() == null
-                || !applicationService.getRequestTypeCode().equalsIgnoreCase(RequestTypeBean.CODE_CANCEL_PROPERTY)) {
-            enabled = false;
+        if (applicationService != null && applicationService.getRequestType() != null 
+                && !readOnly) {
+            if (RequestTypeBean.CODE_CANCEL_API.equals(applicationService.getRequestTypeCode())
+                    || RequestTypeBean.CODE_SURRENDER_LEASE.equals(applicationService.getRequestTypeCode())
+                    || RequestTypeBean.CODE_TERMINATE_LEASE.equals(applicationService.getRequestTypeCode())
+                    || RequestTypeBean.CODE_SURRENDER_SUBLEASE.equals(applicationService.getRequestTypeCode())
+                    || RequestTypeBean.CODE_TERMINATE_SUBLEASE.equals(applicationService.getRequestTypeCode())) {
+                enabled = true;
+            }
         }
 
         // Determine what should be shown on the button, terminate or cancelling of termination.
-        if (baUnitBean1.getPendingActionCode() != null && applicationService.getRequestTypeCode().equalsIgnoreCase(RequestTypeBean.CODE_CANCEL_PROPERTY)) {
+        if (baUnitBean1.getPendingActionCode() != null && enabled) {
             // Show cancel
             btnTerminate.setIcon(new ImageIcon(getClass().getResource("/images/common/undo.png")));
             btnTerminate.setText(resourceBundle.getString("PropertyPanel.btnTerminate.text2"));
