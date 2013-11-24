@@ -363,7 +363,6 @@ public class TongaPropertyPanel extends ContentPanel {
 //        TO BE REMOVED btnNext after well tested and before pushing the code
         btnNext.setVisible(false);
         btnNext.setEnabled(false);
-
     }
 
     /**
