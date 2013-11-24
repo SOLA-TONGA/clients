@@ -89,9 +89,9 @@
                     The jnlp-download-servlet supports both pack200 and gzip, 
                     however as SOLA targets JRE 7, there is no need to use
                     the gzip format. -->
-                    <!--pack200>
-                        <enabled>true</enabled>
-                    </pack200-->
+                    <pack200>
+                        <enabled>false</enabled>
+                    </pack200>
                     <jnlpFiles>
                         <jnlpFile>
                             <!-- JNLP file for the SOLA Desktop application -->

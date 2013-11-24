@@ -583,7 +583,7 @@ public class TongaPropertyPanel extends ContentPanel {
     private void customizeTerminationButton() {
         boolean enabled = false;
 
-        if (applicationService != null && applicationService.getRequestType() != null 
+        if (applicationService != null && applicationService.getRequestType() != null
                 && !readOnly) {
             if (RequestTypeBean.CODE_CANCEL_API.equals(applicationService.getRequestTypeCode())
                     || RequestTypeBean.CODE_SURRENDER_LEASE.equals(applicationService.getRequestTypeCode())
@@ -2622,15 +2622,13 @@ private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     }//GEN-LAST:event_tableRightsMouseClicked
 
 private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
-    if (this.mapControl == null) {
+    if (this.mapControl == null && SecurityBean.isInRole(RolesConstants.GIS_VIEW_MAP)) {
         this.mapControl = new ControlsBundleForBaUnit();
         if (applicationBean != null) {
             this.mapControl.setApplicationId(this.applicationBean.getId());
         }
-        if (SecurityBean.isInRole(RolesConstants.GIS_VIEW_MAP)) {
-            this.mapPanel.setLayout(new BorderLayout());
-            this.mapPanel.add(this.mapControl, BorderLayout.CENTER);
-        }
+        this.mapPanel.setLayout(new BorderLayout());
+        this.mapPanel.add(this.mapControl, BorderLayout.CENTER);
     }
 }//GEN-LAST:event_formComponentShown
 
