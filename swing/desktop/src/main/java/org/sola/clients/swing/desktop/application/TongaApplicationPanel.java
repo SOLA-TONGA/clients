@@ -431,7 +431,7 @@ public class TongaApplicationPanel extends ContentPanel {
                     btnUPService.setEnabled(false);
                 }
                 if (btnDownService.isEnabled()
-                        && appBean.getServiceList().getFilteredList().indexOf(selectedService) 
+                        && appBean.getServiceList().getFilteredList().indexOf(selectedService)
                         == appBean.getServiceList().getFilteredList().size() - 1) {
                     btnDownService.setEnabled(false);
                 }
@@ -609,7 +609,9 @@ public class TongaApplicationPanel extends ContentPanel {
     }
 
     private boolean saveApplication() {
-        appBean.setLocation(this.mapControl.getApplicationLocation());
+        if (this.mapControl != null) {
+            appBean.setLocation(this.mapControl.getApplicationLocation());
+        }
         if (applicationID != null && !applicationID.equals("")) {
             return appBean.saveApplication();
         } else {
@@ -3750,14 +3752,12 @@ public class TongaApplicationPanel extends ContentPanel {
      * Initializes map control to display application location.
      */
     private void formComponentShown(java.awt.event.ComponentEvent evt) {
-        if (this.mapControl == null) {
+        if (this.mapControl == null && SecurityBean.isInRole(RolesConstants.GIS_VIEW_MAP)) {
             this.mapControl = new ControlsBundleForApplicationLocation();
             this.mapControl.setApplicationLocation(appBean.getLocation());
             this.mapControl.setApplicationId(appBean.getId());
-            if (SecurityBean.isInRole(RolesConstants.GIS_VIEW_MAP)) {
-                this.mapPanel.setLayout(new BorderLayout());
-                this.mapPanel.add(this.mapControl, BorderLayout.CENTER);
-            }
+            this.mapPanel.setLayout(new BorderLayout());
+            this.mapPanel.add(this.mapControl, BorderLayout.CENTER);
         }
     }
 
@@ -3873,10 +3873,10 @@ public class TongaApplicationPanel extends ContentPanel {
     private void moveServiceUp() {
         ApplicationServiceBean asb = appBean.getSelectedService();
         if (asb != null) {
-           Integer order = (Integer) (tabServices.getValueAt(tabServices.getSelectedRow(), 0));
+            Integer order = (Integer) (tabServices.getValueAt(tabServices.getSelectedRow(), 0));
             if (appBean.moveServiceUp()) {
                 tabServices.setValueAt(order - 1, tabServices.getSelectedRow() - 1, 0);
-                 tabServices.setValueAt(order, tabServices.getSelectedRow(), 0);
+                tabServices.setValueAt(order, tabServices.getSelectedRow(), 0);
                 tabServices.getSelectionModel().setSelectionInterval(tabServices.getSelectedRow() - 1, tabServices.getSelectedRow() - 1);
             }
         } else {
