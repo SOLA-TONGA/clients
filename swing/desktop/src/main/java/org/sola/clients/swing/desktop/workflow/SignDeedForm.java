@@ -37,6 +37,7 @@ import org.sola.clients.swing.common.tasks.SolaTask;
 import org.sola.clients.swing.common.tasks.TaskManager;
 import org.sola.clients.swing.ui.ContentPanel;
 import org.sola.clients.swing.ui.reports.ReportViewerForm;
+import org.sola.common.WindowUtility;
 import org.sola.common.messaging.ClientMessage;
 import org.sola.common.messaging.MessageUtility;
 
@@ -93,7 +94,7 @@ public class SignDeedForm extends ContentPanel {
     }
 
     private void save() {
-
+        WindowUtility.commitChanges(this);
         if (applicationServiceBean.validate(true).size() < 1) {
             SolaTask<Void, Void> t = new SolaTask<Void, Void>() {
                 @Override

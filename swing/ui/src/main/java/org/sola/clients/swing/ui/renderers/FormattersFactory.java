@@ -177,7 +177,10 @@ public class FormattersFactory {
             // Use custom display format instead of International MEDIUM format
             SimpleDateFormat f = new SimpleDateFormat("d MMM yyyy");
             DateFormatter displayFormat = new DateFormatter(f);
-            DateFormatter editFormat = new DateFormatter(DateFormat.getDateInstance(DateFormat.SHORT)) {
+
+            //DateFormatter editFormat = new DateFormatter(DateFormat.getDateInstance(DateFormat.SHORT))
+            SimpleDateFormat e = new SimpleDateFormat("d/M/yy");
+            DateFormatter editFormat = new DateFormatter(e) {
                 // Accept null or emtpy string values entered by the user as null.
                 @Override
                 public Object stringToValue(String userInput) throws ParseException {

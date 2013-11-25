@@ -48,6 +48,7 @@ import org.sola.clients.swing.desktop.source.DocumentsManagementExtPanel;
 import org.sola.clients.swing.ui.ContentPanel;
 import org.sola.clients.swing.ui.MainContentPanel;
 import org.sola.clients.swing.ui.renderers.FormattersFactory;
+import org.sola.common.WindowUtility;
 import org.sola.common.messaging.ClientMessage;
 import org.sola.common.messaging.MessageUtility;
 
@@ -172,7 +173,7 @@ public class SimpleRightholderPanel extends ContentPanel {
     }
     
     private boolean saveRrr() {
-        
+        WindowUtility.commitChanges(this);
         if (rrrBean.getFilteredRightHolderList().size() < 1) {
             java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("org/sola/clients/swing/desktop/administrative/Bundle"); // NOI18N
             MessageUtility.displayMessage(ClientMessage.CHECK_NOTNULL_FIELDS,

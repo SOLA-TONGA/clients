@@ -36,6 +36,7 @@ import org.sola.clients.swing.common.tasks.SolaTask;
 import org.sola.clients.swing.common.tasks.TaskManager;
 import org.sola.clients.swing.ui.ContentPanel;
 import org.sola.clients.swing.ui.reports.ReportViewerForm;
+import org.sola.common.WindowUtility;
 import org.sola.common.messaging.ClientMessage;
 import org.sola.common.messaging.MessageUtility;
 
@@ -93,6 +94,7 @@ public class SurveyForm extends ContentPanel {
     private void save() {
         // Save survey form. Validate the applicationServiceBean to ensure
         // all user entered data is correct
+        WindowUtility.commitChanges(this);
         if (applicationServiceBean.validate(true).size() < 1) {
             SolaTask<Void, Void> t = new SolaTask<Void, Void>() {
                 @Override
