@@ -682,11 +682,12 @@ public class TongaApplicationPanel extends ContentPanel {
 
                     showReport(ReportManager.getTongaLodgementNotice(new ApplicationReportBean(appBean)));
 
-                    if (appBean.hasService(RequestTypeBean.CODE_REGISTER_LEASE)) {
+                    if (appBean.hasService(RequestTypeBean.CODE_REGISTER_LEASE) || appBean.hasService(RequestTypeBean.CODE_REGISTER_SUBLEASE)) {
                         // Only display the Lease Application Report when 
-                        // registering a new lease
+                        // registering a new lease or sublease
                         showReport(ReportManager.getLeaseApplicationReport(appBean));
                     }
+                    
                     applicationID = appBean.getId();
                 }
                 firePropertyChange(APPLICATION_SAVED_PROPERTY, false, true);

@@ -278,11 +278,9 @@ public class TongaPropertyPanel extends ContentPanel {
      * displayed.
      */
     private void setTitle() {
-
-        headerPanel.setTitleText(String.format(
-                resourceBundle.getString("TongaPropertyPanel.Property.headerPanel.text"),
-                CacheManager.getBeanByCode(CacheManager.getBaUnitTypes(),
-                baUnitBean1.getTypeCode()).getDisplayValue(),
+            headerPanel.setTitleText(String.format(
+                resourceBundle.getString("TongaPropertyPanel.Property.headerPanel.text"), baUnitBean1.getTypeCode() == null ? "" :                              
+                CacheManager.getBeanByCode(CacheManager.getBaUnitTypes(), baUnitBean1.getTypeCode()).getDisplayValue(),
                 StringUtility.isEmpty(baUnitBean1.getName()) ? baUnitBean1.getNameFirstpart()
                 : baUnitBean1.getName()));
 
@@ -2387,12 +2385,8 @@ public class TongaPropertyPanel extends ContentPanel {
         columnBinding.setColumnName("Related Ba Unit.name");
         columnBinding.setColumnClass(String.class);
         columnBinding.setEditable(false);
-        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${relatedBaUnit.nameFirstpart}"));
-        columnBinding.setColumnName("Related Ba Unit.name Firstpart");
-        columnBinding.setColumnClass(String.class);
-        columnBinding.setEditable(false);
-        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${relatedBaUnit.nameLastpart}"));
-        columnBinding.setColumnName("Related Ba Unit.name Lastpart");
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${relatedBaUnit.baUnitType.displayValue}"));
+        columnBinding.setColumnName("Related Ba Unit.ba Unit Type.display Value");
         columnBinding.setColumnClass(String.class);
         columnBinding.setEditable(false);
         columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${baUnitRelType.displayValue}"));
@@ -2409,10 +2403,9 @@ public class TongaPropertyPanel extends ContentPanel {
 
         jScrollPane3.setViewportView(tableParentBaUnits);
         tableParentBaUnits.getColumnModel().getColumn(0).setHeaderValue(bundle.getString("TongaPropertyPanel.tableParentBaUnits.columnModel.title0_1")); // NOI18N
-        tableParentBaUnits.getColumnModel().getColumn(1).setHeaderValue(bundle.getString("TongaPropertyPanel.tableParentBaUnits.columnModel.title1_1")); // NOI18N
-        tableParentBaUnits.getColumnModel().getColumn(2).setHeaderValue(bundle.getString("TongaPropertyPanel.tableParentBaUnits.columnModel.title2_1")); // NOI18N
-        tableParentBaUnits.getColumnModel().getColumn(3).setHeaderValue(bundle.getString("PropertyPanel.jTable1.columnModel.title4")); // NOI18N
-        tableParentBaUnits.getColumnModel().getColumn(4).setHeaderValue(bundle.getString("PropertyPanel.jTable1.columnModel.title3_1")); // NOI18N
+        tableParentBaUnits.getColumnModel().getColumn(1).setHeaderValue(bundle.getString("TongaPropertyPanel.tableParentBaUnits.columnModel.title2_1")); // NOI18N
+        tableParentBaUnits.getColumnModel().getColumn(2).setHeaderValue(bundle.getString("PropertyPanel.jTable1.columnModel.title4")); // NOI18N
+        tableParentBaUnits.getColumnModel().getColumn(3).setHeaderValue(bundle.getString("PropertyPanel.jTable1.columnModel.title3_1")); // NOI18N
 
         org.jdesktop.layout.GroupLayout jPanel8Layout = new org.jdesktop.layout.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -2469,12 +2462,8 @@ public class TongaPropertyPanel extends ContentPanel {
         columnBinding.setColumnName("Related Ba Unit.name");
         columnBinding.setColumnClass(String.class);
         columnBinding.setEditable(false);
-        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${relatedBaUnit.nameFirstpart}"));
-        columnBinding.setColumnName("Related Ba Unit.name Firstpart");
-        columnBinding.setColumnClass(String.class);
-        columnBinding.setEditable(false);
-        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${relatedBaUnit.nameLastpart}"));
-        columnBinding.setColumnName("Related Ba Unit.name Lastpart");
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${relatedBaUnit.baUnitType.displayValue}"));
+        columnBinding.setColumnName("Related Ba Unit.ba Unit Type.display Value");
         columnBinding.setColumnClass(String.class);
         columnBinding.setEditable(false);
         columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${baUnitRelType.displayValue}"));
@@ -2491,10 +2480,9 @@ public class TongaPropertyPanel extends ContentPanel {
 
         jScrollPane7.setViewportView(tableChildBaUnits);
         tableChildBaUnits.getColumnModel().getColumn(0).setHeaderValue(bundle.getString("TongaPropertyPanel.tableChildBaUnits.columnModel.title0_1")); // NOI18N
-        tableChildBaUnits.getColumnModel().getColumn(1).setHeaderValue(bundle.getString("TongaPropertyPanel.tableChildBaUnits.columnModel.title1_1")); // NOI18N
-        tableChildBaUnits.getColumnModel().getColumn(2).setHeaderValue(bundle.getString("TongaPropertyPanel.tableChildBaUnits.columnModel.title2_1")); // NOI18N
-        tableChildBaUnits.getColumnModel().getColumn(3).setHeaderValue(bundle.getString("TongaPropertyPanel.tableChildBaUnits.columnModel.title3_1")); // NOI18N
-        tableChildBaUnits.getColumnModel().getColumn(4).setHeaderValue(bundle.getString("TongaPropertyPanel.tableChildBaUnits.columnModel.title4")); // NOI18N
+        tableChildBaUnits.getColumnModel().getColumn(1).setHeaderValue(bundle.getString("TongaPropertyPanel.tableChildBaUnits.columnModel.title2_1")); // NOI18N
+        tableChildBaUnits.getColumnModel().getColumn(2).setHeaderValue(bundle.getString("TongaPropertyPanel.tableChildBaUnits.columnModel.title3_1")); // NOI18N
+        tableChildBaUnits.getColumnModel().getColumn(3).setHeaderValue(bundle.getString("TongaPropertyPanel.tableChildBaUnits.columnModel.title4")); // NOI18N
 
         org.jdesktop.layout.GroupLayout jPanel5Layout = new org.jdesktop.layout.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
