@@ -68,6 +68,8 @@ public class ApplicationServiceBean extends ApplicationServiceSummaryBean {
     public static final String APPROVAL_DATE = "approvalDate";
     public static final String APPROVAL_NUMBER = "approvalNumber";
     public static final String DESCRIPTION_PROPERTY = "description";
+    public static final String REPORT_TEXT_ONE = "reportTextOne";
+    public static final String REPORT_TEXT_TWO = "reportTextTwo";
     private ServiceActionTypeBean actionBean;
     private ServiceStatusTypeBean statusBean;
     @Length(max = 4000, message = ClientMessage.CHECK_ACTION_NOTES_LENGTH, payload = Localized.class)
@@ -85,6 +87,8 @@ public class ApplicationServiceBean extends ApplicationServiceSummaryBean {
     private String approvalNumber;
     private String description;
     private Boolean hasTransaction;
+    private String reportTextOne;
+    private String reportTextTwo;
 
     /**
      * Creates object's instance and initializes the following beans, which are
@@ -275,6 +279,26 @@ public class ApplicationServiceBean extends ApplicationServiceSummaryBean {
         String old = description;
         description = value;
         propertySupport.firePropertyChange(DESCRIPTION_PROPERTY, old, value);
+    }
+    
+    public String getReportTextOne() {
+        return reportTextOne;
+    }
+
+    public void setReportTextOne(String value) {
+        String old = reportTextOne;
+        reportTextOne = value;
+        propertySupport.firePropertyChange(REPORT_TEXT_ONE, old, value);
+    }
+
+    public String getReportTextTwo() {
+        return reportTextTwo;
+    }
+
+    public void setReportTextTwo(String value) {
+        String old = reportTextTwo;
+        reportTextTwo = value;
+        propertySupport.firePropertyChange(REPORT_TEXT_TWO, old, value);
     }
 
     /**

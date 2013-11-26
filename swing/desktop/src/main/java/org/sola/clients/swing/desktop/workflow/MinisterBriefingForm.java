@@ -76,7 +76,8 @@ public class MinisterBriefingForm extends ContentPanel {
         appServicePanel.lblActionDate.setText(bundle.getString("MinisterBriefingForm.appServicePanel.lblActionDate.text"));
         appServicePanel.lblActionCompleted.setText(bundle.getString("MinisterBriefingForm.appServicePanel.lblActionCompleted.text"));
         btnSave.setEnabled(!readOnly);
-        leaseMatterTextField.setEnabled(!readOnly);
+        reportOneTextField.setEnabled(!readOnly);
+        reportTwoTextField.setEnabled(!readOnly);
     }
 
     private ApplicationServicePanel createAppServicePanel() {
@@ -154,8 +155,13 @@ public class MinisterBriefingForm extends ContentPanel {
         btnPrint = new org.sola.clients.swing.common.buttons.BtnPrint();
         btnPrintSurveySavingram = new org.sola.clients.swing.common.buttons.BtnPrint();
         appServicePanel = createAppServicePanel();
+        jPanel3 = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
+        reportOneTextField = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        leaseMatterTextField = new javax.swing.JTextField();
+        jPanel2 = new javax.swing.JPanel();
+        reportTwoTextField = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
 
         setHeaderPanel(headerPanel);
 
@@ -191,10 +197,59 @@ public class MinisterBriefingForm extends ContentPanel {
         });
         jToolBar1.add(btnPrintSurveySavingram);
 
+        jPanel3.setLayout(new java.awt.GridLayout());
+
+        org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, applicationServiceBean, org.jdesktop.beansbinding.ELProperty.create("${reportTextOne}"), reportOneTextField, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+
         jLabel1.setText(bundle.getString("MinisterBriefingForm.jLabel1.text")); // NOI18N
 
-        org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, applicationServiceBean, org.jdesktop.beansbinding.ELProperty.create("${leaseMatter}"), leaseMatterTextField, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(reportOneTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 29, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(reportOneTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(12, Short.MAX_VALUE))
+        );
+
+        jPanel3.add(jPanel1);
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, applicationServiceBean, org.jdesktop.beansbinding.ELProperty.create("${reportTextTwo}"), reportTwoTextField, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
+
+        jLabel2.setText(bundle.getString("MinisterBriefingForm.jLabel2.text")); // NOI18N
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(reportTwoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 29, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(reportTwoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(12, Short.MAX_VALUE))
+        );
+
+        jPanel3.add(jPanel2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -202,13 +257,8 @@ public class MinisterBriefingForm extends ContentPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(headerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(appServicePanel, javax.swing.GroupLayout.DEFAULT_SIZE, 665, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(leaseMatterTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 463, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(appServicePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -216,13 +266,10 @@ public class MinisterBriefingForm extends ContentPanel {
                 .addComponent(headerPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(leaseMatterTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(7, 7, 7)
-                .addComponent(appServicePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(appServicePanel, javax.swing.GroupLayout.DEFAULT_SIZE, 301, Short.MAX_VALUE))
         );
 
         bindingGroup.bind();
@@ -247,8 +294,13 @@ public class MinisterBriefingForm extends ContentPanel {
     private org.sola.clients.swing.common.buttons.BtnSave btnSave;
     private org.sola.clients.swing.ui.HeaderPanel headerPanel;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JToolBar jToolBar1;
-    private javax.swing.JTextField leaseMatterTextField;
+    private javax.swing.JTextField reportOneTextField;
+    private javax.swing.JTextField reportTwoTextField;
     private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 }
