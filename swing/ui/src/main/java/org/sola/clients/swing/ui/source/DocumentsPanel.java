@@ -225,10 +225,6 @@ public class DocumentsPanel extends javax.swing.JPanel {
         columnBinding.setColumnName("Source Type.display Value");
         columnBinding.setColumnClass(String.class);
         columnBinding.setEditable(false);
-        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${laNr}"));
-        columnBinding.setColumnName("La Nr");
-        columnBinding.setColumnClass(String.class);
-        columnBinding.setEditable(false);
         columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${referenceNr}"));
         columnBinding.setColumnName("Reference Nr");
         columnBinding.setColumnClass(String.class);
@@ -237,8 +233,12 @@ public class DocumentsPanel extends javax.swing.JPanel {
         columnBinding.setColumnName("Recordation");
         columnBinding.setColumnClass(java.util.Date.class);
         columnBinding.setEditable(false);
-        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${ownerName}"));
-        columnBinding.setColumnName("Owner Name");
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${laNr}"));
+        columnBinding.setColumnName("La Nr");
+        columnBinding.setColumnClass(String.class);
+        columnBinding.setEditable(false);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${description}"));
+        columnBinding.setColumnName("Description");
         columnBinding.setColumnClass(String.class);
         columnBinding.setEditable(false);
         columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${submission}"));
@@ -261,9 +261,9 @@ public class DocumentsPanel extends javax.swing.JPanel {
         jScrollPane1.setViewportView(tableDocuments);
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("org/sola/clients/swing/ui/source/Bundle"); // NOI18N
         tableDocuments.getColumnModel().getColumn(0).setHeaderValue(bundle.getString("DocumentsPanel.tableDocuments.columnModel.title0_1")); // NOI18N
-        tableDocuments.getColumnModel().getColumn(1).setHeaderValue(bundle.getString("DocumentsPanel.tableDocuments.columnModel.title1_1")); // NOI18N
-        tableDocuments.getColumnModel().getColumn(2).setHeaderValue(bundle.getString("DocumentsPanel.tableDocuments.columnModel.title3_1")); // NOI18N
-        tableDocuments.getColumnModel().getColumn(3).setHeaderValue(bundle.getString("DocumentsPanel.tableDocuments.columnModel.title2_1")); // NOI18N
+        tableDocuments.getColumnModel().getColumn(1).setHeaderValue(bundle.getString("DocumentsPanel.tableDocuments.columnModel.title3_1")); // NOI18N
+        tableDocuments.getColumnModel().getColumn(2).setHeaderValue(bundle.getString("DocumentsPanel.tableDocuments.columnModel.title2_1")); // NOI18N
+        tableDocuments.getColumnModel().getColumn(3).setHeaderValue(bundle.getString("DocumentsPanel.tableDocuments.columnModel.title1_1")); // NOI18N
         tableDocuments.getColumnModel().getColumn(4).setHeaderValue(bundle.getString("DocumentsPanel.tableDocuments.columnModel.title4")); // NOI18N
         tableDocuments.getColumnModel().getColumn(5).setHeaderValue(bundle.getString("DocumentsPanel.tableDocuments.columnModel.title5")); // NOI18N
         tableDocuments.getColumnModel().getColumn(6).setPreferredWidth(30);

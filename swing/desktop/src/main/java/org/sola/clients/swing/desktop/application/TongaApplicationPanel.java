@@ -371,13 +371,26 @@ public class TongaApplicationPanel extends ContentPanel {
             btnCertificate.setEnabled(false);
             documentsPanel.setAllowEdit(editAllowed);
             if (appBean.getStatusCode().equals("approved")) {
-                btnCertificate.setEnabled(true);
+                btnCertificate.setEnabled(false);
             }
         } else {
             if (!SecurityBean.isInRole(RolesConstants.APPLICATION_CREATE_APPS)) {
                 btnSave.setEnabled(false);
             }
             btnCertificate.setEnabled(false);
+        }
+
+        menuPrintStatusReport.setEnabled(false);
+        menuPrintApplicationForm.setEnabled(false);
+        if (appBean.isLodged() || appBean.isRequisitioned()) {
+            // Enable the Print option
+            menuPrintStatusReport.setEnabled(true);
+            if (appBean.hasService(RequestTypeBean.CODE_REGISTER_LEASE)
+                    || appBean.hasService(RequestTypeBean.CODE_REGISTER_SUBLEASE)) {
+                {
+                    menuPrintApplicationForm.setEnabled(true);
+                }
+            }
         }
 
         if (!SecurityBean.isInRole(RolesConstants.GIS_VIEW_MAP)
@@ -682,14 +695,14 @@ public class TongaApplicationPanel extends ContentPanel {
                     appBean.getSelectedProperty().setSurveyFee(
                             appBean.getTotalFeeForService(RequestTypeBean.CODE_SURVEY));
 
-                    showReport(ReportManager.getTongaLodgementNotice(new ApplicationReportBean(appBean)));
+                    printLodgementNotice();
 
                     if (appBean.hasService(RequestTypeBean.CODE_REGISTER_LEASE) || appBean.hasService(RequestTypeBean.CODE_REGISTER_SUBLEASE)) {
                         // Only display the Lease Application Report when 
                         // registering a new lease or sublease
-                        showReport(ReportManager.getLeaseApplicationReport(appBean));
+                        printLeaseApplicationReport();
                     }
-                    
+
                     applicationID = appBean.getId();
                 }
                 firePropertyChange(APPLICATION_SAVED_PROPERTY, false, true);
@@ -772,7 +785,6 @@ public class TongaApplicationPanel extends ContentPanel {
         townListBean1 = new TownListBean(true);
         jScrollBar1 = new javax.swing.JScrollBar();
         popupPrintAction = new javax.swing.JPopupMenu();
-        menuPrintInvoice = new javax.swing.JMenuItem();
         menuPrintStatusReport = new javax.swing.JMenuItem();
         menuPrintApplicationForm = new javax.swing.JMenuItem();
         noblePartyListBean = createNobleList();
@@ -1178,17 +1190,6 @@ public class TongaApplicationPanel extends ContentPanel {
         jScrollBar1.setName("jScrollBar1"); // NOI18N
 
         popupPrintAction.setName("popupPrintAction"); // NOI18N
-
-        menuPrintInvoice.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/print.png"))); // NOI18N
-        menuPrintInvoice.setText(bundle.getString("TongaApplicationPanel.menuPrintInvoice.text")); // NOI18N
-        menuPrintInvoice.setActionCommand(bundle.getString("TongaApplicationPanel.menuPrintInvoice.actionCommand")); // NOI18N
-        menuPrintInvoice.setName("menuPrintInvoice"); // NOI18N
-        menuPrintInvoice.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuPrintInvoiceActionPerformed(evt);
-            }
-        });
-        popupPrintAction.add(menuPrintInvoice);
 
         menuPrintStatusReport.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/print.png"))); // NOI18N
         menuPrintStatusReport.setText(bundle.getString("TongaApplicationPanel.menuPrintStatusReport.text")); // NOI18N
@@ -3728,15 +3729,11 @@ public class TongaApplicationPanel extends ContentPanel {
     }//GEN-LAST:event_btnClearActionPerformed
 
     private void menuPrintApplicationFormActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuPrintApplicationFormActionPerformed
-        printApplicationReport();
+        printLeaseApplicationReport();
     }//GEN-LAST:event_menuPrintApplicationFormActionPerformed
 
-    private void menuPrintInvoiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuPrintInvoiceActionPerformed
-        printReceipt();
-    }//GEN-LAST:event_menuPrintInvoiceActionPerformed
-
     private void menuPrintStatusReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuPrintStatusReportActionPerformed
-        printStatusReport();
+        printLodgementNotice();
     }//GEN-LAST:event_menuPrintStatusReportActionPerformed
 
     private void btnDateOfRegistrationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDateOfRegistrationActionPerformed
@@ -4143,32 +4140,17 @@ public class TongaApplicationPanel extends ContentPanel {
     }
 
     /**
-     * Prints payment receipt.
-     */
-    private void printReceipt() {
-        if (applicationID == null || applicationID.equals("")) {
-            if (MessageUtility.displayMessage(ClientMessage.CHECK_NOT_LODGED_RECEIPT) == MessageUtility.BUTTON_TWO) {
-                return;
-            }
-        }
-        showReport(ReportManager.getApplicationFeeReport(appBean));
-    }
-
-    /**
      * Allows to overview service.
      */
     private void viewService() {
         launchService(appBean.getSelectedService(), true);
     }
 
-    private void printStatusReport() {
-        if (appBean.getRowVersion() > 0
-                && ApplicationServiceBean.saveInformationService(RequestTypeBean.CODE_SERVICE_ENQUIRY)) {
-            showReport(ReportManager.getApplicationStatusReport(appBean));
-        }
+    private void printLodgementNotice() {
+        showReport(ReportManager.getTongaLodgementNotice(new ApplicationReportBean(appBean)));
     }
 
-    private void printApplicationReport() {
+    private void printLeaseApplicationReport() {
         showReport(ReportManager.getLeaseApplicationReport(appBean));
     }
 
@@ -4360,7 +4342,6 @@ public class TongaApplicationPanel extends ContentPanel {
     private javax.swing.JMenuItem menuMoveServiceDown;
     private javax.swing.JMenuItem menuMoveServiceUp;
     private javax.swing.JMenuItem menuPrintApplicationForm;
-    private javax.swing.JMenuItem menuPrintInvoice;
     private javax.swing.JMenuItem menuPrintStatusReport;
     private javax.swing.JMenuItem menuRemoveService;
     private javax.swing.JMenuItem menuRequisition;
