@@ -60,7 +60,8 @@
 
                             String desktopJnlp = "/webstart/sola-desktop-test.jnlp";
                             String adminJnlp = "/webstart/sola-admin-test.jnlp";
-                            if (hostName.equalsIgnoreCase("landsgis")) { // Update hostname as required
+                            if (hostName.equalsIgnoreCase("landsgis") ||
+                                    hostName.equalsIgnoreCase("192.168.2.167")) { // Update hostname as required
                                 // This is the production host so use the production
                                 // JNLP files
                                 desktopJnlp = "/webstart/sola-desktop.jnlp";
