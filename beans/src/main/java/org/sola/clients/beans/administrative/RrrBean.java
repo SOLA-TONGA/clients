@@ -431,7 +431,7 @@ public class RrrBean extends AbstractTransactionedBean {
         return sourceList;
     }
 
-    @Size(min = 1, message = ClientMessage.CHECK_SIZE_SOURCELIST, payload = Localized.class)
+    //@Size(min = 1, message = ClientMessage.CHECK_SIZE_SOURCELIST, payload = Localized.class)
     @NoDuplicates(message = ClientMessage.CHECK_NODUPLICATED_SOURCELIST, payload = Localized.class)
     public ObservableList<SourceBean> getFilteredSourceList() {
         return sourceList.getFilteredList();
