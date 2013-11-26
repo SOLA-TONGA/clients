@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Minister Briefing Report" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" resourceBundle="org.sola.clients.reports.locale.MinisterBriefingReport_en_NZ" uuid="ac6f666c-9299-4670-8732-3db826427724">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="96"/>
+	<property name="ireport.y" value="234"/>
 	<parameter name="SILA_IMAGE" class="java.io.InputStream"/>
 	<queryString>
 		<![CDATA[]]>
@@ -177,11 +177,11 @@ CLIMATE CHANGE & NATURAL RESOURCES]]></text>
 				<reportElement uuid="79aeda4d-a270-431d-9573-a09862f8b225" x="135" y="457" width="420" height="27"/>
 			</rectangle>
 			<staticText>
-				<reportElement uuid="23e96994-c7bc-4779-ac81-34eb6de5f34f" x="0" y="430" width="124" height="27"/>
+				<reportElement uuid="23e96994-c7bc-4779-ac81-34eb6de5f34f" x="0" y="430" width="124" height="14"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle" markup="none">
 					<font fontName="Arial" size="11" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Officer's Signature/Date]]></text>
+				<text><![CDATA[Officer's Signature/]]></text>
 			</staticText>
 			<rectangle>
 				<reportElement uuid="79aeda4d-a270-431d-9573-a09862f8b225" x="135" y="430" width="420" height="27"/>
@@ -194,7 +194,7 @@ CLIMATE CHANGE & NATURAL RESOURCES]]></text>
 				<text><![CDATA[Checked / Date]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="e738cc1a-d29a-48e4-9d1f-3a061b68370e" x="1" y="494" width="124" height="20"/>
+				<reportElement uuid="e738cc1a-d29a-48e4-9d1f-3a061b68370e" x="-21" y="494" width="146" height="20"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle" markup="none">
 					<font fontName="Arial" size="12" isBold="true"/>
 				</textElement>
@@ -259,14 +259,14 @@ CLIMATE CHANGE & NATURAL RESOURCES]]></text>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Arial" size="12"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{appServiceBean}.getLeaseMatter()]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{appServiceBean}.getReportTextOne()]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement uuid="11e6fa75-ce1f-46d9-96b6-803a293a2471" x="137" y="139" width="418" height="254"/>
+				<reportElement uuid="11e6fa75-ce1f-46d9-96b6-803a293a2471" x="137" y="139" width="418" height="27"/>
 				<textElement textAlignment="Left" verticalAlignment="Top" markup="none">
 					<font fontName="Arial" size="12"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{appBean}.getSelectedProperty().getDescription()]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{appServiceBean}.getActionNotes()]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement uuid="80580be5-fb79-4188-b49f-7f9dbb159491" x="137" y="15" width="417" height="27"/>
@@ -282,6 +282,27 @@ CLIMATE CHANGE & NATURAL RESOURCES]]></text>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{fullName}]]></textFieldExpression>
 			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="ede40608-c7bf-4777-ae60-77cdb07303aa" x="136" y="403" width="419" height="27"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{appServiceBean}.getReportTextTwo()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="23e96994-c7bc-4779-ac81-34eb6de5f34f" x="1" y="444" width="124" height="14"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle" markup="none">
+					<font fontName="Arial" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Date of Brief]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="3f19391b-ebd2-4a66-8351-e12938b27d95" x="136" y="166" width="418" height="118"/>
+				<textElement textAlignment="Left" verticalAlignment="Top" markup="none">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[Details of ]]></text>
+			</staticText>
 		</band>
 	</detail>
 	<columnFooter>
