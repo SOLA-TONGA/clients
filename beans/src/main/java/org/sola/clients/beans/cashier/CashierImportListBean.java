@@ -30,6 +30,8 @@
 package org.sola.clients.beans.cashier;
 
 import java.math.BigDecimal;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -37,6 +39,7 @@ import org.sola.clients.beans.AbstractBindingListBean;
 import org.sola.clients.beans.controls.SolaObservableList;
 import org.sola.clients.beans.converters.TypeConverters;
 import org.sola.clients.beans.utils.CsvFileUtility;
+import org.sola.common.logging.LogUtility;
 import org.sola.services.boundary.wsclients.WSManager;
 import org.sola.webservices.transferobjects.administrative.CashierImportTO;
 
@@ -59,28 +62,32 @@ public class CashierImportListBean extends AbstractBindingListBean {
     public void loadCashierCsv(String filePath) {
         int count = 0;
         List<String[]> lines = CsvFileUtility.importFile(filePath);
-        for (String[] line : lines) {
-            count++;
-            if (count <= 1) {
-                continue;
+        try {
+            for (String[] line : lines) {
+                count++;
+                if (count <= 1) {
+                    continue;
+                }
+                if (!"Null".equals(line[6])) {
+                    CashierImportBean bean = new CashierImportBean();
+                    bean.setRecordId(Integer.parseInt(line[0]));
+                    bean.setPaymentDate(new SimpleDateFormat("d/MM/yyyy").parse(line[1]));
+                    bean.setPaymentParticulars(line[4]);
+                    bean.setPaymentDescription(line[6]);
+                    bean.setSurveyFee(new BigDecimal(cleanCsv(line[9])));
+                    bean.setRentGov(new BigDecimal(cleanCsv(line[10])));
+                    bean.setRentalTax(new BigDecimal(cleanCsv(line[12])));
+                    bean.setRegisterFee(new BigDecimal(cleanCsv(line[13])));
+                    bean.setTransferFee(new BigDecimal(cleanCsv(line[14])));
+                    bean.setDeedLease(new BigDecimal(cleanCsv(line[16])));
+                    bean.setReceiptNumber(line[18]);
+                    bean.setTotalPayment(new BigDecimal(cleanCsv(line[20])));
+                    bean.setLeaseNumber(line[23]);
+                    getCashierImportList().add(bean);
+                }
             }
-            if (!"Null".equals(line[6])) {
-                CashierImportBean bean = new CashierImportBean();
-                bean.setRecordId(Integer.parseInt(line[0]));
-                bean.setPaymentDate(new Date(line[1]));
-                bean.setPaymentParticulars(line[4]);
-                bean.setPaymentDescription(line[6]);
-                bean.setSurveyFee(new BigDecimal(cleanCsv(line[9])));
-                bean.setRentGov(new BigDecimal(cleanCsv(line[10])));
-                bean.setRentalTax(new BigDecimal(cleanCsv(line[12])));
-                bean.setRegisterFee(new BigDecimal(cleanCsv(line[13])));
-                bean.setTransferFee(new BigDecimal(cleanCsv(line[14])));
-                bean.setDeedLease(new BigDecimal(cleanCsv(line[16])));
-                bean.setReceiptNumber(line[18]);
-                bean.setTotalPayment(new BigDecimal(cleanCsv(line[20])));
-                bean.setLeaseNumber(line[23]);
-                getCashierImportList().add(bean);
-            }
+        } catch (ParseException e) {
+            LogUtility.log("Cannot parse CSV date: ", e);
         }
     }
 
