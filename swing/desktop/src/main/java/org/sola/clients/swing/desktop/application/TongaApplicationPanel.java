@@ -74,6 +74,7 @@ import org.sola.clients.swing.ui.renderers.*;
 import org.sola.clients.swing.ui.reports.ReportViewerForm;
 import org.sola.clients.swing.ui.validation.ValidationResultForm;
 import org.sola.common.RolesConstants;
+import org.sola.common.StringUtility;
 import org.sola.common.messaging.ClientMessage;
 import org.sola.common.messaging.MessageUtility;
 import org.sola.services.boundary.wsclients.WSManager;
@@ -296,7 +297,8 @@ public class TongaApplicationPanel extends ContentPanel {
      * Sets the amount paid value when the Paid checkbox is set.
      */
     private void setDefaultFeePaidAmount() {
-        if (appBean.isFeePaid()) {
+        if (appBean.isFeePaid()
+                && BigDecimal.ZERO.compareTo(appBean.getTotalAmountPaid()) == 0) {
             appBean.setTotalAmountPaid(appBean.getTotalFee());
         }
     }
@@ -458,22 +460,32 @@ public class TongaApplicationPanel extends ContentPanel {
         btnViewService.setEnabled(false);
         btnRevertService.setEnabled(false);
 
+        if (selectedService != null) {
+            // Tonga customization - allow the details of the service to be viewed
+            btnViewService.setEnabled(!selectedService.isNew());
+        }
+
         if (servicesManagementAllowed) {
             if (selectedService != null) {
-                btnViewService.setEnabled(!selectedService.isNew());
-                btnCancelService.setEnabled(selectedService.isManagementAllowed()
-                        && SecurityBean.isInRole(RolesConstants.APPLICATION_SERVICE_CANCEL));
-                btnStartService.setEnabled(selectedService.isManagementAllowed()
-                        && SecurityBean.isInRole(RolesConstants.APPLICATION_SERVICE_START));
-
+                boolean enableServiceAction = selectedService.isManagementAllowed()
+                        && SecurityBean.getCurrentUser().getId().equals(appBean.getAssigneeId());
+                btnCancelService.setEnabled(enableServiceAction
+                        && SecurityBean.isInRole(RolesConstants.APPLICATION_SERVICE_CANCEL)
+                        && SecurityBean.isInRole(selectedService.getRequestTypeCode()));
+                btnStartService.setEnabled(enableServiceAction
+                        && SecurityBean.isInRole(RolesConstants.APPLICATION_SERVICE_START)
+                        && SecurityBean.isInRole(selectedService.getRequestTypeCode()));
                 String serviceStatus = selectedService.getStatusCode();
 
                 if (serviceStatus != null && serviceStatus.equals(StatusConstants.COMPLETED)) {
                     btnCompleteService.setEnabled(false);
-                    btnRevertService.setEnabled(SecurityBean.isInRole(RolesConstants.APPLICATION_SERVICE_REVERT));
+                    btnRevertService.setEnabled(enableServiceAction
+                            && SecurityBean.isInRole(RolesConstants.APPLICATION_SERVICE_REVERT)
+                            && SecurityBean.isInRole(selectedService.getRequestTypeCode()));
                 } else {
-                    btnCompleteService.setEnabled(selectedService.isManagementAllowed()
-                            && SecurityBean.isInRole(RolesConstants.APPLICATION_SERVICE_COMPLETE));
+                    btnCompleteService.setEnabled(enableServiceAction
+                            && SecurityBean.isInRole(RolesConstants.APPLICATION_SERVICE_COMPLETE)
+                            && SecurityBean.isInRole(selectedService.getRequestTypeCode()));
                     btnRevertService.setEnabled(false);
                 }
             }
@@ -3207,7 +3219,8 @@ public class TongaApplicationPanel extends ContentPanel {
         jPanel2.setName("jPanel2"); // NOI18N
 
         formTxtServiceFee.setEditable(false);
-        formTxtServiceFee.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(java.text.NumberFormat.getCurrencyInstance())));
+        formTxtServiceFee.setFormatterFactory(FormattersFactory.getInstance().getMoneyFormatterFactory());
+        formTxtServiceFee.setEnabled(false);
         formTxtServiceFee.setInheritsPopupMenu(true);
         formTxtServiceFee.setName("formTxtServiceFee"); // NOI18N
 
@@ -3218,7 +3231,8 @@ public class TongaApplicationPanel extends ContentPanel {
         formTxtServiceFee.setHorizontalAlignment(JFormattedTextField.LEADING);
 
         formTxtTaxes.setEditable(false);
-        formTxtTaxes.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(java.text.NumberFormat.getCurrencyInstance())));
+        formTxtTaxes.setFormatterFactory(FormattersFactory.getInstance().getMoneyFormatterFactory());
+        formTxtTaxes.setEnabled(false);
         formTxtTaxes.setInheritsPopupMenu(true);
         formTxtTaxes.setName("formTxtTaxes"); // NOI18N
 
@@ -3229,7 +3243,8 @@ public class TongaApplicationPanel extends ContentPanel {
         formTxtTaxes.setHorizontalAlignment(JFormattedTextField.LEADING);
 
         formTxtFee.setEditable(false);
-        formTxtFee.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(java.text.NumberFormat.getCurrencyInstance())));
+        formTxtFee.setFormatterFactory(FormattersFactory.getInstance().getMoneyFormatterFactory());
+        formTxtFee.setEnabled(false);
         formTxtFee.setName("formTxtFee"); // NOI18N
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, appBean, org.jdesktop.beansbinding.ELProperty.create("${totalFee}"), formTxtFee, org.jdesktop.beansbinding.BeanProperty.create("value"));
@@ -3274,7 +3289,7 @@ public class TongaApplicationPanel extends ContentPanel {
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, appBean, org.jdesktop.beansbinding.ELProperty.create("${feePaid}"), cbxPaid, org.jdesktop.beansbinding.BeanProperty.create("selected"));
         bindingGroup.addBinding(binding);
 
-        formTxtPaid.setFormatterFactory(BigDecimalMoneyConverter.getEditFormatterFactory());
+        formTxtPaid.setFormatterFactory(FormattersFactory.getInstance().getMoneyFormatterFactory());
         formTxtPaid.setText(bundle.getString("TongaApplicationPanel.formTxtPaid.text")); // NOI18N
         formTxtPaid.setName(bundle.getString("ApplicationPanel.formTxtPaid.name")); // NOI18N
 

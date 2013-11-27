@@ -281,8 +281,7 @@ public class TongaPropertyPanel extends ContentPanel {
             headerPanel.setTitleText(String.format(
                 resourceBundle.getString("TongaPropertyPanel.Property.headerPanel.text"), baUnitBean1.getTypeCode() == null ? "" :                              
                 CacheManager.getBeanByCode(CacheManager.getBaUnitTypes(), baUnitBean1.getTypeCode()).getDisplayValue(),
-                StringUtility.isEmpty(baUnitBean1.getName()) ? baUnitBean1.getNameFirstpart()
-                : baUnitBean1.getName()));
+                StringUtility.isEmpty(baUnitBean1.getName()) ? "" : baUnitBean1.getName()));
 
         if (applicationBean != null && applicationService != null) {
             // Append information about the application to the title
@@ -314,7 +313,7 @@ public class TongaPropertyPanel extends ContentPanel {
         allowEdit(txtAreaImperial, enabledOnNew);
         rbTownAllotment.setVisible(false);
         rbTaxAllotment.setVisible(false);
-        allowEdit(txtParcelName, enabledOnNew);
+        allowEdit(txtParcelName, false);
         btnSave.setEnabled(enabled);
         customizeRightsButtons(null);
         customizeNotationButtons(null);
