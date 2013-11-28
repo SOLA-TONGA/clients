@@ -137,6 +137,7 @@ public class MortgagePanel extends ContentPanel {
             txtReceiptNumber.setEnabled(false);
             txtReceiptDate.setEnabled(false);
             browseLender.setEnabled(false);
+            txtMortgageNumber.setEnabled(false);
         } else {
             browseLender.addBrowseControlEventListener(new BrowseControlListener() {
 
