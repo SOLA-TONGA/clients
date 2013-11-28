@@ -44,9 +44,10 @@ import org.sola.common.messaging.MessageUtility;
  * @author Admin
  */
 public class ItemNumberForm extends ContentPanel {
-    ApplicationServiceBean applicationServiceBean;
+
+    ApplicationBean applicationBean;
     boolean readOnly = false;
-    
+
     /**
      * Creates new form ItemNumberForm
      */
@@ -62,26 +63,43 @@ public class ItemNumberForm extends ContentPanel {
         initComponents();
         customizeForm();
     }
-
+    
     private void customizeForm() {
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("org/sola/clients/swing/desktop/workflow/Bundle");
         if (applicationBean != null) {
             headerPanel.setTitleText(String.format(bundle.getString("ItemNumberForm.headerPanel.titleText"),
                     applicationBean.getNr()));
         }
-        
+        // Set the labels on the application service panel
+        appServicePanel.lblActionDate.setText(bundle.getString("ItemNumberForm.appServicePanel.lblActionDate.text"));
         btnSave.setEnabled(!readOnly);
-        itemNumberTextField.setEnabled(!readOnly);
+        appServicePanel.setFieldALabel(bundle.getString("ItemNumberForm.lblApprovalNumber.text"));
+        appServicePanel.setFieldBLabel(bundle.getString("ItemNumberForm.lblItemNumber.text"));
+        appServicePanel.hideActionCompleted();
     }
     
-    private ApplicationBean createAppBean() {
-
+    private ApplicationServiceBean createServiceBean() {
+        
+        if (applicationServiceBean == null) {
+            applicationServiceBean = new ApplicationServiceBean();
+        }
+        return applicationServiceBean;
+    }
+    
+    private ApplicationServicePanel createAppServicePanel() {
         if (applicationBean == null) {
             applicationBean = new ApplicationBean();
         }
-        return applicationBean;
+        if (applicationServiceBean == null) {
+            applicationServiceBean = new ApplicationServiceBean();
+        }
+        
+        if (appServicePanel == null) {
+            appServicePanel = new ApplicationServicePanel(applicationBean, applicationServiceBean, readOnly);
+        }
+        return appServicePanel;
     }
-
+    
     private void save() {
         WindowUtility.commitChanges(this);
         if (applicationServiceBean.validate(true).size() < 1) {
@@ -89,10 +107,13 @@ public class ItemNumberForm extends ContentPanel {
                 @Override
                 public Void doTask() {
                     setMessage(MessageUtility.getLocalizedMessageText(ClientMessage.PROGRESS_MSG_SAVING));
+                    applicationServiceBean.setApprovalNumber(applicationServiceBean.getReportTextOne());
+                    applicationServiceBean.setApprovalDate(applicationServiceBean.getActionDate());
+                    applicationBean.setItemNumber(applicationServiceBean.getReportTextTwo());
                     applicationBean.saveApplication();
                     return null;
                 }
-
+                
                 @Override
                 public void taskDone() {
                     MessageUtility.displayMessage(ClientMessage.APPLICATION_SUCCESSFULLY_SAVED);
@@ -101,6 +122,7 @@ public class ItemNumberForm extends ContentPanel {
             TaskManager.getInstance().runTask(t);
         }
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -109,29 +131,16 @@ public class ItemNumberForm extends ContentPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
-        applicationBean = createAppBean();
+        applicationServiceBean = createServiceBean();
         headerPanel = new org.sola.clients.swing.ui.HeaderPanel();
-        itemNumberTextField = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
         jToolBar1 = new javax.swing.JToolBar();
         btnSave = new org.sola.clients.swing.common.buttons.BtnSave();
+        appServicePanel = createAppServicePanel();
 
         setHeaderPanel(headerPanel);
 
         headerPanel.setTitleText("Item Number for Application: #%s");
-
-        org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, applicationBean, org.jdesktop.beansbinding.ELProperty.create("${itemNumber}"), itemNumberTextField, org.jdesktop.beansbinding.BeanProperty.create("text"));
-        bindingGroup.addBinding(binding);
-
-        itemNumberTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                itemNumberTextFieldActionPerformed(evt);
-            }
-        });
-
-        jLabel1.setText("Item Number");
 
         jToolBar1.setFloatable(false);
         jToolBar1.setRollover(true);
@@ -148,14 +157,9 @@ public class ItemNumberForm extends ContentPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(headerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 591, Short.MAX_VALUE)
-            .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(itemNumberTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(headerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 651, Short.MAX_VALUE)
+            .addComponent(jToolBar1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(appServicePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -163,31 +167,19 @@ public class ItemNumberForm extends ContentPanel {
                 .addComponent(headerPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(itemNumberTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(307, Short.MAX_VALUE))
+                .addComponent(appServicePanel, javax.swing.GroupLayout.DEFAULT_SIZE, 352, Short.MAX_VALUE))
         );
-
-        bindingGroup.bind();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void itemNumberTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemNumberTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_itemNumberTextFieldActionPerformed
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         save();
     }//GEN-LAST:event_btnSaveActionPerformed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private org.sola.clients.beans.application.ApplicationBean applicationBean;
+    private org.sola.clients.swing.desktop.workflow.ApplicationServicePanel appServicePanel;
+    private org.sola.clients.beans.application.ApplicationServiceBean applicationServiceBean;
     private org.sola.clients.swing.common.buttons.BtnSave btnSave;
     private org.sola.clients.swing.ui.HeaderPanel headerPanel;
-    private javax.swing.JTextField itemNumberTextField;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JToolBar jToolBar1;
-    private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 }

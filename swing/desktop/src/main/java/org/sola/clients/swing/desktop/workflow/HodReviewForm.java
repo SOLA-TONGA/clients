@@ -29,37 +29,32 @@
  */
 package org.sola.clients.swing.desktop.workflow;
 
-import javax.swing.JFormattedTextField;
 import org.sola.clients.beans.application.ApplicationBean;
 import org.sola.clients.beans.application.ApplicationServiceBean;
-import org.sola.clients.beans.report.ServiceReportBean;
-import org.sola.clients.reports.ReportManager;
-import org.sola.clients.swing.common.controls.CalendarForm;
 import org.sola.clients.swing.common.tasks.SolaTask;
 import org.sola.clients.swing.common.tasks.TaskManager;
 import org.sola.clients.swing.ui.ContentPanel;
-import org.sola.clients.swing.ui.reports.ReportViewerForm;
 import org.sola.common.WindowUtility;
 import org.sola.common.messaging.ClientMessage;
 import org.sola.common.messaging.MessageUtility;
 
 /**
  *
- * @author Admin
+ * @author Andrew
  */
-public class CabinetSubmissionForm extends ContentPanel {
+public class HodReviewForm extends ContentPanel {
 
     ApplicationBean applicationBean;
     boolean readOnly = false;
 
     /**
-     * Creates new form CabinetSubmissionForm
+     * Creates new form hodReviewForm
      */
-    public CabinetSubmissionForm() {
+    public HodReviewForm() {
         initComponents();
     }
 
-    public CabinetSubmissionForm(ApplicationBean appBean, ApplicationServiceBean appServiceBean,
+    public HodReviewForm(ApplicationBean appBean, ApplicationServiceBean appServiceBean,
             Boolean readOnly) {
         this.applicationBean = appBean;
         this.applicationServiceBean = appServiceBean;
@@ -71,15 +66,15 @@ public class CabinetSubmissionForm extends ContentPanel {
     private void customizeForm() {
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("org/sola/clients/swing/desktop/workflow/Bundle");
         if (applicationBean != null) {
-            headerPanel.setTitleText(String.format(bundle.getString("CabinetSubmissionForm.headerPanel.titleText"),
+            headerPanel.setTitleText(String.format(bundle.getString("HodReviewForm.headerPanel.titleText"),
                     applicationBean.getNr()));
         }
         // Set the labels on the application service panel
-        appServicePanel.lblActionDate.setText(bundle.getString("CabinetSubmissionForm.appServicePanel.lblActionDate.text"));
-        appServicePanel.lblActionCompleted.setText(bundle.getString("CabinetSubmissionForm.appServicePanel.lblActionCompleted.text"));
+        appServicePanel.lblActionDate.setText(bundle.getString("HodReviewForm.appServicePanel.lblActionDate.text"));
+        appServicePanel.lblActionCompleted.setText(bundle.getString("HodReviewForm.appServicePanel.lblActionCompleted.text"));
         btnSave.setEnabled(!readOnly);
     }
-    
+
     private ApplicationServiceBean createServiceBean() {
 
         if (applicationServiceBean == null) {
@@ -121,20 +116,6 @@ public class CabinetSubmissionForm extends ContentPanel {
             TaskManager.getInstance().runTask(t);
         }
     }
-    
-    public void showCabinetSubmissionReport() {
-        ServiceReportBean serviceReportBean = new ServiceReportBean();
-        serviceReportBean.setAppBean(applicationBean);
-        serviceReportBean.setAppServiceBean(applicationServiceBean);
-        ReportViewerForm form = new ReportViewerForm(ReportManager.getCabinetSubmissionReport(serviceReportBean, null));
-        form.setLocationRelativeTo(this);
-        form.setVisible(true);
-    }
-    
-    private void showCalendar(JFormattedTextField dateField) {
-        CalendarForm calendar = new CalendarForm(null, true, dateField);
-        calendar.setVisible(true);
-    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -149,13 +130,12 @@ public class CabinetSubmissionForm extends ContentPanel {
         headerPanel = new org.sola.clients.swing.ui.HeaderPanel();
         jToolBar1 = new javax.swing.JToolBar();
         btnSave = new org.sola.clients.swing.common.buttons.BtnSave();
-        btnPrint = new org.sola.clients.swing.common.buttons.BtnPrint();
         appServicePanel = createAppServicePanel();
 
         setHeaderPanel(headerPanel);
 
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("org/sola/clients/swing/desktop/workflow/Bundle"); // NOI18N
-        headerPanel.setTitleText(bundle.getString("CabinetSubmissionForm.headerPanel.titleText")); // NOI18N
+        headerPanel.setTitleText(bundle.getString("HodReviewForm.headerPanel.titleText")); // NOI18N
 
         jToolBar1.setFloatable(false);
         jToolBar1.setRollover(true);
@@ -168,22 +148,13 @@ public class CabinetSubmissionForm extends ContentPanel {
         });
         jToolBar1.add(btnSave);
 
-        btnPrint.setText(bundle.getString("CabinetSubmissionForm.btnPrint.text")); // NOI18N
-        btnPrint.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnPrint.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPrintActionPerformed(evt);
-            }
-        });
-        jToolBar1.add(btnPrint);
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(headerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(headerPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
             .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(appServicePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(appServicePanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 504, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -192,23 +163,17 @@ public class CabinetSubmissionForm extends ContentPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(appServicePanel, javax.swing.GroupLayout.DEFAULT_SIZE, 406, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(appServicePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(0, 0, 0))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         save();
     }//GEN-LAST:event_btnSaveActionPerformed
-
-    private void btnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintActionPerformed
-        showCabinetSubmissionReport();
-    }//GEN-LAST:event_btnPrintActionPerformed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private org.sola.clients.swing.desktop.workflow.ApplicationServicePanel appServicePanel;
     private org.sola.clients.beans.application.ApplicationServiceBean applicationServiceBean;
-    private org.sola.clients.swing.common.buttons.BtnPrint btnPrint;
     private org.sola.clients.swing.common.buttons.BtnSave btnSave;
     private org.sola.clients.swing.ui.HeaderPanel headerPanel;
     private javax.swing.JToolBar jToolBar1;

@@ -2,9 +2,9 @@
 
 <Form version="1.5" maxVersion="1.8" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
   <NonVisualComponents>
-    <Component class="org.sola.clients.beans.application.ApplicationBean" name="applicationBean">
+    <Component class="org.sola.clients.beans.application.ApplicationServiceBean" name="applicationServiceBean">
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="createAppBean()"/>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="createServiceBean()"/>
       </AuxValues>
     </Component>
   </NonVisualComponents>
@@ -28,16 +28,9 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="headerPanel" pref="591" max="32767" attributes="0"/>
-          <Component id="jToolBar1" alignment="0" max="32767" attributes="0"/>
-          <Group type="102" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                  <Component id="itemNumberTextField" min="-2" pref="162" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-          </Group>
+          <Component id="headerPanel" pref="651" max="32767" attributes="0"/>
+          <Component id="jToolBar1" alignment="1" max="32767" attributes="0"/>
+          <Component id="appServicePanel" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -46,11 +39,8 @@
               <Component id="headerPanel" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jToolBar1" min="-2" pref="25" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="itemNumberTextField" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="307" max="32767" attributes="0"/>
+              <Component id="appServicePanel" pref="352" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -59,21 +49,6 @@
     <Component class="org.sola.clients.swing.ui.HeaderPanel" name="headerPanel">
       <Properties>
         <Property name="titleText" type="java.lang.String" value="Item Number for Application: #%s"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="itemNumberTextField">
-      <BindingProperties>
-        <BindingProperty name="text" source="applicationBean" sourcePath="${itemNumber}" target="itemNumberTextField" targetPath="text" updateStrategy="0" immediately="false">
-          <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
-        </BindingProperty>
-      </BindingProperties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="itemNumberTextFieldActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JLabel" name="jLabel1">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Item Number"/>
       </Properties>
     </Component>
     <Container class="javax.swing.JToolBar" name="jToolBar1">
@@ -94,5 +69,10 @@
         </Component>
       </SubComponents>
     </Container>
+    <Component class="org.sola.clients.swing.desktop.workflow.ApplicationServicePanel" name="appServicePanel">
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="createAppServicePanel()"/>
+      </AuxValues>
+    </Component>
   </SubComponents>
 </Form>

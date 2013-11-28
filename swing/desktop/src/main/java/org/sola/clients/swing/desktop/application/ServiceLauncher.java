@@ -99,6 +99,16 @@ public final class ServiceLauncher {
                 new String[]{MinisterBriefingForm.class.getName(), MainContentPanel.CARD_MINISTER_BRIEFING,
             ClientMessage.PROGRESS_MSG_OPEN_MINISTER_BRIEFING});
 
+        // HOD Review Form
+        serviceMap.put(RequestTypeBean.CODE_HOD_REVIEW,
+                new String[]{HodReviewForm.class.getName(), MainContentPanel.CARD_HOD_REVIEW,
+            ClientMessage.PROGRESS_MSG_OPEN_HOD_REVIEW});
+
+        // Minister Decision Form
+        serviceMap.put(RequestTypeBean.CODE_MINISTER_DECISION,
+                new String[]{MinisterDecisionForm.class.getName(), MainContentPanel.CARD_MINISTER_DECISION,
+            ClientMessage.PROGRESS_MSG_OPEN_MINISTER_DECISION});
+
         // Survey Form
         serviceMap.put(RequestTypeBean.CODE_SURVEY,
                 new String[]{SurveyForm.class.getName(), MainContentPanel.CARD_SURVEY,
@@ -198,7 +208,7 @@ public final class ServiceLauncher {
         serviceMap.put(RequestTypeBean.CODE_REGISTER_SUBLEASE,
                 new String[]{TongaPropertyPanel.class.getName(), MainContentPanel.CARD_PROPERTY_PANEL,
             ClientMessage.PROGRESS_MSG_OPEN_PROPERTY});
-        
+
         //Vary Sublease
         serviceMap.put(RequestTypeBean.CODE_VARY_SUBLEASE,
                 new String[]{TongaPropertyPanel.class.getName(), MainContentPanel.CARD_PROPERTY_PANEL,
