@@ -116,6 +116,7 @@ public class RrrBean extends AbstractTransactionedBean {
     public static final String RECEIPT_AMOUNT_PROPERTY = "receiptAmount";
     public static final String OTHER_RIGHTHOLDER_NAME_PROPERTY = "otherRightholderName";
     public static final String START_DATE_PROPERTY = "startDate";
+    public static final String RRR_REFERENCE_PROPERTY = "rrrReference";
     private String baUnitId;
     private String nr;
     //@Past(message = ClientMessage.CHECK_REGISTRATION_DATE, payload = Localized.class)
@@ -143,6 +144,8 @@ public class RrrBean extends AbstractTransactionedBean {
     private String otherRightholderName;
     private Date startDate;
     private Double share;
+    @NotNull(message = ClientMessage.CHECK_NOTNULL_REGISTRYBOOKREF, payload = Localized.class, groups = {MortgageValidationGroup.class})
+    private String rrrReference;
     private SolaList<SourceBean> sourceList;
     @Valid
     private SolaList<RrrShareBean> rrrShareList;
@@ -559,6 +562,16 @@ public class RrrBean extends AbstractTransactionedBean {
         boolean oldValue = this.selected;
         this.selected = selected;
         propertySupport.firePropertyChange(SELECTED_PROPERTY, oldValue, this.selected);
+    }
+
+    public String getRrrReference() {
+        return rrrReference;
+    }
+
+    public void setRrrReference(String rrrReference) {
+        String oldValue = this.rrrReference;
+        this.rrrReference = rrrReference;
+        propertySupport.firePropertyChange(RRR_REFERENCE_PROPERTY, oldValue, this.rrrReference);
     }
 
     public void removeSelectedRightHolder() {
