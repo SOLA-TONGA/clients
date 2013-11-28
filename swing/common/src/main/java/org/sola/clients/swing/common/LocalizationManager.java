@@ -48,7 +48,7 @@ public class LocalizationManager {
     // update the version number for each production release of SOLA. 
     private static final String PRODUCTION_HOST_NAME = "landsgis";
     private static final String PRODUCTION_HOST_IP = "192.168.2.167";
-    private static final String SOLA_VERSION = "2.1.0";
+    private static final String SOLA_VERSION = "2.1.1";
 
     /**
      * Loads default language and country codes and sets {@link Locale} settings
