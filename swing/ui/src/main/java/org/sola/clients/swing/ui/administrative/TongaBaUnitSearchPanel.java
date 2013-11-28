@@ -54,7 +54,14 @@ import org.sola.common.messaging.MessageUtility;
  */
 public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
 
-    public static final String SELECTED_BAUNIT_SEARCH_RESULT = "openSelectedBaUnit";
+    public static final String OPEN_BAUNIT_SEARCH_RESULT = "openBaUnit";
+    public static final String SELECT_BAUNIT_SEARCH_RESULT = "selectBaUnit";
+    public static final String TAB_ALLOTMENT = "allotment";
+    public static final String TAB_LEASE = "lease";
+    public static final String TAB_SUBLEASE = "sublease";
+    public static final String TAB_TOWN = "town";
+    public static final String TAB_ESTATE = "estate";
+    private boolean defaultActionOpen = true;
 
     /**
      * Creates new form TongaBaUnitSearchPanel
@@ -67,6 +74,7 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
             public void propertyChange(PropertyChangeEvent evt) {
                 if (evt.getPropertyName().equals(BaUnitSearchResultListBean.SELECTED_BAUNIT_SEARCH_RESULT_PROPERTY)) {
                     btnAllotmentOpen.setEnabled(evt.getNewValue() != null);
+                    btnAllotmentSelect.setEnabled(evt.getNewValue() != null);
                 }
             }
         });
@@ -75,6 +83,7 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
             public void propertyChange(PropertyChangeEvent evt) {
                 if (evt.getPropertyName().equals(BaUnitSearchResultListBean.SELECTED_BAUNIT_SEARCH_RESULT_PROPERTY)) {
                     btnLeaseOpen.setEnabled(evt.getNewValue() != null);
+                    btnLeaseSelect.setEnabled(evt.getNewValue() != null);
                 }
             }
         });
@@ -83,6 +92,7 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
             public void propertyChange(PropertyChangeEvent evt) {
                 if (evt.getPropertyName().equals(BaUnitSearchResultListBean.SELECTED_BAUNIT_SEARCH_RESULT_PROPERTY)) {
                     btnSubleaseOpen.setEnabled(evt.getNewValue() != null);
+                    btnSubleaseSelect.setEnabled(evt.getNewValue() != null);
                 }
             }
         });
@@ -91,6 +101,7 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
             public void propertyChange(PropertyChangeEvent evt) {
                 if (evt.getPropertyName().equals(BaUnitSearchResultListBean.SELECTED_BAUNIT_SEARCH_RESULT_PROPERTY)) {
                     btnEstateOpen.setEnabled(evt.getNewValue() != null);
+                    btnEstateSelect.setEnabled(evt.getNewValue() != null);
                 }
             }
         });
@@ -100,6 +111,7 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
             public void propertyChange(PropertyChangeEvent evt) {
                 if (evt.getPropertyName().equals(BaUnitSearchResultListBean.SELECTED_BAUNIT_SEARCH_RESULT_PROPERTY)) {
                     btnTownOpen.setEnabled(evt.getNewValue() != null);
+                    btnTownSelect.setEnabled(evt.getNewValue() != null);
                 }
             }
         });
@@ -112,11 +124,65 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
         btnSubleaseOpen.setEnabled(false);
         btnEstateOpen.setEnabled(false);
         btnTownOpen.setEnabled(false);
+        btnAllotmentSelect.setEnabled(false);
+        btnLeaseSelect.setEnabled(false);
+        btnSubleaseSelect.setEnabled(false);
+        btnEstateSelect.setEnabled(false);
+        btnTownSelect.setEnabled(false);
+        showSelectButtons(false);
+        showOpenButtons(true);
+    }
+
+    public void showSelectButtons(boolean show) {
+        btnAllotmentSelect.setVisible(show);
+        btnLeaseSelect.setVisible(show);
+        btnSubleaseSelect.setVisible(show);
+        btnEstateSelect.setVisible(show);
+        btnTownSelect.setVisible(show);
+    }
+
+    public void showOpenButtons(boolean show) {
+        btnAllotmentOpen.setVisible(show);
+        btnLeaseOpen.setVisible(show);
+        btnSubleaseOpen.setVisible(show);
+        btnEstateOpen.setVisible(show);
+        btnTownOpen.setVisible(show);
     }
 
     private void showCalendar(JFormattedTextField dateField) {
         CalendarForm calendar = new CalendarForm(null, true, dateField);
         calendar.setVisible(true);
+    }
+
+    /**
+     * Sets the default action to use when the user double clicks on a selected
+     * row. If true, the open action will be triggered. If false the select
+     * action will be triggered
+     *
+     * @param open
+     */
+    public void setDefaultActionOpen(boolean open) {
+        defaultActionOpen = open;
+    }
+
+    /**
+     * Selects the a tab to use for searching and disables the remaining tabs.
+     *
+     * @param tab Tab to select
+     */
+    public void selectAndEnableTab(String tab) {
+        mainTabPane.setEnabled(false);
+        if (TAB_ALLOTMENT.equals(tab)) {
+            mainTabPane.setSelectedComponent(tabAllotment);
+        } else if (TAB_LEASE.equals(tab)) {
+            mainTabPane.setSelectedComponent(tabLease);
+        } else if (TAB_SUBLEASE.equals(tab)) {
+            mainTabPane.setSelectedComponent(tabSublease);
+        } else if (TAB_TOWN.equals(tab)) {
+            mainTabPane.setSelectedComponent(tabTownIsland);
+        } else if (TAB_ESTATE.equals(tab)) {
+            mainTabPane.setSelectedComponent(tabEstate);
+        }
     }
 
     private void executeSearch(final BaUnitSearchParamsBean params,
@@ -149,7 +215,13 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
 
     private void openBaUnit(BaUnitSearchResultBean selectedResult) {
         if (selectedResult != null) {
-            firePropertyChange(SELECTED_BAUNIT_SEARCH_RESULT, null, selectedResult);
+            firePropertyChange(OPEN_BAUNIT_SEARCH_RESULT, null, selectedResult);
+        }
+    }
+
+    private void selectBaUnit(BaUnitSearchResultBean selectedResult) {
+        if (selectedResult != null) {
+            firePropertyChange(SELECT_BAUNIT_SEARCH_RESULT, null, selectedResult);
         }
     }
 
@@ -224,6 +296,7 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
         btnAllotmentClear = new javax.swing.JButton();
         jSeparator5 = new javax.swing.JToolBar.Separator();
         btnAllotmentOpen = new org.sola.clients.swing.common.buttons.BtnOpen();
+        btnAllotmentSelect = new org.sola.clients.swing.common.buttons.BtnSelect();
         jSeparator1 = new javax.swing.JToolBar.Separator();
         jLabel10 = new javax.swing.JLabel();
         lblAllotmentSearchCount = new javax.swing.JLabel();
@@ -260,6 +333,7 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
         btnLeaseClear = new javax.swing.JButton();
         jSeparator6 = new javax.swing.JToolBar.Separator();
         btnLeaseOpen = new org.sola.clients.swing.common.buttons.BtnOpen();
+        btnLeaseSelect = new org.sola.clients.swing.common.buttons.BtnSelect();
         jSeparator2 = new javax.swing.JToolBar.Separator();
         jLabel11 = new javax.swing.JLabel();
         lblLeaseResultsCount = new javax.swing.JLabel();
@@ -296,6 +370,7 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
         btnSubleaseClear = new javax.swing.JButton();
         jSeparator9 = new javax.swing.JToolBar.Separator();
         btnSubleaseOpen = new org.sola.clients.swing.common.buttons.BtnOpen();
+        btnSubleaseSelect = new org.sola.clients.swing.common.buttons.BtnSelect();
         jSeparator10 = new javax.swing.JToolBar.Separator();
         jLabel26 = new javax.swing.JLabel();
         lblSubleaseResultsCount = new javax.swing.JLabel();
@@ -311,6 +386,7 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
         btnTownClear = new javax.swing.JButton();
         jSeparator8 = new javax.swing.JToolBar.Separator();
         btnTownOpen = new org.sola.clients.swing.common.buttons.BtnOpen();
+        btnTownSelect = new org.sola.clients.swing.common.buttons.BtnSelect();
         jSeparator4 = new javax.swing.JToolBar.Separator();
         jLabel25 = new javax.swing.JLabel();
         lblTownResultsCount = new javax.swing.JLabel();
@@ -333,6 +409,7 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
         btnEstateClear = new javax.swing.JButton();
         jSeparator7 = new javax.swing.JToolBar.Separator();
         btnEstateOpen = new org.sola.clients.swing.common.buttons.BtnOpen();
+        btnEstateSelect = new org.sola.clients.swing.common.buttons.BtnSelect();
         jSeparator3 = new javax.swing.JToolBar.Separator();
         jLabel18 = new javax.swing.JLabel();
         lblEstateResultCount = new javax.swing.JLabel();
@@ -713,6 +790,14 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
             }
         });
         jToolBar2.add(btnAllotmentOpen);
+
+        btnAllotmentSelect.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnAllotmentSelect.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAllotmentSelectActionPerformed(evt);
+            }
+        });
+        jToolBar2.add(btnAllotmentSelect);
         jToolBar2.add(jSeparator1);
 
         jLabel10.setText("Search results: ");
@@ -1033,6 +1118,14 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
             }
         });
         jToolBar3.add(btnLeaseOpen);
+
+        btnLeaseSelect.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnLeaseSelect.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLeaseSelectActionPerformed(evt);
+            }
+        });
+        jToolBar3.add(btnLeaseSelect);
         jToolBar3.add(jSeparator2);
 
         jLabel11.setText("Search results: ");
@@ -1392,6 +1485,14 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
             }
         });
         jToolBar6.add(btnSubleaseOpen);
+
+        btnSubleaseSelect.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnSubleaseSelect.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSubleaseSelectActionPerformed(evt);
+            }
+        });
+        jToolBar6.add(btnSubleaseSelect);
         jToolBar6.add(jSeparator10);
 
         jLabel26.setText("Search results: ");
@@ -1435,7 +1536,7 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
         jPanel41Layout.setHorizontalGroup(
             jPanel41Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(txtTownName, javax.swing.GroupLayout.Alignment.TRAILING)
-            .addComponent(jLabel22, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 527, Short.MAX_VALUE)
+            .addComponent(jLabel22, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 357, Short.MAX_VALUE)
         );
         jPanel41Layout.setVerticalGroup(
             jPanel41Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1450,7 +1551,9 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
         jPanel40.setLayout(jPanel40Layout);
         jPanel40Layout.setHorizontalGroup(
             jPanel40Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel41, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(jPanel40Layout.createSequentialGroup()
+                .addComponent(jPanel41, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel40Layout.setVerticalGroup(
             jPanel40Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1509,6 +1612,14 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
             }
         });
         jToolBar1.add(btnTownOpen);
+
+        btnTownSelect.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnTownSelect.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTownSelectActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(btnTownSelect);
         jToolBar1.add(jSeparator4);
 
         jLabel25.setText("Search results: ");
@@ -1524,7 +1635,7 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
             .addGroup(tabTownIslandLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(tabTownIslandLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 696, Short.MAX_VALUE)
                     .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel40, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
@@ -1675,6 +1786,14 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
             }
         });
         jToolBar4.add(btnEstateOpen);
+
+        btnEstateSelect.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnEstateSelect.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEstateSelectActionPerformed(evt);
+            }
+        });
+        jToolBar4.add(btnEstateSelect);
         jToolBar4.add(jSeparator3);
 
         jLabel18.setText("Search results: ");
@@ -1843,33 +1962,73 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
 
     private void tableAllotmentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableAllotmentMouseClicked
         if (evt.getClickCount() == 2) {
-            openBaUnit(allotmentResultsList.getSelectedBaUnitSearchResult());
+            if (defaultActionOpen) {
+                openBaUnit(allotmentResultsList.getSelectedBaUnitSearchResult());
+            } else {
+                selectBaUnit(allotmentResultsList.getSelectedBaUnitSearchResult());
+            }
         }
     }//GEN-LAST:event_tableAllotmentMouseClicked
 
     private void tableLeaseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableLeaseMouseClicked
         if (evt.getClickCount() == 2) {
-            openBaUnit(leaseResultsList.getSelectedBaUnitSearchResult());
+            if (defaultActionOpen) {
+                openBaUnit(leaseResultsList.getSelectedBaUnitSearchResult());
+            } else {
+                selectBaUnit(leaseResultsList.getSelectedBaUnitSearchResult());
+            }
         }
     }//GEN-LAST:event_tableLeaseMouseClicked
 
     private void tableSubleaseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableSubleaseMouseClicked
         if (evt.getClickCount() == 2) {
-            openBaUnit(subleaseResultsList.getSelectedBaUnitSearchResult());
+            if (defaultActionOpen) {
+                openBaUnit(subleaseResultsList.getSelectedBaUnitSearchResult());
+            } else {
+                selectBaUnit(subleaseResultsList.getSelectedBaUnitSearchResult());
+            }
         }
     }//GEN-LAST:event_tableSubleaseMouseClicked
 
     private void tableTownMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableTownMouseClicked
         if (evt.getClickCount() == 2) {
-            openBaUnit(townResultsList.getSelectedBaUnitSearchResult());
+            if (defaultActionOpen) {
+                openBaUnit(townResultsList.getSelectedBaUnitSearchResult());
+            } else {
+                selectBaUnit(townResultsList.getSelectedBaUnitSearchResult());
+            }
         }
     }//GEN-LAST:event_tableTownMouseClicked
 
     private void tableEstateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableEstateMouseClicked
         if (evt.getClickCount() == 2) {
-            openBaUnit(estateResultsList.getSelectedBaUnitSearchResult());
+            if (defaultActionOpen) {
+                openBaUnit(estateResultsList.getSelectedBaUnitSearchResult());
+            } else {
+                selectBaUnit(estateResultsList.getSelectedBaUnitSearchResult());
+            }
         }
     }//GEN-LAST:event_tableEstateMouseClicked
+
+    private void btnEstateSelectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEstateSelectActionPerformed
+        selectBaUnit(estateResultsList.getSelectedBaUnitSearchResult());
+    }//GEN-LAST:event_btnEstateSelectActionPerformed
+
+    private void btnTownSelectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTownSelectActionPerformed
+        selectBaUnit(townResultsList.getSelectedBaUnitSearchResult());
+    }//GEN-LAST:event_btnTownSelectActionPerformed
+
+    private void btnSubleaseSelectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubleaseSelectActionPerformed
+        selectBaUnit(subleaseResultsList.getSelectedBaUnitSearchResult());
+    }//GEN-LAST:event_btnSubleaseSelectActionPerformed
+
+    private void btnLeaseSelectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLeaseSelectActionPerformed
+        selectBaUnit(leaseResultsList.getSelectedBaUnitSearchResult());
+    }//GEN-LAST:event_btnLeaseSelectActionPerformed
+
+    private void btnAllotmentSelectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAllotmentSelectActionPerformed
+        selectBaUnit(allotmentResultsList.getSelectedBaUnitSearchResult());
+    }//GEN-LAST:event_btnAllotmentSelectActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private org.sola.clients.beans.administrative.BaUnitSearchParamsBean allotmentParams;
     private org.sola.clients.beans.administrative.BaUnitSearchResultListBean allotmentResultsList;
@@ -1878,22 +2037,27 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnAllotmentDateTo;
     private org.sola.clients.swing.common.buttons.BtnOpen btnAllotmentOpen;
     private javax.swing.JButton btnAllotmentSearch;
+    private org.sola.clients.swing.common.buttons.BtnSelect btnAllotmentSelect;
     private javax.swing.JButton btnEstateClear;
     private org.sola.clients.swing.common.buttons.BtnOpen btnEstateOpen;
     private javax.swing.JButton btnEstateSearch;
+    private org.sola.clients.swing.common.buttons.BtnSelect btnEstateSelect;
     private javax.swing.JButton btnLeaseClear;
     private javax.swing.JButton btnLeaseDateTo;
     private org.sola.clients.swing.common.buttons.BtnOpen btnLeaseOpen;
     private javax.swing.JButton btnLeaseRegDateFrom;
     private javax.swing.JButton btnLeaseSearch;
+    private org.sola.clients.swing.common.buttons.BtnSelect btnLeaseSelect;
     private javax.swing.JButton btnSubleaseClear;
     private javax.swing.JButton btnSubleaseDateTo;
     private org.sola.clients.swing.common.buttons.BtnOpen btnSubleaseOpen;
     private javax.swing.JButton btnSubleaseRegDateFrom;
     private javax.swing.JButton btnSubleaseSearch;
+    private org.sola.clients.swing.common.buttons.BtnSelect btnSubleaseSelect;
     private javax.swing.JButton btnTownClear;
     private org.sola.clients.swing.common.buttons.BtnOpen btnTownOpen;
     private javax.swing.JButton btnTownSearch;
+    private org.sola.clients.swing.common.buttons.BtnSelect btnTownSelect;
     private javax.swing.JComboBox cbAllotmentTown;
     private javax.swing.JComboBox cbxLeaseTown;
     private javax.swing.JComboBox cbxLeaseTown1;

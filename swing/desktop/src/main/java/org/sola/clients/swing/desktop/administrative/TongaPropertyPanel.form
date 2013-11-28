@@ -2217,13 +2217,6 @@
                                     </Column>
                                     <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                                       <Title editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
-                                        <ResourceString bundle="org/sola/clients/swing/desktop/administrative/Bundle.properties" key="TongaPropertyPanel.tableChildBaUnits.columnModel.title3_1" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
-                                      </Title>
-                                      <Editor/>
-                                      <Renderer/>
-                                    </Column>
-                                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                                      <Title editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
                                         <ResourceString bundle="org/sola/clients/swing/desktop/administrative/Bundle.properties" key="TongaPropertyPanel.tableChildBaUnits.columnModel.title4" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
                                       </Title>
                                       <Editor/>
@@ -2246,10 +2239,6 @@
                                     <BindingParameter name="javax.swing.binding.ParameterKeys.EDITABLE" value="false"/>
                                   </Subbinding>
                                   <Subbinding sourcePath="${relatedBaUnit.baUnitType.displayValue}">
-                                    <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="String.class"/>
-                                    <BindingParameter name="javax.swing.binding.ParameterKeys.EDITABLE" value="false"/>
-                                  </Subbinding>
-                                  <Subbinding sourcePath="${baUnitRelType.displayValue}">
                                     <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="String.class"/>
                                     <BindingParameter name="javax.swing.binding.ParameterKeys.EDITABLE" value="false"/>
                                   </Subbinding>

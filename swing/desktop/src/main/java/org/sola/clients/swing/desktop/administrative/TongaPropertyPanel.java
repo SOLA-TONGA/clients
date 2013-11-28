@@ -103,7 +103,7 @@ public class TongaPropertyPanel extends ContentPanel {
     private AddDocumentForm applicationDocumentsForm;
     private boolean readOnly = false;
     java.util.ResourceBundle resourceBundle;
-    private PropertyChangeListener newPropertyWizardListener;
+    private PropertyChangeListener propertyRelationshipListener;
     public BaUnitBean whichBaUnitSelected;
     private boolean isBtnNext = false;
 
@@ -278,9 +278,9 @@ public class TongaPropertyPanel extends ContentPanel {
      * displayed.
      */
     private void setTitle() {
-            headerPanel.setTitleText(String.format(
-                resourceBundle.getString("TongaPropertyPanel.Property.headerPanel.text"), baUnitBean1.getTypeCode() == null ? "" :                              
-                CacheManager.getBeanByCode(CacheManager.getBaUnitTypes(), baUnitBean1.getTypeCode()).getDisplayValue(),
+        headerPanel.setTitleText(String.format(
+                resourceBundle.getString("TongaPropertyPanel.Property.headerPanel.text"), baUnitBean1.getTypeCode() == null ? ""
+                : CacheManager.getBeanByCode(CacheManager.getBaUnitTypes(), baUnitBean1.getTypeCode()).getDisplayValue(),
                 StringUtility.isEmpty(baUnitBean1.getName()) ? "" : baUnitBean1.getName()));
 
         if (applicationBean != null && applicationService != null) {
@@ -362,62 +362,35 @@ public class TongaPropertyPanel extends ContentPanel {
         btnNext.setEnabled(false);
     }
 
-    /**
-     * Shows {@link NewPropertyWizardPanel} to select parent property.
-     */
-    private void showNewTitleWizard(boolean showMessage) {
-        if (baUnitBean1 == null || (baUnitBean1.getStatusCode() != null
-                && !baUnitBean1.getStatusCode().equals(StatusConstants.PENDING))) {
+    private void openPropertyRelationshipPanel() {
+        if (baUnitBean1 == null) {
             return;
         }
-
-        if (!showMessage || (showMessage && MessageUtility.displayMessage(ClientMessage.BAUNIT_SELECT_EXISTING_PROPERTY) == MessageUtility.BUTTON_ONE)) {
-            // Open selection form
-            if (getMainContentPanel() != null) {
-                if (newPropertyWizardListener == null) {
-                    newPropertyWizardListener = new PropertyChangeListener() {
-                        @Override
-                        public void propertyChange(PropertyChangeEvent evt) {
-                            if (evt.getPropertyName().equals(NewPropertyWizardPanel.SELECTED_RESULT_PROPERTY)) {
-                                if (addParentProperty((Object[]) evt.getNewValue())) {
-                                    //                               btnNext.setVisible(true);
-                                    //                               btnNext.setEnabled(true);
-                                    isBtnNext = true;
-                                    btnNextAction();
-//                               tabsMain.setEnabled(false);
-//                               btnAddParent.setEnabled(false);
-                                }
-                            }
-                        }
-                    };
-                }
-
-                SolaTask t = new SolaTask<Void, Void>() {
+        if (getMainContentPanel() != null) {
+            if (propertyRelationshipListener == null) {
+                propertyRelationshipListener = new PropertyChangeListener() {
                     @Override
-                    public Void doTask() {
-                        setMessage(MessageUtility.getLocalizedMessageText(ClientMessage.PROGRESS_MSG_OPEN_PROPERTYLINK));
-                        boolean allowSelection = true;
-                        if (applicationService != null) {
-                            allowSelection = !applicationService.getRequestTypeCode().equalsIgnoreCase(RequestTypeBean.CODE_NEW_DIGITAL_TITLE);
+                    public void propertyChange(PropertyChangeEvent evt) {
+                        if (evt.getPropertyName().equals(TongaPropertyRelationshipPanel.SELECTED_RESULT_PROPERTY)) {
+                            addParentProperty((Object[]) evt.getNewValue());
                         }
-
-                        NewPropertyWizardPanel newPropertyWizardPanel = new NewPropertyWizardPanel(applicationBean, allowSelection);
-                        newPropertyWizardPanel.addPropertyChangeListener(newPropertyWizardListener);
-                        getMainContentPanel().addPanel(newPropertyWizardPanel, MainContentPanel.CARD_NEW_PROPERTY_WIZARD, true);
-                        return null;
                     }
                 };
-                TaskManager.getInstance().runTask(t);
             }
         }
+        
+        SolaTask t = new SolaTask<Void, Void>() {
+            @Override
+            public Void doTask() {
+                setMessage(MessageUtility.getLocalizedMessageText(ClientMessage.PROGRESS_MSG_OPEN_PROPERTYLINK));
 
-    }
-
-    public void showPriorTitileMessage() {
-        if ((baUnitBean1.getNameFirstpart() == null || baUnitBean1.getNameFirstpart().length() < 1)
-                && (baUnitBean1.getNameLastpart() == null || baUnitBean1.getNameLastpart().length() < 1)) {
-            showNewTitleWizard(true);
-        }
+                TongaPropertyRelationshipPanel propRelPanel = new TongaPropertyRelationshipPanel();
+                propRelPanel.addPropertyChangeListener(propertyRelationshipListener);
+                getMainContentPanel().addPanel(propRelPanel, MainContentPanel.CARD_PROPERTY_RELATIONSHIP, true);
+                return null;
+            }
+        };
+        TaskManager.getInstance().runTask(t);
     }
 
     /**
@@ -436,48 +409,20 @@ public class TongaPropertyPanel extends ContentPanel {
         BaUnitBean selectedBaUnit = (BaUnitBean) selectedResult[0];
         BaUnitRelTypeBean baUnitRelType = (BaUnitRelTypeBean) selectedResult[1];
         this.whichBaUnitSelected = selectedBaUnit;
-        // Check relation type to be same as on the list.
+        // Check if relation type duplicates a relationship already on the list
         for (RelatedBaUnitInfoBean parent : baUnitBean1.getFilteredParentBaUnits()) {
             if (parent.getRelationCode() != null
-                    && !parent.getRelationCode().equals(baUnitRelType.getCode())) {
+                    && parent.getRelationCode().equals(baUnitRelType.getCode())) {
                 MessageUtility.displayMessage(ClientMessage.BAUNIT_WRONG_RELATION_TYPE);
                 return false;
             }
         }
 
-        // Check if relation already exists
-        for (RelatedBaUnitInfoBean parent : baUnitBean1.getParentBaUnits()) {
+        // Check if baUnit is already related as a parent baUnit
+        for (RelatedBaUnitInfoBean parent : baUnitBean1.getFilteredParentBaUnits()) {
             if (parent.getRelatedBaUnitId() != null && parent.getRelatedBaUnitId().equals(selectedBaUnit.getId())) {
                 MessageUtility.displayMessage(ClientMessage.BAUNIT_HAS_SELECTED_PARENT_BA_UNIT);
                 return false;
-            }
-        }
-
-        // Go througth the rights and add them, avoiding duplications
-        for (RrrBean rrr : selectedBaUnit.getSelectedRrrs(true)) {
-            boolean exists = false;
-            for (RrrBean currentRrr : baUnitBean1.getRrrList()) {
-                if (rrr.getId().equals(currentRrr.getId())) {
-                    exists = true;
-                    break;
-                }
-            }
-            if (!exists) {
-                baUnitBean1.getRrrList().addAsNew(rrr);
-            }
-        }
-
-        // Go througth the parcels and add them, avoiding duplications
-        for (CadastreObjectBean cadastreObject : selectedBaUnit.getSelectedCadastreObjects()) {
-            boolean exists = false;
-            for (CadastreObjectBean currentCadastreObject : baUnitBean1.getCadastreObjectList()) {
-                if (cadastreObject.getId().equals(currentCadastreObject.getId())) {
-                    exists = true;
-                    break;
-                }
-            }
-            if (!exists) {
-                baUnitBean1.getCadastreObjectList().addAsNew(cadastreObject);
             }
         }
 
@@ -966,7 +911,8 @@ public class TongaPropertyPanel extends ContentPanel {
         } else if (rrrCode.equalsIgnoreCase(RrrBean.CODE_OWNERSHIP)
                 || rrrCode.equalsIgnoreCase(RrrBean.CODE_LIFE_ESTATE)
                 || rrrCode.equalsIgnoreCase(RrrBean.CODE_CAVEAT)
-                || rrrCode.equalsIgnoreCase(RrrBean.CODE_TRUSTEE)) {
+                || rrrCode.equalsIgnoreCase(RrrBean.CODE_TRUSTEE)
+                || rrrCode.equalsIgnoreCase(RrrBean.CODE_SURRENDER)) {
             panel = new SimpleRightholderPanel(rrrBean, applicationBean, applicationService, action);
             cardName = MainContentPanel.CARD_SIMPLE_OWNERSHIP;
         } else if (rrrCode.equalsIgnoreCase(RrrBean.CODE_STATE_OWNERSHIP) // N/A in Tonga
@@ -2465,10 +2411,6 @@ public class TongaPropertyPanel extends ContentPanel {
         columnBinding.setColumnName("Related Ba Unit.ba Unit Type.display Value");
         columnBinding.setColumnClass(String.class);
         columnBinding.setEditable(false);
-        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${baUnitRelType.displayValue}"));
-        columnBinding.setColumnName("Ba Unit Rel Type.display Value");
-        columnBinding.setColumnClass(String.class);
-        columnBinding.setEditable(false);
         columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${relatedBaUnit.status.displayValue}"));
         columnBinding.setColumnName("Related Ba Unit.status.display Value");
         columnBinding.setColumnClass(String.class);
@@ -2480,8 +2422,7 @@ public class TongaPropertyPanel extends ContentPanel {
         jScrollPane7.setViewportView(tableChildBaUnits);
         tableChildBaUnits.getColumnModel().getColumn(0).setHeaderValue(bundle.getString("TongaPropertyPanel.tableChildBaUnits.columnModel.title0_1")); // NOI18N
         tableChildBaUnits.getColumnModel().getColumn(1).setHeaderValue(bundle.getString("TongaPropertyPanel.tableChildBaUnits.columnModel.title2_1")); // NOI18N
-        tableChildBaUnits.getColumnModel().getColumn(2).setHeaderValue(bundle.getString("TongaPropertyPanel.tableChildBaUnits.columnModel.title3_1")); // NOI18N
-        tableChildBaUnits.getColumnModel().getColumn(3).setHeaderValue(bundle.getString("TongaPropertyPanel.tableChildBaUnits.columnModel.title4")); // NOI18N
+        tableChildBaUnits.getColumnModel().getColumn(2).setHeaderValue(bundle.getString("TongaPropertyPanel.tableChildBaUnits.columnModel.title4")); // NOI18N
 
         org.jdesktop.layout.GroupLayout jPanel5Layout = new org.jdesktop.layout.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -2619,7 +2560,7 @@ private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:
 }//GEN-LAST:event_formComponentShown
 
     private void btnAddParentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddParentActionPerformed
-        showNewTitleWizard(false);
+        openPropertyRelationshipPanel();
     }//GEN-LAST:event_btnAddParentActionPerformed
 
     private void btnRemoveParentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveParentActionPerformed

@@ -56,7 +56,7 @@ public class BaUnitSearchPanel extends ContentPanel {
 
             @Override
             public void propertyChange(PropertyChangeEvent evt) {
-                if (evt.getPropertyName().equals(TongaBaUnitSearchPanel.SELECTED_BAUNIT_SEARCH_RESULT)) {
+                if (evt.getPropertyName().equals(TongaBaUnitSearchPanel.OPEN_BAUNIT_SEARCH_RESULT)) {
                     BaUnitSearchResultBean selectedResult = (BaUnitSearchResultBean) evt.getNewValue();
                     if (selectedResult != null) {
                         openPropertyForm(selectedResult.getId());

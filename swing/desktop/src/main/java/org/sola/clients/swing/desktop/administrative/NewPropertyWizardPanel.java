@@ -399,7 +399,6 @@ public class NewPropertyWizardPanel extends ContentPanel {
             }
         });
 
-        cbxRelationType.setEnabled(false);
         cbxRelationType.setName("cbxRelationType"); // NOI18N
 
         eLProperty = org.jdesktop.beansbinding.ELProperty.create("${baUnitRelTypes}");
