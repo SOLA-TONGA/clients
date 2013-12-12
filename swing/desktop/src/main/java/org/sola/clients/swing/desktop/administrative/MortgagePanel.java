@@ -37,6 +37,7 @@ import org.sola.clients.beans.application.ApplicationBean;
 import org.sola.clients.beans.application.ApplicationServiceBean;
 import org.sola.clients.beans.party.PartySummaryBean;
 import org.sola.clients.beans.referencedata.StatusConstants;
+import org.sola.clients.beans.security.SecurityBean;
 import org.sola.clients.swing.common.LafManager;
 import org.sola.clients.swing.common.controls.BrowseControlListener;
 import org.sola.clients.swing.common.utils.BindingTools;
@@ -45,6 +46,7 @@ import org.sola.clients.swing.desktop.party.QuickSearchPartyForm;
 import org.sola.clients.swing.desktop.source.DocumentsManagementExtPanel;
 import org.sola.clients.swing.ui.ContentPanel;
 import org.sola.clients.swing.ui.renderers.FormattersFactory;
+import org.sola.common.RolesConstants;
 import org.sola.common.WindowUtility;
 import org.sola.common.messaging.ClientMessage;
 import org.sola.common.messaging.MessageUtility;
@@ -156,6 +158,11 @@ public class MortgagePanel extends ContentPanel {
                 public void textClicked(MouseEvent e) {
                 }
             });
+        }
+        
+        // #8 Hide the mortgage amount unless the user has the role to view protected fields
+        if (!SecurityBean.isInRole(RolesConstants.ADMINISTRATIVE_VIEW_PROTECTED_FIELDS)) {
+           txtAmount.setVisible(false);
         }
     }
 
