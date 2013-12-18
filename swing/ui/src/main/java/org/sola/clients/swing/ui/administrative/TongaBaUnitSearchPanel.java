@@ -1678,7 +1678,7 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
 
         jLabel19.setText("Estate Name:");
 
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, estateParams, org.jdesktop.beansbinding.ELProperty.create("${nameFirstPart}"), txtEstateName, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, estateParams, org.jdesktop.beansbinding.ELProperty.create("${estateName}"), txtEstateName, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
 
         javax.swing.GroupLayout jPanel32Layout = new javax.swing.GroupLayout(jPanel32);
@@ -1808,7 +1808,7 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
         columnBinding.setColumnName("Noble");
         columnBinding.setColumnClass(String.class);
         columnBinding.setEditable(false);
-        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${nameFirstPart}"));
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${estateName}"));
         columnBinding.setColumnName("Estate");
         columnBinding.setColumnClass(String.class);
         columnBinding.setEditable(false);
