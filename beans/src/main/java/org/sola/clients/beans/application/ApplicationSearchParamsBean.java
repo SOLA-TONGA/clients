@@ -45,6 +45,7 @@ public class ApplicationSearchParamsBean extends AbstractBindingBean {
     public static final String CONTACT_PERSON_PROPERTY = "contactPerson";
     public static final String DOCUMENT_NUM_PROPERTY = "documentNumber";
     public static final String DOCUMENT_REF_PROPERTY = "documentReference";
+    public static final String RRR_REF_PROPERTY = "rrrReference";
     private String itemNumber;
     private String nr;
     private Date fromDate;
@@ -53,6 +54,7 @@ public class ApplicationSearchParamsBean extends AbstractBindingBean {
     private String contactPerson;
     private String documentNumber;
     private String documentReference;
+    private String rrrReference;
 
     public ApplicationSearchParamsBean() {
         super();
@@ -136,5 +138,15 @@ public class ApplicationSearchParamsBean extends AbstractBindingBean {
         String oldValue = documentReference;
         documentReference = value;
         propertySupport.firePropertyChange(DOCUMENT_REF_PROPERTY, oldValue, value);
+    }
+    
+    public String getRrrReference() {
+        return rrrReference;
+    }
+
+    public void setRrrReference(String value) {
+        String oldValue = rrrReference;
+        rrrReference = value;
+        propertySupport.firePropertyChange(RRR_REF_PROPERTY, oldValue, value);
     }
 }

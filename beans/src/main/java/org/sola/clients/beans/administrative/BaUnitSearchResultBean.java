@@ -56,6 +56,7 @@ public class BaUnitSearchResultBean extends AbstractBindingBean {
     public static final String BA_UNIT_TYPE_CODE_PROPERTY = "baUnitTypeCode";
     public static final String RRR_TYPE_PROPERTY = "rrrType";
     public static final String RRR_TYPE_CODE_PROPERTY = "rrrTypeCode";
+    public static final String RRR_REFERENCE_PROPERTY = "rrrReference";
     private String id;
     private String name;
     private String nameFirstPart;
@@ -71,6 +72,7 @@ public class BaUnitSearchResultBean extends AbstractBindingBean {
     private String registryBookRef;
     private BaUnitTypeBean baUnitType;
     private RrrTypeBean rrrType;
+    private String rrrReference;
     // Used to enable binding on the BaUnitTypeCode
     private transient String baUnitTypeCode;
     private transient String rrrTypeCode;
@@ -261,5 +263,15 @@ public class BaUnitSearchResultBean extends AbstractBindingBean {
 
     public boolean isTownAllotment() {
         return BaUnitTypeBean.CODE_TOWN_ALLOTMENT_UNIT.equals(getBaUnitTypeCode());
+    }
+    
+    public String getRrrReference() {
+        return rrrReference;
+    }
+
+    public void setRrrReference(String value) {
+        String oldValue = rrrReference;
+        rrrReference = value;
+        propertySupport.firePropertyChange(RRR_REFERENCE_PROPERTY, oldValue, value);
     }
 }

@@ -56,6 +56,7 @@ public class BaUnitSearchParamsBean extends AbstractBindingBean {
     public static final String OTHER_RIGHTHOLDER_PROPERTY = "otherRightholder";
     public static final String TOWN_PROPERTY = "town";
     public static final String ISLAND_PROPERTY = "island";
+    public static final String RRR_REFERENCE = "rrrReference";
     private String nameFirstPart;
     private String nameLastPart;
     private String ownerName;
@@ -71,6 +72,7 @@ public class BaUnitSearchParamsBean extends AbstractBindingBean {
     private String otherRightholder;
     private TownBean town;
     private DistrictBean island;
+    private String rrrReference;
 
     public BaUnitSearchParamsBean() {
         super();
@@ -230,6 +232,16 @@ public class BaUnitSearchParamsBean extends AbstractBindingBean {
 
     public void setIslandId(String value) {
     }
+    
+    public String getRrrReference() {
+        return rrrReference;
+    }
+
+    public void setRrrReference(String value) {
+        String oldValue = this.rrrReference;
+        this.rrrReference = value;
+        propertySupport.firePropertyChange(RRR_REFERENCE, oldValue, value);
+    }
 
     public void clear() {
         this.setNameFirstPart(null);
@@ -245,5 +257,6 @@ public class BaUnitSearchParamsBean extends AbstractBindingBean {
         this.setOtherRightholder(null);
         this.setTown(null);
         this.setIsland(null);
+        this.setRrrReference(null);
     }
 }

@@ -245,6 +245,8 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
         townParams = new BaUnitSearchParamsBean(BaUnitSearchParamsBean.SEARCH_TYPE_TOWN);
         subleaseParams = new BaUnitSearchParamsBean(BaUnitSearchParamsBean.SEARCH_TYPE_SUBLEASE);
         subleaseResultsList = new org.sola.clients.beans.administrative.BaUnitSearchResultListBean();
+        mortgageParams = new org.sola.clients.beans.administrative.BaUnitSearchParamsBean();
+        mortgageResultsList = new org.sola.clients.beans.administrative.BaUnitSearchResultListBean();
         mainTabPane = new javax.swing.JTabbedPane();
         tabAllotment = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
@@ -372,6 +374,22 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
         jSeparator10 = new javax.swing.JToolBar.Separator();
         jLabel26 = new javax.swing.JLabel();
         lblSubleaseResultsCount = new javax.swing.JLabel();
+        tabMortgage = new javax.swing.JPanel();
+        jPanel42 = new javax.swing.JPanel();
+        jPanel43 = new javax.swing.JPanel();
+        jLabel29 = new javax.swing.JLabel();
+        txtMortgageNumber = new javax.swing.JTextField();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        tableMortgage = new org.sola.clients.swing.common.controls.JTableWithDefaultStyles();
+        jToolBar5 = new javax.swing.JToolBar();
+        btnMortgageSearch = new javax.swing.JButton();
+        btnMortgageClear = new javax.swing.JButton();
+        jSeparator11 = new javax.swing.JToolBar.Separator();
+        btnMortgageOpen = new org.sola.clients.swing.common.buttons.BtnOpen();
+        btnMortgageSelect = new org.sola.clients.swing.common.buttons.BtnSelect();
+        jSeparator12 = new javax.swing.JToolBar.Separator();
+        jLabel34 = new javax.swing.JLabel();
+        lblMortgageResultsCount = new javax.swing.JLabel();
         tabTownIsland = new javax.swing.JPanel();
         jPanel40 = new javax.swing.JPanel();
         jPanel41 = new javax.swing.JPanel();
@@ -1524,6 +1542,145 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
 
         mainTabPane.addTab("Sublease", tabSublease);
 
+        jLabel29.setText("Mortgage #:");
+
+        javax.swing.GroupLayout jPanel43Layout = new javax.swing.GroupLayout(jPanel43);
+        jPanel43.setLayout(jPanel43Layout);
+        jPanel43Layout.setHorizontalGroup(
+            jPanel43Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(txtMortgageNumber, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(jLabel29, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE)
+        );
+        jPanel43Layout.setVerticalGroup(
+            jPanel43Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel43Layout.createSequentialGroup()
+                .addComponent(jLabel29)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtMortgageNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout jPanel42Layout = new javax.swing.GroupLayout(jPanel42);
+        jPanel42.setLayout(jPanel42Layout);
+        jPanel42Layout.setHorizontalGroup(
+            jPanel42Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel42Layout.createSequentialGroup()
+                .addComponent(jPanel43, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        jPanel42Layout.setVerticalGroup(
+            jPanel42Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel43, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+
+        eLProperty = org.jdesktop.beansbinding.ELProperty.create("${baUnitSearchResults}");
+        jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, mortgageResultsList, eLProperty, tableMortgage);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${name}"));
+        columnBinding.setColumnName("Mortgage #");
+        columnBinding.setColumnClass(String.class);
+        columnBinding.setEditable(false);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${rrrType.displayValue}"));
+        columnBinding.setColumnName("Right Type");
+        columnBinding.setColumnClass(String.class);
+        columnBinding.setEditable(false);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${registryBookRef}"));
+        columnBinding.setColumnName("Registry Book Ref.");
+        columnBinding.setColumnClass(String.class);
+        columnBinding.setEditable(false);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${rightholders}"));
+        columnBinding.setColumnName("Rightholders");
+        columnBinding.setColumnClass(String.class);
+        columnBinding.setEditable(false);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${rrrReference}"));
+        columnBinding.setColumnName("Rrr Reference");
+        columnBinding.setColumnClass(String.class);
+        columnBinding.setEditable(false);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${townName}"));
+        columnBinding.setColumnName("Town");
+        columnBinding.setColumnClass(String.class);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${registrationStatus.displayValue}"));
+        columnBinding.setColumnName("Status");
+        columnBinding.setColumnClass(String.class);
+        columnBinding.setEditable(false);
+        bindingGroup.addBinding(jTableBinding);
+        jTableBinding.bind();
+        tableMortgage.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableMortgageMouseClicked(evt);
+            }
+        });
+        jScrollPane6.setViewportView(tableMortgage);
+
+        jToolBar5.setFloatable(false);
+        jToolBar5.setRollover(true);
+
+        btnMortgageSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/search.png"))); // NOI18N
+        btnMortgageSearch.setText("Search");
+        btnMortgageSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMortgageSearchActionPerformed(evt);
+            }
+        });
+        jToolBar5.add(btnMortgageSearch);
+
+        btnMortgageClear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/eraser.png"))); // NOI18N
+        btnMortgageClear.setText("Clear");
+        btnMortgageClear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMortgageClearActionPerformed(evt);
+            }
+        });
+        jToolBar5.add(btnMortgageClear);
+        jToolBar5.add(jSeparator11);
+
+        btnMortgageOpen.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnMortgageOpen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMortgageOpenActionPerformed(evt);
+            }
+        });
+        jToolBar5.add(btnMortgageOpen);
+
+        btnMortgageSelect.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnMortgageSelect.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMortgageSelectActionPerformed(evt);
+            }
+        });
+        jToolBar5.add(btnMortgageSelect);
+        jToolBar5.add(jSeparator12);
+
+        jLabel34.setText("Search results: ");
+        jToolBar5.add(jLabel34);
+
+        lblMortgageResultsCount.setText(" ");
+        jToolBar5.add(lblMortgageResultsCount);
+
+        javax.swing.GroupLayout tabMortgageLayout = new javax.swing.GroupLayout(tabMortgage);
+        tabMortgage.setLayout(tabMortgageLayout);
+        tabMortgageLayout.setHorizontalGroup(
+            tabMortgageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(tabMortgageLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(tabMortgageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 696, Short.MAX_VALUE)
+                    .addComponent(jToolBar5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel42, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        tabMortgageLayout.setVerticalGroup(
+            tabMortgageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(tabMortgageLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel42, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jToolBar5, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE))
+        );
+
+        mainTabPane.addTab("Mortgage", tabMortgage);
+
         jLabel22.setText("Town / Island Name:");
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, townParams, org.jdesktop.beansbinding.ELProperty.create("${nameFirstPart}"), txtTownName, org.jdesktop.beansbinding.BeanProperty.create("text"));
@@ -2027,6 +2184,27 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
     private void btnAllotmentSelectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAllotmentSelectActionPerformed
         selectBaUnit(allotmentResultsList.getSelectedBaUnitSearchResult());
     }//GEN-LAST:event_btnAllotmentSelectActionPerformed
+
+    private void btnMortgageSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMortgageSearchActionPerformed
+        executeSearch(mortgageParams, lblMortgageResultsCount, mortgageResultsList);
+    }//GEN-LAST:event_btnMortgageSearchActionPerformed
+
+    private void btnMortgageClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMortgageClearActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnMortgageClearActionPerformed
+
+    private void btnMortgageOpenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMortgageOpenActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnMortgageOpenActionPerformed
+
+    private void btnMortgageSelectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMortgageSelectActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnMortgageSelectActionPerformed
+
+    private void tableMortgageMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableMortgageMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tableMortgageMouseClicked
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private org.sola.clients.beans.administrative.BaUnitSearchParamsBean allotmentParams;
     private org.sola.clients.beans.administrative.BaUnitSearchResultListBean allotmentResultsList;
@@ -2046,6 +2224,10 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnLeaseRegDateFrom;
     private javax.swing.JButton btnLeaseSearch;
     private org.sola.clients.swing.common.buttons.BtnSelect btnLeaseSelect;
+    private javax.swing.JButton btnMortgageClear;
+    private org.sola.clients.swing.common.buttons.BtnOpen btnMortgageOpen;
+    private javax.swing.JButton btnMortgageSearch;
+    private org.sola.clients.swing.common.buttons.BtnSelect btnMortgageSelect;
     private javax.swing.JButton btnSubleaseClear;
     private javax.swing.JButton btnSubleaseDateTo;
     private org.sola.clients.swing.common.buttons.BtnOpen btnSubleaseOpen;
@@ -2086,11 +2268,13 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -2131,6 +2315,8 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel40;
     private javax.swing.JPanel jPanel41;
+    private javax.swing.JPanel jPanel42;
+    private javax.swing.JPanel jPanel43;
     private javax.swing.JPanel jPanel44;
     private javax.swing.JPanel jPanel45;
     private javax.swing.JPanel jPanel46;
@@ -2149,8 +2335,11 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JToolBar.Separator jSeparator1;
     private javax.swing.JToolBar.Separator jSeparator10;
+    private javax.swing.JToolBar.Separator jSeparator11;
+    private javax.swing.JToolBar.Separator jSeparator12;
     private javax.swing.JToolBar.Separator jSeparator2;
     private javax.swing.JToolBar.Separator jSeparator3;
     private javax.swing.JToolBar.Separator jSeparator4;
@@ -2163,25 +2352,31 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
     private javax.swing.JToolBar jToolBar2;
     private javax.swing.JToolBar jToolBar3;
     private javax.swing.JToolBar jToolBar4;
+    private javax.swing.JToolBar jToolBar5;
     private javax.swing.JToolBar jToolBar6;
     private javax.swing.JLabel lblAllotmentSearchCount;
     private javax.swing.JLabel lblEstateResultCount;
     private javax.swing.JLabel lblLeaseResultsCount;
+    private javax.swing.JLabel lblMortgageResultsCount;
     private javax.swing.JLabel lblSubleaseResultsCount;
     private javax.swing.JLabel lblTownResultsCount;
     private org.sola.clients.beans.administrative.BaUnitSearchParamsBean leaseParams;
     private org.sola.clients.beans.administrative.BaUnitSearchResultListBean leaseResultsList;
     private javax.swing.JTabbedPane mainTabPane;
+    private org.sola.clients.beans.administrative.BaUnitSearchParamsBean mortgageParams;
+    private org.sola.clients.beans.administrative.BaUnitSearchResultListBean mortgageResultsList;
     private org.sola.clients.beans.administrative.BaUnitSearchParamsBean subleaseParams;
     private org.sola.clients.beans.administrative.BaUnitSearchResultListBean subleaseResultsList;
     private javax.swing.JPanel tabAllotment;
     private javax.swing.JPanel tabEstate;
     private javax.swing.JPanel tabLease;
+    private javax.swing.JPanel tabMortgage;
     private javax.swing.JPanel tabSublease;
     private javax.swing.JPanel tabTownIsland;
     private org.sola.clients.swing.common.controls.JTableWithDefaultStyles tableAllotment;
     private org.sola.clients.swing.common.controls.JTableWithDefaultStyles tableEstate;
     private org.sola.clients.swing.common.controls.JTableWithDefaultStyles tableLease;
+    private org.sola.clients.swing.common.controls.JTableWithDefaultStyles tableMortgage;
     private org.sola.clients.swing.common.controls.JTableWithDefaultStyles tableSublease;
     private org.sola.clients.swing.common.controls.JTableWithDefaultStyles tableTown;
     private org.sola.clients.beans.referencedata.TownListBean townListBean;
@@ -2202,6 +2397,7 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
     private javax.swing.JFormattedTextField txtLeaseRegDateFrom;
     private javax.swing.JFormattedTextField txtLeaseRegDateTo;
     private javax.swing.JTextField txtLesseeName;
+    private javax.swing.JTextField txtMortgageNumber;
     private javax.swing.JTextField txtNobleName;
     private javax.swing.JTextField txtSubleaseLandHolder;
     private javax.swing.JFormattedTextField txtSubleaseRegDateFrom;
