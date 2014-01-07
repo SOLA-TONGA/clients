@@ -1,28 +1,30 @@
 /**
  * ******************************************************************************************
- * Copyright (C) 2013 - Food and Agriculture Organization of the United Nations (FAO).
- * All rights reserved.
+ * Copyright (C) 2013 - Food and Agriculture Organization of the United Nations
+ * (FAO). All rights reserved.
  *
- * Redistribution and use in source and binary forms, with or without modification,
- * are permitted provided that the following conditions are met:
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
  *
- *    1. Redistributions of source code must retain the above copyright notice,this list
- *       of conditions and the following disclaimer.
- *    2. Redistributions in binary form must reproduce the above copyright notice,this list
- *       of conditions and the following disclaimer in the documentation and/or other
- *       materials provided with the distribution.
- *    3. Neither the name of FAO nor the names of its contributors may be used to endorse or
- *       promote products derived from this software without specific prior written permission.
+ * 1. Redistributions of source code must retain the above copyright notice,this
+ * list of conditions and the following disclaimer. 2. Redistributions in binary
+ * form must reproduce the above copyright notice,this list of conditions and
+ * the following disclaimer in the documentation and/or other materials provided
+ * with the distribution. 3. Neither the name of FAO nor the names of its
+ * contributors may be used to endorse or promote products derived from this
+ * software without specific prior written permission.
  *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY
- * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
- * OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT
- * SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
- * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,PROCUREMENT
- * OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
- * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT,STRICT LIABILITY,OR TORT
- * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
- * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ * ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
+ * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,PROCUREMENT OF
+ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+ * CONTRACT,STRICT LIABILITY,OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING
+ * IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ * POSSIBILITY OF SUCH DAMAGE.
  * *********************************************************************************************
  */
 package org.sola.clients.beans.administrative;
@@ -56,7 +58,7 @@ public class BaUnitSearchParamsBean extends AbstractBindingBean {
     public static final String OTHER_RIGHTHOLDER_PROPERTY = "otherRightholder";
     public static final String TOWN_PROPERTY = "town";
     public static final String ISLAND_PROPERTY = "island";
-    public static final String RRR_REFERENCE = "rrrReference";
+    public static final String ESTATE_NAME_PROPERTY = "estateName";
     private String nameFirstPart;
     private String nameLastPart;
     private String ownerName;
@@ -72,7 +74,7 @@ public class BaUnitSearchParamsBean extends AbstractBindingBean {
     private String otherRightholder;
     private TownBean town;
     private DistrictBean island;
-    private String rrrReference;
+    private String estateName;
 
     public BaUnitSearchParamsBean() {
         super();
@@ -232,15 +234,15 @@ public class BaUnitSearchParamsBean extends AbstractBindingBean {
 
     public void setIslandId(String value) {
     }
-    
-    public String getRrrReference() {
-        return rrrReference;
+
+    public String getEstateName() {
+        return estateName;
     }
 
-    public void setRrrReference(String value) {
-        String oldValue = this.rrrReference;
-        this.rrrReference = value;
-        propertySupport.firePropertyChange(RRR_REFERENCE, oldValue, value);
+    public void setEstateName(String value) {
+        String oldValue = this.estateName;
+        this.estateName = value;
+        propertySupport.firePropertyChange(ESTATE_NAME_PROPERTY, oldValue, value);
     }
 
     public void clear() {
@@ -257,6 +259,6 @@ public class BaUnitSearchParamsBean extends AbstractBindingBean {
         this.setOtherRightholder(null);
         this.setTown(null);
         this.setIsland(null);
-        this.setRrrReference(null);
+        this.setEstateName(null);
     }
 }

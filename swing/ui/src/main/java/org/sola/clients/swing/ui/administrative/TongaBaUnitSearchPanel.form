@@ -2475,7 +2475,7 @@
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtEstateName">
                       <BindingProperties>
-                        <BindingProperty name="text" source="estateParams" sourcePath="${nameFirstPart}" target="txtEstateName" targetPath="text" updateStrategy="0" immediately="false">
+                        <BindingProperty name="text" source="estateParams" sourcePath="${estateName}" target="txtEstateName" targetPath="text" updateStrategy="0" immediately="false">
                           <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
                         </BindingProperty>
                       </BindingProperties>
@@ -2661,7 +2661,7 @@
                         <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="String.class"/>
                         <BindingParameter name="javax.swing.binding.ParameterKeys.EDITABLE" value="false"/>
                       </Subbinding>
-                      <Subbinding sourcePath="${nameFirstPart}">
+                      <Subbinding sourcePath="${estateName}">
                         <BindingParameter name="NAME" value="Estate"/>
                         <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="String.class"/>
                         <BindingParameter name="javax.swing.binding.ParameterKeys.EDITABLE" value="false"/>

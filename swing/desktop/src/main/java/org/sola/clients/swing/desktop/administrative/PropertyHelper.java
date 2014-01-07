@@ -1,28 +1,30 @@
 /**
  * ******************************************************************************************
- * Copyright (C) 2013 - Food and Agriculture Organization of the United Nations (FAO).
- * All rights reserved.
+ * Copyright (C) 2013 - Food and Agriculture Organization of the United Nations
+ * (FAO). All rights reserved.
  *
- * Redistribution and use in source and binary forms, with or without modification,
- * are permitted provided that the following conditions are met:
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
  *
- *    1. Redistributions of source code must retain the above copyright notice,this list
- *       of conditions and the following disclaimer.
- *    2. Redistributions in binary form must reproduce the above copyright notice,this list
- *       of conditions and the following disclaimer in the documentation and/or other
- *       materials provided with the distribution.
- *    3. Neither the name of FAO nor the names of its contributors may be used to endorse or
- *       promote products derived from this software without specific prior written permission.
+ * 1. Redistributions of source code must retain the above copyright notice,this
+ * list of conditions and the following disclaimer. 2. Redistributions in binary
+ * form must reproduce the above copyright notice,this list of conditions and
+ * the following disclaimer in the documentation and/or other materials provided
+ * with the distribution. 3. Neither the name of FAO nor the names of its
+ * contributors may be used to endorse or promote products derived from this
+ * software without specific prior written permission.
  *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY
- * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
- * OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT
- * SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
- * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,PROCUREMENT
- * OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
- * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT,STRICT LIABILITY,OR TORT
- * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
- * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ * ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
+ * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,PROCUREMENT OF
+ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+ * CONTRACT,STRICT LIABILITY,OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING
+ * IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ * POSSIBILITY OF SUCH DAMAGE.
  * *********************************************************************************************
  */
 package org.sola.clients.swing.desktop.administrative;
@@ -90,7 +92,7 @@ public class PropertyHelper {
         }
         return result != null ? result : new BaUnitBean();
     }
- 
+
     /**
      * Creates a new BaUnitBean representing the new allotment details. Used for
      * the Register Tax Api and Town Api services.
@@ -141,6 +143,13 @@ public class PropertyHelper {
                     appBean.getSelectedProperty().getTownId(), RelatedBaUnitInfoBean.CODE_TOWN);
             if (town != null) {
                 result.getParentBaUnits().addAsNew(town);
+            }
+
+            // Associate estate to the allotment
+            RelatedBaUnitInfoBean estate = createRelatedBaUnit(
+                    appBean.getSelectedProperty().getNobleEstateId(), RelatedBaUnitInfoBean.CODE_ESTATE);
+            if (town != null) {
+                result.getParentBaUnits().addAsNew(estate);
             }
         }
         return result;
@@ -201,6 +210,13 @@ public class PropertyHelper {
                     appBean.getSelectedProperty().getTownId(), RelatedBaUnitInfoBean.CODE_TOWN);
             if (town != null) {
                 result.getParentBaUnits().addAsNew(town);
+            }
+
+            // Associate estate to the lease
+            RelatedBaUnitInfoBean estate = createRelatedBaUnit(
+                    appBean.getSelectedProperty().getNobleEstateId(), RelatedBaUnitInfoBean.CODE_ESTATE);
+            if (town != null) {
+                result.getParentBaUnits().addAsNew(estate);
             }
         }
         return result;
@@ -279,6 +295,13 @@ public class PropertyHelper {
                     appBean.getSelectedProperty().getTownId(), RelatedBaUnitInfoBean.CODE_TOWN);
             if (town != null) {
                 result.getParentBaUnits().addAsNew(town);
+            }
+
+            // Associate estate to the sublease
+            RelatedBaUnitInfoBean estate = createRelatedBaUnit(
+                    appBean.getSelectedProperty().getNobleEstateId(), RelatedBaUnitInfoBean.CODE_ESTATE);
+            if (town != null) {
+                result.getParentBaUnits().addAsNew(estate);
             }
         }
         return result;

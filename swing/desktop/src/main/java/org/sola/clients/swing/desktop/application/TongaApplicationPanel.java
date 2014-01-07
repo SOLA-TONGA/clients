@@ -273,12 +273,6 @@ public class TongaApplicationPanel extends ContentPanel {
         customizeApplicationForm();
         customizePropertyButtons();
         applyIslandFilter();
-
-        // Set the noble on the Selected Property bean as required. 
-        if (appBean.getSelectedProperty().getNobleEstateId() != null) {
-            appBean.getSelectedProperty().setNobleEstate(
-                    noblePartyListBean.getParty(appBean.getSelectedProperty().getNobleEstateId()));
-        }
     }
 
     /**
@@ -287,7 +281,7 @@ public class TongaApplicationPanel extends ContentPanel {
      */
     private void applyIslandFilter() {
         String islandId = appBean.getSelectedProperty().getIslandId();
-        //estateListBean1.setIslandFilter(islandId);
+        estateListBean1.setIslandFilter(islandId);
         townListBean1.setIslandFilter(islandId);
     }
 
@@ -797,7 +791,6 @@ public class TongaApplicationPanel extends ContentPanel {
         popupPrintAction = new javax.swing.JPopupMenu();
         menuPrintStatusReport = new javax.swing.JMenuItem();
         menuPrintApplicationForm = new javax.swing.JMenuItem();
-        noblePartyListBean = createNobleList();
         pnlHeader = new org.sola.clients.swing.ui.HeaderPanel();
         jToolBar3 = new javax.swing.JToolBar();
         btnSave = new javax.swing.JButton();
@@ -2068,8 +2061,8 @@ public class TongaApplicationPanel extends ContentPanel {
 
         cbxEstate.setName("cbxEstate"); // NOI18N
 
-        eLProperty = org.jdesktop.beansbinding.ELProperty.create("${partySummaryList}");
-        jComboBoxBinding = org.jdesktop.swingbinding.SwingBindings.createJComboBoxBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, noblePartyListBean, eLProperty, cbxEstate);
+        eLProperty = org.jdesktop.beansbinding.ELProperty.create("${filteredEstateList}");
+        jComboBoxBinding = org.jdesktop.swingbinding.SwingBindings.createJComboBoxBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, estateListBean1, eLProperty, cbxEstate);
         bindingGroup.addBinding(jComboBoxBinding);
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, appBean, org.jdesktop.beansbinding.ELProperty.create("${selectedProperty.nobleEstate}"), cbxEstate, org.jdesktop.beansbinding.BeanProperty.create("selectedItem"));
         bindingGroup.addBinding(binding);
@@ -4363,7 +4356,6 @@ public class TongaApplicationPanel extends ContentPanel {
     private javax.swing.JMenuItem menuStartService;
     private javax.swing.JMenuItem menuViewService;
     private javax.swing.JMenuItem menuWithdraw;
-    private org.sola.clients.beans.party.PartySummaryListBean noblePartyListBean;
     private org.sola.clients.beans.party.PartySummaryListBean partySummaryList;
     private org.sola.clients.swing.ui.HeaderPanel pnlHeader;
     private javax.swing.JPopupMenu popUpServices;
