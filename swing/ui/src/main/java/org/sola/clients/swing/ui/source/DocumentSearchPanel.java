@@ -43,11 +43,13 @@ import org.sola.clients.beans.source.SourceSearchResultBean;
 import org.sola.clients.beans.source.SourceSearchResultsListBean;
 import org.sola.clients.swing.common.LafManager;
 import org.sola.clients.swing.common.controls.CalendarForm;
+import org.sola.clients.swing.common.controls.WatermarkDate;
 import org.sola.clients.swing.common.tasks.SolaTask;
 import org.sola.clients.swing.common.tasks.TaskManager;
 import org.sola.clients.swing.common.utils.InternalNumberComparator;
 import org.sola.clients.swing.ui.renderers.AttachedDocumentCellRenderer;
-import org.sola.clients.swing.ui.renderers.FormattersFactory;
+import org.sola.clients.swing.common.utils.FormattersFactory;
+import org.sola.clients.swing.ui.renderers.DateTimeRenderer;
 import org.sola.common.RolesConstants;
 import org.sola.common.SOLAException;
 import org.sola.common.messaging.ClientMessage;
@@ -365,20 +367,20 @@ public class DocumentSearchPanel extends javax.swing.JPanel {
         cbxSourceType = new javax.swing.JComboBox();
         jPanel11 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
-        txtSubmissionDateFrom = new javax.swing.JFormattedTextField();
+        txtSubmissionDateFrom = new WatermarkDate();
         btnSubmissionDateFrom = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
-        txtSubmissionDateTo = new javax.swing.JFormattedTextField();
+        txtSubmissionDateTo = new WatermarkDate();
         btnSubmissionDateTo = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
-        txtDateFrom = new javax.swing.JFormattedTextField();
+        txtDateFrom = new WatermarkDate();
         btnDateFrom = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
-        txtDateTo = new javax.swing.JFormattedTextField();
+        txtDateTo = new WatermarkDate();
         btnDateTo = new javax.swing.JButton();
         jPanel16 = new javax.swing.JPanel();
         jPanel15 = new javax.swing.JPanel();
@@ -1004,10 +1006,12 @@ public class DocumentSearchPanel extends javax.swing.JPanel {
         tblSearchResults.getColumnModel().getColumn(1).setHeaderValue(bundle.getString("DocumentSeachPanel.tblSearchResults.columnModel.title1_1_1")); // NOI18N
         tblSearchResults.getColumnModel().getColumn(2).setPreferredWidth(70);
         tblSearchResults.getColumnModel().getColumn(2).setHeaderValue(bundle.getString("DocumentSearchPanel.tblSearchResults.columnModel.title2_1")); // NOI18N
+        tblSearchResults.getColumnModel().getColumn(2).setCellRenderer(new DateTimeRenderer());
         tblSearchResults.getColumnModel().getColumn(3).setPreferredWidth(60);
         tblSearchResults.getColumnModel().getColumn(3).setHeaderValue(bundle.getString("DocumentSeachPanel.tblSearchResults.columnModel.title0_1_1")); // NOI18N
         tblSearchResults.getColumnModel().getColumn(4).setPreferredWidth(70);
         tblSearchResults.getColumnModel().getColumn(4).setHeaderValue(bundle.getString("DocumentSeachPanel.tblSearchResults.columnModel.title3_1_1")); // NOI18N
+        tblSearchResults.getColumnModel().getColumn(4).setCellRenderer(new DateTimeRenderer());
         tblSearchResults.getColumnModel().getColumn(5).setPreferredWidth(50);
         tblSearchResults.getColumnModel().getColumn(5).setHeaderValue(bundle.getString("DocumentSeachPanel.tblSearchResults.columnModel.title4_1")); // NOI18N
         tblSearchResults.getColumnModel().getColumn(6).setHeaderValue(bundle.getString("DocumentSearchPanel.tblSearchResults.columnModel.title7")); // NOI18N

@@ -38,11 +38,13 @@ import org.sola.clients.beans.source.PowerOfAttorneySearchResultBean;
 import org.sola.clients.beans.source.PowerOfAttorneySearchResultListBean;
 import org.sola.clients.beans.source.SourceBean;
 import org.sola.clients.swing.common.controls.CalendarForm;
+import org.sola.clients.swing.common.controls.WatermarkDate;
 import org.sola.clients.swing.common.tasks.SolaTask;
 import org.sola.clients.swing.common.tasks.TaskManager;
 import org.sola.clients.swing.common.utils.InternalNumberComparator;
 import org.sola.clients.swing.ui.renderers.AttachedDocumentCellRenderer;
-import org.sola.clients.swing.ui.renderers.FormattersFactory;
+import org.sola.clients.swing.common.utils.FormattersFactory;
+import org.sola.clients.swing.ui.renderers.DateTimeRenderer;
 import org.sola.common.SOLAException;
 import org.sola.common.messaging.ClientMessage;
 import org.sola.common.messaging.MessageUtility;
@@ -301,12 +303,12 @@ public class PowerOfAttorneySearchPanel extends javax.swing.JPanel {
         jLabel7 = new javax.swing.JLabel();
         jPanel11 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
-        txtSubmissionDateFrom = new javax.swing.JFormattedTextField();
+        txtSubmissionDateFrom = new WatermarkDate();
         btnSubmissionDateFrom = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
-        txtSubmissionDateTo = new javax.swing.JFormattedTextField();
+        txtSubmissionDateTo = new WatermarkDate();
         btnSubmissionDateTo = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
@@ -425,6 +427,7 @@ public class PowerOfAttorneySearchPanel extends javax.swing.JPanel {
         jToolBar1.add(lblSearchResultCount);
 
         tableSearchResults.setComponentPopupMenu(popUpPowerOfAttorneySearchResults);
+        tableSearchResults.getTableHeader().setReorderingAllowed(false);
 
         org.jdesktop.beansbinding.ELProperty eLProperty = org.jdesktop.beansbinding.ELProperty.create("${powerOfAttorneySearchResultsList}");
         org.jdesktop.swingbinding.JTableBinding jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, powerOfAttorneySearchResults, eLProperty, tableSearchResults);
@@ -468,9 +471,11 @@ public class PowerOfAttorneySearchPanel extends javax.swing.JPanel {
         tableSearchResults.getColumnModel().getColumn(0).setHeaderValue(bundle.getString("PowerOfAttorneySearchPanel.tableSearchResults.columnModel.title1_1")); // NOI18N
         tableSearchResults.getColumnModel().getColumn(1).setHeaderValue(bundle.getString("PowerOfAttorneySearchPanel.tableSearchResults.columnModel.title0_1")); // NOI18N
         tableSearchResults.getColumnModel().getColumn(2).setHeaderValue(bundle.getString("PowerOfAttorneySearchPanel.tableSearchResults.columnModel.title2_1")); // NOI18N
+        tableSearchResults.getColumnModel().getColumn(2).setCellRenderer(new DateTimeRenderer());
         tableSearchResults.getColumnModel().getColumn(3).setHeaderValue(bundle.getString("PowerOfAttorneySearchPanel.tableSearchResults.columnModel.title3_1")); // NOI18N
         tableSearchResults.getColumnModel().getColumn(4).setHeaderValue(bundle.getString("PowerOfAttorneySearchPanel.tableSearchResults.columnModel.title4")); // NOI18N
         tableSearchResults.getColumnModel().getColumn(5).setHeaderValue(bundle.getString("PowerOfAttorneySearchPanel.tableSearchResults.columnModel.title7")); // NOI18N
+        tableSearchResults.getColumnModel().getColumn(5).setCellRenderer(new DateTimeRenderer());
         tableSearchResults.getColumnModel().getColumn(6).setHeaderValue(bundle.getString("PowerOfAttorneySearchPanel.tableSearchResults.columnModel.title6")); // NOI18N
         tableSearchResults.getColumnModel().getColumn(7).setPreferredWidth(30);
         tableSearchResults.getColumnModel().getColumn(7).setMaxWidth(30);

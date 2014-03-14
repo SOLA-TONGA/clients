@@ -737,7 +737,7 @@ public class DashBoardPanel extends ContentPanel {
     /**
      * Refreshes assigned and unassigned application lists.
      */
-    private void refreshApplications() {
+    public void refreshApplications() {
         SolaTask t = new SolaTask<Void, Void>() {
             @Override
             public Void doTask() {

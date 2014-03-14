@@ -29,7 +29,10 @@
  */
 package org.sola.clients.swing.desktop.administrative;
 
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.util.List;
+import javax.swing.JDialog;
 import org.sola.clients.beans.administrative.BaUnitAreaBean;
 import org.sola.clients.beans.administrative.BaUnitBean;
 import org.sola.clients.beans.administrative.BaUnitSummaryBean;
@@ -41,6 +44,11 @@ import org.sola.clients.beans.application.ApplicationServiceBean;
 import org.sola.clients.beans.referencedata.BaUnitTypeBean;
 import org.sola.clients.beans.referencedata.RequestTypeBean;
 import org.sola.clients.beans.referencedata.StatusConstants;
+import org.sola.clients.swing.desktop.application.PropertiesList;
+import org.sola.clients.swing.ui.ContentPanel;
+import org.sola.common.StringUtility;
+import org.sola.common.messaging.ClientMessage;
+import org.sola.common.messaging.MessageUtility;
 
 /**
  * Helper class to manage configuring property records for Tonga
@@ -50,6 +58,7 @@ import org.sola.clients.beans.referencedata.StatusConstants;
 public class PropertyHelper {
 
     public static final String NAME_PART_LEASE = "Lease";
+    private static ApplicationPropertyBean appProperty;
 
     /**
      * Obtains the BaUnitBean to use for a service based on the details in the
@@ -65,32 +74,73 @@ public class PropertyHelper {
      * @param appProperty The property to retrieve the BaUnitBean for.
      */
     public static BaUnitBean getBaUnitBeanForService(ApplicationBean appBean,
-            ApplicationServiceBean appService, ApplicationPropertyBean appProperty) {
+            ApplicationServiceBean appService, ContentPanel window) {
 
-        if (appBean == null || appService == null || appProperty == null) {
+        if (appBean == null || appService == null) {
             return null;
         }
 
-        BaUnitBean result;
+        BaUnitBean result = null;
+        appProperty = null;
         List<BaUnitBean> baUnitList = BaUnitBean.getBaUnitsByServiceId(appService.getId());
         if (baUnitList != null && baUnitList.size() == 1) {
+            // Serivce has previously linked to an BA Unit, so return that for the service
             result = baUnitList.get(0);
-        } else if (RequestTypeBean.CODE_REGISTER_TOWN_API.equals(appService.getRequestTypeCode())
-                || RequestTypeBean.CODE_REGISTER_TAX_API.equals(appService.getRequestTypeCode())) {
-            result = prepareNewAllotment(appBean, appService.getRequestTypeCode());
-        } else if (RequestTypeBean.CODE_REGISTER_LEASE.equals(appService.getRequestTypeCode())) {
-            result = prepareNewLease(appBean);
-        } else if (RequestTypeBean.CODE_REGISTER_SUBLEASE.equals(appService.getRequestTypeCode())) {
-            result = prepareNewSublease(appBean);
         } else {
-            // Determine whether to apply the service to a sublease, lease or allotment
-            String baUnitId = appProperty.getSubleaseBaUnitId() == null
-                    ? appProperty.getLeaseBaUnitId() == null ? appProperty.getBaUnitId()
-                    : appProperty.getLeaseBaUnitId()
-                    : appProperty.getSubleaseBaUnitId();
-            result = BaUnitBean.getBaUnitsById(baUnitId);
+
+            // Determine the property to use for this service
+            if (appBean.getPropertyList().getFilteredList().size() == 1) {
+                appProperty = appBean.getPropertyList().getFilteredList().get(0);
+            } else if (appBean.getPropertyList().getFilteredList().size() > 1) {
+                // Prompt the user to indicate which property record is required. 
+                PropertiesList propertyListForm = new PropertiesList(appBean.getPropertyList());
+                propertyListForm.setLocationRelativeTo(window);
+
+                propertyListForm.addPropertyChangeListener(new PropertyChangeListener() {
+                    @Override
+                    public void propertyChange(PropertyChangeEvent evt) {
+                        if (evt.getPropertyName().equals(PropertiesList.SELECTED_PROPERTY)
+                                && evt.getNewValue() != null) {
+                            appProperty = (ApplicationPropertyBean) evt.getNewValue();
+                            ((JDialog) evt.getSource()).dispose();
+                        }
+                    }
+                });
+                propertyListForm.setVisible(true);
+            } else {
+                MessageUtility.displayMessage(ClientMessage.APPLICATION_PROPERTY_LIST_EMPTY);
+            }
+
+            if (appProperty != null) {
+                if (RequestTypeBean.CODE_REGISTER_TOWN_API.equals(appService.getRequestTypeCode())
+                        || RequestTypeBean.CODE_REGISTER_TAX_API.equals(appService.getRequestTypeCode())) {
+                    result = prepareNewAllotment(appBean, appService.getRequestTypeCode());
+                } else if (RequestTypeBean.CODE_REGISTER_LEASE.equals(appService.getRequestTypeCode())) {
+                    result = prepareNewLease(appBean);
+                } else if (RequestTypeBean.CODE_REGISTER_SUBLEASE.equals(appService.getRequestTypeCode())) {
+                    result = prepareNewSublease(appBean);
+                } else {
+                    if (!appProperty.isVerifiedExists()) {
+                        // The property may not have been verified, attempt to verify the
+                        // property to obtain the correct baUnitId...
+                        ApplicationBean.verifyProperty(appProperty, appBean.getNr(), true);
+                    }
+                    // Determine whether to apply the service to a sublease, lease or allotment
+                    String baUnitId = null;
+                    if (appProperty.isTaxAllotment() || appProperty.isTownAllotment()) {
+                        baUnitId = appProperty.getBaUnitId();
+                    } else if (appProperty.isLease()) {
+                        baUnitId = appProperty.getLeaseBaUnitId();
+                    } else if (appProperty.isSublease()) {
+                        baUnitId = appProperty.getSubleaseBaUnitId();
+                    }
+                    if (baUnitId != null) {
+                        result = BaUnitBean.getBaUnitsById(baUnitId);
+                    }
+                }
+            }
         }
-        return result != null ? result : new BaUnitBean();
+        return result;
     }
 
     /**
@@ -99,7 +149,7 @@ public class PropertyHelper {
      *
      * @param appBean
      */
-    public static BaUnitBean prepareNewAllotment(ApplicationBean appBean, String serviceType) {
+    private static BaUnitBean prepareNewAllotment(ApplicationBean appBean, String serviceType) {
         BaUnitBean result = new BaUnitBean();
         if (RequestTypeBean.CODE_REGISTER_TOWN_API.equals(serviceType)) {
             result.setTypeCode(BaUnitTypeBean.CODE_TOWN_ALLOTMENT_UNIT);
@@ -107,50 +157,51 @@ public class PropertyHelper {
             result.setTypeCode(BaUnitTypeBean.CODE_TAX_UNIT);
         }
         result.setStatusCode(StatusConstants.PENDING);
-        if (appBean.getSelectedProperty() != null) {
-            if (appBean.getSelectedProperty().getBaUnitId() == null) {
-                // Set the Deed and Folio for the allotment if specified. 
-                result.setNameFirstpart(appBean.getSelectedProperty().getNameFirstpart());
-                result.setNameLastpart(appBean.getSelectedProperty().getNameLastpart());
-                result.setName(result.getNameFirstpart() + "/" + result.getNameLastpart());
-            }
 
-            result.setLandUseTypeCode(appBean.getSelectedProperty().getLandUseCode());
+        // Set the Deed and Folio for the allotment if specified. 
+        result.setNameFirstpart(appProperty.getNameFirstpart());
+        result.setNameLastpart(appProperty.getNameLastpart());
+        if (!StringUtility.isEmpty(appProperty.getNameFirstpart())
+                && !StringUtility.isEmpty(appProperty.getNameLastpart())) {
+            result.setName(result.getNameFirstpart() + "/" + result.getNameLastpart());
+        }
 
-            // Set details of Lease RRR
-            RrrBean landHolderRrr = new RrrBean();
-            landHolderRrr.setTypeCode(RrrBean.CODE_OWNERSHIP);
-            landHolderRrr.setPrimary(true);
-            landHolderRrr.setStatusCode(StatusConstants.PENDING);
+        result.setLandUseTypeCode(appProperty.getLandUseCode());
+        result.setRegisteredName(appProperty.getRegisteredName());
 
-            // Add the property description as a Notation on the allotment
-            if (appBean.getSelectedProperty().getDescription() != null) {
-                landHolderRrr.getNotation().setNotationText(appBean.getSelectedProperty().getDescription());
-            }
+        // Set details of Lease RRR
+        RrrBean landHolderRrr = new RrrBean();
+        landHolderRrr.setTypeCode(RrrBean.CODE_OWNERSHIP);
+        landHolderRrr.setPrimary(true);
+        landHolderRrr.setStatusCode(StatusConstants.PENDING);
 
-            result.addRrr(landHolderRrr);
+        // Add the property description as a Notation on the allotment
+        if (appProperty.getDescription() != null) {
+            landHolderRrr.getNotation().setNotationText(appProperty.getDescription());
+        }
 
-            if (appBean.getSelectedProperty().getArea() != null) {
-                // Set Lease Area
-                BaUnitAreaBean areaBean = new BaUnitAreaBean();
-                areaBean.setTypeCode(BaUnitAreaBean.CODE_OFFICIAL_AREA);
-                areaBean.setSize(appBean.getSelectedProperty().getArea());
-                result.setOfficialArea(areaBean);
-            }
+        result.addRrr(landHolderRrr);
 
-            // Associate the town to the allotment
-            RelatedBaUnitInfoBean town = createRelatedBaUnit(
-                    appBean.getSelectedProperty().getTownId(), RelatedBaUnitInfoBean.CODE_TOWN);
-            if (town != null) {
-                result.getParentBaUnits().addAsNew(town);
-            }
+        if (appProperty.getArea() != null) {
+            // Set Lease Area
+            BaUnitAreaBean areaBean = new BaUnitAreaBean();
+            areaBean.setTypeCode(BaUnitAreaBean.CODE_OFFICIAL_AREA);
+            areaBean.setSize(appProperty.getArea());
+            result.setOfficialArea(areaBean);
+        }
 
-            // Associate estate to the allotment
-            RelatedBaUnitInfoBean estate = createRelatedBaUnit(
-                    appBean.getSelectedProperty().getNobleEstateId(), RelatedBaUnitInfoBean.CODE_ESTATE);
-            if (town != null) {
-                result.getParentBaUnits().addAsNew(estate);
-            }
+        // Associate the town to the allotment
+        RelatedBaUnitInfoBean town = createRelatedBaUnit(
+                appProperty.getTownId(), RelatedBaUnitInfoBean.CODE_TOWN);
+        if (town != null) {
+            result.getParentBaUnits().addAsNew(town);
+        }
+
+        // Associate estate to the allotment
+        RelatedBaUnitInfoBean estate = createRelatedBaUnit(
+                appProperty.getNobleEstateId(), RelatedBaUnitInfoBean.CODE_ESTATE);
+        if (town != null) {
+            result.getParentBaUnits().addAsNew(estate);
         }
         return result;
     }
@@ -166,58 +217,60 @@ public class PropertyHelper {
         result.setTypeCode(BaUnitTypeBean.CODE_LEASED_UNIT);
         result.setStatusCode(StatusConstants.PENDING);
         result.setNameLastpart(NAME_PART_LEASE);
-        if (appBean.getSelectedProperty() != null) {
-            if (appBean.getSelectedProperty().getLeaseNumber() != null
-                    && appBean.getSelectedProperty().getLeaseBaUnitId() == null) {
-                // Set the lease number if it has been specified. 
-                result.setNameFirstpart(appBean.getSelectedProperty().getLeaseNumber());
-                result.setName(appBean.getSelectedProperty().getLeaseNumber());
-            }
 
-            // Set details of Lease RRR
-            RrrBean leaseRrr = new RrrBean();
-            leaseRrr.setTypeCode(RrrBean.CODE_LEASE);
-            leaseRrr.setPrimary(true);
-            leaseRrr.setStatusCode(StatusConstants.PENDING);
-            leaseRrr.setAmount(appBean.getSelectedProperty().getAmount());
-            leaseRrr.setTerm(appBean.getSelectedProperty().getLeaseTerm());
-            leaseRrr.setRegistryBookReference(appBean.getSelectedProperty().getLeaseNumber());
-            leaseRrr.setOtherRightholderName(appBean.getSelectedProperty().getLessorName());
-            // Add the property description as a Notation on the lease
-            if (appBean.getSelectedProperty().getDescription() != null) {
-                leaseRrr.getNotation().setNotationText(appBean.getSelectedProperty().getDescription());
-            }
+        // Set the lease number if it has been specified. 
+        result.setNameFirstpart(appProperty.getLeaseNumber());
 
-            result.addRrr(leaseRrr);
+        if (!StringUtility.isEmpty(appProperty.getLeaseNumber())) {
+            result.setName(appProperty.getLeaseNumber());
+        }
 
-            if (appBean.getSelectedProperty().getLeaseArea() != null) {
-                // Set Lease Area
-                BaUnitAreaBean areaBean = new BaUnitAreaBean();
-                areaBean.setTypeCode(BaUnitAreaBean.CODE_OFFICIAL_AREA);
-                areaBean.setSize(appBean.getSelectedProperty().getLeaseArea());
-                result.setOfficialArea(areaBean);
-            }
+        result.setLandUseTypeCode(appProperty.getLandUseCode());
 
-            // Associate the allotment to the lease
-            RelatedBaUnitInfoBean allotment = createRelatedBaUnit(
-                    appBean.getSelectedProperty().getBaUnitId(), RelatedBaUnitInfoBean.CODE_ALLOTMENT);
-            if (allotment != null) {
-                result.getParentBaUnits().addAsNew(allotment);
-            }
+        // Set details of Lease RRR
+        RrrBean leaseRrr = new RrrBean();
+        leaseRrr.setTypeCode(RrrBean.CODE_LEASE);
+        leaseRrr.setPrimary(true);
+        leaseRrr.setStatusCode(StatusConstants.PENDING);
+        leaseRrr.setAmount(appProperty.getAmount());
+        leaseRrr.setTerm(appProperty.getLeaseTerm());
+        leaseRrr.setRegistryBookReference(appProperty.getLeaseNumber());
+        leaseRrr.setOtherRightholderName(appProperty.getLessorName());
 
-            // Associate the town to the lease
-            RelatedBaUnitInfoBean town = createRelatedBaUnit(
-                    appBean.getSelectedProperty().getTownId(), RelatedBaUnitInfoBean.CODE_TOWN);
-            if (town != null) {
-                result.getParentBaUnits().addAsNew(town);
-            }
+        // Add the property description as a Notation on the lease
+        if (appProperty.getDescription() != null) {
+            leaseRrr.getNotation().setNotationText(appProperty.getDescription());
+        }
 
-            // Associate estate to the lease
-            RelatedBaUnitInfoBean estate = createRelatedBaUnit(
-                    appBean.getSelectedProperty().getNobleEstateId(), RelatedBaUnitInfoBean.CODE_ESTATE);
-            if (town != null) {
-                result.getParentBaUnits().addAsNew(estate);
-            }
+        result.addRrr(leaseRrr);
+
+        if (appProperty.getArea() != null) {
+            // Set Lease Area
+            BaUnitAreaBean areaBean = new BaUnitAreaBean();
+            areaBean.setTypeCode(BaUnitAreaBean.CODE_OFFICIAL_AREA);
+            areaBean.setSize(appProperty.getArea());
+            result.setOfficialArea(areaBean);
+        }
+
+        // Associate the allotment to the lease
+        RelatedBaUnitInfoBean allotment = createRelatedBaUnit(
+                appProperty.getBaUnitId(), RelatedBaUnitInfoBean.CODE_ALLOTMENT);
+        if (allotment != null) {
+            result.getParentBaUnits().addAsNew(allotment);
+        }
+
+        // Associate the town to the lease
+        RelatedBaUnitInfoBean town = createRelatedBaUnit(
+                appProperty.getTownId(), RelatedBaUnitInfoBean.CODE_TOWN);
+        if (town != null) {
+            result.getParentBaUnits().addAsNew(town);
+        }
+
+        // Associate estate to the lease
+        RelatedBaUnitInfoBean estate = createRelatedBaUnit(
+                appProperty.getNobleEstateId(), RelatedBaUnitInfoBean.CODE_ESTATE);
+        if (town != null) {
+            result.getParentBaUnits().addAsNew(estate);
         }
         return result;
     }
@@ -258,51 +311,62 @@ public class PropertyHelper {
         BaUnitBean result = new BaUnitBean();
         result.setTypeCode(BaUnitTypeBean.CODE_SUBLEASE_UNIT);
         result.setStatusCode(StatusConstants.PENDING);
-        if (appBean.getSelectedProperty() != null) {
-            if (appBean.getSelectedProperty().getSubleaseNumber() != null
-                    && appBean.getSelectedProperty().getSubleaseBaUnitId() == null) {
-                // Set the sublease number if it has been specified. 
-                result.setNameFirstpart(appBean.getSelectedProperty().getSubleaseNumber().split("/")[0]);
-                result.setNameLastpart(appBean.getSelectedProperty().getSubleaseNumber().split("/")[1]);
-                result.setName(appBean.getSelectedProperty().getSubleaseNumber());
+
+        // Set the sublease number if it has been specified. 
+        if (!StringUtility.isEmpty(appProperty.getSubleaseNumber())) {
+            result.setNameFirstpart(appProperty.getSubleaseNumber().split("/")[0]);
+            result.setNameLastpart(appProperty.getSubleaseNumber().split("/")[1]);
+            result.setName(appProperty.getSubleaseNumber());
+        }
+
+        // Set details of Sublease RRR
+        RrrBean subleaseRrr = new RrrBean();
+        subleaseRrr.setTypeCode(RrrBean.CODE_SUBLEASE);
+        subleaseRrr.setPrimary(true);
+        subleaseRrr.setStatusCode(StatusConstants.PENDING);
+        subleaseRrr.setRegistryBookReference(appProperty.getSubleaseNumber());
+
+        subleaseRrr.setAmount(appProperty.getAmount());
+        subleaseRrr.setTerm(appProperty.getLeaseTerm());
+        if (appProperty.getLesseeName() != null) {
+            subleaseRrr.setOtherRightholderName(appProperty.getLesseeName());
+        } else {
+            subleaseRrr.setOtherRightholderName(appProperty.getLessorName());
+        }
+
+        // Add the property description as a Notation on the lease
+        if (appProperty.getDescription() != null) {
+            subleaseRrr.getNotation().setNotationText(appProperty.getDescription());
+        }
+
+        result.addRrr(subleaseRrr);
+
+        // Associate the lease to the sublease
+        RelatedBaUnitInfoBean lease = createRelatedBaUnit(
+                appProperty.getLeaseBaUnitId(), RelatedBaUnitInfoBean.CODE_SUBLEASE);
+        if (lease != null) {
+            result.getParentBaUnits().addAsNew(lease);
+        } else {
+            // Check if there is an allotment to associate with the sublease instead
+            RelatedBaUnitInfoBean allotment = createRelatedBaUnit(
+                    appProperty.getBaUnitId(), RelatedBaUnitInfoBean.CODE_SUBLEASE);
+            if (allotment != null) {
+                result.getParentBaUnits().addAsNew(allotment);
             }
+        }
 
-            // Set details of Sublease RRR
-            RrrBean subleaseRrr = new RrrBean();
-            subleaseRrr.setTypeCode(RrrBean.CODE_SUBLEASE);
-            subleaseRrr.setPrimary(true);
-            subleaseRrr.setStatusCode(StatusConstants.PENDING);
-            subleaseRrr.setRegistryBookReference(appBean.getSelectedProperty().getSubleaseNumber());
+        // Associate the town to the sublease
+        RelatedBaUnitInfoBean town = createRelatedBaUnit(
+                appProperty.getTownId(), RelatedBaUnitInfoBean.CODE_TOWN);
+        if (town != null) {
+            result.getParentBaUnits().addAsNew(town);
+        }
 
-            result.addRrr(subleaseRrr);
-
-            // Associate the lease to the sublease
-            RelatedBaUnitInfoBean lease = createRelatedBaUnit(
-                    appBean.getSelectedProperty().getLeaseBaUnitId(), RelatedBaUnitInfoBean.CODE_SUBLEASE);
-            if (lease != null) {
-                result.getParentBaUnits().addAsNew(lease);
-            } else {
-                // Check if there is an allotment to associate with the sublease instead
-                RelatedBaUnitInfoBean allotment = createRelatedBaUnit(
-                        appBean.getSelectedProperty().getBaUnitId(), RelatedBaUnitInfoBean.CODE_SUBLEASE);
-                if (allotment != null) {
-                    result.getParentBaUnits().addAsNew(allotment);
-                }
-            }
-
-            // Associate the town to the sublease
-            RelatedBaUnitInfoBean town = createRelatedBaUnit(
-                    appBean.getSelectedProperty().getTownId(), RelatedBaUnitInfoBean.CODE_TOWN);
-            if (town != null) {
-                result.getParentBaUnits().addAsNew(town);
-            }
-
-            // Associate estate to the sublease
-            RelatedBaUnitInfoBean estate = createRelatedBaUnit(
-                    appBean.getSelectedProperty().getNobleEstateId(), RelatedBaUnitInfoBean.CODE_ESTATE);
-            if (town != null) {
-                result.getParentBaUnits().addAsNew(estate);
-            }
+        // Associate estate to the sublease
+        RelatedBaUnitInfoBean estate = createRelatedBaUnit(
+                appProperty.getNobleEstateId(), RelatedBaUnitInfoBean.CODE_ESTATE);
+        if (town != null) {
+            result.getParentBaUnits().addAsNew(estate);
         }
         return result;
     }

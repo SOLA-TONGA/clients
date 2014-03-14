@@ -1,28 +1,30 @@
 /**
  * ******************************************************************************************
- * Copyright (C) 2013 - Food and Agriculture Organization of the United Nations (FAO).
- * All rights reserved.
+ * Copyright (C) 2013 - Food and Agriculture Organization of the United Nations
+ * (FAO). All rights reserved.
  *
- * Redistribution and use in source and binary forms, with or without modification,
- * are permitted provided that the following conditions are met:
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
  *
- *    1. Redistributions of source code must retain the above copyright notice,this list
- *       of conditions and the following disclaimer.
- *    2. Redistributions in binary form must reproduce the above copyright notice,this list
- *       of conditions and the following disclaimer in the documentation and/or other
- *       materials provided with the distribution.
- *    3. Neither the name of FAO nor the names of its contributors may be used to endorse or
- *       promote products derived from this software without specific prior written permission.
+ * 1. Redistributions of source code must retain the above copyright notice,this
+ * list of conditions and the following disclaimer. 2. Redistributions in binary
+ * form must reproduce the above copyright notice,this list of conditions and
+ * the following disclaimer in the documentation and/or other materials provided
+ * with the distribution. 3. Neither the name of FAO nor the names of its
+ * contributors may be used to endorse or promote products derived from this
+ * software without specific prior written permission.
  *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY
- * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
- * OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT
- * SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
- * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,PROCUREMENT
- * OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
- * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT,STRICT LIABILITY,OR TORT
- * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
- * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ * ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
+ * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,PROCUREMENT OF
+ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+ * CONTRACT,STRICT LIABILITY,OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING
+ * IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ * POSSIBILITY OF SUCH DAMAGE.
  * *********************************************************************************************
  */
 package org.sola.clients.beans.administrative;
@@ -43,6 +45,7 @@ import org.sola.clients.beans.controls.SolaObservableList;
 import org.sola.clients.beans.converters.TypeConverters;
 import org.sola.clients.beans.referencedata.BaUnitTypeBean;
 import org.sola.clients.beans.referencedata.LandUseTypeBean;
+import org.sola.clients.beans.referencedata.RegistrationStatusTypeBean;
 import org.sola.clients.beans.referencedata.StatusConstants;
 import org.sola.clients.beans.referencedata.TypeActionBean;
 import org.sola.clients.beans.source.SourceBean;
@@ -825,6 +828,25 @@ public class BaUnitBean extends BaUnitSummaryBean {
         }
         return result;
     }
+    
+        /**
+     * Determines if the BaUnit has a relationship to a Parent BaUnit of the
+     * specified type.
+     *
+     * @param relationCode Relationship to check for
+     */
+    public RelatedBaUnitInfoBean getParentRelationship(String relationCode) {
+        RelatedBaUnitInfoBean result = null;
+        if (relationCode != null) {
+            for (RelatedBaUnitInfoBean bean : getFilteredParentBaUnits()) {
+                if (relationCode.equals(bean.getRelationCode())) {
+                    result = bean;
+                    break;
+                }
+            }
+        }
+        return result;
+    }
 
     /**
      * Retrieves all Notations that are only associated to the BA Unit. These
@@ -836,6 +858,39 @@ public class BaUnitBean extends BaUnitSummaryBean {
         for (BaUnitNotationBean bean : allBaUnitNotationList) {
             if (bean.getBaUnitId() != null) {
                 result.add(bean);
+            }
+        }
+        return result;
+    }
+
+    /**
+     * Determines the primary RRR for the BA Unit *
+     */
+    public RrrBean getPrimaryRrr() {
+        RrrBean result = null;
+        // Try to find the current primary RRR
+        for (RrrBean rrrBean : rrrList.getFilteredList()) {
+            if (rrrBean.isPrimary() && StatusConstants.CURRENT.equals(rrrBean.getStatusCode())) {
+                result = rrrBean;
+                break;
+            }
+        }
+        if (result == null) {
+            // Try to find the pending primary RRR
+            for (RrrBean rrrBean : rrrList.getFilteredList()) {
+                if (rrrBean.isPrimary() && StatusConstants.PENDING.equals(rrrBean.getStatusCode())) {
+                    result = rrrBean;
+                    break;
+                }
+            }
+        }
+        if (result == null) {
+            // Try to find the historic primary RRR
+            for (RrrBean rrrBean : rrrList.getFilteredList()) {
+                if (rrrBean.isPrimary() && StatusConstants.HISTORIC.equals(rrrBean.getStatusCode())) {
+                    result = rrrBean;
+                    break;
+                }
             }
         }
         return result;

@@ -7,14 +7,11 @@
 	<queryString>
 		<![CDATA[]]>
 	</queryString>
-	<field name="town" class="org.sola.clients.beans.referencedata.TownBean">
-		<fieldDescription><![CDATA[appBean.selectedProperty.town]]></fieldDescription>
+	<field name="appProperty" class="org.sola.clients.beans.application.ApplicationPropertyBean">
+		<fieldDescription><![CDATA[appProperty]]></fieldDescription>
 	</field>
-	<field name="island" class="org.sola.clients.beans.referencedata.DistrictBean">
-		<fieldDescription><![CDATA[appBean.selectedProperty.island]]></fieldDescription>
-	</field>
-	<field name="lesseeName" class="java.lang.String">
-		<fieldDescription><![CDATA[appBean.selectedProperty.lesseeName]]></fieldDescription>
+	<field name="serviceReportBean" class="org.sola.clients.beans.report.ServiceReportBean">
+		<fieldDescription><![CDATA[serviceReportBean]]></fieldDescription>
 	</field>
 	<background>
 		<band splitType="Stretch"/>
@@ -133,14 +130,14 @@ CLIMATE CHANGE & NATURAL RESOURCES]]></text>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Arial" size="12"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{town}.getDisplayValue() == null ? "" : $F{town}.getDisplayValue()+", "+$F{island}.getDisplayValue()]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{appProperty}.getTown().getDisplayValue() == null ? "" : $F{appProperty}.getTown().getDisplayValue()+", "+$F{appProperty}.getIsland().getDisplayValue()]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement uuid="26598e3d-fe1f-4cb8-9478-c9a7665e0097" x="135" y="43" width="418" height="30"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Arial" size="12"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{lesseeName}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{appProperty}.getLesseeName()]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

@@ -40,6 +40,7 @@ import org.sola.clients.swing.common.tasks.SolaTask;
 import org.sola.clients.swing.common.tasks.TaskManager;
 import org.sola.clients.swing.common.utils.InternalNumberComparator;
 import org.sola.clients.swing.ui.renderers.AttachedDocumentCellRenderer;
+import org.sola.clients.swing.ui.renderers.DateTimeRenderer;
 import org.sola.common.messaging.ClientMessage;
 import org.sola.common.messaging.MessageUtility;
 
@@ -261,9 +262,11 @@ public class DocumentsPanel extends javax.swing.JPanel {
         tableDocuments.getColumnModel().getColumn(0).setHeaderValue(bundle.getString("DocumentsPanel.tableDocuments.columnModel.title0_1")); // NOI18N
         tableDocuments.getColumnModel().getColumn(1).setHeaderValue(bundle.getString("DocumentsPanel.tableDocuments.columnModel.title3_1")); // NOI18N
         tableDocuments.getColumnModel().getColumn(2).setHeaderValue(bundle.getString("DocumentsPanel.tableDocuments.columnModel.title2_1")); // NOI18N
+        tableDocuments.getColumnModel().getColumn(2).setCellRenderer(new DateTimeRenderer());
         tableDocuments.getColumnModel().getColumn(3).setHeaderValue(bundle.getString("DocumentsPanel.tableDocuments.columnModel.title1_1")); // NOI18N
         tableDocuments.getColumnModel().getColumn(4).setHeaderValue(bundle.getString("DocumentsPanel.tableDocuments.columnModel.title4")); // NOI18N
         tableDocuments.getColumnModel().getColumn(5).setHeaderValue(bundle.getString("DocumentsPanel.tableDocuments.columnModel.title5")); // NOI18N
+        tableDocuments.getColumnModel().getColumn(5).setCellRenderer(new DateTimeRenderer());
         tableDocuments.getColumnModel().getColumn(6).setPreferredWidth(30);
         tableDocuments.getColumnModel().getColumn(6).setMaxWidth(30);
         tableDocuments.getColumnModel().getColumn(6).setHeaderValue(bundle.getString("DocumentsPanel.tableDocuments.columnModel.title6")); // NOI18N

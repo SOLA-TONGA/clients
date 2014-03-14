@@ -29,6 +29,7 @@
  */
 package org.sola.clients.swing.desktop.administrative;
 
+import org.sola.clients.swing.common.utils.FormattersFactory;
 import org.sola.clients.swing.desktop.cadastre.CreateParcelDialog;
 import java.awt.BorderLayout;
 import java.beans.PropertyChangeEvent;
@@ -327,8 +328,9 @@ public class TongaPropertyPanel extends ContentPanel {
         customizeHistoricRightsViewButton();
 
         // Hide the Map View if the user does not have the required role. 
-        if (!SecurityBean.isInRole(RolesConstants.GIS_VIEW_MAP)
-                && tabsMain.indexOfComponent(mapPanel) >= 0) {
+        //if (!SecurityBean.isInRole(RolesConstants.GIS_VIEW_MAP)
+        if (tabsMain.indexOfComponent(mapPanel) >= 0) {
+            // Hide the map panel for SOLA Tonga
             tabsMain.removeTabAt(tabsMain.indexOfComponent(mapPanel));
         }
 

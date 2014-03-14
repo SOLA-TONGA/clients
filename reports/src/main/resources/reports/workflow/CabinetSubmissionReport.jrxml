@@ -2,37 +2,19 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="00bf21df-40ae-45f3-af17-3a6614efe40c">
 	<property name="ireport.zoom" value="1.0000000000000002"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="168"/>
+	<property name="ireport.y" value="0"/>
 	<parameter name="SILA_IMAGE" class="java.io.InputStream"/>
 	<queryString>
 		<![CDATA[]]>
 	</queryString>
-	<field name="lesseeName" class="java.lang.String">
-		<fieldDescription><![CDATA[appBean.selectedProperty.lesseeName]]></fieldDescription>
+	<field name="appProperty" class="org.sola.clients.beans.application.ApplicationPropertyBean">
+		<fieldDescription><![CDATA[appProperty]]></fieldDescription>
 	</field>
-	<field name="lessorName" class="java.lang.String">
-		<fieldDescription><![CDATA[appBean.selectedProperty.lessorName]]></fieldDescription>
+	<field name="appServiceBean" class="org.sola.clients.beans.application.ApplicationServiceBean">
+		<fieldDescription><![CDATA[appServiceBean]]></fieldDescription>
 	</field>
-	<field name="town" class="org.sola.clients.beans.referencedata.TownBean">
-		<fieldDescription><![CDATA[appBean.selectedProperty.town]]></fieldDescription>
-	</field>
-	<field name="island" class="org.sola.clients.beans.referencedata.DistrictBean">
-		<fieldDescription><![CDATA[appBean.selectedProperty.island]]></fieldDescription>
-	</field>
-	<field name="area" class="java.math.BigDecimal">
-		<fieldDescription><![CDATA[appBean.selectedProperty.area]]></fieldDescription>
-	</field>
-	<field name="leaseTerm" class="java.math.BigDecimal">
-		<fieldDescription><![CDATA[appBean.selectedProperty.leaseTerm]]></fieldDescription>
-	</field>
-	<field name="amount" class="java.math.BigDecimal">
-		<fieldDescription><![CDATA[appBean.selectedProperty.amount]]></fieldDescription>
-	</field>
-	<field name="description" class="java.lang.String">
-		<fieldDescription><![CDATA[appBean.selectedProperty.description]]></fieldDescription>
-	</field>
-	<field name="landUseType" class="org.sola.clients.beans.referencedata.LandUseTypeBean">
-		<fieldDescription><![CDATA[appBean.selectedProperty.landUseType]]></fieldDescription>
+	<field name="serviceReportBean" class="org.sola.clients.beans.report.ServiceReportBean">
+		<fieldDescription><![CDATA[serviceReportBean]]></fieldDescription>
 	</field>
 	<background>
 		<band splitType="Stretch"/>
@@ -51,21 +33,21 @@
 			<staticText>
 				<reportElement uuid="9cba40b3-33ae-4634-a4a7-1846a7a1e94d" x="0" y="10" width="227" height="19"/>
 				<textElement>
-					<font fontName="Cambria" size="13" isBold="true" isUnderline="true"/>
+					<font fontName="Arial" size="13" isBold="true" isUnderline="true"/>
 				</textElement>
 				<text><![CDATA[HON. CABINET MINISTERS:]]></text>
 			</staticText>
 			<staticText>
 				<reportElement uuid="9cba40b3-33ae-4634-a4a7-1846a7a1e94d" x="0" y="37" width="356" height="19"/>
 				<textElement>
-					<font fontName="Cambria" size="13" isBold="true" isUnderline="false"/>
+					<font fontName="Arial" size="13" isBold="true" isUnderline="false"/>
 				</textElement>
 				<text><![CDATA[Application to lease a Town allotment (as Lessee ) :]]></text>
 			</staticText>
 			<staticText>
 				<reportElement uuid="9cba40b3-33ae-4634-a4a7-1846a7a1e94d" x="0" y="85" width="67" height="19"/>
 				<textElement>
-					<font fontName="Cambria" size="13" isBold="true" isUnderline="false"/>
+					<font fontName="Arial" size="13" isBold="true" isUnderline="false"/>
 				</textElement>
 				<text><![CDATA[Location :]]></text>
 			</staticText>
@@ -94,7 +76,7 @@ Cabinet.]]></text>
 			<staticText>
 				<reportElement uuid="9cba40b3-33ae-4634-a4a7-1846a7a1e94d" x="0" y="285" width="288" height="19"/>
 				<textElement>
-					<font fontName="Cambria" size="14" isBold="true"/>
+					<font fontName="Arial" size="14" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Recommendation:]]></text>
 			</staticText>
@@ -165,14 +147,14 @@ with the following details.]]></text>
 			<staticText>
 				<reportElement uuid="9cba40b3-33ae-4634-a4a7-1846a7a1e94d" x="0" y="570" width="82" height="18"/>
 				<textElement verticalAlignment="Middle">
-					<font fontName="Cambria" size="12" isBold="false" isItalic="false"/>
+					<font fontName="Arial" size="12" isBold="false" isItalic="false"/>
 				</textElement>
 				<text><![CDATA[Hon. Ma'afu]]></text>
 			</staticText>
 			<staticText>
 				<reportElement uuid="9cba40b3-33ae-4634-a4a7-1846a7a1e94d" x="0" y="588" width="366" height="18"/>
 				<textElement verticalAlignment="Middle">
-					<font fontName="Cambria" size="12" isBold="true" isItalic="false"/>
+					<font fontName="Arial" size="12" isBold="true" isItalic="false"/>
 				</textElement>
 				<text><![CDATA[Minister of Lands, Environment, ]]></text>
 			</staticText>
@@ -199,7 +181,7 @@ with the following details.]]></text>
 			<staticText>
 				<reportElement uuid="9cba40b3-33ae-4634-a4a7-1846a7a1e94d" x="0" y="158" width="16" height="18"/>
 				<textElement>
-					<font fontName="Cambria" size="12" isBold="false" isItalic="false"/>
+					<font fontName="Arial" size="12" isBold="false" isItalic="false"/>
 				</textElement>
 				<text><![CDATA[2.]]></text>
 			</staticText>
@@ -257,54 +239,54 @@ with the following details.]]></text>
 				<textElement markup="none">
 					<font fontName="Arial" size="12"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{lesseeName}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{appProperty}.getLesseeName()]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement uuid="646d4df4-45d5-487c-bc7b-1d0f7bd6386f" x="108" y="375" width="359" height="19"/>
 				<textElement markup="none">
 					<font fontName="Arial" size="12"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{lessorName}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{appProperty}.getLessorName()]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement uuid="7c452e81-facf-4e2b-babd-8162961eded7" x="108" y="394" width="359" height="19"/>
 				<textElement markup="none">
 					<font fontName="Arial" size="12"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{area}+" m²"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{serviceReportBean}.formatArea( $F{appProperty}.getArea(), false )]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement uuid="700b727d-ab67-4e10-8017-68df43747d9c" x="108" y="413" width="359" height="19"/>
 				<textElement markup="none">
 					<font fontName="Arial" size="12"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{leaseTerm}+" years"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{appProperty}.getLeaseTerm().intValue() + " years"]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement uuid="f367ea4f-a754-4b5f-b58a-7a17ec69faa6" x="108" y="452" width="359" height="19"/>
 				<textElement markup="none">
 					<font fontName="Arial" size="12"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{amount}+" pa"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{serviceReportBean}.formatMoney( $F{appProperty}.getAmount()) + " pa"]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement uuid="748a9b35-ebc2-4943-9194-4606f8b7c5ce" x="0" y="56" width="555" height="19"/>
 				<textElement markup="none">
 					<font fontName="Arial" size="13" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{lesseeName}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{appProperty}.getLesseeName()]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement uuid="5ca3b257-84ce-43cf-ac44-5b91939ee732" x="67" y="85" width="488" height="19"/>
 				<textElement markup="none">
 					<font fontName="Arial" size="13" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{town}.getDisplayValue() == null ? "" : $F{town}.getDisplayValue()+", "+$F{island}.getDisplayValue()]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{appProperty}.getTown().getDisplayValue() == null ? "" : $F{appProperty}.getTown().getDisplayValue()+", "+$F{appProperty}.getIsland().getDisplayValue()]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement uuid="9cba40b3-33ae-4634-a4a7-1846a7a1e94d" x="0" y="241" width="16" height="18"/>
 				<textElement>
-					<font fontName="Cambria" size="12" isBold="false" isItalic="false"/>
+					<font fontName="Arial" size="12" isBold="false" isItalic="false"/>
 				</textElement>
 				<text><![CDATA[4.]]></text>
 			</staticText>
@@ -313,26 +295,26 @@ with the following details.]]></text>
 				<textElement>
 					<font fontName="Arial" size="12" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{description}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{appProperty}.getDescription()]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement uuid="f367ea4f-a754-4b5f-b58a-7a17ec69faa6" x="108" y="433" width="359" height="19"/>
 				<textElement markup="none">
 					<font fontName="Arial" size="12"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{landUseType}.getDisplayValue()]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{appProperty}.getLandUseType().getDisplayValue()]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement uuid="9cba40b3-33ae-4634-a4a7-1846a7a1e94d" x="0" y="117" width="16" height="18"/>
 				<textElement>
-					<font fontName="Cambria" size="12" isBold="false" isItalic="false"/>
+					<font fontName="Arial" size="12" isBold="false" isItalic="false"/>
 				</textElement>
 				<text><![CDATA[1.]]></text>
 			</staticText>
 			<staticText>
 				<reportElement uuid="9cba40b3-33ae-4634-a4a7-1846a7a1e94d" x="0" y="606" width="366" height="18"/>
 				<textElement verticalAlignment="Middle">
-					<font fontName="Cambria" size="12" isBold="true" isItalic="false"/>
+					<font fontName="Arial" size="12" isBold="true" isItalic="false"/>
 				</textElement>
 				<text><![CDATA[Climate Change and Natural Resources.]]></text>
 			</staticText>

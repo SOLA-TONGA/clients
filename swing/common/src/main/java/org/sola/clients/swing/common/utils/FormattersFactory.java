@@ -25,7 +25,7 @@
  * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  * *********************************************************************************************
  */
-package org.sola.clients.swing.ui.renderers;
+package org.sola.clients.swing.common.utils;
 
 import java.math.BigDecimal;
 import java.text.DateFormat;
@@ -177,8 +177,8 @@ public class FormattersFactory {
             DateFormatter displayFormat = new DateFormatter(f);
 
             //DateFormatter editFormat = new DateFormatter(DateFormat.getDateInstance(DateFormat.SHORT))
-            SimpleDateFormat e = new SimpleDateFormat("d/M/yy");
-            DateFormatter editFormat = new DateFormatter(e) {
+            //SimpleDateFormat e = new SimpleDateFormat("d/M/yy");
+            DateFormatter editFormat = new DateFormatter(DateFormat.getDateInstance(DateFormat.SHORT)) {
                 // Accept null or emtpy string values entered by the user as null.
                 @Override
                 public Object stringToValue(String userInput) throws ParseException {

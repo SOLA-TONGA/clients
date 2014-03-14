@@ -44,6 +44,7 @@ public class BaUnitSearchParamsBean extends AbstractBindingBean {
     public static final String SEARCH_TYPE_SUBLEASE = "sublease";
     public static final String SEARCH_TYPE_ESTATE = "estate";
     public static final String SEARCH_TYPE_TOWN = "town";
+    public static final String SEARCH_TYPE_MORTGAGE = "mortgage";
     public static final String NAME_FIRST_PART_PROPERTY = "nameFirstPart";
     public static final String NAME_LAST_PART_PROPERTY = "nameLastPart";
     public static final String OWNER_NAME_PROPERTY = "ownerName";
@@ -59,6 +60,7 @@ public class BaUnitSearchParamsBean extends AbstractBindingBean {
     public static final String TOWN_PROPERTY = "town";
     public static final String ISLAND_PROPERTY = "island";
     public static final String ESTATE_NAME_PROPERTY = "estateName";
+    public static final String RRR_REF_PROPERTY = "rrrRef";
     private String nameFirstPart;
     private String nameLastPart;
     private String ownerName;
@@ -75,6 +77,7 @@ public class BaUnitSearchParamsBean extends AbstractBindingBean {
     private TownBean town;
     private DistrictBean island;
     private String estateName;
+    private String rrrRef; // Used for the Mortgage Reference Number
 
     public BaUnitSearchParamsBean() {
         super();
@@ -245,6 +248,14 @@ public class BaUnitSearchParamsBean extends AbstractBindingBean {
         propertySupport.firePropertyChange(ESTATE_NAME_PROPERTY, oldValue, value);
     }
 
+    public String getRrrRef() {
+        return rrrRef;
+    }
+
+    public void setRrrRef(String rrrRef) {
+        this.rrrRef = rrrRef;
+    }
+
     public void clear() {
         this.setNameFirstPart(null);
         this.setNameLastPart(null);
@@ -260,5 +271,6 @@ public class BaUnitSearchParamsBean extends AbstractBindingBean {
         this.setTown(null);
         this.setIsland(null);
         this.setEstateName(null);
+        this.setRrrRef(null);
     }
 }

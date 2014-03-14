@@ -32,8 +32,9 @@ import javax.swing.JPanel;
 import org.sola.clients.beans.application.ApplicationBean;
 import org.sola.clients.beans.application.ApplicationServiceBean;
 import org.sola.clients.swing.common.controls.CalendarForm;
+import org.sola.clients.swing.common.controls.WatermarkDate;
 import org.sola.clients.swing.desktop.source.DocumentsManagementExtPanel;
-import org.sola.clients.swing.ui.renderers.FormattersFactory;
+import org.sola.clients.swing.common.utils.FormattersFactory;
 
 /**
  *
@@ -137,7 +138,7 @@ public class ApplicationServicePanel extends javax.swing.JPanel {
         panelTop = new javax.swing.JPanel();
         panelActionDate = new javax.swing.JPanel();
         lblActionDate = new javax.swing.JLabel();
-        txtActionDate = new javax.swing.JFormattedTextField();
+        txtActionDate = new WatermarkDate();
         btnActionDateCalender = new javax.swing.JButton();
         panelActionCompleted = new javax.swing.JPanel();
         lblActionCompleted = new javax.swing.JLabel();

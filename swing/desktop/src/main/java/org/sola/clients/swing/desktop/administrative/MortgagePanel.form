@@ -40,8 +40,8 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="documentsManagementPanel1" max="32767" attributes="0"/>
-                  <Component id="jPanel8" pref="693" max="32767" attributes="0"/>
+                  <Component id="documentsManagementPanel1" pref="0" max="32767" attributes="0"/>
+                  <Component id="jPanel8" pref="0" max="32767" attributes="0"/>
               </Group>
               <EmptySpace min="-2" max="-2" attributes="0"/>
           </Group>
@@ -59,7 +59,7 @@
               <EmptySpace min="-2" max="-2" attributes="0"/>
               <Component id="groupPanel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" max="-2" attributes="0"/>
-              <Component id="documentsManagementPanel1" pref="225" max="32767" attributes="0"/>
+              <Component id="documentsManagementPanel1" pref="184" max="32767" attributes="0"/>
               <EmptySpace min="-2" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -181,7 +181,7 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jLabel2" pref="164" max="32767" attributes="0"/>
+                      <Component id="jLabel2" pref="133" max="32767" attributes="0"/>
                       <Component id="txtMortgageNumber" alignment="0" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
@@ -228,7 +228,7 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jLabel3" pref="164" max="32767" attributes="0"/>
+                      <Component id="jLabel3" pref="133" max="32767" attributes="0"/>
                       <Component id="txtMortgageBookPage" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
@@ -277,7 +277,7 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="browseLender" alignment="0" pref="340" max="32767" attributes="0"/>
+                  <Component id="browseLender" alignment="0" pref="278" max="32767" attributes="0"/>
                   <Component id="jLabel6" alignment="0" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
@@ -346,8 +346,13 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="txtRegDatetime" alignment="0" max="32767" attributes="1"/>
-                      <Component id="jLabel13" alignment="0" pref="164" max="32767" attributes="0"/>
+                      <Component id="jLabel13" pref="133" max="32767" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Component id="txtRegDatetime" max="32767" attributes="1"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="btnRegDate" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
@@ -355,7 +360,10 @@
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="txtRegDatetime" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="txtRegDatetime" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnRegDate" min="-2" max="-2" attributes="0"/>
+                          </Group>
                           <EmptySpace pref="15" max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -380,6 +388,27 @@
                   <BindingProperties>
                     <BindingProperty name="value" source="rrrBean" sourcePath="${registrationDate}" target="txtRegDatetime" targetPath="value" updateStrategy="0" immediately="false"/>
                   </BindingProperties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new WatermarkDate()"/>
+                  </AuxValues>
+                </Component>
+                <Component class="javax.swing.JButton" name="btnRegDate">
+                  <Properties>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/images/common/calendar.png"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+                      <ResourceString bundle="org/sola/clients/swing/desktop/administrative/Bundle.properties" key="MortgagePanel.btnRegDate.text" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+                    </Property>
+                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                      <Border info="null"/>
+                    </Property>
+                    <Property name="borderPainted" type="boolean" value="false"/>
+                    <Property name="name" type="java.lang.String" value="btnRegDate" noResource="true"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRegDateActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -392,7 +421,7 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="txtAmount" alignment="0" max="32767" attributes="1"/>
-                      <Component id="jLabel4" alignment="0" pref="164" max="32767" attributes="1"/>
+                      <Component id="jLabel4" alignment="0" pref="133" max="32767" attributes="1"/>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
@@ -449,8 +478,8 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="txtTerm" alignment="0" pref="164" max="32767" attributes="1"/>
-                      <Component id="jLabel1" alignment="0" max="32767" attributes="0"/>
+                      <Component id="txtTerm" alignment="0" pref="133" max="32767" attributes="1"/>
+                      <Component id="jLabel1" alignment="0" pref="133" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
@@ -494,8 +523,8 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="txtInterestRate" alignment="0" pref="164" max="32767" attributes="1"/>
-                      <Component id="jLabel5" alignment="0" max="32767" attributes="1"/>
+                      <Component id="txtInterestRate" alignment="0" pref="133" max="32767" attributes="1"/>
+                      <Component id="jLabel5" alignment="0" pref="133" max="32767" attributes="1"/>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
@@ -542,7 +571,7 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="txtNotationText" max="32767" attributes="0"/>
-                  <Component id="jLabel16" alignment="0" pref="340" max="32767" attributes="0"/>
+                  <Component id="jLabel16" alignment="0" pref="278" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
@@ -600,7 +629,7 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="txtReceiptNumber" alignment="1" max="32767" attributes="0"/>
-                      <Component id="jLabel7" alignment="1" pref="164" max="32767" attributes="0"/>
+                      <Component id="jLabel7" alignment="1" pref="133" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
@@ -644,8 +673,12 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="txtReceiptDate" max="32767" attributes="0"/>
-                      <Component id="jLabel8" alignment="0" pref="164" max="32767" attributes="0"/>
+                      <Component id="jLabel8" pref="133" max="32767" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Component id="txtReceiptDate" max="32767" attributes="0"/>
+                          <EmptySpace min="-2" max="-2" attributes="0"/>
+                          <Component id="btnReceiptDate" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
@@ -654,7 +687,10 @@
                           <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                           <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="txtReceiptDate" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="txtReceiptDate" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnReceiptDate" min="-2" max="-2" attributes="0"/>
+                          </Group>
                           <EmptySpace pref="15" max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -674,6 +710,9 @@
                   <BindingProperties>
                     <BindingProperty name="value" source="rrrBean" sourcePath="${receiptDate}" target="txtReceiptDate" targetPath="value" updateStrategy="0" immediately="false"/>
                   </BindingProperties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new WatermarkDate()"/>
+                  </AuxValues>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel8">
                   <Properties>
@@ -682,6 +721,24 @@
                     </Property>
                     <Property name="name" type="java.lang.String" value="jLabel8" noResource="true"/>
                   </Properties>
+                </Component>
+                <Component class="javax.swing.JButton" name="btnReceiptDate">
+                  <Properties>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/images/common/calendar.png"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+                      <ResourceString bundle="org/sola/clients/swing/desktop/administrative/Bundle.properties" key="MortgagePanel.btnReceiptDate.text" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+                    </Property>
+                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                      <Border info="null"/>
+                    </Property>
+                    <Property name="borderPainted" type="boolean" value="false"/>
+                    <Property name="name" type="java.lang.String" value="btnReceiptDate" noResource="true"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnReceiptDateActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>

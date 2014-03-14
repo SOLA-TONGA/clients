@@ -1,37 +1,39 @@
 /**
  * ******************************************************************************************
- * Copyright (C) 2013 - Food and Agriculture Organization of the United Nations (FAO).
- * All rights reserved.
+ * Copyright (C) 2013 - Food and Agriculture Organization of the United Nations
+ * (FAO). All rights reserved.
  *
- * Redistribution and use in source and binary forms, with or without modification,
- * are permitted provided that the following conditions are met:
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
  *
- *    1. Redistributions of source code must retain the above copyright notice,this list
- *       of conditions and the following disclaimer.
- *    2. Redistributions in binary form must reproduce the above copyright notice,this list
- *       of conditions and the following disclaimer in the documentation and/or other
- *       materials provided with the distribution.
- *    3. Neither the name of FAO nor the names of its contributors may be used to endorse or
- *       promote products derived from this software without specific prior written permission.
+ * 1. Redistributions of source code must retain the above copyright notice,this
+ * list of conditions and the following disclaimer. 2. Redistributions in binary
+ * form must reproduce the above copyright notice,this list of conditions and
+ * the following disclaimer in the documentation and/or other materials provided
+ * with the distribution. 3. Neither the name of FAO nor the names of its
+ * contributors may be used to endorse or promote products derived from this
+ * software without specific prior written permission.
  *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY
- * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
- * OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT
- * SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
- * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,PROCUREMENT
- * OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
- * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT,STRICT LIABILITY,OR TORT
- * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
- * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ * ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
+ * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,PROCUREMENT OF
+ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+ * CONTRACT,STRICT LIABILITY,OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING
+ * IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ * POSSIBILITY OF SUCH DAMAGE.
  * *********************************************************************************************
  */
 package org.sola.clients.beans.report;
 
 import java.util.List;
 import org.sola.clients.beans.application.ApplicationBean;
+import org.sola.clients.beans.application.ApplicationPropertyBean;
 import org.sola.clients.beans.application.ApplicationServiceBean;
 import org.sola.clients.beans.system.LanguageBean;
-import org.sola.common.NumberUtility;
 import org.sola.services.boundary.wsclients.WSManager;
 import org.sola.webservices.transferobjects.AbstractCodeTO;
 
@@ -39,19 +41,13 @@ import org.sola.webservices.transferobjects.AbstractCodeTO;
  *
  * @author Admin
  */
-public class ServiceReportBean {
+public class ServiceReportBean extends CommonReportBean {
 
     private ApplicationBean appBean;
     private ApplicationServiceBean appServiceBean;
-    /**
-     * Used to format the lease area as both metric and imperial for display in
-     * reports
-     */
-    private transient String formattedLeaseArea;
-    /**
-     * Used to obtain the Tongan description for the land purpose.
-     */
-    private transient String landPurposeTongan;
+    // This field allows all public methods on the ServiceReportBean to be exposed
+    // directly in JasperReports
+    private transient ServiceReportBean serviceReportBean;
 
     public ServiceReportBean() {
         super();
@@ -62,6 +58,13 @@ public class ServiceReportBean {
         this.appBean = appBean;
         this.appServiceBean = appServiceBean;
 
+    }
+
+    /** Returns this object so that JasperReports can access the public methods
+     * on this class.  
+     */
+    public ServiceReportBean getServiceReportBean() {
+        return this;
     }
 
     public ApplicationBean getAppBean() {
@@ -80,27 +83,12 @@ public class ServiceReportBean {
         this.appServiceBean = appServiceBean;
     }
 
-    /**
-     * Formats the lease area as both metric and imperial values for display in
-     * reports.
-     */
-    public String getFormattedLeaseArea() {
-        String result = null;
-        if (appBean != null && appBean.getSelectedProperty() != null
-                && appBean.getSelectedProperty().getLeaseArea() != null) {
-            result = NumberUtility.formatAreaMetric(appBean.getSelectedProperty().getLeaseArea()) + " ("
-                    + NumberUtility.formatAreaImperial(appBean.getSelectedProperty().getLeaseArea()) + ")";
-        }
-        return result;
-    }
-
     public String getLandPurposeTongan() {
         String result = null;
-        if (appBean != null && appBean.getSelectedProperty() != null
-                && appBean.getSelectedProperty().getLandUseCode() != null) {
+        if (getAppProperty() != null && getAppProperty().getLandUseCode() != null) {
             result = getTonganDisplayValue(WSManager.getInstance().getReferenceDataService().getLandUseTypes(null),
-                    appBean.getSelectedProperty().getLandUseCode(),
-                    appBean.getSelectedProperty().getLandUseType().getDisplayValue());
+                    getAppProperty().getLandUseCode(),
+                    getAppProperty().getLandUseType().getDisplayValue());
         }
         return result;
     }
@@ -133,6 +121,19 @@ public class ServiceReportBean {
             if (temp != null && temp.split(LanguageBean.delimiter).length == 1) {
                 result = temp;
             }
+        }
+        return result;
+    }
+
+    /**
+     * Uses the first property in the property list as the Application Property.
+     *
+     * @return
+     */
+    public ApplicationPropertyBean getAppProperty() {
+        ApplicationPropertyBean result = null;
+        if (getAppBean() != null && getAppBean().getFilteredPropertyList().size() > 0) {
+            result = getAppBean().getFilteredPropertyList().get(0);
         }
         return result;
     }

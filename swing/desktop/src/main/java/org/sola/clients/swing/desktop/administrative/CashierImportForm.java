@@ -62,6 +62,10 @@ public class CashierImportForm extends ContentPanel {
 
             @Override
             public boolean accept(File f) {
+                if (f.isDirectory()) {
+                    // Allow navigation across directories
+                    return true; 
+                }
                 String extension = FileUtility.getFileExtension(f);
                 if (extension != null) {
                     if (extension.equalsIgnoreCase(FileUtility.csv)) {

@@ -46,7 +46,7 @@ import org.sola.clients.beans.digitalarchive.DocumentBean;
 import org.sola.clients.beans.validation.ValidationResultBean;
 import org.sola.clients.reports.ReportManager;
 import org.sola.clients.swing.common.controls.CalendarForm;
-import org.sola.clients.swing.ui.renderers.FormattersFactory;
+import org.sola.clients.swing.common.utils.FormattersFactory;
 import org.sola.clients.swing.ui.reports.ReportViewerForm;
 import org.sola.clients.swing.ui.validation.ValidationResultForm;
 import org.sola.common.FileUtility;

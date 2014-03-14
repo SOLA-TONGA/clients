@@ -159,6 +159,9 @@
               <BindingProperties>
                 <BindingProperty name="value" source="applicationServiceBean" sourcePath="${actionDate}" target="txtActionDate" targetPath="value" updateStrategy="0" immediately="false"/>
               </BindingProperties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new WatermarkDate()"/>
+              </AuxValues>
             </Component>
             <Component class="javax.swing.JButton" name="btnActionDateCalender">
               <Properties>

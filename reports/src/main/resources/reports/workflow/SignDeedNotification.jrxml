@@ -2,26 +2,20 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="42c8e5cb-b441-42fe-b5f2-1fa0c20b36ab">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="378"/>
+	<property name="ireport.y" value="41"/>
 	<parameter name="SILA_IMAGE" class="java.io.InputStream"/>
 	<parameter name="USER_NAME" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[]]>
 	</queryString>
-	<field name="displayValue" class="java.lang.String">
-		<fieldDescription><![CDATA[appBean.selectedProperty.island.displayValue]]></fieldDescription>
+	<field name="serviceReportBean" class="org.sola.clients.beans.report.ServiceReportBean">
+		<fieldDescription><![CDATA[serviceReportBean]]></fieldDescription>
 	</field>
-	<field name="displayValue_1" class="java.lang.String">
-		<fieldDescription><![CDATA[appBean.selectedProperty.town.displayValue]]></fieldDescription>
+	<field name="appProperty" class="org.sola.clients.beans.application.ApplicationPropertyBean">
+		<fieldDescription><![CDATA[appProperty]]></fieldDescription>
 	</field>
-	<field name="lesseeName" class="java.lang.String">
-		<fieldDescription><![CDATA[appBean.selectedProperty.lesseeName]]></fieldDescription>
-	</field>
-	<field name="applicationId" class="java.lang.String">
-		<fieldDescription><![CDATA[appBean.selectedProperty.applicationId]]></fieldDescription>
-	</field>
-	<field name="nr" class="java.lang.String">
-		<fieldDescription><![CDATA[appBean.nr]]></fieldDescription>
+	<field name="appBean" class="org.sola.clients.beans.application.ApplicationBean">
+		<fieldDescription><![CDATA[appBean]]></fieldDescription>
 	</field>
 	<background>
 		<band splitType="Stretch"/>
@@ -68,7 +62,7 @@ Sign Deed]]></text>
 			<textField>
 				<reportElement uuid="44ec69f5-0dcc-4850-a021-55d655032c1c" x="0" y="14" width="259" height="18"/>
 				<textElement markup="none"/>
-				<textFieldExpression><![CDATA["Application Number: "+$F{nr}]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Application Number: "+ $F{appBean}.getNr()]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement uuid="18b7f4a6-56b1-4fbf-94be-6565338d170c" x="0" y="254" width="555" height="23"/>
@@ -103,7 +97,7 @@ Sign Deed]]></text>
 				<textElement markup="none">
 					<font fontName="Arial" size="12" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA["Dear "+$F{lesseeName}+","]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Dear "+$F{appProperty}.getLesseeName()+","]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement uuid="25f5439d-c0c2-452b-9848-ad3a16f13c74" x="2" y="186" width="555" height="18"/>
@@ -117,7 +111,7 @@ Sign Deed]]></text>
 				<textElement>
 					<font fontName="Arial" size="12"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{displayValue_1}+", "+$F{displayValue}+" has been approved."]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{appProperty}.getTown().getDisplayValue() +", "+$F{appProperty}.getIsland().getDisplayValue()+" has been approved."]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

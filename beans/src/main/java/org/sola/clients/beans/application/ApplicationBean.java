@@ -1,38 +1,43 @@
 /**
  * ******************************************************************************************
- * Copyright (C) 2013 - Food and Agriculture Organization of the United Nations (FAO).
- * All rights reserved.
+ * Copyright (C) 2013 - Food and Agriculture Organization of the United Nations
+ * (FAO). All rights reserved.
  *
- * Redistribution and use in source and binary forms, with or without modification,
- * are permitted provided that the following conditions are met:
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
  *
- *    1. Redistributions of source code must retain the above copyright notice,this list
- *       of conditions and the following disclaimer.
- *    2. Redistributions in binary form must reproduce the above copyright notice,this list
- *       of conditions and the following disclaimer in the documentation and/or other
- *       materials provided with the distribution.
- *    3. Neither the name of FAO nor the names of its contributors may be used to endorse or
- *       promote products derived from this software without specific prior written permission.
+ * 1. Redistributions of source code must retain the above copyright notice,this
+ * list of conditions and the following disclaimer. 2. Redistributions in binary
+ * form must reproduce the above copyright notice,this list of conditions and
+ * the following disclaimer in the documentation and/or other materials provided
+ * with the distribution. 3. Neither the name of FAO nor the names of its
+ * contributors may be used to endorse or promote products derived from this
+ * software without specific prior written permission.
  *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY
- * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
- * OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT
- * SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
- * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,PROCUREMENT
- * OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
- * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT,STRICT LIABILITY,OR TORT
- * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
- * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ * ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
+ * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,PROCUREMENT OF
+ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+ * CONTRACT,STRICT LIABILITY,OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING
+ * IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ * POSSIBILITY OF SUCH DAMAGE.
  * *********************************************************************************************
  */
 package org.sola.clients.beans.application;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.*;
 import javax.validation.Valid;
 import javax.validation.constraints.Size;
 import org.jdesktop.observablecollections.ObservableCollections;
 import org.jdesktop.observablecollections.ObservableList;
+import org.sola.clients.beans.administrative.BaUnitBean;
+import org.sola.clients.beans.administrative.RelatedBaUnitInfoBean;
 import org.sola.clients.beans.application.validation.ApplicationCheck;
 import org.sola.clients.beans.applicationlog.ApplicationLogBean;
 import org.sola.clients.beans.cache.CacheManager;
@@ -76,7 +81,7 @@ public class ApplicationBean extends ApplicationSummaryBean {
     public static final String TOTAL_FEE_PROPERTY = "totalFee";
     public static final String RECEIPT_REF_PROPERTY = "receiptRef";
     public static final String SELECTED_SERVICE_PROPERTY = "selectedService";
-    public static final String SELECTED_PROPPERTY_PROPERTY = "selectedProperty";
+    public static final String SELECTED_PROPERTY_PROPERTY = "selectedProperty";
     public static final String SELECTED_SOURCE_PROPERTY = "selectedSource";
     public static final String CONTACT_PERSON_PROPERTY = "contactPerson";
     public static final String AGENT_PROPERTY = "agent";
@@ -127,7 +132,7 @@ public class ApplicationBean extends ApplicationSummaryBean {
         serviceList = new SolaList();
         sourceList = new SolaList();
         appLogList = new SolaObservableList<ApplicationLogBean>();
-        propertyList.addAsNew(new ApplicationPropertyBean());
+        //propertyList.addAsNew(new ApplicationPropertyBean());
         cadastreObjectList = new SolaList();
     }
 
@@ -384,16 +389,12 @@ public class ApplicationBean extends ApplicationSummaryBean {
     }
 
     public ApplicationPropertyBean getSelectedProperty() {
-        if (getPropertyList().size() == 1) {
-            ApplicationPropertyBean onlyOneProperty = getPropertyList().get(0);
-            selectedProperty = onlyOneProperty;
-        }
         return selectedProperty;
     }
 
     public void setSelectedProperty(ApplicationPropertyBean value) {
         selectedProperty = value;
-        propertySupport.firePropertyChange(SELECTED_PROPPERTY_PROPERTY, null, value);
+        propertySupport.firePropertyChange(SELECTED_PROPERTY_PROPERTY, null, value);
     }
 
     public ApplicationServiceBean getSelectedService() {
@@ -654,50 +655,78 @@ public class ApplicationBean extends ApplicationSummaryBean {
     }
 
     /**
-     * Adds new property object ({@link ApplicationPropertyBean}) into the list
-     * of application properties.
+     * Adds a new ApplicationPropertyBean to the list of properties on the
+     * application.
      *
-     * @param firstPart First part of the property's identification code.
-     * @param lastPart Second part of the property's identification code.
-     * @param area The area of parcel.
-     * @param value The value of parcel.
+     * @param property
      */
-    public void addProperty(String firstPart, String lastPart, BigDecimal area, BigDecimal value, String landUse) {
-
-        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("org/sola/clients/swing/desktop/application/Bundle");
-
-        if (propertyList != null) {
-            // property firstpart lastpart validation
-            if (firstPart == null || (firstPart != null && firstPart.trim().isEmpty())) {
-                MessageUtility.displayMessage(ClientMessage.CHECK_NOTNULL_FIRSTPART);
-                return;
-            }
-
-            if (lastPart == null || (lastPart != null && lastPart.trim().isEmpty())) {
-                MessageUtility.displayMessage(ClientMessage.CHECK_NOTNULL_LASTPART);
-                return;
-            }
-
-            if (firstPart.length() > 20) {
-                MessageUtility.displayMessage(ClientMessage.CHECK_FIELD_INVALID_LENGTH_PAR,
-                        new Object[]{bundle.getString("ApplicationPanel.labFirstPart.text")});
-                return;
-            }
-            if (lastPart.length() > 50) {
-                MessageUtility.displayMessage(ClientMessage.CHECK_FIELD_INVALID_LENGTH_PAR,
-                        new Object[]{bundle.getString("ApplicationPanel.labLastPart.text")});
-                return;
-            }
-
-            ApplicationPropertyBean newProperty = new ApplicationPropertyBean();
-            newProperty.setArea(area);
-            newProperty.setNameFirstpart(firstPart);
-            newProperty.setNameLastpart(lastPart);
-            newProperty.setTotalValue(value);
-            newProperty.setLandUseCode(landUse);
-            propertyList.addAsNew(newProperty);
-            selectedProperty = newProperty;
+    public void addProperty(ApplicationPropertyBean property) {
+        if (property == null) {
+            return;
         }
+        propertyList.addAsNew(property);
+        selectedProperty = property;
+    }
+
+    /**
+     * Converts a BaUnitBean into an ApplicationPropertyBean and adds it to the
+     * list of properties on the application.
+     *
+     * @param property
+     */
+    public void addProperty(BaUnitBean property) {
+        if (property == null) {
+            return;
+        }
+        ApplicationPropertyBean newProperty = new ApplicationPropertyBean();
+        newProperty.setTypeCode(property.getTypeCode());
+        newProperty.setVerifiedExists(true);
+        newProperty.setLandUseCode(property.getLandUseTypeCode());
+        if (property.getOfficialArea() != null) {
+            newProperty.setArea(property.getOfficialArea().getSize());
+        }
+        if (property.hasParentRelationship(RelatedBaUnitInfoBean.CODE_ISLAND)) {
+            newProperty.setIslandId(property.getParentRelationship(RelatedBaUnitInfoBean.CODE_ISLAND).getRelatedBaUnitId());
+        }
+        if (property.hasParentRelationship(RelatedBaUnitInfoBean.CODE_TOWN)) {
+            newProperty.setTownId(property.getParentRelationship(RelatedBaUnitInfoBean.CODE_TOWN).getRelatedBaUnitId());
+        }
+        if (property.hasParentRelationship(RelatedBaUnitInfoBean.CODE_ESTATE)) {
+            newProperty.setNobleEstateId(property.getParentRelationship(RelatedBaUnitInfoBean.CODE_ESTATE).getRelatedBaUnitId());
+        }
+        if (BaUnitTypeBean.CODE_LEASED_UNIT.equals(property.getTypeCode())) {
+            // Lease
+            newProperty.setLeaseBaUnitId(property.getId());
+            newProperty.setLeaseNumber(property.getNameFirstpart());
+            if (property.getPrimaryRrr() != null) {
+                newProperty.setLeaseTerm(property.getPrimaryRrr().getTerm());
+                newProperty.setAmount(property.getPrimaryRrr().getAmount());
+                newProperty.setLesseeName(property.getPrimaryRrr().getRightholderNames());
+            }
+
+        } else if (BaUnitTypeBean.CODE_SUBLEASE_UNIT.equals(property.getTypeCode())) {
+            // Sublease
+            newProperty.setSubleaseBaUnitId(property.getId());
+            newProperty.setSubleaseNumber(property.getName());
+            if (property.getPrimaryRrr() != null) {
+                newProperty.setLeaseTerm(property.getPrimaryRrr().getTerm());
+                newProperty.setAmount(property.getPrimaryRrr().getAmount());
+                newProperty.setSublesseeName(property.getPrimaryRrr().getRightholderNames());
+            }
+        } else {
+            // Allotment
+            newProperty.setBaUnitId(property.getId());
+            newProperty.setNameFirstpart(property.getNameFirstpart());
+            newProperty.setNameLastpart(property.getNameLastpart());
+            newProperty.setRegisteredName(property.getRegisteredName());
+            newProperty.setRegistrationDate(property.getFolioRegDate());
+            if (property.getPrimaryRrr() != null) {
+                newProperty.setLessorName(property.getPrimaryRrr().getRightholderNames());
+            }
+
+        }
+        propertyList.addAsNew(newProperty);
+        selectedProperty = newProperty;
     }
 
     /**
@@ -710,64 +739,92 @@ public class ApplicationBean extends ApplicationSummaryBean {
     }
 
     /**
-     * Verifies selected property object. Checks if object exists in the
+     * Verifies the specified property object. Checks if object exists in the
      * database and on the map. Checks for the list of incomplete applications,
      * related to the selected property object.
      */
-    public boolean verifyProperty() {
-        if (selectedProperty != null) {
+    public static boolean verifyProperty(ApplicationPropertyBean property, String appNr, boolean suppressMessage) {
+        if (property != null) {
             PropertyVerifierTO verifier = WSManager.getInstance().getSearchService().verifyApplicationProperty(
-                    this.getNr(), selectedProperty.getNameFirstpart(), selectedProperty.getNameLastpart(),
-                    selectedProperty.getLeaseNumber(), selectedProperty.getSubleaseNumber());
+                    appNr, property.getNameFirstpart(), property.getNameLastpart(),
+                    property.getLeaseNumber(), property.getSubleaseNumber(), property.getTypeCode());
             if (verifier != null) {
                 // Tonga customization, capture the details retrieved when verifying the lot and lease information
-                selectedProperty.setBaUnitId(verifier.getLotBaUnitId());
-                selectedProperty.setLeaseBaUnitId(verifier.getLeaseBaUnitId());
-                selectedProperty.setLeaseLinked(verifier.isLeaseLinked());
-                selectedProperty.setSubleaseBaUnitId(verifier.getSubleaseBaUnitId());
-                selectedProperty.setSubleaseLinked(verifier.isSubleaseLinked());
+                property.setBaUnitId(verifier.getLotBaUnitId());
+                property.setLeaseBaUnitId(verifier.getLeaseBaUnitId());
+                property.setSubleaseBaUnitId(verifier.getSubleaseBaUnitId());
 
-                // Re-purpose the exists and location flags to indicate if the lot or the lease exist. 
-                selectedProperty.setVerifiedExists(!StringUtility.isEmpty(verifier.getLotBaUnitId()));
-                selectedProperty.setVerifiedLocation(!StringUtility.isEmpty(verifier.getLeaseBaUnitId()));
-                selectedProperty.setSubleaseExists(!StringUtility.isEmpty(verifier.getSubleaseBaUnitId()));
-
-                if (!StringUtility.isEmpty(verifier.getLotBaUnitId())) {
-                    // Update the lot details with those retrieved from the database
-                    selectedProperty.setNameFirstpart(verifier.getDeedNumber());
-                    selectedProperty.setNameLastpart(verifier.getFolio());
-                    selectedProperty.setLessorName(verifier.getHolderName());
-                    selectedProperty.setLandUseCode(verifier.getLandUseCode());
-                    selectedProperty.setArea(verifier.getLotArea());
-                    selectedProperty.setRegistrationDate(TypeConverters.XMLDateToDate(verifier.getLotRegistrationDate()));
-                    selectedProperty.setArea(verifier.getLotArea());
-                    selectedProperty.setIslandId(verifier.getIslandId());
-                    selectedProperty.setTownId(verifier.getTownId());
+                // Determine if the verifier has located a property matching the selected property type. 
+                if (property.isTaxAllotment() || property.isTownAllotment()) {
+                    property.setVerifiedExists(!StringUtility.isEmpty(verifier.getLotBaUnitId()));
                 }
-
-                if (!StringUtility.isEmpty(verifier.getLeaseBaUnitId())) {
-                    // Update the lease details with those retrieved from the database
-                    selectedProperty.setLeaseNumber(verifier.getLeaseNumber());
-                    selectedProperty.setAmount(verifier.getLeaseRental());
-                    selectedProperty.setLesseeName(verifier.getLesseeName());
-                    selectedProperty.setLeaseTerm(verifier.getLeaseTerm());
-                    selectedProperty.setLeaseArea(verifier.getLeaseArea());
+                if (BaUnitTypeBean.CODE_LEASED_UNIT.equals(property.getTypeCode())) {
+                    property.setVerifiedExists(!StringUtility.isEmpty(verifier.getLeaseBaUnitId()));
                 }
-                selectedProperty.setVerifiedApplications(true);
+                if (BaUnitTypeBean.CODE_SUBLEASE_UNIT.equals(property.getTypeCode())) {
+                    property.setVerifiedExists(!StringUtility.isEmpty(verifier.getSubleaseBaUnitId()));
+                }
+                if (!StringUtility.isEmpty(verifier.getDeedNumber())) {
+                    property.setNameFirstpart(verifier.getDeedNumber());
+                }
+                if (!StringUtility.isEmpty(verifier.getFolio())) {
+                    property.setNameLastpart(verifier.getFolio());
+                }
+                if (!StringUtility.isEmpty(verifier.getHolderName())) {
+                    property.setLessorName(verifier.getHolderName());
+                }
+                if (!StringUtility.isEmpty(verifier.getLandUseTypeCode())) {
+                    property.setLandUseCode(verifier.getLandUseTypeCode());
+                }
+                if (verifier.getArea() != null) {
+                    property.setArea(verifier.getArea());
+                }
+                if (!StringUtility.isEmpty(verifier.getParcelName())) {
+                    property.setRegisteredName(verifier.getParcelName());
+                }
+                if (verifier.getRegistrationDate() != null) {
+                    property.setRegistrationDate(TypeConverters.XMLDateToDate(verifier.getRegistrationDate()));
+                }
+                if (!StringUtility.isEmpty(verifier.getDistrictId())) {
+                    property.setIslandId(verifier.getDistrictId());
+                }
+                if (!StringUtility.isEmpty(verifier.getTownId())) {
+                    property.setTownId(verifier.getTownId());
+                }
+                if (!StringUtility.isEmpty(verifier.getEstateId())) {
+                    property.setNobleEstateId(verifier.getEstateId());
+                }
+                if (!StringUtility.isEmpty(verifier.getLeaseNumber())) {
+                    property.setLeaseNumber(verifier.getLeaseNumber());
+                }
+                if (verifier.getLeaseRental() != null) {
+                    property.setAmount(verifier.getLeaseRental());
+                }
+                if (!StringUtility.isEmpty(verifier.getLesseeName())) {
+                    property.setLesseeName(verifier.getLesseeName());
+                }
+                if (verifier.getLeaseTerm() != null) {
+                    property.setLeaseTerm(verifier.getLeaseTerm());
+                }
+                if (!StringUtility.isEmpty(verifier.getSubleaseNumber())) {
+                    property.setSubleaseNumber(verifier.getSubleaseNumber());
+                }
+                if (!StringUtility.isEmpty(verifier.getSublesseeName())) {
+                    property.setSublesseeName(verifier.getSublesseeName());
+                }
+                property.setVerifiedApplications(true);
 
                 if (verifier.getApplicationsWhereFound() != null
-                        && !verifier.getApplicationsWhereFound().equals("")) {
+                        && !verifier.getApplicationsWhereFound().equals("") && !suppressMessage) {
                     MessageUtility.displayMessage(ClientMessage.APPLICATION_PROPERTY_HAS_INCOMPLETE_APPLICATIONS,
-                            new Object[]{selectedProperty.getNameFirstpart() + selectedProperty.getNameLastpart(),
-                        verifier.getApplicationsWhereFound()});
+                            new Object[]{property.getPropertyNumber(), verifier.getApplicationsWhereFound()});
                 }
             } else {
-                selectedProperty.setBaUnitId(null);
-                selectedProperty.setLeaseBaUnitId(null);
-                selectedProperty.setLeaseLinked(false);
-                selectedProperty.setVerifiedExists(false);
-                selectedProperty.setVerifiedApplications(false);
-                selectedProperty.setVerifiedLocation(false);
+                property.setBaUnitId(null);
+                property.setLeaseBaUnitId(null);
+                property.setSubleaseBaUnitId(null);
+                property.setVerifiedExists(false);
+                property.setVerifiedApplications(false);
             }
             return true;
         }
@@ -1072,7 +1129,8 @@ public class ApplicationBean extends ApplicationSummaryBean {
                         && BigDecimal.ZERO.compareTo(this.getServicesFee()) != 0) {
                     Money feeAmt = new Money(bean.getAreaFee().add(bean.getBaseFee())
                             .add(bean.getValueFee()));
-                    BigDecimal taxPercent = this.getTax().divide(this.getServicesFee());
+                    // Use Rounding Style on the divide to avoid a repeating numeric overflow. 
+                    BigDecimal taxPercent = this.getTax().divide(this.getServicesFee(), feeAmt.getRoundingStyle());
                     Money taxAmt = feeAmt.times(taxPercent);
                     result = feeAmt.plus(taxAmt).getAmount();
                     break;

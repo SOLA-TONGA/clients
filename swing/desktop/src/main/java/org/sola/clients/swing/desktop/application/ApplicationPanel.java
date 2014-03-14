@@ -258,7 +258,7 @@ public class ApplicationPanel extends ContentPanel {
                     customizeApplicationForm();
                     customizeServicesButtons();
                     customizePropertyButtons();
-                } else if (evt.getPropertyName().equals(ApplicationBean.SELECTED_PROPPERTY_PROPERTY)) {
+                } else if (evt.getPropertyName().equals(ApplicationBean.SELECTED_PROPERTY_PROPERTY)) {
                     customizePropertyButtons();
                 } else if (evt.getPropertyName().equals(ApplicationBean.SELECTED_CADASTRE_OBJECT)) {
                     customizeParcelsButtons();
@@ -2994,7 +2994,7 @@ public class ApplicationPanel extends ContentPanel {
         } catch (Exception e) {
         }
         String landUse = this.getProperty().getLandUseCode();
-        appBean.addProperty(txtFirstPart.getText(), txtLastPart.getText(), area, value, landUse);
+      //  appBean.addProperty(txtFirstPart.getText(), txtLastPart.getText(), area, value, landUse);
         clearPropertyFields();
         verifySelectedProperty();
         txtFirstPart.requestFocus();
@@ -3556,9 +3556,9 @@ public class ApplicationPanel extends ContentPanel {
             return;
         }
         
-        if (appBean.verifyProperty()) {
-            MessageUtility.displayMessage(ClientMessage.APPLICATION_PROPERTY_VERIFIED);
-        }
+//        if (appBean.verifyProperty()) {
+//            MessageUtility.displayMessage(ClientMessage.APPLICATION_PROPERTY_VERIFIED);
+//        }
     }
     
     private void approveApplication() {

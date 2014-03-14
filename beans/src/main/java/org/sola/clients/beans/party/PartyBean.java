@@ -85,7 +85,7 @@ public class PartyBean extends PartySummaryBean {
     private String fathersName;
     @Length(max = 50, message =  ClientMessage.CHECK_FIELD_INVALID_LENGTH_FLAST, payload=Localized.class)
     private String fathersLastName;
-    @Length(max = 50, message =  ClientMessage.CHECK_FIELD_INVALID_LENGTH_ALIAS, payload=Localized.class)
+    @Length(max = 250, message =  ClientMessage.CHECK_FIELD_INVALID_LENGTH_ALIAS, payload=Localized.class)
     private String alias;
     private AddressBean addressBean;
     private GenderTypeBean genderTypeBean;

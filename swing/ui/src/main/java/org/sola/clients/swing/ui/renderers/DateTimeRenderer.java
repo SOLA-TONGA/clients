@@ -27,6 +27,7 @@
  */
 package org.sola.clients.swing.ui.renderers;
 
+import org.sola.clients.swing.common.utils.FormattersFactory;
 import java.awt.Component;
 import java.text.ParseException;
 import java.util.Date;

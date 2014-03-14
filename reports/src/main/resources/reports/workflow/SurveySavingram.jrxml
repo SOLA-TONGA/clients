@@ -12,11 +12,14 @@
 	<field name="appServiceBean" class="org.sola.clients.beans.application.ApplicationServiceBean">
 		<fieldDescription><![CDATA[appServiceBean]]></fieldDescription>
 	</field>
-	<field name="formattedLeaseArea" class="java.lang.String">
-		<fieldDescription><![CDATA[formattedLeaseArea]]></fieldDescription>
-	</field>
 	<field name="landPurposeTongan" class="java.lang.String">
 		<fieldDescription><![CDATA[landPurposeTongan]]></fieldDescription>
+	</field>
+	<field name="serviceReportBean" class="org.sola.clients.beans.report.ServiceReportBean">
+		<fieldDescription><![CDATA[serviceReportBean]]></fieldDescription>
+	</field>
+	<field name="appProperty" class="org.sola.clients.beans.application.ApplicationPropertyBean">
+		<fieldDescription><![CDATA[appProperty]]></fieldDescription>
 	</field>
 	<background>
 		<band splitType="Stretch"/>
@@ -257,28 +260,28 @@ Feliuliuaki e 'Ea & Ngaahi Koloa Fakaenatula]]></text>
 				<textElement>
 					<font size="12" isItalic="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{appBean}.getSelectedProperty().getLesseeName()]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{appProperty}.getLesseeName()]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement uuid="17e33b21-1b5a-44e0-8b7c-0b875b0228e5" x="158" y="140" width="382" height="18"/>
 				<textElement>
 					<font size="12" isItalic="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{appBean}.getSelectedProperty().getLessorName()]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{appProperty}.getLessorName()]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement uuid="17e33b21-1b5a-44e0-8b7c-0b875b0228e5" x="158" y="158" width="382" height="18"/>
 				<textElement>
 					<font size="12" isItalic="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{formattedLeaseArea}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{serviceReportBean}.formatArea( $F{appProperty}.getArea(), false)]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement uuid="17e33b21-1b5a-44e0-8b7c-0b875b0228e5" x="158" y="194" width="382" height="18"/>
 				<textElement>
 					<font size="12" isItalic="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{appBean}.getSelectedProperty().getLeaseTerm()]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{appProperty}.getLeaseTerm()]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement uuid="17e33b21-1b5a-44e0-8b7c-0b875b0228e5" x="158" y="212" width="382" height="18"/>
@@ -292,7 +295,7 @@ Feliuliuaki e 'Ea & Ngaahi Koloa Fakaenatula]]></text>
 				<textElement>
 					<font size="12" isItalic="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA["T$" + $F{appBean}.getSelectedProperty().getAmount()]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{serviceReportBean}.formatMoney( $F{appProperty}.getAmount())]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement uuid="2ee24f90-0abf-483d-8588-009f66b01971" x="246" y="17" width="294" height="20"/>

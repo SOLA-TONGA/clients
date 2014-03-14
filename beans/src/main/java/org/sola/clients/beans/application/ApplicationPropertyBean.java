@@ -33,11 +33,12 @@ import java.math.BigDecimal;
 import java.util.Date;
 import org.sola.clients.beans.AbstractIdBean;
 import org.sola.clients.beans.cache.CacheManager;
-import org.sola.clients.beans.party.PartySummaryBean;
+import org.sola.clients.beans.referencedata.BaUnitTypeBean;
 import org.sola.clients.beans.referencedata.DistrictBean;
 import org.sola.clients.beans.referencedata.EstateBean;
 import org.sola.clients.beans.referencedata.LandUseTypeBean;
 import org.sola.clients.beans.referencedata.TownBean;
+import org.sola.common.NumberUtility;
 import org.sola.webservices.transferobjects.casemanagement.ApplicationPropertyTO;
 
 /**
@@ -59,7 +60,6 @@ public class ApplicationPropertyBean extends AbstractIdBean {
     public static final String LAND_USE_TYPE_PROPERTY = "landUseType";
     public static final String LAND_USE_CODE_PROPERTY = "landUseCode";
     public static final String LEASE_NUMBER_PROPERTY = "leaseNumber";
-    public static final String LEASE_AREA_PROPERTY = "leaseArea";
     public static final String LEASE_TERM_PROPERTY = "leaseTerm";
     public static final String AMOUNT_PROPERTY = "amount";
     public static final String REGISTRATION_DATE_PROPERTY = "registrationDate";
@@ -72,10 +72,17 @@ public class ApplicationPropertyBean extends AbstractIdBean {
     public static final String TOWN_ID_PROPERTY = "townId";
     public static final String TOWN_PROPERTY = "town";
     public static final String LESSEE_NAME_PROPERTY = "lesseeName";
-    public static final String LEASE_LINKED_PROPERTY = "leaseLinked";
-    public static final String SUBLEASE_LINKED_PROPERTY = "subleaseLinked";
     public static final String SUBLEASE_NUMBER_PROPERTY = "subleaseNumber";
-    public static final String SUBLEASE_EXISTS_PROPERTY = "subleaseExists";
+    public static final String SUBLESSEE_NAME_PROPERTY = "sublesseeName";
+    public static final String REGISTERED_NAME_PROPERTY = "registeredName";
+    public static final String TYPE_CODE_PROPERTY = "typeCode";
+    public static final String PROPERTY_TYPE_PROPERTY = "propertyType";
+    public static final String PROPERTY_NUMBER_PROPERTY = "propertyNumber";
+    public static final String RIGHTHOLDER_PROPERTY = "rightHolder";
+    public static final String TOWN_ALLOTMENT_PROPERTY = "townAllotment";
+    public static final String TAX_ALLOTMENT_PROPERTY = "taxAllotment";
+    public static final String LEASE_BA_UNIT_ID_PROPERTY = "leaseBaUnitId";
+    public static final String SUBLEASE_BA_UNIT_ID_PROPERTY = "subleaseBaUnitId";
     private String applicationId;
     private BigDecimal area;
     //@NotEmpty(message = ClientMessage.CHECK_NOTNULL_FIRSTPART, payload = Localized.class)
@@ -91,23 +98,24 @@ public class ApplicationPropertyBean extends AbstractIdBean {
     // SOLA Tonga extensions
     private String leaseNumber;
     private BigDecimal leaseTerm;
-    private BigDecimal leaseArea;
     private BigDecimal amount;
     private Date registrationDate;
     private String lessorName;
     private DistrictBean island;
-    String nobleEstateId;
+    private String nobleEstateId;
     private EstateBean nobleEstate;
     private String description;
     private TownBean town;
     private transient BigDecimal surveyFee;
     private String lesseeName;
-    private boolean leaseLinked;
     private String leaseBaUnitId;
     private String subleaseNumber;
-    private boolean subleaseLinked;
     private String subleaseBaUnitId;
-    private boolean subleaseExists;
+    private String sublesseeName;
+    private String registeredName;
+    private BaUnitTypeBean propertyType;
+    private transient String propertyNumber;
+    private transient String rightHolder;
 
     public ApplicationPropertyBean() {
         super();
@@ -115,7 +123,7 @@ public class ApplicationPropertyBean extends AbstractIdBean {
         this.island = new DistrictBean();
         this.nobleEstate = new EstateBean();
         this.town = new TownBean();
-
+        this.propertyType = new BaUnitTypeBean();
     }
 
     public String getLandUseCode() {
@@ -206,6 +214,7 @@ public class ApplicationPropertyBean extends AbstractIdBean {
         String old = nameFirstpart;
         nameFirstpart = val;
         propertySupport.firePropertyChange(NAME_FIRST_PART_PROPERTY, old, val);
+        propertySupport.firePropertyChange(PROPERTY_NUMBER_PROPERTY, old, val);
     }
 
     public String getNameLastpart() {
@@ -216,6 +225,7 @@ public class ApplicationPropertyBean extends AbstractIdBean {
         String old = nameLastpart;
         nameLastpart = val;
         propertySupport.firePropertyChange(NAME_LAST_PART_PROPERTY, old, val);
+        propertySupport.firePropertyChange(PROPERTY_NUMBER_PROPERTY, old, val);
     }
 
     public BigDecimal getTotalValue() {
@@ -236,6 +246,7 @@ public class ApplicationPropertyBean extends AbstractIdBean {
         String old = leaseNumber;
         leaseNumber = value;
         propertySupport.firePropertyChange(LEASE_NUMBER_PROPERTY, old, value);
+        propertySupport.firePropertyChange(PROPERTY_NUMBER_PROPERTY, old, value);
     }
 
     public BigDecimal getLeaseTerm() {
@@ -246,17 +257,6 @@ public class ApplicationPropertyBean extends AbstractIdBean {
         BigDecimal old = leaseTerm;
         leaseTerm = value;
         propertySupport.firePropertyChange(LEASE_TERM_PROPERTY, old, value);
-    }
-
-    public BigDecimal getLeaseArea() {
-        return leaseArea;
-    }
-
-    public void setLeaseArea(BigDecimal value) {
-        BigDecimal old = leaseArea;
-        leaseArea = value;
-        propertySupport.firePropertyChange(LEASE_AREA_PROPERTY, old, value);
-
     }
 
     public BigDecimal getAmount() {
@@ -287,6 +287,7 @@ public class ApplicationPropertyBean extends AbstractIdBean {
         String old = lessorName;
         lessorName = value;
         propertySupport.firePropertyChange(LESSOR_NAME_PROPERTY, old, value);
+        propertySupport.firePropertyChange(RIGHTHOLDER_PROPERTY, old, value);
     }
 
     public String getIslandId() {
@@ -322,7 +323,7 @@ public class ApplicationPropertyBean extends AbstractIdBean {
     }
 
     public EstateBean getNobleEstate() {
-        return nobleEstate;
+        return nobleEstate == null ? new EstateBean() : nobleEstate;
     }
 
     public void setNobleEstate(EstateBean value) {
@@ -368,24 +369,17 @@ public class ApplicationPropertyBean extends AbstractIdBean {
         String old = lesseeName;
         lesseeName = value;
         propertySupport.firePropertyChange(LESSEE_NAME_PROPERTY, old, value);
-    }
-
-    public boolean isLeaseLinked() {
-        return leaseLinked;
-    }
-
-    public void setLeaseLinked(boolean value) {
-        boolean old = leaseLinked;
-        leaseLinked = value;
-        propertySupport.firePropertyChange(LEASE_LINKED_PROPERTY, old, value);
+        propertySupport.firePropertyChange(RIGHTHOLDER_PROPERTY, old, value);
     }
 
     public String getLeaseBaUnitId() {
         return leaseBaUnitId;
     }
 
-    public void setLeaseBaUnitId(String leaseBaUnitId) {
-        this.leaseBaUnitId = leaseBaUnitId;
+    public void setLeaseBaUnitId(String val) {
+        String old = leaseBaUnitId;
+        leaseBaUnitId = val;
+        propertySupport.firePropertyChange(LEASE_BA_UNIT_ID_PROPERTY, old, val);
     }
 
     public BigDecimal getSurveyFee() {
@@ -404,34 +398,134 @@ public class ApplicationPropertyBean extends AbstractIdBean {
         String old = subleaseNumber;
         subleaseNumber = value;
         propertySupport.firePropertyChange(SUBLEASE_NUMBER_PROPERTY, old, value);
-    }
-
-    public boolean isSubleaseLinked() {
-        return subleaseLinked;
-    }
-
-    public void setSubleaseLinked(boolean value) {
-        boolean old = subleaseLinked;
-        subleaseLinked = value;
-        propertySupport.firePropertyChange(SUBLEASE_LINKED_PROPERTY, old, value);
+        propertySupport.firePropertyChange(PROPERTY_NUMBER_PROPERTY, old, value);
     }
 
     public String getSubleaseBaUnitId() {
         return subleaseBaUnitId;
     }
 
-    public void setSubleaseBaUnitId(String subleaseBaUnitId) {
-        this.subleaseBaUnitId = subleaseBaUnitId;
+    public void setSubleaseBaUnitId(String val) {
+        String old = subleaseBaUnitId;
+        subleaseBaUnitId = val;
+        propertySupport.firePropertyChange(SUBLEASE_BA_UNIT_ID_PROPERTY, old, val);
     }
 
-    public boolean isSubleaseExists() {
-        return subleaseExists;
+    public String getSublesseeName() {
+        return sublesseeName;
     }
 
-    public void setSubleaseExists(boolean value) {
-        boolean old = subleaseExists;
-        subleaseExists = value;
-        propertySupport.firePropertyChange(SUBLEASE_EXISTS_PROPERTY, old, value);
+    public void setSublesseeName(String value) {
+        String old = sublesseeName;
+        sublesseeName = value;
+        propertySupport.firePropertyChange(SUBLESSEE_NAME_PROPERTY, old, value);
+        propertySupport.firePropertyChange(RIGHTHOLDER_PROPERTY, old, value);
+    }
+
+    public String getRegisteredName() {
+        return registeredName;
+    }
+
+    public void setRegisteredName(String value) {
+        String old = registeredName;
+        registeredName = value;
+        propertySupport.firePropertyChange(REGISTERED_NAME_PROPERTY, old, value);
+    }
+
+    public String getTypeCode() {
+        return getPropertyType().getCode();
+    }
+
+    public void setTypeCode(String value) {
+        String old = getTypeCode();
+        setPropertyType(CacheManager.getBeanByCode(
+                CacheManager.getBaUnitTypes(), value));
+        propertySupport.firePropertyChange(TYPE_CODE_PROPERTY, old, value);
+    }
+
+    public BaUnitTypeBean getPropertyType() {
+        return propertyType == null ? new BaUnitTypeBean() : propertyType;
+    }
+
+    public void setPropertyType(BaUnitTypeBean value) {
+        this.propertyType = value;
+        propertySupport.firePropertyChange(PROPERTY_TYPE_PROPERTY, null, value);
+    }
+
+    /**
+     * Determines the number to use for the property based on the property type.
+     */
+    public String getPropertyNumber() {
+        String number = null;
+        if (BaUnitTypeBean.CODE_SUBLEASE_UNIT.equals(getTypeCode())) {
+            number = getSubleaseNumber();
+        }
+        if (BaUnitTypeBean.CODE_LEASED_UNIT.equals(getTypeCode())) {
+            number = getLeaseNumber();
+        }
+        if (BaUnitTypeBean.CODE_TOWN_ALLOTMENT_UNIT.equals(getTypeCode())
+                || BaUnitTypeBean.CODE_TAX_UNIT.equals(getTypeCode())) {
+            number = getNameFirstpart() + "/" + getNameLastpart();
+        }
+        return number == null ? "" : number;
+    }
+
+    public void setPropertyNumber(String value) {
+        // propertyNumber not used!
+        propertyNumber = value;
+    }
+
+    /**
+     * Returns the name of the primary rightholder for the property based on the
+     * property type.
+     */
+    public String getRightHolder() {
+        String holder = null;
+        if (BaUnitTypeBean.CODE_SUBLEASE_UNIT.equals(getTypeCode())) {
+            holder = getSublesseeName();
+        }
+        if (BaUnitTypeBean.CODE_LEASED_UNIT.equals(getTypeCode())) {
+            holder = getLesseeName();
+        }
+        if (BaUnitTypeBean.CODE_TOWN_ALLOTMENT_UNIT.equals(getTypeCode())
+                || BaUnitTypeBean.CODE_TAX_UNIT.equals(getTypeCode())) {
+            holder = getLessorName();
+        }
+        return holder == null ? "" : holder;
+    }
+
+    public void setRightHolder(String rightHolder) {
+        this.rightHolder = rightHolder;
+    }
+
+    public boolean isTownAllotment() {
+        return BaUnitTypeBean.CODE_TOWN_ALLOTMENT_UNIT.equals(getTypeCode());
+    }
+
+    public void setTownAllotment(boolean value) {
+        if (value && !isTownAllotment()) {
+            setTypeCode(BaUnitTypeBean.CODE_TOWN_ALLOTMENT_UNIT);
+            propertySupport.firePropertyChange(TOWN_ALLOTMENT_PROPERTY, false, value);
+        }
+    }
+
+    public boolean isTaxAllotment() {
+        return BaUnitTypeBean.CODE_TAX_UNIT.equals(getTypeCode());
+    }
+
+    public void setTaxAllotment(boolean value) {
+        if (value && !isTaxAllotment()) {
+            setTypeCode(BaUnitTypeBean.CODE_TAX_UNIT);
+            propertySupport.firePropertyChange(TAX_ALLOTMENT_PROPERTY, false, value);
+        }
+    }
+
+    public boolean isLease() {
+        return BaUnitTypeBean.CODE_LEASED_UNIT.equals(getTypeCode());
+    }
+
+    public boolean isSublease() {
+        return BaUnitTypeBean.CODE_SUBLEASE_UNIT.equals(getTypeCode());
     }
 
     public void reset() {
@@ -440,9 +534,7 @@ public class ApplicationPropertyBean extends AbstractIdBean {
         setBaUnitId(null);
         setIslandId(null);
         setLandUseCode(null);
-        setLeaseArea(null);
         setLeaseBaUnitId(null);
-        setLeaseLinked(false);
         //setLeaseNumber(null);
         setLeaseTerm(null);
         setLesseeName(null);
@@ -457,7 +549,8 @@ public class ApplicationPropertyBean extends AbstractIdBean {
         setVerifiedLocation(false);
         //setSubleaseNumber(null);
         setSubleaseBaUnitId(null);
-        setSubleaseLinked(false);
-        setSubleaseExists(false);
+        setSublesseeName(null);
+        setRegisteredName(null);
+        //setTypeCode(null);
     }
 }
