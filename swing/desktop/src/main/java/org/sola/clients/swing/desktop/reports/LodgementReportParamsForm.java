@@ -1,6 +1,6 @@
 /**
  * ******************************************************************************************
- * Copyright (C) 2013 - Food and Agriculture Organization of the United Nations (FAO).
+ * Copyright (C) 2014 - Food and Agriculture Organization of the United Nations (FAO).
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without modification,
@@ -36,6 +36,7 @@ import net.sf.jasperreports.engine.JasperPrint;
 import org.sola.clients.beans.application.LodgementBean;
 import org.sola.clients.reports.ReportManager;
 import org.sola.clients.swing.common.controls.CalendarForm;
+import org.sola.clients.swing.common.controls.WatermarkDate;
 import org.sola.clients.swing.common.tasks.SolaTask;
 import org.sola.clients.swing.common.tasks.TaskManager;
 import org.sola.clients.swing.common.utils.FormattersFactory;
@@ -89,11 +90,11 @@ public class LodgementReportParamsForm extends javax.swing.JDialog {
         labFrom = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         btnShowCalendarFrom = new javax.swing.JButton();
-        txtFromDate = new javax.swing.JFormattedTextField();
+        txtFromDate = new WatermarkDate();
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         btnShowCalendarTo = new javax.swing.JButton();
-        txtToDate = new javax.swing.JFormattedTextField();
+        txtToDate = new WatermarkDate();
         labTo = new javax.swing.JLabel();
         viewReport = new javax.swing.JButton();
 

@@ -158,6 +158,7 @@
                 </Property>
               </Properties>
               <AuxValues>
+                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new WatermarkDate()"/>
                 <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="txtFromDate.setComponentOrientation(ComponentOrientation.getOrientation(Locale.getDefault()));&#xa;txtFromDate.setHorizontalAlignment(JTextField.LEADING);"/>
                 <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="txtFromDate.setFont(new java.awt.Font(&quot;Tahoma&quot;, 0, 12));"/>
               </AuxValues>
@@ -244,6 +245,7 @@
                     </Property>
                   </Properties>
                   <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new WatermarkDate()"/>
                     <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="txtToDate.setComponentOrientation(ComponentOrientation.getOrientation(Locale.getDefault()));&#xa;txtToDate.setHorizontalAlignment(JTextField.LEADING);"/>
                     <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="txtToDate.setFont(new java.awt.Font(&quot;Tahoma&quot;, 0, 12));"/>
                   </AuxValues>
