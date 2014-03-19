@@ -80,7 +80,27 @@ public class DocumentSearchPanel extends org.sola.clients.swing.ui.source.Docume
                     TaskManager.getInstance().runTask(t);
                 } else if (evt.getPropertyName().equals(org.sola.clients.swing.ui.source.DocumentSearchPanel.OPEN_APPLICATION)) {
                     MainForm.getInstance().openApplicationForm((ApplicationBean)evt.getNewValue());
-                } 
+                } else if (evt.getPropertyName().equals(org.sola.clients.swing.ui.source.DocumentSearchPanel.ADD_SOURCE)){              
+
+                    SolaTask t = new SolaTask<Void, Void>() {
+
+                        @Override
+                        public Void doTask() {
+                            setMessage(MessageUtility.getLocalizedMessageText(ClientMessage.PROGRESS_MSG_DOCUMENT_FORM_OPENING));
+                            DocumentForm form = new DocumentForm();
+                            form.addPropertyChangeListener(new PropertyChangeListener() {
+
+                                @Override
+                                public void propertyChange(PropertyChangeEvent evt) {
+
+                                }
+                            });
+                            MainForm.getInstance().getMainContentPanel().addPanel(form, MainContentPanel.CARD_SOURCE, true);
+                            return null;
+                        }
+                    };
+                    TaskManager.getInstance().runTask(t);
+                }
             }
         });
     }

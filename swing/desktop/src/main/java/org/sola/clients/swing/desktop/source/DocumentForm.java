@@ -73,6 +73,7 @@ public class DocumentForm extends ContentPanel {
         if (document == null) {
             headerTitle = MessageUtility.getLocalizedMessageText(ClientMessage.GENERAL_LABELS_DOCUMENT)
                     + " - " + MessageUtility.getLocalizedMessageText(ClientMessage.GENERAL_LABELS_NEW);
+            document = new SourceBean();
         } else {
             if (document.getLaNr() == null || document.getLaNr().equals("")) {
                 headerTitle = MessageUtility.getLocalizedMessageText(ClientMessage.GENERAL_LABELS_DOCUMENT)
