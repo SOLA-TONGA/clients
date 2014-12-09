@@ -351,6 +351,11 @@ public final class ServiceLauncher {
         serviceMap.put(RequestTypeBean.CODE_CORRECT_REGISTRY_REMOVE,
                 new String[]{TongaPropertyPanel.class.getName(), MainContentPanel.CARD_PROPERTY_PANEL,
             ClientMessage.PROGRESS_MSG_OPEN_PROPERTY});
+        
+        // Draft Form
+        serviceMap.put(RequestTypeBean.CODE_DRAUGHTING,
+                new String[]{DraftForm.class.getName(), MainContentPanel.CARD_DRAUGHTING,
+            ClientMessage.PROGRESS_MSG_OPEN_DRAUGHTING_FORM});
 
     }
 

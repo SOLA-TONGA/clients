@@ -2135,6 +2135,7 @@
                   </Properties>
                   <BindingProperties>
                     <BindingProperty name="elements" source="mortgageResultsList" sourcePath="${baUnitSearchResults}" target="tableMortgage" targetPath="elements" updateStrategy="0" immediately="true">
+                      <Property name="name" type="java.lang.String" value=""/>
                       <Subbinding sourcePath="${rrrRef}">
                         <BindingParameter name="NAME" value="Mortgage #"/>
                         <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="String.class"/>

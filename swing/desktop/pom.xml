@@ -100,6 +100,11 @@
             <artifactId>clients-beans</artifactId>
             <version>1403b</version>
         </dependency>
+        <dependency>
+            <groupId>unknown.binary</groupId>
+            <artifactId>AbsoluteLayout</artifactId>
+            <version>SNAPSHOT</version>
+        </dependency>
     </dependencies>
     <profiles>
         <profile>

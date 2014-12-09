@@ -53,8 +53,8 @@ import org.sola.clients.swing.common.tasks.SolaTask;
 import org.sola.clients.swing.common.tasks.TaskManager;
 import org.sola.clients.swing.desktop.administrative.BaUnitSearchPanel;
 import org.sola.clients.swing.desktop.administrative.CashierImportForm;
+import org.sola.clients.swing.desktop.administrative.DraughtingSearchPanel;
 import org.sola.clients.swing.desktop.administrative.RightsExportForm;
-import org.sola.clients.swing.desktop.application.ApplicationPanel;
 import org.sola.clients.swing.desktop.application.ApplicationSearchPanel;
 import org.sola.clients.swing.desktop.application.TongaApplicationPanel;
 import org.sola.clients.swing.desktop.cadastre.MapPanelForm;
@@ -89,6 +89,7 @@ public class MainForm extends javax.swing.JFrame {
     private DocumentSearchForm searchDocPanel;
     private PartySearchPanelForm searchPartyPanel;
     private BaUnitSearchPanel searchBaUnitPanel;
+    private DraughtingSearchPanel draughtingSearch;
     // Create a variable holding the listener
     KeyAdapter keyAdapterAppSearch = new KeyAdapter() {
         @Override
@@ -140,6 +141,14 @@ public class MainForm extends javax.swing.JFrame {
 
     public void setSearchBaUnitPanel(BaUnitSearchPanel searchBaUnitPanel) {
         this.searchBaUnitPanel = searchBaUnitPanel;
+    }
+    
+    public DraughtingSearchPanel getDraughtingSearch() {
+        return draughtingSearch;
+    }
+
+    public void setDraughtingSearch(DraughtingSearchPanel draughtingSearch) {
+        this.draughtingSearch = draughtingSearch;
     }
 
     public DocumentSearchForm getSearchDocPanel() {
@@ -439,6 +448,28 @@ public class MainForm extends javax.swing.JFrame {
         };
         TaskManager.getInstance().runTask(t);
     }
+    
+    private void searchDraughting() {
+        SolaTask t = new SolaTask<Void, Void>() {
+            @Override
+            public Void doTask() {
+                setMessage(MessageUtility.getLocalizedMessageText(ClientMessage.PROGRESS_MSG_OPEN_DRAUGHTING_SEARCH));
+                if (!pnlContent.isPanelOpened(MainContentPanel.CARD_DRAUGHTING_SEARCH)) {
+                    DraughtingSearchPanel draughtingSearch = new DraughtingSearchPanel();
+                    setDraughtingSearch(draughtingSearch);
+                    pnlContent.addPanel(draughtingSearch, MainContentPanel.CARD_DRAUGHTING_SEARCH);
+                }
+                pnlContent.showPanel(MainContentPanel.CARD_DRAUGHTING_SEARCH);
+                return null;
+            }
+
+            @Override
+            protected void taskDone() {
+                addKeyListeners(MainContentPanel.CARD_DRAUGHTING_SEARCH);
+            }
+        };
+        TaskManager.getInstance().runTask(t);
+    }
 
     private void openSearchParties() {
         SolaTask t = new SolaTask<Void, Void>() {
@@ -687,6 +718,7 @@ public class MainForm extends javax.swing.JFrame {
         btnSearchApplications = new javax.swing.JButton();
         btnOpenBaUnitSearch = new javax.swing.JButton();
         btnDocumentSearch = new javax.swing.JButton();
+        btnDraughtingSearch = new javax.swing.JButton();
         jSeparator3 = new javax.swing.JToolBar.Separator();
         btnManageParties = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JToolBar.Separator();
@@ -810,6 +842,18 @@ public class MainForm extends javax.swing.JFrame {
             }
         });
         applicationsMain.add(btnDocumentSearch);
+
+        btnDraughtingSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/search.png"))); // NOI18N
+        btnDraughtingSearch.setText(bundle.getString("MainForm.btnDraughtingSearch.text")); // NOI18N
+        btnDraughtingSearch.setFocusable(false);
+        btnDraughtingSearch.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnDraughtingSearch.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnDraughtingSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDraughtingSearchActionPerformed(evt);
+            }
+        });
+        applicationsMain.add(btnDraughtingSearch);
         applicationsMain.add(jSeparator3);
 
         btnManageParties.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/users.png"))); // NOI18N
@@ -1349,6 +1393,10 @@ public class MainForm extends javax.swing.JFrame {
         showCashierImportPanel();
     }//GEN-LAST:event_menuCashierImportActionPerformed
 
+    private void btnDraughtingSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDraughtingSearchActionPerformed
+        searchDraughting();
+    }//GEN-LAST:event_btnDraughtingSearchActionPerformed
+
     private void editPassword() {
         showPasswordPanel();
     }
@@ -1374,6 +1422,7 @@ public class MainForm extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToolBar applicationsMain;
     private javax.swing.JButton btnDocumentSearch;
+    private javax.swing.JButton btnDraughtingSearch;
     private javax.swing.JButton btnManageParties;
     private javax.swing.JButton btnNewApplication;
     private javax.swing.JButton btnOpenBaUnitSearch;

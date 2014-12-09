@@ -1679,7 +1679,7 @@ public class TongaBaUnitSearchPanel extends javax.swing.JPanel {
         tableMortgage.getTableHeader().setReorderingAllowed(false);
 
         eLProperty = org.jdesktop.beansbinding.ELProperty.create("${baUnitSearchResults}");
-        jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, mortgageResultsList, eLProperty, tableMortgage);
+        jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, mortgageResultsList, eLProperty, tableMortgage, "");
         columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${rrrRef}"));
         columnBinding.setColumnName("Mortgage #");
         columnBinding.setColumnClass(String.class);

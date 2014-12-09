@@ -100,6 +100,7 @@ public class RequestTypeBean extends AbstractCodeBean {
     public static final String CODE_CANCEL_PERMIT = "cancelPermit";
     public static final String CODE_CORRECT_REGISTRY = "correctRegistry";
     public static final String CODE_CORRECT_REGISTRY_REMOVE = "correctRegistryRem";
+    public static final String CODE_DRAUGHTING  = "draughting";
     // Codes not used for SOLA Tonga
     public static final String CODE_CANCEL_PROPERTY = "cancelProperty";
     public static final String CODE_CADASTRE_PRINT = "cadastrePrint";
