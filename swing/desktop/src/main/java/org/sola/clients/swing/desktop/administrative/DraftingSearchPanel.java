@@ -20,6 +20,8 @@ import java.util.Locale;
 import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import org.sola.clients.beans.drafting.DraftingSearchParamsBean;
+import org.sola.clients.beans.drafting.DraftingSearchResultListBean;
 import org.sola.clients.swing.common.LafManager;
 import org.sola.clients.swing.common.controls.CalendarForm;
 import org.sola.clients.swing.common.controls.WatermarkDate;
@@ -34,18 +36,42 @@ import org.sola.common.messaging.MessageUtility;
  *
  * @author Admin
  */
-public class DraughtingSearchPanel extends ContentPanel {
+public class DraftingSearchPanel extends ContentPanel {
 
     /**
-     * Creates new form DraughtingSearchPanel
+     * Creates new form DraftingSearchPanel
      */
-    public DraughtingSearchPanel() {
+    public DraftingSearchPanel() {
         initComponents();
     }
     
     private void showCalendar(JFormattedTextField dateField) {
         CalendarForm calendar = new CalendarForm(null, true, dateField);
         calendar.setVisible(true);
+    }
+    
+     private void executeSearch(final DraftingSearchParamsBean params,
+            final JLabel lblResultCount, final DraftingSearchResultListBean results) {
+
+        SolaTask t = new SolaTask<Void, Void>() {
+            @Override
+            public Void doTask() {
+                setMessage(MessageUtility.getLocalizedMessageText(ClientMessage.PROGRESS_MSG_PROPERTY_SEARCHING));
+                results.search(params);
+                return null;
+            }
+
+            @Override
+            public void taskDone() {
+                lblResultCount.setText(Integer.toString(results.getDraughtingResultList().size()));
+                if (results.getDraughtingResultList().size() < 1) {
+                    MessageUtility.displayMessage(ClientMessage.SEARCH_NO_RESULTS);
+                } else if (results.getDraughtingResultList().size() > 100) {
+                    MessageUtility.displayMessage(ClientMessage.SEARCH_TOO_MANY_RESULTS, new String[]{"100"});
+                }
+            }
+        };
+        TaskManager.getInstance().runTask(t);
     }
 
     /**
@@ -56,11 +82,13 @@ public class DraughtingSearchPanel extends ContentPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
         jComboBox1 = new javax.swing.JComboBox();
+        draftingSearchParamsBean1 = new org.sola.clients.beans.drafting.DraftingSearchParamsBean();
+        draftingSearchResultListBean1 = new org.sola.clients.beans.drafting.DraftingSearchResultListBean();
+        lblSearchResults2 = new javax.swing.JLabel();
         headerPanel = new org.sola.clients.swing.ui.HeaderPanel();
-        appListPanel = new javax.swing.JScrollPane();
-        tbAppList = new org.sola.clients.swing.common.controls.JTableWithDefaultStyles();
         jToolBar1 = new javax.swing.JToolBar();
         btnFind = new javax.swing.JButton();
         btnClear = new javax.swing.JButton();
@@ -69,6 +97,7 @@ public class DraughtingSearchPanel extends ContentPanel {
         jSeparator1 = new javax.swing.JToolBar.Separator();
         lblSearchResults = new javax.swing.JLabel();
         labResults = new javax.swing.JLabel();
+        lblLeaseResultsCount = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
         labItemNumber = new javax.swing.JLabel();
@@ -94,22 +123,16 @@ public class DraughtingSearchPanel extends ContentPanel {
         jPanel7 = new javax.swing.JPanel();
         cbAllotmentTown = new javax.swing.JComboBox();
         labTown = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tableLease = new org.sola.clients.swing.common.controls.JTableWithDefaultStyles();
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        lblSearchResults2.setFont(LafManager.getInstance().getLabFontBold());
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("org/sola/clients/swing/desktop/application/Bundle"); // NOI18N
+        lblSearchResults2.setText(bundle.getString("ApplicationSearchPanel.lblSearchResults.text")); // NOI18N
+
         headerPanel.setTitleText(bundle.getString("ApplicationSearchPanel.headerPanel1.titleText")); // NOI18N
-
-        appListPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
-        appListPanel.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        appListPanel.setComponentOrientation(ComponentOrientation.getOrientation(Locale.getDefault()));
-
-        tbAppList.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tbAppListMouseClicked(evt);
-            }
-        });
-        appListPanel.setViewportView(tbAppList);
 
         jToolBar1.setFloatable(false);
         jToolBar1.setRollover(true);
@@ -155,10 +178,18 @@ public class DraughtingSearchPanel extends ContentPanel {
         labResults.setHorizontalAlignment(JLabel.LEADING);
         jToolBar1.add(labResults);
 
+        lblLeaseResultsCount.setFont(LafManager.getInstance().getLabFontBold());
+        lblLeaseResultsCount.setText(bundle.getString("ApplicationSearchPanel.lblSearchResults.text")); // NOI18N
+        jToolBar1.add(lblLeaseResultsCount);
+
         labItemNumber.setText(bundle.getString("ApplicationSearchPanel.labFrom.text")); // NOI18N
 
         txtActionDate.setFont(new java.awt.Font("Tahoma", 0, 12));
         txtItemNumber.setFormatterFactory(FormattersFactory.getInstance().getDateFormatterFactory());
+
+        org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, draftingSearchParamsBean1, org.jdesktop.beansbinding.ELProperty.create("${itemNumber}"), txtItemNumber, org.jdesktop.beansbinding.BeanProperty.create("value"));
+        bindingGroup.addBinding(binding);
+
         txtActionDate.setComponentOrientation(ComponentOrientation.getOrientation(Locale.getDefault()));
         txtActionDate.setHorizontalAlignment(JTextField.LEADING);
 
@@ -197,6 +228,10 @@ public class DraughtingSearchPanel extends ContentPanel {
 
         txtActionDate.setFont(new java.awt.Font("Tahoma", 0, 12));
         txtFirstName.setFormatterFactory(FormattersFactory.getInstance().getDateFormatterFactory());
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, draftingSearchParamsBean1, org.jdesktop.beansbinding.ELProperty.create("${firstName}"), txtFirstName, org.jdesktop.beansbinding.BeanProperty.create("value"));
+        bindingGroup.addBinding(binding);
+
         txtActionDate.setComponentOrientation(ComponentOrientation.getOrientation(Locale.getDefault()));
         txtActionDate.setHorizontalAlignment(JTextField.LEADING);
 
@@ -235,6 +270,10 @@ public class DraughtingSearchPanel extends ContentPanel {
 
         txtActionDate.setFont(new java.awt.Font("Tahoma", 0, 12));
         txtLastName.setFormatterFactory(FormattersFactory.getInstance().getDateFormatterFactory());
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, draftingSearchParamsBean1, org.jdesktop.beansbinding.ELProperty.create("${lastName}"), txtLastName, org.jdesktop.beansbinding.BeanProperty.create("value"));
+        bindingGroup.addBinding(binding);
+
         txtActionDate.setComponentOrientation(ComponentOrientation.getOrientation(Locale.getDefault()));
         txtActionDate.setHorizontalAlignment(JTextField.LEADING);
 
@@ -271,6 +310,10 @@ public class DraughtingSearchPanel extends ContentPanel {
 
         txtActionDate.setFont(new java.awt.Font("Tahoma", 0, 12));
         txtPlanNumber.setFormatterFactory(FormattersFactory.getInstance().getDateFormatterFactory());
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, draftingSearchParamsBean1, org.jdesktop.beansbinding.ELProperty.create("${planNumber}"), txtPlanNumber, org.jdesktop.beansbinding.BeanProperty.create("value"));
+        bindingGroup.addBinding(binding);
+
         txtActionDate.setComponentOrientation(ComponentOrientation.getOrientation(Locale.getDefault()));
         txtActionDate.setHorizontalAlignment(JTextField.LEADING);
 
@@ -307,6 +350,10 @@ public class DraughtingSearchPanel extends ContentPanel {
 
         txtActionDate.setFont(new java.awt.Font("Tahoma", 0, 12));
         txtActionDate.setFormatterFactory(FormattersFactory.getInstance().getDateFormatterFactory());
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, draftingSearchParamsBean1, org.jdesktop.beansbinding.ELProperty.create("${dateReceived}"), txtActionDate, org.jdesktop.beansbinding.BeanProperty.create("value"));
+        bindingGroup.addBinding(binding);
+
         txtActionDate.setComponentOrientation(ComponentOrientation.getOrientation(Locale.getDefault()));
         txtActionDate.setHorizontalAlignment(JTextField.LEADING);
 
@@ -352,7 +399,11 @@ public class DraughtingSearchPanel extends ContentPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        labTown.setText("Town");
+        org.jdesktop.beansbinding.ELProperty eLProperty = org.jdesktop.beansbinding.ELProperty.create("${location}");
+        org.jdesktop.swingbinding.JComboBoxBinding jComboBoxBinding = org.jdesktop.swingbinding.SwingBindings.createJComboBoxBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, draftingSearchParamsBean1, eLProperty, cbAllotmentTown);
+        bindingGroup.addBinding(jComboBoxBinding);
+
+        labTown.setText("Location");
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -394,52 +445,97 @@ public class DraughtingSearchPanel extends ContentPanel {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(2, 2, 2)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(6, 6, 6)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(4, 4, 4)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addComponent(jPanel15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
+
+        tableLease.getTableHeader().setReorderingAllowed(false);
+
+        eLProperty = org.jdesktop.beansbinding.ELProperty.create("${draughtingResultList}");
+        org.jdesktop.swingbinding.JTableBinding jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, draftingSearchResultListBean1, eLProperty, tableLease);
+        org.jdesktop.swingbinding.JTableBinding.ColumnBinding columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${itemNumber}"));
+        columnBinding.setColumnName("Item Number");
+        columnBinding.setColumnClass(String.class);
+        columnBinding.setEditable(false);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${firstName}"));
+        columnBinding.setColumnName("First Name");
+        columnBinding.setColumnClass(String.class);
+        columnBinding.setEditable(false);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${lastName}"));
+        columnBinding.setColumnName("Last Name");
+        columnBinding.setColumnClass(String.class);
+        columnBinding.setEditable(false);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${receiveDate}"));
+        columnBinding.setColumnName("Date Received");
+        columnBinding.setColumnClass(java.util.Date.class);
+        columnBinding.setEditable(false);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${location}"));
+        columnBinding.setColumnName("Location");
+        columnBinding.setColumnClass(String.class);
+        columnBinding.setEditable(false);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${planNumber}"));
+        columnBinding.setColumnName("Plan Number");
+        columnBinding.setColumnClass(String.class);
+        columnBinding.setEditable(false);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${reference}"));
+        columnBinding.setColumnName("Reference");
+        columnBinding.setColumnClass(String.class);
+        columnBinding.setEditable(false);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${drawDeed}"));
+        columnBinding.setColumnName("Deed Drawn By");
+        columnBinding.setColumnClass(String.class);
+        columnBinding.setEditable(false);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${natureOfSurvey}"));
+        columnBinding.setColumnName("Nature of Survey");
+        columnBinding.setColumnClass(String.class);
+        columnBinding.setEditable(false);
+        bindingGroup.addBinding(jTableBinding);
+        jTableBinding.bind();
+        tableLease.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableLeaseMouseClicked(evt);
+            }
+        });
+        jScrollPane3.setViewportView(tableLease);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(headerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(appListPanel)
             .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 729, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(headerPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(appListPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE))
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
+
+        bindingGroup.bind();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnShowCalendarFromActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowCalendarFromActionPerformed
         showCalendar(txtActionDate);
     }//GEN-LAST:event_btnShowCalendarFromActionPerformed
 
-    private void tbAppListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbAppListMouseClicked
-
-    }//GEN-LAST:event_tbAppListMouseClicked
-
     private void btnFindActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFindActionPerformed
-       
+       executeSearch(draftingSearchParamsBean1, lblLeaseResultsCount, draftingSearchResultListBean1);
     }//GEN-LAST:event_btnFindActionPerformed
 
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
@@ -455,13 +551,18 @@ public class DraughtingSearchPanel extends ContentPanel {
       
     }//GEN-LAST:event_btnOpenApplicationActionPerformed
 
+    private void tableLeaseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableLeaseMouseClicked
+       
+    }//GEN-LAST:event_tableLeaseMouseClicked
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JScrollPane appListPanel;
     private javax.swing.JButton btnClear;
     public javax.swing.JButton btnFind;
     private javax.swing.JButton btnOpenApplication;
     private javax.swing.JButton btnShowCalendarFrom;
     private javax.swing.JComboBox cbAllotmentTown;
+    private org.sola.clients.beans.drafting.DraftingSearchParamsBean draftingSearchParamsBean1;
+    private org.sola.clients.beans.drafting.DraftingSearchResultListBean draftingSearchResultListBean1;
     private org.sola.clients.swing.ui.HeaderPanel headerPanel;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JPanel jPanel1;
@@ -476,6 +577,7 @@ public class DraughtingSearchPanel extends ContentPanel {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel9;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JToolBar.Separator jSeparator1;
     private javax.swing.JToolBar.Separator jSeparator3;
     private javax.swing.JToolBar jToolBar1;
@@ -486,12 +588,15 @@ public class DraughtingSearchPanel extends ContentPanel {
     private javax.swing.JLabel labPlanNumber;
     private javax.swing.JLabel labResults;
     private javax.swing.JLabel labTown;
+    private javax.swing.JLabel lblLeaseResultsCount;
     private javax.swing.JLabel lblSearchResults;
-    private org.sola.clients.swing.common.controls.JTableWithDefaultStyles tbAppList;
+    private javax.swing.JLabel lblSearchResults2;
+    private org.sola.clients.swing.common.controls.JTableWithDefaultStyles tableLease;
     private javax.swing.JFormattedTextField txtActionDate;
     private javax.swing.JFormattedTextField txtFirstName;
     private javax.swing.JFormattedTextField txtItemNumber;
     private javax.swing.JFormattedTextField txtLastName;
     private javax.swing.JFormattedTextField txtPlanNumber;
+    private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 }

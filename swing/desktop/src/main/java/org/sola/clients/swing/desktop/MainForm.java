@@ -53,7 +53,7 @@ import org.sola.clients.swing.common.tasks.SolaTask;
 import org.sola.clients.swing.common.tasks.TaskManager;
 import org.sola.clients.swing.desktop.administrative.BaUnitSearchPanel;
 import org.sola.clients.swing.desktop.administrative.CashierImportForm;
-import org.sola.clients.swing.desktop.administrative.DraughtingSearchPanel;
+import org.sola.clients.swing.desktop.administrative.DraftingSearchPanel;
 import org.sola.clients.swing.desktop.administrative.RightsExportForm;
 import org.sola.clients.swing.desktop.application.ApplicationSearchPanel;
 import org.sola.clients.swing.desktop.application.TongaApplicationPanel;
@@ -89,7 +89,7 @@ public class MainForm extends javax.swing.JFrame {
     private DocumentSearchForm searchDocPanel;
     private PartySearchPanelForm searchPartyPanel;
     private BaUnitSearchPanel searchBaUnitPanel;
-    private DraughtingSearchPanel draughtingSearch;
+    private DraftingSearchPanel draughtingSearch;
     // Create a variable holding the listener
     KeyAdapter keyAdapterAppSearch = new KeyAdapter() {
         @Override
@@ -143,11 +143,11 @@ public class MainForm extends javax.swing.JFrame {
         this.searchBaUnitPanel = searchBaUnitPanel;
     }
     
-    public DraughtingSearchPanel getDraughtingSearch() {
+    public DraftingSearchPanel getDraughtingSearch() {
         return draughtingSearch;
     }
 
-    public void setDraughtingSearch(DraughtingSearchPanel draughtingSearch) {
+    public void setDraughtingSearch(DraftingSearchPanel draughtingSearch) {
         this.draughtingSearch = draughtingSearch;
     }
 
@@ -449,13 +449,13 @@ public class MainForm extends javax.swing.JFrame {
         TaskManager.getInstance().runTask(t);
     }
     
-    private void searchDraughting() {
+    private void searchDrafting() {
         SolaTask t = new SolaTask<Void, Void>() {
             @Override
             public Void doTask() {
                 setMessage(MessageUtility.getLocalizedMessageText(ClientMessage.PROGRESS_MSG_OPEN_DRAUGHTING_SEARCH));
                 if (!pnlContent.isPanelOpened(MainContentPanel.CARD_DRAUGHTING_SEARCH)) {
-                    DraughtingSearchPanel draughtingSearch = new DraughtingSearchPanel();
+                    DraftingSearchPanel draughtingSearch = new DraftingSearchPanel();
                     setDraughtingSearch(draughtingSearch);
                     pnlContent.addPanel(draughtingSearch, MainContentPanel.CARD_DRAUGHTING_SEARCH);
                 }
@@ -1394,7 +1394,7 @@ public class MainForm extends javax.swing.JFrame {
     }//GEN-LAST:event_menuCashierImportActionPerformed
 
     private void btnDraughtingSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDraughtingSearchActionPerformed
-        searchDraughting();
+        searchDrafting();
     }//GEN-LAST:event_btnDraughtingSearchActionPerformed
 
     private void editPassword() {
