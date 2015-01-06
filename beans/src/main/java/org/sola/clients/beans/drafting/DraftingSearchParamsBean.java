@@ -38,13 +38,15 @@ public class DraftingSearchParamsBean extends AbstractBindingBean{
     public static final String ITEM_NUMBER_PROPERTY = "itemNumber";
     public static final String FIRST_NAME_PROPERTY = "firstName";
     public static final String LAST_NAME_PROPERTY = "lastName";
-    public static final String DATE_RECEIVED_PROPERTY = "dateReceived";
     public static final String LOCATION_PROPERTY = "location";
     public static final String PLAN_NUMBER_PROPERTY = "planNumber";
+    public static final String DATE_RECEIVED_FROM_PROPERTY = "dateReceivedFrom";
+    public static final String DATE_RECEIVED_TO_PROPERTY = "dateReceivedTo";
     private String itemNumber;
     private String firstName;
     private String lastName;
-    private Date dateReceived;
+    private Date dateReceivedFrom;
+    private Date dateReceivedTo;
     private String location;
     private String planNumber;
    
@@ -82,14 +84,23 @@ public class DraftingSearchParamsBean extends AbstractBindingBean{
         propertySupport.firePropertyChange(LAST_NAME_PROPERTY, oldValue, value);
     }
 
-    public Date getDateReceived() {
-        return dateReceived;
+    public Date getDateReceivedFrom() {
+        return dateReceivedFrom;
     }
 
-    public void setDateReceived(Date value) {
-        Date oldValue = this.dateReceived;
-        this.dateReceived = value;
-        propertySupport.firePropertyChange(DATE_RECEIVED_PROPERTY, oldValue, value);
+    public void setDateReceivedFrom(Date value) {
+        Date oldValue = this.dateReceivedFrom;
+        this.dateReceivedFrom = value;
+        propertySupport.firePropertyChange(DATE_RECEIVED_FROM_PROPERTY, oldValue, value);
+    }
+        public Date getDateReceivedTo() {
+        return dateReceivedTo;
+    }
+
+    public void setDateReceivedTo(Date value) {
+        Date oldValue = this.dateReceivedTo;
+        this.dateReceivedTo = value;
+        propertySupport.firePropertyChange(DATE_RECEIVED_TO_PROPERTY, oldValue, value);
     }
 
     public String getLocation() {
@@ -114,7 +125,8 @@ public class DraftingSearchParamsBean extends AbstractBindingBean{
     
     public void clear() {
         this.setItemNumber(null);
-        this.setDateReceived(null);
+        this.setDateReceivedFrom(null);
+        this.setDateReceivedTo(null);
         this.setFirstName(null);
         this.setLastName(null);
         this.setLocation(null);

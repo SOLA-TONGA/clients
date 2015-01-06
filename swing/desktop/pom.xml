@@ -105,6 +105,11 @@
             <artifactId>AbsoluteLayout</artifactId>
             <version>SNAPSHOT</version>
         </dependency>
+        <dependency>
+            <groupId>org.sola.services.ejbs</groupId>
+            <artifactId>sola-search</artifactId>
+            <version>1403b</version>
+        </dependency>
     </dependencies>
     <profiles>
         <profile>

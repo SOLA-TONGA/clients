@@ -53,7 +53,7 @@ import org.sola.clients.swing.common.tasks.SolaTask;
 import org.sola.clients.swing.common.tasks.TaskManager;
 import org.sola.clients.swing.desktop.administrative.BaUnitSearchPanel;
 import org.sola.clients.swing.desktop.administrative.CashierImportForm;
-import org.sola.clients.swing.desktop.administrative.DraftingSearchPanel;
+import org.sola.clients.swing.desktop.drafting.DraftingSearchPanel;
 import org.sola.clients.swing.desktop.administrative.RightsExportForm;
 import org.sola.clients.swing.desktop.application.ApplicationSearchPanel;
 import org.sola.clients.swing.desktop.application.TongaApplicationPanel;
