@@ -112,10 +112,10 @@ public class DraftingSearchPanel extends ContentPanel {
         txtLastName = new javax.swing.JTextField();
         labLastName = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
-        labActionDateFrom = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         txtActionDateFrom = new WatermarkDate();
         btnShowCalendarFrom = new javax.swing.JButton();
+        labActionDateFrom = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
         cbAllotmentTown = new javax.swing.JComboBox();
         labTown = new javax.swing.JLabel();
@@ -264,8 +264,6 @@ public class DraftingSearchPanel extends ContentPanel {
                 .addContainerGap())
         );
 
-        labActionDateFrom.setText(bundle.getString("ApplicationSearchPanel.labFrom.text")); // NOI18N
-
         txtActionDateFrom.setFont(new java.awt.Font("Tahoma", 0, 12));
         txtActionDateFrom.setFormatterFactory(FormattersFactory.getInstance().getDateFormatterFactory());
 
@@ -284,7 +282,7 @@ public class DraftingSearchPanel extends ContentPanel {
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(txtActionDateFrom, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(txtActionDateFrom, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -301,6 +299,8 @@ public class DraftingSearchPanel extends ContentPanel {
             }
         });
 
+        labActionDateFrom.setText(bundle1.getString("DraftingSearchPanel.labActionDateFrom.text")); // NOI18N
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
@@ -309,7 +309,7 @@ public class DraftingSearchPanel extends ContentPanel {
                 .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnShowCalendarFrom, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addComponent(labActionDateFrom, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)
+            .addComponent(labActionDateFrom, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -321,10 +321,6 @@ public class DraftingSearchPanel extends ContentPanel {
                     .addComponent(btnShowCalendarFrom))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-
-        org.jdesktop.beansbinding.ELProperty eLProperty = org.jdesktop.beansbinding.ELProperty.create("${location}");
-        org.jdesktop.swingbinding.JComboBoxBinding jComboBoxBinding = org.jdesktop.swingbinding.SwingBindings.createJComboBoxBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, new org.sola.clients.beans.drafting.DraftingSearchParamsBean(), eLProperty, cbAllotmentTown);
-        bindingGroup.addBinding(jComboBoxBinding);
 
         labTown.setText(bundle1.getString("DraftingSearchPanel.labTown.text")); // NOI18N
 
@@ -437,9 +433,7 @@ public class DraftingSearchPanel extends ContentPanel {
                 .addContainerGap())
         );
 
-        tableLease.getTableHeader().setReorderingAllowed(false);
-
-        eLProperty = org.jdesktop.beansbinding.ELProperty.create("${draughtingResultList}");
+        org.jdesktop.beansbinding.ELProperty eLProperty = org.jdesktop.beansbinding.ELProperty.create("${draughtingResultList}");
         org.jdesktop.swingbinding.JTableBinding jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, draftingSearchResultListBean1, eLProperty, tableLease);
         org.jdesktop.swingbinding.JTableBinding.ColumnBinding columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${itemNumber}"));
         columnBinding.setColumnName("Item Number");
@@ -454,7 +448,7 @@ public class DraftingSearchPanel extends ContentPanel {
         columnBinding.setColumnClass(String.class);
         columnBinding.setEditable(false);
         columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${receiveDate}"));
-        columnBinding.setColumnName("Date Received");
+        columnBinding.setColumnName("Receive Date");
         columnBinding.setColumnClass(java.util.Date.class);
         columnBinding.setEditable(false);
         columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${location}"));
@@ -465,18 +459,16 @@ public class DraftingSearchPanel extends ContentPanel {
         columnBinding.setColumnName("Plan Number");
         columnBinding.setColumnClass(String.class);
         columnBinding.setEditable(false);
-        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${reference}"));
-        columnBinding.setColumnName("Reference");
-        columnBinding.setColumnClass(String.class);
-        columnBinding.setEditable(false);
-        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${drawDeed}"));
-        columnBinding.setColumnName("Deed Drawn By");
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${referInfo}"));
+        columnBinding.setColumnName("Refer Info");
         columnBinding.setColumnClass(String.class);
         columnBinding.setEditable(false);
         columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${natureOfSurvey}"));
-        columnBinding.setColumnName("Nature of Survey");
+        columnBinding.setColumnName("Nature Of Survey");
         columnBinding.setColumnClass(String.class);
-        columnBinding.setEditable(false);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${deedNumber}"));
+        columnBinding.setColumnName("Deed Number");
+        columnBinding.setColumnClass(String.class);
         bindingGroup.addBinding(jTableBinding);
         jTableBinding.bind();
         tableLease.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -485,6 +477,15 @@ public class DraftingSearchPanel extends ContentPanel {
             }
         });
         jScrollPane3.setViewportView(tableLease);
+        tableLease.getColumnModel().getColumn(0).setHeaderValue(bundle1.getString("DraftingSearchPanel.tableLease.columnModel.title0")); // NOI18N
+        tableLease.getColumnModel().getColumn(1).setHeaderValue(bundle1.getString("DraftingSearchPanel.tableLease.columnModel.title1")); // NOI18N
+        tableLease.getColumnModel().getColumn(2).setHeaderValue(bundle1.getString("DraftingSearchPanel.tableLease.columnModel.title2")); // NOI18N
+        tableLease.getColumnModel().getColumn(3).setHeaderValue(bundle1.getString("DraftingSearchPanel.tableLease.columnModel.title3")); // NOI18N
+        tableLease.getColumnModel().getColumn(4).setHeaderValue(bundle1.getString("DraftingSearchPanel.tableLease.columnModel.title4")); // NOI18N
+        tableLease.getColumnModel().getColumn(5).setHeaderValue(bundle1.getString("DraftingSearchPanel.tableLease.columnModel.title5")); // NOI18N
+        tableLease.getColumnModel().getColumn(6).setHeaderValue(bundle1.getString("DraftingSearchPanel.tableLease.columnModel.title6")); // NOI18N
+        tableLease.getColumnModel().getColumn(7).setHeaderValue(bundle1.getString("DraftingSearchPanel.tableLease.columnModel.title8")); // NOI18N
+        tableLease.getColumnModel().getColumn(8).setHeaderValue(bundle1.getString("DraftingSearchPanel.tableLease.columnModel.title9")); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
