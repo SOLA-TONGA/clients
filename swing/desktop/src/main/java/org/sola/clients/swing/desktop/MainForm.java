@@ -453,7 +453,7 @@ public class MainForm extends javax.swing.JFrame {
         SolaTask t = new SolaTask<Void, Void>() {
             @Override
             public Void doTask() {
-                setMessage(MessageUtility.getLocalizedMessageText(ClientMessage.PROGRESS_MSG_OPEN_DRAUGHTING_SEARCH));
+                setMessage(MessageUtility.getLocalizedMessageText(ClientMessage.PROGRESS_MSG_OPEN_DRAFTING_SEARCH));
                 if (!pnlContent.isPanelOpened(MainContentPanel.CARD_DRAUGHTING_SEARCH)) {
                     DraftingSearchPanel draughtingSearch = new DraftingSearchPanel();
                     setDraughtingSearch(draughtingSearch);

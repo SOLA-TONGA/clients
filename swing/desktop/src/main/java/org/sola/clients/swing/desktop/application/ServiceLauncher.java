@@ -355,7 +355,7 @@ public final class ServiceLauncher {
         // Draft Form
         serviceMap.put(RequestTypeBean.CODE_DRAUGHTING,
                 new String[]{DraftForm.class.getName(), MainContentPanel.CARD_DRAUGHTING,
-            ClientMessage.PROGRESS_MSG_OPEN_DRAUGHTING_FORM});
+            ClientMessage.PROGRESS_MSG_OPEN_DRAFTING_FORM});
 
     }
 
