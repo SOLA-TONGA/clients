@@ -40,22 +40,23 @@
                           <Component id="jPanel12" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="jPanel16" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="jPanel21" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="jPanel15" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace pref="65" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="jPanel16" max="32767" attributes="0"/>
+                          <Component id="jPanel15" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jPanel21" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
+                              <EmptySpace pref="23" max="32767" attributes="0"/>
+                              <Component id="jPanel20" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
                               <Component id="jPanel18" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="jPanel17" min="-2" max="-2" attributes="0"/>
+                              <Component id="jPanel17" max="32767" attributes="0"/>
                           </Group>
-                          <Component id="jPanel20" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <Component id="txtReference" alignment="0" max="32767" attributes="0"/>
@@ -67,11 +68,11 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="1" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
               <Component id="headerPanel" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
               <Component id="jToolBar1" min="-2" pref="25" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
               <Component id="jPanel8" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jPanel9" min="-2" pref="52" max="-2" attributes="0"/>
@@ -93,7 +94,7 @@
               <Component id="labReference" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="txtReference" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="124" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="121" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -561,8 +562,13 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="labTraceDate" alignment="0" pref="99" max="32767" attributes="0"/>
-              <Component id="txtTraceDate" alignment="0" max="32767" attributes="0"/>
+              <Component id="labTraceDate" alignment="0" max="32767" attributes="0"/>
+              <Group type="102" alignment="0" attributes="0">
+                  <Component id="txtTraceDate" min="-2" pref="96" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="btnShowCalendarTraceDate" min="-2" pref="17" max="-2" attributes="0"/>
+                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+              </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
@@ -570,7 +576,10 @@
               <Group type="102" alignment="1" attributes="0">
                   <Component id="labTraceDate" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="txtTraceDate" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="txtTraceDate" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnShowCalendarTraceDate" min="-2" max="-2" attributes="0"/>
+                  </Group>
               </Group>
           </Group>
         </DimensionLayout>
@@ -593,6 +602,23 @@
             <BindingProperty name="value" source="draftingSearchResultListBean" sourcePath="${selectedDraftingSearchResult.traceDate}" target="txtTraceDate" targetPath="value" updateStrategy="0" immediately="false"/>
           </BindingProperties>
         </Component>
+        <Component class="javax.swing.JButton" name="btnShowCalendarTraceDate">
+          <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/images/common/calendar.png"/>
+            </Property>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+              <ResourceString bundle="org/sola/clients/swing/desktop/drafting/Bundle.properties" key="DraftingForm.btnShowCalendarTraceDate.text" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+            </Property>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="null"/>
+            </Property>
+            <Property name="horizontalTextPosition" type="int" value="0"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnShowCalendarTraceDateActionPerformed"/>
+          </Events>
+        </Component>
       </SubComponents>
     </Container>
     <Container class="javax.swing.JPanel" name="jPanel16">
@@ -600,8 +626,12 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="labSendDate" alignment="0" pref="99" max="32767" attributes="0"/>
-              <Component id="txtSendDate" alignment="0" max="32767" attributes="0"/>
+              <Component id="labSendDate" alignment="0" pref="129" max="32767" attributes="0"/>
+              <Group type="102" alignment="0" attributes="0">
+                  <Component id="txtSendDate" min="-2" pref="97" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="btnShowCalendarSendDate" min="-2" pref="17" max="-2" attributes="0"/>
+              </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
@@ -609,7 +639,10 @@
               <Group type="102" alignment="1" attributes="0">
                   <Component id="labSendDate" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="txtSendDate" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="txtSendDate" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnShowCalendarSendDate" min="-2" max="-2" attributes="0"/>
+                  </Group>
               </Group>
           </Group>
         </DimensionLayout>
@@ -632,6 +665,23 @@
             <BindingProperty name="value" source="draftingSearchResultListBean" sourcePath="${selectedDraftingSearchResult.sentDate}" target="txtSendDate" targetPath="value" updateStrategy="0" immediately="false"/>
           </BindingProperties>
         </Component>
+        <Component class="javax.swing.JButton" name="btnShowCalendarSendDate">
+          <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/images/common/calendar.png"/>
+            </Property>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+              <ResourceString bundle="org/sola/clients/swing/desktop/drafting/Bundle.properties" key="DraftingForm.btnShowCalendarSendDate.text" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+            </Property>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="null"/>
+            </Property>
+            <Property name="horizontalTextPosition" type="int" value="0"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnShowCalendarSendDateActionPerformed"/>
+          </Events>
+        </Component>
       </SubComponents>
     </Container>
     <Container class="javax.swing.JPanel" name="jPanel17">
@@ -639,8 +689,12 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="labPlottingDate" alignment="0" pref="99" max="32767" attributes="0"/>
-              <Component id="txtPlottingDate" alignment="0" max="32767" attributes="0"/>
+              <Component id="labPlottingDate" max="32767" attributes="0"/>
+              <Group type="102" attributes="0">
+                  <Component id="txtPlottingDate" min="-2" pref="93" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="btnShowCalendarPlottingDate" min="-2" max="-2" attributes="0"/>
+              </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
@@ -648,7 +702,10 @@
               <Group type="102" alignment="1" attributes="0">
                   <Component id="labPlottingDate" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="txtPlottingDate" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="txtPlottingDate" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnShowCalendarPlottingDate" min="-2" max="-2" attributes="0"/>
+                  </Group>
               </Group>
           </Group>
         </DimensionLayout>
@@ -670,6 +727,23 @@
           <BindingProperties>
             <BindingProperty name="value" source="draftingSearchResultListBean" sourcePath="${selectedDraftingSearchResult.plottingDate}" target="txtPlottingDate" targetPath="value" updateStrategy="0" immediately="false"/>
           </BindingProperties>
+        </Component>
+        <Component class="javax.swing.JButton" name="btnShowCalendarPlottingDate">
+          <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/images/common/calendar.png"/>
+            </Property>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+              <ResourceString bundle="org/sola/clients/swing/desktop/drafting/Bundle.properties" key="DraftingForm.btnShowCalendarPlottingDate.text" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+            </Property>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="null"/>
+            </Property>
+            <Property name="horizontalTextPosition" type="int" value="0"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnShowCalendarPlottingDateActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
@@ -716,7 +790,7 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Component id="txtDrawDeed" alignment="0" max="32767" attributes="0"/>
-              <Component id="labDrawDeed" alignment="0" max="32767" attributes="0"/>
+              <Component id="labDrawDeed" alignment="0" pref="339" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
@@ -752,8 +826,13 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="labReturnDate" alignment="0" pref="120" max="32767" attributes="0"/>
-              <Component id="txtReturnDate" alignment="0" max="32767" attributes="0"/>
+              <Component id="labReturnDate" alignment="0" max="32767" attributes="0"/>
+              <Group type="102" alignment="0" attributes="0">
+                  <Component id="txtReturnDate" min="-2" pref="105" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="btnShowCalendarReturnDate" min="-2" pref="17" max="-2" attributes="0"/>
+                  <EmptySpace min="0" pref="10" max="32767" attributes="0"/>
+              </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
@@ -761,7 +840,10 @@
               <Group type="102" alignment="1" attributes="0">
                   <Component id="labReturnDate" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="txtReturnDate" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="txtReturnDate" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnShowCalendarReturnDate" min="-2" max="-2" attributes="0"/>
+                  </Group>
               </Group>
           </Group>
         </DimensionLayout>
@@ -783,6 +865,23 @@
           <BindingProperties>
             <BindingProperty name="value" source="draftingSearchResultListBean" sourcePath="${selectedDraftingSearchResult.returnDate}" target="txtReturnDate" targetPath="value" updateStrategy="0" immediately="false"/>
           </BindingProperties>
+        </Component>
+        <Component class="javax.swing.JButton" name="btnShowCalendarReturnDate">
+          <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/images/common/calendar.png"/>
+            </Property>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+              <ResourceString bundle="org/sola/clients/swing/desktop/drafting/Bundle.properties" key="DraftingForm.btnShowCalendarReturnDate.text" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+            </Property>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="null"/>
+            </Property>
+            <Property name="horizontalTextPosition" type="int" value="0"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnShowCalendarReturnDateActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

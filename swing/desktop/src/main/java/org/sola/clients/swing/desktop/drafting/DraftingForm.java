@@ -15,6 +15,8 @@
  */
 package org.sola.clients.swing.desktop.drafting;
 
+import javax.swing.JFormattedTextField;
+import org.sola.clients.swing.common.controls.CalendarForm;
 import org.sola.clients.swing.ui.ContentPanel;
 
 /**
@@ -30,6 +32,10 @@ public class DraftingForm extends ContentPanel {
         initComponents();
     }
 
+    private void showCalendar(JFormattedTextField dateField) {
+        CalendarForm calendar = new CalendarForm(null, true, dateField);
+        calendar.setVisible(true);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -78,12 +84,15 @@ public class DraftingForm extends ContentPanel {
         jPanel15 = new javax.swing.JPanel();
         labTraceDate = new javax.swing.JLabel();
         txtTraceDate = new javax.swing.JFormattedTextField();
+        btnShowCalendarTraceDate = new javax.swing.JButton();
         jPanel16 = new javax.swing.JPanel();
         labSendDate = new javax.swing.JLabel();
         txtSendDate = new javax.swing.JFormattedTextField();
+        btnShowCalendarSendDate = new javax.swing.JButton();
         jPanel17 = new javax.swing.JPanel();
         labPlottingDate = new javax.swing.JLabel();
         txtPlottingDate = new javax.swing.JFormattedTextField();
+        btnShowCalendarPlottingDate = new javax.swing.JButton();
         jPanel18 = new javax.swing.JPanel();
         txtPlottingBy = new javax.swing.JTextField();
         labPlottingBy = new javax.swing.JLabel();
@@ -93,6 +102,7 @@ public class DraftingForm extends ContentPanel {
         jPanel21 = new javax.swing.JPanel();
         labReturnDate = new javax.swing.JLabel();
         txtReturnDate = new javax.swing.JFormattedTextField();
+        btnShowCalendarReturnDate = new javax.swing.JButton();
         labReference = new javax.swing.JLabel();
         txtReference = new javax.swing.JTextField();
         jToolBar1 = new javax.swing.JToolBar();
@@ -377,19 +387,35 @@ public class DraftingForm extends ContentPanel {
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, draftingSearchResultListBean, org.jdesktop.beansbinding.ELProperty.create("${selectedDraftingSearchResult.traceDate}"), txtTraceDate, org.jdesktop.beansbinding.BeanProperty.create("value"));
         bindingGroup.addBinding(binding);
 
+        btnShowCalendarTraceDate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/calendar.png"))); // NOI18N
+        btnShowCalendarTraceDate.setText(bundle.getString("DraftingForm.btnShowCalendarTraceDate.text")); // NOI18N
+        btnShowCalendarTraceDate.setBorder(null);
+        btnShowCalendarTraceDate.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnShowCalendarTraceDate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnShowCalendarTraceDateActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel15Layout = new javax.swing.GroupLayout(jPanel15);
         jPanel15.setLayout(jPanel15Layout);
         jPanel15Layout.setHorizontalGroup(
             jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(labTraceDate, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE)
-            .addComponent(txtTraceDate)
+            .addComponent(labTraceDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel15Layout.createSequentialGroup()
+                .addComponent(txtTraceDate, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnShowCalendarTraceDate, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel15Layout.setVerticalGroup(
             jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel15Layout.createSequentialGroup()
                 .addComponent(labTraceDate)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtTraceDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtTraceDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnShowCalendarTraceDate)))
         );
 
         labSendDate.setText(bundle.getString("DraftingForm.labSendDate.text")); // NOI18N
@@ -399,19 +425,34 @@ public class DraftingForm extends ContentPanel {
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, draftingSearchResultListBean, org.jdesktop.beansbinding.ELProperty.create("${selectedDraftingSearchResult.sentDate}"), txtSendDate, org.jdesktop.beansbinding.BeanProperty.create("value"));
         bindingGroup.addBinding(binding);
 
+        btnShowCalendarSendDate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/calendar.png"))); // NOI18N
+        btnShowCalendarSendDate.setText(bundle.getString("DraftingForm.btnShowCalendarSendDate.text")); // NOI18N
+        btnShowCalendarSendDate.setBorder(null);
+        btnShowCalendarSendDate.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnShowCalendarSendDate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnShowCalendarSendDateActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel16Layout = new javax.swing.GroupLayout(jPanel16);
         jPanel16.setLayout(jPanel16Layout);
         jPanel16Layout.setHorizontalGroup(
             jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(labSendDate, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE)
-            .addComponent(txtSendDate)
+            .addComponent(labSendDate, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
+            .addGroup(jPanel16Layout.createSequentialGroup()
+                .addComponent(txtSendDate, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnShowCalendarSendDate, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel16Layout.setVerticalGroup(
             jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel16Layout.createSequentialGroup()
                 .addComponent(labSendDate)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtSendDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtSendDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnShowCalendarSendDate)))
         );
 
         labPlottingDate.setText(bundle.getString("DraftingForm.labPlottingDate.text")); // NOI18N
@@ -421,19 +462,34 @@ public class DraftingForm extends ContentPanel {
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, draftingSearchResultListBean, org.jdesktop.beansbinding.ELProperty.create("${selectedDraftingSearchResult.plottingDate}"), txtPlottingDate, org.jdesktop.beansbinding.BeanProperty.create("value"));
         bindingGroup.addBinding(binding);
 
+        btnShowCalendarPlottingDate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/calendar.png"))); // NOI18N
+        btnShowCalendarPlottingDate.setText(bundle.getString("DraftingForm.btnShowCalendarPlottingDate.text")); // NOI18N
+        btnShowCalendarPlottingDate.setBorder(null);
+        btnShowCalendarPlottingDate.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnShowCalendarPlottingDate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnShowCalendarPlottingDateActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel17Layout = new javax.swing.GroupLayout(jPanel17);
         jPanel17.setLayout(jPanel17Layout);
         jPanel17Layout.setHorizontalGroup(
             jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(labPlottingDate, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE)
-            .addComponent(txtPlottingDate)
+            .addComponent(labPlottingDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel17Layout.createSequentialGroup()
+                .addComponent(txtPlottingDate, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnShowCalendarPlottingDate))
         );
         jPanel17Layout.setVerticalGroup(
             jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel17Layout.createSequentialGroup()
                 .addComponent(labPlottingDate)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtPlottingDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtPlottingDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnShowCalendarPlottingDate)))
         );
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, draftingSearchResultListBean, org.jdesktop.beansbinding.ELProperty.create("${selectedDraftingSearchResult.plottingBy}"), txtPlottingBy, org.jdesktop.beansbinding.BeanProperty.create("text"));
@@ -467,7 +523,7 @@ public class DraftingForm extends ContentPanel {
         jPanel20Layout.setHorizontalGroup(
             jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(txtDrawDeed)
-            .addComponent(labDrawDeed, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(labDrawDeed, javax.swing.GroupLayout.DEFAULT_SIZE, 339, Short.MAX_VALUE)
         );
         jPanel20Layout.setVerticalGroup(
             jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -485,19 +541,35 @@ public class DraftingForm extends ContentPanel {
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, draftingSearchResultListBean, org.jdesktop.beansbinding.ELProperty.create("${selectedDraftingSearchResult.returnDate}"), txtReturnDate, org.jdesktop.beansbinding.BeanProperty.create("value"));
         bindingGroup.addBinding(binding);
 
+        btnShowCalendarReturnDate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/calendar.png"))); // NOI18N
+        btnShowCalendarReturnDate.setText(bundle.getString("DraftingForm.btnShowCalendarReturnDate.text")); // NOI18N
+        btnShowCalendarReturnDate.setBorder(null);
+        btnShowCalendarReturnDate.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnShowCalendarReturnDate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnShowCalendarReturnDateActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel21Layout = new javax.swing.GroupLayout(jPanel21);
         jPanel21.setLayout(jPanel21Layout);
         jPanel21Layout.setHorizontalGroup(
             jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(labReturnDate, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
-            .addComponent(txtReturnDate)
+            .addComponent(labReturnDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel21Layout.createSequentialGroup()
+                .addComponent(txtReturnDate, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnShowCalendarReturnDate, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 10, Short.MAX_VALUE))
         );
         jPanel21Layout.setVerticalGroup(
             jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel21Layout.createSequentialGroup()
                 .addComponent(labReturnDate)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtReturnDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtReturnDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnShowCalendarReturnDate)))
         );
 
         labReference.setText(bundle.getString("DraftingForm.labReference.text")); // NOI18N
@@ -527,28 +599,29 @@ public class DraftingForm extends ContentPanel {
                             .addComponent(jPanel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jPanel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jPanel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPanel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jPanel21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jPanel15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                                .addComponent(jPanel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jPanel18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jPanel17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jPanel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addComponent(jPanel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addComponent(txtReference)
                     .addComponent(labReference, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addComponent(headerPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -570,13 +643,34 @@ public class DraftingForm extends ContentPanel {
                 .addComponent(labReference)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtReference, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(124, 124, 124))
+                .addGap(121, 121, 121))
         );
 
         bindingGroup.bind();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnShowCalendarReturnDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowCalendarReturnDateActionPerformed
+        showCalendar(txtReturnDate);
+    }//GEN-LAST:event_btnShowCalendarReturnDateActionPerformed
+
+    private void btnShowCalendarSendDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowCalendarSendDateActionPerformed
+        showCalendar(txtSendDate);
+    }//GEN-LAST:event_btnShowCalendarSendDateActionPerformed
+
+    private void btnShowCalendarTraceDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowCalendarTraceDateActionPerformed
+        showCalendar(txtTraceDate);
+    }//GEN-LAST:event_btnShowCalendarTraceDateActionPerformed
+
+    private void btnShowCalendarPlottingDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowCalendarPlottingDateActionPerformed
+        showCalendar(txtPlottingDate);
+    }//GEN-LAST:event_btnShowCalendarPlottingDateActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private org.sola.clients.swing.common.buttons.BtnSave btnSave;
+    private javax.swing.JButton btnShowCalendarPlottingDate;
+    private javax.swing.JButton btnShowCalendarReturnDate;
+    private javax.swing.JButton btnShowCalendarSendDate;
+    private javax.swing.JButton btnShowCalendarTraceDate;
     private org.sola.clients.beans.drafting.DraftingBean draftingBean;
     private org.sola.clients.beans.drafting.DraftingSearchResultListBean draftingSearchResultListBean;
     private org.sola.clients.swing.ui.HeaderPanel headerPanel;

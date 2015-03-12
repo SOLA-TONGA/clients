@@ -58,7 +58,7 @@ public class DraftingSearchResultListBean extends AbstractBindingListBean{
         return selectedDraftingSearchResult;
     }
 
-    public void setSelectedBaUnitSearchResult(DraftingSearchResultBean selectedDraftingSearchResult) {
+    public void setSelectedDraftingSearchResult(DraftingSearchResultBean selectedDraftingSearchResult) {
         this.selectedDraftingSearchResult = selectedDraftingSearchResult;
         propertySupport.firePropertyChange(SELECTED_DRAFTING_SEARCH_RESULT_PROPERTY, null, this.selectedDraftingSearchResult);
     }

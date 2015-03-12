@@ -54,7 +54,7 @@ public class DraftingSearchResultBean extends AbstractBindingBean{
     public static final String PLOTTING_DATE_PROPERTY = "plottingDate";
     public static final String PLAN_NUMBER_PROPERTY = "planNumber";
     public static final String REFER_INFO_PROPERTY = "reference";
-    private int id; 
+    private String id; 
     private String itemNumber; 
     private Date receiveDate;
     private String firstName;
@@ -77,11 +77,11 @@ public class DraftingSearchResultBean extends AbstractBindingBean{
         super();
     }
     
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
     
