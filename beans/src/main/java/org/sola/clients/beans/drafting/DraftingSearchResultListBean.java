@@ -47,7 +47,7 @@ public class DraftingSearchResultListBean extends AbstractBindingListBean{
     public DraftingSearchResultListBean(){
         super();
     }
-    public ObservableList<DraftingSearchResultBean> getDraughtingResultList() {
+    public ObservableList<DraftingSearchResultBean> getDraftingResultList() {
         if (draughtingResultList == null) {
             draughtingResultList = new SolaObservableList<DraftingSearchResultBean>();
         }
@@ -64,10 +64,10 @@ public class DraftingSearchResultListBean extends AbstractBindingListBean{
     }
     
     public void search(DraftingSearchParamsBean params){
-        getDraughtingResultList().clear();
+        getDraftingResultList().clear();
         DraftingSearchParamsTO searchParams = TypeConverters.BeanToTrasferObject(params, DraftingSearchParamsTO.class);
         TypeConverters.TransferObjectListToBeanList(
                 WSManager.getInstance().getSearchService().searchDrafting(searchParams), 
-                DraftingSearchResultBean.class, (List)getDraughtingResultList());
+                DraftingSearchResultBean.class, (List)getDraftingResultList());
     }
 }

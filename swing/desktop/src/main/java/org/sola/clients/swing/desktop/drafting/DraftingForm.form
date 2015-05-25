@@ -46,18 +46,13 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jPanel21" min="-2" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace pref="23" max="32767" attributes="0"/>
-                              <Component id="jPanel20" max="32767" attributes="0"/>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jPanel18" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="jPanel17" max="32767" attributes="0"/>
-                          </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="jPanel20" max="32767" attributes="0"/>
+                          <Component id="jPanel18" max="32767" attributes="0"/>
                       </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="jPanel17" max="32767" attributes="0"/>
                   </Group>
                   <Component id="txtReference" alignment="0" max="32767" attributes="0"/>
                   <Component id="labReference" alignment="0" max="32767" attributes="0"/>
@@ -94,7 +89,7 @@
               <Component id="labReference" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="txtReference" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="121" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="124" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -165,7 +160,7 @@
           <SubComponents>
             <Component class="javax.swing.JTextField" name="txtItemNumber">
               <BindingProperties>
-                <BindingProperty name="text" source="draftingSearchResultListBean" sourcePath="${selectedDraftingSearchResult.itemNumber}" target="txtItemNumber" targetPath="text" updateStrategy="0" immediately="false">
+                <BindingProperty name="text" source="draftingBean" sourcePath="${itemNumber}" target="txtItemNumber" targetPath="text" updateStrategy="0" immediately="false">
                   <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
                 </BindingProperty>
               </BindingProperties>
@@ -202,7 +197,7 @@
           <SubComponents>
             <Component class="javax.swing.JTextField" name="txtLastName">
               <BindingProperties>
-                <BindingProperty name="text" source="draftingSearchResultListBean" sourcePath="${selectedDraftingSearchResult.lastName}" target="txtLastName" targetPath="text" updateStrategy="0" immediately="false">
+                <BindingProperty name="text" source="draftingBean" sourcePath="${lastName}" target="txtLastName" targetPath="text" updateStrategy="0" immediately="false">
                   <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
                 </BindingProperty>
               </BindingProperties>
@@ -239,7 +234,7 @@
           <SubComponents>
             <Component class="javax.swing.JTextField" name="txtPlanNumber">
               <BindingProperties>
-                <BindingProperty name="text" source="draftingSearchResultListBean" sourcePath="${selectedDraftingSearchResult.planNumber}" target="txtPlanNumber" targetPath="text" updateStrategy="0" immediately="false">
+                <BindingProperty name="text" source="draftingBean" sourcePath="${planNumber}" target="txtPlanNumber" targetPath="text" updateStrategy="0" immediately="false">
                   <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
                 </BindingProperty>
               </BindingProperties>
@@ -276,7 +271,7 @@
           <SubComponents>
             <Component class="javax.swing.JTextField" name="txtFirstName">
               <BindingProperties>
-                <BindingProperty name="text" source="draftingSearchResultListBean" sourcePath="${selectedDraftingSearchResult.firstName}" target="txtFirstName" targetPath="text" updateStrategy="0" immediately="false">
+                <BindingProperty name="text" source="draftingBean" sourcePath="${firstName}" target="txtFirstName" targetPath="text" updateStrategy="0" immediately="false">
                   <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
                 </BindingProperty>
               </BindingProperties>
@@ -298,13 +293,13 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Component id="jPanel7" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
-                  <Component id="jPanel6" max="32767" attributes="0"/>
-                  <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jPanel6" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="jPanel11" max="32767" attributes="0"/>
-                  <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="jPanel10" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
               </Group>
@@ -339,7 +334,7 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="txtLocation" alignment="0" max="32767" attributes="0"/>
-                  <Component id="labLocation" alignment="0" max="32767" attributes="0"/>
+                  <Component id="labLocation" alignment="0" pref="232" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
@@ -356,7 +351,7 @@
           <SubComponents>
             <Component class="javax.swing.JTextField" name="txtLocation">
               <BindingProperties>
-                <BindingProperty name="text" source="draftingSearchResultListBean" sourcePath="${selectedDraftingSearchResult.location}" target="txtLocation" targetPath="text" updateStrategy="0" immediately="false">
+                <BindingProperty name="text" source="draftingBean" sourcePath="${location}" target="txtLocation" targetPath="text" updateStrategy="0" immediately="false">
                   <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
                 </BindingProperty>
               </BindingProperties>
@@ -375,8 +370,12 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="labDateReceived" pref="99" max="32767" attributes="0"/>
-                  <Component id="txtDateReceived" alignment="0" max="32767" attributes="0"/>
+                  <Component id="labDateReceived" pref="129" max="32767" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Component id="txtDateReceived" min="-2" pref="103" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="btnShowCalendarReceiveDate" min="-2" max="-2" attributes="0"/>
+                  </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
@@ -384,7 +383,10 @@
                   <Group type="102" alignment="1" attributes="0">
                       <Component id="labDateReceived" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="txtDateReceived" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="txtDateReceived" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnShowCalendarReceiveDate" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -404,8 +406,25 @@
                 </Property>
               </Properties>
               <BindingProperties>
-                <BindingProperty name="value" source="draftingSearchResultListBean" sourcePath="${selectedDraftingSearchResult.receiveDate}" target="txtDateReceived" targetPath="value" updateStrategy="0" immediately="false"/>
+                <BindingProperty name="value" source="draftingBean" sourcePath="${receiveDate}" target="txtDateReceived" targetPath="value" updateStrategy="0" immediately="false"/>
               </BindingProperties>
+            </Component>
+            <Component class="javax.swing.JButton" name="btnShowCalendarReceiveDate">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/images/common/calendar.png"/>
+                </Property>
+                <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+                  <ResourceString bundle="org/sola/clients/swing/desktop/drafting/Bundle.properties" key="DraftingForm.btnShowCalendarReceiveDate.text" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+                </Property>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="null"/>
+                </Property>
+                <Property name="horizontalTextPosition" type="int" value="0"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnShowCalendarReceiveDateActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -438,7 +457,7 @@
             </Component>
             <Component class="javax.swing.JTextField" name="txtDeedNumber">
               <BindingProperties>
-                <BindingProperty name="text" source="draftingSearchResultListBean" sourcePath="${selectedDraftingSearchResult.deedNumber}" target="txtDeedNumber" targetPath="text" updateStrategy="0" immediately="false">
+                <BindingProperty name="text" source="draftingBean" sourcePath="${deedNumber}" target="txtDeedNumber" targetPath="text" updateStrategy="0" immediately="false">
                   <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
                 </BindingProperty>
               </BindingProperties>
@@ -450,7 +469,7 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="labNatureOfSurvey" alignment="0" max="32767" attributes="0"/>
+                  <Component id="labNatureOfSurvey" alignment="0" pref="319" max="32767" attributes="0"/>
                   <Component id="txtNatureOfSurvey" alignment="0" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
@@ -474,7 +493,7 @@
             </Component>
             <Component class="javax.swing.JTextField" name="txtNatureOfSurvey">
               <BindingProperties>
-                <BindingProperty name="text" source="draftingSearchResultListBean" sourcePath="${selectedDraftingSearchResult.natureOfSurvey}" target="txtNatureOfSurvey" targetPath="text" updateStrategy="0" immediately="false">
+                <BindingProperty name="text" source="draftingBean" sourcePath="${natureOfSurvey}" target="txtNatureOfSurvey" targetPath="text" updateStrategy="0" immediately="false">
                   <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
                 </BindingProperty>
               </BindingProperties>
@@ -506,7 +525,7 @@
       <SubComponents>
         <Component class="javax.swing.JTextField" name="txtTraceBy">
           <BindingProperties>
-            <BindingProperty name="text" source="draftingSearchResultListBean" sourcePath="${selectedDraftingSearchResult.traceBy}" target="txtTraceBy" targetPath="text" updateStrategy="0" immediately="false">
+            <BindingProperty name="text" source="draftingBean" sourcePath="${traceBy}" target="txtTraceBy" targetPath="text" updateStrategy="0" immediately="false">
               <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
             </BindingProperty>
           </BindingProperties>
@@ -543,7 +562,7 @@
       <SubComponents>
         <Component class="javax.swing.JTextField" name="txtSentTo">
           <BindingProperties>
-            <BindingProperty name="text" source="draftingSearchResultListBean" sourcePath="${selectedDraftingSearchResult.sentTo}" target="txtSentTo" targetPath="text" updateStrategy="0" immediately="false">
+            <BindingProperty name="text" source="draftingBean" sourcePath="${sentTo}" target="txtSentTo" targetPath="text" updateStrategy="0" immediately="false">
               <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
             </BindingProperty>
           </BindingProperties>
@@ -599,7 +618,7 @@
             </Property>
           </Properties>
           <BindingProperties>
-            <BindingProperty name="value" source="draftingSearchResultListBean" sourcePath="${selectedDraftingSearchResult.traceDate}" target="txtTraceDate" targetPath="value" updateStrategy="0" immediately="false"/>
+            <BindingProperty name="value" source="draftingBean" sourcePath="${traceDate}" target="txtTraceDate" targetPath="value" updateStrategy="0" immediately="false"/>
           </BindingProperties>
         </Component>
         <Component class="javax.swing.JButton" name="btnShowCalendarTraceDate">
@@ -662,7 +681,7 @@
             </Property>
           </Properties>
           <BindingProperties>
-            <BindingProperty name="value" source="draftingSearchResultListBean" sourcePath="${selectedDraftingSearchResult.sentDate}" target="txtSendDate" targetPath="value" updateStrategy="0" immediately="false"/>
+            <BindingProperty name="value" source="draftingBean" sourcePath="${sentDate}" target="txtSendDate" targetPath="value" updateStrategy="0" immediately="false"/>
           </BindingProperties>
         </Component>
         <Component class="javax.swing.JButton" name="btnShowCalendarSendDate">
@@ -689,7 +708,7 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="labPlottingDate" max="32767" attributes="0"/>
+              <Component id="labPlottingDate" pref="122" max="32767" attributes="0"/>
               <Group type="102" attributes="0">
                   <Component id="txtPlottingDate" min="-2" pref="93" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
@@ -725,7 +744,7 @@
             </Property>
           </Properties>
           <BindingProperties>
-            <BindingProperty name="value" source="draftingSearchResultListBean" sourcePath="${selectedDraftingSearchResult.plottingDate}" target="txtPlottingDate" targetPath="value" updateStrategy="0" immediately="false"/>
+            <BindingProperty name="value" source="draftingBean" sourcePath="${plottingDate}" target="txtPlottingDate" targetPath="value" updateStrategy="0" immediately="false"/>
           </BindingProperties>
         </Component>
         <Component class="javax.swing.JButton" name="btnShowCalendarPlottingDate">
@@ -770,7 +789,7 @@
       <SubComponents>
         <Component class="javax.swing.JTextField" name="txtPlottingBy">
           <BindingProperties>
-            <BindingProperty name="text" source="draftingSearchResultListBean" sourcePath="${selectedDraftingSearchResult.plottingBy}" target="txtPlottingBy" targetPath="text" updateStrategy="0" immediately="false">
+            <BindingProperty name="text" source="draftingBean" sourcePath="${plottingBy}" target="txtPlottingBy" targetPath="text" updateStrategy="0" immediately="false">
               <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
             </BindingProperty>
           </BindingProperties>
@@ -790,7 +809,7 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Component id="txtDrawDeed" alignment="0" max="32767" attributes="0"/>
-              <Component id="labDrawDeed" alignment="0" pref="339" max="32767" attributes="0"/>
+              <Component id="labDrawDeed" alignment="0" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
@@ -807,7 +826,7 @@
       <SubComponents>
         <Component class="javax.swing.JTextField" name="txtDrawDeed">
           <BindingProperties>
-            <BindingProperty name="text" source="draftingSearchResultListBean" sourcePath="${selectedDraftingSearchResult.drawDeed}" target="txtDrawDeed" targetPath="text" updateStrategy="0" immediately="false">
+            <BindingProperty name="text" source="draftingBean" sourcePath="${drawDeed}" target="txtDrawDeed" targetPath="text" updateStrategy="0" immediately="false">
               <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
             </BindingProperty>
           </BindingProperties>
@@ -863,7 +882,7 @@
             </Property>
           </Properties>
           <BindingProperties>
-            <BindingProperty name="value" source="draftingSearchResultListBean" sourcePath="${selectedDraftingSearchResult.returnDate}" target="txtReturnDate" targetPath="value" updateStrategy="0" immediately="false"/>
+            <BindingProperty name="value" source="draftingBean" sourcePath="${returnDate}" target="txtReturnDate" targetPath="value" updateStrategy="0" immediately="false"/>
           </BindingProperties>
         </Component>
         <Component class="javax.swing.JButton" name="btnShowCalendarReturnDate">
@@ -894,7 +913,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="txtReference">
       <BindingProperties>
-        <BindingProperty name="text" source="draftingSearchResultListBean" sourcePath="${selectedDraftingSearchResult.referInfo}" target="txtReference" targetPath="text" updateStrategy="0" immediately="false">
+        <BindingProperty name="text" source="draftingBean" sourcePath="${reference}" target="txtReference" targetPath="text" updateStrategy="0" immediately="false">
           <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
         </BindingProperty>
       </BindingProperties>
@@ -911,6 +930,9 @@
           <Properties>
             <Property name="verticalTextPosition" type="int" value="3"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSaveActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

@@ -199,7 +199,7 @@ public class PartySearchPanel extends JPanel {
     private void firePartyEvent(String propertyName) {
         if (partySearchResuls.getSelectedPartySearchResult() != null) {
             firePropertyChange(propertyName, null,
-                    PartyBean.getParty(partySearchResuls.getSelectedPartySearchResult().getId()));
+            PartyBean.getParty(partySearchResuls.getSelectedPartySearchResult().getId()));
         }
     }
 

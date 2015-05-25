@@ -30,7 +30,6 @@ package org.sola.clients.beans.drafting;
 import java.util.Date;
 import org.sola.clients.beans.AbstractBindingBean;
 import org.sola.clients.beans.converters.TypeConverters;
-import org.sola.clients.beans.party.PartyBean;
 import org.sola.services.boundary.wsclients.WSManager;
 import org.sola.webservices.transferobjects.EntityAction;
 import org.sola.webservices.transferobjects.casemanagement.DraftingTO;
@@ -40,7 +39,6 @@ import org.sola.webservices.transferobjects.casemanagement.DraftingTO;
  * @author Admin
  */
 public class DraftingBean extends AbstractBindingBean{
-    public static final String DRAUGHTING_ID_PROPERTY = "id";
     public static final String ITEM_NUMBER_PROPERTY = "itemNumber";
     public static final String RECEIVE_DATE_PROPERTY = "receiveDate";
     public static final String FIRST_NAME_PROPERTY = "firstName";
@@ -58,7 +56,6 @@ public class DraftingBean extends AbstractBindingBean{
     public static final String PLOTTING_DATE_PROPERTY = "plottingDate";
     public static final String PLAN_NUMBER_PROPERTY = "planNumber";
     public static final String REFERENCE_PROPERTY = "reference";
-    private String id; 
     private String itemNumber; 
     private Date receiveDate;
     private String firstName;
@@ -79,14 +76,6 @@ public class DraftingBean extends AbstractBindingBean{
 
     public DraftingBean(){
         super();
-    }
-    
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
     
     public String getItemNumber() {
@@ -260,26 +249,30 @@ public class DraftingBean extends AbstractBindingBean{
         propertySupport.firePropertyChange(REFERENCE_PROPERTY, oldValue, value);
     }
     
-    public boolean saveParty() {
-        DraftingTO drafting = TypeConverters.BeanToTrasferObject(this, DraftingTO.class);
-        
-        drafting = WSManager.getInstance().getCaseManagementService().saveDrafting(drafting);
-        TypeConverters.TransferObjectToBean(drafting, DraftingBean.class, this);
-        return true;
-    }
-    
-    public static DraftingBean getDrafting(String id){
-        if(id == null || id.length()<1){
+    public static DraftingBean getDrafting(String draftingId){
+        if(draftingId == null || draftingId.length()<1){
             return null;
         }
-        DraftingTO draftingTO = WSManager.getInstance().getCaseManagementService().getDrafting(id);
+        DraftingTO draftingTO = WSManager.getInstance().getCaseManagementService().getDrafting(draftingId);
         return TypeConverters.TransferObjectToBean(draftingTO, DraftingBean.class, null);
     }
     
-    public static void removeDrafting(String id){
-        if(id == null || id.length()<1){
+    public static void remove(String draftingId){
+        if(draftingId == null || draftingId.length()<1){
             return;
         }
+        DraftingTO draftingTO = WSManager.getInstance().getCaseManagementService().getDrafting(draftingId);
+        draftingTO.setEntityAction(EntityAction.DELETE);
+        WSManager.getInstance().getCaseManagementService().saveDrafting(draftingTO);
+    }
+    
+    public void saveDrafting() {
+        DraftingTO drafting = TypeConverters.BeanToTrasferObject(this, DraftingTO.class);
+        drafting = WSManager.getInstance().getCaseManagementService().saveDrafting(drafting);
+        TypeConverters.TransferObjectToBean(drafting, DraftingBean.class, this);
+    }  
+    
+    public static void removeDrafting(String id){
         DraftingTO draftingTO = WSManager.getInstance().getCaseManagementService().getDrafting(id);
         draftingTO.setEntityAction(EntityAction.DELETE);
         WSManager.getInstance().getCaseManagementService().saveDrafting(draftingTO);
