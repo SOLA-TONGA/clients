@@ -1,17 +1,31 @@
-/*
- * Copyright 2014 Food and Agriculture Organization of the United Nations (FAO).
+/**
+ * ******************************************************************************************
+ * Copyright (C) 2014 - Food and Agriculture Organization of the United Nations
+ * (FAO). All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ * 1. Redistributions of source code must retain the above copyright notice,this
+ * list of conditions and the following disclaimer. 2. Redistributions in binary
+ * form must reproduce the above copyright notice,this list of conditions and
+ * the following disclaimer in the documentation and/or other materials provided
+ * with the distribution. 3. Neither the name of FAO nor the names of its
+ * contributors may be used to endorse or promote products derived from this
+ * software without specific prior written permission.
  *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ * ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
+ * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,PROCUREMENT OF
+ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+ * CONTRACT,STRICT LIABILITY,OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING
+ * IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ * POSSIBILITY OF SUCH DAMAGE.
+ * *********************************************************************************************
  */
 package org.sola.clients.swing.desktop.drafting;
 
@@ -56,26 +70,23 @@ public class DraftingSearchPanel extends ContentPanel {
      */
     public DraftingSearchPanel() {
         initComponents();
-        
+
         draftingSearchResultListBean.addPropertyChangeListener(new PropertyChangeListener() {
             @Override
             public void propertyChange(PropertyChangeEvent evt) {
                 if (evt.getPropertyName().equals(DraftingSearchResultListBean.SELECTED_DRAFTING_SEARCH_RESULT_PROPERTY)) {
-                    btnOpenItem.setEnabled(evt.getNewValue() != null);
-                    btnEdit.setEnabled(evt.getNewValue() != null);
-                    btnRemove.setEnabled(evt.getNewValue() != null);
                     customizeDraftingButtons();
                 }
             }
         });
         customizeDraftingButtons();
     }
-    
+
     private void showCalendar(JFormattedTextField dateField) {
         CalendarForm calendar = new CalendarForm(null, true, dateField);
         calendar.setVisible(true);
     }
-    
+
     private void executeSearch(final DraftingSearchParamsBean params,
             final JLabel lblSearchCount, final DraftingSearchResultListBean results) {
 
@@ -99,9 +110,10 @@ public class DraftingSearchPanel extends ContentPanel {
         };
         TaskManager.getInstance().runTask(t);
     }
-     
+
     /**
-     * Enables or disables Drafting management buttons, based on security rights.
+     * Enables or disables Drafting management buttons, based on security
+     * rights.
      */
     private void customizeDraftingButtons() {
         boolean hasDraftingEditRole = SecurityBean.isInRole(RolesConstants.DRAFTING_EDIT);
@@ -109,18 +121,18 @@ public class DraftingSearchPanel extends ContentPanel {
 
         enabled = enabled && hasDraftingEditRole;
 
-        if (enabled && draftingSearchResultListBean.getSelectedDraftingSearchResult()!= null) {
+        if (enabled && draftingSearchResultListBean.getSelectedDraftingSearchResult() != null) {
             enabled = SecurityBean.isInRole(RolesConstants.DRAFTING_EDIT);
         }
         btnAdd.setEnabled(hasDraftingEditRole);
         btnEdit.setEnabled(enabled);
-        btnRemove.setEnabled(enabled);
+        btnRemove.setEnabled(enabled && SecurityBean.isInRole(RolesConstants.DRAFTING_REMOVE));
         btnOpenItem.setEnabled(enabled);
 
     }
-    
-    public void addDrafting(){
-        
+
+    public void addDrafting() {
+
         SolaTask t = new SolaTask<Void, Void>() {
 
             @Override
@@ -132,31 +144,69 @@ public class DraftingSearchPanel extends ContentPanel {
             }
         };
         TaskManager.getInstance().runTask(t);
-        
+
     }
-    
-    public void removeDrafting(){
-        DraftingBean.removeDrafting(draftingSearchResultListBean.getSelectedDraftingSearchResult().getId());        
-    }
-    
-    public void editDrafting(){
+
+    public void removeDrafting() {
+
         if (draftingSearchResultListBean.getSelectedDraftingSearchResult() != null) {
-            DraftingBean.getDrafting(draftingSearchResultListBean.getSelectedDraftingSearchResult().getId());
+            int button = MessageUtility.displayMessage(ClientMessage.DRAFT_REMOVE_ITEM,
+                    new Object [] {draftingSearchResultListBean.getSelectedDraftingSearchResult().getItemNumber()});
+            if (button == MessageUtility.BUTTON_ONE) {
+                SolaTask t = new SolaTask<Void, Void>() {
+
+                    @Override
+                    public Void doTask() {
+                        setMessage(MessageUtility.getLocalizedMessageText(ClientMessage.PROGRESS_MSG_OPEN_DRAFTING_FORM));
+                        DraftingBean.removeDrafting(draftingSearchResultListBean.getSelectedDraftingSearchResult().getId());
+                        return null;
+                    }
+
+                    @Override
+                    public void taskDone() {
+                        // Rerun the search to show that the item is removed. 
+                        executeSearch(draftingSearchParamsBean, lblSearchCount, draftingSearchResultListBean);
+                    }
+                };
+                TaskManager.getInstance().runTask(t);
+            }
+        }
+
+    }
+
+    public void editDrafting() {
+        if (draftingSearchResultListBean.getSelectedDraftingSearchResult() != null) {
             SolaTask t = new SolaTask<Void, Void>() {
 
-            @Override
-            public Void doTask() {
-                setMessage(MessageUtility.getLocalizedMessageText(ClientMessage.PROGRESS_MSG_OPEN_DRAFTING_FORM));
-                DraftingForm form = new DraftingForm();
-                MainForm.getInstance().getMainContentPanel().addPanel(form, MainContentPanel.CARD_DRAFTING_FORM, true);
-                return null;
-            }
-        };
-        TaskManager.getInstance().runTask(t);
+                @Override
+                public Void doTask() {
+                    setMessage(MessageUtility.getLocalizedMessageText(ClientMessage.PROGRESS_MSG_OPEN_DRAFTING_FORM));
+                    DraftingForm form = new DraftingForm(DraftingBean.getDrafting(draftingSearchResultListBean.getSelectedDraftingSearchResult().getId()), false);
+                    MainForm.getInstance().getMainContentPanel().addPanel(form, MainContentPanel.CARD_DRAFTING_FORM, true);
+                    return null;
+                }
+            };
+            TaskManager.getInstance().runTask(t);
         }
     }
 
-    public void clearDrafting(){
+    public void openDrafting() {
+        if (draftingSearchResultListBean.getSelectedDraftingSearchResult() != null) {
+            SolaTask t = new SolaTask<Void, Void>() {
+
+                @Override
+                public Void doTask() {
+                    setMessage(MessageUtility.getLocalizedMessageText(ClientMessage.PROGRESS_MSG_OPEN_DRAFTING_FORM));
+                    DraftingForm form = new DraftingForm(DraftingBean.getDrafting(draftingSearchResultListBean.getSelectedDraftingSearchResult().getId()), true);
+                    MainForm.getInstance().getMainContentPanel().addPanel(form, MainContentPanel.CARD_DRAFTING_FORM, true);
+                    return null;
+                }
+            };
+            TaskManager.getInstance().runTask(t);
+        }
+    }
+
+    public void clearDrafting() {
         txtItemNumber.setText(null);
         txtFirstName.setText(null);
         txtLastName.setText(null);
@@ -165,6 +215,7 @@ public class DraftingSearchPanel extends ContentPanel {
         txtActionDateTo.setValue(null);
         txtActionDateFrom.setValue(null);
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -202,25 +253,26 @@ public class DraftingSearchPanel extends ContentPanel {
         jPanel11 = new javax.swing.JPanel();
         txtFirstName = new javax.swing.JTextField();
         labFirstName = new javax.swing.JLabel();
-        jPanel13 = new javax.swing.JPanel();
-        txtPlanNumber = new javax.swing.JTextField();
-        labPlanNumber = new javax.swing.JLabel();
         jPanel15 = new javax.swing.JPanel();
         txtLastName = new javax.swing.JTextField();
         labLastName = new javax.swing.JLabel();
+        jPanel13 = new javax.swing.JPanel();
+        txtPlanNumber = new javax.swing.JTextField();
+        labPlanNumber = new javax.swing.JLabel();
+        jPanel7 = new javax.swing.JPanel();
+        labTown = new javax.swing.JLabel();
+        txtLocation = new javax.swing.JTextField();
         jPanel6 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         txtActionDateFrom = new WatermarkDate();
         btnShowCalendarFrom = new javax.swing.JButton();
         labActionDateFrom = new javax.swing.JLabel();
-        jPanel7 = new javax.swing.JPanel();
-        labTown = new javax.swing.JLabel();
-        txtLocation = new javax.swing.JTextField();
         jPanel8 = new javax.swing.JPanel();
         labActionDateTo = new javax.swing.JLabel();
         jPanel17 = new javax.swing.JPanel();
         txtActionDateTo = new WatermarkDate();
         btnShowCalendarTo = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         draftingTable = new org.sola.clients.swing.common.controls.JTableWithDefaultStyles();
 
@@ -302,6 +354,11 @@ public class DraftingSearchPanel extends ContentPanel {
 
         btnRemove.setEnabled(false);
         btnRemove.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnRemove.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRemoveActionPerformed(evt);
+            }
+        });
         jToolBar1.add(btnRemove);
         jToolBar1.add(jSeparator1);
 
@@ -313,15 +370,32 @@ public class DraftingSearchPanel extends ContentPanel {
         lblSearchCount.setText(bundle1.getString("DraftingSearchPanel.lblSearchCount.text")); // NOI18N
         jToolBar1.add(lblSearchCount);
 
-        jPanel9.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel1.setLayout(new java.awt.GridLayout(2, 4, 12, 0));
 
         org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, draftingSearchParamsBean, org.jdesktop.beansbinding.ELProperty.create("${itemNumber}"), txtItemNumber, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
 
-        jPanel9.add(txtItemNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 140, -1));
-
         labItemNumber.setText(bundle1.getString("DraftingSearchPanel.labItemNumber.text")); // NOI18N
-        jPanel9.add(labItemNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 160, -1));
+
+        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
+        jPanel9.setLayout(jPanel9Layout);
+        jPanel9Layout.setHorizontalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addComponent(labItemNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(txtItemNumber)
+        );
+        jPanel9Layout.setVerticalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addComponent(labItemNumber)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtItemNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel1.add(jPanel9);
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, draftingSearchParamsBean, org.jdesktop.beansbinding.ELProperty.create("${firstName}"), txtFirstName, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
@@ -332,44 +406,19 @@ public class DraftingSearchPanel extends ContentPanel {
         jPanel11.setLayout(jPanel11Layout);
         jPanel11Layout.setHorizontalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(labFirstName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanel11Layout.createSequentialGroup()
-                .addComponent(txtFirstName)
-                .addContainerGap())
+            .addComponent(labFirstName, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+            .addComponent(txtFirstName)
         );
         jPanel11Layout.setVerticalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel11Layout.createSequentialGroup()
                 .addComponent(labFirstName)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, draftingSearchParamsBean, org.jdesktop.beansbinding.ELProperty.create("${planNumber}"), txtPlanNumber, org.jdesktop.beansbinding.BeanProperty.create("text"));
-        bindingGroup.addBinding(binding);
-
-        labPlanNumber.setText(bundle1.getString("DraftingSearchPanel.labPlanNumber.text")); // NOI18N
-
-        javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
-        jPanel13.setLayout(jPanel13Layout);
-        jPanel13Layout.setHorizontalGroup(
-            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel13Layout.createSequentialGroup()
-                .addComponent(labPlanNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 33, Short.MAX_VALUE))
-            .addGroup(jPanel13Layout.createSequentialGroup()
-                .addComponent(txtPlanNumber)
-                .addContainerGap())
-        );
-        jPanel13Layout.setVerticalGroup(
-            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel13Layout.createSequentialGroup()
-                .addComponent(labPlanNumber)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(txtPlanNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
+        jPanel1.add(jPanel11);
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, draftingSearchParamsBean, org.jdesktop.beansbinding.ELProperty.create("${lastName}"), txtLastName, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
@@ -380,19 +429,65 @@ public class DraftingSearchPanel extends ContentPanel {
         jPanel15.setLayout(jPanel15Layout);
         jPanel15Layout.setHorizontalGroup(
             jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(labLastName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanel15Layout.createSequentialGroup()
-                .addComponent(txtLastName)
-                .addContainerGap())
+            .addComponent(labLastName, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+            .addComponent(txtLastName)
         );
         jPanel15Layout.setVerticalGroup(
             jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel15Layout.createSequentialGroup()
                 .addComponent(labLastName)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtLastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        jPanel1.add(jPanel15);
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, draftingSearchParamsBean, org.jdesktop.beansbinding.ELProperty.create("${planNumber}"), txtPlanNumber, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+
+        labPlanNumber.setText(bundle1.getString("DraftingSearchPanel.labPlanNumber.text")); // NOI18N
+
+        javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
+        jPanel13.setLayout(jPanel13Layout);
+        jPanel13Layout.setHorizontalGroup(
+            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(txtPlanNumber)
+            .addComponent(labPlanNumber, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+        );
+        jPanel13Layout.setVerticalGroup(
+            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel13Layout.createSequentialGroup()
+                .addComponent(labPlanNumber)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtPlanNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel1.add(jPanel13);
+
+        labTown.setText(bundle1.getString("DraftingSearchPanel.labTown.text")); // NOI18N
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, draftingSearchParamsBean, org.jdesktop.beansbinding.ELProperty.create("${location}"), txtLocation, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(labTown, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+            .addComponent(txtLocation)
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addComponent(labTown)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel1.add(jPanel7);
 
         txtActionDateFrom.setFont(new java.awt.Font("Tahoma", 0, 12));
         txtActionDateFrom.setFormatterFactory(FormattersFactory.getInstance().getDateFormatterFactory());
@@ -402,11 +497,6 @@ public class DraftingSearchPanel extends ContentPanel {
 
         txtActionDateFrom.setComponentOrientation(ComponentOrientation.getOrientation(Locale.getDefault()));
         txtActionDateFrom.setHorizontalAlignment(JTextField.LEADING);
-        txtActionDateFrom.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtActionDateFromActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -439,7 +529,7 @@ public class DraftingSearchPanel extends ContentPanel {
                 .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnShowCalendarFrom, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addComponent(labActionDateFrom, javax.swing.GroupLayout.DEFAULT_SIZE, 143, Short.MAX_VALUE)
+            .addComponent(labActionDateFrom, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -452,26 +542,7 @@ public class DraftingSearchPanel extends ContentPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        labTown.setText(bundle1.getString("DraftingSearchPanel.labTown.text")); // NOI18N
-
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, draftingSearchParamsBean, org.jdesktop.beansbinding.ELProperty.create("${location}"), txtLocation, org.jdesktop.beansbinding.BeanProperty.create("text"));
-        bindingGroup.addBinding(binding);
-
-        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-        jPanel7.setLayout(jPanel7Layout);
-        jPanel7Layout.setHorizontalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(labTown, javax.swing.GroupLayout.DEFAULT_SIZE, 267, Short.MAX_VALUE)
-            .addComponent(txtLocation)
-        );
-        jPanel7Layout.setVerticalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
-                .addComponent(labTown)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(15, Short.MAX_VALUE))
-        );
+        jPanel1.add(jPanel6);
 
         labActionDateTo.setText(bundle.getString("ApplicationSearchPanel.labFrom.text")); // NOI18N
 
@@ -513,7 +584,7 @@ public class DraftingSearchPanel extends ContentPanel {
                 .addComponent(jPanel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnShowCalendarTo, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addComponent(labActionDateTo, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE)
+            .addComponent(labActionDateTo, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -526,45 +597,24 @@ public class DraftingSearchPanel extends ContentPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(3, 3, 3)
-                        .addComponent(jPanel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(172, 172, 172))))
+        jPanel1.add(jPanel8);
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 140, Short.MAX_VALUE)
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 51, Short.MAX_VALUE)
         );
 
-        org.jdesktop.beansbinding.ELProperty eLProperty = org.jdesktop.beansbinding.ELProperty.create("${draughtingResultList}");
+        jPanel1.add(jPanel2);
+
+        draftingTable.getTableHeader().setReorderingAllowed(false);
+
+        org.jdesktop.beansbinding.ELProperty eLProperty = org.jdesktop.beansbinding.ELProperty.create("${draftingResultList}");
         org.jdesktop.swingbinding.JTableBinding jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, draftingSearchResultListBean, eLProperty, draftingTable);
         org.jdesktop.swingbinding.JTableBinding.ColumnBinding columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${itemNumber}"));
         columnBinding.setColumnName("Item Number");
@@ -610,22 +660,19 @@ public class DraftingSearchPanel extends ContentPanel {
         jTableBinding.bind();binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, draftingSearchResultListBean, org.jdesktop.beansbinding.ELProperty.create("${selectedDraftingSearchResult}"), draftingTable, org.jdesktop.beansbinding.BeanProperty.create("selectedElement"));
         bindingGroup.addBinding(binding);
 
-        draftingTable.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                draftingTableMouseClicked(evt);
-            }
-        });
         jScrollPane3.setViewportView(draftingTable);
-        draftingTable.getColumnModel().getColumn(0).setHeaderValue(bundle1.getString("DraftingSearchPanel.draftingTable.columnModel.title0")); // NOI18N
-        draftingTable.getColumnModel().getColumn(1).setHeaderValue(bundle1.getString("DraftingSearchPanel.draftingTable.columnModel.title1")); // NOI18N
-        draftingTable.getColumnModel().getColumn(2).setHeaderValue(bundle1.getString("DraftingSearchPanel.draftingTable.columnModel.title2")); // NOI18N
-        draftingTable.getColumnModel().getColumn(3).setHeaderValue(bundle1.getString("DraftingSearchPanel.draftingTable.columnModel.title3")); // NOI18N
-        draftingTable.getColumnModel().getColumn(4).setHeaderValue(bundle1.getString("DraftingSearchPanel.draftingTable.columnModel.title4")); // NOI18N
-        draftingTable.getColumnModel().getColumn(5).setHeaderValue(bundle1.getString("DraftingSearchPanel.draftingTable.columnModel.title5")); // NOI18N
-        draftingTable.getColumnModel().getColumn(6).setHeaderValue(bundle1.getString("DraftingSearchPanel.draftingTable.columnModel.title6")); // NOI18N
-        draftingTable.getColumnModel().getColumn(7).setHeaderValue(bundle1.getString("DraftingSearchPanel.tableLease.columnModel.title8")); // NOI18N
-        draftingTable.getColumnModel().getColumn(8).setHeaderValue(bundle1.getString("DraftingSearchPanel.tableLease.columnModel.title9")); // NOI18N
-        draftingTable.getColumnModel().getColumn(9).setHeaderValue(bundle1.getString("DraftingSearchPanel.draftingTable.columnModel.title9")); // NOI18N
+        if (draftingTable.getColumnModel().getColumnCount() > 0) {
+            draftingTable.getColumnModel().getColumn(0).setHeaderValue(bundle1.getString("DraftingSearchPanel.draftingTable.columnModel.title0")); // NOI18N
+            draftingTable.getColumnModel().getColumn(1).setHeaderValue(bundle1.getString("DraftingSearchPanel.draftingTable.columnModel.title1")); // NOI18N
+            draftingTable.getColumnModel().getColumn(2).setHeaderValue(bundle1.getString("DraftingSearchPanel.draftingTable.columnModel.title2")); // NOI18N
+            draftingTable.getColumnModel().getColumn(3).setHeaderValue(bundle1.getString("DraftingSearchPanel.draftingTable.columnModel.title3")); // NOI18N
+            draftingTable.getColumnModel().getColumn(4).setHeaderValue(bundle1.getString("DraftingSearchPanel.draftingTable.columnModel.title4")); // NOI18N
+            draftingTable.getColumnModel().getColumn(5).setHeaderValue(bundle1.getString("DraftingSearchPanel.draftingTable.columnModel.title5")); // NOI18N
+            draftingTable.getColumnModel().getColumn(6).setHeaderValue(bundle1.getString("DraftingSearchPanel.draftingTable.columnModel.title6")); // NOI18N
+            draftingTable.getColumnModel().getColumn(7).setHeaderValue(bundle1.getString("DraftingSearchPanel.tableLease.columnModel.title8")); // NOI18N
+            draftingTable.getColumnModel().getColumn(8).setHeaderValue(bundle1.getString("DraftingSearchPanel.tableLease.columnModel.title9")); // NOI18N
+            draftingTable.getColumnModel().getColumn(9).setHeaderValue(bundle1.getString("DraftingSearchPanel.draftingTable.columnModel.title9")); // NOI18N
+        }
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -633,10 +680,11 @@ public class DraftingSearchPanel extends ContentPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(headerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane3)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 599, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -648,7 +696,8 @@ public class DraftingSearchPanel extends ContentPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 282, Short.MAX_VALUE))
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 243, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         bindingGroup.bind();
@@ -659,7 +708,7 @@ public class DraftingSearchPanel extends ContentPanel {
     }//GEN-LAST:event_btnShowCalendarFromActionPerformed
 
     private void btnFindActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFindActionPerformed
-       executeSearch(draftingSearchParamsBean, lblSearchCount, draftingSearchResultListBean);
+        executeSearch(draftingSearchParamsBean, lblSearchCount, draftingSearchResultListBean);
     }//GEN-LAST:event_btnFindActionPerformed
 
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
@@ -667,20 +716,12 @@ public class DraftingSearchPanel extends ContentPanel {
     }//GEN-LAST:event_btnClearActionPerformed
 
     private void btnOpenItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOpenItemActionPerformed
-      
+        openDrafting();
     }//GEN-LAST:event_btnOpenItemActionPerformed
-
-    private void draftingTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_draftingTableMouseClicked
-       
-    }//GEN-LAST:event_draftingTableMouseClicked
 
     private void btnShowCalendarToActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowCalendarToActionPerformed
         showCalendar(txtActionDateTo);
     }//GEN-LAST:event_btnShowCalendarToActionPerformed
-
-    private void txtActionDateFromActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtActionDateFromActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtActionDateFromActionPerformed
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         addDrafting();
@@ -689,6 +730,10 @@ public class DraftingSearchPanel extends ContentPanel {
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
         editDrafting();
     }//GEN-LAST:event_btnEditActionPerformed
+
+    private void btnRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveActionPerformed
+        removeDrafting();
+    }//GEN-LAST:event_btnRemoveActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private org.sola.clients.swing.common.buttons.BtnAdd btnAdd;
@@ -710,6 +755,7 @@ public class DraftingSearchPanel extends ContentPanel {
     private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel15;
     private javax.swing.JPanel jPanel17;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;

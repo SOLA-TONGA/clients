@@ -41,17 +41,17 @@ import org.sola.webservices.transferobjects.search.DraftingSearchParamsTO;
  */
 public class DraftingSearchResultListBean extends AbstractBindingListBean{
     public static final String SELECTED_DRAFTING_SEARCH_RESULT_PROPERTY = "selectedDraftingSearchResult";
-    private SolaObservableList<DraftingSearchResultBean> draughtingResultList;
+    private SolaObservableList<DraftingSearchResultBean> draftingResultList;
     private DraftingSearchResultBean selectedDraftingSearchResult;
    
     public DraftingSearchResultListBean(){
         super();
     }
     public ObservableList<DraftingSearchResultBean> getDraftingResultList() {
-        if (draughtingResultList == null) {
-            draughtingResultList = new SolaObservableList<DraftingSearchResultBean>();
+        if (draftingResultList == null) {
+            draftingResultList = new SolaObservableList<DraftingSearchResultBean>();
         }
-        return draughtingResultList;
+        return draftingResultList;
     }
     
     public DraftingSearchResultBean getSelectedDraftingSearchResult() {

@@ -233,6 +233,7 @@ public class MainForm extends javax.swing.JFrame {
         btnOpenBaUnitSearch.setEnabled(SecurityBean.isInRole(RolesConstants.ADMINISTRATIVE_BA_UNIT_SEARCH));
         btnDocumentSearch.setEnabled(SecurityBean.isInRole(RolesConstants.SOURCE_SEARCH));
         btnSetPassword.setEnabled(SecurityBean.isInRole(RolesConstants.ADMIN_CHANGE_PASSWORD));
+        btnDraughtingSearch.setVisible(SecurityBean.isInRole(RolesConstants.DRAFTING_SEARCH));
 
         menuSearchApplication.setEnabled(btnSearchApplications.isEnabled());
         menuNewApplication.setEnabled(btnNewApplication.isEnabled());

@@ -3,6 +3,9 @@
 <Form version="1.5" maxVersion="1.8" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
   <NonVisualComponents>
     <Component class="org.sola.clients.beans.drafting.DraftingBean" name="draftingBean">
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="initDraftingBean()"/>
+      </AuxValues>
     </Component>
     <Component class="org.sola.clients.beans.drafting.DraftingSearchResultListBean" name="draftingSearchResultListBean">
     </Component>

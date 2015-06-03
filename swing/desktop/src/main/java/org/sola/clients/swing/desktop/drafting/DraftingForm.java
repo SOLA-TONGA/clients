@@ -1,17 +1,31 @@
-/*
- * Copyright 2015 Food and Agriculture Organization of the United Nations (FAO).
+/**
+ * ******************************************************************************************
+ * Copyright (C) 2014 - Food and Agriculture Organization of the United Nations
+ * (FAO). All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ * 1. Redistributions of source code must retain the above copyright notice,this
+ * list of conditions and the following disclaimer. 2. Redistributions in binary
+ * form must reproduce the above copyright notice,this list of conditions and
+ * the following disclaimer in the documentation and/or other materials provided
+ * with the distribution. 3. Neither the name of FAO nor the names of its
+ * contributors may be used to endorse or promote products derived from this
+ * software without specific prior written permission.
  *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ * ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
+ * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,PROCUREMENT OF
+ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+ * CONTRACT,STRICT LIABILITY,OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING
+ * IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ * POSSIBILITY OF SUCH DAMAGE.
+ * *********************************************************************************************
  */
 package org.sola.clients.swing.desktop.drafting;
 
@@ -33,38 +47,58 @@ import org.sola.common.messaging.MessageUtility;
  * @author Admin
  */
 public class DraftingForm extends ContentPanel {
-    
+
     public static final String DRAFTING_SAVED = "draftingSaved";
-    private boolean saveDrafting;
     private boolean readOnly;
     private boolean closeOnSave;
+
     /**
      * Creates new form DraftingForm
      */
     public DraftingForm() {
         initComponents();
     }
-    
+
     public DraftingForm(boolean saveDrafting) {
-        this(saveDrafting, null, false);
+        this(null, false);
     }
-    
-    public DraftingForm(boolean saveDrafting, DraftingBean draftingBean, boolean readOnly) {
+
+    public DraftingForm(DraftingBean draftingBean, boolean readOnly) {
         this.readOnly = readOnly;
         this.draftingBean = draftingBean;
-        this.saveDrafting = saveDrafting;
 
         initComponents();
         customizeForm();
         saveDraftingState();
     }
-    
-       private void customizeForm() {
-        if (!readOnly) {
-            this.readOnly = !SecurityBean.isInRole(RolesConstants.DRAFTING_EDIT);
-        }
 
-        btnSave.setEnabled(!readOnly);
+    private void customizeForm() {
+        boolean enabled = !readOnly && SecurityBean.isInRole(RolesConstants.DRAFTING_EDIT);
+
+        btnSave.setEnabled(enabled);
+
+        btnShowCalendarPlottingDate.setEnabled(enabled);
+        btnShowCalendarReceiveDate.setEnabled(enabled);
+        btnShowCalendarReturnDate.setEnabled(enabled);
+        btnShowCalendarSendDate.setEnabled(enabled);
+        btnShowCalendarTraceDate.setEnabled(enabled);
+        txtDateReceived.setEnabled(enabled);
+        txtDeedNumber.setEnabled(enabled);
+        txtDrawDeed.setEnabled(enabled);
+        txtFirstName.setEnabled(enabled);
+        txtItemNumber.setEnabled(enabled);
+        txtLastName.setEnabled(enabled);
+        txtLocation.setEnabled(enabled);
+        txtNatureOfSurvey.setEnabled(enabled);
+        txtPlanNumber.setEnabled(enabled);
+        txtPlottingBy.setEnabled(enabled);
+        txtPlottingDate.setEnabled(enabled);
+        txtReference.setEnabled(enabled);
+        txtReturnDate.setEnabled(enabled);
+        txtSendDate.setEnabled(enabled);
+        txtSentTo.setEnabled(enabled);
+        txtTraceBy.setEnabled(enabled);
+        txtTraceDate.setEnabled(enabled);
 
         if (closeOnSave) {
             btnSave.setText(MessageUtility.getLocalizedMessage(
@@ -74,35 +108,49 @@ public class DraftingForm extends ContentPanel {
                     ClientMessage.GENERAL_LABELS_SAVE).getMessage());
         }
     }
-       
+
+    /**
+     * Initializes the Drafting bean as required depending on whether a bean has
+     * been passed into the form or not.
+     *
+     * @return
+     */
+    private DraftingBean initDraftingBean() {
+        if (draftingBean == null) {
+            draftingBean = new DraftingBean();
+        }
+        return draftingBean;
+    }
+
     private void saveDraftingState() {
         MainForm.saveBeanState(draftingBean);
     }
-    
+
     private void saveDrafting() {
-            SolaTask<Void, Void> t = new SolaTask<Void, Void>() {
+        SolaTask<Void, Void> t = new SolaTask<Void, Void>() {
 
-                @Override
-                public Void doTask() {
-                    setMessage(MessageUtility.getLocalizedMessageText(ClientMessage.PROGRESS_MSG_SAVING));
-                    draftingBean.saveDrafting();                 
-                    return null;
-                }
+            @Override
+            public Void doTask() {
+                setMessage(MessageUtility.getLocalizedMessageText(ClientMessage.PROGRESS_MSG_SAVING));
+                draftingBean.saveDrafting();
+                return null;
+            }
 
-                @Override
-                public void taskDone() {
-                    MessageUtility.displayMessage(ClientMessage.DRAFT_SAVED);
-                    saveDraftingState();
-                    getMainContentPanel().closePanel(MainContentPanel.CARD_DRAFTING_FORM);
-                }
-            };
-            TaskManager.getInstance().runTask(t);
+            @Override
+            public void taskDone() {
+                MessageUtility.displayMessage(ClientMessage.DRAFT_SAVED);
+                saveDraftingState();
+                getMainContentPanel().closePanel(MainContentPanel.CARD_DRAFTING_FORM);
+            }
+        };
+        TaskManager.getInstance().runTask(t);
     }
 
     private void showCalendar(JFormattedTextField dateField) {
         CalendarForm calendar = new CalendarForm(null, true, dateField);
         calendar.setVisible(true);
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -113,7 +161,7 @@ public class DraftingForm extends ContentPanel {
     private void initComponents() {
         bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
-        draftingBean = new org.sola.clients.beans.drafting.DraftingBean();
+        draftingBean = initDraftingBean();
         draftingSearchResultListBean = new org.sola.clients.beans.drafting.DraftingSearchResultListBean();
         headerPanel = new org.sola.clients.swing.ui.HeaderPanel();
         jPanel8 = new javax.swing.JPanel();

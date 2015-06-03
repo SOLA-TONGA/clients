@@ -28,7 +28,7 @@
 package org.sola.clients.beans.drafting;
 
 import java.util.Date;
-import org.sola.clients.beans.AbstractBindingBean;
+import org.sola.clients.beans.AbstractIdBean;
 import org.sola.clients.beans.converters.TypeConverters;
 import org.sola.services.boundary.wsclients.WSManager;
 import org.sola.webservices.transferobjects.EntityAction;
@@ -38,7 +38,7 @@ import org.sola.webservices.transferobjects.casemanagement.DraftingTO;
  *
  * @author Admin
  */
-public class DraftingBean extends AbstractBindingBean{
+public class DraftingBean extends AbstractIdBean {
     public static final String ITEM_NUMBER_PROPERTY = "itemNumber";
     public static final String RECEIVE_DATE_PROPERTY = "receiveDate";
     public static final String FIRST_NAME_PROPERTY = "firstName";
