@@ -4,12 +4,12 @@
     <parent>
         <artifactId>sola-clients-swing</artifactId>
         <groupId>org.sola.clients</groupId>
-        <version>1403b</version>
+        <version>1507a</version>
     </parent>
     <groupId>org.sola.clients.swing</groupId>
     <artifactId>sola-desktop</artifactId>
     <packaging>jar</packaging>
-    <version>1403b</version>
+    <version>1507a</version>
     <name>Clients Desktop</name>
     <build>
         <finalName>${project.artifactId}</finalName>
@@ -98,7 +98,7 @@
         <dependency>
             <groupId>org.sola.clients</groupId>
             <artifactId>clients-beans</artifactId>
-            <version>1403b</version>
+            <version>1507a</version>
         </dependency>
         <dependency>
             <groupId>unknown.binary</groupId>
@@ -108,7 +108,7 @@
         <dependency>
             <groupId>org.sola.services.ejbs</groupId>
             <artifactId>sola-search</artifactId>
-            <version>1403b</version>
+            <version>1507a</version>
         </dependency>
     </dependencies>
     <profiles>

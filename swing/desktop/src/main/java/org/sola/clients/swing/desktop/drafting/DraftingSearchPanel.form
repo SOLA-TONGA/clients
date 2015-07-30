@@ -694,6 +694,7 @@
           </Properties>
           <BindingProperties>
             <BindingProperty name="elements" source="draftingSearchResultListBean" sourcePath="${draftingResultList}" target="draftingTable" targetPath="elements" updateStrategy="0" immediately="true">
+              <Property name="name" type="java.lang.String" value=""/>
               <Subbinding sourcePath="${itemNumber}">
                 <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="String.class"/>
                 <BindingParameter name="javax.swing.binding.ParameterKeys.EDITABLE" value="false"/>
@@ -716,9 +717,8 @@
               </Subbinding>
               <Subbinding sourcePath="${planNumber}">
                 <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="String.class"/>
-                <BindingParameter name="javax.swing.binding.ParameterKeys.EDITABLE" value="false"/>
               </Subbinding>
-              <Subbinding sourcePath="${referInfo}">
+              <Subbinding sourcePath="${reference}">
                 <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="String.class"/>
                 <BindingParameter name="javax.swing.binding.ParameterKeys.EDITABLE" value="false"/>
               </Subbinding>
@@ -732,7 +732,6 @@
               </Subbinding>
               <Subbinding sourcePath="${plottingDate}">
                 <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="java.util.Date.class"/>
-                <BindingParameter name="javax.swing.binding.ParameterKeys.EDITABLE" value="false"/>
               </Subbinding>
             </BindingProperty>
             <BindingProperty name="selectedElement" source="draftingSearchResultListBean" sourcePath="${selectedDraftingSearchResult}" target="draftingTable" targetPath="selectedElement" updateStrategy="0" immediately="false">

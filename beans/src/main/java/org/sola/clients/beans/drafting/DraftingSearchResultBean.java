@@ -53,7 +53,7 @@ public class DraftingSearchResultBean extends AbstractBindingBean{
     public static final String PLOTTING_BY_PROPERTY = "plottingBy";
     public static final String PLOTTING_DATE_PROPERTY = "plottingDate";
     public static final String PLAN_NUMBER_PROPERTY = "planNumber";
-    public static final String REFER_INFO_PROPERTY = "reference";
+    public static final String REFERENCE_PROPERTY = "reference";
     private String id; 
     private String itemNumber; 
     private Date receiveDate;
@@ -71,7 +71,7 @@ public class DraftingSearchResultBean extends AbstractBindingBean{
     private String plottingBy;
     private Date plottingDate;
     private String planNumber;
-    private String referInfo;
+    private String reference;
 
     public DraftingSearchResultBean(){
         super();
@@ -246,14 +246,14 @@ public class DraftingSearchResultBean extends AbstractBindingBean{
         propertySupport.firePropertyChange(PLAN_NUMBER_PROPERTY, oldValue, value);
     }
 
-    public String getReferInfo() {
-        return referInfo;
+    public String getReference() {
+        return reference;
     }
 
-    public void setReferInfo(String value) {
-        String oldValue = this.referInfo;
-        this.referInfo = value;
-        propertySupport.firePropertyChange(REFER_INFO_PROPERTY, oldValue, value);
+    public void setReference(String value) {
+        String oldValue = this.reference;
+        this.reference = value;
+        propertySupport.firePropertyChange(REFERENCE_PROPERTY, oldValue, value);
     }
     
 }
