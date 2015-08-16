@@ -46,14 +46,14 @@ public class DraftingSearchResultBean extends AbstractBindingBean{
     public static final String TRACE_BY_PROPERTY = "traceBy";
     public static final String TRACE_DATE_PROPERTY = "traceDate";
     public static final String SENT_TO_PROPERTY = "sentTo";
-    public static final String SENT_DATE_PROPERTY = "sendDate";
+    public static final String SEND_DATE_PROPERTY = "sendDate";
     public static final String RETURN_DATE_PROPERTY = "returnDate";
     public static final String DRAW_DEED_PROPERTY = "drawDeed";
     public static final String DEED_NUMBER_PROPERTY = "deedNumber";
     public static final String PLOTTING_BY_PROPERTY = "plottingBy";
     public static final String PLOTTING_DATE_PROPERTY = "plottingDate";
     public static final String PLAN_NUMBER_PROPERTY = "planNumber";
-    public static final String REFERENCE_PROPERTY = "reference";
+    public static final String REFER_INFO_PROPERTY = "referInfo";
     private String id; 
     private String itemNumber; 
     private Date receiveDate;
@@ -64,14 +64,14 @@ public class DraftingSearchResultBean extends AbstractBindingBean{
     private String traceBy;
     private Date traceDate;
     private String sentTo;
-    private Date sentDate;
+    private Date sendDate;
     private Date returnDate;
     private String drawDeed;
     private String deedNumber;
     private String plottingBy;
     private Date plottingDate;
     private String planNumber;
-    private String reference;
+    private String referInfo;
 
     public DraftingSearchResultBean(){
         super();
@@ -176,14 +176,14 @@ public class DraftingSearchResultBean extends AbstractBindingBean{
         propertySupport.firePropertyChange(SENT_TO_PROPERTY, oldValue, value);
     }
 
-    public Date getSentDate() {
-        return sentDate;
+    public Date getSendDate() {
+        return sendDate;
     }
 
-    public void setSentDate(Date value) {
-        Date oldValue = this.sentDate;
-        this.sentDate = value;
-        propertySupport.firePropertyChange(SENT_DATE_PROPERTY, oldValue, value);
+    public void setSendDate(Date value) {
+        Date oldValue = this.sendDate;
+        this.sendDate = value;
+        propertySupport.firePropertyChange(SEND_DATE_PROPERTY, oldValue, value);
     }
 
     public Date getReturnDate() {
@@ -246,14 +246,14 @@ public class DraftingSearchResultBean extends AbstractBindingBean{
         propertySupport.firePropertyChange(PLAN_NUMBER_PROPERTY, oldValue, value);
     }
 
-    public String getReference() {
-        return reference;
+    public String getReferInfo() {
+        return referInfo;
     }
 
-    public void setReference(String value) {
-        String oldValue = this.reference;
-        this.reference = value;
-        propertySupport.firePropertyChange(REFERENCE_PROPERTY, oldValue, value);
+    public void setReferInfo(String value) {
+        String oldValue = this.referInfo;
+        this.referInfo = value;
+        propertySupport.firePropertyChange(REFER_INFO_PROPERTY, oldValue, value);
     }
     
 }

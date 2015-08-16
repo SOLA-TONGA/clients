@@ -61,7 +61,7 @@
                             String desktopJnlp = "/webstart/sola-desktop-test.jnlp";
                             String adminJnlp = "/webstart/sola-admin-test.jnlp";
                             if (hostName.equalsIgnoreCase("sola") ||
-                                    hostName.equalsIgnoreCase("192.168.2.199")) { // Update hostname and IP as required
+                                    hostName.equalsIgnoreCase("192.168.1.5")) { // Update hostname and IP as required
                                 // This is the production host so use the production
                                 // JNLP files
                                 desktopJnlp = "/webstart/sola-desktop.jnlp";

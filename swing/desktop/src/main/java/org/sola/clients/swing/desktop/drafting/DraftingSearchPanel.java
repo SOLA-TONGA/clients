@@ -214,8 +214,9 @@ public class DraftingSearchPanel extends ContentPanel {
         txtLocation.setText(null);
         txtActionDateTo.setValue(null);
         txtActionDateFrom.setValue(null);
+        
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -636,24 +637,54 @@ public class DraftingSearchPanel extends ContentPanel {
         columnBinding.setColumnName("Location");
         columnBinding.setColumnClass(String.class);
         columnBinding.setEditable(false);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${natureOfSurvey}"));
+        columnBinding.setColumnName("Nature Of Survey");
+        columnBinding.setColumnClass(String.class);
+        columnBinding.setEditable(false);
         columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${planNumber}"));
         columnBinding.setColumnName("Plan Number");
         columnBinding.setColumnClass(String.class);
-        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${reference}"));
-        columnBinding.setColumnName("Reference");
+        columnBinding.setEditable(false);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${plottingBy}"));
+        columnBinding.setColumnName("Plotting By");
         columnBinding.setColumnClass(String.class);
         columnBinding.setEditable(false);
-        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${natureOfSurvey}"));
-        columnBinding.setColumnName("Nature Of Survey");
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${plottingDate}"));
+        columnBinding.setColumnName("Plotting Date");
+        columnBinding.setColumnClass(java.util.Date.class);
+        columnBinding.setEditable(false);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${traceBy}"));
+        columnBinding.setColumnName("Trace By");
+        columnBinding.setColumnClass(String.class);
+        columnBinding.setEditable(false);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${traceDate}"));
+        columnBinding.setColumnName("Trace Date");
+        columnBinding.setColumnClass(java.util.Date.class);
+        columnBinding.setEditable(false);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${sentTo}"));
+        columnBinding.setColumnName("Sent To");
+        columnBinding.setColumnClass(String.class);
+        columnBinding.setEditable(false);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${sendDate}"));
+        columnBinding.setColumnName("Send Date");
+        columnBinding.setColumnClass(java.util.Date.class);
+        columnBinding.setEditable(false);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${returnDate}"));
+        columnBinding.setColumnName("Return Date");
+        columnBinding.setColumnClass(java.util.Date.class);
+        columnBinding.setEditable(false);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${drawDeed}"));
+        columnBinding.setColumnName("Draw Deed");
         columnBinding.setColumnClass(String.class);
         columnBinding.setEditable(false);
         columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${deedNumber}"));
         columnBinding.setColumnName("Deed Number");
         columnBinding.setColumnClass(String.class);
         columnBinding.setEditable(false);
-        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${plottingDate}"));
-        columnBinding.setColumnName("Plotting Date");
-        columnBinding.setColumnClass(java.util.Date.class);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${referInfo}"));
+        columnBinding.setColumnName("Refer Info");
+        columnBinding.setColumnClass(String.class);
+        columnBinding.setEditable(false);
         bindingGroup.addBinding(jTableBinding);
         jTableBinding.bind();binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, draftingSearchResultListBean, org.jdesktop.beansbinding.ELProperty.create("${selectedDraftingSearchResult}"), draftingTable, org.jdesktop.beansbinding.BeanProperty.create("selectedElement"));
         bindingGroup.addBinding(binding);
@@ -664,11 +695,18 @@ public class DraftingSearchPanel extends ContentPanel {
         draftingTable.getColumnModel().getColumn(2).setHeaderValue(bundle1.getString("DraftingSearchPanel.draftingTable.columnModel.title2")); // NOI18N
         draftingTable.getColumnModel().getColumn(3).setHeaderValue(bundle1.getString("DraftingSearchPanel.draftingTable.columnModel.title3")); // NOI18N
         draftingTable.getColumnModel().getColumn(4).setHeaderValue(bundle1.getString("DraftingSearchPanel.draftingTable.columnModel.title4")); // NOI18N
-        draftingTable.getColumnModel().getColumn(5).setHeaderValue(bundle1.getString("DraftingSearchPanel.draftingTable.columnModel.title5")); // NOI18N
-        draftingTable.getColumnModel().getColumn(6).setHeaderValue(bundle1.getString("DraftingSearchPanel.draftingTable.columnModel.title6")); // NOI18N
-        draftingTable.getColumnModel().getColumn(7).setHeaderValue(bundle1.getString("DraftingSearchPanel.tableLease.columnModel.title8")); // NOI18N
-        draftingTable.getColumnModel().getColumn(8).setHeaderValue(bundle1.getString("DraftingSearchPanel.tableLease.columnModel.title9")); // NOI18N
-        draftingTable.getColumnModel().getColumn(9).setHeaderValue(bundle1.getString("DraftingSearchPanel.draftingTable.columnModel.title9")); // NOI18N
+        draftingTable.getColumnModel().getColumn(5).setHeaderValue(bundle1.getString("DraftingSearchPanel.tableLease.columnModel.title8")); // NOI18N
+        draftingTable.getColumnModel().getColumn(6).setHeaderValue(bundle1.getString("DraftingSearchPanel.draftingTable.columnModel.title5")); // NOI18N
+        draftingTable.getColumnModel().getColumn(7).setHeaderValue(bundle1.getString("DraftingSearchPanel.draftingTable.columnModel.title10")); // NOI18N
+        draftingTable.getColumnModel().getColumn(8).setHeaderValue(bundle1.getString("DraftingSearchPanel.draftingTable.columnModel.title9")); // NOI18N
+        draftingTable.getColumnModel().getColumn(9).setHeaderValue(bundle1.getString("DraftingSearchPanel.draftingTable.columnModel.title11")); // NOI18N
+        draftingTable.getColumnModel().getColumn(10).setHeaderValue(bundle1.getString("DraftingSearchPanel.draftingTable.columnModel.title6_1")); // NOI18N
+        draftingTable.getColumnModel().getColumn(11).setHeaderValue(bundle1.getString("DraftingSearchPanel.draftingTable.columnModel.title14")); // NOI18N
+        draftingTable.getColumnModel().getColumn(12).setHeaderValue(bundle1.getString("DraftingSearchPanel.draftingTable.columnModel.title15")); // NOI18N
+        draftingTable.getColumnModel().getColumn(13).setHeaderValue(bundle1.getString("DraftingSearchPanel.draftingTable.columnModel.title16")); // NOI18N
+        draftingTable.getColumnModel().getColumn(14).setHeaderValue(bundle1.getString("DraftingSearchPanel.draftingTable.columnModel.title13")); // NOI18N
+        draftingTable.getColumnModel().getColumn(15).setHeaderValue(bundle1.getString("DraftingSearchPanel.tableLease.columnModel.title9")); // NOI18N
+        draftingTable.getColumnModel().getColumn(16).setHeaderValue(bundle1.getString("DraftingSearchPanel.draftingTable.columnModel.title12")); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);

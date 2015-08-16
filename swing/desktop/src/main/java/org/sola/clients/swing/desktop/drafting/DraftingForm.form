@@ -684,7 +684,9 @@
             </Property>
           </Properties>
           <BindingProperties>
-            <BindingProperty name="value" source="draftingBean" sourcePath="${sentDate}" target="txtSendDate" targetPath="value" updateStrategy="0" immediately="false"/>
+            <BindingProperty name="value" source="draftingBean" sourcePath="${sendDate}" target="txtSendDate" targetPath="value" updateStrategy="0" immediately="false">
+              <Property name="name" type="java.lang.String" value=""/>
+            </BindingProperty>
           </BindingProperties>
         </Component>
         <Component class="javax.swing.JButton" name="btnShowCalendarSendDate">
@@ -916,7 +918,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="txtReference">
       <BindingProperties>
-        <BindingProperty name="text" source="draftingBean" sourcePath="${reference}" target="txtReference" targetPath="text" updateStrategy="0" immediately="false">
+        <BindingProperty name="text" source="draftingBean" sourcePath="${referInfo}" target="txtReference" targetPath="text" updateStrategy="0" immediately="false">
           <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
         </BindingProperty>
       </BindingProperties>

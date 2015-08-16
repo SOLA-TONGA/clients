@@ -553,7 +553,7 @@ public class DraftingForm extends ContentPanel {
 
         txtSendDate.setText(bundle.getString("DraftingForm.txtSendDate.text")); // NOI18N
 
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, draftingBean, org.jdesktop.beansbinding.ELProperty.create("${sentDate}"), txtSendDate, org.jdesktop.beansbinding.BeanProperty.create("value"));
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, draftingBean, org.jdesktop.beansbinding.ELProperty.create("${sendDate}"), txtSendDate, org.jdesktop.beansbinding.BeanProperty.create("value"), "");
         bindingGroup.addBinding(binding);
 
         btnShowCalendarSendDate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/calendar.png"))); // NOI18N
@@ -705,7 +705,7 @@ public class DraftingForm extends ContentPanel {
 
         labReference.setText(bundle.getString("DraftingForm.labReference.text")); // NOI18N
 
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, draftingBean, org.jdesktop.beansbinding.ELProperty.create("${reference}"), txtReference, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, draftingBean, org.jdesktop.beansbinding.ELProperty.create("${referInfo}"), txtReference, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
 
         jToolBar1.setFloatable(false);
