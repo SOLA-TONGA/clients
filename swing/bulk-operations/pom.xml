@@ -130,7 +130,7 @@
                             </archive>
                         </configuration>
                     </plugin>
-                </plugins>
+                 </plugins>
             </build>
         </profile>
     </profiles>
