@@ -16,8 +16,15 @@
 package org.sola.clients.swing.desktop.minister;
 
 import javax.swing.JFormattedTextField;
+import javax.swing.JLabel;
+import org.sola.clients.beans.minister.MinisterInwardSearchParamsBean;
+import org.sola.clients.beans.minister.MinisterInwardSearchResultListBean;
 import org.sola.clients.swing.common.controls.CalendarForm;
+import org.sola.clients.swing.common.tasks.SolaTask;
+import org.sola.clients.swing.common.tasks.TaskManager;
 import org.sola.clients.swing.ui.ContentPanel;
+import org.sola.common.messaging.ClientMessage;
+import org.sola.common.messaging.MessageUtility;
 
 /**
  *
@@ -36,7 +43,30 @@ public class MinisterInwardSearchPanel extends ContentPanel {
         CalendarForm calendar = new CalendarForm(null, true, dateField);
         calendar.setVisible(true);
     }
+    
+    private void executeSearch(final MinisterInwardSearchParamsBean params,
+            final JLabel lblSearchCount, final MinisterInwardSearchResultListBean results) {
 
+        SolaTask t = new SolaTask<Void, Void>() {
+            @Override
+            public Void doTask() {
+                setMessage(MessageUtility.getLocalizedMessageText(ClientMessage.PROGRESS_MSG_PROPERTY_SEARCHING));
+                results.search(params);
+                return null;
+            }
+
+            @Override
+            public void taskDone() {
+                lblSearchCount.setText(Integer.toString(results.getMinisterInwardResultList().size()));
+                if (results.getMinisterInwardResultList().size() < 1) {
+                    MessageUtility.displayMessage(ClientMessage.SEARCH_NO_RESULTS);
+                } else if (results.getMinisterInwardResultList().size() > 100) {
+                    MessageUtility.displayMessage(ClientMessage.SEARCH_TOO_MANY_RESULTS, new String[]{"100"});
+                }
+            }
+        };
+        TaskManager.getInstance().runTask(t);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -45,7 +75,10 @@ public class MinisterInwardSearchPanel extends ContentPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
+        ministerInwardSearchResultListBean = new org.sola.clients.beans.minister.MinisterInwardSearchResultListBean();
+        ministerInwardSearchParamsBean = new org.sola.clients.beans.minister.MinisterInwardSearchParamsBean();
         headerPanel = new org.sola.clients.swing.ui.HeaderPanel();
         applicationTab = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
@@ -54,9 +87,6 @@ public class MinisterInwardSearchPanel extends ContentPanel {
         btnClear = new javax.swing.JButton();
         btnOpenItem = new javax.swing.JButton();
         jSeparator3 = new javax.swing.JToolBar.Separator();
-        lblSearchResults = new javax.swing.JLabel();
-        labResults = new javax.swing.JLabel();
-        lblLeaseResultsCount = new javax.swing.JLabel();
         btnAdd = new org.sola.clients.swing.common.buttons.BtnAdd();
         btnEdit = new org.sola.clients.swing.common.buttons.BtnEdit();
         btnRemove = new org.sola.clients.swing.common.buttons.BtnRemove();
@@ -156,7 +186,13 @@ public class MinisterInwardSearchPanel extends ContentPanel {
             }
         });
 
+        org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, ministerInwardSearchParamsBean, org.jdesktop.beansbinding.ELProperty.create("${dateOut}"), textDateOut, org.jdesktop.beansbinding.BeanProperty.create("value"));
+        bindingGroup.addBinding(binding);
+
         jLabel5.setText("Date Out");
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, ministerInwardSearchParamsBean, org.jdesktop.beansbinding.ELProperty.create("${dateIn}"), textDateIn, org.jdesktop.beansbinding.BeanProperty.create("value"));
+        bindingGroup.addBinding(binding);
 
         btnDateIn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/calendar.png"))); // NOI18N
         btnDateIn.setText(bundle1.getString("DocumentSearchPanel.btnDateFrom.text")); // NOI18N
@@ -170,11 +206,20 @@ public class MinisterInwardSearchPanel extends ContentPanel {
 
         jLabel4.setText("Date In");
 
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, ministerInwardSearchParamsBean, org.jdesktop.beansbinding.ELProperty.create("${subject}"), jTextField1, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+
         jLabel1.setText("Subject");
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, ministerInwardSearchParamsBean, org.jdesktop.beansbinding.ELProperty.create("${fromWhom}"), jTextField2, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
 
         jLabel2.setText("Name");
 
         jLabel3.setText("File Number");
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, ministerInwardSearchParamsBean, org.jdesktop.beansbinding.ELProperty.create("${fileNumber}"), jTextField3, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -239,17 +284,54 @@ public class MinisterInwardSearchPanel extends ContentPanel {
                 .addContainerGap())
         );
 
-        jTableWithDefaultStyles1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
+        org.jdesktop.beansbinding.ELProperty eLProperty = org.jdesktop.beansbinding.ELProperty.create("${ministerInwardResultList}");
+        org.jdesktop.swingbinding.JTableBinding jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, ministerInwardSearchResultListBean, eLProperty, jTableWithDefaultStyles1);
+        org.jdesktop.swingbinding.JTableBinding.ColumnBinding columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${subject}"));
+        columnBinding.setColumnName("Subject");
+        columnBinding.setColumnClass(String.class);
+        columnBinding.setEditable(false);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${fileNumber}"));
+        columnBinding.setColumnName("File Number");
+        columnBinding.setColumnClass(String.class);
+        columnBinding.setEditable(false);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${ceoDirection}"));
+        columnBinding.setColumnName("Ceo Direction");
+        columnBinding.setColumnClass(String.class);
+        columnBinding.setEditable(false);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${fromWhom}"));
+        columnBinding.setColumnName("From Whom");
+        columnBinding.setColumnClass(String.class);
+        columnBinding.setEditable(false);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${dateIn}"));
+        columnBinding.setColumnName("Date In");
+        columnBinding.setColumnClass(java.util.Date.class);
+        columnBinding.setEditable(false);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${dateOut}"));
+        columnBinding.setColumnName("Date Out");
+        columnBinding.setColumnClass(java.util.Date.class);
+        columnBinding.setEditable(false);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${directedDivision}"));
+        columnBinding.setColumnName("Directed Division");
+        columnBinding.setColumnClass(String.class);
+        columnBinding.setEditable(false);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${directedOfficer}"));
+        columnBinding.setColumnName("Directed Officer");
+        columnBinding.setColumnClass(String.class);
+        columnBinding.setEditable(false);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${entityAction}"));
+        columnBinding.setColumnName("Entity Action");
+        columnBinding.setColumnClass(org.sola.webservices.transferobjects.EntityAction.class);
+        columnBinding.setEditable(false);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${ministerDirection}"));
+        columnBinding.setColumnName("Minister Direction");
+        columnBinding.setColumnClass(String.class);
+        columnBinding.setEditable(false);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${remark}"));
+        columnBinding.setColumnName("Remark");
+        columnBinding.setColumnClass(String.class);
+        columnBinding.setEditable(false);
+        bindingGroup.addBinding(jTableBinding);
+        jTableBinding.bind();
         jScrollPane1.setViewportView(jTableWithDefaultStyles1);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -312,6 +394,8 @@ public class MinisterInwardSearchPanel extends ContentPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(applicationTab, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
+
+        bindingGroup.bind();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnDateInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDateInActionPerformed
@@ -374,10 +458,10 @@ public class MinisterInwardSearchPanel extends ContentPanel {
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JToolBar jToolBar1;
-    private javax.swing.JLabel labResults;
-    private javax.swing.JLabel lblLeaseResultsCount;
-    private javax.swing.JLabel lblSearchResults;
+    private org.sola.clients.beans.minister.MinisterInwardSearchParamsBean ministerInwardSearchParamsBean;
+    private org.sola.clients.beans.minister.MinisterInwardSearchResultListBean ministerInwardSearchResultListBean;
     private javax.swing.JFormattedTextField textDateIn;
     private javax.swing.JFormattedTextField textDateOut;
+    private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 }

@@ -32,6 +32,7 @@ import org.jdesktop.observablecollections.ObservableList;
 import org.sola.clients.beans.AbstractBindingListBean;
 import org.sola.clients.beans.controls.SolaObservableList;
 import org.sola.clients.beans.converters.TypeConverters;
+import org.sola.services.boundary.transferobjects.search.MinisterInwardSearchParamsTO;
 import org.sola.services.boundary.wsclients.WSManager;
 /**
  *
@@ -61,7 +62,7 @@ public class MinisterInwardSearchResultListBean extends AbstractBindingListBean{
         propertySupport.firePropertyChange(SELECTED_MINISTER_INWARD_SEARCH_RESULT_PROPERTY, null, this.selectedMinisterInwardSearchResult);
     }
     
-    public void search(MinisterInwardSearchParamsBean params){
+   public void search(MinisterInwardSearchParamsBean params){
         getMinisterInwardResultList().clear();
         MinisterInwardSearchParamsTO searchParams = TypeConverters.BeanToTrasferObject(params, MinisterInwardSearchParamsTO.class);
         TypeConverters.TransferObjectListToBeanList(
