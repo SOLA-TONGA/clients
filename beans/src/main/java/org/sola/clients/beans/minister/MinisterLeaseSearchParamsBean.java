@@ -25,7 +25,7 @@
  * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  * *********************************************************************************************
  */
-package org.sola.clients.beans.drafting;
+package org.sola.clients.beans.minister;
 
 import java.util.Date;
 import org.sola.clients.beans.AbstractBindingBean;
@@ -34,56 +34,24 @@ import org.sola.clients.beans.AbstractBindingBean;
  *
  * @author Admin
  */
-public class DraftingSearchParamsBean extends AbstractBindingBean{
-    public static final String ITEM_NUMBER_PROPERTY = "itemNumber";
-    public static final String FIRST_NAME_PROPERTY = "firstName";
-    public static final String LAST_NAME_PROPERTY = "lastName";
-    public static final String LOCATION_PROPERTY = "location";
-    public static final String PLAN_NUMBER_PROPERTY = "planNumber";
+public class MinisterLeaseSearchParamsBean extends AbstractBindingBean{
     public static final String DATE_RECEIVED_FROM_PROPERTY = "dateReceivedFrom";
     public static final String DATE_RECEIVED_TO_PROPERTY = "dateReceivedTo";
-    private String itemNumber;
-    private String firstName;
-    private String lastName;
+    public static final String NAME_PROPERTY = "name";
+    public static final String LOCATION_PROPERTY = "location";
+    public static final String RECEIPT_NUMBER_PROPERTY = "receiptNumber";
+    public static final String PAY_DATE_PROPERTY = "payDate";
     private Date dateReceivedFrom;
     private Date dateReceivedTo;
+    private String name;
     private String location;
-    private String planNumber;
-   
-    public DraftingSearchParamsBean(){
+    private String receiptNumber;
+    private Date payDate;
+    
+    public MinisterLeaseSearchParamsBean() {
         super();
     }
-
-    public String getItemNumber() {
-        return itemNumber;
-    }
-
-    public void setItemNumber(String value) {
-        String oldValue = this.itemNumber;
-        this.itemNumber = value;
-        propertySupport.firePropertyChange(ITEM_NUMBER_PROPERTY, oldValue, value);
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String value) {
-        String oldValue = this.firstName;
-        this.firstName = value;
-        propertySupport.firePropertyChange(FIRST_NAME_PROPERTY, oldValue, value);
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String value) {
-        String oldValue = this.lastName;
-        this.lastName = value;
-        propertySupport.firePropertyChange(LAST_NAME_PROPERTY, oldValue, value);
-    }
-
+    
     public Date getDateReceivedFrom() {
         return dateReceivedFrom;
     }
@@ -103,7 +71,17 @@ public class DraftingSearchParamsBean extends AbstractBindingBean{
         this.dateReceivedTo = value;
         propertySupport.firePropertyChange(DATE_RECEIVED_TO_PROPERTY, oldValue, value);
     }
+    
+    public String getName() {
+        return name;
+    }
 
+    public void setName(String value) {
+        String oldValue = this.name;
+        this.name = value;
+        propertySupport.firePropertyChange(NAME_PROPERTY, oldValue, value);
+    }
+    
     public String getLocation() {
         return location;
     }
@@ -113,24 +91,25 @@ public class DraftingSearchParamsBean extends AbstractBindingBean{
         this.location = value;
         propertySupport.firePropertyChange(LOCATION_PROPERTY, oldValue, value);
     }
-
-    public String getPlanNumber() {
-        return planNumber;
+    
+    public String getReceiptNumber() {
+        return receiptNumber;
     }
 
-    public void setPlanNumber(String value) {
-        String oldValue = this.planNumber;
-        this.planNumber = value;
-        propertySupport.firePropertyChange(PLAN_NUMBER_PROPERTY, oldValue, value);
+    public void setReceiptNumber(String value) {
+        String oldValue = this.receiptNumber;
+        this.receiptNumber = value;
+        propertySupport.firePropertyChange(RECEIPT_NUMBER_PROPERTY, oldValue, value);
     }
     
-    public void clear() {
-        this.setItemNumber(null);
-        this.setDateReceivedFrom(null);
-        this.setDateReceivedTo(null);
-        this.setFirstName(null);
-        this.setLastName(null);
-        this.setLocation(null);
-        this.setPlanNumber(null);
+    public Date getPayDate() {
+        return payDate;
     }
+
+    public void setPayDate(Date value) {
+        Date oldValue = this.payDate;
+        this.payDate = value;
+        propertySupport.firePropertyChange(PAY_DATE_PROPERTY, oldValue, value);
+    }
+    
 }

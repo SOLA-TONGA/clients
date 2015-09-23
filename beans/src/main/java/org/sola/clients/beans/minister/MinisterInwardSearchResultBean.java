@@ -45,7 +45,7 @@ public class MinisterInwardSearchResultBean extends AbstractBindingBean{
     public static final String MINISTER_DIRECTION_PROPERTY = "ministerDirection";
     public static final String FROM_WHOM_PROPERTY = "fromWhom";
     public static final String REMARK_PROPERTY = "remark";
-    
+    private String id;
     private String subject;
     private Date dateIn;
     private String fileNumber;
@@ -60,6 +60,13 @@ public class MinisterInwardSearchResultBean extends AbstractBindingBean{
     public MinisterInwardSearchResultBean(){
         super();
     }
+     public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    } 
     
     public String getSubject() {
         return subject;

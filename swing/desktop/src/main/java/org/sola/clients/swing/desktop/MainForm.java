@@ -60,6 +60,7 @@ import org.sola.clients.swing.desktop.application.TongaApplicationPanel;
 import org.sola.clients.swing.desktop.cadastre.MapPanelForm;
 import org.sola.clients.swing.desktop.cadastre.MapPublicDisplayPanel;
 import org.sola.clients.swing.desktop.cadastre.MapSpatialUnitGroupEditPanel;
+import org.sola.clients.swing.desktop.minister.MinisterSearchPanel;
 import org.sola.clients.swing.desktop.party.PartySearchPanelForm;
 import org.sola.clients.swing.desktop.reports.LodgementReportParamsForm;
 import org.sola.clients.swing.desktop.reports.SysRegCertParamsForm;
@@ -90,6 +91,7 @@ public class MainForm extends javax.swing.JFrame {
     private PartySearchPanelForm searchPartyPanel;
     private BaUnitSearchPanel searchBaUnitPanel;
     private DraftingSearchPanel draughtingSearch;
+    private MinisterSearchPanel ministerSearch;
     // Create a variable holding the listener
     KeyAdapter keyAdapterAppSearch = new KeyAdapter() {
         @Override
@@ -149,6 +151,14 @@ public class MainForm extends javax.swing.JFrame {
 
     public void setDraughtingSearch(DraftingSearchPanel draughtingSearch) {
         this.draughtingSearch = draughtingSearch;
+    }
+    
+     public MinisterSearchPanel getMinisterInwardSearch() {
+        return ministerSearch;
+    }
+
+    public void setMinisterInwardSearch(MinisterSearchPanel ministerSearch) {
+        this.ministerSearch = ministerSearch;
     }
 
     public DocumentSearchForm getSearchDocPanel() {
@@ -471,6 +481,28 @@ public class MainForm extends javax.swing.JFrame {
         };
         TaskManager.getInstance().runTask(t);
     }
+    
+    private void searchMinister() {
+        SolaTask t = new SolaTask<Void, Void>() {
+            @Override
+            public Void doTask() {
+                setMessage(MessageUtility.getLocalizedMessageText(ClientMessage.PROGRESS_MSG_OPEN_MINISTER_SEARCH));
+                if (!pnlContent.isPanelOpened(MainContentPanel.CARD_DRAUGHTING_SEARCH)) {
+                    MinisterSearchPanel ministerSearch = new MinisterSearchPanel();
+                    setMinisterInwardSearch(ministerSearch);
+                    pnlContent.addPanel(ministerSearch, MainContentPanel.CARD_MINISTER_SEARCH);
+                }
+                pnlContent.showPanel(MainContentPanel.CARD_MINISTER_SEARCH);
+                return null;
+            }
+
+            @Override
+            protected void taskDone() {
+                addKeyListeners(MainContentPanel.CARD_MINISTER_SEARCH);
+            }
+        };
+        TaskManager.getInstance().runTask(t);
+    }
 
     private void openSearchParties() {
         SolaTask t = new SolaTask<Void, Void>() {
@@ -720,6 +752,7 @@ public class MainForm extends javax.swing.JFrame {
         btnOpenBaUnitSearch = new javax.swing.JButton();
         btnDocumentSearch = new javax.swing.JButton();
         btnDraughtingSearch = new javax.swing.JButton();
+        btnMinisterSearch = new org.sola.clients.swing.common.buttons.BtnSearch();
         jSeparator3 = new javax.swing.JToolBar.Separator();
         btnManageParties = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JToolBar.Separator();
@@ -855,6 +888,15 @@ public class MainForm extends javax.swing.JFrame {
             }
         });
         applicationsMain.add(btnDraughtingSearch);
+
+        btnMinisterSearch.setText(bundle.getString("MainForm.btnMinisterSearch.text")); // NOI18N
+        btnMinisterSearch.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnMinisterSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMinisterSearchActionPerformed(evt);
+            }
+        });
+        applicationsMain.add(btnMinisterSearch);
         applicationsMain.add(jSeparator3);
 
         btnManageParties.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/users.png"))); // NOI18N
@@ -1398,6 +1440,10 @@ public class MainForm extends javax.swing.JFrame {
         searchDrafting();
     }//GEN-LAST:event_btnDraughtingSearchActionPerformed
 
+    private void btnMinisterSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMinisterSearchActionPerformed
+        searchMinister();
+    }//GEN-LAST:event_btnMinisterSearchActionPerformed
+
     private void editPassword() {
         showPasswordPanel();
     }
@@ -1425,6 +1471,7 @@ public class MainForm extends javax.swing.JFrame {
     private javax.swing.JButton btnDocumentSearch;
     private javax.swing.JButton btnDraughtingSearch;
     private javax.swing.JButton btnManageParties;
+    private org.sola.clients.swing.common.buttons.BtnSearch btnMinisterSearch;
     private javax.swing.JButton btnNewApplication;
     private javax.swing.JButton btnOpenBaUnitSearch;
     private javax.swing.JButton btnOpenMap;

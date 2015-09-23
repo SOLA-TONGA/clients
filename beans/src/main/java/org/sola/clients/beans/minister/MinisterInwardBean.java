@@ -29,6 +29,10 @@ package org.sola.clients.beans.minister;
 
 import java.util.Date;
 import org.sola.clients.beans.AbstractIdBean;
+import org.sola.clients.beans.converters.TypeConverters;
+import org.sola.services.boundary.wsclients.WSManager;
+import org.sola.webservices.transferobjects.EntityAction;
+import org.sola.webservices.transferobjects.casemanagement.MinisterInwardTO;
 
 /**
  *
@@ -159,5 +163,28 @@ public class MinisterInwardBean extends AbstractIdBean{
         String oldValue = this.remark;
         this.remark = value;
         propertySupport.firePropertyChange(REMARK_PROPERTY, oldValue, value);
+    }
+    
+    public static MinisterInwardBean getMinisterInward(String id){
+        if(id == null || id.length()<1){
+            return null;
+        }
+        MinisterInwardTO ministerInwardTO = WSManager.getInstance().getCaseManagementService().getMinisterInward(id);
+        return TypeConverters.TransferObjectToBean(ministerInwardTO, MinisterInwardBean.class, null);
+    }
+    
+    public void saveMinisterInward() {
+        MinisterInwardTO ministerInwardTO = TypeConverters.BeanToTrasferObject(this, MinisterInwardTO.class);
+        ministerInwardTO = WSManager.getInstance().getCaseManagementService().saveMinisterInward(ministerInwardTO);
+        TypeConverters.TransferObjectToBean(ministerInwardTO, MinisterInwardBean.class, this);
+    }  
+    
+    public static void removeMinisterInward(String id){
+        if(id == null || id.length()<1){
+            return;
+        } 
+        MinisterInwardTO ministerInwardTO = WSManager.getInstance().getCaseManagementService().getMinisterInward(id);
+        ministerInwardTO.setEntityAction(EntityAction.DELETE);
+        WSManager.getInstance().getCaseManagementService().saveMinisterInward(ministerInwardTO);
     }
 }

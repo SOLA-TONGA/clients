@@ -33,40 +33,41 @@ import org.sola.clients.beans.AbstractBindingListBean;
 import org.sola.clients.beans.controls.SolaObservableList;
 import org.sola.clients.beans.converters.TypeConverters;
 import org.sola.services.boundary.wsclients.WSManager;
-import org.sola.webservices.transferobjects.search.MinisterInwardSearchParamsTO;
+import org.sola.webservices.transferobjects.search.MinisterLeaseSearchParamsTO;
+
 /**
  *
  * @author Admin
  */
-public class MinisterInwardSearchResultListBean extends AbstractBindingListBean{
-    public static final String SELECTED_MINISTER_INWARD_SEARCH_RESULT_PROPERTY = "selectedMinisterInwardSearchResult";
-    private SolaObservableList<MinisterInwardSearchResultBean> ministerInwardResultList;
-    private MinisterInwardSearchResultBean selectedMinisterInwardSearchResult;
+public class MinisterLeaseSearchResultListBean extends AbstractBindingListBean{
+    public static final String SELECTED_MINISTER_LEASE_SEARCH_RESULT_PROPERTY = "selectedMinisterLeaseSearchResult";
+    private SolaObservableList<MinisterLeaseSearchResultBean> ministerLeaseResultList;
+    private MinisterLeaseSearchResultBean selectedMinisterLeaseSearchResult;
    
-    public MinisterInwardSearchResultListBean(){
+    public MinisterLeaseSearchResultListBean(){
         super();
     }
-    public ObservableList<MinisterInwardSearchResultBean> getMinisterInwardResultList() {
-        if (ministerInwardResultList == null) {
-            ministerInwardResultList = new SolaObservableList<MinisterInwardSearchResultBean>();
+    public ObservableList<MinisterLeaseSearchResultBean> getMinisterLeaseResultList() {
+        if (ministerLeaseResultList == null) {
+            ministerLeaseResultList = new SolaObservableList<MinisterLeaseSearchResultBean>();
         }
-        return ministerInwardResultList;
+        return ministerLeaseResultList;
     }
     
-    public MinisterInwardSearchResultBean getSelectedMinisterInwardSearchResult() {
-        return selectedMinisterInwardSearchResult;
+    public MinisterLeaseSearchResultBean getSelectedMinisterLeaseSearchResult() {
+        return selectedMinisterLeaseSearchResult;
     }
 
-    public void setSelectedMinisterInwardSearchResult(MinisterInwardSearchResultBean selectedMinisterInwardSearchResult) {
-        this.selectedMinisterInwardSearchResult = selectedMinisterInwardSearchResult;
-        propertySupport.firePropertyChange(SELECTED_MINISTER_INWARD_SEARCH_RESULT_PROPERTY, null, this.selectedMinisterInwardSearchResult);
+    public void setSelectedMinisterLeaseSearchResult(MinisterLeaseSearchResultBean selectedMinisterLeaseSearchResult) {
+        this.selectedMinisterLeaseSearchResult = selectedMinisterLeaseSearchResult;
+        propertySupport.firePropertyChange(SELECTED_MINISTER_LEASE_SEARCH_RESULT_PROPERTY, null, this.selectedMinisterLeaseSearchResult);
     }
     
-   public void search(MinisterInwardSearchParamsBean params){
-        getMinisterInwardResultList().clear();
-        MinisterInwardSearchParamsTO searchParams = TypeConverters.BeanToTrasferObject(params, MinisterInwardSearchParamsTO.class);
+   public void search(MinisterLeaseSearchParamsBean params){
+        getMinisterLeaseResultList().clear();
+        MinisterLeaseSearchParamsTO searchParams = TypeConverters.BeanToTrasferObject(params, MinisterLeaseSearchParamsTO.class);
         TypeConverters.TransferObjectListToBeanList(
-                WSManager.getInstance().getSearchService().searchMinisterInward(searchParams), 
-                MinisterInwardSearchResultBean.class, (List)getMinisterInwardResultList());
+                WSManager.getInstance().getSearchService().searchMinisterLease(searchParams), 
+                MinisterLeaseSearchResultBean.class, (List)getMinisterLeaseResultList());
     }
 }

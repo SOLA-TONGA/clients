@@ -49,8 +49,8 @@ public class MinisterInwardSearchParamsBean extends AbstractBindingBean{
     public MinisterInwardSearchParamsBean(){
         super();
     }
-
- public String getSubject() {
+    
+    public String getSubject() {
         return subject;
     }
 
