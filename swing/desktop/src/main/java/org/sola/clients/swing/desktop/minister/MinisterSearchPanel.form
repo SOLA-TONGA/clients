@@ -34,7 +34,7 @@
           <Component id="headerPanel" max="32767" attributes="0"/>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="ministerTab" pref="0" max="32767" attributes="0"/>
+              <Component id="ministerTab" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -73,7 +73,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jPanel4" max="32767" attributes="0"/>
                   <Component id="jScrollPane1" alignment="0" max="32767" attributes="0"/>
-                  <Component id="jToolBar" alignment="0" pref="695" max="32767" attributes="0"/>
+                  <Component id="jToolBar" alignment="0" pref="768" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
@@ -221,7 +221,7 @@
                                           <Component id="btnDateOut" min="-2" pref="18" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <EmptySpace pref="233" max="32767" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -319,9 +319,6 @@
                 </Component>
                 <Component class="javax.swing.JButton" name="btnDateIn">
                   <Properties>
-                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="2" name="D:\source\tonga\code\clients\swing\desktop\src\main\resources\images\common\calendar.png"/>
-                    </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
                         <EmptyBorder/>
@@ -335,9 +332,6 @@
                 </Component>
                 <Component class="javax.swing.JButton" name="btnDateOut">
                   <Properties>
-                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="2" name="D:\source\tonga\code\clients\swing\desktop\src\main\resources\images\common\calendar.png"/>
-                    </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
                         <EmptyBorder/>
@@ -423,7 +417,6 @@
                   </Properties>
                   <BindingProperties>
                     <BindingProperty name="elements" source="ministerInwardSearchResultListBean" sourcePath="${ministerInwardResultList}" target="jTableInward" targetPath="elements" updateStrategy="0" immediately="true">
-                      <Property name="name" type="java.lang.String" value=""/>
                       <Subbinding sourcePath="${fromWhom}">
                         <BindingParameter name="NAME" value="Name"/>
                         <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="String.class"/>
@@ -537,7 +530,7 @@
                               <Component id="btnPayDate" min="-2" pref="18" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace pref="114" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
                   <Component id="jScrollPane3" alignment="1" max="32767" attributes="0"/>
               </Group>
@@ -573,10 +566,8 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                                      <Component id="receivedToTextField" alignment="3" max="32767" attributes="0"/>
-                                      <Component id="lblDateReceivedTo" alignment="0" max="32767" attributes="0"/>
-                                  </Group>
+                                  <Component id="lblDateReceivedTo" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="receivedToTextField" min="-2" max="-2" attributes="0"/>
                                   <Component id="receivedFromTextField" alignment="0" max="32767" attributes="0"/>
                                   <Component id="lblDateReceivedFrom" alignment="0" max="32767" attributes="0"/>
                               </Group>
@@ -621,7 +612,7 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBoxLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JButton" name="btnFind1">
+                <Component class="javax.swing.JButton" name="btnLeaseSearch">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/images/common/search.png"/>
@@ -631,7 +622,7 @@
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnFind1ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLeaseSearchActionPerformed"/>
                   </Events>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
@@ -763,7 +754,33 @@
                 <Component class="org.sola.clients.swing.common.controls.JTableWithDefaultStyles" name="jTableLease">
                   <Properties>
                     <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
-                      <TableColumnModel selectionModel="0"/>
+                      <TableColumnModel selectionModel="0">
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                      </TableColumnModel>
                     </Property>
                     <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
                       <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
@@ -771,7 +788,27 @@
                   </Properties>
                   <BindingProperties>
                     <BindingProperty name="elements" source="ministerLeaseSearchResultListBean" sourcePath="${ministerLeaseResultList}" target="jTableLease" targetPath="elements" updateStrategy="0" immediately="true">
-                      <Property name="name" type="java.lang.String" value=""/>
+                      <Property name="name" type="java.lang.String" value="jTableLeaseResultList"/>
+                      <Subbinding sourcePath="${name}">
+                        <BindingParameter name="NAME" value="Name"/>
+                        <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="String.class"/>
+                      </Subbinding>
+                      <Subbinding sourcePath="${location}">
+                        <BindingParameter name="NAME" value="Location"/>
+                        <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="String.class"/>
+                      </Subbinding>
+                      <Subbinding sourcePath="${receiptNumber}">
+                        <BindingParameter name="NAME" value="Receipt Number"/>
+                        <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="String.class"/>
+                      </Subbinding>
+                      <Subbinding sourcePath="${payDate}">
+                        <BindingParameter name="NAME" value="Pay Date"/>
+                        <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="java.util.Date.class"/>
+                      </Subbinding>
+                      <Subbinding sourcePath="${dateReceived}">
+                        <BindingParameter name="NAME" value="Date Received"/>
+                        <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="java.util.Date.class"/>
+                      </Subbinding>
                     </BindingProperty>
                   </BindingProperties>
                 </Component>
@@ -779,9 +816,6 @@
             </Container>
             <Component class="javax.swing.JButton" name="btnPayDate">
               <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="D:\source\tonga\code\clients\swing\desktop\src\main\resources\images\common\calendar.png"/>
-                </Property>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
                     <EmptyBorder/>
@@ -795,9 +829,6 @@
             </Component>
             <Component class="javax.swing.JButton" name="btnDateReceivedTo">
               <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="D:\source\tonga\code\clients\swing\desktop\src\main\resources\images\common\calendar.png"/>
-                </Property>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
                     <EmptyBorder/>
@@ -811,9 +842,6 @@
             </Component>
             <Component class="javax.swing.JButton" name="btnDateReceivedFrom">
               <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="D:\source\tonga\code\clients\swing\desktop\src\main\resources\images\common\calendar.png"/>
-                </Property>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
                     <EmptyBorder/>
@@ -839,7 +867,7 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="695" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="768" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">

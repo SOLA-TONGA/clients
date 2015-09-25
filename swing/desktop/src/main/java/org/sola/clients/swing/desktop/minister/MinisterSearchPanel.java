@@ -261,7 +261,7 @@ public class MinisterSearchPanel extends ContentPanel {
         lblDateReceivedTo = new javax.swing.JLabel();
         receivedToTextField = new javax.swing.JFormattedTextField();
         jToolBar1 = new javax.swing.JToolBar();
-        btnFind1 = new javax.swing.JButton();
+        btnLeaseSearch = new javax.swing.JButton();
         btnClear1 = new javax.swing.JButton();
         btnOpenItem1 = new javax.swing.JButton();
         jSeparator4 = new javax.swing.JToolBar.Separator();
@@ -383,7 +383,6 @@ public class MinisterSearchPanel extends ContentPanel {
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, ministerInwardSearchParamsBean, org.jdesktop.beansbinding.ELProperty.create("${fileNumber}"), fileNumberTextField, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
 
-        btnDateIn.setIcon(new javax.swing.ImageIcon("D:\\source\\tonga\\code\\clients\\swing\\desktop\\src\\main\\resources\\images\\common\\calendar.png")); // NOI18N
         btnDateIn.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         btnDateIn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnDateIn.addActionListener(new java.awt.event.ActionListener() {
@@ -392,7 +391,6 @@ public class MinisterSearchPanel extends ContentPanel {
             }
         });
 
-        btnDateOut.setIcon(new javax.swing.ImageIcon("D:\\source\\tonga\\code\\clients\\swing\\desktop\\src\\main\\resources\\images\\common\\calendar.png")); // NOI18N
         btnDateOut.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         btnDateOut.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnDateOut.addActionListener(new java.awt.event.ActionListener() {
@@ -434,7 +432,7 @@ public class MinisterSearchPanel extends ContentPanel {
                                 .addComponent(dateOutTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnDateOut, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(233, Short.MAX_VALUE))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -465,7 +463,7 @@ public class MinisterSearchPanel extends ContentPanel {
         jTableInward.setMaximumSize(new java.awt.Dimension(2147483647, 100000));
 
         org.jdesktop.beansbinding.ELProperty eLProperty = org.jdesktop.beansbinding.ELProperty.create("${ministerInwardResultList}");
-        org.jdesktop.swingbinding.JTableBinding jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, ministerInwardSearchResultListBean, eLProperty, jTableInward, "");
+        org.jdesktop.swingbinding.JTableBinding jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, ministerInwardSearchResultListBean, eLProperty, jTableInward);
         org.jdesktop.swingbinding.JTableBinding.ColumnBinding columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${fromWhom}"));
         columnBinding.setColumnName("Name");
         columnBinding.setColumnClass(String.class);
@@ -518,7 +516,7 @@ public class MinisterSearchPanel extends ContentPanel {
             inwardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jScrollPane1)
-            .addComponent(jToolBar, javax.swing.GroupLayout.DEFAULT_SIZE, 695, Short.MAX_VALUE)
+            .addComponent(jToolBar, javax.swing.GroupLayout.DEFAULT_SIZE, 768, Short.MAX_VALUE)
         );
         inwardPanelLayout.setVerticalGroup(
             inwardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -545,14 +543,14 @@ public class MinisterSearchPanel extends ContentPanel {
         jToolBar1.setFloatable(false);
         jToolBar1.setRollover(true);
 
-        btnFind1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/search.png"))); // NOI18N
-        btnFind1.setText(bundle.getString("ApplicationSearchPanel.btnFind.text")); // NOI18N
-        btnFind1.addActionListener(new java.awt.event.ActionListener() {
+        btnLeaseSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/search.png"))); // NOI18N
+        btnLeaseSearch.setText(bundle.getString("ApplicationSearchPanel.btnFind.text")); // NOI18N
+        btnLeaseSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnFind1ActionPerformed(evt);
+                btnLeaseSearchActionPerformed(evt);
             }
         });
-        jToolBar1.add(btnFind1);
+        jToolBar1.add(btnLeaseSearch);
 
         btnClear1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/eraser.png"))); // NOI18N
         btnClear1.setText(bundle.getString("ApplicationSearchPanel.btnClear.text")); // NOI18N
@@ -630,12 +628,26 @@ public class MinisterSearchPanel extends ContentPanel {
         lblReceiptNumber.setText("Receipt Number");
 
         eLProperty = org.jdesktop.beansbinding.ELProperty.create("${ministerLeaseResultList}");
-        jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, ministerLeaseSearchResultListBean, eLProperty, jTableLease, "");
+        jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, ministerLeaseSearchResultListBean, eLProperty, jTableLease, "jTableLeaseResultList");
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${name}"));
+        columnBinding.setColumnName("Name");
+        columnBinding.setColumnClass(String.class);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${location}"));
+        columnBinding.setColumnName("Location");
+        columnBinding.setColumnClass(String.class);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${receiptNumber}"));
+        columnBinding.setColumnName("Receipt Number");
+        columnBinding.setColumnClass(String.class);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${payDate}"));
+        columnBinding.setColumnName("Pay Date");
+        columnBinding.setColumnClass(java.util.Date.class);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${dateReceived}"));
+        columnBinding.setColumnName("Date Received");
+        columnBinding.setColumnClass(java.util.Date.class);
         bindingGroup.addBinding(jTableBinding);
         jTableBinding.bind();
         jScrollPane3.setViewportView(jTableLease);
 
-        btnPayDate.setIcon(new javax.swing.ImageIcon("D:\\source\\tonga\\code\\clients\\swing\\desktop\\src\\main\\resources\\images\\common\\calendar.png")); // NOI18N
         btnPayDate.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         btnPayDate.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnPayDate.addActionListener(new java.awt.event.ActionListener() {
@@ -644,7 +656,6 @@ public class MinisterSearchPanel extends ContentPanel {
             }
         });
 
-        btnDateReceivedTo.setIcon(new javax.swing.ImageIcon("D:\\source\\tonga\\code\\clients\\swing\\desktop\\src\\main\\resources\\images\\common\\calendar.png")); // NOI18N
         btnDateReceivedTo.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         btnDateReceivedTo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnDateReceivedTo.addActionListener(new java.awt.event.ActionListener() {
@@ -653,7 +664,6 @@ public class MinisterSearchPanel extends ContentPanel {
             }
         });
 
-        btnDateReceivedFrom.setIcon(new javax.swing.ImageIcon("D:\\source\\tonga\\code\\clients\\swing\\desktop\\src\\main\\resources\\images\\common\\calendar.png")); // NOI18N
         btnDateReceivedFrom.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         btnDateReceivedFrom.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnDateReceivedFrom.addActionListener(new java.awt.event.ActionListener() {
@@ -701,7 +711,7 @@ public class MinisterSearchPanel extends ContentPanel {
                         .addComponent(payDateTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnPayDate, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(114, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         leasePanelLayout.setVerticalGroup(
@@ -729,9 +739,8 @@ public class MinisterSearchPanel extends ContentPanel {
                 .addGroup(leasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(leasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(leasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(leasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(receivedToTextField)
-                                .addComponent(lblDateReceivedTo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(lblDateReceivedTo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(receivedToTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(receivedFromTextField)
                             .addComponent(lblDateReceivedFrom, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addComponent(btnDateReceivedTo))
@@ -748,7 +757,7 @@ public class MinisterSearchPanel extends ContentPanel {
         appPanel.setLayout(appPanelLayout);
         appPanelLayout.setHorizontalGroup(
             appPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 695, Short.MAX_VALUE)
+            .addGap(0, 768, Short.MAX_VALUE)
         );
         appPanelLayout.setVerticalGroup(
             appPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -764,7 +773,7 @@ public class MinisterSearchPanel extends ContentPanel {
             .addComponent(headerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(ministerTab, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addComponent(ministerTab)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -802,9 +811,9 @@ public class MinisterSearchPanel extends ContentPanel {
         removeMinisterInward();
     }//GEN-LAST:event_btnRemoveActionPerformed
 
-    private void btnFind1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFind1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnFind1ActionPerformed
+    private void btnLeaseSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLeaseSearchActionPerformed
+      
+    }//GEN-LAST:event_btnLeaseSearchActionPerformed
 
     private void btnClear1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClear1ActionPerformed
         // TODO add your handling code here:
@@ -859,7 +868,7 @@ public class MinisterSearchPanel extends ContentPanel {
     private org.sola.clients.swing.common.buttons.BtnEdit btnEdit;
     private org.sola.clients.swing.common.buttons.BtnEdit btnEdit1;
     public javax.swing.JButton btnFind;
-    public javax.swing.JButton btnFind1;
+    public javax.swing.JButton btnLeaseSearch;
     private javax.swing.JButton btnOpenItem;
     private javax.swing.JButton btnOpenItem1;
     private javax.swing.JButton btnPayDate;

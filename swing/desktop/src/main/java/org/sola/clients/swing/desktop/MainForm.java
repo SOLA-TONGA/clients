@@ -244,6 +244,7 @@ public class MainForm extends javax.swing.JFrame {
         btnDocumentSearch.setEnabled(SecurityBean.isInRole(RolesConstants.SOURCE_SEARCH));
         btnSetPassword.setEnabled(SecurityBean.isInRole(RolesConstants.ADMIN_CHANGE_PASSWORD));
         btnDraughtingSearch.setVisible(SecurityBean.isInRole(RolesConstants.DRAFTING_SEARCH));
+        btnMinisterSearch.setVisible(SecurityBean.isInRole(RolesConstants.MINISTER_SEARCH));
 
         menuSearchApplication.setEnabled(btnSearchApplications.isEnabled());
         menuNewApplication.setEnabled(btnNewApplication.isEnabled());
@@ -254,6 +255,8 @@ public class MainForm extends javax.swing.JFrame {
         menuShowMap.setEnabled(btnOpenMap.isEnabled());
         menuLodgementReport.setEnabled(SecurityBean.isInRole(RolesConstants.REPORTS_VIEW));
         menuDocumentSearch.setEnabled(btnDocumentSearch.isEnabled());
+        menuDraftingSearch.setVisible(btnDraughtingSearch.isVisible());
+        menuMinisterSearch.setVisible(btnMinisterSearch.isVisible()); 
         
         // AM 17-04-13 Systematic Registration is not required in Tonga.
         menuMap.setEnabled(btnOpenMap.isEnabled());
@@ -783,6 +786,8 @@ public class MainForm extends javax.swing.JFrame {
         menuSearchApplication = new javax.swing.JMenuItem();
         menuBaUnitSearch = new javax.swing.JMenuItem();
         menuDocumentSearch = new javax.swing.JMenuItem();
+        menuDraftingSearch = new javax.swing.JMenuItem();
+        menuMinisterSearch = new javax.swing.JMenuItem();
         menuPersons = new javax.swing.JMenuItem();
         menuMap = new javax.swing.JMenu();
         menuShowMap = new javax.swing.JMenuItem();
@@ -1102,6 +1107,24 @@ public class MainForm extends javax.swing.JFrame {
             }
         });
         menuSearch.add(menuDocumentSearch);
+
+        menuDraftingSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/search.png"))); // NOI18N
+        menuDraftingSearch.setText(bundle.getString("MainForm.menuDraftingSearch.text")); // NOI18N
+        menuDraftingSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuDraftingSearchActionPerformed(evt);
+            }
+        });
+        menuSearch.add(menuDraftingSearch);
+
+        menuMinisterSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/search.png"))); // NOI18N
+        menuMinisterSearch.setText(bundle.getString("MainForm.menuMinisterSearch.text")); // NOI18N
+        menuMinisterSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuMinisterSearchActionPerformed(evt);
+            }
+        });
+        menuSearch.add(menuMinisterSearch);
 
         menuPersons.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/users.png"))); // NOI18N
         menuPersons.setText(bundle.getString("MainForm.menuPersons.text")); // NOI18N
@@ -1444,6 +1467,14 @@ public class MainForm extends javax.swing.JFrame {
         searchMinister();
     }//GEN-LAST:event_btnMinisterSearchActionPerformed
 
+    private void menuDraftingSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuDraftingSearchActionPerformed
+        searchDrafting();
+    }//GEN-LAST:event_menuDraftingSearchActionPerformed
+
+    private void menuMinisterSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuMinisterSearchActionPerformed
+        searchMinister();
+    }//GEN-LAST:event_menuMinisterSearchActionPerformed
+
     private void editPassword() {
         showPasswordPanel();
     }
@@ -1494,6 +1525,7 @@ public class MainForm extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuCertificates;
     private javax.swing.JMenuItem menuDefaultLogLevel;
     private javax.swing.JMenuItem menuDocumentSearch;
+    private javax.swing.JMenuItem menuDraftingSearch;
     private javax.swing.JMenuItem menuExportRights;
     private javax.swing.JMenuItem menuItemMapPublicDisplay;
     private javax.swing.JMenuItem menuLangEN;
@@ -1502,6 +1534,7 @@ public class MainForm extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuLodgementReport;
     private javax.swing.JMenu menuLogLevel;
     private javax.swing.JMenu menuMap;
+    private javax.swing.JMenuItem menuMinisterSearch;
     private javax.swing.JMenuItem menuNewApplication;
     private javax.swing.JMenuItem menuOffLogLevel;
     private javax.swing.JMenuItem menuOwnerName;
