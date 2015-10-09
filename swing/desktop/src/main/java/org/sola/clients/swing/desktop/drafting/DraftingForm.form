@@ -404,6 +404,9 @@
             </Component>
             <Component class="javax.swing.JFormattedTextField" name="txtDateReceived">
               <Properties>
+                <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="FormattersFactory.getInstance().getDateFormatterFactory()" type="code"/>
+                </Property>
                 <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
                   <ResourceString bundle="org/sola/clients/swing/desktop/drafting/Bundle.properties" key="DraftingForm.txtDateReceived.text" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
                 </Property>
@@ -411,6 +414,9 @@
               <BindingProperties>
                 <BindingProperty name="value" source="draftingBean" sourcePath="${receiveDate}" target="txtDateReceived" targetPath="value" updateStrategy="0" immediately="false"/>
               </BindingProperties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new WatermarkDate()"/>
+              </AuxValues>
             </Component>
             <Component class="javax.swing.JButton" name="btnShowCalendarReceiveDate">
               <Properties>
@@ -616,6 +622,9 @@
         </Component>
         <Component class="javax.swing.JFormattedTextField" name="txtTraceDate">
           <Properties>
+            <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="FormattersFactory.getInstance().getDateFormatterFactory()" type="code"/>
+            </Property>
             <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
               <ResourceString bundle="org/sola/clients/swing/desktop/drafting/Bundle.properties" key="DraftingForm.txtTraceDate.text" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
             </Property>
@@ -623,6 +632,9 @@
           <BindingProperties>
             <BindingProperty name="value" source="draftingBean" sourcePath="${traceDate}" target="txtTraceDate" targetPath="value" updateStrategy="0" immediately="false"/>
           </BindingProperties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new WatermarkDate()"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JButton" name="btnShowCalendarTraceDate">
           <Properties>
@@ -679,6 +691,9 @@
         </Component>
         <Component class="javax.swing.JFormattedTextField" name="txtSendDate">
           <Properties>
+            <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="FormattersFactory.getInstance().getDateFormatterFactory()" type="code"/>
+            </Property>
             <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
               <ResourceString bundle="org/sola/clients/swing/desktop/drafting/Bundle.properties" key="DraftingForm.txtSendDate.text" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
             </Property>
@@ -688,6 +703,9 @@
               <Property name="name" type="java.lang.String" value=""/>
             </BindingProperty>
           </BindingProperties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new WatermarkDate()"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JButton" name="btnShowCalendarSendDate">
           <Properties>
@@ -744,6 +762,9 @@
         </Component>
         <Component class="javax.swing.JFormattedTextField" name="txtPlottingDate">
           <Properties>
+            <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="FormattersFactory.getInstance().getDateFormatterFactory()" type="code"/>
+            </Property>
             <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
               <ResourceString bundle="org/sola/clients/swing/desktop/drafting/Bundle.properties" key="DraftingForm.txtPlottingDate.text" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
             </Property>
@@ -751,6 +772,9 @@
           <BindingProperties>
             <BindingProperty name="value" source="draftingBean" sourcePath="${plottingDate}" target="txtPlottingDate" targetPath="value" updateStrategy="0" immediately="false"/>
           </BindingProperties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new WatermarkDate()"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JButton" name="btnShowCalendarPlottingDate">
           <Properties>
@@ -882,6 +906,9 @@
         </Component>
         <Component class="javax.swing.JFormattedTextField" name="txtReturnDate">
           <Properties>
+            <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="FormattersFactory.getInstance().getDateFormatterFactory()" type="code"/>
+            </Property>
             <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
               <ResourceString bundle="org/sola/clients/swing/desktop/drafting/Bundle.properties" key="DraftingForm.txtReturnDate.text" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
             </Property>
@@ -889,6 +916,9 @@
           <BindingProperties>
             <BindingProperty name="value" source="draftingBean" sourcePath="${returnDate}" target="txtReturnDate" targetPath="value" updateStrategy="0" immediately="false"/>
           </BindingProperties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new WatermarkDate()"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JButton" name="btnShowCalendarReturnDate">
           <Properties>

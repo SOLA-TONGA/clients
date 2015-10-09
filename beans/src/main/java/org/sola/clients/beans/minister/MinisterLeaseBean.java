@@ -29,6 +29,10 @@ package org.sola.clients.beans.minister;
 
 import java.util.Date;
 import org.sola.clients.beans.AbstractIdBean;
+import org.sola.clients.beans.converters.TypeConverters;
+import org.sola.services.boundary.wsclients.WSManager;
+import org.sola.webservices.transferobjects.EntityAction;
+import org.sola.webservices.transferobjects.casemanagement.MinisterLeaseTO;
 
 /**
  *
@@ -218,5 +222,28 @@ public class MinisterLeaseBean extends AbstractIdBean{
         String oldValue = this.remark;
         this.remark = value;
         propertySupport.firePropertyChange(REMARK_PROPERTY, oldValue, value);
+    }
+    
+    public void saveMinisterLease() {
+        MinisterLeaseTO ministerLeaseTO = TypeConverters.BeanToTrasferObject(this, MinisterLeaseTO.class);
+        ministerLeaseTO = WSManager.getInstance().getCaseManagementService().saveMinisterLease(ministerLeaseTO);
+        TypeConverters.TransferObjectToBean(ministerLeaseTO, MinisterLeaseBean.class, this);
+    } 
+    
+    public static MinisterLeaseBean getMinisterLease(String id){
+        if(id == null || id.length()<1){
+            return null;
+        }
+        MinisterLeaseTO ministerLeaseTO = WSManager.getInstance().getCaseManagementService().getMinisterLease(id);
+        return TypeConverters.TransferObjectToBean(ministerLeaseTO, MinisterLeaseBean.class, null);
+    }
+    
+    public static void removeMinisterLease(String id){
+        if(id == null || id.length()<1){
+            return;
+        } 
+        MinisterLeaseTO ministerLeaseTO = WSManager.getInstance().getCaseManagementService().getMinisterLease(id);
+        ministerLeaseTO.setEntityAction(EntityAction.DELETE);
+        WSManager.getInstance().getCaseManagementService().saveMinisterLease(ministerLeaseTO);
     }
 }

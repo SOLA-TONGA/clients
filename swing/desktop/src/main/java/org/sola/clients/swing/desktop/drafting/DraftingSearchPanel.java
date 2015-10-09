@@ -489,14 +489,10 @@ public class DraftingSearchPanel extends ContentPanel {
 
         jPanel1.add(jPanel7);
 
-        txtActionDateFrom.setFont(new java.awt.Font("Tahoma", 0, 12));
         txtActionDateFrom.setFormatterFactory(FormattersFactory.getInstance().getDateFormatterFactory());
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, draftingSearchParamsBean, org.jdesktop.beansbinding.ELProperty.create("${dateReceivedFrom}"), txtActionDateFrom, org.jdesktop.beansbinding.BeanProperty.create("value"));
         bindingGroup.addBinding(binding);
-
-        txtActionDateFrom.setComponentOrientation(ComponentOrientation.getOrientation(Locale.getDefault()));
-        txtActionDateFrom.setHorizontalAlignment(JTextField.LEADING);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -546,14 +542,10 @@ public class DraftingSearchPanel extends ContentPanel {
 
         labActionDateTo.setText(bundle.getString("ApplicationSearchPanel.labFrom.text")); // NOI18N
 
-        txtActionDateFrom.setFont(new java.awt.Font("Tahoma", 0, 12));
         txtActionDateTo.setFormatterFactory(FormattersFactory.getInstance().getDateFormatterFactory());
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, draftingSearchParamsBean, org.jdesktop.beansbinding.ELProperty.create("${dateReceivedTo}"), txtActionDateTo, org.jdesktop.beansbinding.BeanProperty.create("value"));
         bindingGroup.addBinding(binding);
-
-        txtActionDateFrom.setComponentOrientation(ComponentOrientation.getOrientation(Locale.getDefault()));
-        txtActionDateFrom.setHorizontalAlignment(JTextField.LEADING);
 
         javax.swing.GroupLayout jPanel17Layout = new javax.swing.GroupLayout(jPanel17);
         jPanel17.setLayout(jPanel17Layout);

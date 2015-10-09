@@ -490,7 +490,7 @@ public class MainForm extends javax.swing.JFrame {
             @Override
             public Void doTask() {
                 setMessage(MessageUtility.getLocalizedMessageText(ClientMessage.PROGRESS_MSG_OPEN_MINISTER_SEARCH));
-                if (!pnlContent.isPanelOpened(MainContentPanel.CARD_DRAUGHTING_SEARCH)) {
+                if (!pnlContent.isPanelOpened(MainContentPanel.CARD_MINISTER_SEARCH)) {
                     MinisterSearchPanel ministerSearch = new MinisterSearchPanel();
                     setMinisterInwardSearch(ministerSearch);
                     pnlContent.addPanel(ministerSearch, MainContentPanel.CARD_MINISTER_SEARCH);

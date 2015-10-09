@@ -28,56 +28,47 @@
 package org.sola.clients.beans.minister;
 
 import java.util.Date;
-import org.sola.clients.beans.AbstractBindingBean;
+import org.sola.clients.beans.AbstractIdBean;
+import org.sola.clients.beans.converters.TypeConverters;
+import org.sola.services.boundary.wsclients.WSManager;
+import org.sola.webservices.transferobjects.EntityAction;
+import org.sola.webservices.transferobjects.casemanagement.MinisterApplicationTO;
 
 /**
  *
  * @author Admin
  */
-public class MinisterLeaseSearchResultBean extends AbstractBindingBean{
-    public static final String ID_PROPERTY = "id";
+public class MinisterApplicationBean extends AbstractIdBean{
     public static final String DATE_RECEIVED_PROPERTY = "dateReceived";
     public static final String NAME_PROPERTY = "name";
-    public static final String PURPOSE_PROPERTY = "purpose";
     public static final String LOCATION_PROPERTY = "location";
-    public static final String NOBLE_PROPERTY = "noble";
     public static final String LAND_TYPE_PROPERTY = "landType";
-    public static final String TOTAL_AREA_PROPERTY = "totalArea";
-    public static final String LEASE_AREA_PROPERTY = "leaseArea";
-    public static final String RENT_PROPERTY = "rent";
+    public static final String NOBLE_PROPERTY = "noble";
+    public static final String LAND_AREA_PROPERTY = "landArea";
+    public static final String SIGN_DATE_PROPERTY = "signDate";
     public static final String SURVEY_FEE_PROPERTY = "surveyFee";
     public static final String RECEIPT_NUMBER_PROPERTY = "receiptNumber";
     public static final String PAY_DATE_PROPERTY = "payDate";
+    public static final String LAST_REG_PROPERTY = "lastReg";
     public static final String CEO_DIRECTION_PROPERTY = "ceoDirection";
     public static final String DIRECTED_DIVISION_PROPERTY = "directedDivision";
-    public static final String REMARK_PROPERTY = "remark";
-    private String id;
+    
     private Date dateReceived;
     private String name;
-    private String purpose;
     private String location;
-    private String noble;
     private String landType;
-    private String totalArea;
-    private String leaseArea;
-    private String rent;
+    private String noble;
+    private String landArea;
+    private Date signDate;
     private String surveyFee;
     private String receiptNumber;
     private Date payDate;
+    private String lastReg;
     private String ceoDirection;
     private String directedDivision;
-    private String remark;
     
-    public MinisterLeaseSearchResultBean() {
+    public MinisterApplicationBean() {
         super();
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
     
     public Date getDateReceived() {
@@ -100,16 +91,6 @@ public class MinisterLeaseSearchResultBean extends AbstractBindingBean{
         propertySupport.firePropertyChange(NAME_PROPERTY, oldValue, value);
     }
     
-    public String getPurpose() {
-        return purpose;
-    }
-
-    public void setPurpose(String value) {
-        String oldValue = this.purpose;
-        this.purpose = value;
-        propertySupport.firePropertyChange(PURPOSE_PROPERTY, oldValue, value);
-    }
-    
     public String getLocation() {
         return location;
     }
@@ -118,16 +99,6 @@ public class MinisterLeaseSearchResultBean extends AbstractBindingBean{
         String oldValue = this.location;
         this.location = value;
         propertySupport.firePropertyChange(LOCATION_PROPERTY, oldValue, value);
-    }
-    
-    public String getNoble() {
-        return noble;
-    }
-
-    public void setNoble(String value) {
-        String oldValue = this.noble;
-        this.noble = value;
-        propertySupport.firePropertyChange(NOBLE_PROPERTY, oldValue, value);
     }
     
     public String getLandType() {
@@ -140,40 +111,40 @@ public class MinisterLeaseSearchResultBean extends AbstractBindingBean{
         propertySupport.firePropertyChange(LAND_TYPE_PROPERTY, oldValue, value);
     }
     
-    public String getTotalArea() {
-        return totalArea;
+    public String getNoble() {
+        return noble;
     }
 
-    public void setTotalArea(String value) {
-        String oldValue = this.totalArea;
-        this.totalArea = value;
-        propertySupport.firePropertyChange(TOTAL_AREA_PROPERTY, oldValue, value);
+    public void setNoble(String value) {
+        String oldValue = this.noble;
+        this.noble = value;
+        propertySupport.firePropertyChange(NOBLE_PROPERTY, oldValue, value);
     }
     
-    public String getLeaseArea() {
-        return leaseArea;
-    }
-
-    public void setLeaseArea(String value) {
-        String oldValue = this.leaseArea;
-        this.leaseArea = value;
-        propertySupport.firePropertyChange(LEASE_AREA_PROPERTY, oldValue, value);
+    public String getLandArea() {
+        return landArea;
     }
     
-    public String getRent() {
-        return rent;
+    public void setLandArea(String value) {
+        String oldValue = this.landArea;
+        this.landArea = value;
+        propertySupport.firePropertyChange(LAND_AREA_PROPERTY, oldValue, value);
+    }
+    
+    public Date getSignDate() {
+        return signDate;
     }
 
-    public void setRent(String value) {
-        String oldValue = this.rent;
-        this.rent = value;
-        propertySupport.firePropertyChange(RENT_PROPERTY, oldValue, value);
+    public void setSignDate(Date value) {
+        Date oldValue = this.signDate;
+        this.signDate = value;
+        propertySupport.firePropertyChange(SIGN_DATE_PROPERTY, oldValue, value);
     }
     
     public String getSurveyFee() {
         return surveyFee;
     }
-
+    
     public void setSurveyFee(String value) {
         String oldValue = this.surveyFee;
         this.surveyFee = value;
@@ -183,7 +154,7 @@ public class MinisterLeaseSearchResultBean extends AbstractBindingBean{
     public String getReceiptNumber() {
         return receiptNumber;
     }
-
+    
     public void setReceiptNumber(String value) {
         String oldValue = this.receiptNumber;
         this.receiptNumber = value;
@@ -200,10 +171,20 @@ public class MinisterLeaseSearchResultBean extends AbstractBindingBean{
         propertySupport.firePropertyChange(PAY_DATE_PROPERTY, oldValue, value);
     }
     
+    public String getLastReg() {
+        return lastReg;
+    }
+    
+    public void setLastReg(String value) {
+        String oldValue = this.lastReg;
+        this.lastReg = value;
+        propertySupport.firePropertyChange(LAST_REG_PROPERTY, oldValue, value);
+    }
+    
     public String getCeoDirection() {
         return ceoDirection;
     }
-
+    
     public void setCeoDirection(String value) {
         String oldValue = this.ceoDirection;
         this.ceoDirection = value;
@@ -213,20 +194,33 @@ public class MinisterLeaseSearchResultBean extends AbstractBindingBean{
     public String getDirectedDivision() {
         return directedDivision;
     }
-
+    
     public void setDirectedDivision(String value) {
         String oldValue = this.directedDivision;
         this.directedDivision = value;
         propertySupport.firePropertyChange(DIRECTED_DIVISION_PROPERTY, oldValue, value);
     }
     
-    public String getRemark() {
-        return remark;
+    public void saveMinisterApplication() {
+        MinisterApplicationTO ministerApplicationTO = TypeConverters.BeanToTrasferObject(this, MinisterApplicationTO.class);
+        ministerApplicationTO = WSManager.getInstance().getCaseManagementService().saveMinisterApplication(ministerApplicationTO);
+        TypeConverters.TransferObjectToBean(ministerApplicationTO, MinisterApplicationBean.class, this);
+    } 
+    
+    public static MinisterApplicationBean getMinisterApplication(String id){
+        if(id == null || id.length()<1){
+            return null;
+        }
+        MinisterApplicationTO ministerApplicationTO = WSManager.getInstance().getCaseManagementService().getMinisterApplication(id);
+        return TypeConverters.TransferObjectToBean(ministerApplicationTO, MinisterApplicationBean.class, null);
     }
-
-    public void setRemark(String value) {
-        String oldValue = this.remark;
-        this.remark = value;
-        propertySupport.firePropertyChange(REMARK_PROPERTY, oldValue, value);
+    
+    public static void removeMinisterApplication(String id){
+        if(id == null || id.length()<1){
+            return;
+        } 
+        MinisterApplicationTO ministerApplicationTO = WSManager.getInstance().getCaseManagementService().getMinisterApplication(id);
+        ministerApplicationTO.setEntityAction(EntityAction.DELETE);
+        WSManager.getInstance().getCaseManagementService().saveMinisterApplication(ministerApplicationTO);
     }
 }

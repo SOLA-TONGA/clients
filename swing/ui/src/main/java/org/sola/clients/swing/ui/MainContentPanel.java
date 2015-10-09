@@ -102,7 +102,9 @@ public class MainContentPanel extends javax.swing.JPanel {
     public final static String CARD_DRAUGHTING_SEARCH = "draughtingSearch";
     public final static String CARD_DRAFTING_FORM = "draftingForm";
     public final static String CARD_MINISTER_SEARCH = "ministerSearch";
-    public final static String CARD_MINISTER_FORM = "ministerForm";
+    public final static String CARD_MINISTER_INWARD_FORM = "ministerInwardForm";
+    public final static String CARD_MINISTER_LEASE_FORM = "ministerLeaseForm";
+    public final static String CARD_MINISTER_APPLICATION_FORM = "ministerApplicationForm";
     
     private HashMap<String, Component> cards;
     private ArrayList<String> cardsIndex;

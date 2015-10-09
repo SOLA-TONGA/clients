@@ -31,14 +31,21 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
+import org.sola.clients.beans.minister.MinisterApplicationBean;
+import org.sola.clients.beans.minister.MinisterApplicationSearchParamsBean;
+import org.sola.clients.beans.minister.MinisterApplicationSearchResultListBean;
 import org.sola.clients.beans.minister.MinisterInwardBean;
 import org.sola.clients.beans.minister.MinisterInwardSearchParamsBean;
 import org.sola.clients.beans.minister.MinisterInwardSearchResultListBean;
+import org.sola.clients.beans.minister.MinisterLeaseBean;
+import org.sola.clients.beans.minister.MinisterLeaseSearchParamsBean;
 import org.sola.clients.beans.minister.MinisterLeaseSearchResultListBean;
 import org.sola.clients.beans.security.SecurityBean;
 import org.sola.clients.swing.common.controls.CalendarForm;
+import org.sola.clients.swing.common.controls.WatermarkDate;
 import org.sola.clients.swing.common.tasks.SolaTask;
 import org.sola.clients.swing.common.tasks.TaskManager;
+import org.sola.clients.swing.common.utils.FormattersFactory;
 import org.sola.clients.swing.desktop.MainForm;
 import org.sola.clients.swing.ui.ContentPanel;
 import org.sola.clients.swing.ui.MainContentPanel;
@@ -73,6 +80,14 @@ public class MinisterSearchPanel extends ContentPanel {
                 }
             }
         });
+        ministerApplicationSearchResultListBean.addPropertyChangeListener(new PropertyChangeListener() {
+            @Override
+            public void propertyChange(PropertyChangeEvent evt) {
+                if (evt.getPropertyName().equals(MinisterApplicationSearchResultListBean.SELECTED_MINISTER_APP_SEARCH_RESULT_PROPERTY)) {
+                    customizeButtons();
+                }
+            }
+        });
         
         customizeButtons();
     }
@@ -81,22 +96,33 @@ public class MinisterSearchPanel extends ContentPanel {
         boolean hasEditRole = SecurityBean.isInRole(RolesConstants.MINISTER_EDIT);
         boolean inwardEnabled = ministerInwardSearchResultListBean.getSelectedMinisterInwardSearchResult() != null;
         boolean leaseEnabled = ministerLeaseSearchResultListBean.getSelectedMinisterLeaseSearchResult() != null;
+        boolean applicationEnabled = ministerApplicationSearchResultListBean.getSelectedMinisterApplicationSearchResult() != null;
+
         inwardEnabled = inwardEnabled && hasEditRole;
         leaseEnabled = leaseEnabled && hasEditRole;
+        applicationEnabled = applicationEnabled && hasEditRole;
+
         if (inwardEnabled && ministerInwardSearchResultListBean.getSelectedMinisterInwardSearchResult() != null) {
             inwardEnabled = SecurityBean.isInRole(RolesConstants.MINISTER_EDIT);
         }
         if (leaseEnabled && ministerLeaseSearchResultListBean.getSelectedMinisterLeaseSearchResult() != null) {
             leaseEnabled = SecurityBean.isInRole(RolesConstants.MINISTER_EDIT);
         }
-        btnAdd.setEnabled(hasEditRole);
-        btnEdit.setEnabled(inwardEnabled);
-        btnRemove.setEnabled(inwardEnabled);
-        btnOpenItem.setEnabled(inwardEnabled);
-        btnAdd1.setEnabled(hasEditRole);
-        btnEdit1.setEnabled(leaseEnabled);
-        btnRemove1.setEnabled(leaseEnabled);
-        btnOpenItem1.setEnabled(leaseEnabled);
+        if (applicationEnabled && ministerApplicationSearchResultListBean.getSelectedMinisterApplicationSearchResult() != null) {
+            applicationEnabled = SecurityBean.isInRole(RolesConstants.MINISTER_EDIT);
+        }
+        btnAddInward.setEnabled(hasEditRole);
+        btnEditInward.setEnabled(inwardEnabled);
+        btnRemoveInward.setEnabled(inwardEnabled);
+        btnOpenInward.setEnabled(inwardEnabled);
+        btnAddLease.setEnabled(hasEditRole);
+        btnEditLease.setEnabled(leaseEnabled);
+        btnRemoveLease.setEnabled(leaseEnabled);
+        btnOpenLease.setEnabled(leaseEnabled);
+        btnAddApp.setEnabled(hasEditRole);
+        btnEditApp.setEnabled(applicationEnabled);
+        btnRemoveApp.setEnabled(applicationEnabled);
+        btnOpenApp.setEnabled(applicationEnabled);
 
     }
      
@@ -105,7 +131,7 @@ public class MinisterSearchPanel extends ContentPanel {
         calendar.setVisible(true);
     }
     
-    private void executeSearch(final MinisterInwardSearchParamsBean params,
+    private void executeInwardSearch(final MinisterInwardSearchParamsBean params,
             final JLabel lblSearchCount, final MinisterInwardSearchResultListBean results) {
 
         SolaTask t = new SolaTask<Void, Void>() {
@@ -129,15 +155,95 @@ public class MinisterSearchPanel extends ContentPanel {
         TaskManager.getInstance().runTask(t);
     }
     
+    private void executeLeaseSearch(final MinisterLeaseSearchParamsBean params,
+            final JLabel lblSearchCount, final MinisterLeaseSearchResultListBean results) {
+
+        SolaTask t = new SolaTask<Void, Void>() {
+            @Override
+            public Void doTask() {
+                setMessage(MessageUtility.getLocalizedMessageText(ClientMessage.PROGRESS_MSG_PROPERTY_SEARCHING));
+                results.search(params);
+                return null;
+            }
+
+            @Override
+            public void taskDone() {
+                lblSearchCount.setText(Integer.toString(results.getMinisterLeaseResultList().size()));
+                if (results.getMinisterLeaseResultList().size() < 1) {
+                    MessageUtility.displayMessage(ClientMessage.SEARCH_NO_RESULTS);
+                } else if (results.getMinisterLeaseResultList().size() > 100) {
+                    MessageUtility.displayMessage(ClientMessage.SEARCH_TOO_MANY_RESULTS, new String[]{"100"});
+                }
+            }
+        };
+        TaskManager.getInstance().runTask(t);
+    }
+    
+    private void executeApplicationSearch(final MinisterApplicationSearchParamsBean params,
+            final JLabel lblSearchCount, final MinisterApplicationSearchResultListBean results) {
+
+        SolaTask t = new SolaTask<Void, Void>() {
+            @Override
+            public Void doTask() {
+                setMessage(MessageUtility.getLocalizedMessageText(ClientMessage.PROGRESS_MSG_PROPERTY_SEARCHING));
+                results.search(params);
+                return null;
+            }
+
+            @Override
+            public void taskDone() {
+                lblSearchCount.setText(Integer.toString(results.getMinisterApplicationResultList().size()));
+                if (results.getMinisterApplicationResultList().size() < 1) {
+                    MessageUtility.displayMessage(ClientMessage.SEARCH_NO_RESULTS);
+                } else if (results.getMinisterApplicationResultList().size() > 100) {
+                    MessageUtility.displayMessage(ClientMessage.SEARCH_TOO_MANY_RESULTS, new String[]{"100"});
+                }
+            }
+        };
+        TaskManager.getInstance().runTask(t);
+    }
+    
     public void addMinisterInward() {
 
         SolaTask t = new SolaTask<Void, Void>() {
 
             @Override
             public Void doTask() {
-                setMessage(MessageUtility.getLocalizedMessageText(ClientMessage.PROGRESS_MSG_OPEN_MINISTER_FORM));
+                setMessage(MessageUtility.getLocalizedMessageText(ClientMessage.PROGRESS_MSG_OPEN_MINISTER_INWARD_FORM));
                 MinisterInwardForm form = new MinisterInwardForm();
-                MainForm.getInstance().getMainContentPanel().addPanel(form, MainContentPanel.CARD_MINISTER_FORM, true);
+                MainForm.getInstance().getMainContentPanel().addPanel(form, MainContentPanel.CARD_MINISTER_INWARD_FORM, true);
+                return null;
+            }
+        };
+        TaskManager.getInstance().runTask(t);
+
+    }
+    
+    public void addMinisterLease() {
+
+        SolaTask t = new SolaTask<Void, Void>() {
+
+            @Override
+            public Void doTask() {
+                setMessage(MessageUtility.getLocalizedMessageText(ClientMessage.PROGRESS_MSG_OPEN_MINISTER_LEASE_FORM));
+                MinisterLeaseForm form = new MinisterLeaseForm();
+                MainForm.getInstance().getMainContentPanel().addPanel(form, MainContentPanel.CARD_MINISTER_LEASE_FORM, true);
+                return null;
+            }
+        };
+        TaskManager.getInstance().runTask(t);
+
+    }
+    
+    public void addMinisterApplication() {
+
+        SolaTask t = new SolaTask<Void, Void>() {
+
+            @Override
+            public Void doTask() {
+                setMessage(MessageUtility.getLocalizedMessageText(ClientMessage.PROGRESS_MSG_OPEN_MINISTER_APPLICATION_FORM));
+                MinisterApplicationForm form = new MinisterApplicationForm();
+                MainForm.getInstance().getMainContentPanel().addPanel(form, MainContentPanel.CARD_MINISTER_APPLICATION_FORM, true);
                 return null;
             }
         };
@@ -151,9 +257,41 @@ public class MinisterSearchPanel extends ContentPanel {
 
                 @Override
                 public Void doTask() {
-                    setMessage(MessageUtility.getLocalizedMessageText(ClientMessage.PROGRESS_MSG_OPEN_MINISTER_FORM));
+                    setMessage(MessageUtility.getLocalizedMessageText(ClientMessage.PROGRESS_MSG_OPEN_MINISTER_INWARD_FORM));
                     MinisterInwardForm form = new MinisterInwardForm(MinisterInwardBean.getMinisterInward(ministerInwardSearchResultListBean.getSelectedMinisterInwardSearchResult().getId()));
-                    MainForm.getInstance().getMainContentPanel().addPanel(form, MainContentPanel.CARD_MINISTER_FORM, true);
+                    MainForm.getInstance().getMainContentPanel().addPanel(form, MainContentPanel.CARD_MINISTER_INWARD_FORM, true);
+                    return null;
+                }
+            };
+            TaskManager.getInstance().runTask(t);
+        }
+    }
+    
+    public void openMinisterLease() {
+        if (ministerLeaseSearchResultListBean.getSelectedMinisterLeaseSearchResult() != null) {
+            SolaTask t = new SolaTask<Void, Void>() {
+
+                @Override
+                public Void doTask() {
+                    setMessage(MessageUtility.getLocalizedMessageText(ClientMessage.PROGRESS_MSG_OPEN_MINISTER_LEASE_FORM));
+                    MinisterLeaseForm form = new MinisterLeaseForm(MinisterLeaseBean.getMinisterLease(ministerLeaseSearchResultListBean.getSelectedMinisterLeaseSearchResult().getId()));
+                    MainForm.getInstance().getMainContentPanel().addPanel(form, MainContentPanel.CARD_MINISTER_LEASE_FORM, true);
+                    return null;
+                }
+            };
+            TaskManager.getInstance().runTask(t);
+        }
+    }
+    
+    public void openMinisterApplication() {
+        if (ministerApplicationSearchResultListBean.getSelectedMinisterApplicationSearchResult() != null) {
+            SolaTask t = new SolaTask<Void, Void>() {
+
+                @Override
+                public Void doTask() {
+                    setMessage(MessageUtility.getLocalizedMessageText(ClientMessage.PROGRESS_MSG_OPEN_MINISTER_APPLICATION_FORM));
+                    MinisterApplicationForm form = new MinisterApplicationForm(MinisterApplicationBean.getMinisterApplication(ministerApplicationSearchResultListBean.getSelectedMinisterApplicationSearchResult().getId()));
+                    MainForm.getInstance().getMainContentPanel().addPanel(form, MainContentPanel.CARD_MINISTER_APPLICATION_FORM, true);
                     return null;
                 }
             };
@@ -171,7 +309,7 @@ public class MinisterSearchPanel extends ContentPanel {
 
                     @Override
                     public Void doTask() {
-                        setMessage(MessageUtility.getLocalizedMessageText(ClientMessage.PROGRESS_MSG_OPEN_MINISTER_FORM));
+                        setMessage(MessageUtility.getLocalizedMessageText(ClientMessage.PROGRESS_MSG_OPEN_MINISTER_SEARCH));
                         MinisterInwardBean.removeMinisterInward(ministerInwardSearchResultListBean.getSelectedMinisterInwardSearchResult().getId());
                         return null;
                     }
@@ -179,7 +317,7 @@ public class MinisterSearchPanel extends ContentPanel {
                     @Override
                     public void taskDone() {
                         // Rerun the search to show that the inward is removed. 
-                        executeSearch(ministerInwardSearchParamsBean, lblSearchCount, ministerInwardSearchResultListBean);
+                        executeInwardSearch(ministerInwardSearchParamsBean, lblInwardSearchCount, ministerInwardSearchResultListBean);
                     }
                 };
                 TaskManager.getInstance().runTask(t);
@@ -187,16 +325,102 @@ public class MinisterSearchPanel extends ContentPanel {
         }
 
     }
+    
+    public void removeMinisterLease() {
 
+        if (ministerLeaseSearchResultListBean.getSelectedMinisterLeaseSearchResult() != null) {
+            int button = MessageUtility.displayMessage(ClientMessage.MINISTER_REMOVE_LEASE,
+                    new Object [] {ministerLeaseSearchResultListBean.getSelectedMinisterLeaseSearchResult().getName()});
+            if (button == MessageUtility.BUTTON_ONE) {
+                SolaTask t = new SolaTask<Void, Void>() {
+
+                    @Override
+                    public Void doTask() {
+                        setMessage(MessageUtility.getLocalizedMessageText(ClientMessage.PROGRESS_MSG_OPEN_MINISTER_SEARCH));
+                        MinisterLeaseBean.removeMinisterLease(ministerLeaseSearchResultListBean.getSelectedMinisterLeaseSearchResult().getId());
+                        return null;
+                    }
+
+                    @Override
+                    public void taskDone() {
+                        // Rerun the search to show that the inward is removed. 
+                        executeLeaseSearch(ministerLeaseSearchParamsBean, lblInwardSearchCount, ministerLeaseSearchResultListBean);
+                    }
+                };
+                TaskManager.getInstance().runTask(t);
+            }
+        }
+
+    }
+    
+    public void removeMinisterApplication() {
+
+        if (ministerApplicationSearchResultListBean.getSelectedMinisterApplicationSearchResult() != null) {
+            int button = MessageUtility.displayMessage(ClientMessage.MINISTER_REMOVE_APP,
+                    new Object [] {ministerApplicationSearchResultListBean.getSelectedMinisterApplicationSearchResult().getName()});
+            if (button == MessageUtility.BUTTON_ONE) {
+                SolaTask t = new SolaTask<Void, Void>() {
+
+                    @Override
+                    public Void doTask() {
+                        setMessage(MessageUtility.getLocalizedMessageText(ClientMessage.PROGRESS_MSG_OPEN_MINISTER_SEARCH));
+                        MinisterApplicationBean.removeMinisterApplication(ministerApplicationSearchResultListBean.getSelectedMinisterApplicationSearchResult().getId());
+                        return null;
+                    }
+
+                    @Override
+                    public void taskDone() {
+                        // Rerun the search to show that the inward is removed. 
+                        executeApplicationSearch(ministerApplicationSearchParamsBean, lblInwardSearchCount, ministerApplicationSearchResultListBean);
+                    }
+                };
+                TaskManager.getInstance().runTask(t);
+            }
+        }
+
+    }
+    
     public void editMinisterInward() {
         if (ministerInwardSearchResultListBean.getSelectedMinisterInwardSearchResult() != null) {
             SolaTask t = new SolaTask<Void, Void>() {
 
                 @Override
                 public Void doTask() {
-                    setMessage(MessageUtility.getLocalizedMessageText(ClientMessage.PROGRESS_MSG_OPEN_MINISTER_FORM));
+                    setMessage(MessageUtility.getLocalizedMessageText(ClientMessage.PROGRESS_MSG_OPEN_MINISTER_INWARD_FORM));
                     MinisterInwardForm form = new MinisterInwardForm(MinisterInwardBean.getMinisterInward(ministerInwardSearchResultListBean.getSelectedMinisterInwardSearchResult().getId()));
-                    MainForm.getInstance().getMainContentPanel().addPanel(form, MainContentPanel.CARD_MINISTER_FORM, true);
+                    MainForm.getInstance().getMainContentPanel().addPanel(form, MainContentPanel.CARD_MINISTER_INWARD_FORM, true);
+                    return null;
+                }
+            };
+            TaskManager.getInstance().runTask(t);
+        }
+    }
+    
+    public void editMinisterLease() {
+        if (ministerLeaseSearchResultListBean.getSelectedMinisterLeaseSearchResult() != null) {
+            SolaTask t = new SolaTask<Void, Void>() {
+
+                @Override
+                public Void doTask() {
+                    setMessage(MessageUtility.getLocalizedMessageText(ClientMessage.PROGRESS_MSG_OPEN_MINISTER_LEASE_FORM));
+                    MinisterLeaseForm form = new MinisterLeaseForm(MinisterLeaseBean.getMinisterLease(ministerLeaseSearchResultListBean.getSelectedMinisterLeaseSearchResult().getId()));
+                    MainForm.getInstance().getMainContentPanel().addPanel(form, MainContentPanel.CARD_MINISTER_LEASE_FORM, true);
+                    return null;
+                }
+            };
+            TaskManager.getInstance().runTask(t);
+        }
+    }
+    
+    public void editMinisterApplication() {
+        if (ministerApplicationSearchResultListBean.getSelectedMinisterApplicationSearchResult() != null) {
+            SolaTask t = new SolaTask<Void, Void>() {
+
+                @Override
+                public Void doTask() {
+                    setMessage(MessageUtility.getLocalizedMessageText(ClientMessage.PROGRESS_MSG_OPEN_MINISTER_APPLICATION_FORM));
+                    MinisterApplicationForm form = new MinisterApplicationForm(MinisterApplicationBean.getMinisterApplication(ministerApplicationSearchResultListBean.getSelectedMinisterApplicationSearchResult().getId()));
+                    MainForm.getInstance().getMainContentPanel().addPanel(form, MainContentPanel.CARD_MINISTER_APPLICATION_FORM, true);
                     return null;
                 }
             };
@@ -210,6 +434,24 @@ public class MinisterSearchPanel extends ContentPanel {
         subjectTextField.setText(null);
         dateInTextField.setText(null);
         dateOutTextField.setText(null);
+    }
+    
+    public void clearMinisterLease() {
+        nameLeaseTextField.setText(null);
+        locationTextField.setText(null);
+        receiptNumberTextField.setText(null);
+        payDateTextField.setText(null);
+        receivedFromTextField.setText(null);
+        receivedToTextField.setText(null);
+    }
+    
+    public void clearMinisterApplication() {
+        nameAppTextField.setText(null);
+        locationAppTextField.setText(null);
+        receiptAppTextField.setText(null);
+        receivedFromAppTextField.setText(null);
+        receivedToAppTextField.setText(null);
+        payDateAppTextField.setText(null);
     }
     
     /**
@@ -226,24 +468,26 @@ public class MinisterSearchPanel extends ContentPanel {
         ministerInwardSearchParamsBean = new org.sola.clients.beans.minister.MinisterInwardSearchParamsBean();
         ministerLeaseSearchParamsBean = new org.sola.clients.beans.minister.MinisterLeaseSearchParamsBean();
         ministerLeaseSearchResultListBean = new org.sola.clients.beans.minister.MinisterLeaseSearchResultListBean();
+        ministerApplicationSearchParamsBean = new org.sola.clients.beans.minister.MinisterApplicationSearchParamsBean();
+        ministerApplicationSearchResultListBean = new org.sola.clients.beans.minister.MinisterApplicationSearchResultListBean();
         headerPanel = new org.sola.clients.swing.ui.HeaderPanel();
         ministerTab = new javax.swing.JTabbedPane();
         inwardPanel = new javax.swing.JPanel();
-        jToolBar = new javax.swing.JToolBar();
-        btnFind = new javax.swing.JButton();
-        btnClear = new javax.swing.JButton();
-        btnOpenItem = new javax.swing.JButton();
+        inwardToolBar = new javax.swing.JToolBar();
+        btnInwardSearch = new javax.swing.JButton();
+        btnClearInward = new javax.swing.JButton();
+        btnOpenInward = new javax.swing.JButton();
         jSeparator3 = new javax.swing.JToolBar.Separator();
-        btnAdd = new org.sola.clients.swing.common.buttons.BtnAdd();
-        btnEdit = new org.sola.clients.swing.common.buttons.BtnEdit();
-        btnRemove = new org.sola.clients.swing.common.buttons.BtnRemove();
+        btnAddInward = new org.sola.clients.swing.common.buttons.BtnAdd();
+        btnEditInward = new org.sola.clients.swing.common.buttons.BtnEdit();
+        btnRemoveInward = new org.sola.clients.swing.common.buttons.BtnRemove();
         jSeparator1 = new javax.swing.JToolBar.Separator();
         lblSearchResult = new javax.swing.JLabel();
-        lblSearchCount = new javax.swing.JLabel();
+        lblInwardSearchCount = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
-        dateOutTextField = new javax.swing.JFormattedTextField();
+        dateOutTextField = new WatermarkDate();
         jLabel5 = new javax.swing.JLabel();
-        dateInTextField = new javax.swing.JFormattedTextField();
+        dateInTextField = new WatermarkDate();
         jLabel4 = new javax.swing.JLabel();
         subjectTextField = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
@@ -257,25 +501,25 @@ public class MinisterSearchPanel extends ContentPanel {
         jTableInward = new org.sola.clients.swing.common.controls.JTableWithDefaultStyles();
         leasePanel = new javax.swing.JPanel();
         lblDateReceivedFrom = new javax.swing.JLabel();
-        receivedFromTextField = new javax.swing.JFormattedTextField();
+        receivedFromTextField = new WatermarkDate();
         lblDateReceivedTo = new javax.swing.JLabel();
-        receivedToTextField = new javax.swing.JFormattedTextField();
-        jToolBar1 = new javax.swing.JToolBar();
+        receivedToTextField = new WatermarkDate();
+        leaseToolBar = new javax.swing.JToolBar();
         btnLeaseSearch = new javax.swing.JButton();
-        btnClear1 = new javax.swing.JButton();
-        btnOpenItem1 = new javax.swing.JButton();
+        btnClearLease = new javax.swing.JButton();
+        btnOpenLease = new javax.swing.JButton();
         jSeparator4 = new javax.swing.JToolBar.Separator();
-        btnAdd1 = new org.sola.clients.swing.common.buttons.BtnAdd();
-        btnEdit1 = new org.sola.clients.swing.common.buttons.BtnEdit();
-        btnRemove1 = new org.sola.clients.swing.common.buttons.BtnRemove();
+        btnAddLease = new org.sola.clients.swing.common.buttons.BtnAdd();
+        btnEditLease = new org.sola.clients.swing.common.buttons.BtnEdit();
+        btnRemoveLease = new org.sola.clients.swing.common.buttons.BtnRemove();
         jSeparator2 = new javax.swing.JToolBar.Separator();
         lblSearchResult1 = new javax.swing.JLabel();
-        lblSearchCount1 = new javax.swing.JLabel();
+        lblLeaseSearchCount = new javax.swing.JLabel();
         lblName = new javax.swing.JLabel();
         nameLeaseTextField = new javax.swing.JTextField();
         locationTextField = new javax.swing.JTextField();
         lblLocation = new javax.swing.JLabel();
-        payDateTextField = new javax.swing.JFormattedTextField();
+        payDateTextField = new WatermarkDate();
         lblPayDate = new javax.swing.JLabel();
         receiptNumberTextField = new javax.swing.JTextField();
         lblReceiptNumber = new javax.swing.JLabel();
@@ -285,86 +529,124 @@ public class MinisterSearchPanel extends ContentPanel {
         btnDateReceivedTo = new javax.swing.JButton();
         btnDateReceivedFrom = new javax.swing.JButton();
         appPanel = new javax.swing.JPanel();
+        appToolBar = new javax.swing.JToolBar();
+        btnAppSearch = new javax.swing.JButton();
+        btnClearApp = new javax.swing.JButton();
+        btnOpenApp = new javax.swing.JButton();
+        jSeparator5 = new javax.swing.JToolBar.Separator();
+        btnAddApp = new org.sola.clients.swing.common.buttons.BtnAdd();
+        btnEditApp = new org.sola.clients.swing.common.buttons.BtnEdit();
+        btnRemoveApp = new org.sola.clients.swing.common.buttons.BtnRemove();
+        jSeparator6 = new javax.swing.JToolBar.Separator();
+        lblSearchResult2 = new javax.swing.JLabel();
+        lblApplicationSearchCount = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        nameAppTextField = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        locationAppTextField = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        receiptAppTextField = new javax.swing.JTextField();
+        payDateAppTextField = new WatermarkDate();
+        receivedFromAppTextField = new WatermarkDate();
+        receivedToAppTextField = new WatermarkDate();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTableApp = new org.sola.clients.swing.common.controls.JTableWithDefaultStyles();
+        btnAppReceivedFrom = new javax.swing.JButton();
+        btnAppPayDate = new javax.swing.JButton();
+        btnAppReceivedTo = new javax.swing.JButton();
 
         setHeaderPanel(headerPanel);
 
         headerPanel.setTitleText("Minister's Office");
 
-        jToolBar.setFloatable(false);
-        jToolBar.setRollover(true);
+        inwardToolBar.setFloatable(false);
+        inwardToolBar.setRollover(true);
 
-        btnFind.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/search.png"))); // NOI18N
+        btnInwardSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/search.png"))); // NOI18N
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("org/sola/clients/swing/desktop/application/Bundle"); // NOI18N
-        btnFind.setText(bundle.getString("ApplicationSearchPanel.btnFind.text")); // NOI18N
-        btnFind.addActionListener(new java.awt.event.ActionListener() {
+        btnInwardSearch.setText(bundle.getString("ApplicationSearchPanel.btnFind.text")); // NOI18N
+        btnInwardSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnFindActionPerformed(evt);
+                btnInwardSearchActionPerformed(evt);
             }
         });
-        jToolBar.add(btnFind);
+        inwardToolBar.add(btnInwardSearch);
 
-        btnClear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/eraser.png"))); // NOI18N
-        btnClear.setText(bundle.getString("ApplicationSearchPanel.btnClear.text")); // NOI18N
-        btnClear.addActionListener(new java.awt.event.ActionListener() {
+        btnClearInward.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/eraser.png"))); // NOI18N
+        btnClearInward.setText(bundle.getString("ApplicationSearchPanel.btnClear.text")); // NOI18N
+        btnClearInward.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnClearActionPerformed(evt);
+                btnClearInwardActionPerformed(evt);
             }
         });
-        jToolBar.add(btnClear);
+        inwardToolBar.add(btnClearInward);
 
-        btnOpenItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/folder-open-document.png"))); // NOI18N
-        btnOpenItem.setText(bundle.getString("ApplicationSearchPanel.btnOpenApplication.text")); // NOI18N
-        btnOpenItem.setEnabled(false);
-        btnOpenItem.setFocusable(false);
-        btnOpenItem.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnOpenItem.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnOpenItem.addActionListener(new java.awt.event.ActionListener() {
+        btnOpenInward.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/folder-open-document.png"))); // NOI18N
+        btnOpenInward.setText(bundle.getString("ApplicationSearchPanel.btnOpenApplication.text")); // NOI18N
+        btnOpenInward.setEnabled(false);
+        btnOpenInward.setFocusable(false);
+        btnOpenInward.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnOpenInward.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnOpenInward.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnOpenItemActionPerformed(evt);
+                btnOpenInwardActionPerformed(evt);
             }
         });
-        jToolBar.add(btnOpenItem);
-        jToolBar.add(jSeparator3);
+        inwardToolBar.add(btnOpenInward);
+        inwardToolBar.add(jSeparator3);
 
-        btnAdd.setEnabled(false);
-        btnAdd.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnAdd.addActionListener(new java.awt.event.ActionListener() {
+        btnAddInward.setEnabled(false);
+        btnAddInward.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnAddInward.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddActionPerformed(evt);
+                btnAddInwardActionPerformed(evt);
             }
         });
-        jToolBar.add(btnAdd);
+        inwardToolBar.add(btnAddInward);
 
-        btnEdit.setEnabled(false);
-        btnEdit.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnEdit.addActionListener(new java.awt.event.ActionListener() {
+        btnEditInward.setEnabled(false);
+        btnEditInward.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnEditInward.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEditActionPerformed(evt);
+                btnEditInwardActionPerformed(evt);
             }
         });
-        jToolBar.add(btnEdit);
+        inwardToolBar.add(btnEditInward);
 
-        btnRemove.setEnabled(false);
-        btnRemove.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnRemove.addActionListener(new java.awt.event.ActionListener() {
+        btnRemoveInward.setEnabled(false);
+        btnRemoveInward.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnRemoveInward.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRemoveActionPerformed(evt);
+                btnRemoveInwardActionPerformed(evt);
             }
         });
-        jToolBar.add(btnRemove);
-        jToolBar.add(jSeparator1);
+        inwardToolBar.add(btnRemoveInward);
+        inwardToolBar.add(jSeparator1);
 
         lblSearchResult.setText("Search results: ");
-        jToolBar.add(lblSearchResult);
-        jToolBar.add(lblSearchCount);
+        inwardToolBar.add(lblSearchResult);
+        inwardToolBar.add(lblInwardSearchCount);
+
+        dateOutTextField.setFormatterFactory(FormattersFactory.getInstance().getDateFormatterFactory());
 
         org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, ministerInwardSearchParamsBean, org.jdesktop.beansbinding.ELProperty.create("${dateOut}"), dateOutTextField, org.jdesktop.beansbinding.BeanProperty.create("value"));
         bindingGroup.addBinding(binding);
 
         jLabel5.setText("Date Out");
 
+        dateInTextField.setFormatterFactory(FormattersFactory.getInstance().getDateFormatterFactory());
+
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, ministerInwardSearchParamsBean, org.jdesktop.beansbinding.ELProperty.create("${dateIn}"), dateInTextField, org.jdesktop.beansbinding.BeanProperty.create("value"));
         bindingGroup.addBinding(binding);
+
+        dateInTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dateInTextFieldActionPerformed(evt);
+            }
+        });
 
         jLabel4.setText("Date In");
 
@@ -383,6 +665,7 @@ public class MinisterSearchPanel extends ContentPanel {
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, ministerInwardSearchParamsBean, org.jdesktop.beansbinding.ELProperty.create("${fileNumber}"), fileNumberTextField, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
 
+        btnDateIn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/calendar.png"))); // NOI18N
         btnDateIn.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         btnDateIn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnDateIn.addActionListener(new java.awt.event.ActionListener() {
@@ -391,6 +674,7 @@ public class MinisterSearchPanel extends ContentPanel {
             }
         });
 
+        btnDateOut.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/calendar.png"))); // NOI18N
         btnDateOut.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         btnDateOut.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnDateOut.addActionListener(new java.awt.event.ActionListener() {
@@ -403,36 +687,39 @@ public class MinisterSearchPanel extends ContentPanel {
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(21, 21, 21)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(dateInTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(5, 5, 5)
+                        .addComponent(btnDateIn, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(32, 32, 32)
+                        .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(subjectTextField))
+                        .addComponent(dateOutTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnDateOut, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
                     .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel1))
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGap(9, 9, 9)
                                 .addComponent(nameInwardTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jLabel3)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(fileNumberTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(fileNumberTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(497, Short.MAX_VALUE))
                             .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(dateInTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(5, 5, 5)
-                                .addComponent(btnDateIn, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(dateOutTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnDateOut, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addComponent(subjectTextField)
+                                .addContainerGap())))))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -443,20 +730,22 @@ public class MinisterSearchPanel extends ContentPanel {
                     .addComponent(nameInwardTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3)
                     .addComponent(fileNumberTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(subjectTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(dateOutTextField)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(dateInTextField)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(btnDateIn)
-                    .addComponent(btnDateOut))
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(dateInTextField, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnDateIn, javax.swing.GroupLayout.Alignment.LEADING))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(dateOutTextField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnDateOut, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addGap(1, 1, 1)))
                 .addContainerGap())
         );
 
@@ -465,45 +754,20 @@ public class MinisterSearchPanel extends ContentPanel {
         org.jdesktop.beansbinding.ELProperty eLProperty = org.jdesktop.beansbinding.ELProperty.create("${ministerInwardResultList}");
         org.jdesktop.swingbinding.JTableBinding jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, ministerInwardSearchResultListBean, eLProperty, jTableInward);
         org.jdesktop.swingbinding.JTableBinding.ColumnBinding columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${fromWhom}"));
-        columnBinding.setColumnName("Name");
+        columnBinding.setColumnName("From Whom");
         columnBinding.setColumnClass(String.class);
-        columnBinding.setEditable(false);
         columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${fileNumber}"));
         columnBinding.setColumnName("File Number");
         columnBinding.setColumnClass(String.class);
-        columnBinding.setEditable(false);
         columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${subject}"));
         columnBinding.setColumnName("Subject");
         columnBinding.setColumnClass(String.class);
-        columnBinding.setEditable(false);
         columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${dateIn}"));
         columnBinding.setColumnName("Date In");
         columnBinding.setColumnClass(java.util.Date.class);
-        columnBinding.setEditable(false);
         columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${dateOut}"));
         columnBinding.setColumnName("Date Out");
         columnBinding.setColumnClass(java.util.Date.class);
-        columnBinding.setEditable(false);
-        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${ceoDirection}"));
-        columnBinding.setColumnName("Ceo Direction");
-        columnBinding.setColumnClass(String.class);
-        columnBinding.setEditable(false);
-        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${directedDivision}"));
-        columnBinding.setColumnName("Directed Division");
-        columnBinding.setColumnClass(String.class);
-        columnBinding.setEditable(false);
-        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${directedOfficer}"));
-        columnBinding.setColumnName("Directed Officer");
-        columnBinding.setColumnClass(String.class);
-        columnBinding.setEditable(false);
-        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${ministerDirection}"));
-        columnBinding.setColumnName("Minister Direction");
-        columnBinding.setColumnClass(String.class);
-        columnBinding.setEditable(false);
-        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${remark}"));
-        columnBinding.setColumnName("Remark");
-        columnBinding.setColumnClass(String.class);
-        columnBinding.setEditable(false);
         bindingGroup.addBinding(jTableBinding);
         jTableBinding.bind();binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, ministerInwardSearchResultListBean, org.jdesktop.beansbinding.ELProperty.create("${selectedMinisterInwardSearchResult}"), jTableInward, org.jdesktop.beansbinding.BeanProperty.create("selectedElement"));
         bindingGroup.addBinding(binding);
@@ -516,32 +780,36 @@ public class MinisterSearchPanel extends ContentPanel {
             inwardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jScrollPane1)
-            .addComponent(jToolBar, javax.swing.GroupLayout.DEFAULT_SIZE, 768, Short.MAX_VALUE)
+            .addComponent(inwardToolBar, javax.swing.GroupLayout.DEFAULT_SIZE, 978, Short.MAX_VALUE)
         );
         inwardPanelLayout.setVerticalGroup(
             inwardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(inwardPanelLayout.createSequentialGroup()
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jToolBar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(inwardToolBar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 459, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 571, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         ministerTab.addTab("Inward", inwardPanel);
 
         lblDateReceivedFrom.setText("Date Received (From)");
 
+        receivedFromTextField.setFormatterFactory(FormattersFactory.getInstance().getDateFormatterFactory());
+
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, ministerLeaseSearchParamsBean, org.jdesktop.beansbinding.ELProperty.create("${dateReceivedFrom}"), receivedFromTextField, org.jdesktop.beansbinding.BeanProperty.create("value"));
         bindingGroup.addBinding(binding);
 
         lblDateReceivedTo.setText("Date Received (To)");
 
+        receivedToTextField.setFormatterFactory(FormattersFactory.getInstance().getDateFormatterFactory());
+
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, ministerLeaseSearchParamsBean, org.jdesktop.beansbinding.ELProperty.create("${dateReceivedTo}"), receivedToTextField, org.jdesktop.beansbinding.BeanProperty.create("value"));
         bindingGroup.addBinding(binding);
 
-        jToolBar1.setFloatable(false);
-        jToolBar1.setRollover(true);
+        leaseToolBar.setFloatable(false);
+        leaseToolBar.setRollover(true);
 
         btnLeaseSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/search.png"))); // NOI18N
         btnLeaseSearch.setText(bundle.getString("ApplicationSearchPanel.btnFind.text")); // NOI18N
@@ -550,62 +818,62 @@ public class MinisterSearchPanel extends ContentPanel {
                 btnLeaseSearchActionPerformed(evt);
             }
         });
-        jToolBar1.add(btnLeaseSearch);
+        leaseToolBar.add(btnLeaseSearch);
 
-        btnClear1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/eraser.png"))); // NOI18N
-        btnClear1.setText(bundle.getString("ApplicationSearchPanel.btnClear.text")); // NOI18N
-        btnClear1.addActionListener(new java.awt.event.ActionListener() {
+        btnClearLease.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/eraser.png"))); // NOI18N
+        btnClearLease.setText(bundle.getString("ApplicationSearchPanel.btnClear.text")); // NOI18N
+        btnClearLease.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnClear1ActionPerformed(evt);
+                btnClearLeaseActionPerformed(evt);
             }
         });
-        jToolBar1.add(btnClear1);
+        leaseToolBar.add(btnClearLease);
 
-        btnOpenItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/folder-open-document.png"))); // NOI18N
-        btnOpenItem1.setText(bundle.getString("ApplicationSearchPanel.btnOpenApplication.text")); // NOI18N
-        btnOpenItem1.setEnabled(false);
-        btnOpenItem1.setFocusable(false);
-        btnOpenItem1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnOpenItem1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnOpenItem1.addActionListener(new java.awt.event.ActionListener() {
+        btnOpenLease.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/folder-open-document.png"))); // NOI18N
+        btnOpenLease.setText(bundle.getString("ApplicationSearchPanel.btnOpenApplication.text")); // NOI18N
+        btnOpenLease.setEnabled(false);
+        btnOpenLease.setFocusable(false);
+        btnOpenLease.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnOpenLease.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnOpenLease.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnOpenItem1ActionPerformed(evt);
+                btnOpenLeaseActionPerformed(evt);
             }
         });
-        jToolBar1.add(btnOpenItem1);
-        jToolBar1.add(jSeparator4);
+        leaseToolBar.add(btnOpenLease);
+        leaseToolBar.add(jSeparator4);
 
-        btnAdd1.setEnabled(false);
-        btnAdd1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnAdd1.addActionListener(new java.awt.event.ActionListener() {
+        btnAddLease.setEnabled(false);
+        btnAddLease.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnAddLease.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAdd1ActionPerformed(evt);
+                btnAddLeaseActionPerformed(evt);
             }
         });
-        jToolBar1.add(btnAdd1);
+        leaseToolBar.add(btnAddLease);
 
-        btnEdit1.setEnabled(false);
-        btnEdit1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnEdit1.addActionListener(new java.awt.event.ActionListener() {
+        btnEditLease.setEnabled(false);
+        btnEditLease.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnEditLease.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEdit1ActionPerformed(evt);
+                btnEditLeaseActionPerformed(evt);
             }
         });
-        jToolBar1.add(btnEdit1);
+        leaseToolBar.add(btnEditLease);
 
-        btnRemove1.setEnabled(false);
-        btnRemove1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnRemove1.addActionListener(new java.awt.event.ActionListener() {
+        btnRemoveLease.setEnabled(false);
+        btnRemoveLease.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnRemoveLease.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRemove1ActionPerformed(evt);
+                btnRemoveLeaseActionPerformed(evt);
             }
         });
-        jToolBar1.add(btnRemove1);
-        jToolBar1.add(jSeparator2);
+        leaseToolBar.add(btnRemoveLease);
+        leaseToolBar.add(jSeparator2);
 
         lblSearchResult1.setText("Search results: ");
-        jToolBar1.add(lblSearchResult1);
-        jToolBar1.add(lblSearchCount1);
+        leaseToolBar.add(lblSearchResult1);
+        leaseToolBar.add(lblLeaseSearchCount);
 
         lblName.setText("Name");
 
@@ -616,6 +884,8 @@ public class MinisterSearchPanel extends ContentPanel {
         bindingGroup.addBinding(binding);
 
         lblLocation.setText("Location");
+
+        payDateTextField.setFormatterFactory(FormattersFactory.getInstance().getDateFormatterFactory());
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, ministerLeaseSearchParamsBean, org.jdesktop.beansbinding.ELProperty.create("${payDate}"), payDateTextField, org.jdesktop.beansbinding.BeanProperty.create("value"));
         bindingGroup.addBinding(binding);
@@ -645,25 +915,28 @@ public class MinisterSearchPanel extends ContentPanel {
         columnBinding.setColumnName("Date Received");
         columnBinding.setColumnClass(java.util.Date.class);
         bindingGroup.addBinding(jTableBinding);
-        jTableBinding.bind();
+        jTableBinding.bind();binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, ministerLeaseSearchResultListBean, org.jdesktop.beansbinding.ELProperty.create("${selectedMinisterLeaseSearchResult}"), jTableLease, org.jdesktop.beansbinding.BeanProperty.create("selectedElement"));
+        bindingGroup.addBinding(binding);
+
         jScrollPane3.setViewportView(jTableLease);
 
+        btnPayDate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/calendar.png"))); // NOI18N
         btnPayDate.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        btnPayDate.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnPayDate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPayDateActionPerformed(evt);
             }
         });
 
+        btnDateReceivedTo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/calendar.png"))); // NOI18N
         btnDateReceivedTo.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        btnDateReceivedTo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnDateReceivedTo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDateReceivedToActionPerformed(evt);
             }
         });
 
+        btnDateReceivedFrom.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/calendar.png"))); // NOI18N
         btnDateReceivedFrom.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         btnDateReceivedFrom.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnDateReceivedFrom.addActionListener(new java.awt.event.ActionListener() {
@@ -676,43 +949,45 @@ public class MinisterSearchPanel extends ContentPanel {
         leasePanel.setLayout(leasePanelLayout);
         leasePanelLayout.setHorizontalGroup(
             leasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(leaseToolBar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(leasePanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(leasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(leasePanelLayout.createSequentialGroup()
-                        .addComponent(lblDateReceivedFrom)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(receivedFromTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(5, 5, 5)
-                        .addComponent(btnDateReceivedFrom, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(leasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblDateReceivedFrom)
+                            .addComponent(lblReceiptNumber))
                         .addGap(18, 18, 18)
-                        .addComponent(lblDateReceivedTo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(receivedToTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnDateReceivedTo, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(leasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, leasePanelLayout.createSequentialGroup()
-                            .addComponent(lblLocation)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(locationTextField))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, leasePanelLayout.createSequentialGroup()
-                            .addComponent(lblName)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(nameLeaseTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(leasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(leasePanelLayout.createSequentialGroup()
+                                .addComponent(lblPayDate)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(payDateTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnPayDate, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(leasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(receiptNumberTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(leasePanelLayout.createSequentialGroup()
+                                    .addComponent(receivedFromTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(5, 5, 5)
+                                    .addComponent(btnDateReceivedFrom, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(47, 47, 47)
+                                    .addComponent(lblDateReceivedTo)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(receivedToTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(btnDateReceivedTo, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(leasePanelLayout.createSequentialGroup()
-                        .addComponent(lblReceiptNumber)
+                        .addGap(8, 8, 8)
+                        .addGroup(leasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblName)
+                            .addComponent(lblLocation))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(receiptNumberTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(lblPayDate)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(payDateTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnPayDate, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(leasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(locationTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 294, Short.MAX_VALUE)
+                            .addComponent(nameLeaseTextField))))
+                .addContainerGap(396, Short.MAX_VALUE))
         );
         leasePanelLayout.setVerticalGroup(
             leasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -721,47 +996,268 @@ public class MinisterSearchPanel extends ContentPanel {
                 .addGroup(leasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblName)
                     .addComponent(nameLeaseTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(leasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblLocation)
                     .addComponent(locationTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(11, 11, 11)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(leasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(leasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(lblReceiptNumber)
                         .addComponent(receiptNumberTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(leasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(leasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(payDateTextField)
-                            .addComponent(btnPayDate))
-                        .addComponent(lblPayDate, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(leasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(leasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(leasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lblDateReceivedTo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(receivedToTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(receivedFromTextField)
-                            .addComponent(lblDateReceivedFrom, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addComponent(btnDateReceivedTo))
-                    .addComponent(btnDateReceivedFrom))
+                    .addComponent(payDateTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblPayDate, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnPayDate))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 438, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(leasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(lblDateReceivedTo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(receivedToTextField)
+                    .addComponent(receivedFromTextField, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblDateReceivedFrom, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnDateReceivedFrom, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnDateReceivedTo, javax.swing.GroupLayout.Alignment.LEADING))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(leaseToolBar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 564, Short.MAX_VALUE))
         );
 
         ministerTab.addTab("Lease", leasePanel);
+
+        appToolBar.setFloatable(false);
+        appToolBar.setRollover(true);
+
+        btnAppSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/search.png"))); // NOI18N
+        btnAppSearch.setText(bundle.getString("ApplicationSearchPanel.btnFind.text")); // NOI18N
+        btnAppSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAppSearchActionPerformed(evt);
+            }
+        });
+        appToolBar.add(btnAppSearch);
+
+        btnClearApp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/eraser.png"))); // NOI18N
+        btnClearApp.setText(bundle.getString("ApplicationSearchPanel.btnClear.text")); // NOI18N
+        btnClearApp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClearAppActionPerformed(evt);
+            }
+        });
+        appToolBar.add(btnClearApp);
+
+        btnOpenApp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/folder-open-document.png"))); // NOI18N
+        btnOpenApp.setText(bundle.getString("ApplicationSearchPanel.btnOpenApplication.text")); // NOI18N
+        btnOpenApp.setEnabled(false);
+        btnOpenApp.setFocusable(false);
+        btnOpenApp.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnOpenApp.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnOpenApp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOpenAppActionPerformed(evt);
+            }
+        });
+        appToolBar.add(btnOpenApp);
+        appToolBar.add(jSeparator5);
+
+        btnAddApp.setEnabled(false);
+        btnAddApp.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnAddApp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddAppActionPerformed(evt);
+            }
+        });
+        appToolBar.add(btnAddApp);
+
+        btnEditApp.setEnabled(false);
+        btnEditApp.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnEditApp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditAppActionPerformed(evt);
+            }
+        });
+        appToolBar.add(btnEditApp);
+
+        btnRemoveApp.setEnabled(false);
+        btnRemoveApp.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnRemoveApp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRemoveAppActionPerformed(evt);
+            }
+        });
+        appToolBar.add(btnRemoveApp);
+        appToolBar.add(jSeparator6);
+
+        lblSearchResult2.setText("Search results: ");
+        appToolBar.add(lblSearchResult2);
+        appToolBar.add(lblApplicationSearchCount);
+
+        jLabel6.setText("Name");
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, ministerApplicationSearchParamsBean, org.jdesktop.beansbinding.ELProperty.create("${name}"), nameAppTextField, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+
+        jLabel7.setText("Location");
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, ministerApplicationSearchParamsBean, org.jdesktop.beansbinding.ELProperty.create("${location}"), locationAppTextField, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+
+        jLabel8.setText("Receipt #");
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, ministerApplicationSearchParamsBean, org.jdesktop.beansbinding.ELProperty.create("${receiptNumber}"), receiptAppTextField, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+
+        payDateAppTextField.setFormatterFactory(FormattersFactory.getInstance().getDateFormatterFactory());
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, ministerApplicationSearchParamsBean, org.jdesktop.beansbinding.ELProperty.create("${payDate}"), payDateAppTextField, org.jdesktop.beansbinding.BeanProperty.create("value"));
+        bindingGroup.addBinding(binding);
+
+        receivedFromAppTextField.setFormatterFactory(FormattersFactory.getInstance().getDateFormatterFactory());
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, ministerApplicationSearchParamsBean, org.jdesktop.beansbinding.ELProperty.create("${dateReceivedFrom}"), receivedFromAppTextField, org.jdesktop.beansbinding.BeanProperty.create("value"));
+        bindingGroup.addBinding(binding);
+
+        receivedFromAppTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                receivedFromAppTextFieldActionPerformed(evt);
+            }
+        });
+
+        receivedToAppTextField.setFormatterFactory(FormattersFactory.getInstance().getDateFormatterFactory());
+        receivedToAppTextField.setText(" ");
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, ministerApplicationSearchParamsBean, org.jdesktop.beansbinding.ELProperty.create("${dateReceivedTo}"), receivedToAppTextField, org.jdesktop.beansbinding.BeanProperty.create("value"));
+        bindingGroup.addBinding(binding);
+
+        jLabel9.setText("Date Received (From)");
+
+        jLabel10.setText("Date Received (To)");
+
+        jLabel11.setText("Pay Date");
+
+        eLProperty = org.jdesktop.beansbinding.ELProperty.create("${ministerApplicationResultList}");
+        jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, ministerApplicationSearchResultListBean, eLProperty, jTableApp);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${name}"));
+        columnBinding.setColumnName("Name");
+        columnBinding.setColumnClass(String.class);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${location}"));
+        columnBinding.setColumnName("Location");
+        columnBinding.setColumnClass(String.class);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${surveyFee}"));
+        columnBinding.setColumnName("Survey Fee");
+        columnBinding.setColumnClass(String.class);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${payDate}"));
+        columnBinding.setColumnName("Pay Date");
+        columnBinding.setColumnClass(java.util.Date.class);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${receiptNumber}"));
+        columnBinding.setColumnName("Receipt Number");
+        columnBinding.setColumnClass(String.class);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${dateReceived}"));
+        columnBinding.setColumnName("Date Received");
+        columnBinding.setColumnClass(java.util.Date.class);
+        bindingGroup.addBinding(jTableBinding);
+        jTableBinding.bind();binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, ministerApplicationSearchResultListBean, org.jdesktop.beansbinding.ELProperty.create("${selectedMinisterApplicationSearchResult}"), jTableApp, org.jdesktop.beansbinding.BeanProperty.create("selectedElement"));
+        bindingGroup.addBinding(binding);
+
+        jScrollPane2.setViewportView(jTableApp);
+
+        btnAppReceivedFrom.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/calendar.png"))); // NOI18N
+        btnAppReceivedFrom.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAppReceivedFromActionPerformed(evt);
+            }
+        });
+
+        btnAppPayDate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/calendar.png"))); // NOI18N
+        btnAppPayDate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAppPayDateActionPerformed(evt);
+            }
+        });
+
+        btnAppReceivedTo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/calendar.png"))); // NOI18N
+        btnAppReceivedTo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAppReceivedToActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout appPanelLayout = new javax.swing.GroupLayout(appPanel);
         appPanel.setLayout(appPanelLayout);
         appPanelLayout.setHorizontalGroup(
             appPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 768, Short.MAX_VALUE)
+            .addComponent(appToolBar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jScrollPane2)
+            .addGroup(appPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(appPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(appPanelLayout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addGap(18, 18, 18)
+                        .addComponent(nameAppTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(appPanelLayout.createSequentialGroup()
+                        .addComponent(jLabel7)
+                        .addGap(18, 18, 18)
+                        .addComponent(locationAppTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, appPanelLayout.createSequentialGroup()
+                        .addComponent(jLabel8)
+                        .addGap(18, 18, 18)
+                        .addComponent(receiptAppTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(12, 12, 12)
+                .addGroup(appPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel9)
+                    .addComponent(jLabel11))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(appPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(receivedFromAppTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
+                    .addComponent(payDateAppTextField))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(appPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(appPanelLayout.createSequentialGroup()
+                        .addComponent(btnAppReceivedFrom, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel10)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(receivedToAppTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnAppReceivedTo, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnAppPayDate, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(107, Short.MAX_VALUE))
         );
         appPanelLayout.setVerticalGroup(
             appPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
+            .addGroup(appPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(appPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(appPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(appPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel6)
+                            .addComponent(nameAppTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel9)
+                            .addComponent(receivedFromAppTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(appPanelLayout.createSequentialGroup()
+                            .addGap(5, 5, 5)
+                            .addComponent(btnAppReceivedFrom, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(appPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(btnAppReceivedTo, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(appPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(receivedToAppTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel10))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(appPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(locationAppTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(appPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(appPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel8)
+                        .addComponent(receiptAppTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(payDateAppTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel11))
+                    .addComponent(btnAppPayDate, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(appToolBar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 590, Short.MAX_VALUE))
         );
 
         ministerTab.addTab("Land Application", appPanel);
@@ -771,10 +1267,7 @@ public class MinisterSearchPanel extends ContentPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(headerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(ministerTab)
-                .addContainerGap())
+            .addComponent(ministerTab)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -787,53 +1280,53 @@ public class MinisterSearchPanel extends ContentPanel {
         bindingGroup.bind();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnFindActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFindActionPerformed
-        executeSearch(ministerInwardSearchParamsBean, lblSearchCount, ministerInwardSearchResultListBean);
-    }//GEN-LAST:event_btnFindActionPerformed
+    private void btnInwardSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInwardSearchActionPerformed
+        executeInwardSearch(ministerInwardSearchParamsBean, lblInwardSearchCount, ministerInwardSearchResultListBean);
+    }//GEN-LAST:event_btnInwardSearchActionPerformed
 
-    private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
+    private void btnClearInwardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearInwardActionPerformed
         clearMinisterInward();
-    }//GEN-LAST:event_btnClearActionPerformed
+    }//GEN-LAST:event_btnClearInwardActionPerformed
 
-    private void btnOpenItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOpenItemActionPerformed
+    private void btnOpenInwardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOpenInwardActionPerformed
         openMinisterInward();
-    }//GEN-LAST:event_btnOpenItemActionPerformed
+    }//GEN-LAST:event_btnOpenInwardActionPerformed
 
-    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
+    private void btnAddInwardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddInwardActionPerformed
         addMinisterInward();
-    }//GEN-LAST:event_btnAddActionPerformed
+    }//GEN-LAST:event_btnAddInwardActionPerformed
 
-    private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
+    private void btnEditInwardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditInwardActionPerformed
         editMinisterInward();
-    }//GEN-LAST:event_btnEditActionPerformed
+    }//GEN-LAST:event_btnEditInwardActionPerformed
 
-    private void btnRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveActionPerformed
+    private void btnRemoveInwardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveInwardActionPerformed
         removeMinisterInward();
-    }//GEN-LAST:event_btnRemoveActionPerformed
+    }//GEN-LAST:event_btnRemoveInwardActionPerformed
 
     private void btnLeaseSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLeaseSearchActionPerformed
-      
+        executeLeaseSearch(ministerLeaseSearchParamsBean, lblLeaseSearchCount, ministerLeaseSearchResultListBean);
     }//GEN-LAST:event_btnLeaseSearchActionPerformed
 
-    private void btnClear1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClear1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnClear1ActionPerformed
+    private void btnClearLeaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearLeaseActionPerformed
+        clearMinisterLease();
+    }//GEN-LAST:event_btnClearLeaseActionPerformed
 
-    private void btnOpenItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOpenItem1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnOpenItem1ActionPerformed
+    private void btnOpenLeaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOpenLeaseActionPerformed
+        openMinisterLease();
+    }//GEN-LAST:event_btnOpenLeaseActionPerformed
 
-    private void btnAdd1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdd1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnAdd1ActionPerformed
+    private void btnAddLeaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddLeaseActionPerformed
+        addMinisterLease();
+    }//GEN-LAST:event_btnAddLeaseActionPerformed
 
-    private void btnEdit1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEdit1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnEdit1ActionPerformed
+    private void btnEditLeaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditLeaseActionPerformed
+        editMinisterLease();
+    }//GEN-LAST:event_btnEditLeaseActionPerformed
 
-    private void btnRemove1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemove1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnRemove1ActionPerformed
+    private void btnRemoveLeaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveLeaseActionPerformed
+        removeMinisterLease();
+    }//GEN-LAST:event_btnRemoveLeaseActionPerformed
 
     private void btnDateReceivedToActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDateReceivedToActionPerformed
         showCalendar(receivedToTextField);
@@ -855,68 +1348,142 @@ public class MinisterSearchPanel extends ContentPanel {
         showCalendar(dateOutTextField);
     }//GEN-LAST:event_btnDateOutActionPerformed
 
+    private void btnAppSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAppSearchActionPerformed
+        executeApplicationSearch(ministerApplicationSearchParamsBean, lblApplicationSearchCount, ministerApplicationSearchResultListBean);
+    }//GEN-LAST:event_btnAppSearchActionPerformed
+
+    private void btnClearAppActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearAppActionPerformed
+        clearMinisterApplication();
+    }//GEN-LAST:event_btnClearAppActionPerformed
+
+    private void btnOpenAppActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOpenAppActionPerformed
+        openMinisterApplication();
+    }//GEN-LAST:event_btnOpenAppActionPerformed
+
+    private void btnAddAppActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddAppActionPerformed
+        addMinisterApplication();
+    }//GEN-LAST:event_btnAddAppActionPerformed
+
+    private void btnEditAppActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditAppActionPerformed
+        editMinisterApplication();
+    }//GEN-LAST:event_btnEditAppActionPerformed
+
+    private void btnRemoveAppActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveAppActionPerformed
+        removeMinisterApplication();
+    }//GEN-LAST:event_btnRemoveAppActionPerformed
+
+    private void btnAppPayDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAppPayDateActionPerformed
+        showCalendar(payDateAppTextField);
+    }//GEN-LAST:event_btnAppPayDateActionPerformed
+
+    private void btnAppReceivedFromActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAppReceivedFromActionPerformed
+        showCalendar(receivedFromAppTextField);
+    }//GEN-LAST:event_btnAppReceivedFromActionPerformed
+
+    private void btnAppReceivedToActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAppReceivedToActionPerformed
+        showCalendar(receivedToAppTextField);
+    }//GEN-LAST:event_btnAppReceivedToActionPerformed
+
+    private void receivedFromAppTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_receivedFromAppTextFieldActionPerformed
+
+    }//GEN-LAST:event_receivedFromAppTextFieldActionPerformed
+
+    private void dateInTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dateInTextFieldActionPerformed
+
+    }//GEN-LAST:event_dateInTextFieldActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel appPanel;
-    private org.sola.clients.swing.common.buttons.BtnAdd btnAdd;
-    private org.sola.clients.swing.common.buttons.BtnAdd btnAdd1;
-    private javax.swing.JButton btnClear;
-    private javax.swing.JButton btnClear1;
+    private javax.swing.JToolBar appToolBar;
+    private org.sola.clients.swing.common.buttons.BtnAdd btnAddApp;
+    private org.sola.clients.swing.common.buttons.BtnAdd btnAddInward;
+    private org.sola.clients.swing.common.buttons.BtnAdd btnAddLease;
+    private javax.swing.JButton btnAppPayDate;
+    private javax.swing.JButton btnAppReceivedFrom;
+    private javax.swing.JButton btnAppReceivedTo;
+    public javax.swing.JButton btnAppSearch;
+    private javax.swing.JButton btnClearApp;
+    private javax.swing.JButton btnClearInward;
+    private javax.swing.JButton btnClearLease;
     private javax.swing.JButton btnDateIn;
     private javax.swing.JButton btnDateOut;
     private javax.swing.JButton btnDateReceivedFrom;
     private javax.swing.JButton btnDateReceivedTo;
-    private org.sola.clients.swing.common.buttons.BtnEdit btnEdit;
-    private org.sola.clients.swing.common.buttons.BtnEdit btnEdit1;
-    public javax.swing.JButton btnFind;
+    private org.sola.clients.swing.common.buttons.BtnEdit btnEditApp;
+    private org.sola.clients.swing.common.buttons.BtnEdit btnEditInward;
+    private org.sola.clients.swing.common.buttons.BtnEdit btnEditLease;
+    public javax.swing.JButton btnInwardSearch;
     public javax.swing.JButton btnLeaseSearch;
-    private javax.swing.JButton btnOpenItem;
-    private javax.swing.JButton btnOpenItem1;
+    private javax.swing.JButton btnOpenApp;
+    private javax.swing.JButton btnOpenInward;
+    private javax.swing.JButton btnOpenLease;
     private javax.swing.JButton btnPayDate;
-    private org.sola.clients.swing.common.buttons.BtnRemove btnRemove;
-    private org.sola.clients.swing.common.buttons.BtnRemove btnRemove1;
+    private org.sola.clients.swing.common.buttons.BtnRemove btnRemoveApp;
+    private org.sola.clients.swing.common.buttons.BtnRemove btnRemoveInward;
+    private org.sola.clients.swing.common.buttons.BtnRemove btnRemoveLease;
     private javax.swing.JFormattedTextField dateInTextField;
     private javax.swing.JFormattedTextField dateOutTextField;
     private javax.swing.JTextField fileNumberTextField;
     private org.sola.clients.swing.ui.HeaderPanel headerPanel;
     private javax.swing.JPanel inwardPanel;
+    private javax.swing.JToolBar inwardToolBar;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JToolBar.Separator jSeparator1;
     private javax.swing.JToolBar.Separator jSeparator2;
     private javax.swing.JToolBar.Separator jSeparator3;
     private javax.swing.JToolBar.Separator jSeparator4;
+    private javax.swing.JToolBar.Separator jSeparator5;
+    private javax.swing.JToolBar.Separator jSeparator6;
+    private org.sola.clients.swing.common.controls.JTableWithDefaultStyles jTableApp;
     private org.sola.clients.swing.common.controls.JTableWithDefaultStyles jTableInward;
     private org.sola.clients.swing.common.controls.JTableWithDefaultStyles jTableLease;
-    private javax.swing.JToolBar jToolBar;
-    private javax.swing.JToolBar jToolBar1;
+    private javax.swing.JLabel lblApplicationSearchCount;
     private javax.swing.JLabel lblDateReceivedFrom;
     private javax.swing.JLabel lblDateReceivedTo;
+    private javax.swing.JLabel lblInwardSearchCount;
+    private javax.swing.JLabel lblLeaseSearchCount;
     private javax.swing.JLabel lblLocation;
     private javax.swing.JLabel lblName;
     private javax.swing.JLabel lblPayDate;
     private javax.swing.JLabel lblReceiptNumber;
-    private javax.swing.JLabel lblSearchCount;
-    private javax.swing.JLabel lblSearchCount1;
     private javax.swing.JLabel lblSearchResult;
     private javax.swing.JLabel lblSearchResult1;
+    private javax.swing.JLabel lblSearchResult2;
     private javax.swing.JPanel leasePanel;
+    private javax.swing.JToolBar leaseToolBar;
+    private javax.swing.JTextField locationAppTextField;
     private javax.swing.JTextField locationTextField;
+    private org.sola.clients.beans.minister.MinisterApplicationSearchParamsBean ministerApplicationSearchParamsBean;
+    private org.sola.clients.beans.minister.MinisterApplicationSearchResultListBean ministerApplicationSearchResultListBean;
     private org.sola.clients.beans.minister.MinisterInwardSearchParamsBean ministerInwardSearchParamsBean;
     private org.sola.clients.beans.minister.MinisterInwardSearchResultListBean ministerInwardSearchResultListBean;
     private org.sola.clients.beans.minister.MinisterLeaseSearchParamsBean ministerLeaseSearchParamsBean;
     private org.sola.clients.beans.minister.MinisterLeaseSearchResultListBean ministerLeaseSearchResultListBean;
     private javax.swing.JTabbedPane ministerTab;
+    private javax.swing.JTextField nameAppTextField;
     private javax.swing.JTextField nameInwardTextField;
     private javax.swing.JTextField nameLeaseTextField;
+    private javax.swing.JFormattedTextField payDateAppTextField;
     private javax.swing.JFormattedTextField payDateTextField;
+    private javax.swing.JTextField receiptAppTextField;
     private javax.swing.JTextField receiptNumberTextField;
+    private javax.swing.JFormattedTextField receivedFromAppTextField;
     private javax.swing.JFormattedTextField receivedFromTextField;
+    private javax.swing.JFormattedTextField receivedToAppTextField;
     private javax.swing.JFormattedTextField receivedToTextField;
     private javax.swing.JTextField subjectTextField;
     private org.jdesktop.beansbinding.BindingGroup bindingGroup;

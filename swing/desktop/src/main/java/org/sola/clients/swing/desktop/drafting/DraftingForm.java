@@ -33,8 +33,10 @@ import javax.swing.JFormattedTextField;
 import org.sola.clients.beans.drafting.DraftingBean;
 import org.sola.clients.beans.security.SecurityBean;
 import org.sola.clients.swing.common.controls.CalendarForm;
+import org.sola.clients.swing.common.controls.WatermarkDate;
 import org.sola.clients.swing.common.tasks.SolaTask;
 import org.sola.clients.swing.common.tasks.TaskManager;
+import org.sola.clients.swing.common.utils.FormattersFactory;
 import org.sola.clients.swing.desktop.MainForm;
 import org.sola.clients.swing.ui.ContentPanel;
 import org.sola.clients.swing.ui.MainContentPanel;
@@ -183,7 +185,7 @@ public class DraftingForm extends ContentPanel {
         labLocation = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
         labDateReceived = new javax.swing.JLabel();
-        txtDateReceived = new javax.swing.JFormattedTextField();
+        txtDateReceived = new WatermarkDate();
         btnShowCalendarReceiveDate = new javax.swing.JButton();
         jPanel10 = new javax.swing.JPanel();
         labDeedNumber = new javax.swing.JLabel();
@@ -199,15 +201,15 @@ public class DraftingForm extends ContentPanel {
         labSentTo = new javax.swing.JLabel();
         jPanel15 = new javax.swing.JPanel();
         labTraceDate = new javax.swing.JLabel();
-        txtTraceDate = new javax.swing.JFormattedTextField();
+        txtTraceDate = new WatermarkDate();
         btnShowCalendarTraceDate = new javax.swing.JButton();
         jPanel16 = new javax.swing.JPanel();
         labSendDate = new javax.swing.JLabel();
-        txtSendDate = new javax.swing.JFormattedTextField();
+        txtSendDate = new WatermarkDate();
         btnShowCalendarSendDate = new javax.swing.JButton();
         jPanel17 = new javax.swing.JPanel();
         labPlottingDate = new javax.swing.JLabel();
-        txtPlottingDate = new javax.swing.JFormattedTextField();
+        txtPlottingDate = new WatermarkDate();
         btnShowCalendarPlottingDate = new javax.swing.JButton();
         jPanel18 = new javax.swing.JPanel();
         txtPlottingBy = new javax.swing.JTextField();
@@ -217,7 +219,7 @@ public class DraftingForm extends ContentPanel {
         labDrawDeed = new javax.swing.JLabel();
         jPanel21 = new javax.swing.JPanel();
         labReturnDate = new javax.swing.JLabel();
-        txtReturnDate = new javax.swing.JFormattedTextField();
+        txtReturnDate = new WatermarkDate();
         btnShowCalendarReturnDate = new javax.swing.JButton();
         labReference = new javax.swing.JLabel();
         txtReference = new javax.swing.JTextField();
@@ -363,6 +365,7 @@ public class DraftingForm extends ContentPanel {
 
         labDateReceived.setText(bundle.getString("DraftingForm.labDateReceived.text")); // NOI18N
 
+        txtDateReceived.setFormatterFactory(FormattersFactory.getInstance().getDateFormatterFactory());
         txtDateReceived.setText(bundle.getString("DraftingForm.txtDateReceived.text")); // NOI18N
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, draftingBean, org.jdesktop.beansbinding.ELProperty.create("${receiveDate}"), txtDateReceived, org.jdesktop.beansbinding.BeanProperty.create("value"));
@@ -513,6 +516,7 @@ public class DraftingForm extends ContentPanel {
 
         labTraceDate.setText(bundle.getString("DraftingForm.labTraceDate.text")); // NOI18N
 
+        txtTraceDate.setFormatterFactory(FormattersFactory.getInstance().getDateFormatterFactory());
         txtTraceDate.setText(bundle.getString("DraftingForm.txtTraceDate.text")); // NOI18N
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, draftingBean, org.jdesktop.beansbinding.ELProperty.create("${traceDate}"), txtTraceDate, org.jdesktop.beansbinding.BeanProperty.create("value"));
@@ -551,6 +555,7 @@ public class DraftingForm extends ContentPanel {
 
         labSendDate.setText(bundle.getString("DraftingForm.labSendDate.text")); // NOI18N
 
+        txtSendDate.setFormatterFactory(FormattersFactory.getInstance().getDateFormatterFactory());
         txtSendDate.setText(bundle.getString("DraftingForm.txtSendDate.text")); // NOI18N
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, draftingBean, org.jdesktop.beansbinding.ELProperty.create("${sendDate}"), txtSendDate, org.jdesktop.beansbinding.BeanProperty.create("value"), "");
@@ -588,6 +593,7 @@ public class DraftingForm extends ContentPanel {
 
         labPlottingDate.setText(bundle.getString("DraftingForm.labPlottingDate.text")); // NOI18N
 
+        txtPlottingDate.setFormatterFactory(FormattersFactory.getInstance().getDateFormatterFactory());
         txtPlottingDate.setText(bundle.getString("DraftingForm.txtPlottingDate.text")); // NOI18N
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, draftingBean, org.jdesktop.beansbinding.ELProperty.create("${plottingDate}"), txtPlottingDate, org.jdesktop.beansbinding.BeanProperty.create("value"));
@@ -667,6 +673,7 @@ public class DraftingForm extends ContentPanel {
 
         labReturnDate.setText(bundle.getString("DraftingForm.labReturnDate.text")); // NOI18N
 
+        txtReturnDate.setFormatterFactory(FormattersFactory.getInstance().getDateFormatterFactory());
         txtReturnDate.setText(bundle.getString("DraftingForm.txtReturnDate.text")); // NOI18N
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, draftingBean, org.jdesktop.beansbinding.ELProperty.create("${returnDate}"), txtReturnDate, org.jdesktop.beansbinding.BeanProperty.create("value"));
