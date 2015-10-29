@@ -31,73 +31,58 @@
           <Component id="headerPanel" alignment="0" max="32767" attributes="0"/>
           <Component id="jToolBar1" alignment="0" max="32767" attributes="0"/>
           <Group type="102" attributes="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                  </Group>
-              </Group>
-              <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Component id="locationTextField" min="-2" pref="250" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="dateReceivedTextField" min="-2" pref="121" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="btnDateReceived" min="-2" pref="17" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                  </Group>
-                  <Component id="nameTextField" max="32767" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="0" attributes="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
-                      <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-              </Group>
-              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                      <Component id="landTypeTextField" alignment="0" pref="120" max="32767" attributes="0"/>
-                      <Component id="landAreaTextField" alignment="0" max="32767" attributes="0"/>
-                  </Group>
-                  <Component id="nobleTextField" min="-2" pref="210" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace pref="430" max="32767" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel1" alignment="1" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
-                              <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
+                              <Component id="locationTextField" pref="372" max="32767" attributes="0"/>
+                              <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+                              <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="dateReceivedTextField" min="-2" pref="121" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="btnDateReceived" min="-2" pref="17" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="161" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="jLabel8" alignment="1" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel13" alignment="1" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel6" alignment="1" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel7" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="nameTextField" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel10" min="-2" pref="79" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="landRegTextField" alignment="0" max="32767" attributes="0"/>
+                          <Component id="ceoDirectionTextField" max="32767" attributes="0"/>
+                          <Component id="directedDivisionTextField" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" alignment="0" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="1" attributes="0">
+                                      <Component id="jLabel13" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel7" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Component id="jLabel8" alignment="1" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="jLabel12" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel5" alignment="1" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
@@ -105,30 +90,34 @@
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="btnSignDate" min="-2" pref="17" max="-2" attributes="0"/>
                                   </Group>
+                                  <Component id="landAreaTextField" alignment="0" min="-2" pref="120" max="-2" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                          <Component id="receiptNumberTextField" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="payDateTextField" alignment="0" max="32767" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="surveryFeeTextField" alignment="0" min="-2" pref="119" max="-2" attributes="0"/>
+                                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                              <Component id="receiptNumberTextField" alignment="1" max="32767" attributes="0"/>
+                                              <Component id="payDateTextField" alignment="1" min="-2" pref="119" max="-2" attributes="0"/>
+                                          </Group>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="btnPayDate" min="-2" pref="17" max="-2" attributes="0"/>
+                                      <Component id="btnPayDate" min="-2" pref="18" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace min="0" pref="487" max="32767" attributes="0"/>
+                              <EmptySpace min="-2" pref="0" max="-2" attributes="0"/>
                           </Group>
+                          <Component id="landRegTextField" alignment="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace pref="2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="ceoDirectionTextField" max="32767" attributes="0"/>
-                          <Component id="directedDivisionTextField" max="32767" attributes="0"/>
+                          <Component id="landTypeTextField" min="-2" pref="120" max="-2" attributes="0"/>
+                          <Component id="nobleTextField" min="-2" pref="210" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -142,14 +131,14 @@
               <Component id="headerPanel" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jToolBar1" min="-2" pref="25" max="-2" attributes="0"/>
-              <EmptySpace min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="nameTextField" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
-                  <Group type="103" groupAlignment="3" attributes="0">
+                  <Group type="103" alignment="1" groupAlignment="3" attributes="0">
                       <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="locationTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -157,7 +146,7 @@
                       <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="dateReceivedTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="btnDateReceived" alignment="0" min="-2" pref="17" max="-2" attributes="0"/>
+                  <Component id="btnDateReceived" alignment="1" min="-2" pref="17" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -176,13 +165,13 @@
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="btnSignDate" alignment="0" min="-2" pref="17" max="-2" attributes="0"/>
+                  <Component id="btnSignDate" alignment="1" min="-2" pref="17" max="-2" attributes="0"/>
                   <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                       <Component id="signDateTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel12" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="landRegTextField" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -194,13 +183,11 @@
               </Group>
               <EmptySpace min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="btnPayDate" alignment="0" min="-2" pref="17" max="-2" attributes="0"/>
-                  <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                      <Component id="payDateTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel13" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="payDateTextField" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnPayDate" alignment="1" min="-2" pref="17" max="-2" attributes="0"/>
+                  <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="receiptNumberTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -215,7 +202,7 @@
                   <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="directedDivisionTextField" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="237" max="32767" attributes="0"/>
+              <EmptySpace pref="271" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -224,180 +211,6 @@
     <Component class="org.sola.clients.swing.ui.HeaderPanel" name="headerPanel">
       <Properties>
         <Property name="titleText" type="java.lang.String" value="Land Application Form"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="jLabel1">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Name"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="nameTextField">
-      <BindingProperties>
-        <BindingProperty name="text" source="ministerApplicationBean" sourcePath="${name}" target="nameTextField" targetPath="text" updateStrategy="0" immediately="false">
-          <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
-        </BindingProperty>
-      </BindingProperties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="jLabel2">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Location"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="locationTextField">
-      <BindingProperties>
-        <BindingProperty name="text" source="ministerApplicationBean" sourcePath="${location}" target="locationTextField" targetPath="text" updateStrategy="0" immediately="false">
-          <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
-        </BindingProperty>
-      </BindingProperties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="jLabel3">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Land Type"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="landTypeTextField">
-      <BindingProperties>
-        <BindingProperty name="text" source="ministerApplicationBean" sourcePath="${landType}" target="landTypeTextField" targetPath="text" updateStrategy="0" immediately="false">
-          <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
-        </BindingProperty>
-      </BindingProperties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="jLabel4">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Noble"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="nobleTextField">
-      <BindingProperties>
-        <BindingProperty name="text" source="ministerApplicationBean" sourcePath="${noble}" target="nobleTextField" targetPath="text" updateStrategy="0" immediately="false">
-          <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
-        </BindingProperty>
-      </BindingProperties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="jLabel5">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Land Area"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="landAreaTextField">
-      <BindingProperties>
-        <BindingProperty name="text" source="ministerApplicationBean" sourcePath="${landArea}" target="landAreaTextField" targetPath="text" updateStrategy="0" immediately="false">
-          <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
-        </BindingProperty>
-      </BindingProperties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="jLabel6">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Survey Fee"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="surveryFeeTextField">
-      <BindingProperties>
-        <BindingProperty name="text" source="ministerApplicationBean" sourcePath="${surveyFee}" target="surveryFeeTextField" targetPath="text" updateStrategy="0" immediately="false">
-          <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
-        </BindingProperty>
-      </BindingProperties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="jLabel7">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Receipt Number"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="receiptNumberTextField">
-      <BindingProperties>
-        <BindingProperty name="text" source="ministerApplicationBean" sourcePath="${receiptNumber}" target="receiptNumberTextField" targetPath="text" updateStrategy="0" immediately="false">
-          <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
-        </BindingProperty>
-      </BindingProperties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="jLabel8">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Last Registration"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="landRegTextField">
-      <BindingProperties>
-        <BindingProperty name="text" source="ministerApplicationBean" sourcePath="${lastReg}" target="landRegTextField" targetPath="text" updateStrategy="0" immediately="false">
-          <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
-        </BindingProperty>
-      </BindingProperties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="jLabel9">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="CEO Direction"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="ceoDirectionTextField">
-      <BindingProperties>
-        <BindingProperty name="text" source="ministerApplicationBean" sourcePath="${ceoDirection}" target="ceoDirectionTextField" targetPath="text" updateStrategy="0" immediately="false">
-          <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
-        </BindingProperty>
-      </BindingProperties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="directedDivisionTextField">
-      <BindingProperties>
-        <BindingProperty name="text" source="ministerApplicationBean" sourcePath="${directedDivision}" target="directedDivisionTextField" targetPath="text" updateStrategy="0" immediately="false">
-          <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
-        </BindingProperty>
-      </BindingProperties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="jLabel10">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Directed Division"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JFormattedTextField" name="dateReceivedTextField">
-      <Properties>
-        <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-          <Connection code="FormattersFactory.getInstance().getDateFormatterFactory()" type="code"/>
-        </Property>
-      </Properties>
-      <BindingProperties>
-        <BindingProperty name="value" source="ministerApplicationBean" sourcePath="${dateReceived}" target="dateReceivedTextField" targetPath="value" updateStrategy="0" immediately="false"/>
-      </BindingProperties>
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new WatermarkDate()"/>
-      </AuxValues>
-    </Component>
-    <Component class="javax.swing.JFormattedTextField" name="signDateTextField">
-      <Properties>
-        <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-          <Connection code="FormattersFactory.getInstance().getDateFormatterFactory()" type="code"/>
-        </Property>
-      </Properties>
-      <BindingProperties>
-        <BindingProperty name="value" source="ministerApplicationBean" sourcePath="${signDate}" target="signDateTextField" targetPath="value" updateStrategy="0" immediately="false"/>
-      </BindingProperties>
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new WatermarkDate()"/>
-      </AuxValues>
-    </Component>
-    <Component class="javax.swing.JFormattedTextField" name="payDateTextField">
-      <Properties>
-        <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-          <Connection code="FormattersFactory.getInstance().getDateFormatterFactory()" type="code"/>
-        </Property>
-      </Properties>
-      <BindingProperties>
-        <BindingProperty name="value" source="ministerApplicationBean" sourcePath="${payDate}" target="payDateTextField" targetPath="value" updateStrategy="0" immediately="false"/>
-      </BindingProperties>
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new WatermarkDate()"/>
-      </AuxValues>
-    </Component>
-    <Component class="javax.swing.JLabel" name="jLabel11">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Date Received"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="jLabel12">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Sign Date"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="jLabel13">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Pay Date"/>
       </Properties>
     </Component>
     <Container class="javax.swing.JToolBar" name="jToolBar1">
@@ -418,6 +231,94 @@
         </Component>
       </SubComponents>
     </Container>
+    <Component class="javax.swing.JTextField" name="directedDivisionTextField">
+      <BindingProperties>
+        <BindingProperty name="text" source="ministerApplicationBean" sourcePath="${directedDivision}" target="directedDivisionTextField" targetPath="text" updateStrategy="0" immediately="false">
+          <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
+        </BindingProperty>
+      </BindingProperties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="ceoDirectionTextField">
+      <BindingProperties>
+        <BindingProperty name="text" source="ministerApplicationBean" sourcePath="${ceoDirection}" target="ceoDirectionTextField" targetPath="text" updateStrategy="0" immediately="false">
+          <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
+        </BindingProperty>
+      </BindingProperties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel9">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="CEO Direction"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel10">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Directed Division"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="receiptNumberTextField">
+      <BindingProperties>
+        <BindingProperty name="text" source="ministerApplicationBean" sourcePath="${receiptNumber}" target="receiptNumberTextField" targetPath="text" updateStrategy="0" immediately="false">
+          <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
+        </BindingProperty>
+      </BindingProperties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel7">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Receipt Number"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel13">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Pay Date"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JFormattedTextField" name="payDateTextField">
+      <Properties>
+        <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="FormattersFactory.getInstance().getDateFormatterFactory()" type="code"/>
+        </Property>
+      </Properties>
+      <BindingProperties>
+        <BindingProperty name="value" source="ministerApplicationBean" sourcePath="${payDate}" target="payDateTextField" targetPath="value" updateStrategy="0" immediately="false"/>
+      </BindingProperties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new WatermarkDate()"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnPayDate">
+      <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/images/common/calendar.png"/>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPayDateActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JTextField" name="surveryFeeTextField">
+      <BindingProperties>
+        <BindingProperty name="text" source="ministerApplicationBean" sourcePath="${surveyFee}" target="surveryFeeTextField" targetPath="text" updateStrategy="0" immediately="false">
+          <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
+        </BindingProperty>
+      </BindingProperties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel6">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Survey Fee"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel8">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Last Registration"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="landRegTextField">
+      <BindingProperties>
+        <BindingProperty name="text" source="ministerApplicationBean" sourcePath="${lastReg}" target="landRegTextField" targetPath="text" updateStrategy="0" immediately="false">
+          <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
+        </BindingProperty>
+      </BindingProperties>
+    </Component>
     <Component class="javax.swing.JButton" name="btnSignDate">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
@@ -427,6 +328,73 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSignDateActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JFormattedTextField" name="signDateTextField">
+      <Properties>
+        <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="FormattersFactory.getInstance().getDateFormatterFactory()" type="code"/>
+        </Property>
+      </Properties>
+      <BindingProperties>
+        <BindingProperty name="value" source="ministerApplicationBean" sourcePath="${signDate}" target="signDateTextField" targetPath="value" updateStrategy="0" immediately="false"/>
+      </BindingProperties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new WatermarkDate()"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel12">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Sign Date"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel5">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Land Area"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="landAreaTextField">
+      <BindingProperties>
+        <BindingProperty name="text" source="ministerApplicationBean" sourcePath="${landArea}" target="landAreaTextField" targetPath="text" updateStrategy="0" immediately="false">
+          <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
+        </BindingProperty>
+      </BindingProperties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="landTypeTextField">
+      <BindingProperties>
+        <BindingProperty name="text" source="ministerApplicationBean" sourcePath="${landType}" target="landTypeTextField" targetPath="text" updateStrategy="0" immediately="false">
+          <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
+        </BindingProperty>
+      </BindingProperties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel3">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Land Type"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel4">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Noble"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="nobleTextField">
+      <BindingProperties>
+        <BindingProperty name="text" source="ministerApplicationBean" sourcePath="${noble}" target="nobleTextField" targetPath="text" updateStrategy="0" immediately="false">
+          <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
+        </BindingProperty>
+      </BindingProperties>
+    </Component>
+    <Component class="javax.swing.JFormattedTextField" name="dateReceivedTextField">
+      <Properties>
+        <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="FormattersFactory.getInstance().getDateFormatterFactory()" type="code"/>
+        </Property>
+      </Properties>
+      <BindingProperties>
+        <BindingProperty name="value" source="ministerApplicationBean" sourcePath="${dateReceived}" target="dateReceivedTextField" targetPath="value" updateStrategy="0" immediately="false"/>
+      </BindingProperties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new WatermarkDate()"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JButton" name="btnDateReceived">
       <Properties>
@@ -438,15 +406,34 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDateReceivedActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="btnPayDate">
+    <Component class="javax.swing.JLabel" name="jLabel11">
       <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/images/common/calendar.png"/>
-        </Property>
+        <Property name="text" type="java.lang.String" value="Date Received"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPayDateActionPerformed"/>
-      </Events>
+    </Component>
+    <Component class="javax.swing.JTextField" name="nameTextField">
+      <BindingProperties>
+        <BindingProperty name="text" source="ministerApplicationBean" sourcePath="${name}" target="nameTextField" targetPath="text" updateStrategy="0" immediately="false">
+          <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
+        </BindingProperty>
+      </BindingProperties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="locationTextField">
+      <BindingProperties>
+        <BindingProperty name="text" source="ministerApplicationBean" sourcePath="${location}" target="locationTextField" targetPath="text" updateStrategy="0" immediately="false">
+          <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
+        </BindingProperty>
+      </BindingProperties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel2">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Location"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Name"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

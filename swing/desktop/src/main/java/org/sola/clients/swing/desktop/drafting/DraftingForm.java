@@ -374,7 +374,6 @@ public class DraftingForm extends ContentPanel {
         btnShowCalendarReceiveDate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/calendar.png"))); // NOI18N
         btnShowCalendarReceiveDate.setText(bundle.getString("DraftingForm.btnShowCalendarReceiveDate.text")); // NOI18N
         btnShowCalendarReceiveDate.setBorder(null);
-        btnShowCalendarReceiveDate.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnShowCalendarReceiveDate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnShowCalendarReceiveDateActionPerformed(evt);
@@ -385,18 +384,19 @@ public class DraftingForm extends ContentPanel {
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(labDateReceived, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
+            .addComponent(labDateReceived, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addComponent(txtDateReceived, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnShowCalendarReceiveDate))
+                .addComponent(btnShowCalendarReceiveDate, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 10, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
                 .addComponent(labDateReceived)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtDateReceived, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnShowCalendarReceiveDate)))
         );
@@ -430,7 +430,7 @@ public class DraftingForm extends ContentPanel {
         jPanel11.setLayout(jPanel11Layout);
         jPanel11Layout.setHorizontalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(labNatureOfSurvey, javax.swing.GroupLayout.DEFAULT_SIZE, 319, Short.MAX_VALUE)
+            .addComponent(labNatureOfSurvey, javax.swing.GroupLayout.DEFAULT_SIZE, 552, Short.MAX_VALUE)
             .addComponent(txtNatureOfSurvey)
         );
         jPanel11Layout.setVerticalGroup(
@@ -613,18 +613,19 @@ public class DraftingForm extends ContentPanel {
         jPanel17.setLayout(jPanel17Layout);
         jPanel17Layout.setHorizontalGroup(
             jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(labPlottingDate, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE)
+            .addComponent(labPlottingDate, javax.swing.GroupLayout.DEFAULT_SIZE, 362, Short.MAX_VALUE)
             .addGroup(jPanel17Layout.createSequentialGroup()
                 .addComponent(txtPlottingDate, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnShowCalendarPlottingDate))
+                .addComponent(btnShowCalendarPlottingDate, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel17Layout.setVerticalGroup(
             jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel17Layout.createSequentialGroup()
                 .addComponent(labPlottingDate)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtPlottingDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnShowCalendarPlottingDate)))
         );
@@ -801,10 +802,6 @@ public class DraftingForm extends ContentPanel {
         showCalendar(txtTraceDate);
     }//GEN-LAST:event_btnShowCalendarTraceDateActionPerformed
 
-    private void btnShowCalendarPlottingDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowCalendarPlottingDateActionPerformed
-        showCalendar(txtPlottingDate);
-    }//GEN-LAST:event_btnShowCalendarPlottingDateActionPerformed
-
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         saveDrafting();
     }//GEN-LAST:event_btnSaveActionPerformed
@@ -812,6 +809,10 @@ public class DraftingForm extends ContentPanel {
     private void btnShowCalendarReceiveDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowCalendarReceiveDateActionPerformed
         showCalendar(txtDateReceived);
     }//GEN-LAST:event_btnShowCalendarReceiveDateActionPerformed
+
+    private void btnShowCalendarPlottingDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowCalendarPlottingDateActionPerformed
+        showCalendar(txtPlottingDate);
+    }//GEN-LAST:event_btnShowCalendarPlottingDateActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private org.sola.clients.swing.common.buttons.BtnSave btnSave;

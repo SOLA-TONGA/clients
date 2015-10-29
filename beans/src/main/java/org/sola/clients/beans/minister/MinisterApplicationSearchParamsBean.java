@@ -40,13 +40,15 @@ public class MinisterApplicationSearchParamsBean extends AbstractBindingBean{
     public static final String NAME_PROPERTY = "name";
     public static final String LOCATION_PROPERTY = "location";
     public static final String RECEIPT_NUMBER_PROPERTY = "receiptNumber";
-    public static final String PAY_DATE_PROPERTY = "payDate";
+    public static final String PAY_DATE_FROM_PROPERTY = "payDateFrom";
+    public static final String PAY_DATE_TO_PROPERTY = "payDateTo";
     private Date dateReceivedFrom;
     private Date dateReceivedTo;
     private String name;
     private String location;
     private String receiptNumber;
-    private Date payDate;
+    private Date payDateFrom;
+    private Date payDateTo;
     
     public MinisterApplicationSearchParamsBean() {
         super();
@@ -102,13 +104,33 @@ public class MinisterApplicationSearchParamsBean extends AbstractBindingBean{
         propertySupport.firePropertyChange(RECEIPT_NUMBER_PROPERTY, oldValue, value);
     }
     
-    public Date getPayDate() {
-        return payDate;
+    public Date getPayDateFrom() {
+        return payDateFrom;
     }
 
-    public void setPayDate(Date value) {
-        Date oldValue = this.payDate;
-        this.payDate = value;
-        propertySupport.firePropertyChange(PAY_DATE_PROPERTY, oldValue, value);
+    public void setPayDateFrom(Date value) {
+        Date oldValue = this.payDateFrom;
+        this.payDateFrom = value;
+        propertySupport.firePropertyChange(PAY_DATE_FROM_PROPERTY, oldValue, value);
+    }
+    
+    public Date getPayDateTo() {
+        return payDateTo;
+    }
+
+    public void setPayDateTo(Date value) {
+        Date oldValue = this.payDateTo;
+        this.payDateTo = value;
+        propertySupport.firePropertyChange(PAY_DATE_TO_PROPERTY, oldValue, value);
+    }
+    
+    public void clear() {
+        this.setDateReceivedFrom(null);
+        this.setDateReceivedTo(null);
+        this.setName(null);
+        this.setLocation(null);
+        this.setReceiptNumber(null);
+        this.setPayDateFrom(null);
+        this.setPayDateTo(null);
     }
 }

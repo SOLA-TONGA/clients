@@ -51,7 +51,6 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="headerPanel" alignment="0" max="32767" attributes="0"/>
           <Component id="jToolBar1" alignment="0" pref="619" max="32767" attributes="0"/>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
@@ -61,6 +60,7 @@
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
+          <Component id="headerPanel" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -79,13 +79,6 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="org.sola.clients.swing.ui.HeaderPanel" name="headerPanel">
-      <Properties>
-        <Property name="titleText" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
-          <ResourceString bundle="org/sola/clients/swing/desktop/application/Bundle.properties" key="ApplicationSearchPanel.headerPanel1.titleText" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
-        </Property>
-      </Properties>
-    </Component>
     <Container class="javax.swing.JToolBar" name="jToolBar1">
       <Properties>
         <Property name="floatable" type="boolean" value="false"/>
@@ -141,36 +134,6 @@
           </Events>
         </Component>
         <Component class="javax.swing.JToolBar$Separator" name="jSeparator3">
-        </Component>
-        <Component class="javax.swing.JLabel" name="lblSearchResults">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="LafManager.getInstance().getLabFontBold()" type="code"/>
-            </Property>
-            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
-              <ResourceString bundle="org/sola/clients/swing/desktop/application/Bundle.properties" key="ApplicationSearchPanel.lblSearchResults.text" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
-            </Property>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="labResults">
-          <Properties>
-            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
-              <ResourceString bundle="org/sola/clients/swing/desktop/application/Bundle.properties" key="ApplicationSearchPanel.labResults.text" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
-            </Property>
-          </Properties>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="labResults.setComponentOrientation(ComponentOrientation.getOrientation(Locale.getDefault()));&#xa;labResults.setHorizontalAlignment(JLabel.LEADING);"/>
-          </AuxValues>
-        </Component>
-        <Component class="javax.swing.JLabel" name="lblLeaseResultsCount">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="LafManager.getInstance().getLabFontBold()" type="code"/>
-            </Property>
-            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
-              <ResourceString bundle="org/sola/clients/swing/desktop/application/Bundle.properties" key="ApplicationSearchPanel.lblSearchResults.text" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
-            </Property>
-          </Properties>
         </Component>
         <Component class="org.sola.clients.swing.common.buttons.BtnAdd" name="btnAdd">
           <Properties>
@@ -816,5 +779,12 @@
         </Component>
       </SubComponents>
     </Container>
+    <Component class="org.sola.clients.swing.ui.HeaderPanel" name="headerPanel">
+      <Properties>
+        <Property name="titleText" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+          <ResourceString bundle="org/sola/clients/swing/desktop/drafting/Bundle.properties" key="DraftingSearchPanel.headerPanel.titleText" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+        </Property>
+      </Properties>
+    </Component>
   </SubComponents>
 </Form>

@@ -142,7 +142,7 @@ public class ApplicationSearchPanel extends ContentPanel {
         btnOpenApplication = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JToolBar.Separator();
         lblSearchResults = new javax.swing.JLabel();
-        labResults = new javax.swing.JLabel();
+        lblSearchResultsCount = new javax.swing.JLabel();
 
         popupSearchResults.setName("popupSearchResults"); // NOI18N
 
@@ -157,6 +157,7 @@ public class ApplicationSearchPanel extends ContentPanel {
         });
         popupSearchResults.add(menuOpenApplication);
 
+        setHeaderPanel(headerPanel1);
         setHelpTopic(bundle.getString("ApplicationSearchPanel.helpTopic")); // NOI18N
         setMinimumSize(new java.awt.Dimension(512, 351));
         setName("Form"); // NOI18N
@@ -215,19 +216,17 @@ public class ApplicationSearchPanel extends ContentPanel {
             }
         });
         appListPanel.setViewportView(tbAppList);
-        if (tbAppList.getColumnModel().getColumnCount() > 0) {
-            tbAppList.getColumnModel().getColumn(0).setHeaderValue(bundle.getString("ApplicationSearchPanel.tbAppList.columnModel.title0_1")); // NOI18N
-            tbAppList.getColumnModel().getColumn(1).setHeaderValue(bundle.getString("ApplicationSearchPanel.tbAppList.columnModel.title1_1")); // NOI18N
-            tbAppList.getColumnModel().getColumn(1).setCellRenderer(new DateTimeRenderer(true));
-            tbAppList.getColumnModel().getColumn(2).setHeaderValue(bundle.getString("ApplicationSearchPanel.tbAppList.columnModel.title2_1")); // NOI18N
-            tbAppList.getColumnModel().getColumn(2).setCellRenderer(new DateTimeRenderer());
-            tbAppList.getColumnModel().getColumn(3).setHeaderValue(bundle.getString("ApplicationSearchPanel.tbAppList.columnModel.title3_1")); // NOI18N
-            tbAppList.getColumnModel().getColumn(3).setCellRenderer(new org.sola.clients.swing.ui.renderers.CellDelimitedListRenderer());
-            tbAppList.getColumnModel().getColumn(4).setHeaderValue(bundle.getString("ApplicationSearchPanel.tbAppList.columnModel.title4_1")); // NOI18N
-            tbAppList.getColumnModel().getColumn(5).setHeaderValue(bundle.getString("ApplicationSearchPanel.tbAppList.columnModel.title5_1")); // NOI18N
-            tbAppList.getColumnModel().getColumn(6).setHeaderValue(bundle.getString("ApplicationSearchPanel.tbAppList.columnModel.title6_1")); // NOI18N
-            tbAppList.getColumnModel().getColumn(6).setCellRenderer(new BooleanCellRenderer());
-        }
+        tbAppList.getColumnModel().getColumn(0).setHeaderValue(bundle.getString("ApplicationSearchPanel.tbAppList.columnModel.title0_1")); // NOI18N
+        tbAppList.getColumnModel().getColumn(1).setHeaderValue(bundle.getString("ApplicationSearchPanel.tbAppList.columnModel.title1_1")); // NOI18N
+        tbAppList.getColumnModel().getColumn(1).setCellRenderer(new DateTimeRenderer(true));
+        tbAppList.getColumnModel().getColumn(2).setHeaderValue(bundle.getString("ApplicationSearchPanel.tbAppList.columnModel.title2_1")); // NOI18N
+        tbAppList.getColumnModel().getColumn(2).setCellRenderer(new DateTimeRenderer());
+        tbAppList.getColumnModel().getColumn(3).setHeaderValue(bundle.getString("ApplicationSearchPanel.tbAppList.columnModel.title3_1")); // NOI18N
+        tbAppList.getColumnModel().getColumn(3).setCellRenderer(new org.sola.clients.swing.ui.renderers.CellDelimitedListRenderer());
+        tbAppList.getColumnModel().getColumn(4).setHeaderValue(bundle.getString("ApplicationSearchPanel.tbAppList.columnModel.title4_1")); // NOI18N
+        tbAppList.getColumnModel().getColumn(5).setHeaderValue(bundle.getString("ApplicationSearchPanel.tbAppList.columnModel.title5_1")); // NOI18N
+        tbAppList.getColumnModel().getColumn(6).setHeaderValue(bundle.getString("ApplicationSearchPanel.tbAppList.columnModel.title6_1")); // NOI18N
+        tbAppList.getColumnModel().getColumn(6).setCellRenderer(new BooleanCellRenderer());
 
         jPanel2.setName("jPanel2"); // NOI18N
         jPanel2.setLayout(new java.awt.GridLayout(2, 1));
@@ -578,16 +577,14 @@ public class ApplicationSearchPanel extends ContentPanel {
         jSeparator1.setName("jSeparator1"); // NOI18N
         jToolBar1.add(jSeparator1);
 
-        lblSearchResults.setFont(LafManager.getInstance().getLabFontBold());
         lblSearchResults.setText(bundle.getString("ApplicationSearchPanel.lblSearchResults.text")); // NOI18N
         lblSearchResults.setName("lblSearchResults"); // NOI18N
         jToolBar1.add(lblSearchResults);
 
-        labResults.setText(bundle.getString("ApplicationSearchPanel.labResults.text")); // NOI18N
-        labResults.setName("labResults"); // NOI18N
-        labResults.setComponentOrientation(ComponentOrientation.getOrientation(Locale.getDefault()));
-        labResults.setHorizontalAlignment(JLabel.LEADING);
-        jToolBar1.add(labResults);
+        lblSearchResultsCount.setFont(LafManager.getInstance().getLabFontBold());
+        lblSearchResultsCount.setText(bundle.getString("ApplicationSearchPanel.lblSearchResultsCount.text")); // NOI18N
+        lblSearchResultsCount.setName("lblSearchResultsCount"); // NOI18N
+        jToolBar1.add(lblSearchResultsCount);
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
@@ -607,8 +604,8 @@ public class ApplicationSearchPanel extends ContentPanel {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12)
-                .addComponent(appListPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(appListPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -660,7 +657,7 @@ public class ApplicationSearchPanel extends ContentPanel {
                     Object[] parms = {100};
                     MessageUtility.displayMessage(ClientMessage.SEARCH_TOO_MANY_RESULTS, parms);
                 }
-                labResults.setText(String.format("(%s)", appList.getApplicationSearchResultsList().size()));
+                lblSearchResultsCount.setText(String.format("(%s)", appList.getApplicationSearchResultsList().size()));
                 tbAppList.setVisible(true);
                 txtAppNumber.requestFocus();
             }
@@ -684,7 +681,6 @@ public class ApplicationSearchPanel extends ContentPanel {
         txtContactPerson.setText(null);
         txtDocumentReference.setText(null);
         txtDocumentNumber.setText(null);
-        labResults.setText(null);
         tbAppList.setVisible(false);
         txtAppNumber.requestFocus();
         txtItemNumber.setText(null);
@@ -755,10 +751,10 @@ public class ApplicationSearchPanel extends ContentPanel {
     private javax.swing.JLabel labAppNumber;
     private javax.swing.JLabel labContactPerson;
     private javax.swing.JLabel labFrom;
-    private javax.swing.JLabel labResults;
     private javax.swing.JLabel labTo;
     private javax.swing.JLabel lblItemNumber;
     private javax.swing.JLabel lblSearchResults;
+    private javax.swing.JLabel lblSearchResultsCount;
     private javax.swing.JMenuItem menuOpenApplication;
     private javax.swing.JPopupMenu popupSearchResults;
     private org.sola.clients.beans.application.ApplicationSearchParamsBean searchParams;

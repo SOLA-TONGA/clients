@@ -36,14 +36,18 @@ import org.sola.clients.beans.AbstractBindingBean;
  */
 public class MinisterInwardSearchParamsBean extends AbstractBindingBean{
     public static final String SUBJECT_PROPERTY = "subject";
-    public static final String DATE_IN_PROPERTY = "dateIn";
+    public static final String DATE_IN_FROM_PROPERTY = "dateInFrom";
+    public static final String DATE_IN_TO_PROPERTY = "dateInTo";
     public static final String FILE_NUMBER_PROPERTY = "fileNumber";
-    public static final String DATE_OUT_PROPERTY = "dateOut";
+    public static final String DATE_OUT_FROM_PROPERTY = "dateOutFrom";
+    public static final String DATE_OUT_TO_PROPERTY = "dateOutTo";
     public static final String FROM_WHOM_PROPERTY = "fromWhom";
     private String subject;
-    private Date dateIn;
+    private Date dateInFrom;
+    private Date dateInTo;
     private String fileNumber;
-    private Date dateOut;
+    private Date dateOutFrom;
+    private Date dateOutTo;
     private String fromWhom;
     
     public MinisterInwardSearchParamsBean(){
@@ -60,14 +64,24 @@ public class MinisterInwardSearchParamsBean extends AbstractBindingBean{
         propertySupport.firePropertyChange(SUBJECT_PROPERTY, oldValue, value);
     }
 
-    public Date getDateIn() {
-        return dateIn;
+    public Date getDateInFrom() {
+        return dateInFrom;
     }
 
-    public void setDateIn(Date value) {
-        Date oldValue = this.dateIn;
-        this.dateIn = value;
-        propertySupport.firePropertyChange(DATE_IN_PROPERTY, oldValue, value);
+    public void setDateInFrom(Date value) {
+        Date oldValue = this.dateInFrom;
+        this.dateInFrom = value;
+        propertySupport.firePropertyChange(DATE_IN_FROM_PROPERTY, oldValue, value);
+    }
+    
+    public Date getDateInTo() {
+        return dateInTo;
+    }
+
+    public void setDateInTo(Date value) {
+        Date oldValue = this.dateInTo;
+        this.dateInTo = value;
+        propertySupport.firePropertyChange(DATE_IN_TO_PROPERTY, oldValue, value);
     }
 
     public String getFileNumber() {
@@ -80,14 +94,24 @@ public class MinisterInwardSearchParamsBean extends AbstractBindingBean{
         propertySupport.firePropertyChange(FILE_NUMBER_PROPERTY, oldValue, value);
     }
 
-    public Date getDateOut() {
-        return dateOut;
+    public Date getDateOutFrom() {
+        return dateOutFrom;
     }
 
-    public void setDateOut(Date value) {
-        Date oldValue = this.dateOut;
-        this.dateOut = value;
-        propertySupport.firePropertyChange(DATE_OUT_PROPERTY, oldValue, value);
+    public void setDateOutFrom(Date value) {
+        Date oldValue = this.dateOutFrom;
+        this.dateOutFrom = value;
+        propertySupport.firePropertyChange(DATE_OUT_FROM_PROPERTY, oldValue, value);
+    }
+    
+    public Date getDateOutTo() {
+        return dateOutTo;
+    }
+
+    public void setDateOutTo(Date value) {
+        Date oldValue = this.dateOutTo;
+        this.dateOutTo = value;
+        propertySupport.firePropertyChange(DATE_OUT_TO_PROPERTY, oldValue, value);
     }
     
     public String getFromWhom() {
@@ -102,9 +126,11 @@ public class MinisterInwardSearchParamsBean extends AbstractBindingBean{
     
     public void clear(){
         this.setSubject(null);
-        this.setDateIn(null);
+        this.setDateInFrom(null);
+        this.setDateInTo(null);
         this.setFileNumber(null);
-        this.setDateOut(null);
+        this.setDateOutFrom(null);
+        this.setDateOutTo(null);
         this.setFromWhom(null);
     }
     
