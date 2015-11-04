@@ -44,7 +44,7 @@
           <Group type="102" alignment="0" attributes="0">
               <Component id="headerPanel" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
-              <Component id="ministerTab" min="-2" max="-2" attributes="0"/>
+              <Component id="ministerTab" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -76,19 +76,32 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="inwardSearchPanel" max="32767" attributes="0"/>
-                  <Component id="inwardToolBar" alignment="0" pref="1011" max="32767" attributes="0"/>
-                  <Component id="jScrollPane4" alignment="0" max="32767" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="jScrollPane4" max="32767" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="inwardToolBar" alignment="0" max="32767" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="jPanel32" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="193" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                  </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="inwardSearchPanel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jPanel32" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="inwardToolBar" min="-2" pref="25" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jScrollPane4" pref="633" max="32767" attributes="0"/>
+                      <Component id="jScrollPane4" pref="501" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -193,289 +206,6 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Container class="javax.swing.JPanel" name="inwardSearchPanel">
-
-              <Layout>
-                <DimensionLayout dim="0">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="subjectTextField" max="32767" attributes="0"/>
-                              <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" attributes="0">
-                                          <Component id="nameInwardTextField" min="-2" pref="231" max="-2" attributes="0"/>
-                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="fileNumberTextField" min="-2" pref="113" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="dateOutFromTextField" min="-2" pref="121" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="btnDateOutFrom" min="-2" pref="18" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
-                                          <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="dateOutToTextField" min="-2" pref="121" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="btnDateOutTo" min="-2" pref="18" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="dateInFromTextField" min="-2" pref="121" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="btnDateInFrom" min="-2" pref="18" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
-                                          <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="dateInToTextField" min="-2" pref="121" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="btnDateInTo" min="-2" pref="18" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                                  <EmptySpace min="0" pref="482" max="32767" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                </DimensionLayout>
-                <DimensionLayout dim="1">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="nameInwardTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="fileNumberTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="subjectTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                                  <Component id="jLabel5" min="-2" pref="20" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="dateInFromTextField" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                                          <Component id="dateInToTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel12" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Component id="btnDateInTo" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="btnDateInFrom" alignment="1" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="1" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="dateOutFromTextField" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                                              <Group type="103" alignment="1" groupAlignment="3" attributes="0">
-                                                  <Component id="jLabel13" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
-                                                  <Component id="dateOutToTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                                              </Group>
-                                              <Component id="btnDateOutTo" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                      <Component id="btnDateOutFrom" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                          </Group>
-                          <EmptySpace max="32767" attributes="0"/>
-                      </Group>
-                  </Group>
-                </DimensionLayout>
-              </Layout>
-              <SubComponents>
-                <Component class="javax.swing.JFormattedTextField" name="dateOutFromTextField">
-                  <Properties>
-                    <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                      <Connection code="FormattersFactory.getInstance().getDateFormatterFactory()" type="code"/>
-                    </Property>
-                  </Properties>
-                  <BindingProperties>
-                    <BindingProperty name="value" source="ministerInwardSearchParamsBean" sourcePath="${dateOutFrom}" target="dateOutFromTextField" targetPath="value" updateStrategy="0" immediately="false"/>
-                  </BindingProperties>
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new WatermarkDate()"/>
-                  </AuxValues>
-                </Component>
-                <Component class="javax.swing.JLabel" name="jLabel5">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Date Out (From)"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JFormattedTextField" name="dateInFromTextField">
-                  <Properties>
-                    <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                      <Connection code="FormattersFactory.getInstance().getDateFormatterFactory()" type="code"/>
-                    </Property>
-                  </Properties>
-                  <BindingProperties>
-                    <BindingProperty name="value" source="ministerInwardSearchParamsBean" sourcePath="${dateInFrom}" target="dateInFromTextField" targetPath="value" updateStrategy="0" immediately="false"/>
-                  </BindingProperties>
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new WatermarkDate()"/>
-                  </AuxValues>
-                </Component>
-                <Component class="javax.swing.JLabel" name="jLabel4">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Date In (From)"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JTextField" name="subjectTextField">
-                  <BindingProperties>
-                    <BindingProperty name="text" source="ministerInwardSearchParamsBean" sourcePath="${subject}" target="subjectTextField" targetPath="text" updateStrategy="0" immediately="false">
-                      <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
-                    </BindingProperty>
-                  </BindingProperties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="jLabel1">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Subject"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JTextField" name="nameInwardTextField">
-                  <BindingProperties>
-                    <BindingProperty name="text" source="ministerInwardSearchParamsBean" sourcePath="${fromWhom}" target="nameInwardTextField" targetPath="text" updateStrategy="0" immediately="false">
-                      <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
-                    </BindingProperty>
-                  </BindingProperties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="jLabel2">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Name"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="jLabel3">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="File Number"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JTextField" name="fileNumberTextField">
-                  <BindingProperties>
-                    <BindingProperty name="text" source="ministerInwardSearchParamsBean" sourcePath="${fileNumber}" target="fileNumberTextField" targetPath="text" updateStrategy="0" immediately="false">
-                      <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
-                    </BindingProperty>
-                  </BindingProperties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="jLabel12">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Date In (To)"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JFormattedTextField" name="dateInToTextField">
-                  <Properties>
-                    <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                      <Connection code="FormattersFactory.getInstance().getDateFormatterFactory()" type="code"/>
-                    </Property>
-                  </Properties>
-                  <BindingProperties>
-                    <BindingProperty name="value" source="ministerInwardSearchParamsBean" sourcePath="${dateInTo}" target="dateInToTextField" targetPath="value" updateStrategy="0" immediately="false"/>
-                  </BindingProperties>
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new WatermarkDate()"/>
-                  </AuxValues>
-                </Component>
-                <Component class="javax.swing.JButton" name="btnDateInTo">
-                  <Properties>
-                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/images/common/calendar.png"/>
-                    </Property>
-                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                      <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
-                        <EmptyBorder/>
-                      </Border>
-                    </Property>
-                    <Property name="horizontalTextPosition" type="int" value="0"/>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDateInToActionPerformed"/>
-                  </Events>
-                </Component>
-                <Component class="javax.swing.JLabel" name="jLabel13">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Date Out (To)"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JFormattedTextField" name="dateOutToTextField">
-                  <Properties>
-                    <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                      <Connection code="FormattersFactory.getInstance().getDateFormatterFactory()" type="code"/>
-                    </Property>
-                  </Properties>
-                  <BindingProperties>
-                    <BindingProperty name="value" source="ministerInwardSearchParamsBean" sourcePath="${dateOutTo}" target="dateOutToTextField" targetPath="value" updateStrategy="0" immediately="false"/>
-                  </BindingProperties>
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new WatermarkDate()"/>
-                  </AuxValues>
-                </Component>
-                <Component class="javax.swing.JButton" name="btnDateOutTo">
-                  <Properties>
-                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/images/common/calendar.png"/>
-                    </Property>
-                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                      <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
-                        <EmptyBorder/>
-                      </Border>
-                    </Property>
-                    <Property name="horizontalTextPosition" type="int" value="0"/>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDateOutToActionPerformed"/>
-                  </Events>
-                </Component>
-                <Component class="javax.swing.JButton" name="btnDateInFrom">
-                  <Properties>
-                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/images/common/calendar.png"/>
-                    </Property>
-                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                      <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
-                        <EmptyBorder/>
-                      </Border>
-                    </Property>
-                    <Property name="horizontalTextPosition" type="int" value="0"/>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDateInFromActionPerformed"/>
-                  </Events>
-                </Component>
-                <Component class="javax.swing.JButton" name="btnDateOutFrom">
-                  <Properties>
-                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/images/common/calendar.png"/>
-                    </Property>
-                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                      <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
-                        <EmptyBorder/>
-                      </Border>
-                    </Property>
-                    <Property name="horizontalTextPosition" type="int" value="0"/>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDateOutFromActionPerformed"/>
-                  </Events>
-                </Component>
-              </SubComponents>
-            </Container>
             <Container class="javax.swing.JScrollPane" name="jScrollPane4">
               <AuxValues>
                 <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
@@ -560,6 +290,424 @@
                 </Component>
               </SubComponents>
             </Container>
+            <Container class="javax.swing.JPanel" name="jPanel32">
+
+              <Layout>
+                <DimensionLayout dim="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <Component id="inwardSearchPanel" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jPanel5" min="-2" pref="311" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+                <DimensionLayout dim="1">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="inwardSearchPanel" min="-2" max="-2" attributes="0"/>
+                      <Component id="jPanel5" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                </DimensionLayout>
+              </Layout>
+              <SubComponents>
+                <Container class="javax.swing.JPanel" name="inwardSearchPanel">
+
+                  <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
+                    <Property name="columns" type="int" value="0"/>
+                    <Property name="rows" type="int" value="2"/>
+                  </Layout>
+                  <SubComponents>
+                    <Container class="javax.swing.JPanel" name="jPanel7">
+
+                      <Layout>
+                        <DimensionLayout dim="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="nameInwardTextField" max="32767" attributes="0"/>
+                                      <Component id="jLabel2" pref="231" max="32767" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="0" pref="179" max="32767" attributes="0"/>
+                                      </Group>
+                                      <Component id="fileNumberTextField" max="32767" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                        </DimensionLayout>
+                        <DimensionLayout dim="1">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="nameInwardTextField" min="-2" max="-2" attributes="0"/>
+                                      <Component id="fileNumberTextField" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace pref="16" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                        </DimensionLayout>
+                      </Layout>
+                      <SubComponents>
+                        <Component class="javax.swing.JTextField" name="fileNumberTextField">
+                          <BindingProperties>
+                            <BindingProperty name="text" source="ministerInwardSearchParamsBean" sourcePath="${fileNumber}" target="fileNumberTextField" targetPath="text" updateStrategy="0" immediately="false">
+                              <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
+                            </BindingProperty>
+                          </BindingProperties>
+                        </Component>
+                        <Component class="javax.swing.JLabel" name="jLabel3">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="File Number"/>
+                          </Properties>
+                        </Component>
+                        <Component class="javax.swing.JTextField" name="nameInwardTextField">
+                          <BindingProperties>
+                            <BindingProperty name="text" source="ministerInwardSearchParamsBean" sourcePath="${fromWhom}" target="nameInwardTextField" targetPath="text" updateStrategy="0" immediately="false">
+                              <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
+                            </BindingProperty>
+                          </BindingProperties>
+                        </Component>
+                        <Component class="javax.swing.JLabel" name="jLabel2">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="Name"/>
+                          </Properties>
+                        </Component>
+                      </SubComponents>
+                    </Container>
+                    <Container class="javax.swing.JPanel" name="jPanel6">
+
+                      <Layout>
+                        <DimensionLayout dim="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="0" pref="458" max="32767" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="subjectTextField" max="32767" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                        </DimensionLayout>
+                        <DimensionLayout dim="1">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="subjectTextField" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="0" pref="16" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                        </DimensionLayout>
+                      </Layout>
+                      <SubComponents>
+                        <Component class="javax.swing.JLabel" name="jLabel1">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="Subject"/>
+                          </Properties>
+                        </Component>
+                        <Component class="javax.swing.JTextField" name="subjectTextField">
+                          <BindingProperties>
+                            <BindingProperty name="text" source="ministerInwardSearchParamsBean" sourcePath="${subject}" target="subjectTextField" targetPath="text" updateStrategy="0" immediately="false">
+                              <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
+                            </BindingProperty>
+                          </BindingProperties>
+                        </Component>
+                      </SubComponents>
+                    </Container>
+                  </SubComponents>
+                </Container>
+                <Container class="javax.swing.JPanel" name="jPanel5">
+
+                  <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
+                    <Property name="columns" type="int" value="2"/>
+                    <Property name="rows" type="int" value="2"/>
+                  </Layout>
+                  <SubComponents>
+                    <Container class="javax.swing.JPanel" name="jPanel1">
+
+                      <Layout>
+                        <DimensionLayout dim="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                      <Component id="jLabel13" alignment="0" pref="121" max="32767" attributes="0"/>
+                                      <Component id="dateOutToTextField" alignment="0" max="32767" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="btnDateOutTo" min="-2" pref="17" max="-2" attributes="0"/>
+                                  <EmptySpace min="0" pref="11" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                        </DimensionLayout>
+                        <DimensionLayout dim="1">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="dateOutToTextField" min="-2" max="-2" attributes="0"/>
+                                      <Component id="btnDateOutTo" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace pref="16" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                        </DimensionLayout>
+                      </Layout>
+                      <SubComponents>
+                        <Component class="javax.swing.JLabel" name="jLabel13">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="Date Out (To)"/>
+                          </Properties>
+                        </Component>
+                        <Component class="javax.swing.JFormattedTextField" name="dateOutToTextField">
+                          <Properties>
+                            <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="FormattersFactory.getInstance().getDateFormatterFactory()" type="code"/>
+                            </Property>
+                          </Properties>
+                          <BindingProperties>
+                            <BindingProperty name="value" source="ministerInwardSearchParamsBean" sourcePath="${dateOutTo}" target="dateOutToTextField" targetPath="value" updateStrategy="0" immediately="false"/>
+                          </BindingProperties>
+                          <AuxValues>
+                            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new WatermarkDate()"/>
+                          </AuxValues>
+                        </Component>
+                        <Component class="javax.swing.JButton" name="btnDateOutTo">
+                          <Properties>
+                            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                              <Image iconType="3" name="/images/common/calendar.png"/>
+                            </Property>
+                            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                              <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
+                                <EmptyBorder/>
+                              </Border>
+                            </Property>
+                            <Property name="horizontalTextPosition" type="int" value="0"/>
+                          </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDateOutToActionPerformed"/>
+                          </Events>
+                        </Component>
+                      </SubComponents>
+                    </Container>
+                    <Container class="javax.swing.JPanel" name="jPanel2">
+
+                      <Layout>
+                        <DimensionLayout dim="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                      <Component id="jLabel12" alignment="0" pref="121" max="32767" attributes="0"/>
+                                      <Component id="dateInToTextField" alignment="0" max="32767" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="btnDateInTo" min="-2" pref="17" max="-2" attributes="0"/>
+                                  <EmptySpace pref="11" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                        </DimensionLayout>
+                        <DimensionLayout dim="1">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="dateInToTextField" min="-2" max="-2" attributes="0"/>
+                                      <Component id="btnDateInTo" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace pref="16" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                        </DimensionLayout>
+                      </Layout>
+                      <SubComponents>
+                        <Component class="javax.swing.JLabel" name="jLabel12">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="Date In (To)"/>
+                          </Properties>
+                        </Component>
+                        <Component class="javax.swing.JFormattedTextField" name="dateInToTextField">
+                          <Properties>
+                            <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="FormattersFactory.getInstance().getDateFormatterFactory()" type="code"/>
+                            </Property>
+                          </Properties>
+                          <BindingProperties>
+                            <BindingProperty name="value" source="ministerInwardSearchParamsBean" sourcePath="${dateInTo}" target="dateInToTextField" targetPath="value" updateStrategy="0" immediately="false"/>
+                          </BindingProperties>
+                          <AuxValues>
+                            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new WatermarkDate()"/>
+                          </AuxValues>
+                        </Component>
+                        <Component class="javax.swing.JButton" name="btnDateInTo">
+                          <Properties>
+                            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                              <Image iconType="3" name="/images/common/calendar.png"/>
+                            </Property>
+                            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                              <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
+                                <EmptyBorder/>
+                              </Border>
+                            </Property>
+                            <Property name="horizontalTextPosition" type="int" value="0"/>
+                          </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDateInToActionPerformed"/>
+                          </Events>
+                        </Component>
+                      </SubComponents>
+                    </Container>
+                    <Container class="javax.swing.JPanel" name="jPanel3">
+
+                      <Layout>
+                        <DimensionLayout dim="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="jLabel5" pref="121" max="32767" attributes="0"/>
+                                      <Component id="dateOutFromTextField" max="32767" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="btnDateOutFrom" min="-2" pref="17" max="-2" attributes="0"/>
+                                  <EmptySpace pref="11" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                        </DimensionLayout>
+                        <DimensionLayout dim="1">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="jLabel5" min="-2" pref="15" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="dateOutFromTextField" min="-2" max="-2" attributes="0"/>
+                                      <Component id="btnDateOutFrom" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace pref="15" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                        </DimensionLayout>
+                      </Layout>
+                      <SubComponents>
+                        <Component class="javax.swing.JFormattedTextField" name="dateOutFromTextField">
+                          <Properties>
+                            <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="FormattersFactory.getInstance().getDateFormatterFactory()" type="code"/>
+                            </Property>
+                          </Properties>
+                          <BindingProperties>
+                            <BindingProperty name="value" source="ministerInwardSearchParamsBean" sourcePath="${dateOutFrom}" target="dateOutFromTextField" targetPath="value" updateStrategy="0" immediately="false"/>
+                          </BindingProperties>
+                          <AuxValues>
+                            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new WatermarkDate()"/>
+                          </AuxValues>
+                        </Component>
+                        <Component class="javax.swing.JLabel" name="jLabel5">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="Date Out (From)"/>
+                          </Properties>
+                        </Component>
+                        <Component class="javax.swing.JButton" name="btnDateOutFrom">
+                          <Properties>
+                            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                              <Image iconType="3" name="/images/common/calendar.png"/>
+                            </Property>
+                            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                              <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
+                                <EmptyBorder/>
+                              </Border>
+                            </Property>
+                            <Property name="horizontalTextPosition" type="int" value="0"/>
+                          </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDateOutFromActionPerformed"/>
+                          </Events>
+                        </Component>
+                      </SubComponents>
+                    </Container>
+                    <Container class="javax.swing.JPanel" name="jPanel4">
+
+                      <Layout>
+                        <DimensionLayout dim="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                                      <Group type="102" attributes="0">
+                                          <Component id="dateInFromTextField" min="-2" pref="121" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="btnDateInFrom" min="-2" pref="17" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <EmptySpace pref="11" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                        </DimensionLayout>
+                        <DimensionLayout dim="1">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="dateInFromTextField" min="-2" max="-2" attributes="0"/>
+                                      <Component id="btnDateInFrom" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace pref="16" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                        </DimensionLayout>
+                      </Layout>
+                      <SubComponents>
+                        <Component class="javax.swing.JLabel" name="jLabel4">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="Date In (From)"/>
+                          </Properties>
+                        </Component>
+                        <Component class="javax.swing.JFormattedTextField" name="dateInFromTextField">
+                          <Properties>
+                            <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="FormattersFactory.getInstance().getDateFormatterFactory()" type="code"/>
+                            </Property>
+                          </Properties>
+                          <BindingProperties>
+                            <BindingProperty name="value" source="ministerInwardSearchParamsBean" sourcePath="${dateInFrom}" target="dateInFromTextField" targetPath="value" updateStrategy="0" immediately="false"/>
+                          </BindingProperties>
+                          <AuxValues>
+                            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new WatermarkDate()"/>
+                          </AuxValues>
+                        </Component>
+                        <Component class="javax.swing.JButton" name="btnDateInFrom">
+                          <Properties>
+                            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                              <Image iconType="3" name="/images/common/calendar.png"/>
+                            </Property>
+                            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                              <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
+                                <EmptyBorder/>
+                              </Border>
+                            </Property>
+                            <Property name="horizontalTextPosition" type="int" value="0"/>
+                          </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDateInFromActionPerformed"/>
+                          </Events>
+                        </Component>
+                      </SubComponents>
+                    </Container>
+                  </SubComponents>
+                </Container>
+              </SubComponents>
+            </Container>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="leaseTab">
@@ -574,160 +722,31 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="leaseToolBar" alignment="0" max="32767" attributes="0"/>
-                  <Component id="jScrollPane3" alignment="1" max="32767" attributes="0"/>
-                  <Group type="102" alignment="0" attributes="0">
+                  <Component id="jPanel19" alignment="0" max="32767" attributes="0"/>
+                  <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="lblReceiptNumber" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace pref="7" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="lblLocation" alignment="1" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblName" alignment="1" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
+                          <Component id="leaseToolBar" max="32767" attributes="0"/>
+                          <Component id="jScrollPane3" alignment="0" pref="1004" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="receiptNumberTextField" pref="294" max="32767" attributes="0"/>
-                          <Component id="locationTextField" alignment="0" max="32767" attributes="0"/>
-                          <Component id="nameLeaseTextField" alignment="0" max="32767" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="lblPayDate" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblDateReceivedFrom" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="receivedFromTextField" min="-2" pref="129" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-                              <Component id="btnDateReceivedFrom" min="-2" pref="18" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="payDateFromTextField" min="-2" pref="129" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="btnPayDateFrom" min="-2" pref="18" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="lblDateReceivedTo" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="receivedToTextField" min="-2" pref="129" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="btnDateReceivedTo" min="-2" pref="18" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="lblDateReceivedTo1" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="payDateToTextField" min="-2" pref="129" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="btnPayDateTo" min="-2" pref="18" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <EmptySpace pref="88" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
+                      <Component id="jPanel19" min="-2" pref="191" max="-2" attributes="0"/>
                       <EmptySpace min="-2" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="lblName" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="nameLeaseTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="lblLocation" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="locationTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Group type="103" alignment="1" groupAlignment="1" max="-2" attributes="0">
-                                      <Component id="lblDateReceivedTo" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="receivedToTextField" alignment="1" max="32767" attributes="0"/>
-                                      <Component id="receivedFromTextField" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="lblDateReceivedFrom" alignment="0" min="-2" pref="20" max="-2" attributes="0"/>
-                                      <Component id="btnDateReceivedFrom" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Component id="btnDateReceivedTo" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                                      <Component id="btnPayDateFrom" alignment="1" min="-2" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="payDateFromTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="lblPayDate" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                                  <Group type="103" alignment="1" groupAlignment="1" max="-2" attributes="0">
-                                      <Component id="lblDateReceivedTo1" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="payDateToTextField" alignment="1" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Component id="btnPayDateTo" alignment="1" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lblReceiptNumber" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="receiptNumberTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                       <Component id="leaseToolBar" min="-2" pref="25" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jScrollPane3" pref="665" max="32767" attributes="0"/>
+                      <Component id="jScrollPane3" pref="433" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JLabel" name="lblDateReceivedFrom">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Date Received (From)"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JFormattedTextField" name="receivedFromTextField">
-              <Properties>
-                <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                  <Connection code="FormattersFactory.getInstance().getDateFormatterFactory()" type="code"/>
-                </Property>
-              </Properties>
-              <BindingProperties>
-                <BindingProperty name="value" source="ministerLeaseSearchParamsBean" sourcePath="${dateReceivedFrom}" target="receivedFromTextField" targetPath="value" updateStrategy="0" immediately="false"/>
-              </BindingProperties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new WatermarkDate()"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JLabel" name="lblDateReceivedTo">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Date Received (To)"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JFormattedTextField" name="receivedToTextField">
-              <Properties>
-                <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                  <Connection code="FormattersFactory.getInstance().getDateFormatterFactory()" type="code"/>
-                </Property>
-              </Properties>
-              <BindingProperties>
-                <BindingProperty name="value" source="ministerLeaseSearchParamsBean" sourcePath="${dateReceivedTo}" target="receivedToTextField" targetPath="value" updateStrategy="0" immediately="false"/>
-              </BindingProperties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new WatermarkDate()"/>
-              </AuxValues>
-            </Component>
             <Container class="javax.swing.JToolBar" name="leaseToolBar">
               <Properties>
                 <Property name="floatable" type="boolean" value="false"/>
@@ -827,47 +846,6 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JLabel" name="lblName">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Name"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="nameLeaseTextField">
-              <BindingProperties>
-                <BindingProperty name="text" source="ministerLeaseSearchParamsBean" sourcePath="${name}" target="nameLeaseTextField" targetPath="text" updateStrategy="0" immediately="false">
-                  <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
-                </BindingProperty>
-              </BindingProperties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="locationTextField">
-              <BindingProperties>
-                <BindingProperty name="text" source="ministerLeaseSearchParamsBean" sourcePath="${location}" target="locationTextField" targetPath="text" updateStrategy="0" immediately="false">
-                  <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
-                </BindingProperty>
-              </BindingProperties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="lblLocation">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Location"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="lblPayDate">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Pay Date (From)"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="receiptNumberTextField">
-              <BindingProperties>
-                <BindingProperty name="text" source="ministerLeaseSearchParamsBean" sourcePath="${receiptNumber}" target="receiptNumberTextField" targetPath="text" updateStrategy="0" immediately="false">
-                  <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
-                </BindingProperty>
-              </BindingProperties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="lblReceiptNumber">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Receipt #"/>
-              </Properties>
-            </Component>
             <Container class="javax.swing.JScrollPane" name="jScrollPane3">
               <AuxValues>
                 <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
@@ -953,99 +931,478 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JButton" name="btnDateReceivedTo">
-              <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/images/common/calendar.png"/>
-                </Property>
-                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
-                    <EmptyBorder/>
-                  </Border>
-                </Property>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDateReceivedToActionPerformed"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JButton" name="btnDateReceivedFrom">
-              <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/images/common/calendar.png"/>
-                </Property>
-                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
-                    <EmptyBorder/>
-                  </Border>
-                </Property>
-                <Property name="horizontalTextPosition" type="int" value="0"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDateReceivedFromActionPerformed"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JFormattedTextField" name="payDateFromTextField">
-              <Properties>
-                <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                  <Connection code="FormattersFactory.getInstance().getDateFormatterFactory()" type="code"/>
-                </Property>
-              </Properties>
-              <BindingProperties>
-                <BindingProperty name="value" source="ministerLeaseSearchParamsBean" sourcePath="${payDateFrom}" target="payDateFromTextField" targetPath="value" updateStrategy="0" immediately="false"/>
-              </BindingProperties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new WatermarkDate()"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JButton" name="btnPayDateFrom">
-              <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/images/common/calendar.png"/>
-                </Property>
-                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
-                    <EmptyBorder/>
-                  </Border>
-                </Property>
-                <Property name="horizontalTextPosition" type="int" value="0"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPayDateFromActionPerformed"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JLabel" name="lblDateReceivedTo1">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Pay Date (To)"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JFormattedTextField" name="payDateToTextField">
-              <Properties>
-                <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                  <Connection code="FormattersFactory.getInstance().getDateFormatterFactory()" type="code"/>
-                </Property>
-              </Properties>
-              <BindingProperties>
-                <BindingProperty name="value" source="ministerLeaseSearchParamsBean" sourcePath="${payDateTo}" target="payDateToTextField" targetPath="value" updateStrategy="0" immediately="false"/>
-              </BindingProperties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new WatermarkDate()"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JButton" name="btnPayDateTo">
-              <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/images/common/calendar.png"/>
-                </Property>
-                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
-                    <EmptyBorder/>
-                  </Border>
-                </Property>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPayDateToActionPerformed"/>
-              </Events>
-            </Component>
+            <Container class="javax.swing.JPanel" name="jPanel19">
+
+              <Layout>
+                <DimensionLayout dim="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jPanel18" min="-2" pref="426" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jPanel12" min="-2" pref="326" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+                <DimensionLayout dim="1">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="jPanel18" max="32767" attributes="0"/>
+                              <Component id="jPanel12" max="32767" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+              </Layout>
+              <SubComponents>
+                <Container class="javax.swing.JPanel" name="jPanel18">
+
+                  <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
+                    <Property name="columns" type="int" value="0"/>
+                    <Property name="rows" type="int" value="3"/>
+                  </Layout>
+                  <SubComponents>
+                    <Container class="javax.swing.JPanel" name="jPanel15">
+
+                      <Layout>
+                        <DimensionLayout dim="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="lblName" pref="416" max="32767" attributes="0"/>
+                                      <Component id="nameLeaseTextField" max="32767" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                        </DimensionLayout>
+                        <DimensionLayout dim="1">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="lblName" min="-2" pref="20" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="nameLeaseTextField" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="0" pref="11" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                        </DimensionLayout>
+                      </Layout>
+                      <SubComponents>
+                        <Component class="javax.swing.JTextField" name="nameLeaseTextField">
+                          <BindingProperties>
+                            <BindingProperty name="text" source="ministerLeaseSearchParamsBean" sourcePath="${name}" target="nameLeaseTextField" targetPath="text" updateStrategy="0" immediately="false">
+                              <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
+                            </BindingProperty>
+                          </BindingProperties>
+                        </Component>
+                        <Component class="javax.swing.JLabel" name="lblName">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="Name"/>
+                          </Properties>
+                        </Component>
+                      </SubComponents>
+                    </Container>
+                    <Container class="javax.swing.JPanel" name="jPanel16">
+
+                      <Layout>
+                        <DimensionLayout dim="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="lblLocation" pref="416" max="32767" attributes="0"/>
+                                      <Component id="locationTextField" max="32767" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                        </DimensionLayout>
+                        <DimensionLayout dim="1">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="lblLocation" min="-2" pref="15" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="locationTextField" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace pref="16" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                        </DimensionLayout>
+                      </Layout>
+                      <SubComponents>
+                        <Component class="javax.swing.JTextField" name="locationTextField">
+                          <BindingProperties>
+                            <BindingProperty name="text" source="ministerLeaseSearchParamsBean" sourcePath="${location}" target="locationTextField" targetPath="text" updateStrategy="0" immediately="false">
+                              <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
+                            </BindingProperty>
+                          </BindingProperties>
+                        </Component>
+                        <Component class="javax.swing.JLabel" name="lblLocation">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="Location"/>
+                          </Properties>
+                        </Component>
+                      </SubComponents>
+                    </Container>
+                    <Container class="javax.swing.JPanel" name="jPanel17">
+
+                      <Layout>
+                        <DimensionLayout dim="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="lblReceiptNumber" pref="416" max="32767" attributes="0"/>
+                                      <Component id="receiptNumberTextField" max="32767" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                        </DimensionLayout>
+                        <DimensionLayout dim="1">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="lblReceiptNumber" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="receiptNumberTextField" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace pref="17" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                        </DimensionLayout>
+                      </Layout>
+                      <SubComponents>
+                        <Component class="javax.swing.JLabel" name="lblReceiptNumber">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="Receipt #"/>
+                          </Properties>
+                        </Component>
+                        <Component class="javax.swing.JTextField" name="receiptNumberTextField">
+                          <BindingProperties>
+                            <BindingProperty name="text" source="ministerLeaseSearchParamsBean" sourcePath="${receiptNumber}" target="receiptNumberTextField" targetPath="text" updateStrategy="0" immediately="false">
+                              <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
+                            </BindingProperty>
+                          </BindingProperties>
+                        </Component>
+                      </SubComponents>
+                    </Container>
+                  </SubComponents>
+                </Container>
+                <Container class="javax.swing.JPanel" name="jPanel12">
+
+                  <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
+                    <Property name="columns" type="int" value="2"/>
+                    <Property name="rows" type="int" value="3"/>
+                  </Layout>
+                  <SubComponents>
+                    <Container class="javax.swing.JPanel" name="jPanel9">
+
+                      <Layout>
+                        <DimensionLayout dim="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="lblDateReceivedFrom" min="-2" max="-2" attributes="0"/>
+                                      <Group type="102" attributes="0">
+                                          <Component id="receivedFromTextField" min="-2" pref="129" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="btnDateReceivedFrom" min="-2" pref="18" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <EmptySpace min="0" pref="10" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                        </DimensionLayout>
+                        <DimensionLayout dim="1">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="lblDateReceivedFrom" min="-2" pref="20" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                      <Component id="receivedFromTextField" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="btnDateReceivedFrom" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                        </DimensionLayout>
+                      </Layout>
+                      <SubComponents>
+                        <Component class="javax.swing.JButton" name="btnDateReceivedFrom">
+                          <Properties>
+                            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                              <Image iconType="3" name="/images/common/calendar.png"/>
+                            </Property>
+                            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                              <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
+                                <EmptyBorder/>
+                              </Border>
+                            </Property>
+                            <Property name="horizontalTextPosition" type="int" value="0"/>
+                          </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDateReceivedFromActionPerformed"/>
+                          </Events>
+                        </Component>
+                        <Component class="javax.swing.JFormattedTextField" name="receivedFromTextField">
+                          <Properties>
+                            <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="FormattersFactory.getInstance().getDateFormatterFactory()" type="code"/>
+                            </Property>
+                          </Properties>
+                          <BindingProperties>
+                            <BindingProperty name="value" source="ministerLeaseSearchParamsBean" sourcePath="${dateReceivedFrom}" target="receivedFromTextField" targetPath="value" updateStrategy="0" immediately="false"/>
+                          </BindingProperties>
+                          <AuxValues>
+                            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new WatermarkDate()"/>
+                          </AuxValues>
+                        </Component>
+                        <Component class="javax.swing.JLabel" name="lblDateReceivedFrom">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="Date Received (From)"/>
+                          </Properties>
+                        </Component>
+                      </SubComponents>
+                    </Container>
+                    <Container class="javax.swing.JPanel" name="jPanel10">
+
+                      <Layout>
+                        <DimensionLayout dim="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="lblDateReceivedTo" min="-2" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="receivedToTextField" min="-2" pref="129" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="btnDateReceivedTo" min="-2" pref="18" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <EmptySpace min="0" pref="10" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                        </DimensionLayout>
+                        <DimensionLayout dim="1">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="lblDateReceivedTo" min="-2" pref="20" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="receivedToTextField" min="-2" max="-2" attributes="0"/>
+                                      <Component id="btnDateReceivedTo" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                        </DimensionLayout>
+                      </Layout>
+                      <SubComponents>
+                        <Component class="javax.swing.JFormattedTextField" name="receivedToTextField">
+                          <Properties>
+                            <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="FormattersFactory.getInstance().getDateFormatterFactory()" type="code"/>
+                            </Property>
+                          </Properties>
+                          <BindingProperties>
+                            <BindingProperty name="value" source="ministerLeaseSearchParamsBean" sourcePath="${dateReceivedTo}" target="receivedToTextField" targetPath="value" updateStrategy="0" immediately="false"/>
+                          </BindingProperties>
+                          <AuxValues>
+                            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new WatermarkDate()"/>
+                          </AuxValues>
+                        </Component>
+                        <Component class="javax.swing.JButton" name="btnDateReceivedTo">
+                          <Properties>
+                            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                              <Image iconType="3" name="/images/common/calendar.png"/>
+                            </Property>
+                            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                              <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
+                                <EmptyBorder/>
+                              </Border>
+                            </Property>
+                          </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDateReceivedToActionPerformed"/>
+                          </Events>
+                        </Component>
+                        <Component class="javax.swing.JLabel" name="lblDateReceivedTo">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="Date Received (To)"/>
+                          </Properties>
+                        </Component>
+                      </SubComponents>
+                    </Container>
+                    <Container class="javax.swing.JPanel" name="jPanel13">
+
+                      <Layout>
+                        <DimensionLayout dim="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <EmptySpace min="0" pref="163" max="32767" attributes="0"/>
+                          </Group>
+                        </DimensionLayout>
+                        <DimensionLayout dim="1">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <EmptySpace min="0" pref="57" max="32767" attributes="0"/>
+                          </Group>
+                        </DimensionLayout>
+                      </Layout>
+                    </Container>
+                    <Container class="javax.swing.JPanel" name="jPanel14">
+
+                      <Layout>
+                        <DimensionLayout dim="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <EmptySpace min="0" pref="163" max="32767" attributes="0"/>
+                          </Group>
+                        </DimensionLayout>
+                        <DimensionLayout dim="1">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <EmptySpace min="0" pref="57" max="32767" attributes="0"/>
+                          </Group>
+                        </DimensionLayout>
+                      </Layout>
+                    </Container>
+                    <Container class="javax.swing.JPanel" name="jPanel8">
+
+                      <Layout>
+                        <DimensionLayout dim="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="lblPayDate" min="-2" max="-2" attributes="0"/>
+                                      <Group type="102" attributes="0">
+                                          <Component id="payDateFromTextField" min="-2" pref="129" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="btnPayDateFrom" min="-2" pref="18" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <EmptySpace min="0" pref="10" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                        </DimensionLayout>
+                        <DimensionLayout dim="1">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="lblPayDate" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="payDateFromTextField" min="-2" max="-2" attributes="0"/>
+                                      <Component id="btnPayDateFrom" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace pref="17" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                        </DimensionLayout>
+                      </Layout>
+                      <SubComponents>
+                        <Component class="javax.swing.JButton" name="btnPayDateFrom">
+                          <Properties>
+                            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                              <Image iconType="3" name="/images/common/calendar.png"/>
+                            </Property>
+                            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                              <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
+                                <EmptyBorder/>
+                              </Border>
+                            </Property>
+                            <Property name="horizontalTextPosition" type="int" value="0"/>
+                          </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPayDateFromActionPerformed"/>
+                          </Events>
+                        </Component>
+                        <Component class="javax.swing.JFormattedTextField" name="payDateFromTextField">
+                          <Properties>
+                            <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="FormattersFactory.getInstance().getDateFormatterFactory()" type="code"/>
+                            </Property>
+                          </Properties>
+                          <BindingProperties>
+                            <BindingProperty name="value" source="ministerLeaseSearchParamsBean" sourcePath="${payDateFrom}" target="payDateFromTextField" targetPath="value" updateStrategy="0" immediately="false"/>
+                          </BindingProperties>
+                          <AuxValues>
+                            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new WatermarkDate()"/>
+                          </AuxValues>
+                        </Component>
+                        <Component class="javax.swing.JLabel" name="lblPayDate">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="Pay Date (From)"/>
+                          </Properties>
+                        </Component>
+                      </SubComponents>
+                    </Container>
+                    <Container class="javax.swing.JPanel" name="jPanel11">
+
+                      <Layout>
+                        <DimensionLayout dim="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="lblDateReceivedTo1" min="-2" max="-2" attributes="0"/>
+                                      <Group type="102" attributes="0">
+                                          <Component id="payDateToTextField" min="-2" pref="129" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="btnPayDateTo" min="-2" pref="18" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <EmptySpace min="0" pref="10" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                        </DimensionLayout>
+                        <DimensionLayout dim="1">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="lblDateReceivedTo1" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="payDateToTextField" min="-2" max="-2" attributes="0"/>
+                                      <Component id="btnPayDateTo" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace pref="17" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                        </DimensionLayout>
+                      </Layout>
+                      <SubComponents>
+                        <Component class="javax.swing.JFormattedTextField" name="payDateToTextField">
+                          <Properties>
+                            <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="FormattersFactory.getInstance().getDateFormatterFactory()" type="code"/>
+                            </Property>
+                          </Properties>
+                          <BindingProperties>
+                            <BindingProperty name="value" source="ministerLeaseSearchParamsBean" sourcePath="${payDateTo}" target="payDateToTextField" targetPath="value" updateStrategy="0" immediately="false"/>
+                          </BindingProperties>
+                          <AuxValues>
+                            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new WatermarkDate()"/>
+                          </AuxValues>
+                        </Component>
+                        <Component class="javax.swing.JButton" name="btnPayDateTo">
+                          <Properties>
+                            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                              <Image iconType="3" name="/images/common/calendar.png"/>
+                            </Property>
+                            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                              <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
+                                <EmptyBorder/>
+                              </Border>
+                            </Property>
+                          </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPayDateToActionPerformed"/>
+                          </Events>
+                        </Component>
+                        <Component class="javax.swing.JLabel" name="lblDateReceivedTo1">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="Pay Date (To)"/>
+                          </Properties>
+                        </Component>
+                      </SubComponents>
+                    </Container>
+                  </SubComponents>
+                </Container>
+              </SubComponents>
+            </Container>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="applicationTab">
@@ -1060,112 +1417,26 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="appToolBar" alignment="0" max="32767" attributes="0"/>
-                  <Component id="jScrollPane2" alignment="0" max="32767" attributes="0"/>
-                  <Group type="102" alignment="0" attributes="0">
+                  <Component id="jPanel31" alignment="0" max="32767" attributes="0"/>
+                  <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="nameAppTextField" min="-2" pref="282" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="locationAppTextField" min="-2" pref="282" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="receiptAppTextField" min="-2" pref="282" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jScrollPane2" pref="1004" max="32767" attributes="0"/>
+                          <Component id="appToolBar" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="receivedFromAppTextField" pref="111" max="32767" attributes="0"/>
-                          <Component id="payDateAppFromTextField" max="32767" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Component id="btnAppReceivedFrom" min="-2" pref="15" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="receivedToAppTextField" min="-2" pref="113" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="btnAppReceivedTo" min="-2" pref="15" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <Component id="btnAppPayDate" min="-2" pref="15" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="payDateAppToTextField" min="-2" pref="113" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="btnPayDateAppTo" min="-2" pref="15" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <EmptySpace pref="166" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="receivedToAppTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                              <Component id="btnAppReceivedFrom" min="-2" pref="15" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="nameAppTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="receivedFromAppTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Component id="btnAppReceivedTo" alignment="0" min="-2" pref="15" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="locationAppTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                                      <Component id="payDateAppFromTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Component id="btnAppPayDate" alignment="0" min="-2" pref="15" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="receiptAppTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                              <Component id="payDateAppToTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel14" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="btnPayDateAppTo" alignment="0" min="-2" pref="15" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jPanel31" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" max="-2" attributes="0"/>
                       <Component id="appToolBar" min="-2" pref="25" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jScrollPane2" pref="670" max="32767" attributes="0"/>
+                      <Component id="jScrollPane2" pref="429" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1270,97 +1541,6 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JLabel" name="jLabel6">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Name"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="nameAppTextField">
-              <BindingProperties>
-                <BindingProperty name="text" source="ministerApplicationSearchParamsBean" sourcePath="${name}" target="nameAppTextField" targetPath="text" updateStrategy="0" immediately="false">
-                  <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
-                </BindingProperty>
-              </BindingProperties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabel7">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Location"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="locationAppTextField">
-              <BindingProperties>
-                <BindingProperty name="text" source="ministerApplicationSearchParamsBean" sourcePath="${location}" target="locationAppTextField" targetPath="text" updateStrategy="0" immediately="false">
-                  <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
-                </BindingProperty>
-              </BindingProperties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabel8">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Receipt #"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="receiptAppTextField">
-              <BindingProperties>
-                <BindingProperty name="text" source="ministerApplicationSearchParamsBean" sourcePath="${receiptNumber}" target="receiptAppTextField" targetPath="text" updateStrategy="0" immediately="false">
-                  <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
-                </BindingProperty>
-              </BindingProperties>
-            </Component>
-            <Component class="javax.swing.JFormattedTextField" name="payDateAppFromTextField">
-              <Properties>
-                <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                  <Connection code="FormattersFactory.getInstance().getDateFormatterFactory()" type="code"/>
-                </Property>
-              </Properties>
-              <BindingProperties>
-                <BindingProperty name="value" source="ministerApplicationSearchParamsBean" sourcePath="${payDateFrom}" target="payDateAppFromTextField" targetPath="value" updateStrategy="0" immediately="false"/>
-              </BindingProperties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new WatermarkDate()"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JFormattedTextField" name="receivedFromAppTextField">
-              <Properties>
-                <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                  <Connection code="FormattersFactory.getInstance().getDateFormatterFactory()" type="code"/>
-                </Property>
-              </Properties>
-              <BindingProperties>
-                <BindingProperty name="value" source="ministerApplicationSearchParamsBean" sourcePath="${dateReceivedFrom}" target="receivedFromAppTextField" targetPath="value" updateStrategy="0" immediately="false"/>
-              </BindingProperties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new WatermarkDate()"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JFormattedTextField" name="receivedToAppTextField">
-              <Properties>
-                <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                  <Connection code="FormattersFactory.getInstance().getDateFormatterFactory()" type="code"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value=" "/>
-              </Properties>
-              <BindingProperties>
-                <BindingProperty name="value" source="ministerApplicationSearchParamsBean" sourcePath="${dateReceivedTo}" target="receivedToAppTextField" targetPath="value" updateStrategy="0" immediately="false"/>
-              </BindingProperties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new WatermarkDate()"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabel9">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Date Received (From)"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabel10">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Date Received (To)"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabel11">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Pay Date (From)"/>
-              </Properties>
-            </Component>
             <Container class="javax.swing.JScrollPane" name="jScrollPane2">
               <AuxValues>
                 <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
@@ -1455,65 +1635,478 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JButton" name="btnAppReceivedFrom">
-              <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/images/common/calendar.png"/>
-                </Property>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAppReceivedFromActionPerformed"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JButton" name="btnAppPayDate">
-              <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/images/common/calendar.png"/>
-                </Property>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAppPayDateActionPerformed"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JButton" name="btnAppReceivedTo">
-              <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/images/common/calendar.png"/>
-                </Property>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAppReceivedToActionPerformed"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabel14">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Pay Date (To)"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JFormattedTextField" name="payDateAppToTextField">
-              <Properties>
-                <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                  <Connection code="FormattersFactory.getInstance().getDateFormatterFactory()" type="code"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value=" "/>
-              </Properties>
-              <BindingProperties>
-                <BindingProperty name="value" source="ministerApplicationSearchParamsBean" sourcePath="${payDateTo}" target="payDateAppToTextField" targetPath="value" updateStrategy="0" immediately="false"/>
-              </BindingProperties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new WatermarkDate()"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JButton" name="btnPayDateAppTo">
-              <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/images/common/calendar.png"/>
-                </Property>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPayDateAppToActionPerformed"/>
-              </Events>
-            </Component>
+            <Container class="javax.swing.JPanel" name="jPanel31">
+
+              <Layout>
+                <DimensionLayout dim="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jPanel30" min="-2" pref="408" max="-2" attributes="0"/>
+                              <EmptySpace pref="501" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Group type="103" rootIndex="2" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="425" max="-2" attributes="0"/>
+                              <Component id="jPanel24" min="-2" pref="300" max="-2" attributes="0"/>
+                              <EmptySpace pref="194" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+                <DimensionLayout dim="1">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <EmptySpace min="0" pref="195" max="32767" attributes="0"/>
+                      <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jPanel30" pref="173" max="32767" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Group type="103" rootIndex="2" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jPanel24" pref="173" max="32767" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+              </Layout>
+              <SubComponents>
+                <Container class="javax.swing.JPanel" name="jPanel30">
+
+                  <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
+                    <Property name="columns" type="int" value="0"/>
+                    <Property name="rows" type="int" value="3"/>
+                  </Layout>
+                  <SubComponents>
+                    <Container class="javax.swing.JPanel" name="jPanel29">
+
+                      <Layout>
+                        <DimensionLayout dim="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Group type="103" groupAlignment="1" attributes="0">
+                                      <Component id="jLabel6" alignment="0" pref="398" max="32767" attributes="0"/>
+                                      <Component id="nameAppTextField" max="32767" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                        </DimensionLayout>
+                        <DimensionLayout dim="1">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="jLabel6" min="-2" pref="14" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="nameAppTextField" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace pref="17" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                        </DimensionLayout>
+                      </Layout>
+                      <SubComponents>
+                        <Component class="javax.swing.JTextField" name="nameAppTextField">
+                          <BindingProperties>
+                            <BindingProperty name="text" source="ministerApplicationSearchParamsBean" sourcePath="${name}" target="nameAppTextField" targetPath="text" updateStrategy="0" immediately="false">
+                              <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
+                            </BindingProperty>
+                          </BindingProperties>
+                        </Component>
+                        <Component class="javax.swing.JLabel" name="jLabel6">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="Name"/>
+                          </Properties>
+                        </Component>
+                      </SubComponents>
+                    </Container>
+                    <Container class="javax.swing.JPanel" name="jPanel28">
+
+                      <Layout>
+                        <DimensionLayout dim="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="0" pref="358" max="32767" attributes="0"/>
+                                      </Group>
+                                      <Component id="locationAppTextField" max="32767" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                        </DimensionLayout>
+                        <DimensionLayout dim="1">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
+                                  <Component id="locationAppTextField" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace pref="15" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                        </DimensionLayout>
+                      </Layout>
+                      <SubComponents>
+                        <Component class="javax.swing.JTextField" name="locationAppTextField">
+                          <BindingProperties>
+                            <BindingProperty name="text" source="ministerApplicationSearchParamsBean" sourcePath="${location}" target="locationAppTextField" targetPath="text" updateStrategy="0" immediately="false">
+                              <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
+                            </BindingProperty>
+                          </BindingProperties>
+                        </Component>
+                        <Component class="javax.swing.JLabel" name="jLabel7">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="Location"/>
+                          </Properties>
+                        </Component>
+                      </SubComponents>
+                    </Container>
+                    <Container class="javax.swing.JPanel" name="jPanel27">
+
+                      <Layout>
+                        <DimensionLayout dim="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="0" pref="361" max="32767" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <Component id="receiptAppTextField" max="32767" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                        </DimensionLayout>
+                        <DimensionLayout dim="1">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" max="-2" attributes="0"/>
+                                  <Component id="receiptAppTextField" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace pref="17" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                        </DimensionLayout>
+                      </Layout>
+                      <SubComponents>
+                        <Component class="javax.swing.JTextField" name="receiptAppTextField">
+                          <BindingProperties>
+                            <BindingProperty name="text" source="ministerApplicationSearchParamsBean" sourcePath="${receiptNumber}" target="receiptAppTextField" targetPath="text" updateStrategy="0" immediately="false">
+                              <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
+                            </BindingProperty>
+                          </BindingProperties>
+                        </Component>
+                        <Component class="javax.swing.JLabel" name="jLabel8">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="Receipt #"/>
+                          </Properties>
+                        </Component>
+                      </SubComponents>
+                    </Container>
+                  </SubComponents>
+                </Container>
+                <Container class="javax.swing.JPanel" name="jPanel24">
+
+                  <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
+                    <Property name="columns" type="int" value="2"/>
+                    <Property name="rows" type="int" value="3"/>
+                  </Layout>
+                  <SubComponents>
+                    <Container class="javax.swing.JPanel" name="jPanel22">
+
+                      <Layout>
+                        <DimensionLayout dim="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="receivedFromAppTextField" min="-2" pref="111" max="-2" attributes="0"/>
+                                          <EmptySpace pref="12" max="32767" attributes="0"/>
+                                          <Component id="btnAppReceivedFrom" min="-2" pref="17" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <EmptySpace min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                        </DimensionLayout>
+                        <DimensionLayout dim="1">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="receivedFromAppTextField" min="-2" max="-2" attributes="0"/>
+                                      <Component id="btnAppReceivedFrom" min="-2" pref="17" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace pref="17" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                        </DimensionLayout>
+                      </Layout>
+                      <SubComponents>
+                        <Component class="javax.swing.JButton" name="btnAppReceivedFrom">
+                          <Properties>
+                            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                              <Image iconType="3" name="/images/common/calendar.png"/>
+                            </Property>
+                          </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAppReceivedFromActionPerformed"/>
+                          </Events>
+                        </Component>
+                        <Component class="javax.swing.JLabel" name="jLabel9">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="Date Received (From)"/>
+                          </Properties>
+                        </Component>
+                        <Component class="javax.swing.JFormattedTextField" name="receivedFromAppTextField">
+                          <Properties>
+                            <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="FormattersFactory.getInstance().getDateFormatterFactory()" type="code"/>
+                            </Property>
+                          </Properties>
+                          <BindingProperties>
+                            <BindingProperty name="value" source="ministerApplicationSearchParamsBean" sourcePath="${dateReceivedFrom}" target="receivedFromAppTextField" targetPath="value" updateStrategy="0" immediately="false"/>
+                          </BindingProperties>
+                          <AuxValues>
+                            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new WatermarkDate()"/>
+                          </AuxValues>
+                        </Component>
+                      </SubComponents>
+                    </Container>
+                    <Container class="javax.swing.JPanel" name="jPanel23">
+
+                      <Layout>
+                        <DimensionLayout dim="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <Component id="receivedToAppTextField" min="-2" pref="113" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="btnAppReceivedTo" min="-2" pref="17" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="0" pref="14" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                        </DimensionLayout>
+                        <DimensionLayout dim="1">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="1" attributes="0">
+                                      <Component id="receivedToAppTextField" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="btnAppReceivedTo" alignment="0" min="-2" pref="17" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace pref="16" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                        </DimensionLayout>
+                      </Layout>
+                      <SubComponents>
+                        <Component class="javax.swing.JFormattedTextField" name="receivedToAppTextField">
+                          <Properties>
+                            <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="FormattersFactory.getInstance().getDateFormatterFactory()" type="code"/>
+                            </Property>
+                            <Property name="text" type="java.lang.String" value=" "/>
+                          </Properties>
+                          <BindingProperties>
+                            <BindingProperty name="value" source="ministerApplicationSearchParamsBean" sourcePath="${dateReceivedTo}" target="receivedToAppTextField" targetPath="value" updateStrategy="0" immediately="false"/>
+                          </BindingProperties>
+                          <AuxValues>
+                            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new WatermarkDate()"/>
+                          </AuxValues>
+                        </Component>
+                        <Component class="javax.swing.JButton" name="btnAppReceivedTo">
+                          <Properties>
+                            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                              <Image iconType="3" name="/images/common/calendar.png"/>
+                            </Property>
+                          </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAppReceivedToActionPerformed"/>
+                          </Events>
+                        </Component>
+                        <Component class="javax.swing.JLabel" name="jLabel10">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="Date Received (To)"/>
+                          </Properties>
+                        </Component>
+                      </SubComponents>
+                    </Container>
+                    <Container class="javax.swing.JPanel" name="jPanel25">
+
+                      <Layout>
+                        <DimensionLayout dim="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <EmptySpace min="0" pref="150" max="32767" attributes="0"/>
+                          </Group>
+                        </DimensionLayout>
+                        <DimensionLayout dim="1">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <EmptySpace min="0" pref="57" max="32767" attributes="0"/>
+                          </Group>
+                        </DimensionLayout>
+                      </Layout>
+                    </Container>
+                    <Container class="javax.swing.JPanel" name="jPanel26">
+
+                      <Layout>
+                        <DimensionLayout dim="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <EmptySpace min="0" pref="150" max="32767" attributes="0"/>
+                          </Group>
+                        </DimensionLayout>
+                        <DimensionLayout dim="1">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <EmptySpace min="0" pref="57" max="32767" attributes="0"/>
+                          </Group>
+                        </DimensionLayout>
+                      </Layout>
+                    </Container>
+                    <Container class="javax.swing.JPanel" name="jPanel21">
+
+                      <Layout>
+                        <DimensionLayout dim="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Component id="jLabel11" max="32767" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <Component id="payDateAppFromTextField" min="-2" pref="112" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="btnAppPayDate" min="-2" pref="17" max="-2" attributes="0"/>
+                                  <EmptySpace pref="15" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                        </DimensionLayout>
+                        <DimensionLayout dim="1">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="payDateAppFromTextField" min="-2" max="-2" attributes="0"/>
+                                      <Component id="btnAppPayDate" min="-2" pref="17" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace pref="17" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                        </DimensionLayout>
+                      </Layout>
+                      <SubComponents>
+                        <Component class="javax.swing.JFormattedTextField" name="payDateAppFromTextField">
+                          <Properties>
+                            <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="FormattersFactory.getInstance().getDateFormatterFactory()" type="code"/>
+                            </Property>
+                          </Properties>
+                          <BindingProperties>
+                            <BindingProperty name="value" source="ministerApplicationSearchParamsBean" sourcePath="${payDateFrom}" target="payDateAppFromTextField" targetPath="value" updateStrategy="0" immediately="false"/>
+                          </BindingProperties>
+                          <AuxValues>
+                            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new WatermarkDate()"/>
+                          </AuxValues>
+                        </Component>
+                        <Component class="javax.swing.JButton" name="btnAppPayDate">
+                          <Properties>
+                            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                              <Image iconType="3" name="/images/common/calendar.png"/>
+                            </Property>
+                          </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAppPayDateActionPerformed"/>
+                          </Events>
+                        </Component>
+                        <Component class="javax.swing.JLabel" name="jLabel11">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="Pay Date (From)"/>
+                          </Properties>
+                        </Component>
+                      </SubComponents>
+                    </Container>
+                    <Container class="javax.swing.JPanel" name="jPanel20">
+
+                      <Layout>
+                        <DimensionLayout dim="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Component id="payDateAppToTextField" min="-2" pref="113" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="btnPayDateAppTo" min="-2" pref="17" max="-2" attributes="0"/>
+                                  <EmptySpace pref="14" max="32767" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <Component id="jLabel14" min="-2" pref="77" max="-2" attributes="0"/>
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                        </DimensionLayout>
+                        <DimensionLayout dim="1">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="btnPayDateAppTo" min="-2" pref="17" max="-2" attributes="0"/>
+                                      <Component id="payDateAppToTextField" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace pref="17" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                        </DimensionLayout>
+                      </Layout>
+                      <SubComponents>
+                        <Component class="javax.swing.JFormattedTextField" name="payDateAppToTextField">
+                          <Properties>
+                            <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="FormattersFactory.getInstance().getDateFormatterFactory()" type="code"/>
+                            </Property>
+                            <Property name="text" type="java.lang.String" value=" "/>
+                          </Properties>
+                          <BindingProperties>
+                            <BindingProperty name="value" source="ministerApplicationSearchParamsBean" sourcePath="${payDateTo}" target="payDateAppToTextField" targetPath="value" updateStrategy="0" immediately="false"/>
+                          </BindingProperties>
+                          <AuxValues>
+                            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new WatermarkDate()"/>
+                          </AuxValues>
+                        </Component>
+                        <Component class="javax.swing.JButton" name="btnPayDateAppTo">
+                          <Properties>
+                            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                              <Image iconType="3" name="/images/common/calendar.png"/>
+                            </Property>
+                          </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPayDateAppToActionPerformed"/>
+                          </Events>
+                        </Component>
+                        <Component class="javax.swing.JLabel" name="jLabel14">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="Pay Date (To)"/>
+                          </Properties>
+                        </Component>
+                      </SubComponents>
+                    </Container>
+                  </SubComponents>
+                </Container>
+              </SubComponents>
+            </Container>
           </SubComponents>
         </Container>
       </SubComponents>

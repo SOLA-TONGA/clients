@@ -46,7 +46,7 @@ public class LocalizationManager {
     // update the version number for each production release of SOLA. 
     private static final String PRODUCTION_HOST_NAME = "sola";
     private static final String PRODUCTION_HOST_IP = "192.168.1.5";
-    private static final String SOLA_VERSION = "1508a";
+    private static final String SOLA_VERSION = "1511a";
 
     /**
      * Loads default language and country codes and sets {@link Locale} settings

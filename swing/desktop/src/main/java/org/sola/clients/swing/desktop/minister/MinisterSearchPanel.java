@@ -521,32 +521,36 @@ public class MinisterSearchPanel extends ContentPanel {
         jSeparator1 = new javax.swing.JToolBar.Separator();
         lblSearchResult = new javax.swing.JLabel();
         lblInwardSearchCount = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTableInward = new org.sola.clients.swing.common.controls.JTableWithDefaultStyles();
+        jPanel32 = new javax.swing.JPanel();
         inwardSearchPanel = new javax.swing.JPanel();
-        dateOutFromTextField = new WatermarkDate();
-        jLabel5 = new javax.swing.JLabel();
-        dateInFromTextField = new WatermarkDate();
-        jLabel4 = new javax.swing.JLabel();
-        subjectTextField = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
+        jPanel7 = new javax.swing.JPanel();
+        fileNumberTextField = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
         nameInwardTextField = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        fileNumberTextField = new javax.swing.JTextField();
-        jLabel12 = new javax.swing.JLabel();
-        dateInToTextField = new WatermarkDate();
-        btnDateInTo = new javax.swing.JButton();
+        jPanel6 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        subjectTextField = new javax.swing.JTextField();
+        jPanel5 = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
         dateOutToTextField = new WatermarkDate();
         btnDateOutTo = new javax.swing.JButton();
-        btnDateInFrom = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel12 = new javax.swing.JLabel();
+        dateInToTextField = new WatermarkDate();
+        btnDateInTo = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
+        dateOutFromTextField = new WatermarkDate();
+        jLabel5 = new javax.swing.JLabel();
         btnDateOutFrom = new javax.swing.JButton();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        jTableInward = new org.sola.clients.swing.common.controls.JTableWithDefaultStyles();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        dateInFromTextField = new WatermarkDate();
+        btnDateInFrom = new javax.swing.JButton();
         leaseTab = new javax.swing.JPanel();
-        lblDateReceivedFrom = new javax.swing.JLabel();
-        receivedFromTextField = new WatermarkDate();
-        lblDateReceivedTo = new javax.swing.JLabel();
-        receivedToTextField = new WatermarkDate();
         leaseToolBar = new javax.swing.JToolBar();
         btnLeaseSearch = new javax.swing.JButton();
         btnClearLease = new javax.swing.JButton();
@@ -558,22 +562,38 @@ public class MinisterSearchPanel extends ContentPanel {
         jSeparator2 = new javax.swing.JToolBar.Separator();
         lblSearchResult1 = new javax.swing.JLabel();
         lblLeaseSearchCount = new javax.swing.JLabel();
-        lblName = new javax.swing.JLabel();
-        nameLeaseTextField = new javax.swing.JTextField();
-        locationTextField = new javax.swing.JTextField();
-        lblLocation = new javax.swing.JLabel();
-        lblPayDate = new javax.swing.JLabel();
-        receiptNumberTextField = new javax.swing.JTextField();
-        lblReceiptNumber = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTableLease = new org.sola.clients.swing.common.controls.JTableWithDefaultStyles();
-        btnDateReceivedTo = new javax.swing.JButton();
+        jPanel19 = new javax.swing.JPanel();
+        jPanel18 = new javax.swing.JPanel();
+        jPanel15 = new javax.swing.JPanel();
+        nameLeaseTextField = new javax.swing.JTextField();
+        lblName = new javax.swing.JLabel();
+        jPanel16 = new javax.swing.JPanel();
+        locationTextField = new javax.swing.JTextField();
+        lblLocation = new javax.swing.JLabel();
+        jPanel17 = new javax.swing.JPanel();
+        lblReceiptNumber = new javax.swing.JLabel();
+        receiptNumberTextField = new javax.swing.JTextField();
+        jPanel12 = new javax.swing.JPanel();
+        jPanel9 = new javax.swing.JPanel();
         btnDateReceivedFrom = new javax.swing.JButton();
-        payDateFromTextField = new WatermarkDate();
+        receivedFromTextField = new WatermarkDate();
+        lblDateReceivedFrom = new javax.swing.JLabel();
+        jPanel10 = new javax.swing.JPanel();
+        receivedToTextField = new WatermarkDate();
+        btnDateReceivedTo = new javax.swing.JButton();
+        lblDateReceivedTo = new javax.swing.JLabel();
+        jPanel13 = new javax.swing.JPanel();
+        jPanel14 = new javax.swing.JPanel();
+        jPanel8 = new javax.swing.JPanel();
         btnPayDateFrom = new javax.swing.JButton();
-        lblDateReceivedTo1 = new javax.swing.JLabel();
+        payDateFromTextField = new WatermarkDate();
+        lblPayDate = new javax.swing.JLabel();
+        jPanel11 = new javax.swing.JPanel();
         payDateToTextField = new WatermarkDate();
         btnPayDateTo = new javax.swing.JButton();
+        lblDateReceivedTo1 = new javax.swing.JLabel();
         applicationTab = new javax.swing.JPanel();
         appToolBar = new javax.swing.JToolBar();
         btnAppSearch = new javax.swing.JButton();
@@ -586,26 +606,38 @@ public class MinisterSearchPanel extends ContentPanel {
         jSeparator6 = new javax.swing.JToolBar.Separator();
         lblSearchResult2 = new javax.swing.JLabel();
         lblApplicationSearchCount = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        nameAppTextField = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
-        locationAppTextField = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
-        receiptAppTextField = new javax.swing.JTextField();
-        payDateAppFromTextField = new WatermarkDate();
-        receivedFromAppTextField = new WatermarkDate();
-        receivedToAppTextField = new WatermarkDate();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTableApp = new org.sola.clients.swing.common.controls.JTableWithDefaultStyles();
+        jPanel31 = new javax.swing.JPanel();
+        jPanel30 = new javax.swing.JPanel();
+        jPanel29 = new javax.swing.JPanel();
+        nameAppTextField = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        jPanel28 = new javax.swing.JPanel();
+        locationAppTextField = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        jPanel27 = new javax.swing.JPanel();
+        receiptAppTextField = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        jPanel24 = new javax.swing.JPanel();
+        jPanel22 = new javax.swing.JPanel();
         btnAppReceivedFrom = new javax.swing.JButton();
-        btnAppPayDate = new javax.swing.JButton();
+        jLabel9 = new javax.swing.JLabel();
+        receivedFromAppTextField = new WatermarkDate();
+        jPanel23 = new javax.swing.JPanel();
+        receivedToAppTextField = new WatermarkDate();
         btnAppReceivedTo = new javax.swing.JButton();
-        jLabel14 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jPanel25 = new javax.swing.JPanel();
+        jPanel26 = new javax.swing.JPanel();
+        jPanel21 = new javax.swing.JPanel();
+        payDateAppFromTextField = new WatermarkDate();
+        btnAppPayDate = new javax.swing.JButton();
+        jLabel11 = new javax.swing.JLabel();
+        jPanel20 = new javax.swing.JPanel();
         payDateAppToTextField = new WatermarkDate();
         btnPayDateAppTo = new javax.swing.JButton();
+        jLabel14 = new javax.swing.JLabel();
 
         setHeaderPanel(headerPanel);
 
@@ -681,170 +713,6 @@ public class MinisterSearchPanel extends ContentPanel {
         lblInwardSearchCount.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         inwardToolBar.add(lblInwardSearchCount);
 
-        dateOutFromTextField.setFormatterFactory(FormattersFactory.getInstance().getDateFormatterFactory());
-
-        org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, ministerInwardSearchParamsBean, org.jdesktop.beansbinding.ELProperty.create("${dateOutFrom}"), dateOutFromTextField, org.jdesktop.beansbinding.BeanProperty.create("value"));
-        bindingGroup.addBinding(binding);
-
-        jLabel5.setText("Date Out (From)");
-
-        dateInFromTextField.setFormatterFactory(FormattersFactory.getInstance().getDateFormatterFactory());
-
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, ministerInwardSearchParamsBean, org.jdesktop.beansbinding.ELProperty.create("${dateInFrom}"), dateInFromTextField, org.jdesktop.beansbinding.BeanProperty.create("value"));
-        bindingGroup.addBinding(binding);
-
-        jLabel4.setText("Date In (From)");
-
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, ministerInwardSearchParamsBean, org.jdesktop.beansbinding.ELProperty.create("${subject}"), subjectTextField, org.jdesktop.beansbinding.BeanProperty.create("text"));
-        bindingGroup.addBinding(binding);
-
-        jLabel1.setText("Subject");
-
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, ministerInwardSearchParamsBean, org.jdesktop.beansbinding.ELProperty.create("${fromWhom}"), nameInwardTextField, org.jdesktop.beansbinding.BeanProperty.create("text"));
-        bindingGroup.addBinding(binding);
-
-        jLabel2.setText("Name");
-
-        jLabel3.setText("File Number");
-
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, ministerInwardSearchParamsBean, org.jdesktop.beansbinding.ELProperty.create("${fileNumber}"), fileNumberTextField, org.jdesktop.beansbinding.BeanProperty.create("text"));
-        bindingGroup.addBinding(binding);
-
-        jLabel12.setText("Date In (To)");
-
-        dateInToTextField.setFormatterFactory(FormattersFactory.getInstance().getDateFormatterFactory());
-
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, ministerInwardSearchParamsBean, org.jdesktop.beansbinding.ELProperty.create("${dateInTo}"), dateInToTextField, org.jdesktop.beansbinding.BeanProperty.create("value"));
-        bindingGroup.addBinding(binding);
-
-        btnDateInTo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/calendar.png"))); // NOI18N
-        btnDateInTo.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        btnDateInTo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnDateInTo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDateInToActionPerformed(evt);
-            }
-        });
-
-        jLabel13.setText("Date Out (To)");
-
-        dateOutToTextField.setFormatterFactory(FormattersFactory.getInstance().getDateFormatterFactory());
-
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, ministerInwardSearchParamsBean, org.jdesktop.beansbinding.ELProperty.create("${dateOutTo}"), dateOutToTextField, org.jdesktop.beansbinding.BeanProperty.create("value"));
-        bindingGroup.addBinding(binding);
-
-        btnDateOutTo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/calendar.png"))); // NOI18N
-        btnDateOutTo.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        btnDateOutTo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnDateOutTo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDateOutToActionPerformed(evt);
-            }
-        });
-
-        btnDateInFrom.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/calendar.png"))); // NOI18N
-        btnDateInFrom.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        btnDateInFrom.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnDateInFrom.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDateInFromActionPerformed(evt);
-            }
-        });
-
-        btnDateOutFrom.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/calendar.png"))); // NOI18N
-        btnDateOutFrom.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        btnDateOutFrom.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnDateOutFrom.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDateOutFromActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout inwardSearchPanelLayout = new javax.swing.GroupLayout(inwardSearchPanel);
-        inwardSearchPanel.setLayout(inwardSearchPanelLayout);
-        inwardSearchPanelLayout.setHorizontalGroup(
-            inwardSearchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(inwardSearchPanelLayout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addGroup(inwardSearchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(inwardSearchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(subjectTextField)
-                    .addGroup(inwardSearchPanelLayout.createSequentialGroup()
-                        .addGroup(inwardSearchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(inwardSearchPanelLayout.createSequentialGroup()
-                                .addComponent(nameInwardTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(fileNumberTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(inwardSearchPanelLayout.createSequentialGroup()
-                                .addComponent(dateOutFromTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnDateOutFrom, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(22, 22, 22)
-                                .addComponent(jLabel13)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(dateOutToTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnDateOutTo, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(inwardSearchPanelLayout.createSequentialGroup()
-                                .addComponent(dateInFromTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnDateInFrom, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(29, 29, 29)
-                                .addComponent(jLabel12)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(dateInToTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnDateInTo, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 482, Short.MAX_VALUE)))
-                .addGap(13, 13, 13))
-        );
-        inwardSearchPanelLayout.setVerticalGroup(
-            inwardSearchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(inwardSearchPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(inwardSearchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(nameInwardTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3)
-                    .addComponent(fileNumberTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(inwardSearchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(subjectTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(inwardSearchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(inwardSearchPanelLayout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addGap(12, 12, 12)
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(inwardSearchPanelLayout.createSequentialGroup()
-                        .addGroup(inwardSearchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(dateInFromTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(inwardSearchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(dateInToTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel12))
-                            .addComponent(btnDateInTo)
-                            .addComponent(btnDateInFrom, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(inwardSearchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(inwardSearchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(dateOutFromTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(inwardSearchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(inwardSearchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(dateOutToTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(btnDateOutTo, javax.swing.GroupLayout.Alignment.LEADING)))
-                            .addComponent(btnDateOutFrom))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
         org.jdesktop.beansbinding.ELProperty eLProperty = org.jdesktop.beansbinding.ELProperty.create("${ministerInwardResultList}");
         org.jdesktop.swingbinding.JTableBinding jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, ministerInwardSearchResultListBean, eLProperty, jTableInward);
         org.jdesktop.swingbinding.JTableBinding.ColumnBinding columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${fromWhom}"));
@@ -868,7 +736,7 @@ public class MinisterSearchPanel extends ContentPanel {
         columnBinding.setColumnClass(java.util.Date.class);
         columnBinding.setEditable(false);
         bindingGroup.addBinding(jTableBinding);
-        jTableBinding.bind();binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, ministerInwardSearchResultListBean, org.jdesktop.beansbinding.ELProperty.create("${selectedMinisterInwardSearchResult}"), jTableInward, org.jdesktop.beansbinding.BeanProperty.create("selectedElement"));
+        jTableBinding.bind();org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, ministerInwardSearchResultListBean, org.jdesktop.beansbinding.ELProperty.create("${selectedMinisterInwardSearchResult}"), jTableInward, org.jdesktop.beansbinding.BeanProperty.create("selectedElement"));
         bindingGroup.addBinding(binding);
 
         jTableInward.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -880,39 +748,287 @@ public class MinisterSearchPanel extends ContentPanel {
         jTableInward.getColumnModel().getColumn(3).setCellRenderer(new DateTimeRenderer());
         jTableInward.getColumnModel().getColumn(4).setCellRenderer(new DateTimeRenderer());
 
+        inwardSearchPanel.setLayout(new java.awt.GridLayout(2, 0));
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, ministerInwardSearchParamsBean, org.jdesktop.beansbinding.ELProperty.create("${fileNumber}"), fileNumberTextField, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+
+        jLabel3.setText("File Number");
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, ministerInwardSearchParamsBean, org.jdesktop.beansbinding.ELProperty.create("${fromWhom}"), nameInwardTextField, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+
+        jLabel2.setText("Name");
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(nameInwardTextField)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(0, 179, Short.MAX_VALUE))
+                    .addComponent(fileNumberTextField))
+                .addContainerGap())
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(nameInwardTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fileNumberTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(16, Short.MAX_VALUE))
+        );
+
+        inwardSearchPanel.add(jPanel7);
+
+        jLabel1.setText("Subject");
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, ministerInwardSearchParamsBean, org.jdesktop.beansbinding.ELProperty.create("${subject}"), subjectTextField, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addComponent(jLabel1)
+                .addGap(0, 458, Short.MAX_VALUE))
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addComponent(subjectTextField)
+                .addContainerGap())
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(subjectTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 16, Short.MAX_VALUE))
+        );
+
+        inwardSearchPanel.add(jPanel6);
+
+        jPanel5.setLayout(new java.awt.GridLayout(2, 2));
+
+        jLabel13.setText("Date Out (To)");
+
+        dateOutToTextField.setFormatterFactory(FormattersFactory.getInstance().getDateFormatterFactory());
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, ministerInwardSearchParamsBean, org.jdesktop.beansbinding.ELProperty.create("${dateOutTo}"), dateOutToTextField, org.jdesktop.beansbinding.BeanProperty.create("value"));
+        bindingGroup.addBinding(binding);
+
+        btnDateOutTo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/calendar.png"))); // NOI18N
+        btnDateOutTo.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        btnDateOutTo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnDateOutTo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDateOutToActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE)
+                    .addComponent(dateOutToTextField, javax.swing.GroupLayout.Alignment.LEADING))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnDateOutTo, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 11, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jLabel13)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(dateOutToTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnDateOutTo))
+                .addContainerGap(16, Short.MAX_VALUE))
+        );
+
+        jPanel5.add(jPanel1);
+
+        jLabel12.setText("Date In (To)");
+
+        dateInToTextField.setFormatterFactory(FormattersFactory.getInstance().getDateFormatterFactory());
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, ministerInwardSearchParamsBean, org.jdesktop.beansbinding.ELProperty.create("${dateInTo}"), dateInToTextField, org.jdesktop.beansbinding.BeanProperty.create("value"));
+        bindingGroup.addBinding(binding);
+
+        btnDateInTo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/calendar.png"))); // NOI18N
+        btnDateInTo.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        btnDateInTo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnDateInTo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDateInToActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE)
+                    .addComponent(dateInToTextField, javax.swing.GroupLayout.Alignment.LEADING))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnDateInTo, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(11, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(jLabel12)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(dateInToTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnDateInTo))
+                .addContainerGap(16, Short.MAX_VALUE))
+        );
+
+        jPanel5.add(jPanel2);
+
+        dateOutFromTextField.setFormatterFactory(FormattersFactory.getInstance().getDateFormatterFactory());
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, ministerInwardSearchParamsBean, org.jdesktop.beansbinding.ELProperty.create("${dateOutFrom}"), dateOutFromTextField, org.jdesktop.beansbinding.BeanProperty.create("value"));
+        bindingGroup.addBinding(binding);
+
+        jLabel5.setText("Date Out (From)");
+
+        btnDateOutFrom.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/calendar.png"))); // NOI18N
+        btnDateOutFrom.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        btnDateOutFrom.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnDateOutFrom.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDateOutFromActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE)
+                    .addComponent(dateOutFromTextField))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnDateOutFrom, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(11, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(dateOutFromTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnDateOutFrom))
+                .addContainerGap(15, Short.MAX_VALUE))
+        );
+
+        jPanel5.add(jPanel3);
+
+        jLabel4.setText("Date In (From)");
+
+        dateInFromTextField.setFormatterFactory(FormattersFactory.getInstance().getDateFormatterFactory());
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, ministerInwardSearchParamsBean, org.jdesktop.beansbinding.ELProperty.create("${dateInFrom}"), dateInFromTextField, org.jdesktop.beansbinding.BeanProperty.create("value"));
+        bindingGroup.addBinding(binding);
+
+        btnDateInFrom.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/calendar.png"))); // NOI18N
+        btnDateInFrom.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        btnDateInFrom.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnDateInFrom.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDateInFromActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(dateInFromTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnDateInFrom, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(11, Short.MAX_VALUE))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(dateInFromTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnDateInFrom))
+                .addContainerGap(16, Short.MAX_VALUE))
+        );
+
+        jPanel5.add(jPanel4);
+
+        javax.swing.GroupLayout jPanel32Layout = new javax.swing.GroupLayout(jPanel32);
+        jPanel32.setLayout(jPanel32Layout);
+        jPanel32Layout.setHorizontalGroup(
+            jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel32Layout.createSequentialGroup()
+                .addComponent(inwardSearchPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        jPanel32Layout.setVerticalGroup(
+            jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(inwardSearchPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+
         javax.swing.GroupLayout inwardTabLayout = new javax.swing.GroupLayout(inwardTab);
         inwardTab.setLayout(inwardTabLayout);
         inwardTabLayout.setHorizontalGroup(
             inwardTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(inwardSearchPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(inwardToolBar, javax.swing.GroupLayout.DEFAULT_SIZE, 1011, Short.MAX_VALUE)
-            .addComponent(jScrollPane4)
+            .addGroup(inwardTabLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(inwardTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, inwardTabLayout.createSequentialGroup()
+                        .addComponent(jScrollPane4)
+                        .addContainerGap())
+                    .addComponent(inwardToolBar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(inwardTabLayout.createSequentialGroup()
+                        .addComponent(jPanel32, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 193, Short.MAX_VALUE))))
         );
         inwardTabLayout.setVerticalGroup(
             inwardTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(inwardTabLayout.createSequentialGroup()
-                .addComponent(inwardSearchPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addComponent(jPanel32, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(inwardToolBar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 633, Short.MAX_VALUE))
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 501, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         ministerTab.addTab("Inward", inwardTab);
-
-        lblDateReceivedFrom.setText("Date Received (From)");
-
-        receivedFromTextField.setFormatterFactory(FormattersFactory.getInstance().getDateFormatterFactory());
-
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, ministerLeaseSearchParamsBean, org.jdesktop.beansbinding.ELProperty.create("${dateReceivedFrom}"), receivedFromTextField, org.jdesktop.beansbinding.BeanProperty.create("value"));
-        bindingGroup.addBinding(binding);
-
-        lblDateReceivedTo.setText("Date Received (To)");
-
-        receivedToTextField.setFormatterFactory(FormattersFactory.getInstance().getDateFormatterFactory());
-
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, ministerLeaseSearchParamsBean, org.jdesktop.beansbinding.ELProperty.create("${dateReceivedTo}"), receivedToTextField, org.jdesktop.beansbinding.BeanProperty.create("value"));
-        bindingGroup.addBinding(binding);
 
         leaseToolBar.setFloatable(false);
         leaseToolBar.setRollover(true);
@@ -983,23 +1099,6 @@ public class MinisterSearchPanel extends ContentPanel {
         lblLeaseSearchCount.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         leaseToolBar.add(lblLeaseSearchCount);
 
-        lblName.setText("Name");
-
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, ministerLeaseSearchParamsBean, org.jdesktop.beansbinding.ELProperty.create("${name}"), nameLeaseTextField, org.jdesktop.beansbinding.BeanProperty.create("text"));
-        bindingGroup.addBinding(binding);
-
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, ministerLeaseSearchParamsBean, org.jdesktop.beansbinding.ELProperty.create("${location}"), locationTextField, org.jdesktop.beansbinding.BeanProperty.create("text"));
-        bindingGroup.addBinding(binding);
-
-        lblLocation.setText("Location");
-
-        lblPayDate.setText("Pay Date (From)");
-
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, ministerLeaseSearchParamsBean, org.jdesktop.beansbinding.ELProperty.create("${receiptNumber}"), receiptNumberTextField, org.jdesktop.beansbinding.BeanProperty.create("text"));
-        bindingGroup.addBinding(binding);
-
-        lblReceiptNumber.setText("Receipt #");
-
         eLProperty = org.jdesktop.beansbinding.ELProperty.create("${ministerLeaseResultList}");
         jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, ministerLeaseSearchResultListBean, eLProperty, jTableLease, "jTableLeaseResultList");
         columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${name}"));
@@ -1035,13 +1134,87 @@ public class MinisterSearchPanel extends ContentPanel {
         jTableLease.getColumnModel().getColumn(3).setCellRenderer(new DateTimeRenderer());
         jTableLease.getColumnModel().getColumn(4).setCellRenderer(new DateTimeRenderer());
 
-        btnDateReceivedTo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/calendar.png"))); // NOI18N
-        btnDateReceivedTo.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        btnDateReceivedTo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDateReceivedToActionPerformed(evt);
-            }
-        });
+        jPanel18.setLayout(new java.awt.GridLayout(3, 0));
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, ministerLeaseSearchParamsBean, org.jdesktop.beansbinding.ELProperty.create("${name}"), nameLeaseTextField, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+
+        lblName.setText("Name");
+
+        javax.swing.GroupLayout jPanel15Layout = new javax.swing.GroupLayout(jPanel15);
+        jPanel15.setLayout(jPanel15Layout);
+        jPanel15Layout.setHorizontalGroup(
+            jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel15Layout.createSequentialGroup()
+                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblName, javax.swing.GroupLayout.DEFAULT_SIZE, 416, Short.MAX_VALUE)
+                    .addComponent(nameLeaseTextField))
+                .addContainerGap())
+        );
+        jPanel15Layout.setVerticalGroup(
+            jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel15Layout.createSequentialGroup()
+                .addComponent(lblName, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(nameLeaseTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 11, Short.MAX_VALUE))
+        );
+
+        jPanel18.add(jPanel15);
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, ministerLeaseSearchParamsBean, org.jdesktop.beansbinding.ELProperty.create("${location}"), locationTextField, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+
+        lblLocation.setText("Location");
+
+        javax.swing.GroupLayout jPanel16Layout = new javax.swing.GroupLayout(jPanel16);
+        jPanel16.setLayout(jPanel16Layout);
+        jPanel16Layout.setHorizontalGroup(
+            jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel16Layout.createSequentialGroup()
+                .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblLocation, javax.swing.GroupLayout.DEFAULT_SIZE, 416, Short.MAX_VALUE)
+                    .addComponent(locationTextField))
+                .addContainerGap())
+        );
+        jPanel16Layout.setVerticalGroup(
+            jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel16Layout.createSequentialGroup()
+                .addComponent(lblLocation, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(locationTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(16, Short.MAX_VALUE))
+        );
+
+        jPanel18.add(jPanel16);
+
+        lblReceiptNumber.setText("Receipt #");
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, ministerLeaseSearchParamsBean, org.jdesktop.beansbinding.ELProperty.create("${receiptNumber}"), receiptNumberTextField, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+
+        javax.swing.GroupLayout jPanel17Layout = new javax.swing.GroupLayout(jPanel17);
+        jPanel17.setLayout(jPanel17Layout);
+        jPanel17Layout.setHorizontalGroup(
+            jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel17Layout.createSequentialGroup()
+                .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblReceiptNumber, javax.swing.GroupLayout.DEFAULT_SIZE, 416, Short.MAX_VALUE)
+                    .addComponent(receiptNumberTextField))
+                .addContainerGap())
+        );
+        jPanel17Layout.setVerticalGroup(
+            jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel17Layout.createSequentialGroup()
+                .addComponent(lblReceiptNumber)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(receiptNumberTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(17, Short.MAX_VALUE))
+        );
+
+        jPanel18.add(jPanel17);
+
+        jPanel12.setLayout(new java.awt.GridLayout(3, 2));
 
         btnDateReceivedFrom.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/calendar.png"))); // NOI18N
         btnDateReceivedFrom.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -1052,10 +1225,105 @@ public class MinisterSearchPanel extends ContentPanel {
             }
         });
 
-        payDateFromTextField.setFormatterFactory(FormattersFactory.getInstance().getDateFormatterFactory());
+        receivedFromTextField.setFormatterFactory(FormattersFactory.getInstance().getDateFormatterFactory());
 
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, ministerLeaseSearchParamsBean, org.jdesktop.beansbinding.ELProperty.create("${payDateFrom}"), payDateFromTextField, org.jdesktop.beansbinding.BeanProperty.create("value"));
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, ministerLeaseSearchParamsBean, org.jdesktop.beansbinding.ELProperty.create("${dateReceivedFrom}"), receivedFromTextField, org.jdesktop.beansbinding.BeanProperty.create("value"));
         bindingGroup.addBinding(binding);
+
+        lblDateReceivedFrom.setText("Date Received (From)");
+
+        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
+        jPanel9.setLayout(jPanel9Layout);
+        jPanel9Layout.setHorizontalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblDateReceivedFrom)
+                    .addGroup(jPanel9Layout.createSequentialGroup()
+                        .addComponent(receivedFromTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnDateReceivedFrom, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 10, Short.MAX_VALUE))
+        );
+        jPanel9Layout.setVerticalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
+                .addComponent(lblDateReceivedFrom, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(receivedFromTextField, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnDateReceivedFrom, javax.swing.GroupLayout.Alignment.LEADING))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel12.add(jPanel9);
+
+        receivedToTextField.setFormatterFactory(FormattersFactory.getInstance().getDateFormatterFactory());
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, ministerLeaseSearchParamsBean, org.jdesktop.beansbinding.ELProperty.create("${dateReceivedTo}"), receivedToTextField, org.jdesktop.beansbinding.BeanProperty.create("value"));
+        bindingGroup.addBinding(binding);
+
+        btnDateReceivedTo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/calendar.png"))); // NOI18N
+        btnDateReceivedTo.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        btnDateReceivedTo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDateReceivedToActionPerformed(evt);
+            }
+        });
+
+        lblDateReceivedTo.setText("Date Received (To)");
+
+        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
+        jPanel10.setLayout(jPanel10Layout);
+        jPanel10Layout.setHorizontalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel10Layout.createSequentialGroup()
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblDateReceivedTo)
+                    .addGroup(jPanel10Layout.createSequentialGroup()
+                        .addComponent(receivedToTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnDateReceivedTo, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 10, Short.MAX_VALUE))
+        );
+        jPanel10Layout.setVerticalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
+                .addComponent(lblDateReceivedTo, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(receivedToTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnDateReceivedTo))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel12.add(jPanel10);
+
+        javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
+        jPanel13.setLayout(jPanel13Layout);
+        jPanel13Layout.setHorizontalGroup(
+            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 163, Short.MAX_VALUE)
+        );
+        jPanel13Layout.setVerticalGroup(
+            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 57, Short.MAX_VALUE)
+        );
+
+        jPanel12.add(jPanel13);
+
+        javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
+        jPanel14.setLayout(jPanel14Layout);
+        jPanel14Layout.setHorizontalGroup(
+            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 163, Short.MAX_VALUE)
+        );
+        jPanel14Layout.setVerticalGroup(
+            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 57, Short.MAX_VALUE)
+        );
+
+        jPanel12.add(jPanel14);
 
         btnPayDateFrom.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/calendar.png"))); // NOI18N
         btnPayDateFrom.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -1066,7 +1334,38 @@ public class MinisterSearchPanel extends ContentPanel {
             }
         });
 
-        lblDateReceivedTo1.setText("Pay Date (To)");
+        payDateFromTextField.setFormatterFactory(FormattersFactory.getInstance().getDateFormatterFactory());
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, ministerLeaseSearchParamsBean, org.jdesktop.beansbinding.ELProperty.create("${payDateFrom}"), payDateFromTextField, org.jdesktop.beansbinding.BeanProperty.create("value"));
+        bindingGroup.addBinding(binding);
+
+        lblPayDate.setText("Pay Date (From)");
+
+        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
+        jPanel8.setLayout(jPanel8Layout);
+        jPanel8Layout.setHorizontalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblPayDate)
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addComponent(payDateFromTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnPayDateFrom, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 10, Short.MAX_VALUE))
+        );
+        jPanel8Layout.setVerticalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
+                .addComponent(lblPayDate)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(payDateFromTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnPayDateFrom))
+                .addContainerGap(17, Short.MAX_VALUE))
+        );
+
+        jPanel12.add(jPanel8);
 
         payDateToTextField.setFormatterFactory(FormattersFactory.getInstance().getDateFormatterFactory());
 
@@ -1081,98 +1380,76 @@ public class MinisterSearchPanel extends ContentPanel {
             }
         });
 
+        lblDateReceivedTo1.setText("Pay Date (To)");
+
+        javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
+        jPanel11.setLayout(jPanel11Layout);
+        jPanel11Layout.setHorizontalGroup(
+            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel11Layout.createSequentialGroup()
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblDateReceivedTo1)
+                    .addGroup(jPanel11Layout.createSequentialGroup()
+                        .addComponent(payDateToTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnPayDateTo, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 10, Short.MAX_VALUE))
+        );
+        jPanel11Layout.setVerticalGroup(
+            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel11Layout.createSequentialGroup()
+                .addComponent(lblDateReceivedTo1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(payDateToTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnPayDateTo))
+                .addContainerGap(17, Short.MAX_VALUE))
+        );
+
+        jPanel12.add(jPanel11);
+
+        javax.swing.GroupLayout jPanel19Layout = new javax.swing.GroupLayout(jPanel19);
+        jPanel19.setLayout(jPanel19Layout);
+        jPanel19Layout.setHorizontalGroup(
+            jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel19Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel18, javax.swing.GroupLayout.PREFERRED_SIZE, 426, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, 326, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel19Layout.setVerticalGroup(
+            jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel19Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout leaseTabLayout = new javax.swing.GroupLayout(leaseTab);
         leaseTab.setLayout(leaseTabLayout);
         leaseTabLayout.setHorizontalGroup(
             leaseTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(leaseToolBar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(jPanel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(leaseTabLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(leaseTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblReceiptNumber)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, leaseTabLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(leaseTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblLocation, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblName, javax.swing.GroupLayout.Alignment.TRAILING))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(leaseTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(receiptNumberTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 294, Short.MAX_VALUE)
-                    .addComponent(locationTextField, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(nameLeaseTextField, javax.swing.GroupLayout.Alignment.LEADING))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(leaseTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblPayDate)
-                    .addComponent(lblDateReceivedFrom))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(leaseTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, leaseTabLayout.createSequentialGroup()
-                        .addComponent(receivedFromTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(5, 5, 5)
-                        .addComponent(btnDateReceivedFrom, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(47, 47, 47))
-                    .addGroup(leaseTabLayout.createSequentialGroup()
-                        .addComponent(payDateFromTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnPayDateFrom, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(46, 46, 46)))
-                .addGroup(leaseTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(leaseTabLayout.createSequentialGroup()
-                        .addComponent(lblDateReceivedTo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(receivedToTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnDateReceivedTo, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(leaseTabLayout.createSequentialGroup()
-                        .addComponent(lblDateReceivedTo1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(payDateToTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnPayDateTo, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(88, Short.MAX_VALUE))
+                    .addComponent(leaseToolBar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 1004, Short.MAX_VALUE))
+                .addContainerGap())
         );
         leaseTabLayout.setVerticalGroup(
             leaseTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(leaseTabLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(leaseTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(leaseTabLayout.createSequentialGroup()
-                        .addGroup(leaseTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblName)
-                            .addComponent(nameLeaseTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(leaseTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblLocation)
-                            .addComponent(locationTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(leaseTabLayout.createSequentialGroup()
-                        .addGroup(leaseTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(leaseTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(lblDateReceivedTo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(receivedToTextField)
-                                .addComponent(receivedFromTextField, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(lblDateReceivedFrom, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(btnDateReceivedFrom, javax.swing.GroupLayout.Alignment.LEADING))
-                            .addComponent(btnDateReceivedTo))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(leaseTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(leaseTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(btnPayDateFrom, javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(leaseTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(payDateFromTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblPayDate, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(leaseTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(lblDateReceivedTo1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(payDateToTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(btnPayDateTo))))
+                .addComponent(jPanel19, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(leaseTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblReceiptNumber)
-                    .addComponent(receiptNumberTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(leaseToolBar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 665, Short.MAX_VALUE))
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 433, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         ministerTab.addTab("Lease", leaseTab);
@@ -1246,43 +1523,6 @@ public class MinisterSearchPanel extends ContentPanel {
         lblApplicationSearchCount.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         appToolBar.add(lblApplicationSearchCount);
 
-        jLabel6.setText("Name");
-
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, ministerApplicationSearchParamsBean, org.jdesktop.beansbinding.ELProperty.create("${name}"), nameAppTextField, org.jdesktop.beansbinding.BeanProperty.create("text"));
-        bindingGroup.addBinding(binding);
-
-        jLabel7.setText("Location");
-
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, ministerApplicationSearchParamsBean, org.jdesktop.beansbinding.ELProperty.create("${location}"), locationAppTextField, org.jdesktop.beansbinding.BeanProperty.create("text"));
-        bindingGroup.addBinding(binding);
-
-        jLabel8.setText("Receipt #");
-
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, ministerApplicationSearchParamsBean, org.jdesktop.beansbinding.ELProperty.create("${receiptNumber}"), receiptAppTextField, org.jdesktop.beansbinding.BeanProperty.create("text"));
-        bindingGroup.addBinding(binding);
-
-        payDateAppFromTextField.setFormatterFactory(FormattersFactory.getInstance().getDateFormatterFactory());
-
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, ministerApplicationSearchParamsBean, org.jdesktop.beansbinding.ELProperty.create("${payDateFrom}"), payDateAppFromTextField, org.jdesktop.beansbinding.BeanProperty.create("value"));
-        bindingGroup.addBinding(binding);
-
-        receivedFromAppTextField.setFormatterFactory(FormattersFactory.getInstance().getDateFormatterFactory());
-
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, ministerApplicationSearchParamsBean, org.jdesktop.beansbinding.ELProperty.create("${dateReceivedFrom}"), receivedFromAppTextField, org.jdesktop.beansbinding.BeanProperty.create("value"));
-        bindingGroup.addBinding(binding);
-
-        receivedToAppTextField.setFormatterFactory(FormattersFactory.getInstance().getDateFormatterFactory());
-        receivedToAppTextField.setText(" ");
-
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, ministerApplicationSearchParamsBean, org.jdesktop.beansbinding.ELProperty.create("${dateReceivedTo}"), receivedToAppTextField, org.jdesktop.beansbinding.BeanProperty.create("value"));
-        bindingGroup.addBinding(binding);
-
-        jLabel9.setText("Date Received (From)");
-
-        jLabel10.setText("Date Received (To)");
-
-        jLabel11.setText("Pay Date (From)");
-
         eLProperty = org.jdesktop.beansbinding.ELProperty.create("${ministerApplicationResultList}");
         jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, ministerApplicationSearchResultListBean, eLProperty, jTableApp);
         columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${name}"));
@@ -1322,6 +1562,91 @@ public class MinisterSearchPanel extends ContentPanel {
         jTableApp.getColumnModel().getColumn(3).setCellRenderer(new DateTimeRenderer());
         jTableApp.getColumnModel().getColumn(5).setCellRenderer(new DateTimeRenderer());
 
+        jPanel30.setLayout(new java.awt.GridLayout(3, 0));
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, ministerApplicationSearchParamsBean, org.jdesktop.beansbinding.ELProperty.create("${name}"), nameAppTextField, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+
+        jLabel6.setText("Name");
+
+        javax.swing.GroupLayout jPanel29Layout = new javax.swing.GroupLayout(jPanel29);
+        jPanel29.setLayout(jPanel29Layout);
+        jPanel29Layout.setHorizontalGroup(
+            jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel29Layout.createSequentialGroup()
+                .addGroup(jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 398, Short.MAX_VALUE)
+                    .addComponent(nameAppTextField))
+                .addContainerGap())
+        );
+        jPanel29Layout.setVerticalGroup(
+            jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel29Layout.createSequentialGroup()
+                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(nameAppTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(17, Short.MAX_VALUE))
+        );
+
+        jPanel30.add(jPanel29);
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, ministerApplicationSearchParamsBean, org.jdesktop.beansbinding.ELProperty.create("${location}"), locationAppTextField, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+
+        jLabel7.setText("Location");
+
+        javax.swing.GroupLayout jPanel28Layout = new javax.swing.GroupLayout(jPanel28);
+        jPanel28.setLayout(jPanel28Layout);
+        jPanel28Layout.setHorizontalGroup(
+            jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel28Layout.createSequentialGroup()
+                .addGroup(jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel28Layout.createSequentialGroup()
+                        .addComponent(jLabel7)
+                        .addGap(0, 358, Short.MAX_VALUE))
+                    .addComponent(locationAppTextField))
+                .addContainerGap())
+        );
+        jPanel28Layout.setVerticalGroup(
+            jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel28Layout.createSequentialGroup()
+                .addComponent(jLabel7)
+                .addGap(8, 8, 8)
+                .addComponent(locationAppTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(15, Short.MAX_VALUE))
+        );
+
+        jPanel30.add(jPanel28);
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, ministerApplicationSearchParamsBean, org.jdesktop.beansbinding.ELProperty.create("${receiptNumber}"), receiptAppTextField, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+
+        jLabel8.setText("Receipt #");
+
+        javax.swing.GroupLayout jPanel27Layout = new javax.swing.GroupLayout(jPanel27);
+        jPanel27.setLayout(jPanel27Layout);
+        jPanel27Layout.setHorizontalGroup(
+            jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel27Layout.createSequentialGroup()
+                .addComponent(jLabel8)
+                .addGap(0, 361, Short.MAX_VALUE))
+            .addGroup(jPanel27Layout.createSequentialGroup()
+                .addComponent(receiptAppTextField)
+                .addContainerGap())
+        );
+        jPanel27Layout.setVerticalGroup(
+            jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel27Layout.createSequentialGroup()
+                .addComponent(jLabel8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(receiptAppTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(17, Short.MAX_VALUE))
+        );
+
+        jPanel30.add(jPanel27);
+
+        jPanel24.setLayout(new java.awt.GridLayout(3, 2));
+
         btnAppReceivedFrom.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/calendar.png"))); // NOI18N
         btnAppReceivedFrom.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1329,12 +1654,46 @@ public class MinisterSearchPanel extends ContentPanel {
             }
         });
 
-        btnAppPayDate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/calendar.png"))); // NOI18N
-        btnAppPayDate.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAppPayDateActionPerformed(evt);
-            }
-        });
+        jLabel9.setText("Date Received (From)");
+
+        receivedFromAppTextField.setFormatterFactory(FormattersFactory.getInstance().getDateFormatterFactory());
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, ministerApplicationSearchParamsBean, org.jdesktop.beansbinding.ELProperty.create("${dateReceivedFrom}"), receivedFromAppTextField, org.jdesktop.beansbinding.BeanProperty.create("value"));
+        bindingGroup.addBinding(binding);
+
+        javax.swing.GroupLayout jPanel22Layout = new javax.swing.GroupLayout(jPanel22);
+        jPanel22.setLayout(jPanel22Layout);
+        jPanel22Layout.setHorizontalGroup(
+            jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel22Layout.createSequentialGroup()
+                .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel22Layout.createSequentialGroup()
+                        .addComponent(jLabel9)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel22Layout.createSequentialGroup()
+                        .addComponent(receivedFromAppTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                        .addComponent(btnAppReceivedFrom, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+        );
+        jPanel22Layout.setVerticalGroup(
+            jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel22Layout.createSequentialGroup()
+                .addComponent(jLabel9)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(receivedFromAppTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAppReceivedFrom, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(17, Short.MAX_VALUE))
+        );
+
+        jPanel24.add(jPanel22);
+
+        receivedToAppTextField.setFormatterFactory(FormattersFactory.getInstance().getDateFormatterFactory());
+        receivedToAppTextField.setText(" ");
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, ministerApplicationSearchParamsBean, org.jdesktop.beansbinding.ELProperty.create("${dateReceivedTo}"), receivedToAppTextField, org.jdesktop.beansbinding.BeanProperty.create("value"));
+        bindingGroup.addBinding(binding);
 
         btnAppReceivedTo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/calendar.png"))); // NOI18N
         btnAppReceivedTo.addActionListener(new java.awt.event.ActionListener() {
@@ -1343,7 +1702,99 @@ public class MinisterSearchPanel extends ContentPanel {
             }
         });
 
-        jLabel14.setText("Pay Date (To)");
+        jLabel10.setText("Date Received (To)");
+
+        javax.swing.GroupLayout jPanel23Layout = new javax.swing.GroupLayout(jPanel23);
+        jPanel23.setLayout(jPanel23Layout);
+        jPanel23Layout.setHorizontalGroup(
+            jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel23Layout.createSequentialGroup()
+                .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel23Layout.createSequentialGroup()
+                        .addComponent(receivedToAppTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnAppReceivedTo, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel10))
+                .addGap(0, 14, Short.MAX_VALUE))
+        );
+        jPanel23Layout.setVerticalGroup(
+            jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel23Layout.createSequentialGroup()
+                .addComponent(jLabel10)
+                .addGap(7, 7, 7)
+                .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(receivedToAppTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAppReceivedTo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(16, Short.MAX_VALUE))
+        );
+
+        jPanel24.add(jPanel23);
+
+        javax.swing.GroupLayout jPanel25Layout = new javax.swing.GroupLayout(jPanel25);
+        jPanel25.setLayout(jPanel25Layout);
+        jPanel25Layout.setHorizontalGroup(
+            jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 150, Short.MAX_VALUE)
+        );
+        jPanel25Layout.setVerticalGroup(
+            jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 57, Short.MAX_VALUE)
+        );
+
+        jPanel24.add(jPanel25);
+
+        javax.swing.GroupLayout jPanel26Layout = new javax.swing.GroupLayout(jPanel26);
+        jPanel26.setLayout(jPanel26Layout);
+        jPanel26Layout.setHorizontalGroup(
+            jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 150, Short.MAX_VALUE)
+        );
+        jPanel26Layout.setVerticalGroup(
+            jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 57, Short.MAX_VALUE)
+        );
+
+        jPanel24.add(jPanel26);
+
+        payDateAppFromTextField.setFormatterFactory(FormattersFactory.getInstance().getDateFormatterFactory());
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, ministerApplicationSearchParamsBean, org.jdesktop.beansbinding.ELProperty.create("${payDateFrom}"), payDateAppFromTextField, org.jdesktop.beansbinding.BeanProperty.create("value"));
+        bindingGroup.addBinding(binding);
+
+        btnAppPayDate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/common/calendar.png"))); // NOI18N
+        btnAppPayDate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAppPayDateActionPerformed(evt);
+            }
+        });
+
+        jLabel11.setText("Pay Date (From)");
+
+        javax.swing.GroupLayout jPanel21Layout = new javax.swing.GroupLayout(jPanel21);
+        jPanel21.setLayout(jPanel21Layout);
+        jPanel21Layout.setHorizontalGroup(
+            jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel21Layout.createSequentialGroup()
+                .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel21Layout.createSequentialGroup()
+                .addComponent(payDateAppFromTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnAppPayDate, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(15, Short.MAX_VALUE))
+        );
+        jPanel21Layout.setVerticalGroup(
+            jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel21Layout.createSequentialGroup()
+                .addComponent(jLabel11)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(payDateAppFromTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAppPayDate, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(17, Short.MAX_VALUE))
+        );
+
+        jPanel24.add(jPanel21);
 
         payDateAppToTextField.setFormatterFactory(FormattersFactory.getInstance().getDateFormatterFactory());
         payDateAppToTextField.setText(" ");
@@ -1358,94 +1809,86 @@ public class MinisterSearchPanel extends ContentPanel {
             }
         });
 
+        jLabel14.setText("Pay Date (To)");
+
+        javax.swing.GroupLayout jPanel20Layout = new javax.swing.GroupLayout(jPanel20);
+        jPanel20.setLayout(jPanel20Layout);
+        jPanel20Layout.setHorizontalGroup(
+            jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel20Layout.createSequentialGroup()
+                .addComponent(payDateAppToTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnPayDateAppTo, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(14, Short.MAX_VALUE))
+            .addGroup(jPanel20Layout.createSequentialGroup()
+                .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        jPanel20Layout.setVerticalGroup(
+            jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel20Layout.createSequentialGroup()
+                .addComponent(jLabel14)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnPayDateAppTo, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(payDateAppToTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(17, Short.MAX_VALUE))
+        );
+
+        jPanel24.add(jPanel20);
+
+        javax.swing.GroupLayout jPanel31Layout = new javax.swing.GroupLayout(jPanel31);
+        jPanel31.setLayout(jPanel31Layout);
+        jPanel31Layout.setHorizontalGroup(
+            jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel31Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jPanel30, javax.swing.GroupLayout.PREFERRED_SIZE, 408, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(501, Short.MAX_VALUE)))
+            .addGroup(jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel31Layout.createSequentialGroup()
+                    .addGap(425, 425, 425)
+                    .addComponent(jPanel24, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(194, Short.MAX_VALUE)))
+        );
+        jPanel31Layout.setVerticalGroup(
+            jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 195, Short.MAX_VALUE)
+            .addGroup(jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel31Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jPanel30, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
+                    .addContainerGap()))
+            .addGroup(jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel31Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jPanel24, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
+                    .addContainerGap()))
+        );
+
         javax.swing.GroupLayout applicationTabLayout = new javax.swing.GroupLayout(applicationTab);
         applicationTab.setLayout(applicationTabLayout);
         applicationTabLayout.setHorizontalGroup(
             applicationTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(appToolBar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jScrollPane2)
+            .addComponent(jPanel31, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(applicationTabLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(applicationTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(applicationTabLayout.createSequentialGroup()
-                        .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(nameAppTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(applicationTabLayout.createSequentialGroup()
-                        .addComponent(jLabel7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(locationAppTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, applicationTabLayout.createSequentialGroup()
-                        .addComponent(jLabel8)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(receiptAppTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(12, 12, 12)
-                .addGroup(applicationTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel9)
-                    .addComponent(jLabel11))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(applicationTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(receivedFromAppTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
-                    .addComponent(payDateAppFromTextField))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(applicationTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(applicationTabLayout.createSequentialGroup()
-                        .addComponent(btnAppReceivedFrom, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel10)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(receivedToAppTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnAppReceivedTo, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(applicationTabLayout.createSequentialGroup()
-                        .addComponent(btnAppPayDate, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel14)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(payDateAppToTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnPayDateAppTo, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(166, Short.MAX_VALUE))
+                .addGroup(applicationTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1004, Short.MAX_VALUE)
+                    .addComponent(appToolBar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         applicationTabLayout.setVerticalGroup(
             applicationTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(applicationTabLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(applicationTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(applicationTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(receivedToAppTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel10))
-                    .addGroup(applicationTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(btnAppReceivedFrom, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(applicationTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel6)
-                            .addComponent(nameAppTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel9)
-                            .addComponent(receivedFromAppTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(btnAppReceivedTo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(applicationTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(applicationTabLayout.createSequentialGroup()
-                        .addGroup(applicationTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(applicationTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel7)
-                                .addComponent(locationAppTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(applicationTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(payDateAppFromTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel11))
-                            .addComponent(btnAppPayDate, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(applicationTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel8)
-                            .addComponent(receiptAppTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(applicationTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(payDateAppToTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel14))
-                    .addComponent(btnPayDateAppTo, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPanel31, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(appToolBar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 670, Short.MAX_VALUE))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 429, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         ministerTab.addTab("Land Application", applicationTab);
@@ -1464,7 +1907,7 @@ public class MinisterSearchPanel extends ContentPanel {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(headerPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(ministerTab, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(ministerTab))
         );
 
         bindingGroup.bind();
@@ -1664,6 +2107,38 @@ public class MinisterSearchPanel extends ContentPanel {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel10;
+    private javax.swing.JPanel jPanel11;
+    private javax.swing.JPanel jPanel12;
+    private javax.swing.JPanel jPanel13;
+    private javax.swing.JPanel jPanel14;
+    private javax.swing.JPanel jPanel15;
+    private javax.swing.JPanel jPanel16;
+    private javax.swing.JPanel jPanel17;
+    private javax.swing.JPanel jPanel18;
+    private javax.swing.JPanel jPanel19;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel20;
+    private javax.swing.JPanel jPanel21;
+    private javax.swing.JPanel jPanel22;
+    private javax.swing.JPanel jPanel23;
+    private javax.swing.JPanel jPanel24;
+    private javax.swing.JPanel jPanel25;
+    private javax.swing.JPanel jPanel26;
+    private javax.swing.JPanel jPanel27;
+    private javax.swing.JPanel jPanel28;
+    private javax.swing.JPanel jPanel29;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel30;
+    private javax.swing.JPanel jPanel31;
+    private javax.swing.JPanel jPanel32;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
