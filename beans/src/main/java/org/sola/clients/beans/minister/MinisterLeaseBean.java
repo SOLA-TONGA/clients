@@ -47,6 +47,7 @@ public class MinisterLeaseBean extends AbstractIdBean{
     public static final String LAND_TYPE_PROPERTY = "landType";
     public static final String TOTAL_AREA_PROPERTY = "totalArea";
     public static final String LEASE_AREA_PROPERTY = "leaseArea";
+    public static final String TERM_PROPERTY = "term";
     public static final String RENT_PROPERTY = "rent";
     public static final String SURVEY_FEE_PROPERTY = "surveyFee";
     public static final String RECEIPT_NUMBER_PROPERTY = "receiptNumber";
@@ -62,6 +63,7 @@ public class MinisterLeaseBean extends AbstractIdBean{
     private String landType;
     private String totalArea;
     private String leaseArea;
+    private String term;
     private String rent;
     private String surveyFee;
     private String receiptNumber;
@@ -152,6 +154,16 @@ public class MinisterLeaseBean extends AbstractIdBean{
         String oldValue = this.leaseArea;
         this.leaseArea = value;
         propertySupport.firePropertyChange(LEASE_AREA_PROPERTY, oldValue, value);
+    }
+
+    public String getTerm() {
+        return term;
+    }
+
+    public void setTerm(String value) {
+        String oldValue = this.term;
+        this.term = value;
+        propertySupport.firePropertyChange(TERM_PROPERTY, oldValue, value);
     }
     
     public String getRent() {
