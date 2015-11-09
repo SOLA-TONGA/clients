@@ -81,6 +81,7 @@ public class MinisterLeaseForm extends ContentPanel {
             ceoDirectionTextField.setEnabled(false);
             directedDivisionTextField.setEnabled(false);
             remarkTextField.setEnabled(false);
+            termTextField.setEnabled(false);
             
         }
     }
