@@ -51,8 +51,8 @@ import org.sola.clients.swing.gis.tool.CadastreChangeSelectCadastreObjectTool;
 import org.sola.webservices.transferobjects.cadastre.CadastreObjectTO;
 
 /**
- * A control bundle that is used for cadastre change process. The necessary tools and layers are
- * added in the bundle.
+ * A control bundle that is used for cadastre change process. The necessary
+ * tools and layers are added in the bundle.
  *
  * @author Elton Manoku
  */
@@ -68,16 +68,18 @@ public final class ControlsBundleForCadastreChange extends ControlsBundleForTran
     private String lastPartTemplate = "SP %s";
 
     /**
-     * Constructor. It sets up the bundle by adding layers and tools that are relevant. Finally, it
-     * zooms in the interested zone. The interested zone is defined in the following order: <br/> If
-     * bean has survey points it is zoomed there, otherwise if baUnitId is present it is zoomed
-     * there else it is zoomed in the application location.
+     * Constructor. It sets up the bundle by adding layers and tools that are
+     * relevant. Finally, it zooms in the interested zone. The interested zone
+     * is defined in the following order: <br/> If bean has survey points it is
+     * zoomed there, otherwise if baUnitId is present it is zoomed there else it
+     * is zoomed in the application location.
      *
-     * @param applicationBean The application where the transaction is started identifiers
-     * @param transactionStarterId The id of the starter of the application. This will be the
-     * service id.
-     * @param baUnitId Id of the property that is defined in the application as a target for this
-     * cadastre change.
+     * @param applicationBean The application where the transaction is started
+     * identifiers
+     * @param transactionStarterId The id of the starter of the application.
+     * This will be the service id.
+     * @param baUnitId Id of the property that is defined in the application as
+     * a target for this cadastre change.
      */
     public ControlsBundleForCadastreChange(
             ApplicationBean applicationBean,
@@ -97,16 +99,18 @@ public final class ControlsBundleForCadastreChange extends ControlsBundleForTran
     }
 
     /**
-     * Constructor. It sets up the bundle by adding layers and tools that are relevant. Finally, it
-     * zooms in the interested zone. The interested zone is defined in the following order: <br/> If
-     * bean has survey points it is zoomed there, otherwise if baUnitId is present it is zoomed
-     * there else it is zoomed in the application location.
+     * Constructor. It sets up the bundle by adding layers and tools that are
+     * relevant. Finally, it zooms in the interested zone. The interested zone
+     * is defined in the following order: <br/> If bean has survey points it is
+     * zoomed there, otherwise if baUnitId is present it is zoomed there else it
+     * is zoomed in the application location.
      *
-     * @param applicationBean The application where the transaction is started identifiers
-     * @param transactionStarterId The id of the starter of the application. This will be the
-     * service id.
-     * @param baUnitId Id of the property that is defined in the application as a target for this
-     * cadastre change.
+     * @param applicationBean The application where the transaction is started
+     * identifiers
+     * @param transactionStarterId The id of the starter of the application.
+     * This will be the service id.
+     * @param baUnitId Id of the property that is defined in the application as
+     * a target for this cadastre change.
      */
     public ControlsBundleForCadastreChange(
             TransactionCadastreChangeBean transactionBean,
@@ -129,7 +133,8 @@ public final class ControlsBundleForCadastreChange extends ControlsBundleForTran
     }
 
     /**
-     * It zooms to the interesting area which is the area where the cadastre changes is happening
+     * It zooms to the interesting area which is the area where the cadastre
+     * changes is happening
      *
      * @param interestingArea
      * @param applicationLocation
@@ -153,7 +158,7 @@ public final class ControlsBundleForCadastreChange extends ControlsBundleForTran
         transactionBean.setSurveyPointList(this.newPointsLayer.getBeanListForTransaction());
         transactionBean.setCadastreObjectTargetList(
                 this.targetParcelsLayer.getBeanListForTransaction());
-        if (this.getDocumentsPanel() != null){
+        if (this.getDocumentsPanel() != null) {
             transactionBean.setSourceIdList(this.getDocumentsPanel().getSourceIds());
         }
         return transactionBean;
@@ -161,17 +166,17 @@ public final class ControlsBundleForCadastreChange extends ControlsBundleForTran
 
     @Override
     public void refreshTransactionFromServer() {
-        if (this.getTransactionStarterId() != null){
+        if (this.getTransactionStarterId() != null) {
             this.transactionBean = PojoDataAccess.getInstance().getTransactionCadastreChange(
                     this.getTransactionStarterId());
-        }else if (this.transactionBean != null){
+        } else if (this.transactionBean != null) {
             this.transactionBean = PojoDataAccess.getInstance().getTransactionCadastreChangeById(
                     this.transactionBean.getId());
-        }else{
+        } else {
             this.transactionBean = new TransactionCadastreChangeBean();
         }
     }
-    
+
     @Override
     public final void setTransaction() {
         //Reset the lists of beans in the layers
@@ -183,12 +188,11 @@ public final class ControlsBundleForCadastreChange extends ControlsBundleForTran
         this.newCadastreObjectLayer.setBeanList(
                 this.transactionBean.getCadastreObjectList());
         this.newPointsLayer.setBeanList(this.transactionBean.getSurveyPointList());
-        if (this.getDocumentsPanel() != null){
+        if (this.getDocumentsPanel() != null) {
             this.getDocumentsPanel().setSourceIds(this.transactionBean.getSourceIdList());
         }
     }
 
-    
     @Override
     protected void addLayers() throws InitializeLayerException, SchemaException {
         super.addLayers();
@@ -212,14 +216,14 @@ public final class ControlsBundleForCadastreChange extends ControlsBundleForTran
 
     @Override
     protected void addToolsAndCommands() {
-        this.selectTargetCadastreObjectTool =
-                new CadastreChangeSelectCadastreObjectTool(this.getPojoDataAccess());
+        this.selectTargetCadastreObjectTool
+                = new CadastreChangeSelectCadastreObjectTool(this.getPojoDataAccess());
         this.selectTargetCadastreObjectTool.setTargetParcelsLayer(targetParcelsLayer);
         this.getMap().addTool(this.selectTargetCadastreObjectTool, this.getToolbar(), true);
 
         this.getMap().addMapAction(
                 new CadastreChangePointSurveyListFormShow(
-                this.getMap(), this.newPointsLayer.getHostForm()),
+                        this.getMap(), this.newPointsLayer.getHostForm()),
                 this.getToolbar(),
                 true);
 
@@ -227,8 +231,8 @@ public final class ControlsBundleForCadastreChange extends ControlsBundleForTran
         nodelinkingTool.getTargetSnappingLayers().add(this.targetParcelsLayer);
         this.getMap().addTool(nodelinkingTool, this.getToolbar(), true);
 
-        this.newCadastreObjectTool =
-                new CadastreChangeNewCadastreObjectTool(this.newCadastreObjectLayer);
+        this.newCadastreObjectTool
+                = new CadastreChangeNewCadastreObjectTool(this.newCadastreObjectLayer);
         this.newCadastreObjectTool.getTargetSnappingLayers().add(newPointsLayer);
         this.getMap().addTool(newCadastreObjectTool, this.getToolbar(), true);
 
@@ -237,11 +241,11 @@ public final class ControlsBundleForCadastreChange extends ControlsBundleForTran
                 this.getToolbar(),
                 true);
 
-        CadastreBoundarySelectTool cadastreBoundarySelectTool =
-                new CadastreBoundarySelectTool(
-                this.cadastreBoundaryPointLayer,
-                this.newCadastreObjectLayer,
-                this.newCadastreObjectLayer.getVerticesLayer());
+        CadastreBoundarySelectTool cadastreBoundarySelectTool
+                = new CadastreBoundarySelectTool(
+                        this.cadastreBoundaryPointLayer,
+                        this.newCadastreObjectLayer,
+                        this.newCadastreObjectLayer.getVerticesLayer());
 
         this.getMap().addTool(cadastreBoundarySelectTool, this.getToolbar(), true);
         super.addToolsAndCommands();
@@ -277,17 +281,19 @@ public final class ControlsBundleForCadastreChange extends ControlsBundleForTran
      * @param baUnitId
      */
     private void setTargetCadastreObjectsOfBaUnit(String baUnitId) {
-        List<CadastreObjectTO> cadastreObjects =
-                this.getPojoDataAccess().getCadastreService().getCadastreObjectsByBaUnit(baUnitId);
+        List<CadastreObjectTO> cadastreObjects
+                = this.getPojoDataAccess().getCadastreService().getCadastreObjectsByBaUnit(baUnitId);
         for (CadastreObjectTO cadastreObjectTo : cadastreObjects) {
-            CadastreObjectTargetBean bean = new CadastreObjectTargetBean();
-            bean.setCadastreObjectId(cadastreObjectTo.getId());
-            bean.setGeomPolygonCurrent(cadastreObjectTo.getGeomPolygon());
-            this.targetParcelsLayer.getBeanList().add(bean);
+            if (cadastreObjectTo.getGeomPolygon() != null) {
+                CadastreObjectTargetBean bean = new CadastreObjectTargetBean();
+                bean.setCadastreObjectId(cadastreObjectTo.getId());
+                bean.setGeomPolygonCurrent(cadastreObjectTo.getGeomPolygon());
+                this.targetParcelsLayer.getBeanList().add(bean);
+            }
         }
     }
-    
-    private String getLastPart(String lastPartEntry){
+
+    private String getLastPart(String lastPartEntry) {
         return String.format(lastPartTemplate, lastPartEntry);
     }
 }

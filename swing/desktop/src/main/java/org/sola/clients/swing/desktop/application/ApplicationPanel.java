@@ -719,7 +719,7 @@ public class ApplicationPanel extends ContentPanel {
                         public Void doTask() {
                             setMessage(MessageUtility.getLocalizedMessageText(ClientMessage.PROGRESS_MSG_OPEN_CADASTRE_CHANGE));
                             CadastreTransactionMapPanel form = new CadastreTransactionMapPanel(
-                                    appBean, service, appBean.getPropertyList().getFilteredList().get(0));
+                                    appBean, service, appBean.getPropertyList().getFilteredList().get(0), true);
                             getMainContentPanel().addPanel(form, MainContentPanel.CARD_CADASTRECHANGE, true);
                             return null;
                         }
@@ -744,7 +744,7 @@ public class ApplicationPanel extends ContentPanel {
                                     public Void doTask() {
                                         setMessage(MessageUtility.getLocalizedMessageText(ClientMessage.PROGRESS_MSG_OPEN_DOCREGISTRATION));
                                         CadastreTransactionMapPanel form = new CadastreTransactionMapPanel(
-                                                appBean, service, property);
+                                                appBean, service, property, true);
                                         getMainContentPanel().addPanel(form, MainContentPanel.CARD_CADASTRECHANGE, true);
                                         return null;
                                     }

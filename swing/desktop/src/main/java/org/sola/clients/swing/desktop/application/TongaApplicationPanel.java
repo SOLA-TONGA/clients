@@ -81,8 +81,9 @@ import org.sola.services.boundary.wsclients.WSManager;
 import org.sola.webservices.transferobjects.casemanagement.ApplicationTO;
 
 /**
- * This form is used to create new application or edit existing one. <p>The
- * following list of beans is used to bind the data on the form:<br />
+ * This form is used to create new application or edit existing one.
+ * <p>
+ * The following list of beans is used to bind the data on the form:<br />
  * {@link ApplicationBean}, <br />{@link RequestTypeListBean}, <br />
  * {@link PartySummaryListBean}, <br />{@link CommunicationTypeListBean}, <br />
  * {@link SourceTypeListBean}, <br />{@link ApplicationDocumentsHelperBean}</p>
@@ -98,8 +99,8 @@ public class TongaApplicationPanel extends ContentPanel {
 
     /**
      * This method is used by the form designer to create
-     * {@link ApplicationBean}. It uses
-     * <code>applicationId</code> parameter passed to the form constructor.<br
+     * {@link ApplicationBean}. It uses <code>applicationId</code> parameter
+     * passed to the form constructor.<br
      * />
      * <code>applicationId</code> should be initialized before
      * {@link ApplicationForm#initComponents} method call.
@@ -575,6 +576,18 @@ public class TongaApplicationPanel extends ContentPanel {
                 // appBean when the service panel is closed. 
                 ServiceLauncher.launch(service.getRequestTypeCode(), getMainContentPanel(),
                         refreshAppBeanOnClose, null, appBean, service);
+            } else if (service.getRequestTypeCode().equals(RequestTypeBean.CODE_CADASTRE_CHANGE)
+                    || service.getRequestTypeCode().equals(RequestTypeBean.CODE_CADASTRE_REDEFINITION)) {
+                // Cadastre Transaction Services             
+                if (appBean.getPropertyList().getFilteredList().size() > 0) {
+                    ApplicationPropertyBean propertyBean = null;
+                    propertyBean = appBean.getPropertyList().getFilteredList().get(0);
+                    ServiceLauncher.launch(service.getRequestTypeCode(), getMainContentPanel(), refreshAppBeanOnClose, null,
+                            appBean, service, propertyBean, readOnly);
+                } else {
+                    ServiceLauncher.launch(service.getRequestTypeCode(), getMainContentPanel(), refreshAppBeanOnClose, null,
+                            appBean, service, readOnly);
+                }
             } else {
                 // Try to determine the BaUnit to use for the service. 
                 BaUnitBean baUnit = PropertyHelper.getBaUnitBeanForService(appBean, service, this);
@@ -2747,8 +2760,8 @@ public class TongaApplicationPanel extends ContentPanel {
                 return;
             }
 
-            SolaTask<List<ValidationResultBean>, List<ValidationResultBean>> t =
-                    new SolaTask<List<ValidationResultBean>, List<ValidationResultBean>>() {
+            SolaTask<List<ValidationResultBean>, List<ValidationResultBean>> t
+                    = new SolaTask<List<ValidationResultBean>, List<ValidationResultBean>>() {
                 @Override
                 public List<ValidationResultBean> doTask() {
                     setMessage(MessageUtility.getLocalizedMessageText(ClientMessage.PROGRESS_MSG_APP_TAKE_ACTION));

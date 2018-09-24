@@ -32,6 +32,7 @@ import com.vividsolutions.jts.geom.Point;
 import java.io.File;
 import java.io.IOException;
 import org.geotools.geometry.jts.Geometries;
+import org.geotools.swing.extended.Map;
 import org.geotools.swing.extended.exception.DirectImageNotValidFileException;
 import org.geotools.swing.extended.exception.InitializeLayerException;
 
@@ -65,6 +66,12 @@ public class ExtendedImageLayer extends ExtendedLayer {
                  Geometries.POINT, LAYER_POINT_STYLE_RESOURCE);
          this.getMapLayers().add(this.rasterLayer);
          this.getMapLayers().addAll(this.pointLayer.getMapLayers());
+    }
+    
+    @Override
+    public void setMapControl(Map mapControl) {
+        super.setMapControl(mapControl);
+        this.pointLayer.setMapControl(mapControl);
     }
     
     /**

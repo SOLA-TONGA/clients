@@ -36,6 +36,8 @@ import org.sola.clients.beans.referencedata.RequestTypeBean;
 import org.sola.clients.swing.common.tasks.SolaTask;
 import org.sola.clients.swing.common.tasks.TaskManager;
 import org.sola.clients.swing.desktop.administrative.TongaPropertyPanel;
+import org.sola.clients.swing.desktop.cadastre.CadastreTransactionMapPanel;
+import org.sola.clients.swing.desktop.cadastre.MapPanelForm;
 import org.sola.clients.swing.desktop.source.TransactionedDocumentsPanel;
 import org.sola.clients.swing.desktop.workflow.*;
 import org.sola.clients.swing.ui.ContentPanel;
@@ -356,6 +358,21 @@ public final class ServiceLauncher {
         serviceMap.put(RequestTypeBean.CODE_DRAUGHTING,
                 new String[]{DraftForm.class.getName(), MainContentPanel.CARD_DRAUGHTING,
             ClientMessage.PROGRESS_MSG_OPEN_DRAFTING_FORM});
+        
+        // Cadastre Change Form
+        serviceMap.put(RequestTypeBean.CODE_CADASTRE_CHANGE,
+                new String[]{CadastreTransactionMapPanel.class.getName(), MainContentPanel.CARD_CADASTRECHANGE,
+            ClientMessage.PROGRESS_MSG_OPEN_CADASTRE_CHANGE});
+        
+        // Redefine Cadastre Form
+        serviceMap.put(RequestTypeBean.CODE_CADASTRE_REDEFINITION,
+                new String[]{CadastreTransactionMapPanel.class.getName(), MainContentPanel.CARD_CADASTRECHANGE,
+            ClientMessage.PROGRESS_MSG_OPEN_CADASTRE_CHANGE});
+        
+        // Cadastral Print
+        serviceMap.put(RequestTypeBean.CODE_CADASTRE_PRINT,
+                new String[]{MapPanelForm.class.getName(), MainContentPanel.CARD_MAP,
+            ClientMessage.PROGRESS_MSG_OPEN_MAP});
 
     }
 

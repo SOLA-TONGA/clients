@@ -13,7 +13,7 @@
                     <MaxScaleDenominator>50000</MaxScaleDenominator>
                     <PolygonSymbolizer>
                         <Stroke>
-                            <CssParameter name="stroke">#FF7F50</CssParameter>
+                            <CssParameter name="stroke">#01b704</CssParameter>
                             <CssParameter name="stroke-width">2</CssParameter>
                         </Stroke>
                     </PolygonSymbolizer>
@@ -51,7 +51,7 @@
                             <CssParameter name="opacity">0.2</CssParameter>
                         </Fill>
                         <Stroke>
-                            <CssParameter name="stroke">#FF7F50</CssParameter>
+                            <CssParameter name="stroke">#01b704</CssParameter>
                             <CssParameter name="stroke-width">1</CssParameter>
                         </Stroke>
                     </PolygonSymbolizer>
@@ -64,7 +64,7 @@
                             <CssParameter name="fill">#FFFFFF</CssParameter>
                         </Fill>
                         <Stroke>
-                            <CssParameter name="stroke">#FF7F50</CssParameter>
+                            <CssParameter name="stroke">#01b704</CssParameter>
                             <CssParameter name="stroke-width">0.2</CssParameter>
                         </Stroke>
                     </PolygonSymbolizer>
