@@ -25,7 +25,7 @@
                 </sld:Label>
                 <sld:Font>
                     <sld:CssParameter name="font-family">Arial</sld:CssParameter>
-                    <sld:CssParameter name="font-size">16.0</sld:CssParameter>
+                    <sld:CssParameter name="font-size">20</sld:CssParameter>
                     <sld:CssParameter name="font-style">normal</sld:CssParameter>
                     <sld:CssParameter name="font-weight">normal</sld:CssParameter>
                 </sld:Font>
