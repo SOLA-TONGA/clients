@@ -4,12 +4,12 @@
     <parent>
         <artifactId>sola-clients</artifactId>
         <groupId>org.sola</groupId>
-        <version>1511b</version>
+        <version>1811a</version>
     </parent>
 
     <groupId>org.sola.clients</groupId>
     <artifactId>sola-desktop-web-start</artifactId>
-    <version>1511b</version>
+    <version>1811a</version>
     <packaging>war</packaging>
 
     <name>Clients Desktop Web Start</name>
@@ -17,7 +17,7 @@
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <solaVersion>v1511b</solaVersion>
+        <solaVersion>v1811a</solaVersion>
         <webstart.codesigning.keystore>${basedir}/sola.jks</webstart.codesigning.keystore>
         <webstart.codesigning.alias>sola</webstart.codesigning.alias>
         <webstart.codesigning.storepass>FLOSS2011</webstart.codesigning.storepass>
@@ -84,6 +84,7 @@
                         <Application-Name>SOLA Tonga</Application-Name>
                     </updateManifestEntries>
                     <libPath>lib</libPath>
+                    <verbose>true</verbose>
                     <!-- pack200 has some bugs that should have been fixed. 
                     See jira.codehaus.org/browse/MWEBSTART-159 for details.
                     The jnlp-download-servlet supports both pack200 and gzip, 
