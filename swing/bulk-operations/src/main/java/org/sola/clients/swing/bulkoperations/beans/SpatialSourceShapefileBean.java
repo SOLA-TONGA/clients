@@ -49,6 +49,7 @@ import org.sola.common.logging.LogUtility;
 /**
  * The spatial source of type Shapefile. It expects a shapefile as a source of
  * the features.
+ *
  * @author Elton Manoku
  */
 public class SpatialSourceShapefileBean extends SpatialSourceBean {
@@ -76,8 +77,8 @@ public class SpatialSourceShapefileBean extends SpatialSourceBean {
             throw new RuntimeException("Error opening file.", ex);
         }
 
-        for (AttributeDescriptor attributeDescriptor :
-                featureSource.getSchema().getAttributeDescriptors()) {
+        for (AttributeDescriptor attributeDescriptor
+                : featureSource.getSchema().getAttributeDescriptors()) {
             String bindingName = attributeDescriptor.getType().getBinding().getSimpleName();
             if (featureSource.getSchema().getGeometryDescriptor().equals(attributeDescriptor)) {
                 setGeometryType(bindingName);
@@ -96,26 +97,42 @@ public class SpatialSourceShapefileBean extends SpatialSourceBean {
         try {
             SimpleFeature feature;
             SimpleFeatureIterator iterator = featureSource.getFeatures().features();
+            int loadCount = 0; 
+            int totalObjects = 0; 
             while (iterator.hasNext()) {
                 feature = iterator.next();
-                SpatialSourceObjectBean spatialObject = new SpatialSourceObjectBean();
-                Geometry geometry =(Geometry)feature.getDefaultGeometry();
-                if (geometry.getGeometryType().toLowerCase().startsWith("multi")
-                        && isIfMultiUseFirstGeometry()){
-                    geometry = geometry.getGeometryN(0);
+                totalObjects++;
+                Geometry geometry = (Geometry) feature.getDefaultGeometry();
+                if (!geometry.isEmpty() && geometry.isValid()) {
+                    SpatialSourceObjectBean spatialObject = new SpatialSourceObjectBean();
+                    if (geometry.getGeometryType().toLowerCase().startsWith("multi")
+                            && isIfMultiUseFirstGeometry()) {
+                        geometry = geometry.getGeometryN(0);
+                    }
+                    if (geometry.getSRID() == 0) {
+                        geometry.setSRID(5887); // TMG SRID number
+                        addLoadMessage("Setting SRID to 5887 for feature " + feature.getID());
+                    }
+                    spatialObject.setTheGeom(GeometryUtility.getWkbFromGeometry(geometry));
+                    for (SpatialAttributeBean attribute : onlyAttributes) {
+                        spatialObject.getFieldsWithValues().put(
+                                attribute.getName(),
+                                feature.getAttribute(attribute.getName()));
+                    }
+                    spatialObjectList.add(spatialObject);
+                    loadCount++;
+                } else {
+                    addLoadMessage("Geometry for " + feature.getID() + " is empty or invalid");
                 }
-                spatialObject.setTheGeom(GeometryUtility.getWkbFromGeometry(geometry));
-                for(SpatialAttributeBean attribute: onlyAttributes){
-                    spatialObject.getFieldsWithValues().put(
-                            attribute.getName(),
-                            feature.getAttribute(attribute.getName()));
-                }
-                spatialObjectList.add(spatialObject);
             }
             iterator.close();
+            addLoadMessage("Loaded " + loadCount + " of " + totalObjects + " features"); 
         } catch (IOException ex) {
-             LogUtility.log("Error retrieving features from shapefile.", ex);
-             throw new RuntimeException("Error retrieving features from shapefile.", ex);
+            LogUtility.log("Error retrieving features from shapefile.", ex);
+            throw new RuntimeException("Error retrieving features from shapefile.", ex);
+        } catch (Exception e) {
+            LogUtility.log("Error processing feature in shapefile", e);
+            throw new RuntimeException("Error processing feature in shapefile.", e);
         }
         return spatialObjectList;
     }
@@ -123,11 +140,11 @@ public class SpatialSourceShapefileBean extends SpatialSourceBean {
     @Override
     public ReferencedEnvelope getExtent() {
         try {
-        return featureSource.getFeatures().getBounds();
+            return featureSource.getFeatures().getBounds();
         } catch (IOException ex) {
-             LogUtility.log("Error retrieving features from shapefile.", ex);
-             throw new RuntimeException("Error retrieving features from shapefile.", ex);
-        }        
+            LogUtility.log("Error retrieving features from shapefile.", ex);
+            throw new RuntimeException("Error retrieving features from shapefile.", ex);
+        }
     }
-        
+
 }

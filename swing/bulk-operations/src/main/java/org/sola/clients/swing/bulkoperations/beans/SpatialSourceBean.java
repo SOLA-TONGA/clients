@@ -38,27 +38,28 @@ import org.sola.clients.beans.AbstractCodeBean;
 import org.sola.clients.beans.controls.SolaObservableList;
 
 /**
- * Abstract bean that encapsulates common functionality and properties for a 
+ * Abstract bean that encapsulates common functionality and properties for a
  * spatial source. <br/>
  * If there will be added a new source type, it has to inherit from this bean.
- * 
+ *
  * @author Elton Manoku
  */
-public abstract class  SpatialSourceBean extends AbstractCodeBean {
-    
+public abstract class SpatialSourceBean extends AbstractCodeBean {
+
     private String geometryType;
     private int featuresNumber;
-    private SolaObservableList<SpatialAttributeBean> attributes =
-            new SolaObservableList<SpatialAttributeBean>();
+    private SolaObservableList<SpatialAttributeBean> attributes
+            = new SolaObservableList<SpatialAttributeBean>();
     private boolean ifMultiUseFirstGeometry = true;
-    
+
+    private String loadMessages = "";
     private File sourceFile;
-    
-    public SpatialSourceBean(){
+
+    public SpatialSourceBean() {
         super();
         setStatus("c");
     }
-    
+
     public SolaObservableList<SpatialAttributeBean> getAttributes() {
         return attributes;
     }
@@ -96,24 +97,37 @@ public abstract class  SpatialSourceBean extends AbstractCodeBean {
         //The list of attributes will be populated
         loadAttributes();
     }
+
+    public String getLoadMessages() {
+        return loadMessages;
+    }
     
+    public void setLoadMessages(String msg) {
+        loadMessages = msg; 
+    }
+    
+    public void addLoadMessage(String msg) {
+        loadMessages = loadMessages + "%n" + msg; 
+    }
+
     /**
-     * It loads attributes for a specific source.
-     * For each kind of source type, this method should be overridden.
+     * It loads attributes for a specific source. For each kind of source type,
+     * this method should be overridden.
      */
     protected abstract void loadAttributes();
-    
+
     /**
      * Retrieves the list of features from the source.
-     * @return 
+     *
+     * @return
      */
     protected abstract List<SpatialSourceObjectBean> getFeatures(
             List<SpatialAttributeBean> onlyAttributes);
-    
+
     /**
      * Retrieves the extent where all the features are found.
-     * 
-     * @return 
+     *
+     * @return
      */
     public abstract ReferencedEnvelope getExtent();
 }
